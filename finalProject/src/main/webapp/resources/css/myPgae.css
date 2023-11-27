@@ -1,0 +1,97 @@
+@charset "UTF-8";
+.box{
+		background-color: rgba(60, 59, 59, 0.27);
+		color: white;
+		display: flex;
+		padding-left: 20px;
+	}
+	
+	.sideBar{
+		max-width: 280px;
+		width: 100%;
+	}
+	
+	.myPageSideBar{
+		text-decoration: none;
+		color: white;
+		display: flex;
+		align-items: center;
+		padding: 5px;
+		margin-left: 10px;
+	}
+	
+	.myPageSideBar:hover{
+		font-style: normal;
+		font-weight: bolder;
+		font-size: 1.1em;
+		background-color: rgba(0, 0, 0, 0.1);
+		border-radius: 8px;
+	}
+	
+	.pageBox{
+		background-color: white;
+		color: black;
+		margin: 20px;
+		border-radius: 8px;
+		width: 800px;
+		height: auto;
+	}
+	
+	.btn{
+		background: none;
+		border: 1px solid black;
+		border-radius: 5px;
+		height: 28px;
+		
+	}
+	
+	.btn:hover {
+		background-color: rgba(0, 0, 0, 0.1);
+		cursor: pointer;
+	}
+	
+	.user-info {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 10px;
+        margin-top: 0px;
+        margin-left: 60px;
+    }
+    
+    .user-info-table {
+    	margin-top: 50px;
+    	margin-left: 68px;
+    }
+    
+    .user-info-table th{
+		text-align: left;
+		padding-top: 10px;
+		font-weight: normal;
+		margin: 1px;
+    }
+    .user-info-table td{
+		padding-bottom: 20px;
+    }
+    
+    .user-info-table input{
+		width: 280px;
+		height: 22px;
+    }
+    
+    .user-info-table button{
+    	width: 80px;
+		height: 28px;
+		float: right;
+    }
+    
+    .normal-input-box > input{
+	    width: calc(100% - 85px);
+	    height: 28px;
+	    box-sizing: border-box;
+	    
+    }
+    .normal-input-box > button{
+        width: 80px;
+    	height: 28px;
+    }
