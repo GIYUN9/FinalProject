@@ -6,9 +6,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+	*,
+	*::before,
+	*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	}
 	body{
 		background: url('././resources/image/main.png') no-repeat center center fixed; 
-  			background-size: cover;		
+  		background-size: cover;		
 	}
     .hd-left-section{
         margin-left: 10px;
@@ -57,9 +64,18 @@
         z-index: 199;    
     }
     .logowh{
-        position: absolute;
         width: 60px;
-        left: 10%;
+        margin-right: 20px;
+        cursor: pointer;
+    }
+    .logowh1{
+        width: 60px;
+        margin-left: 20px;
+    }
+    .hd-middle-section{
+    	display: flex;
+    	align-items: center;
+    	margin-right: 35px;
     }
 </style>
 </head>
@@ -68,15 +84,23 @@
             <div class="hd-left-section">
                 <p class="hd-pr">도와줄게요</p>
                 <p>도와주세요</p>  
-                <img class="logowh" src="././resources/image/logowh.png">
             </div>    
             <div class="hd-middle-section">
+                <img class="logowh" src="././resources/image/logowh.png" onclick="redirectToHome()">
                 <input class="hd-searchbar" placeholder="검색"></input>        
+				<img class="logowh1" src="">
             </div>
             <div class="hd-right-section">
                 <p>로그인</p>
                 <p class="hd-pl">회원가입</p>
             </div>
     </header>
+    
+	<script>
+		function redirectToHome() {  // 클릭 시 리다이렉션을 수행할 URL을 지정합니다.
+		  var redirectUrl = '<%=request.getContextPath()%>/'; 
+		  window.location.href = redirectUrl;
+		}
+	</script>
 </body>
 </html>
