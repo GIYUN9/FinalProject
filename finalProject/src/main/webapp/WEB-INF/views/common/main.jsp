@@ -6,6 +6,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+	*,
+	*::before,
+	*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	}
 	body{
 		background: url('././resources/image/main.png') no-repeat center center fixed; 
   			background-size: cover;		
@@ -17,7 +24,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding-left: 100px;
         font-size: 50px;
         font-weight: bold;
     }
@@ -27,7 +33,7 @@
     .mp-logo{
         width: 200px;
     }
-
+<!--padding-left: 100px;-->
 
 </style>
 
