@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:forward page="WEB-INF/views/Login.jsp"></jsp:forward>
+
+	
+	
+	<jsp:forward page="WEB-INF/views/member/passwordFind.jsp"></jsp:forward>
+	
+
 </body>
 </html>

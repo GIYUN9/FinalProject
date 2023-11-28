@@ -75,46 +75,42 @@
                 <div class="modal-body" >
                     <table>
                         <tr>
-                            <td colspan="3" >
+                            <td colspan="2" >
                                 <p>이메일</p>
                                 <p><input type="text" style="width: 100%;" placeholder="example@poomasi.com"></p>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="3" >
+                            <td colspan="2" >
                                 <p>비밀번호</p>
                                 <p><input type="text" style="width: 100%;" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요"></p>
                          
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="3" >
+                            <td colspan="2" >
                                 <p></p>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <p>아이디 찾기</p>
+                                <a class="loginSearch" href="/WEB-INF/views/member/passwordFind.jsp" style="color: black;"> 비밀번호 찾기</a>
                             </td>
                             
                             <td>
-                                <p>비밀번호 찾기</p>
-                            </td>
-                            
-                            <td>
-                                <p>회원가입</p>
+                                <a class="loginSearch" href="#" style="color: black;"> 회원가입</a>
                             </td>
                         </tr>
 
                         <tr>
-                            <td colspan="3" >
+                            <td colspan="2" >
                                 <p></p>
                             </td>
                         </tr>
 
                         <tr>
-                            <td colspan="3" class= "d-grid gap-2 col-6 mx-auto">
-                                <button type="button" class="login-btn">카카오 로그인</button>
+                            <td colspan="2" class= "d-grid gap-2 col-6 mx-auto">
+                                <button type="submit" class="login-btn" onclick="kakaoLogin()">카카오 로그인</button>
                             </td>
                         </tr>
                     </table>                 
@@ -124,45 +120,14 @@
     </div>
 
 
-
-    <!-- 두번째 모달 -->
-    <div class="modal" id="myModal2" >
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- 모달 헤더 -->
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- 모달 본문 -->
-                <div class="modal-body" style="text-align: center;">
-                    <p>이름</p>
-                    <input type="text" placeholder="이름(실명)을 입력해주세요">
-
-                    <br>
-
-                    <p>서비스를 의뢰하고 싶다면</p>
-                    <button type="button" class="btn btn-secondary" onclick="openSecondModal()">의뢰인으로 가입</button>
-                    
-
-                    <br><br>
-                    <p>서비스를 판매하고 싶다면</p>
-                    <button type="button" class="btn btn-secondary">아마추어로 가입</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    
+	<script>
+        function kakaoLogin() {
+          // 여기에 카카오 로그인을 처리하는 코드 작성 필요
+          // 카카오 API를 사용 -> 그에 맞는 함수를 호출하거나 필요한 동작을 수행
+        }
+      </script>
 
 
-
-
-
-
-	
-	
 </body>
 </html>
 

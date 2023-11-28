@@ -74,57 +74,18 @@
                     <br>
 
                     <p>서비스를 의뢰하고 싶다면</p>
-                    <button type="button" class="btn" onclick="openSecondModal()">의뢰인으로 가입</button>
+                    <button type="submit" class="btn" onclick="openSecondModal()">의뢰인으로 가입</button>
                     
 
                     <br><br>
                     <p>서비스를 판매하고 싶다면</p>
-                    <button type="button" class="btn">아마추어로 가입</button>
+                    <button type="submit" class="btn">아마추어로 가입</button>
                 </div>
             </div>
         </div>
     </div>
 
 
-
-    <!-- 두번째 모달 -->
-    <div class="modal" id="myModal2" >
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- 모달 헤더 -->
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- 모달 본문 -->
-                <div class="modal-body" style="text-align: center;">
-                    <p>이름</p>
-                    <input type="text" placeholder="이름(실명)을 입력해주세요">
-
-                    <br>
-
-                    <p>서비스를 의뢰하고 싶다면</p>
-                    <button type="button" class="btn btn-secondary" onclick="openSecondModal()">의뢰인으로 가입</button>
-                    
-
-                    <br><br>
-                    <p>서비스를 판매하고 싶다면</p>
-                    <button type="button" class="btn btn-secondary">아마추어로 가입</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    
-
-
-
-
-
-
-	
-	
 </body>
 </html>
 
