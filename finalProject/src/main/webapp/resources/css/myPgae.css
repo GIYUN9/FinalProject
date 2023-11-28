@@ -1,5 +1,13 @@
 @charset "UTF-8";
-.box{
+	*,
+   *::before,
+   *::after {
+	   margin: 0;
+	   padding: 0;
+	   box-sizing: border-box;
+   }
+
+	.box{
 		background-color: rgba(60, 59, 59, 0.27);
 		color: white;
 		display: flex;
@@ -108,3 +116,11 @@
     	margin-left: 235px;
     	margin-top: 5px;
     }
+    
+    .nomal-input-style{
+    	width: 280px;
+		height: 22px;
+		border: 1px solid rgb(147, 147, 150);
+		border-radius: 5px;
+    }
+    

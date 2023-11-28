@@ -23,13 +23,20 @@
 			cursor: pointer;
 		}
 		
-		탈퇴버튼
 		.retire {
 			float: right;
 			width: 100px;
 			height: 28px;
 			background-color: rgb(218, 76, 60);
 			color: white;
+			border: none;
+			border-radius: 3px;
+			margin-bottom: 5px;
+			cursor: pointer;
+		}
+		
+		.retire:hover {
+			background-color: rgb(218, 76, 60, 0.27);
 		}
 	</style>
 </head>
@@ -87,6 +94,8 @@
         cT.addEventListener('change', function(){
             if(cT.checked){
                 document.querySelector('.retire').disabled = false;
+            } else{
+            	document.querySelector('.retire').disabled = true;
             }
         });
 	</script>
