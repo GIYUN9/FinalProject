@@ -75,7 +75,7 @@
     .hd-middle-section{
     	display: flex;
     	align-items: center;
-    	margin-right: 35px;
+    	margin-right: 40px;
     }
 </style>
 </head>
