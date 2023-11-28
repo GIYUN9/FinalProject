@@ -6,6 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+	body{
+		background: url('././resources/image/main.png') no-repeat center center fixed; 
+  			background-size: cover;		
+	}
     .hd-left-section{
         margin-left: 10px;
         font-size: 15px;
