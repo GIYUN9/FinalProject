@@ -35,11 +35,11 @@
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">계정 설정</h3>
 			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 280px;">
 		
-			<a class="myPageSideBar" href="#">나의 정보</a>
-			<a class="myPageSideBar" href="#">전문가 정보</a>
-			<a class="myPageSideBar" href="#" style="font-weight: bolder; font-size: 1.1em;">비밀번호 변경</a>
-			<a class="myPageSideBar" href="#">회원 탈퇴</a>
-			<a class="myPageSideBar" href="#">일정 관리</a>
+			<a class="myPageSideBar" href="userInfo.me">나의 정보</a>
+			<a class="myPageSideBar" href="proInfo.me">전문가 정보</a>
+			<a class="myPageSideBar" href="changePwd.me" style="font-weight: bolder; font-size: 1.1em;">비밀번호 변경</a>
+			<a class="myPageSideBar" href="deleteForm.me">회원 탈퇴</a>
+			<a class="myPageSideBar" href="schedule.me">일정 관리</a>
 			<a class="myPageSideBar" href="#">문의 내역</a>
 		</div>
 		<div class="main-box">
