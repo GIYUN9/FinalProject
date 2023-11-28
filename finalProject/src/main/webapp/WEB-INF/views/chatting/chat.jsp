@@ -101,6 +101,8 @@
         color: #000000; 
         border-radius: 15px; 
         background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
     }
     .chatbox:after {
         content:""; 
@@ -142,8 +144,26 @@
     .send-btn{
         float: right;
         margin-right: 4%;
+        width: 8%;
+        height: 54%;
     }
-
+    .option-btn{
+        width: 250px;
+        height: 45px;
+        padding: 5px;
+        margin-top: 5px;
+        margin-bottom: 3px;
+        border: 1px solid rgba(96, 96, 96, 0.2);
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    .text-area{
+        display: flex;
+        width: 70%;
+        height: 60%;
+        border-radius: 20px;
+        border: none;
+    }
     </style>
 </head>
 <body>
@@ -166,7 +186,13 @@
     <div class="cr-time">2023년 11월 27일 월요일</div>
 
     <div class="box">
-        <div class="chatbox">가나다</div>
+        <div class="chatbox">
+            <br>
+            <button class="option-btn">가격 안내를 받고 싶습니다.</button>
+            <button class="option-btn">12345</button>
+            <button class="option-btn">zxcvb</button>
+            <br>
+        </div>
     </div>
 
     <div class="box">
@@ -191,10 +217,10 @@
         <div class="chatbox">11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</div>
     </div>
     <div class="box">
-        <div class="chatbox">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+        <div class="chatbox">aaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
     </div>
     <div class="box">
-        <div class="chatbox">가나다kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkㅏkkkkkkkkkkkkkkk</div>
+        <div class="chatbox">가나다kkk</div>
     </div>
     <div class="box">
         <div class="chatbox">가</div>
@@ -212,7 +238,7 @@
 
 
     <footer class="cr-ft">
-        <input type="text">
+        <input class="text-area" type="text">
         <button class="send-btn">전송</button>
     </footer>
 </body>
