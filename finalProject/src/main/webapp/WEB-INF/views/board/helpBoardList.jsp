@@ -34,22 +34,27 @@
     }
 
     .category{
-        width: 100px;
-        font-size: 12px;
-        text-align: center; 
-        font-weight: bold; 
+        width: 100px; 
+        text-align: center;  
     }
 
-    .category-item{
+    .category-item {
         margin-top: 5px;
+        
+    }
+
+    .category-item > a{
+        margin-top: 100px;
+        font-weight: bold; 
+        color: white;
+        font-size: 12px;
     }
 
     
     
     .main{
         display: flex;    
-        width: 900px;
-        background-color: azure;
+        width: 900px;  
         border: 1px;
         margin: 0 auto;
     }
@@ -66,6 +71,8 @@
         padding-top: 10px;
         padding-bottom: 10px;
         padding-left: 10px;
+        
+
     }
 
     .content-item{
@@ -91,8 +98,33 @@
     
     .content-item-title{
     	padding-top: 10px;
-    	
+        font-size: 13px;
+        font-weight: bold;
+        color: white;
     }
+
+    .content-item-price{
+        font-size: 14px;
+        font-weight: bold;
+        text-align: right;
+        padding-top: 20px;
+        padding-right: 5px;
+        color: white;
+    }
+    
+    .content-head{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #head-count{
+        text-align: left;
+    }
+
+    #head-category{
+        text-align: right;
+    }
+   
     
 </style>
 </head>
@@ -113,67 +145,72 @@
    <div class = "back-ground" style="width: 100%; background-color: gray;">
         <div class="main">
             <div class = "category" style="display: inline-block;">
-                <div class = "category-item">광고 홍보</div>
-                <div class = "category-item">드론 촬영</div>
-                <div class = "category-item">홍보 사진</div>
-                <div class = "category-item">사진 보정</div>
+                <div class = "category-item"><a href="#">광고 홍보</a></div>
+                <div class = "category-item"><a href="#">드론 촬영</a></div>
+                <div class = "category-item"><a href="#">홍보 사진</a></div>
+                <div class = "category-item"><a href="#">사진 보정</a></div>
             </div>
             <div class = "content">
+                <div class = "content-head">
+                   <div id = "head-count">1번</div>
+                   <div id = "head-category">2번</div>
+
+                </div>
                 <div class = "content-item">
                     <a href = "#">
                         <img  class = "content-img" src = "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzEwMTdfNTgg%2FMDAxNjk3NTM5MTYyMDU1.2FTbuIwYW-lYUnwwsOymlHEzSOePqb98wZL9dmdJQ44g.9OmmX2wPWyBWzDkmuySWmSj3gIDYOiH40xw5mXgGJmsg.JPEG.suninefreeimage%2F_Z5A4454.jpg&type=sc960_832">
-                        <div class = "content-item-title">제목1</div>
-                        <div class = "content-item-price">가격1</div>
+                        <div class = "content-item-title">어울리는 머리 찾아드려요!</div>
+                        <div class = "content-item-price">20000원</div>
                     </a>
                 </div>
                 <div class = "content-item">
                     <a href = "#">
                          <img  class = "content-img" src = "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzEwMTdfNTgg%2FMDAxNjk3NTM5MTYyMDU1.2FTbuIwYW-lYUnwwsOymlHEzSOePqb98wZL9dmdJQ44g.9OmmX2wPWyBWzDkmuySWmSj3gIDYOiH40xw5mXgGJmsg.JPEG.suninefreeimage%2F_Z5A4454.jpg&type=sc960_832">
-                        <div class = "content-item-title">제목1</div>
-                        <div class = "content-item-price">가격1</div>
+                        <div class = "content-item-title">연기학원 연기 알려드려요^^</div>
+                        <div class = "content-item-price">50000원</div>
                     </a>
                 </div>
                 <div class = "content-item">
                     <a href = "#">
                          <img  class = "content-img" src = "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzEwMTdfNTgg%2FMDAxNjk3NTM5MTYyMDU1.2FTbuIwYW-lYUnwwsOymlHEzSOePqb98wZL9dmdJQ44g.9OmmX2wPWyBWzDkmuySWmSj3gIDYOiH40xw5mXgGJmsg.JPEG.suninefreeimage%2F_Z5A4454.jpg&type=sc960_832">
-                        <div class = "content-item-title">제목1</div>
-                        <div class = "content-item-price">가격1</div>
+                        <div class = "content-item-title">뮤지컬 배워봐요</div>
+                        <div class = "content-item-price">15000원</div>
                     </a>
                 </div>
                 
                 <div class = "content-item">
                     <a href = "#">
                         <img class = "content-img" src = "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fimage.utoimage.com%2Fpreview%2Fcp996406%2F2023%2F09%2F202309004664_800.jpg&type=sc960_832">
-                        <div class = "content-item-title">제목1</div>
-                        <div class = "content-item-price">가격1</div>
+                        <div class = "content-item-title">노래도 배워봐요</div>
+                        <div class = "content-item-price">5000원</div>
                     </a>
                 </div>
                 <div class = "content-item">
                     <a href = "#">
                         <img class = "content-img" src = "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fimage.utoimage.com%2Fpreview%2Fcp996406%2F2023%2F09%2F202309004664_800.jpg&type=sc960_832">
-                        <div class = "content-item-title">제목1</div>
-                        <div class = "content-item-price">가격1</div>
+                        <div class = "content-item-title">자바배워봐요</div>
+                        <div class = "content-item-price">200원</div>
                     </a>
                 </div>
                 <div class = "content-item">
                     <a href = "#">
                         <img class = "content-img" src = "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fimage.utoimage.com%2Fpreview%2Fcp996406%2F2023%2F09%2F202309004664_800.jpg&type=sc960_832">
-                        <div class = "content-item-title">제목1</div>
-                        <div class = "content-item-price">가격1</div>
+                        <div class = "content-item-title">스프링 배워봐요</div>
+                        <div class = "content-item-price">300원</div>
                     </a>
                 </div>
                 <div class = "content-item">
                     <a href = "#">
                         <img class = "content-img" src = "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fimage.utoimage.com%2Fpreview%2Fcp996406%2F2023%2F09%2F202309004664_800.jpg&type=sc960_832">
-                        <div class = "content-item-title">제목1</div>
-                        <div class = "content-item-price">가격1</div>
+                        <div class = "content-item-title">추위에 떨어봐요</div>
+                        <div class = "content-item-price">90000원</div>
                     </a>
                 </div>
                 <div class = "content-item">
                     <a href = "#">
                        <img class = "content-img" src = "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fimage.utoimage.com%2Fpreview%2Fcp996406%2F2023%2F09%2F202309004664_800.jpg&type=sc960_832">
-                        <div class = "content-item-title">제목1</div>
-                        <div class = "content-item-price">가격1</div>
+                        <div class = "content-item-title">과자도 먹어봐요</div>
+                        <div class = "content-item-price">500원</div>
                     </a>
                 </div>
             </div>
