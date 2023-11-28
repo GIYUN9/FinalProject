@@ -10,5 +10,6 @@
 	<jsp:forward page="WEB-INF/views/board/helpBoardList.jsp"></jsp:forward>
 	<%-- <jsp:forward page="WEB-INF/views/myPage/deleteForm.jsp"></jsp:forward> 마이 페이지--%>
 	<%-- <jsp:forward page="WEB-INF/views/common/main.jsp"></jsp:forward> 메인페이지--%> 
+	 <%--<jsp:forward page="WEB-INF/views/common/main.jsp"></jsp:forward> 메인페이지 --%>
 </body>
 </html>

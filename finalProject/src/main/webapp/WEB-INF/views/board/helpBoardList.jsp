@@ -19,6 +19,7 @@
         height: 70px;
         display: flex;
         align-items: center;
+        margin-top: 70px;
     }
 
     .nav-center-items{
@@ -62,8 +63,6 @@
    
     .content{
         width: 1100px;
-        height: auto;
-        background-color: gray;
         height: auto;
         border: 1px;
         margin: 0 auto;
@@ -125,10 +124,15 @@
         text-align: right;
     }
    
+  	.back-ground{
+  		width : 100%;
+  		background-color:rgba(60, 59, 59, 0.27);
+  	}
     
 </style>
 </head>
 <body>
+<%@ include file = "../common/header.jsp"%>
    <div class = "nav">
         <div class = "nav-center-items">
             <div class = "nav-item"><a href="#">전체보기</a></div>
@@ -142,7 +146,7 @@
             <div class = "nav-item"><a href="#">&#62;</a></div>
         </div>
    </div>
-   <div class = "back-ground" style="width: 100%; background-color: gray;">
+   <div class = "back-ground">
         <div class="main">
             <div class = "category" style="display: inline-block;">
                 <div class = "category-item"><a href="#">광고 홍보</a></div>
@@ -153,7 +157,16 @@
             <div class = "content">
                 <div class = "content-head">
                    <div id = "head-count">1번</div>
-                   <div id = "head-category">2번</div>
+                   <div id = "head-category">
+                   		<li><a href="#">전체보기</a>
+                            <ul>
+                                <li><a href = "#">인기순</a></li>
+                                <li><a href = "#">조회순</a></li>
+                                <li><a href = "#">별점순</a></li>
+                            </ul>
+
+                        </li>
+                   </div>
 
                 </div>
                 <div class = "content-item">
@@ -217,6 +230,6 @@
         </div>
     </div>
    
-            
+<%@ include file = "../common/footer.jsp"%>            
 </body>
 </html>
