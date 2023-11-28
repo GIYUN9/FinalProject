@@ -24,6 +24,7 @@
 		}
 		.updatePwd-btn:hover {
 			opacity: 0.5;
+			cursor: pointer;
 		}
 	</style>
 </head>
@@ -44,21 +45,21 @@
 			<h3 style="margin: 10px 0 0 20px;">비밀번호 변경</h3>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="user-info">
-					<form action="" method="post" style="margin-top: 15px;">
+					<form action="" method="post" style="margin-top: 19px;">
 						<h4>현재 비밀번호</h4>
 						<input class="nomal-input-style" name="memberPwd" type="password" placeholder="현재 사용중인 비밀번호를 입력해주세요." required="required">
-						<div style="display: flex;">
+						<div style="display: flex; margin-top: 24px;">
 							<div>
 								<h4>변경할 비밀번호</h4>
-								<input class="nomal-input-style" name="newPwd" type="password" placeholder="변경할 비밀번호를 입력해주세요." required="required">
+								<input class="nomal-input-style" name="newPwd" id="newPwd" type="password" placeholder="변경할 비밀번호를 입력해주세요." required="required">
 							</div>
 							<div style="margin-left: 55px;">
 								<h4>한번 더 입력</h4>
-								<input class="nomal-input-style" type="password" placeholder="변경할 비밀번호를 한번 더 입력해주세요." required="required">
+								<input class="nomal-input-style" id="confirmPwd" type="password" placeholder="변경할 비밀번호를 한번 더 입력해주세요." required="required">
 							</div>
 						</div>
 						<br>
-						<button class="updatePwd-btn" type="submit" disabled="disabled">변경하기</button>
+						<button class="updatePwd-btn" type="submit" disabled>변경하기</button>
 					</form>
 				</div>
 			</div>		
@@ -67,19 +68,19 @@
 	<jsp:include page="../common/footer.jsp" />
 	
 	<script>
-	// 비밀번호 확인 이벤트 리스너
-	document.querySelector(".newPwd").addEventListener("input", function() {
-	  // 변경할 비밀번호와 비밀번호 확인을 비교
-	  const newPwd = document.querySelector(".newPwd").value;
-	  const confirmPwd = document.querySelector(".confirmPwd").value;
-
-	  // 일치하면 변경하기 버튼 활성화
-	  if (newPwd === confirmPwd) {
-	    document.querySelector(".updatePwd-btn").removeAttribute("disabled");
-	  } else {
-	    document.querySelector(".updatePwd-btn").setAttribute("disabled", "disabled");
-	  }
-	});
+		// 비밀번호 확인 이벤트 리스너
+		document.querySelector('#confirmPwd').addEventListener('input', function() {
+			// 변경할 비밀번호와 비밀번호 확인을 비교
+			const newPwd = document.querySelector('#newPwd').value;
+			const confirmPwd = document.querySelector('#confirmPwd').value;
+			
+			// 일치하면 변경하기 버튼 활성화
+			if (newPwd === confirmPwd) {
+				document.querySelector('.updatePwd-btn').removeAttribute("disabled");
+			} else {
+				document.querySelector('.updatePwd-btn').setAttribute("disabled", "disabled");
+			}
+		});
 	</script>
 </body>
 </html>
