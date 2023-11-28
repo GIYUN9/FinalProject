@@ -20,7 +20,7 @@
 			<a class="myPageSideBar" href="#">회원 탈퇴</a>
 			<a class="myPageSideBar" href="#">문의 내역</a>
 		</div>
-		<div>
+		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">나의 정보</h3>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="user-info">

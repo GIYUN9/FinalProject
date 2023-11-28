@@ -9,6 +9,8 @@
 	.sideBar{
 		max-width: 280px;
 		width: 100%;
+		margin-left: 30px;
+		margin-top: 5px;
 	}
 	
 	.myPageSideBar{
@@ -100,4 +102,9 @@
     	height: 28px;
     	border: 1px solid rgb(147, 147, 150);
 		border-radius: 5px;
+    }
+    
+    .main-box{
+    	margin-left: 235px;
+    	margin-top: 5px;
     }

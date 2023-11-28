@@ -23,6 +23,7 @@
 			cursor: pointer;
 		}
 		
+		탈퇴버튼
 		.retire {
 			float: right;
 			width: 100px;
@@ -33,7 +34,8 @@
 	</style>
 </head>
 <body>
-	<div class="box">
+	<jsp:include page="../common/header.jsp" />
+	<div class="box" style="margin-top: 55px;">
 		<div class="sideBar">
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">계정 설정</h3>
 			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 280px;">
@@ -44,7 +46,7 @@
 			<a class="myPageSideBar" href="#" style="font-weight: bolder; font-size: 1.1em;">회원 탈퇴</a>
 			<a class="myPageSideBar" href="#">문의 내역</a>
 		</div>
-		<div>
+		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">회원 탈퇴</h3>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="user-info">
@@ -61,7 +63,7 @@
 						<h4 style="margin-bottom: 5px;">이메일 확인</h4>
 						<input class="emailInput" placeholder="가입하신 이메일을 입력해주세요.">
 						<h4 style="margin-bottom: 5px;">주의 사항</h4>
-						<textarea rows="15" cols="96%" style="resize: none; text-align: left;">
+						<textarea rows="15" cols="96%" style="resize: none; text-align: left;" readonly="readonly">
 1. 현재 사용 중인 계정 정보는~~~
 2. 진행 중인 거래 건이 있거나~~
 3. 탈퇴 후 ~~
@@ -70,14 +72,23 @@
 
 110. 충전캐시~~
 						</textarea><br>
-						<label><input type="checkbox">주의사항을 모두 확인하였습니다.</label>
+						<label><input id="cT" type="checkbox">주의사항을 모두 확인하였습니다.</label>
 						<br>
-						<button class="retire" type="submit">탈퇴하기</button>
+						<button class="retire" type="submit" disabled>탈퇴하기</button>
 					</form>
 				</div>
 			</div>		
 		</div>
 	</div>
-	
+	<jsp:include page="../common/footer.jsp" />
+
+	<script>
+		const cT = document.querySelector('#cT');
+        cT.addEventListener('change', function(){
+            if(cT.checked){
+                document.querySelector('.retire').disabled = false;
+            }
+        });
+	</script>
 </body>
 </html>

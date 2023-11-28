@@ -8,7 +8,8 @@
 	<link rel="stylesheet" href="././resources/css/myPgae.css">
 </head>
 <body>
-	<div class="box">
+	<jsp:include page="../common/header.jsp" />
+	<div class="box" style="margin-top: 55px">
 		<div class="sideBar">
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">계정 설정</h3>
 			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 280px;">
@@ -19,7 +20,7 @@
 			<a class="myPageSideBar" href="#">회원 탈퇴</a>
 			<a class="myPageSideBar" href="#">문의 내역</a>
 		</div>
-		<div>
+		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">전문가 정보</h3>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="user-info">
@@ -59,6 +60,6 @@
 			</div>		
 		</div>
 	</div>
-	
+	<jsp:include page="../common/footer.jsp" />
 </body>
 </html>
