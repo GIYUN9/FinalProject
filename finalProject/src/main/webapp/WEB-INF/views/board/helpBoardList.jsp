@@ -12,7 +12,6 @@
         border-collapse: collapse;
         margin: 0px;
         padding: 0px;
-        color: black;
     }
     
     .nav{
@@ -29,11 +28,35 @@
 
     .nav-item{
         font-size: 18px;
-        width: 150px;
+        height: 40px;
+        
+        padding-left: 70px;
         text-align: center;
         font-weight: bold;
         color: white;
     }
+    
+
+    a::after{
+        display:block;
+        content: '';
+        border-bottom: solid 3px #ffffff;  
+        transform: scaleX(0);  
+        transition: transform 250ms ease-in-out;
+    }
+
+    .nav:hover::after{
+        transform: scaleX(1);
+    }
+
+    a:after {
+        display:block;
+        content: '';
+        border-bottom: solid 2px #ffffff;  
+        transform: scaleX(0);  
+        transition: transform 250ms ease-in-out;
+     }
+    a:hover:after { transform: scaleX(1); }
 
     .nav-item > a{
         color: white;
@@ -88,7 +111,6 @@
         margin-top: 20px;
         margin-right: 15px;
         background-color: rgba(83, 82, 82, 0.65)
-        
 
     }
 
@@ -161,25 +183,69 @@
 
     #category-item {
         color: white;
-        
         font-size: 14px;
         border: none;
         background-color: transparent; 
     }
+
+    .aaa{
+        width: 95px;
+        padding: 9px;
+        border-radius: 8px;
+        color: white;
+    }
+    
+    .aaa:hover{
+        background-color: rgba(255, 255, 255, 0.222);
+    }
+
+    a{
+        color: white;
+    }
+
 </style>
 </head>
 <body>
 <%@ include file = "../common/header.jsp"%>
    <div class = "nav">
         <div class = "nav-center-items">
-            <div class = "nav-item"><a href="#">전체보기</a></div>
+            <div class = "nav-item">
+                <div class="aaa">
+                    <a href="#">전체보기</a>
+                </div>
+            </div>
             <div class = "nav-item"><a href="#">&#60;</a></div>
-            <div class = "nav-item"><a href="#">취미,레슨</a></div>
-            <div class = "nav-item"><a href="#">디자인</a></div>
-            <div class = "nav-item"><a href="#">마케팅</a></div>
-            <div class = "nav-item"><a href="#">운동</a></div>
-            <div class = "nav-item"><a href="#">게임</a></div>
-            <div class = "nav-item"><a href="#">미술</a></div>
+            <div class = "nav-item">
+                <div class="aaa">
+                    <a href="#">취미,레슨</a>
+                </div>
+            </div>
+            <div class = "nav-item">
+                <div class="aaa">
+                    <a href="#">디자인</a>
+                </div>
+            </div>
+            <div class = "nav-item">
+                <div class="aaa">
+                    <a href="#">마케팅</a>
+                </div>
+            </div>
+            <div class = "nav-item">
+                <div class="aaa">
+                    <a href="#">운동</a>
+                </div>
+            </div>
+            <div class = "nav-item">
+                <div class="aaa">
+                    <a href="#">게임</a>
+                </div>
+            </div>
+            <div class = "nav-item">
+                <div class="aaa">
+                    <a href="#">미술</a>
+                </div>
+            </div>
+           
             <div class = "nav-item"><a href="#">&#62;</a></div>
         </div>
    </div>
