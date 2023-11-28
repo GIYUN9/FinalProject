@@ -18,6 +18,7 @@
 			<a class="myPageSideBar" href="#">전문가 정보</a>
 			<a class="myPageSideBar" href="#">비밀번호 변경</a>
 			<a class="myPageSideBar" href="#">회원 탈퇴</a>
+			<a class="myPageSideBar" href="#">일정 관리</a>
 			<a class="myPageSideBar" href="#">문의 내역</a>
 		</div>
 		<div class="main-box">
