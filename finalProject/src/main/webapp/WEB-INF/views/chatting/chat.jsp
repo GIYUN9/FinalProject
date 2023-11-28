@@ -6,8 +6,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
     <style>
+    *,
+    *::before,
+    *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
     body{
-        background: rgba(197, 197, 197, 0.55);
+        background: rgba(197, 197, 197, 0.55) no-repeat center center fixed;
+        background-size: cover;		
+
     }
     header{
         background: white;
@@ -76,14 +85,19 @@
         background: rgb(0, 194, 177);
         width: 100%;
         height: 55px;
+        position: fixed;
+        bottom: 0
+        ;
         
     }
     .chatbox {
         position:relative; 
-        margin: 50px; 
+        margin: 40px; 
         padding: 10px; 
-        width: 200px; 
-        height: 60px; 
+        width: max-content;
+        max-width: 40%;
+        min-height: 50px;
+        max-height: 100%;
         color: #000000; 
         border-radius: 15px; 
         background-color: #ffffff;
@@ -91,12 +105,35 @@
     .chatbox:after {
         content:""; 
         position: absolute;
-        top: 40px; 
+        top: 40%; 
         left: -20px; 
         border-right: 20px solid #ffffff; 
         border-top: 10px solid transparent; 
         border-bottom: 10px solid transparent;
     }
+
+    .chatbox-right {
+        position:relative; 
+        margin: 40px;
+        left: 85%; 
+        padding: 10px; 
+        width: 200px; 
+        min-height: 50px;        
+        color: #000000; 
+        border-radius: 15px; 
+        background-color: #ffffff;
+    }
+    .chatbox-right:after {
+        content:""; 
+        position: absolute;
+        top: 40%; 
+        left: 100%; 
+        border-left: 20px solid #ffffff; 
+        border-top: 10px solid transparent; 
+        border-bottom: 10px solid transparent;
+    }
+
+
     .prev-menu{
         width: 25px;
         height: 25px;
@@ -131,6 +168,48 @@
     <div class="box">
         <div class="chatbox">가나다</div>
     </div>
+
+    <div class="box">
+        <div class="chatbox-right">가나다</div>
+    </div>
+    
+    <div class="box">
+        <div class="chatbox">max-width인데 왜 기본으로 먹을까
+        </div>
+    </div>
+
+    <div class="box">
+        <div class="chatbox">가나다</div>
+    </div>
+    <div class="box">
+        <div class="chatbox-right">asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasddsaasdsdasaddsa</div>
+    </div>
+    <div class="box">
+        <div class="chatbox">ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ</div>
+    </div>
+    <div class="box">
+        <div class="chatbox">11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</div>
+    </div>
+    <div class="box">
+        <div class="chatbox">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+    </div>
+    <div class="box">
+        <div class="chatbox">가나다kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkㅏkkkkkkkkkkkkkkk</div>
+    </div>
+    <div class="box">
+        <div class="chatbox">가</div>
+    </div>
+    <div class="box">
+        <div class="chatbox">가</div>
+    </div>
+    <div class="box">
+        <div class="chatbox">가나</div>
+    </div>
+    <div class="box">
+        <div class="chatbox">가나다</div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
 
     <footer class="cr-ft">
         <input type="text">
