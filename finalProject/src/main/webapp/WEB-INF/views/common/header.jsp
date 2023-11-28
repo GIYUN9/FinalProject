@@ -77,6 +77,18 @@
     	align-items: center;
     	margin-right: 40px;
     }
+/*    
+	p::after{
+		display:block;
+		content: '';
+		border-bottom: solid 2px #ffffff;  
+		transform: scaleX(0);  
+		transition: transform 250ms ease-in-out;
+	}
+    p:hover::after{
+        transform: scaleX(1);
+    }
+*/
 </style>
 </head>
 <body>
