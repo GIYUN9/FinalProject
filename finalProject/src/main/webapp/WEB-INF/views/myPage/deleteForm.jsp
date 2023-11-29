@@ -57,7 +57,7 @@
 		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">회원 탈퇴</h3>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
-				<div class="user-info">
+				<div class="user-info" style="margin-top: 15px;">
 					<form action="">
 						<h4 style="margin-bottom: 5px;">떠나시는 이유를 알려주세요.</h4>
 						<div class="reason-box">
