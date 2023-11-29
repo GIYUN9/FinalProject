@@ -361,6 +361,81 @@
         bottom: -10px;
     }
 
+    /*
+        content 내용 css
+    */
+    .content{
+        margin-top: 10px;
+        width: 550px;
+        height: 650px;
+        background-color: white;
+        align-items: center;
+    }
+
+    .sub-content{
+        margin-top: 10px;
+        width: 500px;
+        height: 600px;
+        background-color: blue;
+        margin: 0 auto;
+    }
+
+    .icon{
+        width: 500px;
+        height: 50px;
+        background-color: blueviolet;
+        
+        margin-top: 10px;
+        align-items: center;
+    }
+
+    .icon > div{
+       display: inline-block; 
+    }
+
+    .share {
+        float: left;
+       
+    }
+
+    .heart {
+        float: right;
+    }
+    .heart-text{
+        display: inline-block;
+  
+    }
+
+    .heart-text > h4{
+        text-align: center;  
+    }
+   
+
+    .icon img{
+        height: 40px;
+       
+    }
+
+    .report{
+        display: inline-block;
+    }
+    .start{
+        display: inline-block;
+    }
+
+    .report > img{
+        display: inline-block;
+        height: 40px;
+    }
+    .star > img{
+        display: inline-block;
+        height: 40px;
+    }
+
+    .content-title{
+        float: left;
+    }
+
 </style>
 
 </head>
@@ -376,7 +451,7 @@
             <div class = "nav-item"><a href="#">&#60;</a></div>
             <div class = "nav-item">
                 <div class="nav-item-content">
-                    <a href="#">&#60취미,레슨</a>
+                    <a href="#">취미,레슨</a>
                 </div>
             </div>
             <div class = "nav-item">
@@ -434,21 +509,38 @@
             </div>    
         </div>
         <div class = "content">
-            <div class = "icon">
-                <div class = "share">
-                    <button class="shar-btn"><img src = "공유 이미지" alt=""></button>
+            <div class= "sub-content">
+                <div class = "icon">
+                    <div class = "share">
+                        <button class="share-icon"><img src = "././resources/image/share.jpg" alt=""></button>
+                    </div>
+                    <div class = "heart">
+                        <button class="heart-icon"><img src = "././resources/image/heart.jpg" alt="하트 이미지"></button>
+                        <div class="heart-text"><h4>1,063</h4></div>
+                    </div>
                 </div>
-                <div class = "heart">
-                    <button class="heart-btn"><img src = "하트 이미지" alt=""></button>
+                <div class = "content-title">
+                    <div class = "content-title-text">
+                        <text><h2>'헬스 이제 시작해보자구!'</h2></text>
+                    </div>
+                    <div class="report">
+                        <img src="././resources/image/경고.jpg" alt="" class="report-icon">
+                    </div>
+                    <div class="star">
+                        <img src="././resources/image/stars.jpg" alt="" class="star-icon">
+                        <div>별점</div>
+                    </div>
+                    <div class = "data">
+                        <div class="data-mem"></div>
+                        <div class="count"></div>
+                    </div>
                 </div>
+                <div class = "content-detail">
+                    우리 헬스 좋아요
+                    아무아주 좋아요!
+                </div>
+                <button id = "content-btn">구매하기</button>
             </div>
-            <div class = "content-title">
-
-            </div>
-            <div class = "content-detail">
-                
-            </div>
-            <button id = "buy-btn">구매하기</button>
         </div>
    </div>
    
