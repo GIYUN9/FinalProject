@@ -40,7 +40,7 @@
 			<a class="myPageSideBar" href="changePwd.me" style="font-weight: bolder; font-size: 1.1em;">비밀번호 변경</a>
 			<a class="myPageSideBar" href="deleteForm.me">회원 탈퇴</a>
 			<a class="myPageSideBar" href="schedule.me">일정 관리</a>
-			<a class="myPageSideBar" href="#">문의 내역</a>
+			<a class="myPageSideBar" href="ask.me">문의 내역</a>
 		</div>
 		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">비밀번호 변경</h3>

@@ -41,4 +41,9 @@ public class MemberController {
 		//화면 전환용 임시 데이터는 없는상태
 		return "myPage/schedule";
 	}
+	@RequestMapping(value = "/ask.me")
+	public String ask(){
+		//화면 전환용 임시 데이터는 없는상태
+		return "myPage/ask";
+	}
 }

@@ -122,6 +122,11 @@
 		  transform: translateX(-50%) translateY(-50%);
 		}
 		
+		#x-btnImg:hover{
+			cursor: pointer;
+			opacity: 0.5;
+		}
+		
 	</style>
 </head>
 
@@ -137,7 +142,7 @@
 			<a class="myPageSideBar" href="changePwd.me">비밀번호 변경</a>
 			<a class="myPageSideBar" href="deleteForm.me">회원 탈퇴</a>
 			<a class="myPageSideBar" href="schedule.me" style="font-weight: bolder; font-size: 1.1em;">일정 관리</a>
-			<a class="myPageSideBar" href="#">문의 내역</a>
+			<a class="myPageSideBar" href="ask.me">문의 내역</a>
 		</div>
 		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">일정 관리</h3>
@@ -285,8 +290,8 @@
 							</p>
 						</div>
 						<div style="width: 15%; display: flex; flex-direction: column;">
-							<button class="schedule-btn" style="background-color: rgb(0, 199, 174)">요청 확인</button>
-							<button class="schedule-btn" style="background-color: rgb(218, 76, 60)">거절 하기</button>
+							<button class="schedule-btn" style="background-color: rgb(0, 199, 174)">상태 : 확인중</button>
+							<button class="schedule-btn" style="background-color: rgb(218, 76, 60)">취소 하기</button>
 						</div>
 					</div>
 
@@ -315,8 +320,7 @@
 							</p>
 						</div>
 						<div style="width: 15%; display: flex; flex-direction: column;">
-							<button class="schedule-btn" style="background-color: rgb(0, 199, 174)">요청 확인</button>
-							<button class="schedule-btn" style="background-color: rgb(218, 76, 60)">거절 하기</button>
+							<button class="schedule-btn" style="background-color: rgb(218, 76, 60)">상태 : 거절됨</button>
 						</div>
 					</div>
 
@@ -328,7 +332,7 @@
 
 	<div class="modal">
 		<div class="modal_body" style="padding-top: 10px;">
-			<img src="././resources/icon/x-btn.png" alt="" style="width: 35px; height: 35px; float: right; margin-right: 7px;">
+			<img id="x-btnImg" src="././resources/icon/x-btn.png" alt="" style="width: 35px; height: 35px; float: right; margin-right: 7px;">
 			<div style="margin-top: 10px;">
 				요청 상세 보기
 			</div>
@@ -354,12 +358,15 @@
 					<div style="width: 100%;">
 						<div style="float: left; margin-top: 20px; margin-bottom: 5px;">요청자 메세지</div>
 						<p class="textarea-maxSize" style="width: 100%; text-align: left; padding: 5px;">
-							블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라
+							블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라
+							블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라
+							블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라
+							블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라
 						</p>
 					</div>
 					<div style="display: flex; flex-direction: row; justify-content: flex-end; width: 100%;" >
 						<button type="submit" class="schedule-btn" style="background-color: rgb(0, 199, 174); width: 90px;" id="btn-open-popup">채팅 하기</button>
-						<button class="schedule-btn" style="background-color: rgb(218, 76, 60); width: 90px;" onclick="refuse()">거절 하기</button>
+						<button type="button" class="schedule-btn" style="background-color: rgb(218, 76, 60); width: 90px;" onclick="refuse()">거절 하기</button>
 					</div>
 				</div>
 			</form>
@@ -404,6 +411,13 @@
 		function refuse(){
 			
 		}
+		
+		const modals = document.querySelector('.modal');
+    	const btnImg = document.querySelector('#x-btnImg');
+    	btnImg.addEventListener('click', () => {
+    		modals.style.display = 'none';
+    	});
+
 	</script>
 </body>
 </html>
