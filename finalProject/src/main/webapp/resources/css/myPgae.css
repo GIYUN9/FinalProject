@@ -1,5 +1,13 @@
 @charset "UTF-8";
-.box{
+	*,
+   *::before,
+   *::after {
+	   margin: 0;
+	   padding: 0;
+	   box-sizing: border-box;
+   }
+
+	.box{
 		background-color: rgba(60, 59, 59, 0.27);
 		color: white;
 		display: flex;
@@ -9,6 +17,8 @@
 	.sideBar{
 		max-width: 280px;
 		width: 100%;
+		margin-left: 30px;
+		margin-top: 5px;
 	}
 	
 	.myPageSideBar{
@@ -39,7 +49,7 @@
 	
 	.btn{
 		background: none;
-		border: 1px solid black;
+		border: 1px solid rgb(147, 147, 150);
 		border-radius: 5px;
 		height: 28px;
 		
@@ -77,6 +87,8 @@
     .user-info-table input{
 		width: 280px;
 		height: 22px;
+		border: 1px solid rgb(147, 147, 150);
+		border-radius: 5px;
     }
     
     .user-info-table button{
@@ -89,9 +101,26 @@
 	    width: calc(100% - 85px);
 	    height: 28px;
 	    box-sizing: border-box;
+	    border: 1px solid rgb(147, 147, 150);
+		border-radius: 5px;
 	    
     }
     .normal-input-box > button{
         width: 80px;
     	height: 28px;
+    	border: 1px solid rgb(147, 147, 150);
+		border-radius: 5px;
     }
+    
+    .main-box{
+    	margin-left: 235px;
+    	margin-top: 5px;
+    }
+    
+    .nomal-input-style{
+    	width: 280px;
+		height: 22px;
+		border: 1px solid rgb(147, 147, 150);
+		border-radius: 5px;
+    }
+    
