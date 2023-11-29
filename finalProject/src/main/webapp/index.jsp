@@ -14,6 +14,9 @@
 		김경보
 		<jsp:forward page="WEB-INF/views/common/main.jsp"/> 메인페이지 
 		<jsp:forward page="WEB-INF/views/chatting/chat.jsp"/> 채팅 페이지
+		<jsp:forward page="WEB-INF/views/myPage/qna.jsp"/>
+		<jsp:forward page="WEB-INF/views/myPage/qna1.jsp"/>
+		<jsp:forward page="WEB-INF/views/myPage/qna2.jsp"/>
 		나기윤
 		<jsp:forward page="WEB-INF/views/myPage/deleteForm.jsp"/> 마이 페이지
 		<jsp:forward page="WEB-INF/views/myPage/userInfo.jsp"/> 유저정보
