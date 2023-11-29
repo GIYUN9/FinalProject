@@ -63,7 +63,9 @@
 	
 	                <!-- 모달 헤더 -->
 	                <div class="modal-header">
-	                    <h4 class="modal-title" style="text-align: center; font-weight: bold;">품앗이에서 어떤 서비스를 이용하고 싶으신가요?</h4>
+	                    <h4 class="modal-title" style="text-align: center; font-weight: bold; margin: 0 auto;">
+							품앗이에서 어떤 서비스를 <br>
+							이용하고 싶으신가요?</h4>
 	                </div>
 	
 	                <!-- 모달 본문 -->

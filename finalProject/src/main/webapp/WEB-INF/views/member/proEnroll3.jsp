@@ -68,12 +68,6 @@
 			padding-left: 0;
 		}
 
-		.list-group-item {
-			border: 1px solid #ccc; /* 테두리 스타일과 색상을 지정합니다. */
-			padding: 10px; /* 선택적으로 내부 여백을 지정할 수 있습니다. */
-			margin: 5px 0; /* 선택적으로 외부 여백을 지정할 수 있습니다. */
-		}
-
 		.progress{
 			min-width: 75%
 		}
@@ -82,6 +76,12 @@
 			min-width: 100%
 			
 		}
+
+		td{
+			padding: 10px;
+			border:1px solid rgba(0,0,0,.125);
+		}
+
     </style>
     
     
@@ -124,11 +124,11 @@
 
 						<div id="selectBox" class="list-group">
 							<div>
-								<h4 style="text-align: center; font-weight: bold;">구체적으로 어떤 서비스를 제공할 수 있나요?</h4>
+								<h5 style="text-align: center; font-weight: bold;">구체적으로 어떤 서비스를 제공할 수 있나요?</h5>
 
 								<br>
 
-								<table style="border:1px solid rgba(0,0,0,.125); width: 100%;" cellpadding="10">
+								<table style="border:1px solid rgba(0,0,0,.125); width: 100%; border-collapse: collapse;">
 
 									<tr style="border:1px solid rgba(0,0,0,.125);">
 										<td>

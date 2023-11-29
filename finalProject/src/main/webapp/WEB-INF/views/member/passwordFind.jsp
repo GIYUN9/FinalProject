@@ -71,7 +71,7 @@
 	
 	                <!-- 모달 헤더 -->
 	                <div class="modal-header">
-	                    <h4 class="modal-title" style="text-align: center; font-weight: bold;">비밀번호 찾기</h4>
+	                    <h4 class="modal-title" style="text-align: center; font-weight: bold; margin: 0 auto;">비밀번호 찾기</h4>
 	                </div>
 	
 	                <!-- 모달 본문 -->

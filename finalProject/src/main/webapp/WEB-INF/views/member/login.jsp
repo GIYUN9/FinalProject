@@ -12,30 +12,30 @@
         }
 
         .modal-header{
-        text-align: center;
-        font-weight: bold;
-        margin: 20px;
+            text-align: center;
+            font-weight: bold;
+            margin: 20px;
        }
 
        .modal-title{
-        text-align: center;
-        font-weight: bold;
+            text-align: center;
+            font-weight: bold;
        }
 
-       .modal-body{
-         margin: 20px 80px;
-       }
-
+       .modal-body {
+            position: relative;
+            -webkit-box-flex: 1;
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+            padding: 1rem;
+            margin: 20px 60px;
+        }
 
        .login-btn {
             color: black;
             background-color: yellow;
             border: none;
             width: 100%;
-        }
-
-        .line-break {
-        white-space: pre-line;
         }
 
     </style>
@@ -68,7 +68,7 @@
 
                 <!-- 모달 헤더 -->
                 <div class="modal-header" style="text-align: center;">
-                    <h4 class="modal-title" style="text-align: center; font-weight: bold;">Login</h4>
+                    <h4 class="modal-title" style="text-align: center; font-weight: bold; margin: 0 auto;">Login</h4>
                 </div>
 
                 <!-- 모달 본문 -->

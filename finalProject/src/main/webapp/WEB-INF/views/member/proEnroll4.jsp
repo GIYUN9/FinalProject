@@ -8,7 +8,7 @@
         .modal-content{
             margin: 80px 0px 0px 0px;
             width: 600px;
-            height: 700px;
+            height: 750px;
         }
 
         .modal-header{
@@ -23,7 +23,7 @@
        }
 
        .modal-body{
-         margin: 20px 80px;
+         margin: 20px 60px;
        }
 
         .emailSend-btn{
@@ -74,6 +74,10 @@
 			padding: 5px;
 		}
 
+        .progress{
+			min-width: 100%
+		}
+
     </style>
 
 	<title>모달 창 예제</title>
@@ -104,12 +108,18 @@
 
                         <!-- 모달 헤더 -->
                         <div class="modal-header" style="text-align: center;">
-                            <h4 class="modal-title" style="text-align: center; font-weight: bold;">마지막으로 필수 정보를 입력해주세요.</h4>
+                            <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: 100%">100%</div>
+                            </div>
                         </div>
 
                         <!-- 모달 본문 -->
                         <div class="modal-body" >
                             <div>
+                                <h5 style="text-align: center; font-weight: bold;">마지막으로 필수 정보를 입력해주세요.</h5>
+
+								<br>
+
                                 <table>
                                     <tr>
                                         <td>
