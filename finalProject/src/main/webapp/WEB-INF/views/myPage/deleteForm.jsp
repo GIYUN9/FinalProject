@@ -11,39 +11,94 @@
 			display: flex;
 	  		flex-direction: column;
 		}
+		
+		.emailInput{
+			width: 280px;
+			height: 22px;
+			border: 1px solid rgb(147, 147, 150);
+			border-radius: 5px;
+		}
+		
+		label {
+			cursor: pointer;
+		}
+		
+		.retire {
+			float: right;
+			width: 100px;
+			height: 28px;
+			background-color: rgb(218, 76, 60);
+			color: white;
+			border: none;
+			border-radius: 3px;
+			margin-bottom: 5px;
+			cursor: pointer;
+		}
+		
+		.retire:hover {
+			background-color: rgb(218, 76, 60, 0.27);
+		}
 	</style>
 </head>
 <body>
-	<div class="box">
+	<jsp:include page="../common/header.jsp" />
+	<div class="box" style="margin-top: 55px;">
 		<div class="sideBar">
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">계정 설정</h3>
 			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 280px;">
 		
-			<a class="myPageSideBar" href="#">나의 정보</a>
-			<a class="myPageSideBar" href="#">전문가 정보</a>
-			<a class="myPageSideBar" href="#">비밀번호 변경</a>
-			<a class="myPageSideBar" href="#" style="font-weight: bolder; font-size: 1.1em;">회원 탈퇴</a>
-			<a class="myPageSideBar" href="#">문의 내역</a>
+			<a class="myPageSideBar" href="userInfo.me">나의 정보</a>
+			<a class="myPageSideBar" href="proInfo.me">전문가 정보</a>
+			<a class="myPageSideBar" href="changePwd.me">비밀번호 변경</a>
+			<a class="myPageSideBar" href="deleteForm.me" style="font-weight: bolder; font-size: 1.1em;">회원 탈퇴</a>
+			<a class="myPageSideBar" href="schedule.me">일정 관리</a>
+			<a class="myPageSideBar" href="ask.me">문의 내역</a>
 		</div>
-		<div>
+		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">회원 탈퇴</h3>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
-				<div class="user-info">
+				<div class="user-info" style="margin-top: 15px;">
 					<form action="">
-						<h4>떠나시는 이유를 알려주세요.</h4>
+						<h4 style="margin-bottom: 5px;">떠나시는 이유를 알려주세요.</h4>
 						<div class="reason-box">
-							<div><input type="radio" name="reason" value="1">이용하고 싶은 서비스가 없어요</div>
-							<div><input type="radio" name="reason" value="2">서비스 퀄리티가 낮아요</div>
-							<div><input type="radio" name="reason" value="3">비매너 회원을 만났어요</div>
-							<div><input type="radio" name="reason" value="4">잦은 오류가 발생해요</div>
-							<div><input type="radio" name="reason" value="5">대체할만한 서비스를 찾았어요</div>
-							<div><input type="radio" name="reason" value="6">쿠폰 . 적립금등 혜택이 적어요</div>
+							<label><input type="radio" name="reason" value="1">이용하고 싶은 서비스가 없어요</label>
+							<label><input type="radio" name="reason" value="2">서비스 퀄리티가 낮아요</label>
+							<label><input type="radio" name="reason" value="3">비매너 회원을 만났어요</label>
+							<label><input type="radio" name="reason" value="4">잦은 오류가 발생해요</label>
+							<label><input type="radio" name="reason" value="5">대체할만한 서비스를 찾았어요</label>
+							<label><input type="radio" name="reason" value="6">쿠폰 &middot; 적립금등 혜택이 적어요</label>
 						</div>
+						<h4 style="margin-bottom: 5px;">이메일 확인</h4>
+						<input class="emailInput" placeholder="가입하신 이메일을 입력해주세요.">
+						<h4 style="margin-bottom: 5px;">주의 사항</h4>
+						<textarea rows="15" cols="96%" style="resize: none; text-align: left;" readonly="readonly">
+1. 현재 사용 중인 계정 정보는~~~
+2. 진행 중인 거래 건이 있거나~~
+3. 탈퇴 후 ~~
+4. 현재 보유 중인~~
+5. 구매후기~~
+
+110. 충전캐시~~
+						</textarea><br>
+						<label><input id="cT" type="checkbox">주의사항을 모두 확인하였습니다.</label>
+						<br>
+						<button class="retire" type="submit" disabled>탈퇴하기</button>
 					</form>
 				</div>
 			</div>		
 		</div>
 	</div>
-	
+	<jsp:include page="../common/footer.jsp" />
+
+	<script>
+		const cT = document.querySelector('#cT');
+        cT.addEventListener('change', function(){
+            if(cT.checked){
+                document.querySelector('.retire').disabled = false;
+            } else{
+            	document.querySelector('.retire').disabled = true;
+            }
+        });
+	</script>
 </body>
 </html>
