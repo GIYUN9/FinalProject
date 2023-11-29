@@ -8,7 +8,7 @@
         .modal-content{
             margin: 80px 0px 0px 0px;
             width: 600px;
-            height: 600px;
+            height: 500px;
         }
 
         .modal-header{
@@ -43,11 +43,11 @@
 	<title>모달 창 예제</title>
     <!-- 부트스트랩 링크 추가 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-</head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+	</head>
+	
+	<body>
+	
+	<jsp:include page="../common/header.jsp"></jsp:include>
 	
 	<!-- 부트스트랩 및 jQuery 스크립트 추가 -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -55,7 +55,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	
 	
-	
+<div style="margin-top: 55px;">
 	<!-- 버튼 클릭 시 모달 열기 -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
       로그인  	
@@ -118,7 +118,7 @@
             </div>
         </div>
     </div>
-
+</div>
 
 	<script>
         function kakaoLogin() {
@@ -129,6 +129,9 @@
 
 
 </body>
+
+	<jsp:include page="../common/footer.jsp"></jsp:include>
+
 </html>
 
 

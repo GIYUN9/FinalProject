@@ -6,12 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-
-	
-	
-	<jsp:forward page="WEB-INF/views/member/passwordFind.jsp"></jsp:forward>
-	
-
+<body>	
+	<jsp:forward page="WEB-INF/views/member/proEnroll3.jsp"></jsp:forward>
 </body>
 </html>
