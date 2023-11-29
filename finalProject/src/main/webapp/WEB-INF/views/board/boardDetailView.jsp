@@ -1,0 +1,462 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- Google Fonts Link For Icons-->
+    <link rel = "stylesheet" href="http://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
+    <script src="././resources/js/script.js" defer></script>
+   
+
+<style>
+    * {
+        list-style: none; 
+        text-decoration: none;
+        border-collapse: collapse;
+        margin: 0px;
+        padding: 0px;
+    }
+    
+    .nav{
+        height: 70px;
+        display: flex;
+        align-items: center;
+        margin-top: 70px;
+    }
+
+    .nav-center-items{
+        display: flex;
+        margin: auto;
+       
+    }
+
+    .nav-item{
+        font-size: 18px;
+        height: 40px;
+        
+        padding-left: 70px;
+        text-align: center;
+        font-weight: bold;
+        color: white;
+    }
+
+    /* .nav-item-content{
+        background-color: rgba(255, 255, 255, 0.22);
+    } */
+    
+
+    /* a::after{
+        display:block;
+        content: '';
+        border-bottom: solid 3px #ffffff;  
+        transform: scaleX(0);  
+        transition: transform 250ms ease-in-out;
+    }
+
+    .nav:hover::after{
+        transform: scaleX(1);
+    } */
+
+    a:after {
+        display:block;
+        content: '';
+        border-bottom: solid 2px #ffffff;  
+        transform: scaleX(0);  
+        transition: transform 250ms ease-in-out;
+     }
+    a:hover:after { transform: scaleX(1); }
+
+    .nav-item > a{
+        color: white;
+    }
+
+    .category{
+        width: 100px; 
+        text-align: center;  
+        height: 200px;
+    }
+
+    .category-item {
+        width: 100px;
+        height: 40px;   
+        text-align: center;
+        padding-top: 10px;
+        margin-top: 10px;
+        border-radius: 10px;
+    }
+
+    .category-item > a{
+        margin-top: 150px;
+        font-weight: bold; 
+        color: white;
+        font-size: 14px;
+    }
+
+    
+    
+    .main{
+        display: flex;    
+        width: 1300px;  
+        height: 700px;
+        border: 1px;
+        margin: 0 auto;
+    }
+
+   
+    .content{
+        width: 1100px;
+        height: auto;
+        border: 1px;
+        margin: 0 auto;
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        
+
+    }
+
+    .content-item{
+        display: inline-block;
+        width: 240px;
+        height: 270px;
+        border: 1px ;     
+        border-radius: 10px;
+        margin-top: 20px;
+        margin-right: 15px;
+        background-color: rgba(83, 82, 82, 0.65)
+
+    }
+
+    .content-item:hover{
+        background-color: rgba(255, 255, 255, 0.22);
+    }
+
+    .content-img{
+    	height: 150px;
+    	padding-top: 15px;
+        width: 200px;
+        text-align: center;
+        
+    }
+    
+    .content-item-title{
+    	padding-top: 10px;
+        font-size: 15px;
+        font-weight: bold;
+        color: white;
+    }
+
+    .content-item-price{
+        font-size: 14px;
+        font-weight: bold;
+        text-align: right;
+        padding-top: 40px;
+        padding-right: 15px;
+        color: white;
+    }
+
+   
+    
+    .content-head{
+        display: flex;
+        justify-content: space-between;
+    }
+
+   
+
+    #head-count{
+        text-align: right;
+        color: white;
+        font-size: 13px;
+        padding-left: 40px;
+        font-weight: bold;
+    }
+   
+  	.back-ground{
+  		width : 100%;
+  		background-color:rgba(60, 59, 59, 0.27);
+  	}
+  	
+
+    #head-category{
+        padding-right: 50px;
+    }
+
+    #category-item {
+        color: white;
+        font-size: 18px;
+        border: none;
+        /* width: 100px; */
+       
+        margin-top: 10px;
+       
+    }
+
+    .nav-item-content{
+        width: 95px;
+        padding: 9px;
+        border-radius: 8px;
+        color: white;
+    }
+    
+    
+    a{
+        color: white;
+        
+    }
+
+    option:hover {
+        background-color: rgb(0, 0, 0);
+    }
+    option:checked {
+        background-color: rgb(0, 0, 0);
+    }
+
+    .aaa:visited{
+        background-color: black;
+        color: white;
+    }
+
+    #head-category-list{
+        background-color: transparent; 
+        color: white;
+        border: none;
+    }
+
+    .head-category-slist{
+        background-color: rgba(83, 82, 82, 0.65);
+    }
+
+    /* 
+        디테일 뷰 스타일
+    */
+
+    .photo{
+        margin-top: 10px;
+        width: 550px;
+        height: 650px;
+        background-color: white;
+        align-items: center;
+    }
+    .big-photo{
+        padding-left: 40px;
+        padding-top: 20px;
+        padding-bottom: 10px;
+        width: 510px;
+        align-items: center;
+        display: center;
+    }
+
+    /* body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    } */
+
+    /* .container{
+        height: 100px;
+    } */
+
+    .slider-wrapper .slide-button{
+        position: absolute;
+        top: 50%;
+        height: 30px;
+        width: 30px;
+        color: transparent;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        font-size: 30px;
+        cursor: pointer;
+        
+        padding-bottom: 42px;
+    }
+
+    .slider-wrapper .slide-button:hover{
+        color: black;
+
+    }
+
+    .slider-wrapper{
+        position: relative;
+    }
+
+    .slider-wrapper .slide-button#prev-slide{
+        left: 0px;
+        /* transform: translateY(-80px); */
+        display: none;
+        margin-bottom: 10px;
+    }
+
+    .slider-wrapper .slide-button#next-slide{
+        left: 510px;
+        
+        /* transform: translateY(+80px); */
+    }
+    
+    .slider-wrapper .image-list {
+        display: grid;
+        gap: 18px;
+        font-size: 0;
+        overflow-x: auto;
+        margin-bottom: 1px;
+        scrollbar-width: none;
+        grid-template-columns: repeat(10, 1fr);
+    }
+
+    .slider-wrapper .image-list::-webkit-scrollbar{
+        display: none;
+    }
+
+    .slider-wrapper .image-list .image-item{
+        width: 200px;
+        height: 120px;
+        object-fit: cover;
+    }
+
+    .container .slider-scrollbar{
+        height: 24px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .slider-scrollbar .scrollbar-track{
+        height: 2px;
+        width: 100%;
+        background-color: #ccc;
+        position: relative;
+        border-radius: 4px;
+    }
+
+    .slider-scrollbar:hover .scrollbar-track{
+        height: 4px;
+    }
+
+    .slider-scrollbar .scrollbar-thumb{
+        position: absolute;
+        height: 100%;
+        width: 50%;
+        background-color: #000;
+        border-radius: inherit;
+        cursor: grab;
+    }
+
+    .slider-scrollbar .scrollbar-track:active{
+        cursor: grabbing;
+        height: 8px;
+        top: -2px;
+    }
+
+    .slider-scrollbar .scrollbar-thumb::after{
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -10px;
+        bottom: -10px;
+    }
+
+</style>
+
+</head>
+<body>
+<%@ include file = "../common/header.jsp"%>
+   <div class = "nav">
+        <div class = "nav-center-items">
+            <div class = "nav-item">
+                <div class="nav-item-content">
+                    <a href="#">전체보기</a>
+                </div>
+            </div>
+            <div class = "nav-item"><a href="#">&#60;</a></div>
+            <div class = "nav-item">
+                <div class="nav-item-content">
+                    <a href="#">&#60취미,레슨</a>
+                </div>
+            </div>
+            <div class = "nav-item">
+                <div class="nav-item-content">
+                    <a href="#">디자인</a>
+                </div>
+            </div>
+            <div class = "nav-item">
+                <div class="nav-item-content">
+                    <a href="#">마케팅</a>
+                </div>
+            </div>
+            <div class = "nav-item">
+                <div class="nav-item-content" style="background-color: rgba(255, 255, 255, 0.22);">
+                    <a href="#">운동</a>
+                </div>
+            </div>
+            <div class = "nav-item">
+                <div class="nav-item-content">
+                    <a href="#">게임</a>
+                </div>
+            </div>
+            <div class = "nav-item">
+                <div class="nav-item-content">
+                    <a href="#">미술</a>
+                </div>
+            </div>
+           
+            <div class = "nav-item"><a href="#">&#62;</a></div>
+        </div>
+   </div>
+   <div class = "main">
+    	<div class = "photo">
+            <div class = "main-photo">
+                <img class = "big-photo" src = "././resources/image/기타녀.jpg" alt="기타녀">
+            </div>
+            <div class = "container">
+                <div class = "slider-wrapper">
+                    <button id ="next-slide" class="slide-button material-symbols-rounded">&#62;</button>
+                    <div class = "image-list">
+                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
+                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
+                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
+                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
+                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
+                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
+                    </div>
+                    <button id ="prev-slide" class="slide-button material-symbols-rounded">&#60;</button>
+                </div>
+                <div class="slider-scrollbar">
+                    <div class="scrollbar-track">
+                        <div class="scrollbar-thumb"></div>
+                    </div>
+                </div>
+            </div>    
+        </div>
+        <div class = "content">
+            <div class = "icon">
+                <div class = "share">
+                    <button class="shar-btn"><img src = "공유 이미지" alt=""></button>
+                </div>
+                <div class = "heart">
+                    <button class="heart-btn"><img src = "하트 이미지" alt=""></button>
+                </div>
+            </div>
+            <div class = "content-title">
+
+            </div>
+            <div class = "content-detail">
+                
+            </div>
+            <button id = "buy-btn">구매하기</button>
+        </div>
+   </div>
+   
+   
+<%@ include file = "../common/footer.jsp"%>            
+</body>
+
+
+
+
+</html>
