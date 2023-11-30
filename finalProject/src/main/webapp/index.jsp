@@ -6,9 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-				
-		<jsp:forward page="WEB-INF/views/board/userModal.jsp"/>
+
+<body>	
+	<jsp:forward page="WEB-INF/views/member/proEnroll5.jsp"></jsp:forward>
+		
 	<%--
 		김경보
 		<jsp:forward page="WEB-INF/views/common/main.jsp"/> 메인페이지 
@@ -16,9 +17,6 @@
 		<jsp:forward page="WEB-INF/views/myPage/qna.jsp"/>
 		<jsp:forward page="WEB-INF/views/myPage/qna1.jsp"/>
 		<jsp:forward page="WEB-INF/views/myPage/qna2.jsp"/>
-		<jsp:forward page="WEB-INF/views/myPage/ask.jsp"/> 문의 내역
-		<jsp:forward page="WEB-INF/views/myPage/ask1.jsp"/> 회원의 문의 처리내역
-		<jsp:forward page="WEB-INF/views/myPage/ask2.jsp"/> 관리자 페이지에 문의
 		나기윤
 		<jsp:forward page="WEB-INF/views/myPage/deleteForm.jsp"/> 회원탈퇴
 		<jsp:forward page="WEB-INF/views/myPage/userInfo.jsp"/> 유저정보
@@ -28,6 +26,20 @@
 		<jsp:forward page="WEB-INF/views/myPage/ask.jsp"/> 질문내역
 		최창영
 		<jsp:forward page="WEB-INF/views/board/helpBoardList.jsp"/> 도와줄게요
+		정혜원
+		<jsp:forward page="WEB-INF/views/member/login.jsp"/>로그인 
+		<jsp:forward page="WEB-INF/views/member/passwordFind.jsp"/>비밀번호 찾기
+		<jsp:forward page="WEB-INF/views/member/mainEnroll.jsp"/>메인 회원가입
+		<jsp:forward page="WEB-INF/views/member/userEnroll.jsp"/>의뢰인 회원가입
+		<jsp:forward page="WEB-INF/views/member/proEnroll1.jsp"/>아마추어 회원가입1단계
+		<jsp:forward page="WEB-INF/views/member/proEnroll2.jsp"/>아마추어 회원가입2단계
+		<jsp:forward page="WEB-INF/views/member/proEnroll3.jsp"/>아마추어 회원가입3단계
+		<jsp:forward page="WEB-INF/views/member/proEnroll4.jsp"/>아마추어 회원가입4단계
+		<jsp:forward page="WEB-INF/views/member/proEnroll5.jsp"/>아마추어 회원가입5단계
+		
+		
 	--%> 
+
+
 </body>
 </html>
