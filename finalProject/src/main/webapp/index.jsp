@@ -8,6 +8,8 @@
 </head>
 <body>	
 		
+  
+  
 	<%--
 		김경보
 		<jsp:forward page="WEB-INF/views/common/main.jsp"/> 메인페이지 
@@ -20,7 +22,6 @@
 		<jsp:forward page="WEB-INF/views/board/needhelp2.jsp"/>
 		<jsp:forward page="WEB-INF/views/board/needhelp3.jsp"/>
 		<jsp:forward page="WEB-INF/views/board/helpu.jsp"/>
-		
 		
 		나기윤
 		<jsp:forward page="WEB-INF/views/myPage/deleteForm.jsp"/> 회원탈퇴
@@ -41,8 +42,6 @@
 		<jsp:forward page="WEB-INF/views/member/proEnroll3.jsp"/>아마추어 회원가입3단계
 		<jsp:forward page="WEB-INF/views/member/proEnroll4.jsp"/>아마추어 회원가입4단계
 		<jsp:forward page="WEB-INF/views/member/proEnroll5.jsp"/>아마추어 회원가입5단계
-		
-		
 	--%> 
 
 
