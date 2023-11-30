@@ -163,6 +163,19 @@
         bottom: -108px;
         cursor: pointer;
     }
+    .nh-btn5{
+        position: absolute;
+        width: 100px;
+        height: 30px;
+        background-color: rgba(0, 199, 172, 0);
+        border: none;
+        color: black;
+        font-size: 14px;
+        border-radius: 4px;
+        right: 240px;
+        bottom: -108px;
+        cursor: pointer;
+    }
     .close-btn{
         width: 10px;
         right: 11px;
@@ -242,7 +255,11 @@
                             
                         </div>
                     </div>
-                    <button class="nh-btn5">이전</button>
+                    <button class="nh-btn5">
+                        <img class="img-upfile" src="././resources/icon/left-chevron.png">
+                        이전
+
+                    </button>
                     <button class="nh-btn4">다음</button>
                 </div>
                 <div>
