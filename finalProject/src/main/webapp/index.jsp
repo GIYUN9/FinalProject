@@ -6,10 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-
 <body>	
-	<jsp:forward page="WEB-INF/views/member/main.jsp"></jsp:forward>
 		
+  
+  
 	<%--
 		김경보
 		<jsp:forward page="WEB-INF/views/common/main.jsp"/> 메인페이지 
@@ -19,6 +19,10 @@
 		<jsp:forward page="WEB-INF/views/myPage/qna2.jsp"/>
 		<jsp:forward page="WEB-INF/views/board/needhelp.jsp"/>
 		<jsp:forward page="WEB-INF/views/board/needhelp1.jsp"/>
+		<jsp:forward page="WEB-INF/views/board/needhelp2.jsp"/>
+		<jsp:forward page="WEB-INF/views/board/needhelp3.jsp"/>
+		<jsp:forward page="WEB-INF/views/board/helpu.jsp"/>
+		
 		나기윤
 		<jsp:forward page="WEB-INF/views/myPage/deleteForm.jsp"/> 회원탈퇴
 		<jsp:forward page="WEB-INF/views/myPage/userInfo.jsp"/> 유저정보
@@ -38,7 +42,8 @@
 		<jsp:forward page="WEB-INF/views/member/proEnroll3.jsp"/>아마추어 회원가입3단계
 		<jsp:forward page="WEB-INF/views/member/proEnroll4.jsp"/>아마추어 회원가입4단계
 		<jsp:forward page="WEB-INF/views/member/proEnroll5.jsp"/>아마추어 회원가입5단계
-			
 	--%> 
+
+
 </body>
 </html>
