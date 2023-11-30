@@ -8,7 +8,7 @@
 </head>
 
 <body>	
-	<jsp:forward page="WEB-INF/views/member/proEnroll1.jsp"></jsp:forward>
+	<jsp:forward page="WEB-INF/views/member/proEnroll5.jsp"></jsp:forward>
 		
 	<%--
 		김경보
@@ -31,11 +31,11 @@
 		<jsp:forward page="WEB-INF/views/member/passwordFind.jsp"/>비밀번호 찾기
 		<jsp:forward page="WEB-INF/views/member/mainEnroll.jsp"/>메인 회원가입
 		<jsp:forward page="WEB-INF/views/member/userEnroll.jsp"/>의뢰인 회원가입
-		<jsp:forward page="WEB-INF/views/member/proEnroll1.jsp"/>아마추어 회원가입1
-		<jsp:forward page="WEB-INF/views/member/proEnroll2.jsp"/>아마추어 회원가입2
-		<jsp:forward page="WEB-INF/views/member/proEnroll3.jsp"/>아마추어 회원가입3
-		<jsp:forward page="WEB-INF/views/member/proEnroll4.jsp"/>아마추어 회원가입4
-		<jsp:forward page="WEB-INF/views/member/proEnroll5.jsp"/>아마추어 회원가입5
+		<jsp:forward page="WEB-INF/views/member/proEnroll1.jsp"/>아마추어 회원가입1단계
+		<jsp:forward page="WEB-INF/views/member/proEnroll2.jsp"/>아마추어 회원가입2단계
+		<jsp:forward page="WEB-INF/views/member/proEnroll3.jsp"/>아마추어 회원가입3단계
+		<jsp:forward page="WEB-INF/views/member/proEnroll4.jsp"/>아마추어 회원가입4단계
+		<jsp:forward page="WEB-INF/views/member/proEnroll5.jsp"/>아마추어 회원가입5단계
 		
 		
 	--%> 
