@@ -7,13 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-		<jsp:forward page="WEB-INF/views/myPage/ask2.jsp"/> 
-		
+				
+		<jsp:forward page="WEB-INF/views/board/userModal.jsp"/>
 	<%--
 		김경보
 		<jsp:forward page="WEB-INF/views/common/main.jsp"/> 메인페이지 
 		<jsp:forward page="WEB-INF/views/chatting/chat.jsp"/> 채팅 페이지
+		<jsp:forward page="WEB-INF/views/myPage/qna.jsp"/>
+		<jsp:forward page="WEB-INF/views/myPage/qna1.jsp"/>
+		<jsp:forward page="WEB-INF/views/myPage/qna2.jsp"/>
 		<jsp:forward page="WEB-INF/views/myPage/ask.jsp"/> 문의 내역
 		<jsp:forward page="WEB-INF/views/myPage/ask1.jsp"/> 회원의 문의 처리내역
 		<jsp:forward page="WEB-INF/views/myPage/ask2.jsp"/> 관리자 페이지에 문의
@@ -27,6 +29,5 @@
 		최창영
 		<jsp:forward page="WEB-INF/views/board/helpBoardList.jsp"/> 도와줄게요
 	--%> 
-
 </body>
 </html>
