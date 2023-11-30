@@ -17,8 +17,12 @@
 		<jsp:forward page="WEB-INF/views/myPage/qna1.jsp"/>
 		<jsp:forward page="WEB-INF/views/myPage/qna2.jsp"/>
 		나기윤
-		<jsp:forward page="WEB-INF/views/myPage/deleteForm.jsp"/> 마이 페이지
+		<jsp:forward page="WEB-INF/views/myPage/deleteForm.jsp"/> 회원탈퇴
 		<jsp:forward page="WEB-INF/views/myPage/userInfo.jsp"/> 유저정보
+		<jsp:forward page="WEB-INF/views/myPage/schedule.jsp"/> 일정
+		<jsp:forward page="WEB-INF/views/myPage/proInfo.jsp"/> 전문가
+		<jsp:forward page="WEB-INF/views/myPage/changePwd.jsp"/> 비밀번호변경
+		<jsp:forward page="WEB-INF/views/myPage/ask.jsp"/> 질문내역
 		최창영
 		<jsp:forward page="WEB-INF/views/board/helpBoardList.jsp"/> 도와줄게요
 	--%> 
