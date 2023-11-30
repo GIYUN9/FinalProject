@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -94,7 +97,7 @@
 <body>
    <header>
             <div class="hd-left-section">
-                <p class="hd-pr">도와줄게요</p>
+                <p class="hd-pr"><a href = #>도와줄게요</a></p>
                 <p>도와주세요</p>  
             </div>    
             <div class="hd-middle-section">

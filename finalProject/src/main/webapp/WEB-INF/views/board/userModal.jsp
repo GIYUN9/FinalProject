@@ -158,6 +158,7 @@
   	.back-ground{
   		width : 100%;
   		background-color:rgba(60, 59, 59, 0.27);
+        position: relative;
   	}
   	
 
@@ -189,8 +190,33 @@
         background-color: rgba(83, 82, 82, 0.65);
     }
 
-    
-   
+    .user-modal{
+        background-color: #ffffff;
+        width: 500px;
+        height: 600px;
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-left: 600px;
+    }
+
+    .modal-user-img{
+        width: 40px;
+        float: right;
+    }
+   .user-modal{
+        display: table-cell;
+        vertical-align: middle;
+
+   }
+
+   .modat-title {
+    font-size: 20px;
+    font-weight: bold;
+    align-items: center;
+   }
+
 
 </style>
 </head>
@@ -239,6 +265,27 @@
         </div>
    </div>
    <div class = "back-ground">
+   		<div class = "user-modal">
+            <div class="modat-title">보컬레슨</div>
+            <div class="modal-user">
+                <img  class = "modal-user-img" src="././resources/image/기타녀.jpg" alt="기타녀">
+            </div>
+            <div class="modal-career"></div>
+            <div>줄</div>
+            <div class = "modal-count">
+                <text>견적</text>
+                <text>예상금액</text>
+                <div class ="modal-count-detail">
+                    시간 당  50000원
+                </div>
+            </div>
+            <div>줄</div>
+            <div class ="modal-msg">
+                message
+            </div>
+            <button class = "modal-btn">채팅하기</button>
+
+        </div>
         <div class="main">
             <div class = "category" style="display: inline-block;">
                 <div class = "category-item"><a href="#">광고 홍보</a></div>

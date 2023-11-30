@@ -162,15 +162,15 @@
 				style="display: flex; justify-content: space-around; margin-left: 20px; margin-right: 20px">
 				<!-- 호버되면 밑줄 만들어주세요 ㅋㅋ -->
 				<div>
-					<p class="p-btn" id="from" onclick="from()">등록된 문의</p>
+					<p class="p-btn1" id="from" onclick="from()">등록된 문의</p>
 				</div>
 				<div>
-					<p class="p-btn1" id="send" onclick="send()">처리된 문의</p>
+					<p class="p-btn" id="send" onclick="send()">처리된 문의</p>
 				</div>
 			</div>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="user-info">
-					<div class="res-title">답변등록</div>
+					<div class="res-title">문의 처리 내역</div>
 					<div class="align-userinfo">
 						<div class="customer-req">
 							<h5>제목</h5>
@@ -188,7 +188,6 @@
 								<input class="ad-email" type="text">
 							</div>
 							<div><textarea class="ad-desc" name="" id="" cols="30" rows="10"></textarea></div>
-							<button class="submit-btn">제출</button>
 						</div>
 					</div>
 				</div>
@@ -196,5 +195,15 @@
 		</div>
 	</div>
 	<jsp:include page="../common/footer.jsp" />
+
+	<script>
+		function from() {
+			location.href = "ask.me";
+		}
+
+		function send() {
+			location.href = "ask1.me";
+		}
+	</script>
 </body>
 </html>
