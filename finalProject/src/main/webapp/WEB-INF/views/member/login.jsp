@@ -74,16 +74,19 @@
                 <!-- 모달 본문 -->
                 <div class="modal-body" >
                     <table>
+                        <!--입력하면 값 넘어갈 수 있게끔-->
                         <tr>
                             <td colspan="2" >
                                 <p>이메일</p>
-                                <p><input type="text" style="width: 100%;" placeholder="example@poomasi.com"></p>
+                                <p><input type="text" style="width: 100%;" placeholder="example@poomasi.com" ></p>
+
+                                
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2" >
                                 <p>비밀번호</p>
-                                <p><input type="text" style="width: 100%;" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요"></p>
+                                <p><input type="password" style="width: 100%;" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요"></p>
                          
                             </td>
                         </tr>

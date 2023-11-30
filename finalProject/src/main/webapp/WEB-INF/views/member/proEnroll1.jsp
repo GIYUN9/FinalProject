@@ -23,7 +23,7 @@
        }
 
        .modal-body{
-         margin: 20px 80px;
+         margin: 20px auto;
        }
 
 
@@ -48,7 +48,24 @@
             width: 100%;
         }
 
+        .horizontal-align-container {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* 중앙 정렬을 위해 추가 */
+            flex-direction: column; /* 세로 정렬을 위해 추가 */
+            text-align: center;
+            padding: 10px;
+        }
 
+        .horizontal-align-row {
+            display: flex;
+            justify-content: space-around; /* 가로 정렬을 위해 추가 */
+        }
+
+        .category-img {
+            height: 100px;
+            width: 100px;
+        }
 
     </style>
 
@@ -86,29 +103,53 @@
                 <!-- 모달 본문 -->
                 <div class="modal-body" >
                     
-                 
-                    
                         <table>
-                            <tr>
-                                <td>
-                                    <a href=""></a>
-                                    <button type="button" class="navyBtn" onClick="location.href='#'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-                                        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
-                                      </svg>
-                                    레슨
+                            <tr class="horizontal-align-row">
+                                <td class="horizontal-align-container">
+                                    <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
+                                    <a href="">레슨</a>
                                 </td>
-                                <td>
-                                    
-                                    <img src="  " alt="  " height=100 width=100 >
-                                    홈/리빙
+                                <td class="horizontal-align-container">
+                                    <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
+                                    <a href="">홈/리빙</a>
                                 </td>
-                                <td>
-                                    <img src="  " alt="  " height=100 width=100 >
-                                    이벤트
+                                <td class="horizontal-align-container">
+                                    <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
+                                    <a href="">이벤트</a>
                                 </td>
-                                
                             </tr>
+                            <tr class="horizontal-align-row">
+                                <td class="horizontal-align-container">
+                                    <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
+                                    <a href="">비즈니스</a>
+                                </td>
+                                <td class="horizontal-align-container">
+                                    <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
+                                    <a href="">디자인/개발</a>
+                                </td>
+                                <td class="horizontal-align-container">
+                                    <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
+                                    <a href="">건강/미용</a>
+                                </td>
+                            </tr>
+                            <tr class="horizontal-align-row">
+                                <td class="horizontal-align-container">
+                                    <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
+                                    <a href="">알바</a>
+                                </td>
+                                <td class="horizontal-align-container">
+                                    <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
+                                    <a href="">기타</a>
+                                </td>
+                                <td class="horizontal-align-container">
+                                    <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
+                                    <a href="">기타</a>
+                                </td>
+                               
+                            </tr>
+
+
+
                         </table>
                     
 

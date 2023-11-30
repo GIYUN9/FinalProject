@@ -47,7 +47,7 @@
 			</div>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="user-info">
-					
+					ㄴㅇㅁ
 				</div>
 			</div>		
 		</div>
