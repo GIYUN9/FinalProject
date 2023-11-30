@@ -8,7 +8,7 @@
 </head>
 
 <body>	
-	<jsp:forward page="WEB-INF/views/member/proEnroll5.jsp"></jsp:forward>
+	<jsp:forward page="WEB-INF/views/member/main.jsp"></jsp:forward>
 		
 	<%--
 		김경보
@@ -35,11 +35,7 @@
 		<jsp:forward page="WEB-INF/views/member/proEnroll2.jsp"/>아마추어 회원가입2단계
 		<jsp:forward page="WEB-INF/views/member/proEnroll3.jsp"/>아마추어 회원가입3단계
 		<jsp:forward page="WEB-INF/views/member/proEnroll4.jsp"/>아마추어 회원가입4단계
-		<jsp:forward page="WEB-INF/views/member/proEnroll5.jsp"/>아마추어 회원가입5단계
-		
-		
+		<jsp:forward page="WEB-INF/views/member/proEnroll5.jsp"/>아마추어 회원가입5단계		
 	--%> 
-
-
 </body>
 </html>
