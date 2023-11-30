@@ -16,6 +16,9 @@
 		<jsp:forward page="WEB-INF/views/myPage/qna.jsp"/>
 		<jsp:forward page="WEB-INF/views/myPage/qna1.jsp"/>
 		<jsp:forward page="WEB-INF/views/myPage/qna2.jsp"/>
+		<jsp:forward page="WEB-INF/views/myPage/ask.jsp"/> 문의 내역
+		<jsp:forward page="WEB-INF/views/myPage/ask1.jsp"/> 회원의 문의 처리내역
+		<jsp:forward page="WEB-INF/views/myPage/ask2.jsp"/> 관리자 페이지에 문의
 		나기윤
 		<jsp:forward page="WEB-INF/views/myPage/deleteForm.jsp"/> 회원탈퇴
 		<jsp:forward page="WEB-INF/views/myPage/userInfo.jsp"/> 유저정보
