@@ -150,7 +150,19 @@
         bottom: -245px;
         cursor: pointer;
     }
-
+    .nh-btn4{
+        position: absolute;
+        width: 100px;
+        height: 30px;
+        background-color: rgb(0, 199, 174);
+        border: none;
+        color: white;
+        font-size: 14px;
+        border-radius: 4px;
+        right: 0px;
+        bottom: -108px;
+        cursor: pointer;
+    }
     .close-btn{
         width: 10px;
         right: 11px;
@@ -165,6 +177,7 @@
         width: 310px;
         height: 190px;
         overflow-y: auto;
+        font-size: 13px;
     }
     .nh-upload-file{
         margin-top: 40px;   
@@ -179,6 +192,10 @@
         align-items: center;
         display: flex;
         cursor: pointer;
+    }
+    .img-upfile{
+        width: 25px;
+        height: 25px;
     }
 </style>
 
@@ -219,9 +236,13 @@
                             <p>※ 관련 자료 > 하단 첨부파일 업로드</p>
                         </div>
                         <p class="nh-type-limit"><span class="nh-type-text">0</span>/1000</p>
-                        <div class="nh-upload-file">파일 첨부</div>
+                        <div class="nh-upload-file">
+                            <img class="img-upfile" src="././resources/icon/paperclip.png">
+                            파일 첨부
+                            
+                        </div>
                     </div>
-                    <button class="nh-btn3">다음</button>
+                    <button class="nh-btn4">다음</button>
                 </div>
                 <div>
                     <div class="ver-line"></div>
