@@ -8,6 +8,7 @@
 <!-- Google Fonts Link For Icons-->
     <link rel = "stylesheet" href="http://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
     <script src="././resources/js/script.js" defer></script>
+    
    
 
 <style>
@@ -376,14 +377,14 @@
         margin-top: 10px;
         width: 500px;
         height: 600px;
-        background-color: blue;
+        background-color: #fff;
         margin: 0 auto;
     }
 
     .icon{
         width: 500px;
         height: 50px;
-        background-color: blueviolet;
+        background-color: #fff;
         
         margin-top: 10px;
         align-items: center;
@@ -395,11 +396,16 @@
 
     .share {
         float: left;
-       
+    }
+    .share :hover{
+        cursor: pointer;
     }
 
     .heart {
         float: right;
+    }
+    .heart :hover{
+        cursor: pointer;
     }
     .heart-text{
         display: inline-block;
@@ -432,9 +438,101 @@
         height: 40px;
     }
 
-    .content-title{
-        float: left;
+
+    .star-text {
+        width: max-content;
+        display:  inline-block; 
+        font-size: 13px
     }
+    .logo{
+        display: block;
+    }
+    /* .content-title > .logo{
+        display: inline-block;
+    } */
+
+    /* .a{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        align-items: end;
+        bottom: -85px;
+        left: -22px;
+    } */
+    .content-title{
+            align-items: center;
+    	/* justify-content: center; */
+    	display: flex;
+    }
+
+    .content-detail{
+        width: 400px;
+        height: 400px;
+        padding-top: 50px;
+        
+    	justify-content: center;
+    	display: flex;
+    }
+
+    .a{
+        padding-left: 90px;
+    }
+
+    .share-icon{border: none;}
+    .heart-icon{border: none;}
+    .report-btn{border: none;
+        background-color: white;
+    }
+    .report-btn:hover{
+        cursor: pointer;
+    }
+    #content-btn{
+        background-color: rgb(87, 212, 197);
+        color: white;
+        font-weight: bold;
+        border: none;
+        width: 300px;
+        height: 50px;
+    }
+    #content-btn:hover{
+        cursor: pointer;
+        opacity: 0.5;
+    }
+
+    .star{
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
+
+    .report{
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
+
+    .report-btn{
+        padding-left: 10px;
+        font-weight: bold;
+    }
+    .star-text{
+        font-weight: bold;
+    }
+
+    .modal.active{
+        display: block;
+    }
+
+    .modal{
+        background-color: #000;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100%;
+        display: none;
+    }
+    
 
 </style>
 
@@ -521,23 +619,46 @@
                 </div>
                 <div class = "content-title">
                     <div class = "content-title-text">
-                        <text><h2>'헬스 이제 시작해보자구!'</h2></text>
+                       <text><h2>'헬스 이제 시작해보자구!'</h2></text> 
                     </div>
-                    <div class="report">
-                        <img src="././resources/image/경고.jpg" alt="" class="report-icon">
+                    <a class = "modal-notice" href="#none">유저aaaaaaaaaaaaaaaaaaaaaaaaaa이름</a>
+
+                    <div class = "modal actice">
+                        <div class = "modal-content">
+                            <a href="#none" class = "btn-close">x</a>
+                            <div class = "modal-body">
+
+                            </div>
+
+                        </div>
                     </div>
-                    <div class="star">
-                        <img src="././resources/image/stars.jpg" alt="" class="star-icon">
-                        <div>별점</div>
-                    </div>
-                    <div class = "data">
-                        <div class="data-mem"></div>
-                        <div class="count"></div>
+                    
+                    <div class = "a">
+                        <div class="report">
+                            <img src="././resources/image/경고.jpg" alt="" class="report-icon">
+                            <button class = "report-btn">신고하기</button>
+                        </div>
+                        <div class="logo">
+                            <div class="star">
+                                <img src="././resources/image/stars.jpg" alt="" class="star-icon">
+                                <div class = "star-text">5.0/5</div>
+                            </div>
+                            <div class = "data">
+                                <div class="data-mem"></div>
+                                <div class="count"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class = "content-detail">
                     우리 헬스 좋아요
                     아무아주 좋아요!
+                    ㅁㄴㅇㄹㄴ오리ㅗㄴ밍론ㅁㅇ뢴ㅁㅇㄹㄴㅇㅁㄹㄴㅇㅁㄹ
+                    ㅁㅇㄴㄹㄴㅇㄹㄴㅇㅁㄻㅇㄴㄻㄴㅇㄹㄴㅁㅇㄹㄴㅇㅁㄹㄴㅇㅁㄹ
+                    ㅁㄴㅇㄹㄴㅇㅁㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇ
+                    ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹㄴㅇㅁㄹㅇㅁㄴㄹㄴㅁㄹㄴㅁㅇ
+                    ㅁㄹㅇㄴㅁㄻㄴㄹ
+                    
                 </div>
                 <button id = "content-btn">구매하기</button>
             </div>

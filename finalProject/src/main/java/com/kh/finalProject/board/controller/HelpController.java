@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class HelpController
  */
-@WebServlet("detail.bo")
 public class HelpController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
