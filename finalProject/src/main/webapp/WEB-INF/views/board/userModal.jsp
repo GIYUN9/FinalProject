@@ -203,7 +203,7 @@
 
     .modal-user-img{
         width: 40px;
-        float: right;
+        float: left;
     }
    .user-modal{
         display: table-cell;
@@ -217,6 +217,9 @@
     align-items: center;
    }
 
+   .modal-count-detail{
+    float: right;
+   }
 
 </style>
 </head>
@@ -269,17 +272,26 @@
             <div class="modat-title">보컬레슨</div>
             <div class="modal-user">
                 <img  class = "modal-user-img" src="././resources/image/기타녀.jpg" alt="기타녀">
+                <h5>보컬코치</h5>
+                <div>별별별 4.0</div>   
             </div>
-            <div class="modal-career"></div>
-            <div>줄</div>
+            <div class="modal-career">
+                <br>
+                <hr>
+                <div>트로피 이미지 / 89회 고용됨</div>
+                <div>위치 이미지 / 서울특별시 송파구</div>
+                <div>경력 이미지 / 경력 13년</div>
+                <hr>
+            </div>
             <div class = "modal-count">
                 <text>견적</text>
+                <br><br><br>
                 <text>예상금액</text>
                 <div class ="modal-count-detail">
                     시간 당  50000원
                 </div>
             </div>
-            <div>줄</div>
+            <hr>
             <div class ="modal-msg">
                 message
             </div>
