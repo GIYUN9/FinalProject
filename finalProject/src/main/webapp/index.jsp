@@ -17,6 +17,8 @@
 		<jsp:forward page="WEB-INF/views/myPage/qna.jsp"/>
 		<jsp:forward page="WEB-INF/views/myPage/qna1.jsp"/>
 		<jsp:forward page="WEB-INF/views/myPage/qna2.jsp"/>
+		<jsp:forward page="WEB-INF/views/board/needhelp.jsp"/>
+		<jsp:forward page="WEB-INF/views/board/needhelp1.jsp"/>
 		나기윤
 		<jsp:forward page="WEB-INF/views/myPage/deleteForm.jsp"/> 회원탈퇴
 		<jsp:forward page="WEB-INF/views/myPage/userInfo.jsp"/> 유저정보
@@ -35,7 +37,8 @@
 		<jsp:forward page="WEB-INF/views/member/proEnroll2.jsp"/>아마추어 회원가입2단계
 		<jsp:forward page="WEB-INF/views/member/proEnroll3.jsp"/>아마추어 회원가입3단계
 		<jsp:forward page="WEB-INF/views/member/proEnroll4.jsp"/>아마추어 회원가입4단계
-		<jsp:forward page="WEB-INF/views/member/proEnroll5.jsp"/>아마추어 회원가입5단계		
+		<jsp:forward page="WEB-INF/views/member/proEnroll5.jsp"/>아마추어 회원가입5단계
+			
 	--%> 
 </body>
 </html>
