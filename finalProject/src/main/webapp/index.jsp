@@ -6,8 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-				
+<body>			
 		<jsp:forward page="WEB-INF/views/board/userModal.jsp"/>
 	<%--
 		김경보
