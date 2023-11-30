@@ -46,4 +46,16 @@ public class MemberController {
 		//화면 전환용 임시 데이터는 없는상태
 		return "myPage/ask";
 	}
+	
+	@RequestMapping(value = "/ask1.me")
+	public String ask1(){
+		//화면 전환용 임시 데이터는 없는상태
+		return "myPage/ask1";
+	}
+	
+	@RequestMapping(value = "/ask2.me")
+	public String ask2(){
+		//화면 전환용 임시 데이터는 없는상태
+		return "myPage/ask2";
+	}
 }
