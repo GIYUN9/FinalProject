@@ -122,14 +122,14 @@
 
                                 <table>
                                     <tr>
-                                        <td>
-                                            <p style="font-weight: bold;">성별</p>
-                                            <div>
-                                                <button type="button" class="btn-man">남자</button>
-                                                <span style="margin-right: 10px;"></span> 
-                                                <button type="button" class="btn-woman">여자</button>
-                                            </div>
-                                        </td>
+                                            <td>
+                                                <p style="font-weight: bold;">성별</p>
+                                                <div>
+                                                    <button type="button" class="btn-man">남자</button>
+                                                    <span style="display: inline-block; width: 20px;"></span> <!-- 여백 조절 --> 
+                                                    <button type="button" class="btn-woman">여자</button>
+                                                </div>
+                                            </td>
                                     </tr>       
                                     <tr>
                                         <td>

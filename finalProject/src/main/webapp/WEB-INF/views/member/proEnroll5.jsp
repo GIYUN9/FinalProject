@@ -85,7 +85,7 @@
 
                 <!-- 모달 본문 -->
                 <div class="modal-body" >
-                    <table>
+                    <table width="330px">
                        <tr>
                             <td>
                                 <p>이름*</p>
