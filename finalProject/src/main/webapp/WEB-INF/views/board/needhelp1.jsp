@@ -242,6 +242,7 @@
                             
                         </div>
                     </div>
+                    <button class="nh-btn5">이전</button>
                     <button class="nh-btn4">다음</button>
                 </div>
                 <div>
