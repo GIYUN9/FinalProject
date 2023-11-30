@@ -34,7 +34,7 @@
     .main{
         background-color: white;
         width: 700px;
-        max-height: 50%;
+        height: 62%;
         position: absolute;
         left: 50%;
         margin-left: -322px;
@@ -46,7 +46,7 @@
     .community-ul{
         width: 170px;
         height: 500px;
-        margin: 206px 10px 10px 260px;
+        margin: 220px 0px 0px 315px;
         color: white;
     }
 
@@ -61,6 +61,8 @@
         background-color: white;
         border-width: thin;
         margin: 3px; 
+        width: 56px;
+        height: 27px;
     }
 
     .text1{
@@ -108,7 +110,9 @@
     }
 
     .line {
-        width: 95%;
+        width: 96%;
+        margin-left: 11px;
+        margin-top: 10px;
     }
 
     .arrow-img{
@@ -118,12 +122,23 @@
         margin-right: 10px;
         margin-top: 6px;
     }
+
+    .border-one,  .border-two, .border-three{
+        margin-left: 33px;
+        line-height: 27px;
+    }
+
+    .community-big{
+        padding-bottom: 120px;
+    }
 </style>
 
 </head>
 <body>
     <jsp:include page="../common/header.jsp"></jsp:include>
-    
+
+    <div class="community-big">
+
     <ul class="community-ul">
         <li class="community-list">커뮤니티</li>
         <li class="list"><button class="list-btn">전체</button></li>
@@ -134,6 +149,7 @@
     </ul>
  
     <div class="main">
+
         <div class="main-a">
             <span class="main-span1">공지</span>
             <span class="main-span2">품앗이 가이드라인</span>
@@ -148,11 +164,12 @@
     <ul>
         <li class="main-list">
             <a href="" class="a-click">
-                <p class="community-p">궁금해요 수학 과외</p>
-                    <div>
+                
+                    <div class="border-one">
+                        <span class="community-p">궁금해요 수학 과외</span>
                         <h4>수학과외 비용 궁금해요!</h4>
-                        <p class="text1">주2일만 과외 받을건데 비용이 궁금해요!</p>
-                        <p class="text2">전국</p>
+                        <span class="text1">주2일만 과외 받을건데 비용이 궁금해요!</span><br>
+                        <span class="text2">전국</span>
                         <div>
                             <a href="" class="a-click">
                                 <img src="/finalProject/resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
@@ -173,8 +190,8 @@
     <ul>
         <li class="main-list">
             <a href="" class="a-click">
-                <p class="community-p">얼마예요 테니스 레슨</p>
-                    <div>
+                    <div class="border-two">
+                        <span class="community-p">얼마예요 테니스 레슨</span>
                         <h4>테니스 배우고 싶이요!</h4>
                         <p class="text1">테니스 레슨 비용이 궁금해요</p>
                         <p class="text2">서울</p>
@@ -193,7 +210,33 @@
         </li>
     </ul>
         <hr class="line">
+
+    <ul>
+        <li class="main-list">
+            <a href="" class="a-click">
+                    <div class="border-three">
+                        <span class="community-p">함께해요 코딩 공부</span>
+                        <h4>같이 코딩공부해요!</h4>
+                        <p class="text1">코딩 공부 같이 하실분~~~?</p>
+                        <p class="text2">경기도</p>
+                        <a href="" class="a-click">
+                            <img src="/finalProject/resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
+                            <span>12</span>
+                        </a>
+                        <a href="" class="a-click">
+                            <img src="/finalProject/resources/borderImage/speech-bubble-icon.png" alt="말풍선아이콘" class="img">
+                            <span>7</span>
+                        </a>
+                            <span class="time-span">1시간 전</span>
+                            <div class="line"></div>
+                        </div> 
+                </a>  
+            </li>
+        </ul>
+            <hr class="line">
            
     </div>
+</div>
+    <jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>

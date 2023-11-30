@@ -19,15 +19,15 @@
         width: 40%;
         max-height: 20%;
         padding: 21px;
-        margin-right: 500px;
         margin-top: -495px;
+        margin-right: 490px;
         border-radius: 15px;
     }
 
     .community-ul{
         width: 190px;
         height: 500px;
-        margin: 190px 5px 0px 280px;
+        margin: 190px 5px 0px 315px;
         color: white;
     }
 
@@ -92,6 +92,10 @@
     
     .container-com{
         margin-bottom: 20px;
+    }
+
+    .card{
+      margin-left: 26px;
     }
 </style>
 
