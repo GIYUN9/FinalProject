@@ -59,3 +59,36 @@ public class MemberController {
 		return "myPage/ask2";
 	}
 }
+
+/*
+ * spring_work 실습에 사용했던 파일이름저장 정책 참고용
+ * public String saveFile(MultipartFile upfile, HttpSession session, String path) {
+		//파일명 수정 후 서버 업로드 시키기("음악스트리밍.png" => 20231109102712345.png)
+		//년월일시분초 + 랜덤숫자 5개 + 확장자
+		
+		//원래 파일명
+		String originName = upfile.getOriginalFilename();
+		
+		//시간정보(년월일시분초)
+		String currentTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+		
+		//랜덤숫자 5자리
+		int ranNum = (int)((Math.random() * 90000) + 10000);
+		
+		//확장자
+		String ext = originName.substring(originName.lastIndexOf("."));
+		
+		String changeName = currentTime + ranNum + ext;
+		
+		//첨부파일 저장할 폴더의 물리적인 경우
+		String savePath = session.getServletContext().getRealPath(path);
+		
+		try {
+			upfile.transferTo(new File(savePath + changeName));
+		} catch (IllegalStateException | IOException e) {
+			e.printStackTrace();
+		}
+		
+		return changeName;
+	}
+ */
