@@ -23,6 +23,10 @@
 	margin: 15px;
 }
 
+.list-btn:hover {
+        color: black
+    }
+
 .community-list {
 	list-style: none;
 	font-size: 25px;
