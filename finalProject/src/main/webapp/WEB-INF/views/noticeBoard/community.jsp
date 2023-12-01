@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+</head>
 <title>커뮤니티 게시판 전체</title>
 
 <style>
@@ -21,6 +22,10 @@
         font-size: 17px;
         color: white;
         margin: 15px;
+    }
+
+    .list-btn:hover {
+        color: black
     }
 
     .community-list {
@@ -63,6 +68,7 @@
         margin: 3px; 
         width: 56px;
         height: 27px;
+            cursor: pointer;
     }
 
     .text1{

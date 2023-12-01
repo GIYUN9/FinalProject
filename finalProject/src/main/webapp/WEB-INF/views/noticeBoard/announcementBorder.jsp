@@ -20,14 +20,15 @@
         max-height: 20%;
         padding: 21px;
         margin-top: -495px;
-        margin-right: 490px;
+        margin-right: 32%;
         border-radius: 15px;
+        margin-bottom: 20px;
     }
 
     .community-ul{
         width: 190px;
         height: 500px;
-        margin: 190px 5px 0px 315px;
+        margin: 190px 5px 0px 253px;
         color: white;
     }
 
@@ -53,6 +54,10 @@
         font-size: 17px;
         color: white;
         margin: 15px;
+    }
+
+    .list-btn:hover {
+        color: black
     }
 
     .date{
@@ -234,5 +239,8 @@
 
           </div>
       </div>
+
+      <jsp:include page="../common/footer.jsp"></jsp:include>
+      
 </body>
 </html>
