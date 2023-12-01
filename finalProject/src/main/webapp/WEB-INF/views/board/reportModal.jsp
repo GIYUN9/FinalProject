@@ -5,694 +5,264 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- Google Fonts Link For Icons-->
-    <link rel = "stylesheet" href="http://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
-    <script src="././resources/js/script.js" defer></script>
-    
-   
-
 <style>
-    * {
-        list-style: none; 
-        text-decoration: none;
-        border-collapse: collapse;
-        margin: 0px;
-        padding: 0px;
-    }
-    
-    .nav{
-        height: 70px;
-        display: flex;
-        align-items: center;
-        margin-top: 70px;
-    }
-
-    .nav-center-items{
-        display: flex;
-        margin: auto;
-       
-    }
-
-    .nav-item{
-        font-size: 18px;
-        height: 40px;
-        
-        padding-left: 70px;
-        text-align: center;
-        font-weight: bold;
-        color: white;
-    }
-
-    /* .nav-item-content{
-        background-color: rgba(255, 255, 255, 0.22);
-    } */
-    
-
-    /* a::after{
-        display:block;
-        content: '';
-        border-bottom: solid 3px #ffffff;  
-        transform: scaleX(0);  
-        transition: transform 250ms ease-in-out;
-    }
-
-    .nav:hover::after{
-        transform: scaleX(1);
-    } */
-
-    a:after {
-        display:block;
-        content: '';
-        border-bottom: solid 2px #ffffff;  
-        transform: scaleX(0);  
-        transition: transform 250ms ease-in-out;
-     }
-    a:hover:after { transform: scaleX(1); }
-
-    .nav-item > a{
-        color: white;
-    }
-
-    .category{
-        width: 100px; 
-        text-align: center;  
-        height: 200px;
-    }
-
-    .category-item {
-        width: 100px;
-        height: 40px;   
-        text-align: center;
-        padding-top: 10px;
-        margin-top: 10px;
-        border-radius: 10px;
-    }
-
-    .category-item > a{
-        margin-top: 150px;
-        font-weight: bold; 
-        color: white;
-        font-size: 14px;
-    }
-
-    
-    
-    .main{
-        display: flex;    
-        width: 1300px;  
+	*,
+	*::before,
+	*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	}
+	body{
+		background: url('././resources/image/main.png') no-repeat center center fixed; 
+  		background-size: cover;		
+	}
+	.report-board{
+        background-color: white;
+        width: 600px;
         height: 700px;
-        border: 1px;
-        margin: 0 auto;
-    }
-
-   
-    .content{
-        width: 1100px;
-        height: auto;
-        border: 1px;
-        margin: 0 auto;
-        text-align: center;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left: 10px;
-        
-
-    }
-
-    .content-item{
-        display: inline-block;
-        width: 240px;
-        height: 270px;
-        border: 1px ;     
-        border-radius: 10px;
-        margin-top: 20px;
-        margin-right: 15px;
-        background-color: rgba(83, 82, 82, 0.65)
-
-    }
-
-    .content-item:hover{
-        background-color: rgba(255, 255, 255, 0.22);
-    }
-
-    .content-img{
-    	height: 150px;
-    	padding-top: 15px;
-        width: 200px;
-        text-align: center;
-        
-    }
-    
-    .content-item-title{
-    	padding-top: 10px;
-        font-size: 15px;
-        font-weight: bold;
-        color: white;
-    }
-
-    .content-item-price{
-        font-size: 14px;
-        font-weight: bold;
-        text-align: right;
-        padding-top: 40px;
-        padding-right: 15px;
-        color: white;
-    }
-
-   
-    
-    .content-head{
-        display: flex;
-        justify-content: space-between;
-    }
-
-   
-
-    #head-count{
-        text-align: right;
-        color: white;
-        font-size: 13px;
-        padding-left: 40px;
-        font-weight: bold;
-    }
-   
-  	.back-ground{
-  		width : 100%;
-  		background-color:rgba(60, 59, 59, 0.27);
-  	}
-  	
-
-    #head-category{
-        padding-right: 50px;
-    }
-
-    #category-item {
-        color: white;
-        font-size: 18px;
-        border: none;
-        /* width: 100px; */
-       
-        margin-top: 10px;
-       
-    }
-
-    .nav-item-content{
-        width: 95px;
-        padding: 9px;
+        margin-left: 34%;
+        margin-top: 7%;
+        margin-bottom: 10%;
         border-radius: 8px;
-        color: white;
-    }
-    
-    
-    a{
-        color: white;
-        
-    }
-
-    option:hover {
-        background-color: rgb(0, 0, 0);
-    }
-    option:checked {
-        background-color: rgb(0, 0, 0);
-    }
-
-    .aaa:visited{
-        background-color: black;
-        color: white;
-    }
-
-    #head-category-list{
-        background-color: transparent; 
-        color: white;
-        border: none;
-    }
-
-    .head-category-slist{
-        background-color: rgba(83, 82, 82, 0.65);
-    }
-
-    /* 
-        디테일 뷰 스타일
-    */
-
-    .photo{
-        margin-top: 10px;
-        width: 550px;
-        height: 650px;
-        background-color: white;
-        align-items: center;
-    }
-    .big-photo{
-        padding-left: 40px;
-        padding-top: 20px;
-        padding-bottom: 10px;
-        width: 510px;
-        align-items: center;
-        display: center;
-    }
-
-    /* body{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-    } */
-
-    /* .container{
-        height: 100px;
-    } */
-
-    .slider-wrapper .slide-button{
-        position: absolute;
-        top: 50%;
-        height: 30px;
-        width: 30px;
-        color: transparent;
-        border: none;
-        outline: none;
-        background-color: transparent;
-        font-size: 30px;
-        cursor: pointer;
-        
-        padding-bottom: 42px;
-    }
-
-    .slider-wrapper .slide-button:hover{
-        color: black;
-
-    }
-
-    .slider-wrapper{
-        position: relative;
-    }
-
-    .slider-wrapper .slide-button#prev-slide{
-        left: 0px;
-        /* transform: translateY(-80px); */
-        display: none;
-        margin-bottom: 10px;
-    }
-
-    .slider-wrapper .slide-button#next-slide{
-        left: 510px;
-        
-        /* transform: translateY(+80px); */
-    }
-    
-    .slider-wrapper .image-list {
-        display: grid;
-        gap: 18px;
-        font-size: 0;
-        overflow-x: auto;
-        margin-bottom: 1px;
-        scrollbar-width: none;
-        grid-template-columns: repeat(10, 1fr);
-    }
-
-    .slider-wrapper .image-list::-webkit-scrollbar{
-        display: none;
-    }
-
-    .slider-wrapper .image-list .image-item{
-        width: 200px;
-        height: 120px;
-        object-fit: cover;
-    }
-
-    .container .slider-scrollbar{
-        height: 24px;
-        width: 100%;
-        display: flex;
-        align-items: center;
-    }
-
-    .slider-scrollbar .scrollbar-track{
-        height: 2px;
-        width: 100%;
-        background-color: #ccc;
-        position: relative;
-        border-radius: 4px;
-    }
-
-    .slider-scrollbar:hover .scrollbar-track{
-        height: 4px;
-    }
-
-    .slider-scrollbar .scrollbar-thumb{
-        position: absolute;
-        height: 100%;
-        width: 50%;
-        background-color: #000;
-        border-radius: inherit;
-        cursor: grab;
-    }
-
-    .slider-scrollbar .scrollbar-track:active{
-        cursor: grabbing;
-        height: 8px;
-        top: -2px;
-    }
-
-    .slider-scrollbar .scrollbar-thumb::after{
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: -10px;
-        bottom: -10px;
-    }
-
-    /*
-        content 내용 css
-    */
-    .content{
-        margin-top: 10px;
-        width: 550px;
-        height: 650px;
-        background-color: white;
-        align-items: center;
-    }
-
-    .sub-content{
-        margin-top: 10px;
-        width: 500px;
-        height: 600px;
-        background-color: #fff;
-        margin: 0 auto;
-    }
-
-    .icon{
-        width: 500px;
-        height: 50px;
-        background-color: #fff;
-        
-        margin-top: 10px;
-        align-items: center;
-    }
-
-    .icon > div{
-       display: inline-block; 
-    }
-
-    .share {
-        float: left;
-    }
-    .share :hover{
-        cursor: pointer;
-    }
-
-    .heart {
-        float: right;
-    }
-    .heart :hover{
-        cursor: pointer;
-        opacity: 0.5;
-    }
-    .heart-text{
-        display: inline-block;
-  
-    }
-
-    .heart-text > h4{
-        text-align: center;  
-    }
-   
-
-    .icon img{
-        height: 40px;
-       
-    }
-
-    .report{
-        display: inline-block;
-    }
-    .start{
-        display: inline-block;
-    }
-
-    .report > img{
-        display: inline-block;
-        height: 40px;
-    }
-    .star > img{
-        display: inline-block;
-        height: 40px;
-    }
-
-
-    .star-text {
-        width: max-content;
-        display:  inline-block; 
-        font-size: 13px
-    }
-    .logo{
-        display: block;
-    }
-    /* .content-title > .logo{
-        display: inline-block;
-    } */
-
-    /* .a{
         display: flex;
         flex-direction: column;
+	}
+    .report-top-section{
+        display: flex;
+        padding: 15px;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        margin-top: 6px;
+        font-size: 19px;
+        font-weight: bold;
+    }
+    .report-close-btn{
+        width: 10px;
+        right: 20px;
         position: absolute;
-        align-items: end;
-        bottom: -85px;
-        left: -22px;
-    } */
-    .content-title{
-            align-items: center;
-    	/* justify-content: center; */
-    	display: flex;
-    }
+        cursor: pointer;
+        top: 4px;
+	}
 
-    .content-detail{
-        width: 400px;
-        height: 400px;
-        padding-top: 50px;
-        
-    	justify-content: center;
-    	display: flex;
-    }
-
-    .a{
-        padding-left: 90px;
-    }
-
-    .share-icon{border: none;
-        opacity: 0.5;}
-    .heart-icon{border: none;
-        opacity: 0.5;}
-    .report-btn{border: none;
-        background-color: white;
+    .report-close-btn:hover{
+        cursor: pointer;
         opacity: 0.5;
     }
-    .report-btn:hover{
-        cursor: pointer;
-    }
-    #content-btn{
-        background-color: rgb(87, 212, 197);
-        color: white;
-        font-weight: bold;
+    .re-submit-btn{
+        background: rgb(218, 76, 60);
         border: none;
-        width: 500px;
-        height: 50px;
-        border-radius: 10px;
-        font-size: 15px;
-
+        border-radius: 4px;
+        width: 100px;
+        height: 30px;
+        color: white;
+        margin: 7px;
     }
-    #content-btn:hover{
+
+    .re-submit-btn:hover{
+        cursor: pointer;
+        opacity: 0.6;
+    }
+    .re-cancle-btn{
+        background-color: rgba(224, 224, 224, 0.5);
+        border: 1px solid rgba(224, 224, 224, 0.5);
+        border-radius: 4px;
+        width: 100px;
+        height: 30px;
+        margin: 7px;
+    }
+
+    .re-cancle-btn{
         cursor: pointer;
         opacity: 0.5;
     }
+    .re-title{
+        width: 300px;
+        height: 20px;
+        border: 1px solid rgba(96, 96, 96, 0.5);
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+    .re-content{
+        width: 300px;
+        height: 157px;
+        border: 1px solid rgba(96, 96, 96, 0.5);
+        border-radius: 8px;
+        margin-bottom: 15px;
+        padding: 10px;
+        padding-bottom: 130px;
+    }
 
-    .star{
-        justify-content: center;
+    .re-content-cl{
+        width: 300px;
+        height: 157px;
+        border: 1px solid rgba(96, 96, 96, 0.5);
+        border-radius: 8px;
+        margin-bottom: 15px;
+        padding: 10px;
+        padding-bottom: 130px;
+    }
+    .re-upfile{
+        width: 300px;
+        height: 32px;
+        border: 1px solid rgba(96, 96, 96, 0.5);
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+    .hu-price{
+        width: 300px;
+        height: 27px;
+        border: 1px solid rgba(96, 96, 96, 0.5);
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+    .report-input-area{
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        position: relative;
     }
-
-    .report{
-        justify-content: center;
+    .report-align{
         display: flex;
-        align-items: center;
+        flex-direction: row;
     }
-
-    .report-btn{
-        padding-left: 10px;
-        font-weight: bold;
-    }
-    .star-text{
-        font-weight: bold;
-    }
-
-   /* 신고하기 style */
-
-   .report-container{
-    padding-top: 50px;
-    background-color: bisque;
-    width: 700px;
-    border: 0;
     
-   }
+    .report-top-section{
+        margin-bottom: 30px;
+    }
+    .re-btn-area{
+        display: flex;
+        flex-direction: row;
+        margin-top: 15px;
+    }
+    .aa{
 
-   .text{
-    height: 20px;
-   }
+    }
+    .re-content2 {
+    position: absolute;
+    left: -103px;
+    top: 36px;
+    font-size: 13px;
+    font-weight: bolder;
+    }
 
+    .re-content1{
+        position: absolute;
+        left: -94px;
+        top: 1px;
+        font-size: 13px;
+        font-weight: bolder;
+    }
+    .re-content3{
+        position: absolute;
+        left: -94px;
+        top: 72px;
+        font-size: 13px;
+        font-weight: bolder;
+    }
+    .re-content5{
+        position: absolute;
+        left: -86px;
+        font-size: 13px;
+        font-weight: bolder;
+        top: 420px;
+    }
+    .ee{
+        position: absolute;
+        left: -86px;
+        top: 260px;
+        font-size: 13px;
+        font-weight: bolder;
+    }
+    .re-content4{
+        position: absolute;
+        left: -106px;
+        top: 246px;
+        font-size: 13px;
+        font-weight: bolder;
+    }
+    .report-line > .re-title,
+    .re-content{
+        background-color: rgb(224, 224, 224);
+        font-size: 12px;
+        font-weight: bold;
+        padding-left: 10px;
+    }
+
+    #file-upload-btn{
+        width: 600px;
+    }
 </style>
 
 </head>
 <body>
-<%@ include file = "../common/header.jsp"%>
-   <div class = "nav">
-        <div class = "nav-center-items">
-            <div class = "nav-item">
-                <div class="nav-item-content">
-                    <a href="#">전체보기</a>
-                </div>
-            </div>
-            <div class = "nav-item"><a href="#">&#60;</a></div>
-            <div class = "nav-item">
-                <div class="nav-item-content">
-                    <a href="#">취미,레슨</a>
-                </div>
-            </div>
-            <div class = "nav-item">
-                <div class="nav-item-content">
-                    <a href="#">디자인</a>
-                </div>
-            </div>
-            <div class = "nav-item">
-                <div class="nav-item-content">
-                    <a href="#">마케팅</a>
-                </div>
-            </div>
-            <div class = "nav-item">
-                <div class="nav-item-content" style="background-color: rgba(255, 255, 255, 0.22);">
-                    <a href="#">운동</a>
-                </div>
-            </div>
-            <div class = "nav-item">
-                <div class="nav-item-content">
-                    <a href="#">게임</a>
-                </div>
-            </div>
-            <div class = "nav-item">
-                <div class="nav-item-content">
-                    <a href="#">미술</a>
-                </div>
-            </div>
-           
-            <div class = "nav-item"><a href="#">&#62;</a></div>
-        </div>
-   </div>
-   <form method = "" action = "" class="report-container">
-        <label for="title">신고 제목</label>
-        <textarea class="text" readonly>여기서 뭐하는 건지 너는혹시 아니</textarea>
-        <br>
-        <label for="title">신고 글쓴이</label>
-        <textarea class="text" readonly>나는 이제 내가 뭘 하는지도 모르겠어</textarea>
-        <br>
-        <label for="title">신고 내용</label>
-        <textarea class="text" id="" cols="30" rows="10" readonly>너무 슬프구나</textarea>
-
-   </form>
-   
-   <div class = "main">
-    	<div class = "photo">
-            <div class = "main-photo">
-                <img class = "big-photo" src = "././resources/image/기타녀.jpg" alt="기타녀">
-            </div>
-            <div class = "container">
-                <div class = "slider-wrapper">
-                    <button id ="next-slide" class="slide-button material-symbols-rounded">&#62;</button>
-                    <div class = "image-list">
-                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
-                        <img class ="image-item" src="././resources/image/보노보.jpg" alt="일러스트">
-                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
-                        <img class ="image-item" src="././resources/image/보노보.jpg" alt="일러스트">
-                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
-                        <img class ="image-item" src="././resources/image/보노보.jpg" alt="일러스트">
-                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
-                        <img class ="image-item" src="././resources/image/보노보.jpg" alt="일러스트">
-                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
-                        <img class ="image-item" src="././resources/image/보노보.jpg" alt="일러스트">
-                        
-                    </div>
-                    <button id ="prev-slide" class="slide-button material-symbols-rounded">&#60;</button>
-                </div>
-                <div class="slider-scrollbar">
-                    <div class="scrollbar-track">
-                        <div class="scrollbar-thumb"></div>
-                    </div>
-                </div>
-            </div>    
-        </div>
-        <div class = "content">
-            <div class= "sub-content">
-                <div class = "icon">
-                    <div class = "share">
-                        <button class="share-icon"><img src = "././resources/image/share.jpg" alt=""></button>
-                    </div>
-                    <div class = "heart">
-                        <button class="heart-icon"><img src = "././resources/image/heart.jpg" alt="하트 이미지"></button>
-                        <div class="heart-text"><h4>1,063</h4></div>
-                    </div>
-                </div>
-                <div class = "content-title">
-                    <div class = "content-title-text">
-                       <text><h2>'헬스 이제 시작해보자구!'</h2></text> 
-                    </div>
-                   
-
-                    <div class = "modal actice">
-                        <div class = "modal-content">
-                            <a href="#none" class = "btn-close">x</a>
-                            <div class = "modal-body">
-
-                            </div>
-
-                        </div>
+<%@ include file="../common/header.jsp" %>
+ 	<div>
+        <div class="report-board">
+            <div class="report-top-section">
+                <img class="report-close-btn" src="././resources/icon/close.png">
+                    <div class="report-top-section">
+                        <p>신고하기</p>
                     </div>
                     
-                    <div class = "a">
-                        <div class="report">
-                            <img src="././resources/image/경고.jpg" alt="" class="report-icon">
-                            <button class = "report-btn">신고하기</button>
-                        </div>
-                        <div class="logo">
-                            <div class="star">
-                                <img src="././resources/image/stars.jpg" alt="" class="star-icon">
-                                <div class = "star-text">5.0/5</div>
-                            </div>
-                            <div class = "data">
-                                <div class="data-mem"></div>
-                                <div class="count"></div>
-                            </div>
+                    <div class="report-align">
+                        <div class="report-input-area">
+                            <div class="report-line">
+                                <div class="re-title" type="text" readonly>
+                                    '헬스'이제 시작해보자구!
+                                    <div class="re-content1">
+                                        신고글 제목
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="report-line">
+                                <div class="re-title" type="text" readonly>
+                                        김경보님
+                                    <div class="re-content2">
+                                        신고글 작성자
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="report-line">
+                                <div  class="re-content" type="text">
+                                    이렇게 괜찮은 걸 왜 나는
+                                    <div class="re-content3">
+                                        신고글 내용
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="report-line">
+                                <input  class="re-content-cl" type="text">
+                                    <div class="re-content4">
+                                        신고하는 내용
+                                    </div>
+                                </input>
+                            </div>  
+                            <div class="report-line">
+                                <input type = "file" class="re-upfile">
+                                    <div class="re-content5">
+                                        파일첨부
+                                    </div>
+                                </input>
+                            </div>  
+                           
+                          
                         </div>
                     </div>
-                </div>
-                <div class = "content-detail">
-                    우리 헬스 좋아요
-                    아무아주 좋아요!
-                    ㅁㄴㅇㄹㄴ오리ㅗㄴ밍론ㅁㅇ뢴ㅁㅇㄹㄴㅇㅁㄹㄴㅇㅁㄹ
-                    ㅁㅇㄴㄹㄴㅇㄹㄴㅇㅁㄻㅇㄴㄻㄴㅇㄹㄴㅁㅇㄹㄴㅇㅁㄹㄴㅇㅁㄹ
-                    ㅁㄴㅇㄹㄴㅇㅁㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇ
-                    ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹㄴㅇㅁㄹㅇㅁㄴㄹㄴㅁㄹㄴㅁㅇ
-                    ㅁㄹㅇㄴㅁㄻㄴㄹ
-                    
-                </div>
-                <button id = "content-btn">구매하기</button>
+                    <div class="re-btn-area">
+                        <button class="re-cancle-btn">취소</button>
+                        <button class="re-submit-btn">신고하기</button>
+                    </div>
+
             </div>
         </div>
-   </div>
-   
-   
-<%@ include file = "../common/footer.jsp"%>            
+
+    </div>
+<%@ include file="../common/footer.jsp" %>
+
+
+
+
 </body>
-
-
-
-
 </html>
