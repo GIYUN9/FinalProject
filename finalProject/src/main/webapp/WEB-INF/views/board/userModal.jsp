@@ -202,22 +202,79 @@
     }
 
     .modal-user-img{
-        width: 40px;
-        float: right;
+        width: 50px;
+        float: left;
+        margin-left: 30px;
     }
    .user-modal{
         display: table-cell;
         vertical-align: middle;
+        border-radius: 10px;
 
    }
 
-   .modat-title {
-    font-size: 20px;
-    font-weight: bold;
-    align-items: center;
+   .modal-title {
+        font-size: 20px;
+        width: 100px;
+        height: 21px;
+        font-weight: bold;
+        margin: auto;
    }
 
+   .modal-count-detail{
+        float: right;
+        margin-right: 10px;
+        font-weight: bold;
+   }
 
+   .modal-msg{
+        margin-left: 5px;
+        width: 90%;
+        height: 150px;
+        border: 1px solid rgb(0, 199, 174);
+        margin: auto;
+        border-radius: 10px;
+   }
+    
+    .modal-career > div{
+        font-size: 10px;
+        font-weight: bold;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        margin-left: 30px;
+    }
+
+    .modal-count{
+        margin-left: 30px;
+    }
+    .modal-btn{
+        width: 90%;
+        height: 50px;
+        border: none;
+        margin: auto;
+        display: block;
+        background-color: rgb(0, 199, 174);
+        color: #ffffff;
+        border-radius: 10px;
+    }
+
+    .modal-btn:hover{
+        cursor: pointer;
+        opacity: 0.6;
+    }
+
+    .close-btn{
+        margin-right: 10px;
+        float: right;
+    }
+
+    .close-btn:hover{
+        cursor: pointer;
+    }
+
+    .modal-user-item > div {
+        margin-left: 90px;
+    }
 </style>
 </head>
 <body>
@@ -266,23 +323,44 @@
    </div>
    <div class = "back-ground">
    		<div class = "user-modal">
-            <div class="modat-title">보컬레슨</div>
+            <div class="close-btn">X</div>
+            <br>
+            <div class="modal-title">보컬레슨</div>
+            <br>
             <div class="modal-user">
                 <img  class = "modal-user-img" src="././resources/image/기타녀.jpg" alt="기타녀">
+                <div class = "modal-user-item">
+                    <div>보컬코치</div>
+                    <div>별별별 4.0</div>   
+                </div>
             </div>
-            <div class="modal-career"></div>
-            <div>줄</div>
+            <div class="modal-career">
+                <br>
+                <hr>
+                <div>트로피 이미지 / 89회 고용됨</div>
+                <div>위치 이미지 / 서울특별시 송파구</div>
+                <div>경력 이미지 / 경력 13년</div>
+                <hr>
+            </div>
             <div class = "modal-count">
+                <br>
                 <text>견적</text>
+                <br><br><br>
                 <text>예상금액</text>
+                <br>
                 <div class ="modal-count-detail">
                     시간 당  50000원
                 </div>
+                <br><br>
             </div>
-            <div>줄</div>
+            <hr>
+            <br>
             <div class ="modal-msg">
-                message
+                이 메시지는 악마의 메시지입니다. 다들 조심하세요 진짜
             </div>
+            <br>
+            
+        
             <button class = "modal-btn">채팅하기</button>
 
         </div>

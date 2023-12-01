@@ -406,6 +406,7 @@
     }
     .heart :hover{
         cursor: pointer;
+        opacity: 0.5;
     }
     .heart-text{
         display: inline-block;
@@ -478,10 +479,13 @@
         padding-left: 90px;
     }
 
-    .share-icon{border: none;}
-    .heart-icon{border: none;}
+    .share-icon{border: none;
+        opacity: 0.5;}
+    .heart-icon{border: none;
+        opacity: 0.5;}
     .report-btn{border: none;
         background-color: white;
+        opacity: 0.5;
     }
     .report-btn:hover{
         cursor: pointer;
@@ -493,6 +497,7 @@
         border: none;
         width: 300px;
         height: 50px;
+
     }
     #content-btn:hover{
         cursor: pointer;
@@ -531,6 +536,7 @@
         height: 100vh;
         width: 100%;
         display: none;
+        
     }
     
 
@@ -621,7 +627,7 @@
                     <div class = "content-title-text">
                        <text><h2>'헬스 이제 시작해보자구!'</h2></text> 
                     </div>
-                    <a class = "modal-notice" href="#none">유저aaaaaaaaaaaaaaaaaaaaaaaaaa이름</a>
+                   
 
                     <div class = "modal actice">
                         <div class = "modal-content">
