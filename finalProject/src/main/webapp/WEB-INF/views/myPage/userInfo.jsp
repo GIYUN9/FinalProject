@@ -25,10 +25,12 @@
 			<h3 style="margin: 10px 0 0 20px;">나의 정보</h3>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="user-info">
-					<div style="margin-top: 0px">
-						<img style="width: 90px; height: 90px; margin: 15px; border-radius: 25px;" src="./resources/icon/profileTest.png">
+					<div style="margin-top: 55px; display: flex; flex-direction: column; align-self: flex-start;">
+						<img style="width: 130px; height: 130px; margin: 15px; border-radius: 25px;" src="./resources/icon/profileTest.png">
 						<br><br>
-						<button class="btn" style="margin-left: 19px">프로필 변경</button>
+						<form action="" style="align-self: center; width: 100%">
+							<button type="submit" class="btn" style="width: 100%;">프로필 변경</button>
+						</form>
 					</div>
 					<div>
 						<form action="">

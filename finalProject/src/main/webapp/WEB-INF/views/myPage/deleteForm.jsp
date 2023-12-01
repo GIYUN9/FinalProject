@@ -38,6 +38,10 @@
 		.retire:hover {
 			background-color: rgb(218, 76, 60, 0.27);
 		}
+		
+		.label-css{
+		margin: 1px;
+		}
 	</style>
 </head>
 <body>
@@ -61,16 +65,16 @@
 					<form action="">
 						<h4 style="margin-bottom: 5px;">떠나시는 이유를 알려주세요.</h4>
 						<div class="reason-box">
-							<label><input type="radio" name="reason" value="1">이용하고 싶은 서비스가 없어요</label>
-							<label><input type="radio" name="reason" value="2">서비스 퀄리티가 낮아요</label>
-							<label><input type="radio" name="reason" value="3">비매너 회원을 만났어요</label>
-							<label><input type="radio" name="reason" value="4">잦은 오류가 발생해요</label>
-							<label><input type="radio" name="reason" value="5">대체할만한 서비스를 찾았어요</label>
-							<label><input type="radio" name="reason" value="6">쿠폰 &middot; 적립금등 혜택이 적어요</label>
+							<label class="label-css"><input type="radio" name="reason" value="1"> 이용하고 싶은 서비스가 없어요</label>
+							<label class="label-css"><input type="radio" name="reason" value="2"> 서비스 퀄리티가 낮아요</label>
+							<label class="label-css"><input type="radio" name="reason" value="3"> 비매너 회원을 만났어요</label>
+							<label class="label-css"><input type="radio" name="reason" value="4"> 잦은 오류가 발생해요</label>
+							<label class="label-css"><input type="radio" name="reason" value="5"> 대체할만한 서비스를 찾았어요</label>
+							<label class="label-css"><input type="radio" name="reason" value="6"> 쿠폰 &middot; 적립금등 혜택이 적어요</label>
 						</div>
-						<h4 style="margin-bottom: 5px;">이메일 확인</h4>
+						<h4 style="margin-bottom: 5px; margin-top: 7px;">이메일 확인</h4>
 						<input class="emailInput" placeholder="가입하신 이메일을 입력해주세요.">
-						<h4 style="margin-bottom: 5px;">주의 사항</h4>
+						<h4 style="margin-bottom: 5px; margin-top: 7px;">주의 사항</h4>
 						<textarea rows="15" cols="96%" style="resize: none; text-align: left;" readonly="readonly">
 1. 현재 사용 중인 계정 정보는~~~
 2. 진행 중인 거래 건이 있거나~~
@@ -80,7 +84,7 @@
 
 110. 충전캐시~~
 						</textarea><br>
-						<label><input id="cT" type="checkbox">주의사항을 모두 확인하였습니다.</label>
+						<label class="label-css"><input id="cT" type="checkbox"> 주의사항을 모두 확인하였습니다.</label>
 						<br>
 						<button class="retire" type="submit" disabled>탈퇴하기</button>
 					</form>
