@@ -18,6 +18,12 @@
 		<jsp:forward page="WEB-INF/views/myPage/qna.jsp"/>
 		<jsp:forward page="WEB-INF/views/myPage/qna1.jsp"/>
 		<jsp:forward page="WEB-INF/views/myPage/qna2.jsp"/>
+		<jsp:forward page="WEB-INF/views/board/needhelp.jsp"/>
+		<jsp:forward page="WEB-INF/views/board/needhelp1.jsp"/>
+		<jsp:forward page="WEB-INF/views/board/needhelp2.jsp"/>
+		<jsp:forward page="WEB-INF/views/board/needhelp3.jsp"/>
+		<jsp:forward page="WEB-INF/views/board/helpu.jsp"/>
+		
 		나기윤
 		<jsp:forward page="WEB-INF/views/myPage/deleteForm.jsp"/> 회원탈퇴
 		<jsp:forward page="WEB-INF/views/myPage/userInfo.jsp"/> 유저정보

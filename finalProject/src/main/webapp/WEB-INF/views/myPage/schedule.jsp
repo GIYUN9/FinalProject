@@ -61,6 +61,12 @@
 				display: none;
 			}
 		}
+		
+		.scrolleffect{
+			&::-webkit-scrollbar {
+				display: none;
+			}
+		}
 
 		.schedule-btn {
 			margin: 5px;
@@ -163,95 +169,127 @@
 					<div style="width: 100%; margin: 10px 0px 10px 8px;">
 						<h4 style="float: left;">요청 현황 (<span style="color: red;">3</span>건)</h4>
 					</div>
-					<div class="alarm-section">
-						<div style="width: 14%;">
-							이미지 자리
+					<div style="width: 100%; overflow: scroll; height: 414px;" class="scrolleffect">
+						<div class="alarm-section">
+							<div style="width: 14%;">
+								이미지 자리
+							</div>
+							<div style="width: 31%;">
+								<h3>홍길동</h3>
+								<p>희망지역: 서울시 강남구 역삼동</p>
+								<p>키보드 / 기타 레슨</p>
+							</div>
+							<div style="width: 40%;">
+								<p class="textarea-maxSize">
+									가야 할 때가 언제인가를
+									분명히 알고 가는 이의
+									뒷모습은 얼마나 아름다운가.
+	
+									봄 한철
+									격정을 인내한
+									나의 사랑은 지고 있다.
+	
+									분분한 낙화.
+									결별이 이룩하는 축복에 싸여
+									지금은 가야 할 때
+								</p>
+							</div>
+							<div style="width: 15%; display: flex; flex-direction: column;">
+								<button class="schedule-btn" style="background-color: rgb(0, 199, 174)" id="btn-open-popup">요청 상세 보기</button>
+								<button class="schedule-btn" style="background-color: rgb(218, 76, 60)" onclick="refuse()">거절 하기</button>
+							</div>
 						</div>
-						<div style="width: 31%;">
-							<h3>홍길동</h3>
-							<p>희망지역: 서울시 강남구 역삼동</p>
-							<p>키보드 / 기타 레슨</p>
+						
+						<div class="alarm-section">
+							<div style="width: 14%;">
+								이미지 자리
+							</div>
+							<div style="width: 31%;">
+								<h3>홍길동</h3>
+								<p>희망지역: 서울시 강남구 역삼동</p>
+								<p>키보드 / 기타 레슨</p>
+							</div>
+							<div style="width: 40%;">
+								<p class="textarea-maxSize">
+									가야 할 때가 언제인가를
+									분명히 알고 가는 이의
+									뒷모습은 얼마나 아름다운가.
+	
+									봄 한철
+									격정을 인내한
+									나의 사랑은 지고 있다.
+	
+									분분한 낙화.
+									결별이 이룩하는 축복에 싸여
+									지금은 가야 할 때
+								</p>
+							</div>
+							<div style="width: 15%; display: flex; flex-direction: column;">
+								<button class="schedule-btn" style="background-color: rgb(0, 199, 174)" id="btn-open-popup">요청 상세 보기</button>
+								<button class="schedule-btn" style="background-color: rgb(218, 76, 60)" onclick="refuse()">거절 하기</button>
+							</div>
 						</div>
-						<div style="width: 40%;">
-							<p class="textarea-maxSize">
-								가야 할 때가 언제인가를
-								분명히 알고 가는 이의
-								뒷모습은 얼마나 아름다운가.
-
-								봄 한철
-								격정을 인내한
-								나의 사랑은 지고 있다.
-
-								분분한 낙화.
-								결별이 이룩하는 축복에 싸여
-								지금은 가야 할 때
-							</p>
+	
+						<div class="alarm-section">
+							<div style="width: 14%;">
+								이미지 자리
+							</div>
+							<div style="width: 31%;">
+								<h3>홍길동</h3>
+								<p>희망지역: 서울시 강남구 역삼동</p>
+								<p>키보드 / 기타 레슨</p>
+							</div>
+							<div style="width: 40%;">
+								<p class="textarea-maxSize">
+									가야 할 때가 언제인가를
+									분명히 알고 가는 이의
+									뒷모습은 얼마나 아름다운가.
+	
+									봄 한철
+									격정을 인내한
+									나의 사랑은 지고 있다.
+	
+									분분한 낙화.
+									결별이 이룩하는 축복에 싸여
+									지금은 가야 할 때
+								</p>
+							</div>
+							<div style="width: 15%; display: flex; flex-direction: column;">
+								<button class="schedule-btn" style="background-color: rgb(0, 199, 174)">요청 상세
+									보기</button>
+								<button class="schedule-btn" style="background-color: rgb(218, 76, 60)">거절 하기</button>
+							</div>
 						</div>
-						<div style="width: 15%; display: flex; flex-direction: column;">
-							<button class="schedule-btn" style="background-color: rgb(0, 199, 174)" id="btn-open-popup">요청 상세 보기</button>
-							<button class="schedule-btn" style="background-color: rgb(218, 76, 60)" onclick="refuse()">거절 하기</button>
-						</div>
-					</div>
-
-					<div class="alarm-section">
-						<div style="width: 14%;">
-							이미지 자리
-						</div>
-						<div style="width: 31%;">
-							<h3>홍길동</h3>
-							<p>희망지역: 서울시 강남구 역삼동</p>
-							<p>키보드 / 기타 레슨</p>
-						</div>
-						<div style="width: 40%;">
-							<p class="textarea-maxSize">
-								가야 할 때가 언제인가를
-								분명히 알고 가는 이의
-								뒷모습은 얼마나 아름다운가.
-
-								봄 한철
-								격정을 인내한
-								나의 사랑은 지고 있다.
-
-								분분한 낙화.
-								결별이 이룩하는 축복에 싸여
-								지금은 가야 할 때
-							</p>
-						</div>
-						<div style="width: 15%; display: flex; flex-direction: column;">
-							<button class="schedule-btn" style="background-color: rgb(0, 199, 174)">요청 상세
-								보기</button>
-							<button class="schedule-btn" style="background-color: rgb(218, 76, 60)">거절 하기</button>
-						</div>
-					</div>
-
-					<div class="alarm-section">
-						<div style="width: 14%;">
-							이미지 자리
-						</div>
-						<div style="width: 31%;">
-							<h3>홍길동</h3>
-							<p>희망지역: 서울시 강남구 역삼동</p>
-							<p>키보드 / 기타 레슨</p>
-						</div>
-						<div style="width: 40%;">
-							<p class="textarea-maxSize">
-								가야 할 때가 언제인가를
-								분명히 알고 가는 이의
-								뒷모습은 얼마나 아름다운가.
-
-								봄 한철
-								격정을 인내한
-								나의 사랑은 지고 있다.
-
-								분분한 낙화.
-								결별이 이룩하는 축복에 싸여
-								지금은 가야 할 때
-							</p>
-						</div>
-						<div style="width: 15%; display: flex; flex-direction: column;">
-							<button class="schedule-btn" style="background-color: rgb(0, 199, 174)">요청 상세
-								보기</button>
-							<button class="schedule-btn" style="background-color: rgb(218, 76, 60)">거절 하기</button>
+	
+						<div class="alarm-section">
+							<div style="width: 14%;">
+								이미지 자리
+							</div>
+							<div style="width: 31%;">
+								<h3>홍길동</h3>
+								<p>희망지역: 서울시 강남구 역삼동</p>
+								<p>키보드 / 기타 레슨</p>
+							</div>
+							<div style="width: 40%;">
+								<p class="textarea-maxSize">
+									가야 할 때가 언제인가를
+									분명히 알고 가는 이의
+									뒷모습은 얼마나 아름다운가.
+	
+									봄 한철
+									격정을 인내한
+									나의 사랑은 지고 있다.
+	
+									분분한 낙화.
+									결별이 이룩하는 축복에 싸여
+									지금은 가야 할 때
+								</p>
+							</div>
+							<div style="width: 15%; display: flex; flex-direction: column;">
+								<button class="schedule-btn" style="background-color: rgb(0, 199, 174)">요청 상세
+									보기</button>
+								<button class="schedule-btn" style="background-color: rgb(218, 76, 60)">거절 하기</button>
+							</div>
 						</div>
 					</div>
 
@@ -321,6 +359,8 @@
 						</div>
 						<div style="width: 15%; display: flex; flex-direction: column;">
 							<button class="schedule-btn" style="background-color: rgb(218, 76, 60)">상태 : 거절됨</button>
+							<button class="schedule-btn" style="background-color: gray;">항목 삭제</button>
+							<!-- 항목삭제 버튼 누르면 목록에서 사라진다 -->
 						</div>
 					</div>
 
