@@ -6,6 +6,62 @@
 <meta charset="UTF-8">
 <title>품앗이-마이페이지</title>
 	<link rel="stylesheet" href="././resources/css/myPgae.css">
+	<style>
+		.pageBox{
+			margin-bottom: 100px;
+		}
+
+		.profile-btn-area{
+			justify-content: center;
+    		display: flex;
+			align-self: center; 
+			width: 100%;
+		}
+		.user-info-table{
+			width: 80%;	
+			position: relative;
+			margin-bottom: 70px;
+		}
+		.user-info-table td{
+			padding-bottom: 0px;
+		}
+		.user-info-table input{
+			height: 22px;
+			border: 1px solid rgb(147, 147, 150);
+			border-radius: 5px;
+			height: 35px;
+		}
+		.ui-formOuter{
+			width: 100%;
+		}
+		.ui-submit-btn{
+			float: right;
+			position: absolute;
+			right: 70px;
+			bottom: 233px;
+			width: 460px;
+			background: none;
+			border: 1px solid rgb(147, 147, 150);
+			border-radius: 5px;
+			height: 28px;
+		}
+		.email-input{
+			height: 35px
+		}
+		.phone-input{
+			height: 35px
+		}
+		.info-input{
+			width: 100%;
+		}
+
+		.normal-input-box > button {
+			width: 80px;
+			height: 35px;
+			border: 1px solid rgb(147, 147, 150);
+			border-radius: 5px;
+		}
+	</style>
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
@@ -25,23 +81,25 @@
 			<h3 style="margin: 10px 0 0 20px;">나의 정보</h3>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="user-info">
-					<div style="margin-top: 0px">
-						<img style="width: 90px; height: 90px; margin: 15px; border-radius: 25px;" src="./resources/icon/profileTest.png">
-						<br><br>
-						<button class="btn" style="margin-left: 19px">프로필 변경</button>
+					<div style="margin-top: 55px; display: flex; flex-direction: column; align-self: flex-start;">
+						<img style="width: 100px; height: 100px; margin: 15px; border-radius: 25px;" src="./resources/icon/profileTest.png">
+
+						<form class="profile-btn-area" action="" >
+							<button type="submit" class="pr-btn">프로필 변경</button>
+						</form>
 					</div>
-					<div>
+					<div class="ui-formOuter">
 						<form action="">
 							<table class="user-info-table">
 								<th>닉네임</th>
 								<tr>
-									<td><input placeholder="user01"></td>
+									<td><input class="info-input" placeholder="user01"></td>
 								</tr>
 								<th>이메일</th>
 								<tr>
 									<td>
 										<div class = "normal-input-box">
-											<input placeholder="example@poomasi.com">
+											<input class="email-input" placeholder="example@poomasi.com">
 											<button class="btn">인증하기</button>
 										</div>
 									</td>
@@ -50,25 +108,26 @@
 								<tr>
 									<td>
 										<div class = "normal-input-box">
-											<input placeholder="01012345678">
+											<input class="phone-input" placeholder="01012345678">
 											<button class="btn">재인증</button>
 										</div>
 									</td>
 								</tr>
 								<th>직업</th>
 								<tr>
-									<td><input placeholder="example@poomasi.com"></td>
+									<td><input class="info-input" placeholder="example@poomasi.com"></td>
 								</tr>
 								<th>비즈니스 분야</th>
 								<tr>
-									<td><input placeholder="example@poomasi.com"></td>
+									<td><input class="info-input" placeholder="example@poomasi.com"></td>
 								</tr>
 								<th>관심사</th>
 								<tr>
-									<td><input placeholder="example@poomasi.com"></td>
+									<td><input class="info-input" placeholder="example@poomasi.com"></td>
 								</tr>
+								<button class="ui-submit-btn" type="submit" class="btn" style="float: right;">수정하기</button>
 							</table>
-							<button type="submit" class="btn" style="float: right;">수정하기</button>
+
 						</form>
 					</div>
 				</div>

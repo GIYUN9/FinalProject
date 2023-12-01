@@ -15,7 +15,7 @@
 	}
 	body{
 		background: url('././resources/image/main.png') no-repeat center center fixed; 
-  			background-size: cover;		
+        background-size: cover;		
 	}
     .mp-text{
         padding-top: 150px;

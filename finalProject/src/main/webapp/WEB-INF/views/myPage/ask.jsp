@@ -170,27 +170,29 @@
 			</div>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="user-info">
-					<div class="res-title">답변등록</div>
-					<div class="align-userinfo">
-						<div class="customer-req">
-							<h5>제목</h5>
-							<div class="cu-re-title">결제 관련 문의</div>
-							<h5>작성자</h5>
-							<div class="cu-email">asdasd@naver.com</div>
-							<h5>설명</h5>
-							<textarea class="cu-desc">결제가 안됩니다.</textarea>
-							<h5>첨부파일</h5>
-							<div class="cu-file">첨부된 파일 이름.jpg</div>
-						</div>
-						<div class="admin-res">
-							<div>
-								<div><h5>답변</h5></div>
-								<input class="ad-email" type="text">
+					<form action="">
+						<div class="res-title">답변등록</div>
+						<div class="align-userinfo">
+							<div class="customer-req">
+								<h5>제목</h5>
+								<div class="cu-re-title">결제 관련 문의</div>
+								<h5>작성자</h5>
+								<div class="cu-email">asdasd@naver.com</div>
+								<h5>설명</h5>
+								<textarea class="cu-desc">결제가 안됩니다.</textarea>
+								<h5>첨부파일</h5>
+								<div class="cu-file">첨부된 파일 이름.jpg</div>
 							</div>
-							<div><textarea class="ad-desc" name="" id="" cols="30" rows="10"></textarea></div>
-							<button class="submit-btn">제출</button>
+							<div class="admin-res">
+								<div>
+									<div><h5>답변</h5></div>
+									<input class="ad-email" type="text">
+								</div>
+								<div><textarea class="ad-desc" name="" id="" cols="30" rows="10"></textarea></div>
+								<button class="submit-btn" style="cursor: pointer;">제출</button>
+							</div>
 						</div>
-					</div>
+					</form>
 				</div>
 			</div>		
 		</div>
