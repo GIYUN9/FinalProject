@@ -180,7 +180,7 @@
 								<p>키보드 / 기타 레슨</p>
 							</div>
 							<div style="width: 40%;">
-								<p class="textarea-maxSize">
+								<p class="textarea-maxSize" style="padding-left: 5px;">
 									가야 할 때가 언제인가를
 									분명히 알고 가는 이의
 									뒷모습은 얼마나 아름다운가.
