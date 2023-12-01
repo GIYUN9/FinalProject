@@ -57,12 +57,14 @@
     }
 
     .complete-main-two{
-        line-height: 25px;
+        line-height: 28px;
         margin-bottom: 50px;
     }
 
     .complete-main-three{
         line-height: 25px;
+        position: absolute;
+        top: 50%;
     }
 
     .complete-main-four{
@@ -90,6 +92,9 @@
         width: 80px;
         height: 30px;
         border-radius: 8px;
+        cursor: pointer;
+        position: relative;
+        top: 65px;
     }
 
     .complete-btn-my{
@@ -99,6 +104,9 @@
         width: 80px;
         height: 30px;
         border-radius: 8px;
+        cursor: pointer;
+        position: relative;
+        top: 65px;
     }
 
     .complete-font4, .complete-font5 {
@@ -132,6 +140,7 @@
 
     <div class="community-big">
 
+    
         <div class="complete-finsh">
             <h2 class="big-font">주문 완료</h2><br>
             <img src="/finalProject/resources/image/logobg.png" alt="로고" class="logo-img">
@@ -172,14 +181,14 @@
             </div>
     
             <div class="complete-btn">
-                <button class="complete-btn-main">메인으로</button>
-                <button class="complete-btn-my">마이페이지</button>
+                <button type="button" class="complete-btn-main">메인으로</button>
+                <button type="" class="complete-btn-my">마이페이지</button>
             </div>
             
         </div>
     </div>
 
-    <img src="" alt="" class="complete-img">
+    <img src="" alt="광고" class="complete-img">
    
     <jsp:include page="../common/footer.jsp"></jsp:include>
 
