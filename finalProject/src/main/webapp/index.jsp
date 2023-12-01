@@ -6,10 +6,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+
 <body>	
+	<jsp:forward page="WEB-INF/views/myPage/proInfo.jsp"/>
 		
+<<<<<<< HEAD
   <jsp:forward page="WEB-INF/views/member/proEnroll4.jsp"/>
   
+=======
+>>>>>>> abf078e76f312312863e1129030c446532b099ed
 	<%--
 		김경보
 		<jsp:forward page="WEB-INF/views/member/login.jsp"/> 메인페이지 
@@ -43,7 +48,5 @@
 		<jsp:forward page="WEB-INF/views/member/proEnroll4.jsp"/>아마추어 회원가입4단계
 		<jsp:forward page="WEB-INF/views/member/proEnroll5.jsp"/>아마추어 회원가입5단계
 	--%> 
-
-
 </body>
 </html>

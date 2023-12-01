@@ -97,7 +97,7 @@
 <body>
    <header>
             <div class="hd-left-section">
-                <p class="hd-pr"><a href = #>도와줄게요</a></p>
+                <p class="hd-pr">도와줄게요</p>
                 <p>도와주세요</p>  
             </div>    
             <div class="hd-middle-section">
