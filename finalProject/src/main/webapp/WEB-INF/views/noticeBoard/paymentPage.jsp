@@ -9,14 +9,10 @@
 <title>결제 페이지</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <style>
 .wares-page {
@@ -26,7 +22,7 @@
 	position: absolute;
 	top: 27%;
 	left: 15%;
-	top: 22%;
+	top: 15%;
 	left: 17%;
 	border-radius: 10px;
 }
@@ -38,7 +34,7 @@
 	position: absolute;
 	top: 46%;
 	left: 15%;
-	top: 45%;
+	top: 35%;
 	left: 17%;
 	border-radius: 10px;
 }
@@ -51,7 +47,7 @@
 	position: absolute;
 	top: 27%;
 	left: 42%;
-	top: 20%;
+	top: 15%;
 	left: 41%;
 	border-radius: 10px;
 }
@@ -63,7 +59,7 @@
 	position: absolute;
 	top: 27%;
 	left: 69%;
-	top: 14%;
+	top: 15%;
 	left: 64%;
 	border-radius: 10px;
 }
@@ -87,7 +83,7 @@
 	position: absolute;
 	top: 65%;
 	left: 69%;
-	top: 54%;
+	top: 53%;
 	left: 64%;
 	border-radius: 10px;
 }
@@ -128,7 +124,7 @@
 .retouch-btn {
 	border-radius: 10px;
 	position: absolute;
-	top: 55px;
+	top: 77px;
 	right: 20px;
 	width: 66px;
 	height: 35px;
@@ -160,6 +156,10 @@
 	width: 91%;
 	height: 15%;
 	max-height: 50%;
+
+	&::-webkit-scrollbar {
+				display: none;
+			}
 }
 
 .pay {
@@ -220,7 +220,8 @@
 }
 
 .pay-radio {
-	margin-right: 5px;
+	margin-right: 8px;
+	margin-bottom: 15px;
 }
 
 .cookie-img {
@@ -291,8 +292,18 @@
 			<span>배송 메모</span>
 			<br>
 		</div>
-		<!-- 직접입력하기 추가 -->
-		<textarea placeholder="내용을 입력해주세요" class="delivery-input"></textarea>
+        
+		<div class="container mt-3">
+            
+            <form>
+              <select class="custom-select custom-select-sm mb-3">
+                <option value="volvo">문 앞에 놔두세요</option>
+                <option value="fiat">오기 전 연락주세요</option>
+                <option value="audi">직접 입력하기</option>
+              </select>
+            </form>
+          </div>
+		  <textarea placeholder="내용을 입력해주세요" class="delivery-input" style="resize: none;"></textarea>
 	</div>
 	<div class="pay">
 		<div class="pay-pages">
@@ -312,26 +323,35 @@
 					<span class="total-price">16,500원</span>
 				</div>
 			</div>
-			<div class="pay-page">
-				<span class="title">결제 방법</span>
-				<div class="pay">
-					<input type="radio" class="pay-radio">카카오페이 
-					<input type="radio" class="pay-radio">신용카드
-					<input type="radio" class="pay-radio">가상계좌
-					<input type="radio" class="pay-radio">무통장 입금
-				</div>
-			</div>
-
-			<div class="check-page">
-				<span class="check-font">
-					<input type="checkbox" class="checkbox">구매 조건 확인 및 결제진행에 동의
-				</span>
-				<br>
-				<button type="submit" class="cash-btn">결제하기</button>
-			</div>
+				<form action="completePage.jsp" method="get">
+					<div class="pay-page">
+						<span class="title">결제 방법</span>
+						<div class="pay">
+							<label><input type="radio" name="pay-radio" checked required>카카오페이 </label>
+							<label><input type="radio" name="pay-radio">신용카드</label>
+							<label><input type="radio" name="pay-radio">가상계좌</label>
+							<label><input type="radio" name="pay-radio">무통장 입금</label>
+						</div>
+					</div>
+		
+					<div class="check-page">
+						<span class="check-font">
+							<input type="checkbox" class="checkbox">구매 조건 확인 및 결제진행에 동의
+						</span>
+						<br>
+						<button onclick="cashPay()" class="cash-btn">결제하기</button>
+					</div>
+				</form>
+			
 		</div>
 	</div>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 
+	<script>
+
+		function cashPay() {
+			window.location.href = "completePage.jsp";
+		}
+	</script>
 </body>
 </html>

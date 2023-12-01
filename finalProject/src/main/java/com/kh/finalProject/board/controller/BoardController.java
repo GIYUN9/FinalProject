@@ -1,0 +1,47 @@
+package com.kh.finalProject.board.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.kh.finalProject.board.model.service.BoardService;
+
+public class BoardController {
+	
+	@Autowired
+	private BoardService boardService;
+	
+	@RequestMapping(value = "help.bo")
+	public String helpBoard() {
+		//도와줄게요 화면
+		return "board/helpBoardList";
+	}
+	
+	@RequestMapping(value="request.bo")
+	public String requestBoard() {
+		// 도와주세요 화면
+		return "board/requestBoardList";
+	}
+	
+	@RequestMapping(value="detail.bo")
+	public String detailBoard() {
+		// 클릭시 상세페이지 이동 (하나밖에 없음)
+		return "board/boardDetailView";
+	}
+	
+//	스크립트 기능 후 가진 정보 보내주는 기능 
+//	나중에 작성!
+//	@RequestMapping(value="")
+//	public String reportModal() {
+//		
+//		
+//		return "board/reportModal";
+//	}
+//	
+//	@RequestMapping(value="")
+//	public String reportModal() {
+//		
+//		return "board/reportModal";
+//	}
+	
+
+}
