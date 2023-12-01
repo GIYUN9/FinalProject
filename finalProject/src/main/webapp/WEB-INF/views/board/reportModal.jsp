@@ -495,8 +495,10 @@
         color: white;
         font-weight: bold;
         border: none;
-        width: 300px;
+        width: 500px;
         height: 50px;
+        border-radius: 10px;
+        font-size: 15px;
 
     }
     #content-btn:hover{
@@ -524,21 +526,19 @@
         font-weight: bold;
     }
 
-    .modal.active{
-        display: block;
-    }
+   /* 신고하기 style */
 
-    .modal{
-        background-color: #000;
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 100%;
-        display: none;
-        
-    }
+   .report-container{
+    padding-top: 50px;
+    background-color: bisque;
+    width: 700px;
+    border: 0;
     
+   }
+
+   .text{
+    height: 20px;
+   }
 
 </style>
 
@@ -587,6 +587,18 @@
             <div class = "nav-item"><a href="#">&#62;</a></div>
         </div>
    </div>
+   <form method = "" action = "" class="report-container">
+        <label for="title">신고 제목</label>
+        <textarea class="text" readonly>여기서 뭐하는 건지 너는혹시 아니</textarea>
+        <br>
+        <label for="title">신고 글쓴이</label>
+        <textarea class="text" readonly>나는 이제 내가 뭘 하는지도 모르겠어</textarea>
+        <br>
+        <label for="title">신고 내용</label>
+        <textarea class="text" id="" cols="30" rows="10" readonly>너무 슬프구나</textarea>
+
+   </form>
+   
    <div class = "main">
     	<div class = "photo">
             <div class = "main-photo">
@@ -597,11 +609,16 @@
                     <button id ="next-slide" class="slide-button material-symbols-rounded">&#62;</button>
                     <div class = "image-list">
                         <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
+                        <img class ="image-item" src="././resources/image/보노보.jpg" alt="일러스트">
                         <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
+                        <img class ="image-item" src="././resources/image/보노보.jpg" alt="일러스트">
                         <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
+                        <img class ="image-item" src="././resources/image/보노보.jpg" alt="일러스트">
                         <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
+                        <img class ="image-item" src="././resources/image/보노보.jpg" alt="일러스트">
                         <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
-                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
+                        <img class ="image-item" src="././resources/image/보노보.jpg" alt="일러스트">
+                        
                     </div>
                     <button id ="prev-slide" class="slide-button material-symbols-rounded">&#60;</button>
                 </div>
