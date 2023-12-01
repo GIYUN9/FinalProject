@@ -85,6 +85,41 @@
             width: 420px;
             height: 40px;
         }
+        .pe-pg-bar{
+            background-color: rgb(241, 240, 240);
+            width: 400px;
+            height: 5px;
+            margin-top: 5px;
+            border-radius: 8px;
+            position: relative;
+            margin-bottom: 30px;
+		}
+		.pe-pg-bar-per{
+			position: absolute;
+			color: rgb(87, 212, 197);
+			font-size: 12px;
+			right: -25px;
+			top: -7px;
+		}
+		.pe-pg-bar-fill{
+			background: rgb(87, 212, 197);
+			width: 132px;
+			height: 5px;
+			position: absolute;
+			right: 293px;
+			top: 7px;
+			border-radius: 8px;
+		}
+        .modal-align{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .pe-info{
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 
 	<title>모달 창 예제</title>
@@ -112,21 +147,28 @@
             <div class="modal" id="myModal" >
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-body" >
-                            <div>
+
+                        <div class="modal-align">
+
+                            <div class="pe-pg-bar">
+                                <div class="pe-pg-bar-per">100%
+                                    <div class="pe-pg-bar-fill"></div>
+                                </div>
+                            </div>
+
+                            <div class="pe-info">
                                 <h5 style="text-align: center; font-weight: bold;">마지막으로 필수 정보를 입력해주세요.</h5>
                                     <div>성별</div>
                                     <div style="display: flex; justify-content: space-around;">
                                         <button type="button" class="btn-man">남자</button>
-                                        <span style="display: inline-block; width: 20px;"></span> <!-- 여백 조절 --> 
                                         <button type="button" class="btn-woman">여자</button>
                                     </div>
 
                                     <div>휴대전화 번호 인증</div>
-                                    <p><input class="phone-certification" type="text" placeholder="010-2222-2222 형식으로 입력하시오"></p>
+                                    <input class="phone-certification" type="text" placeholder="010-2222-2222 형식으로 입력하시오">
 
                                     <div>인증번호</div>
-                                    <p><input class="phone-certification" type="text" placeholder="인증번호를 입력하시오"></p>
+                                    <input class="phone-certification" type="text" placeholder="인증번호를 입력하시오">
 
                                     <form method="get" action="form-action.html">
                                         <div>
@@ -137,12 +179,15 @@
                                     <label><input type="checkbox" name="category" value="#"> (필수) 14세 이상입니다</label>
                                     </form>
                             </div>
+
                             <div style="display: flex; justify-content: flex-end; margin-top: 10px;">
                                 <button type="submit" class="btn-before">이전</button>
                                 <span style="margin-right: 15px;"></span> 
                                 <button type="submit" class="btn-next">다음</button>
                             </div>
+
                         </div>
+
                     </div>
                 </div>
             </div>

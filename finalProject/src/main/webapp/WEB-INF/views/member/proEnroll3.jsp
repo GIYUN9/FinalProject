@@ -35,17 +35,23 @@
 
 		.btn-before{
 			color: black;
-            background-color:rgb(158 171 169);
+            background-color:rgba(224, 224, 224, 0.5);
+			font-weight: bold;
             border: none;
-			width: 80px;
+			width: 100px;
+			height: 40px;
+			border-radius: 4px;
 			padding: 5px;
 		}
 
 		.btn-next{
 			color: #fff;
+			font-weight: bold;
             background-color: rgb(0, 199, 174);
             border: none;
-			width: 80px;
+			width: 100px;
+			height: 40px;
+			border-radius: 4px;
 			padding: 5px;
 		}
 
@@ -81,7 +87,31 @@
 			padding: 10px;
 			border:1px solid rgba(0,0,0,.125);
 		}
-
+		.pe-pg-bar{
+        background-color: rgb(241, 240, 240);
+        width: 400px;
+        height: 5px;
+        margin-top: 5px;
+        border-radius: 8px;
+        position: relative;
+		margin-bottom: 30px;
+		}
+		.pe-pg-bar-per{
+			position: absolute;
+			color: rgb(87, 212, 197);
+			font-size: 12px;
+			right: -25px;
+			top: -7px;
+		}
+		.pe-pg-bar-fill{
+			background: rgb(87, 212, 197);
+			width: 132px;
+			height: 5px;
+			position: absolute;
+			right: 293px;
+			top: 7px;
+			border-radius: 8px;
+		}
     </style>
     
     
@@ -111,17 +141,14 @@
 	    <div class="modal" id="myModal" >
 	        <div class="modal-dialog">
 	            <div class="modal-content">
-	
-	                <!-- 모달 헤더 -->
-	                <div class="modal-header">
-						<div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-							<div class="progress-bar" style="width: 75%">75%</div>
-						</div>
-	                </div>
-	
 	                <!-- 모달 본문 -->
-	                <div class="modal-body" >
 
+	                <div class="modal-body" >
+						<div class="pe-pg-bar">
+							<div class="pe-pg-bar-per">75%
+								<div class="pe-pg-bar-fill"></div>
+							</div>
+						</div>
 						<div id="selectBox" class="list-group">
 							<div>
 								<h5 style="text-align: center; font-weight: bold;">구체적으로 어떤 서비스를 제공할 수 있나요?</h5>
