@@ -8,7 +8,7 @@
 </head>
 <body>	
 		
-  <jsp:forward page="WEB-INF/views/member/mainEnroll.jsp"/>
+  <jsp:forward page="WEB-INF/views/member/proEnroll4.jsp"/>
   
 	<%--
 		김경보
