@@ -31,7 +31,14 @@
             margin: 20px 60px;
         }
 
-       .login-btn {
+       .login-email-btn {
+            color: white;
+            background-color: rgb(0, 199, 174);
+            border: none;
+            width: 100%;
+        }
+
+       .login-kakao-btn {
             color: black;
             background-color: yellow;
             border: none;
@@ -116,12 +123,35 @@
                                         <p></p>
                                     </td>
                                 </tr>
+
                                 <tr>
-                                    <td colspan="2" class= "d-grid gap-2 col-6 mx-auto" >
-                                        <button  type="submit" class="login-btn" style="width: 100%;" onclick="kakaoLogin()" >카카오 로그인</button>
+                                    <td colspan="2" class= "d-grid gap-2 col-6 mx-auto" style="padding: 0;">
+                                        <button  type="submit" class="login-email-btn" style="width: 100%;"> 이메일 로그인</button>
                                     </td>
                                 </tr>
-                            </table>                 
+
+                                <tr>
+                                    <td colspan="2" >
+                                        <p></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class= "d-grid gap-2 col-6 mx-auto" style="padding: 0;">
+                                        <button  type="submit" class="login-kakao-btn" style="width: 100%;" onclick="kakaoLogin()" >카카오 로그인</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" >
+                                        <p></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" >
+                                        <p></p>
+                                    </td>
+                                </tr>
+                            </table>     
+                            <br><br><br>            
                         </form>
                     </div>
                 </div>
