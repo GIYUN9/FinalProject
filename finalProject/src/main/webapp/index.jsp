@@ -6,17 +6,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-
 <body>	
-<<<<<<< HEAD
-	<jsp:forward page="WEB-INF/views/member/login.jsp"/>
-=======
-	<jsp:forward page="WEB-INF/views/board/reportModal.jsp"/>
->>>>>>> 35fc6c2f47a0f9dd389e15d85ac7ef48a15c41de
 		
+  
+  
 	<%--
 		김경보
-		<jsp:forward page="WEB-INF/views/member/login.jsp"/> 메인페이지 
+		<jsp:forward page="WEB-INF/views/common/main.jsp"/> 메인페이지 
 		<jsp:forward page="WEB-INF/views/chatting/chat.jsp"/> 채팅 페이지
 		<jsp:forward page="WEB-INF/views/myPage/qna.jsp"/>
 		<jsp:forward page="WEB-INF/views/myPage/qna1.jsp"/>
@@ -45,9 +41,7 @@
 		<jsp:forward page="WEB-INF/views/member/proEnroll2.jsp"/>아마추어 회원가입2단계
 		<jsp:forward page="WEB-INF/views/member/proEnroll3.jsp"/>아마추어 회원가입3단계
 		<jsp:forward page="WEB-INF/views/member/proEnroll4.jsp"/>아마추어 회원가입4단계
-		<jsp:forward page="WEB-INF/views/member/proEnroll5.jsp"/>아마추어 회원가입5단계		
 		<jsp:forward page="WEB-INF/views/member/proEnroll5.jsp"/>아마추어 회원가입5단계
-		<jsp:forward page="WEB-INF/views/member/proEnroll5.jsp"/>아마추어 회원가입5단계	
 		이지혜
 		<jsp:forward page="WEB-INF/views/noticeBoard/paymentPage.jsp"/> 결제
 		<jsp:forward page="WEB-INF/views/noticeBoard/completePage.jsp"/> 결제완료
@@ -58,5 +52,7 @@
 		<jsp:forward page="WEB-INF/views/noticeBoard/togetherBorder.jsp"/> 커뮤니티 게시판 함께해요
 		<jsp:forward page="WEB-INF/views/noticeBoard/announcementBorder.jsp"/> 커뮤니티 게시판 공지사항
 	--%> 
+
+
 </body>
 </html>

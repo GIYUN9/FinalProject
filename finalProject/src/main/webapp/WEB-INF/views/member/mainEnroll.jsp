@@ -29,8 +29,11 @@
 
        .btn {
             color: #fff;
+			width: 300px;
+			height: 40px;
             background-color: rgb(0, 199, 174);
             border-color: #6c757d;
+			font-weight: bold;
         }
     </style>
 
@@ -60,19 +63,12 @@
 	    <div class="modal" id="myModal" >
 	        <div class="modal-dialog">
 	            <div class="modal-content">
-	
-	                <!-- 모달 헤더 -->
-	                <div class="modal-header">
-	                    <h4 class="modal-title" style="text-align: center; font-weight: bold; margin: 0 auto;">
-							품앗이에서 어떤 서비스를 <br>
-							이용하고 싶으신가요?</h4>
-	                </div>
-	
-	                <!-- 모달 본문 -->
 	                <div class="modal-body" style="text-align: center;">
-	                    
-	                    <p>원하는 회원가입 유형을 선택하세요.</p>
-	                    <p>의뢰인으로 가입 후에도 아마추어 등록이 가능합니다.</p>
+						<h3 class="modal-title" style="text-align: center; font-weight: bold; margin-bottom: 30px;">
+							품앗이에서 어떤 서비스를 <br>
+							이용하고 싶으신가요?</h3>
+	                    <p>원하는 회원가입 유형을 선택하세요. <br>
+	                    의뢰인으로 가입 후에도 아마추어 등록이 가능합니다.</p>
 	
 	                    <br>
 	

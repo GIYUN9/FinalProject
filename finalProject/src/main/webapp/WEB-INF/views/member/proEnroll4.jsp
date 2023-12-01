@@ -44,24 +44,26 @@
             color: #fff;
             background-color: rgb(0, 199, 174);
             border: none;
-			width: 80px;
+			width: 200px;
+            height: 40px;
 			padding: 5px;
-            width: 43%;
+            border-radius: 4px;
         }
         
         .btn-woman{
-            color: #fff;
-            background-color: rgb(0, 199, 174);
+            color: rgb(127, 127, 127);
+            background-color: rgb(224, 224, 224);
             border: none;
-			width: 80px;
+			width: 200px;
+            height: 40px;
 			padding: 5px;
-            width: 43%;
+            border-radius: 4px;
         }
 
         .btn-before{
-			color: black;
-            background-color:rgb(158 171 169);
-            border: none;
+			color: rgb(0, 199, 174);
+            background-color: white;
+            border: 1px solid rgb(0, 199, 174);
 			width: 80px;
 			padding: 5px;
 		}
@@ -77,7 +79,47 @@
         .progress{
 			min-width: 100%
 		}
-
+        .phone-certification{
+            background: rgba(224, 224, 224, 0.5);
+            border: none;
+            width: 420px;
+            height: 40px;
+        }
+        .pe-pg-bar{
+            background-color: rgb(241, 240, 240);
+            width: 400px;
+            height: 5px;
+            margin-top: 5px;
+            border-radius: 8px;
+            position: relative;
+            margin-bottom: 30px;
+		}
+		.pe-pg-bar-per{
+			position: absolute;
+			color: rgb(87, 212, 197);
+			font-size: 12px;
+			right: -25px;
+			top: -7px;
+		}
+		.pe-pg-bar-fill{
+			background: rgb(87, 212, 197);
+			width: 132px;
+			height: 5px;
+			position: absolute;
+			right: 293px;
+			top: 7px;
+			border-radius: 8px;
+		}
+        .modal-align{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .pe-info{
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 
 	<title>모달 창 예제</title>
@@ -106,81 +148,46 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
 
-                        <!-- 모달 헤더 -->
-                        <div class="modal-header" style="text-align: center;">
-                            <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                <div class="progress-bar" style="width: 100%">100%</div>
-                            </div>
-                        </div>
+                        <div class="modal-align">
 
-                        <!-- 모달 본문 -->
-                        <div class="modal-body" >
-                            <div>
+                            <div class="pe-pg-bar">
+                                <div class="pe-pg-bar-per">100%
+                                    <div class="pe-pg-bar-fill"></div>
+                                </div>
+                            </div>
+
+                            <div class="pe-info">
                                 <h5 style="text-align: center; font-weight: bold;">마지막으로 필수 정보를 입력해주세요.</h5>
+                                    <div>성별</div>
+                                    <div style="display: flex; justify-content: space-around;">
+                                        <button type="button" class="btn-man">남자</button>
+                                        <button type="button" class="btn-woman">여자</button>
+                                    </div>
 
-								<br>
+                                    <div>휴대전화 번호 인증</div>
+                                    <input class="phone-certification" type="text" placeholder="010-2222-2222 형식으로 입력하시오">
 
-                                <table>
-                                    <tr >
-                                        <td>
-                                            <p style="font-weight: bold;">성별</p>
-                                            <div style="display: flex; justify-content: space-around;">
-                                                <button type="button" class="btn-man">남자</button>
-                                                <span style="display: inline-block; width: 20px;"></span> <!-- 여백 조절 --> 
-                                                <button type="button" class="btn-woman">여자</button>
-                                            </div>
-                                        </td>
-                                    </tr>       
-                                    <tr>
-                                        <td>
-                                            <p></p>
-                                        </td>
-                                    </tr>            
-                                    <tr>
-                                        <td>
-                                            <p style="font-weight: bold;">휴대전화 번호 인증</p>
-                                            <p><input type="text" style="width: 100%;" placeholder="010-2222-2222 형식으로 입력하시오"></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p style="font-weight: bold;">인증번호</p>
-                                            <p><input type="text" style="width: 100%;" placeholder="인증번호를 입력하시오"></p>
-                                        </td>
-                                    </tr>                          
-                                    <tr>
-                                        <td>
-                                            <p></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <form method="get" action="form-action.html">
-                                                <p style="font-weight: bold;">
-                                                    전체 동의
-                                                </p>
-                                            <label><input type="checkbox" name="category" value="agree"> (필수) 이용약관 동의</label>
-                                            <label><input type="checkbox" name="category" value="privateAgree"> (필수) 개인정보 수집 및 이용 동의</label>
-                                            <label><input type="checkbox" name="category" value="#"> (필수) 14세 이상입니다</label>
-                                            </form>
-                                        </td>
-                                    </tr>                          
-                                </table>                          
+                                    <div>인증번호</div>
+                                    <input class="phone-certification" type="text" placeholder="인증번호를 입력하시오">
+
+                                    <form method="get" action="form-action.html">
+                                        <div>
+                                            전체 동의
+                                        </div>
+                                    <label><input type="checkbox" name="category" value="agree"> (필수) 이용약관 동의</label>
+                                    <label><input type="checkbox" name="category" value="privateAgree"> (필수) 개인정보 수집 및 이용 동의</label>
+                                    <label><input type="checkbox" name="category" value="#"> (필수) 14세 이상입니다</label>
+                                    </form>
                             </div>
-
-                            <br>
 
                             <div style="display: flex; justify-content: flex-end; margin-top: 10px;">
                                 <button type="submit" class="btn-before">이전</button>
                                 <span style="margin-right: 15px;"></span> 
                                 <button type="submit" class="btn-next">다음</button>
                             </div>
+
                         </div>
+
                     </div>
                 </div>
             </div>
