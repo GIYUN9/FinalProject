@@ -46,7 +46,7 @@
             border: none;
 			width: 80px;
 			padding: 5px;
-            width: 40%;
+            width: 43%;
         }
         
         .btn-woman{
@@ -55,7 +55,7 @@
             border: none;
 			width: 80px;
 			padding: 5px;
-            width: 40%;
+            width: 43%;
         }
 
         .btn-before{
@@ -121,15 +121,15 @@
 								<br>
 
                                 <table>
-                                    <tr>
-                                            <td>
-                                                <p style="font-weight: bold;">성별</p>
-                                                <div>
-                                                    <button type="button" class="btn-man">남자</button>
-                                                    <span style="display: inline-block; width: 20px;"></span> <!-- 여백 조절 --> 
-                                                    <button type="button" class="btn-woman">여자</button>
-                                                </div>
-                                            </td>
+                                    <tr >
+                                        <td>
+                                            <p style="font-weight: bold;">성별</p>
+                                            <div style="display: flex; justify-content: space-around;">
+                                                <button type="button" class="btn-man">남자</button>
+                                                <span style="display: inline-block; width: 20px;"></span> <!-- 여백 조절 --> 
+                                                <button type="button" class="btn-woman">여자</button>
+                                            </div>
+                                        </td>
                                     </tr>       
                                     <tr>
                                         <td>

@@ -21,6 +21,7 @@
         margin-top: 70px;
     }
 
+   
     .nav-center-items{
         display: flex;
         margin: auto;
@@ -34,6 +35,9 @@
         text-align: center;
         font-weight: bold;
         color: white;
+    }
+    .content-item:hover{
+        background-color: rgba(255, 255, 255, 0.22);
     }
     
 

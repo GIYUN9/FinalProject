@@ -62,10 +62,26 @@
             justify-content: space-around; /* 가로 정렬을 위해 추가 */
         }
 
+        .categoryArea{
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 수직 정렬을 위해 추가 */
+            text-align: center; /* 텍스트 가운데 정렬을 위해 추가 */
+        }
+
+        .categoryArea a {
+            display: block; /* a 태그를 블록 수준 요소로 만들어 전체 영역을 클릭 가능하게 함 */
+            width: 100%; /* 너비를 100%로 설정하여 수직으로 정렬된 요소를 클릭 가능하게 함 */
+            text-decoration: none; /* 링크에 기본적으로 적용되는 밑줄 제거 */
+            color: inherit; /* 링크 색상을 부모로부터 상속 */
+        }
+
         .category-img {
             height: 100px;
             width: 100px;
         }
+
+
 
     </style>
 
@@ -84,92 +100,100 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	
 	
-<div style="margin-top: 55px;">
-	<!-- 버튼 클릭 시 모달 열기 -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-      아마추어로 가입  	
-    </button>
+    <div style="margin-top: 55px;">
+        <!-- 버튼 클릭 시 모달 열기 -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        아마추어로 가입  	
+        </button>
 
-    <!-- 첫번째 모달 -->
-    <div class="modal" id="myModal" >
-        <div class="modal-dialog">
-            <div class="modal-content">
+        <!-- 첫번째 모달 -->
+            <div class="modal" id="myModal" >
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- 모달 헤더 -->
+                        <div class="modal-header" style="text-align: center;">
+                            <h4 class="modal-title" style="text-align: center; font-weight: bold;">활동 분야를 선택하세요</h4>
+                        </div>
 
-                <!-- 모달 헤더 -->
-                <div class="modal-header" style="text-align: center;">
-                    <h4 class="modal-title" style="text-align: center; font-weight: bold;">활동 분야를 선택하세요</h4>
-                </div>
+                        <!-- 모달 본문 -->
+                        <div class="modal-body" >
+                            <table>
+                                <tr class="horizontal-align-row">
+                                    <td class="horizontal-align-container">
+                                        <a href="" class="categoryArea">
+                                            <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
+                                            레슨
+                                        </a>
+                                    </td>
+                                    <td class="horizontal-align-container">
+                                        <a href="" class="categoryArea">
+                                            <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
+                                            홈/리빙
+                                        </a>
+                                    </td>
+                                    <td class="horizontal-align-container">
+                                        <a href="" class="categoryArea">
+                                            <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
+                                            이벤트
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr class="horizontal-align-row">
+                                    <td class="horizontal-align-container">
+                                        <a href="" class="categoryArea">
+                                            <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
+                                            비즈니스
+                                        </a>
+                                    </td>
+                                    <td class="horizontal-align-container">
+                                        <a href="" class="categoryArea">
+                                            <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
+                                            디자인/개발
+                                        </a>
+                                    </td>
+                                    <td class="horizontal-align-container">
+                                        <a href="" class="categoryArea">
+                                            <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
+                                            건강/미용
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr class="horizontal-align-row">
+                                    <td class="horizontal-align-container">
+                                        <a href="" class="categoryArea">
+                                            <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
+                                            알바
+                                        </a>
+                                    </td>
+                                    <td class="horizontal-align-container">
+                                        <a href="" class="categoryArea">
+                                            <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
+                                            기타
+                                        </a>
+                                    </td>
+                                    <td class="horizontal-align-container">
+                                        <a href="" class="categoryArea">
+                                            <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
+                                            기타
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
 
-                <!-- 모달 본문 -->
-                <div class="modal-body" >
-                    
-                        <table>
-                            <tr class="horizontal-align-row">
-                                <td class="horizontal-align-container">
-                                    <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
-                                    <a href="">레슨</a>
-                                </td>
-                                <td class="horizontal-align-container">
-                                    <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
-                                    <a href="">홈/리빙</a>
-                                </td>
-                                <td class="horizontal-align-container">
-                                    <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
-                                    <a href="">이벤트</a>
-                                </td>
-                            </tr>
-                            <tr class="horizontal-align-row">
-                                <td class="horizontal-align-container">
-                                    <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
-                                    <a href="">비즈니스</a>
-                                </td>
-                                <td class="horizontal-align-container">
-                                    <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
-                                    <a href="">디자인/개발</a>
-                                </td>
-                                <td class="horizontal-align-container">
-                                    <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
-                                    <a href="">건강/미용</a>
-                                </td>
-                            </tr>
-                            <tr class="horizontal-align-row">
-                                <td class="horizontal-align-container">
-                                    <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
-                                    <a href="">알바</a>
-                                </td>
-                                <td class="horizontal-align-container">
-                                    <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
-                                    <a href="">기타</a>
-                                </td>
-                                <td class="horizontal-align-container">
-                                    <img src="/finalProject/resources/icon/학사모.png" alt="학사모 사진" class="category-img">
-                                    <a href="">기타</a>
-                                </td>
-                               
-                            </tr>
-
-
-
-                        </table>
-                    
-
-
-
+                        
+                        
                     </div>
-
-                    
-                    
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
 
 
 
-</body>
+    </body>
 
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 
