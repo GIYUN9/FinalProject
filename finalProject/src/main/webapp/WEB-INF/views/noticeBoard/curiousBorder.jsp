@@ -23,6 +23,10 @@
         margin: 15px;
     }
 
+    .list-btn:hover {
+        color: black
+    }
+
     .community-list {
         list-style: none;
         font-size: 25px;
@@ -36,9 +40,9 @@
         width: 700px;
         height: 62%;
         position: absolute;
-        left: 50%;
+        left: 47%;
         margin-left: -322px;
-        top: 50%;
+        top: 48%;
         margin-top: -260px;
         border-radius: 10px;
     }
@@ -46,7 +50,7 @@
     .community-ul{
         width: 170px;
         height: 500px;
-        margin: 220px 0px 0px 315px;
+        margin: 199px 0px 0px 306px;
         color: white;
     }
 
