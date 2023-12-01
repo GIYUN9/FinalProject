@@ -101,7 +101,7 @@
                         <tr>
                             <td>
                                 <p>비밀번호*</p>
-                                <p><input type="text" style="width: 100%;" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요"></p>
+                                <p><input type="password" style="width: 100%;" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요"></p>
                             </td>
                         </tr>
                         <tr>

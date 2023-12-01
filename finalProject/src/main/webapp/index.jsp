@@ -8,11 +8,11 @@
 </head>
 <body>	
 		
-  
+  <jsp:forward page="WEB-INF/views/member/mainEnroll.jsp"/>
   
 	<%--
 		김경보
-		<jsp:forward page="WEB-INF/views/common/main.jsp"/> 메인페이지 
+		<jsp:forward page="WEB-INF/views/member/login.jsp"/> 메인페이지 
 		<jsp:forward page="WEB-INF/views/chatting/chat.jsp"/> 채팅 페이지
 		<jsp:forward page="WEB-INF/views/myPage/qna.jsp"/>
 		<jsp:forward page="WEB-INF/views/myPage/qna1.jsp"/>
