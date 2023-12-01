@@ -72,16 +72,35 @@
     .hu-content{
         width: 300px;
         height: 157px;
+        padding: 10px;
+        padding-bottom: 130px;
         border: 1px solid rgba(96, 96, 96, 0.5);
         border-radius: 8px;
         margin-bottom: 15px;
+        resize: none;
+        overflow: hidden;
     }
     .hu-upfile{
         width: 300px;
         height: 32px;
         border: 1px solid rgba(96, 96, 96, 0.5);
         border-radius: 8px;
-        margin-bottom: 15px;
+        margin-bottom: 0px;
+        display: flex;
+        font-size: 14px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    input[type=file]::file-selector-button {
+        width: 150px;
+        height: 30px;
+        background: #fff;
+        border: 0px solid rgb(77,77,77);
+        margin-left: 70px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 12px;
     }
     .hu-price{
         width: 300px;
@@ -89,6 +108,8 @@
         border: 1px solid rgba(96, 96, 96, 0.5);
         border-radius: 8px;
         margin-bottom: 15px;
+        text-align: end;
+        padding-right: 26px;    
     }
     .hu-input-area{
         display: flex;
@@ -101,13 +122,13 @@
     }
     .hu-text{
         position: relative;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    left: -202px;
-    font-weight: bold;
-    display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        left: -202px;
+        font-weight: bold;
+        display: flex;
     }
     .hu-top-section{
         margin-bottom: 30px;
@@ -139,14 +160,38 @@
         left: -86px;
         font-size: 13px;
         font-weight: bolder;
-        top: 208px;
+        top: 214px;
     }
     .ee{
         position: absolute;
         left: -86px;
-        top: 260px;
+        top: 280px;
         font-size: 13px;
         font-weight: bolder;
+    }
+    .clip-img{
+        width: 30px;
+        position: absolute;
+        left: 96px;
+        height: 30px;
+        bottom: 76px;
+    }
+    .upfile-text{
+        width: 100%;
+    }
+    .hu-uploaded{
+        margin-bottom: 18px;
+        font-size: 12px;
+    }
+    .price-measure2{
+        position: absolute;
+        right: 12px;
+        font-size: 13px;
+        top: 284px;
+        font-weight: bold;
+    }
+    .hu-filename{
+        border: none;
     }
 </style>
 
@@ -163,56 +208,62 @@
                     <div class="hu-align">
                         <div class="hu-input-area">
                             <div class="aa">
-                                <input class="hu-title" type="text">
-                                    <div class="bb">
-                                        제목
-                                    </div>
-                                </input>
+                                <div class="bb">
+                                    제목
+                                </div>
+                                <input class="hu-title" type="text"/>
                             </div>  
                             <div class="aa">
-                                <input  class="hu-content" type="text">
-                                    <div class="cc">
-                                        내용
-                                    </div>
-                                </input>
+                                <div class="cc">
+                                    내용
+                                </div>
+                                <textarea class="hu-content" type="text"></textarea>
                             </div>  
                             <div class="aa">
-                                <input class="hu-upfile" type="text">
-                                    <div class="dd">
-                                        파일첨부
-                                    </div>
-                                </input>
+                                <label class="hu-upfile" className="input-file-button" for="hu-upfile">
+                                    파일첨부
+                                    <img class="clip-img" src="././resources/icon/paperclip.png" for="hu-upfile">
+                                </label>
+                                <div class="hu-uploaded">
+                                    <input class="hu-filename" type="text" id="fileName"  name="fileName">
+                                </div>
+                                <div class="dd">
+                                    파일첨부
+                                </div>
+                                <input id="hu-upfile" class="hu-upfile" type="file" style="display: none;"  onchange="javascript:document.getElementById('fileName').value = this.value">
                             </div>  
                             <div class="aa">
-                                <input class="hu-price" type="text">
+                                <input class="hu-price" type="text" id="price" placeholder="최소 1,000">
+                                <p class="price-measure2">원</p>
                                     <div class="ee">
                                         희망가격
                                     </div>
                                 </input>
                             </div>  
-                            <!-- <div class="hu-title">
-                                <p class="hu-text">제목</p>
-                            </div>
-                            <div class="hu-content">
-                                <p class="hu-text">내용</p>
-                            </div>
-                            <div class="hu-upfile">
-                                <p class="hu-text">파일첨부</p>
-                            </div>
-                            <div class="hu-price">
-                                <p class="hu-text">희망 가격</p>
-                            </div> -->
                         </div>
                     </div>
                     <div class="hu-btn-area">
                         <button class="hu-cancle-btn">취소</button>
                         <button class="hu-submit-btn">등록</button>
                     </div>
-
             </div>
         </div>
-
     </div>
+<script>
+    const input = document.querySelector('#price');
+    input.addEventListener('keyup', function(e) {
+    let value = e.target.value;
+    value = Number(value.replaceAll(',', ''));
+    if(isNaN(value)) {
+        input.value = 0;
+    }else {
+        const formatValue = value.toLocaleString('ko-KR');
+        input.value = formatValue;
+    }
+    })
+</script>
+
+
 <%@ include file="../common/footer.jsp" %>
 
 
