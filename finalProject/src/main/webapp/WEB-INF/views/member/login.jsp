@@ -33,18 +33,67 @@
 
        .login-email-btn {
             color: white;
-            background-color: rgb(0, 199, 174);
+            background-color: rgb(3, 199, 90);
             border: none;
-            width: 100%;
+            width: 300px;
+            height: 40px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            border-radius: 4px;
         }
 
        .login-kakao-btn {
             color: black;
-            background-color: yellow;
+            background-color: rgb(250, 225, 0);
             border: none;
-            width: 100%;
+            width: 300px;
+            height: 40px;
+            font-weight: bold;
+            border-radius: 4px;
         }
-
+        .l-ver-line{
+            width: 1px;
+            height: 13px;
+            margin-left: 10px;
+            border: 1px solid rgb(224, 224, 224);
+            margin-right: 10px;
+        }
+        .l-align{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .l-email-input{
+            width: 300px;
+            height: 40px;
+            border: 1px solid rgba(96, 96, 96, 0.5);
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .l-pwd-input{
+            width: 300px;
+            height: 40px;
+            border: 1px solid rgba(96, 96, 96, 0.5);
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .l-text{
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .l-text1{
+            margin-bottom: 10px;
+            font-weight: bold;
+            margin-top: 35px;
+        }
+        .loginSearch{
+            font-size: 12px;
+        }
+        .btn-area{
+            margin-top: 10px;
+        }
     </style>
 
 	<title>모달 창 예제</title>
@@ -72,86 +121,27 @@
         <div class="modal" id="myModal" >
             <div class="modal-dialog">
                 <div class="modal-content">
-
-                    <!-- 모달 헤더 -->
-                    <div class="modal-header" style="text-align: center;">
-                        <h4 class="modal-title" style="text-align: center; font-weight: bold; margin: 0 auto;">Login</h4>
-                    </div>
-
-                    <!-- 모달 본문 -->
                     <div class="modal-body" >
                         <form action="" method="post">
-                            <table>
                                 <!--입력하면 값 넘어갈 수 있게끔-->
-                                <tr>
-                                    <td colspan="2" >
-                                        <p style="font-weight: bold;">이메일</p>
-                                        <p><input type="text" style="width: 100%;" placeholder="example@poomasi.com" ></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" >
-                                        <p></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" >
-                                        <p style="font-weight: bold;">비밀번호</p>
-                                        <p><input type="password" style="width: 100%;" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요"></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" justify-content: space-between;>
-                                        <p></p>
-                                    </td>
-                                </tr>
-                                <tr style="display: flex; justify-content: space-around;">
-                                    <td> 
+                                    <h2 class="modal-title" style="text-align: center; font-weight: bold; margin: 0 auto;">Login</h2>
+                                        <div class="l-text1" style="font-weight: bold;">이메일</div>
+                                        <input class="l-email-input" type="text" style="width: 100%;" placeholder="example@poomasi.com" >
+
+                                        <div class="l-text" style="font-weight: bold;">비밀번호</div>
+                                        <input class="l-pwd-input" type="password" style="width: 100%;" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요">
+
+
+                                    <div class="l-align">
                                         <a class="loginSearch" href="#" style="color: black;"> 비밀번호 찾기</a>
-                                    </td>
-                                    <td>
+                                        <div class="l-ver-line"></div>
                                         <a class="loginSearch" href="#" style="color: black;"> 회원가입</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" >
-                                        <p></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" >
-                                        <p></p>
-                                    </td>
-                                </tr>
+                                    </div>
+                                    <div class="btn-area">
+                                        <button type="submit" class="login-email-btn" style="width: 100%;"> 이메일 로그인</button>
 
-                                <tr>
-                                    <td colspan="2" class= "d-grid gap-2 col-6 mx-auto" style="padding: 0;">
-                                        <button  type="submit" class="login-email-btn" style="width: 100%;"> 이메일 로그인</button>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td colspan="2" >
-                                        <p></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" class= "d-grid gap-2 col-6 mx-auto" style="padding: 0;">
-                                        <button  type="submit" class="login-kakao-btn" style="width: 100%;" onclick="kakaoLogin()" >카카오 로그인</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" >
-                                        <p></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" >
-                                        <p></p>
-                                    </td>
-                                </tr>
-                            </table>     
-                            <br><br><br>            
+                                        <button type="submit" class="login-kakao-btn" style="width: 100%;" onclick="kakaoLogin()" >카카오 로그인</button>
+                                    </div>
                         </form>
                     </div>
                 </div>
