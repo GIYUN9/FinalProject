@@ -8,11 +8,8 @@
 </head>
 
 <body>	
-<<<<<<< HEAD
 	<jsp:forward page="WEB-INF/views/member/login.jsp"/>
-=======
-	<jsp:forward page="WEB-INF/views/board/reportModal.jsp"/>
->>>>>>> 35fc6c2f47a0f9dd389e15d85ac7ef48a15c41de
+
 		
 	<%--
 		김경보
@@ -34,8 +31,10 @@
 		<jsp:forward page="WEB-INF/views/myPage/proInfo.jsp"/> 전문가
 		<jsp:forward page="WEB-INF/views/myPage/changePwd.jsp"/> 비밀번호변경
 		<jsp:forward page="WEB-INF/views/myPage/ask.jsp"/> 질문내역
+		
 		최창영
 		<jsp:forward page="WEB-INF/views/board/helpBoardList.jsp"/> 도와줄게요
+		
 		정혜원
 		<jsp:forward page="WEB-INF/views/member/login.jsp"/>로그인 
 		<jsp:forward page="WEB-INF/views/member/passwordFind.jsp"/>비밀번호 찾기
@@ -48,6 +47,7 @@
 		<jsp:forward page="WEB-INF/views/member/proEnroll5.jsp"/>아마추어 회원가입5단계		
 		<jsp:forward page="WEB-INF/views/member/proEnroll5.jsp"/>아마추어 회원가입5단계
 		<jsp:forward page="WEB-INF/views/member/proEnroll5.jsp"/>아마추어 회원가입5단계	
+		
 		이지혜
 		<jsp:forward page="WEB-INF/views/noticeBoard/paymentPage.jsp"/> 결제
 		<jsp:forward page="WEB-INF/views/noticeBoard/completePage.jsp"/> 결제완료
