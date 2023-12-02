@@ -88,13 +88,13 @@
 			border:1px solid rgba(0,0,0,.125);
 		}
 		.pe-pg-bar{
-        background-color: rgb(241, 240, 240);
-        width: 400px;
-        height: 5px;
-        margin-top: 5px;
-        border-radius: 8px;
-        position: relative;
-		margin-bottom: 30px;
+			background-color: rgb(241, 240, 240);
+			width: 400px;
+			height: 5px;
+			margin-top: 5px;
+			border-radius: 8px;
+			position: relative;
+			margin-bottom: 30px;
 		}
 		.pe-pg-bar-per{
 			position: absolute;
@@ -105,10 +105,10 @@
 		}
 		.pe-pg-bar-fill{
 			background: rgb(87, 212, 197);
-			width: 132px;
+			width: 300px;
 			height: 5px;
 			position: absolute;
-			right: 293px;
+			right: 125px;
 			top: 7px;
 			border-radius: 8px;
 		}
