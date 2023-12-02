@@ -100,14 +100,8 @@
         <!-- 첫번째 모달 -->
         <div class="modal" id="myModal" >
             <div class="modal-dialog">
+                <h4 class="modal-title" style="text-align: center; color: white; font-weight: bold; margin: 0 auto;">품앗이에 오신걸 환영합니다</h4>
                 <div class="modal-content">
-
-                    <!-- 모달 헤더 -->
-                    <div class="modal-header" style="text-align: center;">
-                        <h4 class="modal-title" style="text-align: center; font-weight: bold; margin: 0 auto;">품앗이에 오신걸 환영합니다</h4>
-                    </div>
-
-                    <!-- 모달 본문 -->
                     <div class="modal-body" >
                         <form action="" method="post">
                             <div>
