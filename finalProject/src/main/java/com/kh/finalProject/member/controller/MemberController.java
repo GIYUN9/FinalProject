@@ -10,6 +10,8 @@ import com.kh.finalProject.member.model.service.MemberService;
 @Controller
 public class MemberController {
 
+	// 마이페이지 및 회원 정보 (아마추어 and 전문가 등등 )관련 컨트롤러로 사용할 class
+	
 	@Autowired
 	private MemberService memberService;
 	

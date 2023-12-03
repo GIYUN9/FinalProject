@@ -7,6 +7,8 @@ import com.kh.finalProject.board.model.service.BoardService;
 
 public class BoardController {
 	
+	// 도와줄게요, 도와주세요, 커뮤니티 등등 게시판 으로 활용할 컨트롤러
+	
 	@Autowired
 	private BoardService boardService;
 	
