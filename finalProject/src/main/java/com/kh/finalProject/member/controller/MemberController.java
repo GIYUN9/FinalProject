@@ -26,11 +26,18 @@ public class MemberController {
 		String memberEmail = (String)session.getAttribute("memberEmail"); // 로그인 되어있는 유저의 이메일(아이디)를 세션에 서꺼내옴
 		memberEmail = "user01@naver.com"; // 임시 데이터
 		Member loginUser = memberService.userInfo(memberEmail);
-
 		session.setAttribute("loginUser", loginUser);
 		mv.setViewName("myPage/userInfo");
 		return mv;
 	}
+	
+	@RequestMapping(value = "/updateUserInfo.me")
+	public String updateUserInfo(Member m) {
+		System.out.println(m);
+		
+		return "redirect:/";
+	}
+	
 	@RequestMapping(value = "/proInfo.me")
 	public String proInfo(){
 		//화면 전환용 임시 데이터는 없는상태
