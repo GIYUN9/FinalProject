@@ -46,10 +46,10 @@
         display: flex;
         padding-right: 10px;
     }
-    .hd-pr{
+    .hd-hu{
         padding-right: 10px;
     }
-    .hd-pl{
+    .hd-re{
         padding-left: 10px;
     }
     ::placeholder{
@@ -97,8 +97,8 @@
 <body>
    <header>
             <div class="hd-left-section">
-                <p class="hd-pr">도와줄게요</p>
-                <p>도와주세요</p>  
+                <p class="hd-hu">도와줄게요</p>
+                <p class="hd-hm">도와주세요</p>  
             </div>    
             <div class="hd-middle-section">
                 <img class="logowh" src="././resources/image/logowh.png" onclick="redirectToHome()">
@@ -106,8 +106,8 @@
 				<img class="logowh1" src="">
             </div>
             <div class="hd-right-section">
-                <p>로그인</p>
-                <p class="hd-pl">회원가입</p>
+                <p class="hd-login">로그인</p>
+                <p class="hd-re">회원가입</p>
             </div>
     </header>
     
