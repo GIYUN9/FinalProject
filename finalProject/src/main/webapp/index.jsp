@@ -12,7 +12,7 @@
 
 
 		
-  
+  	<jsp:forward page="WEB-INF/views/member/login.jsp"/>
   
 	<%--
 		김경보
