@@ -32,7 +32,7 @@
 	.sideBar{
 		max-width: 200px;
 		width: 100%;
-		margin-left: 200px;
+		margin-left: 230px;
 		margin-right: -150px;
 		margin-top: 100px;
 	}
@@ -78,6 +78,7 @@
 		border-radius: 5px;
 		height: 28px;
 		width: 80px;
+		font-size: 13px;
 	}
 	
 	.btn:hover {
@@ -113,6 +114,7 @@
 		height: 22px;
 		border: 1px solid rgb(147, 147, 150);
 		border-radius: 5px;
+		font-size: 13px;
     }
     
     .user-info-table button{

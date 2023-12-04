@@ -61,133 +61,135 @@
 			border: 1px solid rgb(147, 147, 150);
 			border-radius: 5px;
 		}
-           .list{
-        list-style: none;
-    }
+        .list{
+            list-style: none;
+        }
 
-    .list > .list-btn{
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-    }
-
-    .list-btn {
-        font-size: 17px;
-        color: white;
-        margin: 15px;
-    }
-
-    .list-btn:hover {
-        color: black
-    }
-
-    .community-list {
-        list-style: none;
-        font-size: 25px;
-        font-weight: bold;
-        text-decoration: underline;
-        margin: 18px;
-    }
-
-    .main{
-        background-color: white;
-        width: 700px;
-        height: 62%;
-        position: absolute;
-        left: 50%;
-        margin-left: -322px;
-        top: 50%;
-        margin-top: -260px;
-        border-radius: 10px;
-    }
-
-    .community-ul{
-        width: 170px;
-        height: 500px;
-        margin: 220px 0px 0px 315px;
-        color: white;
-    }
-
-    .time-span{
-        float: right;
-        margin-right: 25px;
-        font-size: 13px;
-    }
-
-    .community-btn{
-        border-radius: 12px;
-        background-color: white;
-        border-width: thin;
-        margin: 3px; 
-        width: 56px;
-        height: 27px;
+        .list > .list-btn{
+            background-color: transparent;
+            border: none;
             cursor: pointer;
-    }
+        }
 
-    .text1{
-        font-size: 14px;
-    }
+        .list-btn {
+            font-size: 17px;
+            color: white;
+            margin: 15px;
+        }
 
-    .text2{
-        font-size: 12px;
-    }
+        .list-btn:hover {
+            color: black;
+        }
 
-    .community-p{
-        font-size: 10px;
-    }
+        .community-list {
+            list-style: none;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: underline;
+            margin: 18px;
+        }
 
-    .main-span1{
-        font-weight: bold;
-        font-size: 14px;
-        margin-left: 15px;
-    }
+        .main{
+            background-color: white;
+            width: 700px;
+            height: 62%;
+            position: absolute;
+            left: 50%;
+            margin-left: -322px;
+            top: 50%;
+            margin-top: -260px;
+            border-radius: 10px;
+        }
 
-    .main-span2{
-       font-size: 12px; 
-    }
+        .community-ul{
+            width: 170px;
+            height: 500px;
+            margin: 220px 0px 0px 315px;
+            color: white;
+        }
 
-    .main-list{
-        list-style: none;
-    }
+        .time-span{
+            float: right;
+            margin-right: 25px;
+            font-size: 13px;
+        }
 
-    .main-a{
-        padding: 13px 0px 10px 20px;
-    }
+        .community-btn{
+            border-radius: 12px;
+            background-color: white;
+            border-width: thin;
+            margin: 3px; 
+            width: 56px;
+            height: 27px;
+                cursor: pointer;
+        }
 
-    .main-b{
-        padding: 13px 0px 0px 30px;
-    }
+        .text1{
+            font-size: 14px;
+        }
 
-    .a-click {
-        text-decoration-line: none;
-        color: black;
-    }
+        .text2{
+            font-size: 12px;
+        }
 
-    .img {
-        width: 0.8em;
-        height: auto;
-    }
+        .community-p{
+            font-size: 10px;
+        }
 
-    .line {
-        width: 96%;
-        margin-left: 11px;
-        margin-top: 10px;
-    }
+        .main-span1{
+            font-weight: bold;
+            font-size: 14px;
+            margin-left: 15px;
+        }
 
-    .arrow-img{
-        width: 15px;
-        height: 15px;
-        float: right;
-        margin-right: 10px;
-        margin-top: 2px;
-        cursor: pointer;
-    }
+        .main-span2{
+        font-size: 12px; 
+        }
 
-    .border-one,  .border-two, .border-three{
-        margin-left: 33px;
-        line-height: 27px;
-    }
+        .main-list{
+            list-style: none;
+        }
 
+        .main-a{
+            padding: 13px 0px 10px 20px;
+        }
+
+        .main-b{
+            padding: 13px 0px 0px 30px;
+        }
+
+        .a-click {
+            text-decoration-line: none;
+            color: black;
+        }
+
+        .img {
+            width: 0.8em;
+            height: auto;
+        }
+
+        .line {
+            width: 96%;
+            margin-left: 11px;
+            margin-top: 10px;
+        }
+
+        .arrow-img{
+            width: 15px;
+            height: 15px;
+            float: right;
+            margin-right: 10px;
+            margin-top: 2px;
+            cursor: pointer;
+        }
+
+        .border-one,  .border-two, .border-three{
+            margin-left: 33px;
+            line-height: 27px;
+        }
+        a:hover{
+            color: black;
+        }
 	</style>
 </head>
 <body>
