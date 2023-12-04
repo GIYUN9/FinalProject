@@ -7,10 +7,19 @@
 <title>Insert title here</title>
 </head>
 <body>	
+<<<<<<< HEAD
 
 	<jsp:forward page="WEB-INF/views/noticeBoard/community.jsp"/>
 
   
+=======
+		
+  	<jsp:forward page="WEB-INF/views/member/userEnroll.jsp"/>
+  
+	
+	<jsp:forward page="WEB-INF/views/board/helpBoardList.jsp"/>
+	
+>>>>>>> da202f33507bd5320b35c6ab5fb4390adaac159e
 	<%--
 		김경보
 		<jsp:forward page="WEB-INF/views/common/main.jsp"/> 메인페이지 
