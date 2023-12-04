@@ -16,3 +16,11 @@
 		<result column="FILE_PATH" property="filePath"/>
 		<result column="ACCOUNT" property="account"/>
 	</resultMap>
+	
+	<!-- 회원가입 -->
+	<insert id = "insertMember">
+		INSERT INTO MEMBER(
+			MEMBERnO,
+			
+		)
+	</insert>
