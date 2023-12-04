@@ -26,11 +26,25 @@
 			opacity: 0.5;
 			cursor: pointer;
 		}
+		.main-box{
+			margin-left: 235px;
+			margin-top: 5px;
+			margin-bottom: 350px;
+		}
+		.user-info{
+			padding: 15px;
+		}
+		.nomal-input-style {
+			width: 320px;
+			height: 28px;
+			border: 1px solid rgb(147, 147, 150);
+			border-radius: 5px;
+		}
 	</style>
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
-	<div class="box" style="margin-top: 55px">
+	<div class="box" style="margin-top: 120px">	
 		<div class="sideBar">
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">계정 설정</h3>
 			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 280px;">
