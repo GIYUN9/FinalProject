@@ -35,17 +35,23 @@
 
 		.btn-before{
 			color: black;
-            background-color:rgb(158 171 169);
+            background-color:rgba(224, 224, 224, 0.5);
+			font-weight: bold;
             border: none;
-			width: 80px;
+			width: 100px;
+			height: 40px;
+			border-radius: 4px;
 			padding: 5px;
 		}
 
 		.btn-next{
 			color: #fff;
+			font-weight: bold;
             background-color: rgb(0, 199, 174);
             border: none;
-			width: 80px;
+			width: 100px;
+			height: 40px;
+			border-radius: 4px;
 			padding: 5px;
 		}
 
@@ -69,16 +75,42 @@
 		}
 
 		.progress{
-			min-width: 50%
+			min-width: 75%
 		}
 
 		.progress-bar {
 			min-width: 100%
+			
 		}
 
 		td{
 			padding: 10px;
 			border:1px solid rgba(0,0,0,.125);
+		}
+		.pe-pg-bar{
+			background-color: rgb(241, 240, 240);
+			width: 400px;
+			height: 5px;
+			margin-top: 5px;
+			border-radius: 8px;
+			position: relative;
+			margin-bottom: 30px;
+		}
+		.pe-pg-bar-per{
+			position: absolute;
+			color: rgb(87, 212, 197);
+			font-size: 12px;
+			right: -25px;
+			top: -7px;
+		}
+		.pe-pg-bar-fill{
+			background: rgb(87, 212, 197);
+			width: 200px;
+			height: 5px;
+			position: absolute;
+			right: 225px;
+			top: 7px;
+			border-radius: 8px;
 		}
     </style>
     
@@ -102,74 +134,69 @@
     <div style="margin-top: 55px;">
 		<!-- 버튼 클릭 시 모달 열기 -->
 	    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-	        회원 가입
+	        다음
 	    </button>
 	
 	    <!-- 첫번째 모달 -->
 	    <div class="modal" id="myModal" >
 	        <div class="modal-dialog">
 	            <div class="modal-content">
-	
-	                <!-- 모달 헤더 -->
-	                <div class="modal-header">
-	                    <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-							<div class="progress-bar" style="width: 50%">50%</div>
-						</div>
-
-
-	                </div>
-	
 	                <!-- 모달 본문 -->
-	                <div class="modal-body" >
 
+	                <div class="modal-body" >
+						<div class="pe-pg-bar">
+							<div class="pe-pg-bar-per">50%
+								<div class="pe-pg-bar-fill"></div>
+							</div>
+						</div>
 						<div id="selectBox" class="list-group">
-							<div >
+							<div>
 								<h5 style="text-align: center; font-weight: bold;">어떤 서비스를 제공할 수 있나요?</h5>
 
 								<br>
 
-								<table style="border:1px solid rgba(0,0,0,.125); width: 100%; border-collapse: collapse;" cellpadding="10">
+								<table style="border:1px solid rgba(0,0,0,.125); width: 100%; border-collapse: collapse;">
 
 									<tr style="border:1px solid rgba(0,0,0,.125);">
 										<td>
-											<input id="wedding" type="checkbox" name="category"> 
-											<label for="wedding">웨딩</label>
+											<input id="casting" type="checkbox" name="category"> 
+											<label for="casting">웨딩</label>
 										</td>
 									</tr>
 									<tr style="border:1px solid rgba(0,0,0,.125);">
 										<td>
-											<input id="photograph" type="checkbox" name="category"> 
-											<label for="photograph">촬영 및 편집</label>
+											<input id="mc" type="checkbox" name="category"> 
+											<label for="mc">촬영 및 편집</label>
 										</td>
 									</tr>
 									<tr style="border:1px solid rgba(0,0,0,.125);">
 										<td>
-											<input id="music" type="checkbox" name="category"> 
-											<label for="music">뮤직/엔터테인먼트</label>
+											<input id="dance" type="checkbox" name="category"> 
+											<label for="dance">뮤직/엔터테인먼트</label>
 										</td>
 									</tr>
 									<tr style="border:1px solid rgba(0,0,0,.125);">
 										<td>
-											<input id="cook" type="checkbox" name="category"> 
-											<label for="cook">음식</label>
+											<input id="vocal" type="checkbox" name="category"> 
+											<label for="vocal">음식</label>
 										</td>
 									</tr>
 									<tr style="border:1px solid rgba(0,0,0,.125);">
 										<td>
-											<input id="beauty" type="checkbox" name="category"> 
-											<label for="beauty">뷰티/미용</label>
+											<input id="band" type="checkbox" name="category"> 
+											<label for="band">뷰티/미용</label>
 										</td>
 									</tr>
 									<tr style="border:1px solid rgba(0,0,0,.125);">
 										<td>
-											<input id="planning" type="checkbox" name="category"> 
-											<label for="planning">기획 및 장식</label>
+											<input id="classic" type="checkbox" name="category"> 
+											<label for="classic">기획 및 장식</label>
 										</td>
 									</tr>
 									<tr style="border:1px solid rgba(0,0,0,.125);">
 										<td>
-											<input id="equipment" type="checkbox" name="category"> 
-										<label for="equipment">장비 및 자동차 대여</label>
+											<input id="DJ" type="checkbox" name="category"> 
+										<label for="DJ">장비 및 자동차 대여</label>
 										</td>
 									</tr>
 								</table>
@@ -184,9 +211,13 @@
 							</div>
 						</div>
 					</div>
-				</div>
-	    	</div>
+				</div>		
+			</div>
 		</div>
-     
+    </div>
+    
+    
+    
+    
 </body>
 </html>
