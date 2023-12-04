@@ -68,9 +68,10 @@
 	<div class="box" style="margin-top: 120px">
 		<div class="sideBar">
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">계정 설정</h3>
-			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 280px;">
+			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 180px;">
 		
-			<a class="myPageSideBar" href="userInfo.me" style="font-weight: bolder; font-size: 1.1em;">나의 정보</a>
+			<a class="myPageSideBar" href="userInfo.me" style="font-weight: bolder;
+			background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">나의 정보</a>
 			<a class="myPageSideBar" href="proInfo.me">전문가 정보</a>
 			<a class="myPageSideBar" href="changePwd.me">비밀번호 변경</a>
 			<a class="myPageSideBar" href="deleteForm.me">회원 탈퇴</a>
