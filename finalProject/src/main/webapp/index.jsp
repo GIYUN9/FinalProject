@@ -28,6 +28,7 @@
 		<jsp:forward page="WEB-INF/views/noticeBoard/muchBoard.jsp"/> 얼만가요 게시판 - 스타일 통일, 매핑
 		<jsp:forward page="WEB-INF/views/noticeBoard/togetherBoard.jsp"/> 궁금해요 게시판 - 스타일 통일, 매핑
 		<jsp:forward page="WEB-INF/views/noticeBoard/noticeBoard.jsp"/> 공지 게시판 - 스타일 통일, 매핑
+		<jsp:forward page="WEB-INF/views/myPage/proInfo2.jsp"/> 전문가 마이페이지-스타일 통일
 		
 		나기윤
 		<jsp:forward page="WEB-INF/views/myPage/deleteForm.jsp"/> 회원탈퇴

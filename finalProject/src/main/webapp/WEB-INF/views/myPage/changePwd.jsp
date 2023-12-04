@@ -61,7 +61,7 @@
 			<h3 style="margin: 10px 0 0 20px;">비밀번호 변경</h3>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="user-info">
-					<form action="" method="post" style="margin-top: 19px;">
+					<form action="updatePwd.me" method="post" style="margin-top: 19px;">
 						<h4>현재 비밀번호</h4>
 						<input class="nomal-input-style" name="memberPwd" type="password" placeholder="현재 사용중인 비밀번호를 입력해주세요." required="required">
 						<div style="display: flex; margin-top: 24px;">
