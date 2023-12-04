@@ -137,6 +137,12 @@
     .community-big{
         padding-bottom: 120px;
     }
+    .box{
+		background-color: rgba(60, 59, 59, 0.27);
+		color: white;
+		display: flex;
+		padding-left: 20px;
+	}
 </style>
 
 </head>
@@ -187,6 +193,21 @@
                             </a>
                             <span class="time-span">방금 전</span>
                         </div>
+	<div class="box" style="margin-top: 120px">
+        <div class="community-big">
+            <ul class="community-ul">
+                <li class="community-list">커뮤니티</li>
+                <li class="list"><button class="list-btn">전체</button></li>
+                <li class="list"><button class="list-btn">궁금해요</button></li>
+                <li class="list"><button class="list-btn">얼마예요</button></li>
+                <li class="list"><button class="list-btn">함께해요</button></li>
+                <li class="list"><button class="list-btn">공지사항</button></li>
+            </ul>
+            <div class="main">
+                    <div class="main-a">
+                        <span class="main-span1">공지</span>
+                        <span class="main-span2">품앗이 가이드라인</span>
+                        <img src="/finalProject/resources/borderImage/right-arrow-icon.png" alt="오른쪽 화살표" class="arrow-img">
                     </div>
             </a>
         </li>
@@ -201,10 +222,40 @@
                         <h4>테니스 배우고 싶이요!</h4>
                         <p class="text1">테니스 레슨 비용이 궁금해요</p>
                         <p class="text2">서울</p>
+                    
+                    <div class="main-b">
+                        <button class="community-btn">서비스</button>
+                        <button class="community-btn">지역</button>
+                    </div>
+                
+                <ul>
+                    <li class="main-list">
                         <a href="" class="a-click">
                             <img src="/finalProject/resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
                             <span>12</span>
+                            <div class="border-one">
+                                <span class="community-p">궁금해요 수학 과외</span>
+                                <h4>수학과외 비용 궁금해요!</h4>
+                                <span class="text1">주2일만 과외 받을건데 비용이 궁금해요!</span><br>
+                                <span class="text2">전국</span>
+                                <div>
+                                    <a href="" class="a-click">
+                                        <img src="/finalProject/resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
+                                        <span>0</span>
+                                    </a>
+                                    <a href="" class="a-click">
+                                        <img src="/finalProject/resources/borderImage/speech-bubble-icon.png" alt="말풍선아이콘" class="img">
+                                        <span>0</span>
+                                    </a>
+                                    <span class="time-span">방금 전</span>
+                                </div>
+                            </div>
                         </a>
+                    </li>
+                </ul>
+                <hr class="line">
+                <ul>
+                    <li class="main-list">
                         <a href="" class="a-click">
                             <img src="/finalProject/resources/borderImage/speech-bubble-icon.png" alt="말풍선아이콘" class="img">
                             <span>7</span>
@@ -225,7 +276,30 @@
                         <h4>같이 코딩공부해요!</h4>
                         <p class="text1">코딩 공부 같이 하실분~~~?</p>
                         <p class="text2">경기도</p>
+                            <div class="border-two">
+                                <span class="community-p">얼마예요 테니스 레슨</span>
+                                <h4>테니스 배우고 싶이요!</h4>
+                                <p class="text1">테니스 레슨 비용이 궁금해요</p>
+                                <p class="text2">서울</p>
+                                <a href="" class="a-click">
+                                    <img src="/finalProject/resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
+                                    <span>12</span>
+                                </a>
+                                <a href="" class="a-click">
+                                    <img src="/finalProject/resources/borderImage/speech-bubble-icon.png" alt="말풍선아이콘" class="img">
+                                    <span>7</span>
+                                </a>
+                                <span class="time-span">30분 전</span>
+                                <div class="line"></div>
+                            </div> 
+                        </a>  
+                    </li>
+                </ul>
+                <hr class="line">
+                <ul>
+                    <li class="main-list">
                         <a href="" class="a-click">
+<<<<<<< HEAD
                             <img src="/finalProject/resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
                             <span>12</span>
                         </a>
@@ -241,8 +315,33 @@
     </ul>
             <hr class="line">
            
+=======
+                            <div class="border-three">
+                                <span class="community-p">함께해요 코딩 공부</span>
+                                <h4>같이 코딩공부해요!</h4>
+                                <p class="text1">코딩 공부 같이 하실분~~~?</p>
+                                <p class="text2">경기도</p>
+                                <a href="" class="a-click">
+                                    <img src="/finalProject/resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
+                                    <span>12</span>
+                                </a>
+                                <a href="" class="a-click">
+                                    <img src="/finalProject/resources/borderImage/speech-bubble-icon.png" alt="말풍선아이콘" class="img">
+                                    <span>7</span>
+                                </a>
+                                <span class="time-span">1시간 전</span>
+                                <div class="line"></div>
+                            </div> 
+                        </a>  
+                    </li>
+                </ul>
+                <hr class="line">    
+            </div>
+        </div>
+>>>>>>> 3491645158c98bb076ff8cd26fd169cb45e54a32
     </div>
 </div>
     <jsp:include page="../common/footer.jsp"></jsp:include>
+<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>
