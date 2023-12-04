@@ -235,10 +235,10 @@
                         </a>
                             <span class="time-span">1시간 전</span>
                             <div class="line"></div>
-                        </div> 
-                </a>  
-            </li>
-        </ul>
+                     </div> 
+            </a>  
+        </li>
+    </ul>
             <hr class="line">
            
     </div>

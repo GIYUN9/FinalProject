@@ -8,11 +8,8 @@
 </head>
 <body>	
 
-	<jsp:forward page="WEB-INF/views/member/proEnroll3.jsp"/>
+	<jsp:forward page="WEB-INF/views/noticeBoard/community.jsp"/>
 
-
-		
-  	<jsp:forward page="WEB-INF/views/member/login.jsp"/>
   
 	<%--
 		김경보
@@ -48,11 +45,7 @@
 		<jsp:forward page="WEB-INF/views/member/proEnroll3.jsp"/>아마추어 회원가입3단계
 		<jsp:forward page="WEB-INF/views/member/proEnroll4.jsp"/>아마추어 회원가입4단계
 		<jsp:forward page="WEB-INF/views/member/proEnroll5.jsp"/>아마추어 회원가입5단계
-<<<<<<< HEAD
-		<jsp:forward page="WEB-INF/views/member/proEnroll5.jsp"/>아마추어 회원가입5단계	
-		
-=======
->>>>>>> ad93cd03a6d05de61f28191d522c616021df8442
+
 		이지혜
 		<jsp:forward page="WEB-INF/views/noticeBoard/paymentPage.jsp"/> 결제
 		<jsp:forward page="WEB-INF/views/noticeBoard/completePage.jsp"/> 결제완료
