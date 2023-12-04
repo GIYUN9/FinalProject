@@ -243,8 +243,8 @@
                         </div>
                     </div>
                     <div class="hu-btn-area">
-                        <button class="hu-cancle-btn">취소</button>
-                        <button class="hu-submit-btn">등록</button>
+                        <button type="reset" class="hu-cancle-btn">취소</button>
+                        <button type="submit" class="hu-submit-btn">등록</button>
                     </div>
             </div>
         </div>

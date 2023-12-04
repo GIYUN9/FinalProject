@@ -1,7 +1,10 @@
 package com.kh.finalProject.board.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kh.finalProject.board.model.service.BoardService;
@@ -34,10 +37,17 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="helpinsert.bo")
-	public String helpinsertBoard() {
+	public String helpinsertBoard(Board b, HttpSession session ,Model model) {
 		// 도와줄게요 게시글 수정하기
 		int result = boardService.insertBoard(b);
 		
+		if(result > 0) { // 성공 => 도와줄게요 게시글 리스트 페이지 redirect:help.bo
+			session.setAttribute("","게시글 작성 완료");
+			return "redirect:help.bo";
+		} else { // 실패 => 에러페이지
+			model.addAttribute("","게시글 작성 실패");
+			return "";
+		}
 	}
 	
 //	스크립트 기능 후 가진 정보 보내주는 기능 
