@@ -1,11 +1,14 @@
 package com.kh.finalProject.member.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.finalProject.member.model.service.MemberService;
+import com.kh.finalProject.member.model.vo.Member;
 
 @Controller
 public class MemberController {
@@ -19,9 +22,12 @@ public class MemberController {
 //	private BCryptPasswordEncoder bcryptPasswordEncoder;
 	
 	@RequestMapping(value = "/userInfo.me")
-	public String userInfo(){
-		//화면 전환용 임시 데이터는 없는상태
-		return "myPage/userInfo";
+	public ModelAndView userInfo(String memberEmail, ModelAndView mv, HttpSession session){
+		Member loginUser = memberService.userInfo(memberEmail);
+		
+		session.setAttribute("loginUser", loginUser);
+		mv.setViewName("myPage/userInfo");
+		return mv;
 	}
 	@RequestMapping(value = "/proInfo.me")
 	public String proInfo(){
