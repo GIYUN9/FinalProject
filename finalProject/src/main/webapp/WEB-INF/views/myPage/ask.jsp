@@ -51,10 +51,10 @@
 			margin-left: 0px;
 		}
 		.cu-re-title{
+			background-color: rgba(224, 224, 224, 0.5);
 			font-size: 14px;
 			width: 320px;
 			height: 30px;
-			background-color: rgba(224, 224, 224, 0.5);
 			border: 1px solid rgba(96, 96, 96, 0.5);
 			border-radius: 10px;
 			padding: 3px;
@@ -62,20 +62,20 @@
 			font-weight: bolder;
 		}
 		.cu-email{
+			background-color: rgba(224, 224, 224, 0.5);
 			font-size: 14px;
 			width: 320px;
 			height: 30px;
-			background-color: rgba(224, 224, 224, 0.5);
 			border: 1px solid rgba(96, 96, 96, 0.5);
 			border-radius: 10px;
 			padding: 3px;
 			margin-bottom: 10px;
 		}
 		.cu-desc{
+			background-color: rgba(224, 224, 224, 0.5);
 			font-size: 14px;
 			width: 320px;
 			height: 250px;
-			background-color: rgba(224, 224, 224, 0.5);
 			border: 1px solid rgba(96, 96, 96, 0.5);
 			border-radius: 10px;
 			padding: 10px;
@@ -107,6 +107,7 @@
 			font-size: 14px;
 			font-weight: 700;
 			margin-bottom: 20px;
+			text-align: center;
 		}
 		.customer-req{
 			margin-right: 40px;
