@@ -20,4 +20,10 @@ public class MemberServiceImpl implements MemberService {
 		
 		return memberDao.insertMember(sqlSession, m);
 	}
+
+	@Override
+	public Member userInfo(String memberEmail) {
+		
+		return memberDao.userInfo(sqlSession, memberEmail);
+	}
 }
