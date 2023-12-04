@@ -143,56 +143,70 @@
         }
     </style>
 
-	<title>Î™®Îã¨ Ï∞Ω ÏòàÏ†ú</title>
-    <!-- Î∂ÄÌä∏Ïä§Ìä∏Îû© ÎßÅÌÅ¨ Ï∂îÍ∞Ä -->
+	<title>∏¥ﬁ √¢ øπ¡¶</title>
+    <!-- ∫Œ∆ÆΩ∫∆Æ∑¶ ∏µ≈© √ﬂ∞° -->
 	</head>
 	
     <div>
         
         <jsp:include page="../common/header.jsp"></jsp:include>
         
-        <!-- Î∂ÄÌä∏Ïä§Ìä∏Îû© Î∞è jQuery Ïä§ÌÅ¨Î¶ΩÌä∏ Ï∂îÍ∞Ä -->
+        <!-- ∫Œ∆ÆΩ∫∆Æ∑¶ π◊ jQuery Ω∫≈©∏≥∆Æ √ﬂ∞° -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         
         
         <div style="margin-top: 55px;">
-            <!-- Î≤ÑÌäº ÌÅ¥Î¶≠ Ïãú Î™®Îã¨ Ïó¥Í∏∞ -->
+            <!-- πˆ∆∞ ≈¨∏Ø Ω√ ∏¥ﬁ ø≠±‚ -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-          		  ÌöåÏõêÍ∞ÄÏûÖ  	
+          		  »∏ø¯∞°¿‘  	
             </button>
 
-            <!-- Ï≤´Î≤àÏß∏ Î™®Îã¨ -->
+            <!-- √ππ¯¬∞ ∏¥ﬁ -->
             <div class="modal" id="myModal" >
                 <div class="modal-dialog">
                     <div class="modal-content">
+
                             <div class="modal-body">
-                            <form action="insert.me" method="post">
                                 <div class="pe-pg-bar">
                                     <div class="pe-pg-bar-per">100%
                                     </div>
                                 </div>
-                            	<div class="pe-info">
-                                	<h5 style="text-align: center; font-weight: bold;">ÎßàÏßÄÎßâÏúºÎ°ú ÌïÑÏàò Ï†ïÎ≥¥Î•º ÏûÖÎ†•Ìï¥Ï£ºÏÑ∏Ïöî.</h5>
+                            <div class="pe-info">
+                                <h5 style="text-align: center; font-weight: bold;">∏∂¡ˆ∏∑¿∏∑Œ « ºˆ ¡§∫∏∏¶ ¿‘∑¬«ÿ¡÷ººø‰.</h5>
                                     <div class="a">
-                                        <p>ÏÑ±Î≥Ñ</p>
+                                        <p>º∫∫∞</p>
                                         <div class="pe-btn-area">
-                                            <button type="button" class="btn-man">ÎÇ®Ïûê</button>
-                                            <button type="button" class="btn-woman">Ïó¨Ïûê</button>
+                                            <button type="button" class="btn-man">≥≤¿⁄</button>
+                                            <button type="button" class="btn-woman">ø©¿⁄</button>
                                         </div>
 
-                                        <p>Ìú¥ÎåÄÏ†ÑÌôî Î≤àÌò∏ ÏûÖÎ†•</p>
-                                        <input class="phone-certification" type="text" placeholder="010-2222-2222 ÌòïÏãùÏúºÎ°ú ÏûÖÎ†•ÌïòÏãúÏò§">                                                             
+                                        <p>»ﬁ¥Î¿¸»≠ π¯»£ ¿Œ¡ı</p>
+                                        <input class="phone-certification" type="text" placeholder="010-2222-2222 «¸Ωƒ¿∏∑Œ ¿‘∑¬«œΩ√ø¿">
+
+                                        <p>¿Œ¡ıπ¯»£</p>
+                                        <input class="phone-certification" type="text" placeholder="¿Œ¡ıπ¯»£∏¶ ¿‘∑¬«œΩ√ø¿">
+                                        <form method="get" action="form-action.html">
+                                            <div class="agree-area">
+                                             		   ¿¸√º µø¿«
+                                            </div>
+                                            <div class="label-area">
+                                                <label><input type="checkbox" name="category" value="agree"> (« ºˆ) ¿ÃøÎæ‡∞¸ µø¿«</label>
+                                                <label><input type="checkbox" name="category" value="privateAgree"> (« ºˆ) ∞≥¿Œ¡§∫∏ ºˆ¡˝ π◊ ¿ÃøÎ µø¿«</label>
+                                                <label><input type="checkbox" name="category" value="#"> (« ºˆ) 14ºº ¿ÃªÛ¿‘¥œ¥Ÿ</label>
+                                            </div>
+    
+                                        </form>
                                     </div>
 
-                            	</div>
-
-                            <div style="display: flex; justify-content: flex-end; margin-top: 30px; width: 110%;">         
-                                <span style="margin-right: 15px;"></span> 
-                                <button type="submit" class="btn-next">Îã§Ïùå</button>
                             </div>
-                            </form>
+
+                            <div style="display: flex; justify-content: flex-end; margin-top: 30px; width: 110%;">
+                                <button type="submit" class="btn-before">¿Ã¿¸</button>
+                                <span style="margin-right: 15px;"></span> 
+                                <button type="submit" class="btn-next">¥Ÿ¿Ω</button>
+                            </div>
                         </div>                            
 
 

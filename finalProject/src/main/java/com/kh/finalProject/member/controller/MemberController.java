@@ -76,8 +76,9 @@ public class MemberController {
 	@RequestMapping(value = "/insert.me")
 	public String insertMember(Member m, HttpSession session, Model model) {
 		// bcryptPasswordEncoder 사용? => 일단 보류
-		
-		
+		System.out.println("zzzzzzzzzzzzzz" + m);
+		System.out.println("zzzzzzzzzzzzzz" + m);
+	
 		int result = memberService.insertMember(m); // 아이디로만 멤버객체 가져오기
 		
 		if(result > 0) {
@@ -95,6 +96,14 @@ public class MemberController {
 
 		
 		return memberService.emailCheck(checkEmail) > 0 ? "NNNNN" : "NNNNY";
+	}
+	
+
+	
+	@RequestMapping(value = "/next.me")
+	public String nextEnroll() {
+		//도와줄게요 화면
+		return "ember/userEnroll";
 	}
 	
 }

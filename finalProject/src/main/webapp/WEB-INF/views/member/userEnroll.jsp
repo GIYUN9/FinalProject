@@ -94,7 +94,7 @@
     <div style="margin-top: 55px;">
         <!-- 버튼 클릭 시 모달 열기 -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-        회원가입  	
+      		  회원가입  	
         </button>
 
         <!-- 첫번째 모달 -->
@@ -106,16 +106,18 @@
                         <form action="insert.me" method="post">
                             <div>
                                 <p>이름<span class="as-re">*</span></p>
-                                <p><input class="en-input" type="text" placeholder="이름(실명)을 입력해주세요"></p>
+                                <p><input class="en-input" id="memberName" name ="memberName" type="text" placeholder="이름(실명)을 입력해주세요"></p>
 
                                 <p>이메일<span class="as-re">*</span></p>
-                                    <p><input class="en-input" type="text" placeholder="example@poomasi.com"></p>
+                                <p><input class="en-input" id="memberEmail" name ="memberEmail" type="text" placeholder="example@poomasi.com"></p>
 
                                 <p>비밀번호<span class="as-re">*</span></p>
-                                <p><input class="en-input" type="password" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요"></p>
+                                <p><input class="en-input" id="memberPwd" name ="memberPwd" type="password" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요"></p>
 
-                                <p>관심사 선택(중복 선택 가능)<span class="as-re">*</span></p>
                                 
+                                
+                                <!-- 
+                                 <p>관심사 선택(중복 선택 가능)<span class="as-re">*</span></p>
                                 <div class="dropdown">
                                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" 
                                     style="width: 100%;"  data-bs-toggle="dropdown" aria-expanded="false">
@@ -126,18 +128,16 @@
                                     <li><a class="dropdown-item" href="#">청소/정리</a></li>
                                     <li><a class="dropdown-item" href="#">취미/자기계발</a></li>
                                     </ul>
-                                </div>                    
-                                <p style="font-weight: bold;">
-                                    <div class="cb-agree-all">전체 동의</div>
-                                </p>
-                                <label><input type="checkbox" name="category" value="agree"> (필수) 이용약관 동의</label>
-                                <label><input type="checkbox" name="category" value="privateAgree"> (필수) 개인정보 수집 및 이용 동의</label>
-                                <label><input type="checkbox" name="category" value="#"> (필수) 14세 이상입니다</label>
-                              
-                                <p>
-                                    <button type="submit" class="sign-up-btn" onclick="signUp()">회원가입</button>
-                                </p>
-                            </div>                 
+                                </div>  -->   
+                                <label for="phone"> &nbsp; Phone : </label>
+                    			<input type="tel" class="form-control" id="phone" placeholder="Please Enter Phone" name="phone"> <br>               
+                                <label for=""> &nbsp; Gender : </label> &nbsp;&nbsp;
+			                    <input type="radio" id="Male" value="M" name="memberGender" checked>
+			                    <label for="Male">남자</label> &nbsp;&nbsp;
+			                    <input type="radio" id="Female" value="F" name="memberGender">
+			                    <label for="Female">여자</label> &nbsp;&nbsp;
+                            </div>    
+                            <button type="submit" class="sign-up-btn" >회원가입</button>             
                         </form>
                     </div>
                 </div>

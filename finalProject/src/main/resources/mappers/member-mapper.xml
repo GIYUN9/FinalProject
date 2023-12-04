@@ -24,14 +24,16 @@
 			MEM_EMAIL,
 			MEM_PWD,
 			MEM_NAME,
-			
+			PHONE,
+			MEM_GEN
 		)
 		VALUES(
 			SEQ_MNO.NEXTVAL,
 			#{memberEmail},
 			#{memberPwd},
-			#{memberName}
-			
+			#{memberName},
+			#{phone},
+			#{memberGender}	
 		)
 	</insert>
 	<!-- 아이디 중복체크 -->
