@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.finalProject.member.model.service.MemberService;
 import com.kh.finalProject.member.model.vo.Member;
+import com.kh.finalProject.member.model.vo.Professional;
 
 @Controller
 public class MemberController {
@@ -21,33 +22,68 @@ public class MemberController {
 //	@Autowired
 //	private BCryptPasswordEncoder bcryptPasswordEncoder;
 	
+	//멤버 마이페이지 불러오는 컨트롤러
 	@RequestMapping(value = "/userInfo.me")
-	public ModelAndView userInfo(ModelAndView mv, HttpSession session){
-		String memberEmail = (String)session.getAttribute("memberEmail"); // 로그인 되어있는 유저의 이메일(아이디)를 세션에 서꺼내옴
-		memberEmail = "user01@naver.com"; // 임시 데이터
-		Member loginUser = memberService.userInfo(memberEmail);
+	public ModelAndView userInfo(Member m, ModelAndView mv, HttpSession session){
+		System.out.println(m);
+		m.setMemberNo(2); //임시데이터
+		Member loginUser = memberService.userInfo(m);
 		session.setAttribute("loginUser", loginUser);
 		mv.setViewName("myPage/userInfo");
 		return mv;
 	}
-	
+	//멤버 마이페이지 수정하는 컨트롤러
 	@RequestMapping(value = "/updateUserInfo.me")
 	public String updateUserInfo(Member m) {
-		System.out.println(m);
+		m.setMemberNo(2); //임시데이터
+		int result = memberService.updateUserInfo(m);
 		
-		return "redirect:/";
+		return "redirect:/userInfo.me";
 	}
 	
+	//멤버 전문가페이지 불러오는 컨트롤러
 	@RequestMapping(value = "/proInfo.me")
-	public String proInfo(){
-		//화면 전환용 임시 데이터는 없는상태
+	public String proInfo(Member m, HttpSession session){
+		m.setMemberNo(2); //임시데이터
+		
+		Member loginUser = memberService.userInfo(m);
+		session.setAttribute("loginUser", loginUser);
+		
+		Professional p = memberService.proInfo(m);
+		session.setAttribute("p", p);
+		
 		return "myPage/proInfo";
 	}
+	
+	//멤버 전문가페이지에서 수정하고 다시 페이지를 부르는 컨트롤러
+	@RequestMapping(value = "/updateProInfo.me")
+	public String updateProInfo(Member m, Professional p, HttpSession session) {
+		m.setMemberNo(2); //임시데이터
+		int result = memberService.updateProInfo(m);
+		
+		// 전문 분야 및 상세 분야 보류 여기에 추가해야함
+		// int result = memberService.updateUserInfo(m, p); ~~~
+		return "redirect:/proInfo.me";
+	}
+	
+	//비밀번경페이지 호출 컨트롤러
 	@RequestMapping(value = "/changePwd.me")
 	public String changePwd(){
-		//화면 전환용 임시 데이터는 없는상태
 		return "myPage/changePwd";
 	}
+	
+	//비밀번경하는 컨트롤러
+	@RequestMapping(value = "/updatePwd.me")
+	public String updatePwd(Member m, String newPwd){
+		m.setMemberNo(2); //임시데이터
+		m.setMemberPwd(newPwd);
+		int result = memberService.updatePwd(m);
+		
+		return "redirect:/changePwd.me";
+		//성공 얼럴트창 띄우기
+		//프론트에서 기존비밀번호가 일치하고 새로운 비밀번호 확인까지 일치한다면 버튼 클릭가능하기만들기
+	}
+	
 	@RequestMapping(value = "/deleteForm.me")
 	public String deleteForm(){
 		//화면 전환용 임시 데이터는 없는상태

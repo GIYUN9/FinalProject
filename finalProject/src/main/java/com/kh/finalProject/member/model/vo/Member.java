@@ -32,5 +32,6 @@ public class Member {
 	private int point;
 	private String filePath;
 	private int account;
+	private String intro;
 	
 }
