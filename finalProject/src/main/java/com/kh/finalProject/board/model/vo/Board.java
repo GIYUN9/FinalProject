@@ -18,7 +18,7 @@ public class Board {
 	private String boardTitle;
 	private String boardContent;
 	private int Price;
-	private int boardType;
+	private int boardType; //boardType에 따라 
 	private Date createDate;
-	private String status;
+	private String status; 
 }

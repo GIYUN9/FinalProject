@@ -9,7 +9,7 @@
 <body>	
 
 	<jsp:forward page="WEB-INF/views/noticeBoard/community.jsp"/>
-
+	
  
 	
 	<%--
@@ -24,6 +24,11 @@
 		<jsp:forward page="WEB-INF/views/board/needhelp2.jsp"/>
 		<jsp:forward page="WEB-INF/views/board/needhelp3.jsp"/>
 		<jsp:forward page="WEB-INF/views/board/helpu.jsp"/>
+		<jsp:forward page="WEB-INF/views/noticeBoard/allBoard.jsp"/> 전체 게시판 - 스타일 통일, 매핑 
+		<jsp:forward page="WEB-INF/views/noticeBoard/curiousBoard.jsp"/> 궁금해요 게시판 - 스타일 통일, 매핑
+		<jsp:forward page="WEB-INF/views/noticeBoard/muchBoard.jsp"/> 얼만가요 게시판 - 스타일 통일, 매핑
+		<jsp:forward page="WEB-INF/views/noticeBoard/togetherBoard.jsp"/> 궁금해요 게시판 - 스타일 통일, 매핑
+		<jsp:forward page="WEB-INF/views/noticeBoard/noticeBoard.jsp"/> 공지 게시판 - 스타일 통일, 매핑
 		
 		나기윤
 		<jsp:forward page="WEB-INF/views/myPage/deleteForm.jsp"/> 회원탈퇴
