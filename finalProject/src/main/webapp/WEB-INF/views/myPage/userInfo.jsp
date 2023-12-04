@@ -38,13 +38,13 @@
 		.ui-submit-btn{
 			float: right;
 			position: absolute;
-			right: 70px;
-			bottom: 233px;
-			width: 460px;
+			right: 56px;
+			bottom: 13px;
+			width: 484px;
 			background: none;
 			border: 1px solid rgb(147, 147, 150);
 			border-radius: 5px;
-			height: 28px;
+			height: 35px;
 			cursor: pointer;
 		}
 		.email-input{
@@ -62,6 +62,9 @@
 			height: 35px;
 			border: 1px solid rgb(147, 147, 150);
 			border-radius: 5px;
+		}
+		.ui-formOuter{
+			position: relative;
 		}
 	</style>
 </head>
@@ -118,8 +121,12 @@
 								</tr>
 								<th>포인트</th>
 								<tr>
-									<td><input class="info-input" value=" ${loginUser.account} POINT" readonly="readonly"></td>
-									<button class="btn" onclick="payAdd()">충전하기</button>
+									<td>
+										<div class="normal-input-box">
+											<input class="info-input" value=" ${loginUser.account} POINT" readonly="readonly">
+											<button class="btn" onclick="payAdd()">충전하기</button>
+										</div>
+									</td>
 								</tr>
 								<th>사용 보류 (삭제할수도있음)</th>
 								<tr>
