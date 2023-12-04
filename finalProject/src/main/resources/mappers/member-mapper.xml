@@ -17,6 +17,28 @@
 		<result column="ACCOUNT" property="account"/>
 	</resultMap>
 	
+	<!-- 회원가입 -->
+	<insert id = "insertMember">
+		INSERT INTO MEMBER(
+			MEM_NO,
+			MEM_EMAIL,
+			MEM_PWD,
+			MEM_NAME,
+			MEM_CONCERN,
+			PHONE,
+			MEM_GEN
+		)
+		VALUES(
+			SEQ_MNO.NEXTVAL,
+			#{memberEmail},
+			#{memberPwd},
+			#{memberName},
+			#{memberConcern},
+			#{phone},
+			#{memberGender}	
+		)
+	</insert>
+	
 	<!-- 회원정보 불러오는 테이블 -->
 	<select id="userInfo" resultMap="memberResult">
 		SELECT  MEM_NO,

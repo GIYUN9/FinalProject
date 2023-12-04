@@ -4,7 +4,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
 import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kh.finalProject.board.model.service.BoardService;
@@ -36,21 +38,49 @@ public class BoardController {
 		return "board/boardDetailView";
 	}
 	
+	// 도와줄게요 게시글 조회
+	@RequestMapping(value="helpListBoard.bo")
+	public String helpListBoard() {
+		return "board/helpBoardList";
+	}
+
+	// 도와줄게요 게시글 등록하기
 	@RequestMapping(value="helpinsert.bo")
-	public String helpinsertBoard(Board b ,HttpSession session ,Model model) {
-		// 도와줄게요 게시글 수정하기
-		
-		int result = boardService.insertBoard(b);
-		
-		if(result > 0) { // 성공 => 도와줄게요 게시글 리스트 페이지 redirect:help.bo
-			session.setAttribute("","게시글 작성 완료");
-			return "redirect:help.bo";
-		} else { // 실패 => 에러페이지
-			model.addAttribute("","게시글 작성 실패");
-			return "";
-		}
+	public String helpinsertBoard() {
+		return "board/helpu";
 	}
 	
+	
+	
+
+	@RequestMapping(value = "/curious.co")
+	public String curiousBoard(){
+		//화면 전환용 임시 데이터는 없는상태
+		return "noticeBoard/curiousBoard";
+	}
+	@RequestMapping(value = "/much.co")
+	public String muchBoard(){
+		//화면 전환용 임시 데이터는 없는상태
+		return "noticeBoard/muchBoard";
+	}
+	@RequestMapping(value = "/together.co")
+	public String togetherBoard(){
+		//화면 전환용 임시 데이터는 없는상태
+		return "noticeBoard/togetherBoard";
+	}
+	@RequestMapping(value = "/notice.co")
+	public String noticeBoard(){
+		//화면 전환용 임시 데이터는 없는상태
+		return "noticeBoard/noticeBoard";
+	}
+	
+	@RequestMapping(value = "/viewall.co")
+	public String allBoardBoard(){
+		//화면 전환용 임시 데이터는 없는상태
+		return "noticeBoard/allBoard";
+	}
+
+
 //	스크립트 기능 후 가진 정보 보내주는 기능 
 //	나중에 작성!
 //	@RequestMapping(value="")
