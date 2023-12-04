@@ -13,12 +13,19 @@
   		<result column="CREATEDATE" property="createDate" />
   	</resultMap>
   	
-  	<select id="selectList" resultMap="boardResult">
-  		SELECT BOARD_NO,
-  			   BOARD_TITLE,
-  			   PRICE
-  		FROM BOARD
-  		  WHERE STATUS = 'Y'
-  		ORDER BY BOARD_NO DESC
-  	</select>
+  	<insert id="insertBoard">
+  		INSERT INTO
+  			BOARD (
+  				BOARD_NO,
+  				BOARD_TITLE,
+  				BOARD_CONTENT,
+  				PRICE
+  				  )
+  			VALUES (
+  				SEQ_BNO.NEXTVAL,
+  				#{boardTitle},
+  				#{boardContent},
+  				#{price}
+  				   )
+  	</insert>
   </mapper>

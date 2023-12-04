@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.kh.finalProject.board.model.vo.Board;
 import com.kh.finalProject.common.vo.PageInfo;
 
+
 public interface BoardService {
 	
 	//게시판 도와줄게요 조회
