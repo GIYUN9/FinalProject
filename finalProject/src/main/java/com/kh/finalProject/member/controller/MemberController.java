@@ -23,8 +23,9 @@ public class MemberController {
 	
 	@RequestMapping(value = "/userInfo.me")
 	public ModelAndView userInfo(String memberEmail, ModelAndView mv, HttpSession session){
+		memberEmail = "user01@naver.com";
 		Member loginUser = memberService.userInfo(memberEmail);
-		
+		System.out.println(loginUser);
 		session.setAttribute("loginUser", loginUser);
 		mv.setViewName("myPage/userInfo");
 		return mv;
