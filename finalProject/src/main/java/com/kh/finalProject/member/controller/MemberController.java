@@ -34,7 +34,7 @@ public class MemberController {
 	@RequestMapping(value = "/proInfo.me")
 	public String proInfo(){
 		//화면 전환용 임시 데이터는 없는상태
-		return "myPage/proInfo";
+		return "myPage/proInfo2";
 	}
 	@RequestMapping(value = "/changePwd.me")
 	public String changePwd(){
