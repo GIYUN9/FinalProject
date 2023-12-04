@@ -103,7 +103,7 @@
                 <h4 class="modal-title" style="text-align: center; color: white; font-weight: bold; margin: 0 auto;">품앗이에 오신걸 환영합니다</h4>
                 <div class="modal-content">
                     <div class="modal-body" >
-                        <form action="" method="post">
+                        <form action="insert.me" method="post">
                             <div>
                                 <p>이름<span class="as-re">*</span></p>
                                 <p><input class="en-input" type="text" placeholder="이름(실명)을 입력해주세요"></p>
@@ -119,24 +119,21 @@
                                 <div class="dropdown">
                                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" 
                                     style="width: 100%;"  data-bs-toggle="dropdown" aria-expanded="false">
-                                    관심사를 선택해주세요
+                                    		관심사를 선택해주세요
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="width: 100%;">
                                     <li><a class="dropdown-item" href="#">이사</a></li>
                                     <li><a class="dropdown-item" href="#">청소/정리</a></li>
                                     <li><a class="dropdown-item" href="#">취미/자기계발</a></li>
                                     </ul>
-                                </div>
-
-                                <form method="get" action="form-action.html">
-                                    <p style="font-weight: bold;">
-                                        <div class="cb-agree-all">전체 동의</div>
-                                    </p>
+                                </div>                    
+                                <p style="font-weight: bold;">
+                                    <div class="cb-agree-all">전체 동의</div>
+                                </p>
                                 <label><input type="checkbox" name="category" value="agree"> (필수) 이용약관 동의</label>
                                 <label><input type="checkbox" name="category" value="privateAgree"> (필수) 개인정보 수집 및 이용 동의</label>
                                 <label><input type="checkbox" name="category" value="#"> (필수) 14세 이상입니다</label>
-                                </form>
-
+                              
                                 <p>
                                     <button type="submit" class="sign-up-btn" onclick="signUp()">회원가입</button>
                                 </p>
@@ -154,10 +151,47 @@
             $('.dropdown-toggle').dropdown();
         });
 
-        function signUp() {
-            // 여기에 회원가입을 처리하는 코드 작성 필요
-            // 그에 맞는 함수를 호출하거나 필요한 동작을 수행
-        }
+        $(function(){
+    		const emailInput = document.querySelector('#enrollForm input[name=memberEmail]');
+            let eventFlag;
+            emailInput.onkeyup = function(ev){
+                clearTimeout(eventFlag);
+                eventFlag = setTimeout(function(){
+                    if(emailInput.value.length >=5){
+                        $.ajax({
+                            url: 'emailCheck.me',
+                            data: {checkEmail : emailInput.value},
+                            success: function(result){
+                                const checkResult = document.querySelector("#checkResult");
+                                console.log(result);
+                                if(result === 'NNNNN'){ //사용불가능한 경우
+                                    document.querySelector("#enrollForm [type='submit']").disabled = true;
+                                    checkResult.style.display = 'block';
+                                    checkResult.style.color = 'red';
+                                    checkResult.innerText = "이미사용중인 아이디입니다.";
+                                }else{ // 사용가능한경우
+                                    //회원가입버튼 활성화
+                                    document.querySelector("#enrollForm [type='submit']").disabled = false;
+                                    //사용가능한 아이디입니다. 화면 출력
+                                    checkResult.style.display = 'block';
+                                    checkResult.style.color = 'green';
+                                    checkResult.innerText = "사용가능한 아이디입니다.";
+                                }
+                            },
+                            error: function(){
+                                console.log("아이디 중복체크 ajax통신 실패");
+                            }
+                        })
+                    } else{
+                        document.querySelector("#enrollForm [type='submit']").disabled = true;
+                        checkResult.style.display = 'none';
+
+                    }
+                }, 300);
+
+    			
+    		}
+    	})
         </script>
 
 
