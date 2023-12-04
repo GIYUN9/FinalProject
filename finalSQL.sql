@@ -127,6 +127,24 @@ INSERT INTO MEMBER VALUES(1, 'admin@naver.com', '1234' ,'관리자', '음악', 1,
         010-1111-0000, '서울시 강남구', 'Y', 'M', '4', 'C:\Users\바탕 화면', NULL);
 INSERT INTO MEMBER VALUES(SEQ_MNO.NEXTVAL, 'user01@naver.com','1234' ,'홍길동', '음악', 1, 
         010-1111-1111, '서울시 송파구', 'Y', 'M', '4', 'C:\Users\바탕 화면', NULL);
+INSERT INTO MEMBER(
+            MEM_NO,
+			MEM_EMAIL,
+			MEM_PWD,
+			MEM_NAME,
+			MEM_CONCERN,
+			PHONE,
+			MEM_GEN
+		)
+		VALUES(
+            SEQ_MNO.NEXTVAL,
+			'aaa@naver.com',
+			'1111',
+			'김개똥',
+			'요리',
+			'010-2222-2222',
+			'M'	
+		);
 --카테고리
 INSERT INTO CATEGORY VALUES(SEQ_CNO.NEXTVAL, '음악');
 INSERT INTO CATEGORY VALUES(SEQ_CNO.NEXTVAL, '운동');
