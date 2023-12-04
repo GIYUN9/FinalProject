@@ -23,7 +23,7 @@ public class Member {
 	private String memberEmail;
 	private String memberPwd;
 	private String memberName;
-	private String memberConcern;
+	private String memberContent;
 	private int memberPro;
 	private String phone;
 	private String location;
