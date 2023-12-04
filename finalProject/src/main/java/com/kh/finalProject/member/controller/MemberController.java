@@ -22,10 +22,11 @@ public class MemberController {
 //	private BCryptPasswordEncoder bcryptPasswordEncoder;
 	
 	@RequestMapping(value = "/userInfo.me")
-	public ModelAndView userInfo(String memberEmail, ModelAndView mv, HttpSession session){
-		memberEmail = "user01@naver.com";
+	public ModelAndView userInfo(ModelAndView mv, HttpSession session){
+		String memberEmail = (String)session.getAttribute("memberEmail"); // 로그인 되어있는 유저의 이메일(아이디)를 세션에 서꺼내옴
+		memberEmail = "user01@naver.com"; // 임시 데이터
 		Member loginUser = memberService.userInfo(memberEmail);
-		System.out.println(loginUser);
+
 		session.setAttribute("loginUser", loginUser);
 		mv.setViewName("myPage/userInfo");
 		return mv;

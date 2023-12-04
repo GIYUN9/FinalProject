@@ -45,6 +45,7 @@
 			border: 1px solid rgb(147, 147, 150);
 			border-radius: 5px;
 			height: 28px;
+			cursor: pointer;
 		}
 		.email-input{
 			height: 35px
@@ -93,16 +94,16 @@
 					<div class="ui-formOuter">
 						<form action="">
 							<table class="user-info-table">
-								<th>닉네임</th>
+								<th>이름</th>
 								<tr>
-									<td><input class="info-input" placeholder="user01">${loginUser.memberName}</td>
+									<td><input class="info-input" placeholder="${loginUser.memberName}"></td>
 								</tr>
 								<th>이메일</th>
 								<tr>
 									<td>
 										<div class = "normal-input-box">
-											<input class="email-input" placeholder="example@poomasi.com">
-											<button class="btn">인증하기</button>
+											<input class="email-input" placeholder="${loginUser.memberEmail}">
+											<button class="btn" onclick="newEmail()">인증하기</button>
 										</div>
 									</td>
 								</tr>
@@ -110,22 +111,23 @@
 								<tr>
 									<td>
 										<div class = "normal-input-box">
-											<input class="phone-input" placeholder="01012345678">
-											<button class="btn">재인증</button>
+											<input class="phone-input" placeholder="${loginUser.phone}">
+											<button class="btn" onclick="newPhone()">재인증</button>
 										</div>
 									</td>
 								</tr>
-								<th>직업</th>
+								<th>포인트</th>
 								<tr>
-									<td><input class="info-input" placeholder="example@poomasi.com"></td>
+									<td><input class="info-input" value=" ${loginUser.account} POINT" readonly="readonly"></td>
+									<button class="btn" onclick="payAdd()">충전하기</button>
 								</tr>
-								<th>비즈니스 분야</th>
+								<th>사용 보류 (삭제할수도있음)</th>
 								<tr>
-									<td><input class="info-input" placeholder="example@poomasi.com"></td>
+									<td><input class="info-input" placeholder="사용 보류 (삭제할수도있음)"></td>
 								</tr>
 								<th>관심사</th>
 								<tr>
-									<td><input class="info-input" placeholder="example@poomasi.com"></td>
+									<td><input class="info-input" placeholder="${loginUser.memberConcern}"></td>
 								</tr>
 								<button class="ui-submit-btn" type="submit" class="btn" style="float: right;">수정하기</button>
 							</table>
