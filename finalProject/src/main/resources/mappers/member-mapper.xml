@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="memberMapper">
+	<resultMap type="Member" id="memberResult">
+		<result column="MEM_NO" property="memberNo"/>
+		<result column="MEM_EMAIL" property="memberEmail"/>
+		<result column="MEM_PWD" property="memberPwd"/>
+		<result column="MEM_NAME" property="memberName"/>
+		<result column="MEM_CONCERN" property="memberConcern"/>
+		<result column="MEM_PRO" property="memberPro"/>
+		<result column="PHONE" property="phone"/>
+		<result column="LOCATION" property="location"/>
+		<result column="STATUS" property="status"/>
+		<result column="MEM_GEN" property="memberGender"/>
+		<result column="POINT" property="point"/>
+		<result column="FILE_PATH" property="filePath"/>
+		<result column="ACCOUNT" property="account"/>
+	</resultMap>
