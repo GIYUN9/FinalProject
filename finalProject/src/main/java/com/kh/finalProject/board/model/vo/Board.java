@@ -17,7 +17,7 @@ public class Board {
 	private int boardNo;
 	private String boardTitle;
 	private String boardContent;
-	private int price;
+	private int Price;
 	private int boardType;
 	private Date createDate;
 	private String status;
