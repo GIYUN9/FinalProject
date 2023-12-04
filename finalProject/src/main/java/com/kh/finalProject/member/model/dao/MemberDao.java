@@ -11,7 +11,11 @@ public class MemberDao {
 	public int insertMember(SqlSessionTemplate sqlSession, Member m) {
 		return sqlSession.insert("memberMapper.insertMember", m);
 	}
-
+	
+	public int emailCheck(SqlSessionTemplate sqlSession, String checkEmail) {
+		return sqlSession.selectOne("memberMapper.emailCheck", checkEmail);
+	}
+	
 	
 	public Member userInfo(SqlSessionTemplate sqlSession, String memberEmail) {
 		return sqlSession.selectOne("memberMapper.userInfo", memberEmail);

@@ -38,6 +38,12 @@
 			#{memberGender}	
 		)
 	</insert>
+	<!-- 아이디 중복체크 -->
+	<select id="emailCheck" resultType="_int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE MEMBER_EMAIL = #{memberEmail}
+	</select>
 	
 	<!-- 회원정보 불러오는 테이블 -->
 	<select id="userInfo" resultMap="memberResult">

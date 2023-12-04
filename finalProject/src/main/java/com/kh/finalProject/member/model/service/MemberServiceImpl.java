@@ -9,6 +9,7 @@ import com.kh.finalProject.member.model.vo.Member;
 
 @Service
 public class MemberServiceImpl implements MemberService {
+	
 	@Autowired
 	private MemberDao memberDao;
 	
@@ -25,5 +26,10 @@ public class MemberServiceImpl implements MemberService {
 	public Member userInfo(String memberEmail) {
 		
 		return memberDao.userInfo(sqlSession, memberEmail);
+	}
+	
+	@Override
+	public int emailCheck(String checkEmail) {
+		return memberDao.emailCheck(sqlSession, checkEmail);
 	}
 }

@@ -4,7 +4,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.finalProject.member.model.service.MemberService;
@@ -66,6 +68,33 @@ public class MemberController {
 		//화면 전환용 임시 데이터는 없는상태
 		return "myPage/ask2";
 	}
+	
+	
+
+	@RequestMapping(value = "/insert.me")
+	public String insertMember(Member m, HttpSession session, Model model) {
+		// bcryptPasswordEncoder 사용? => 일단 보류
+		
+		
+		int result = memberService.insertMember(m); // 아이디로만 멤버객체 가져오기
+		
+		if(result > 0) {
+			session.setAttribute("alertMsg", "성공적으로 회원가입이 완료되었습니다.");
+			return "redirect:/";
+		} else {
+			model.addAttribute("errorMsg", "회원가입 실패");
+			return "common/errorPage";
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/emailCheck.me")
+	public String idCheck(String checkEmail) {
+
+		
+		return memberService.emailCheck(checkEmail) > 0 ? "NNNNN" : "NNNNY";
+	}
+	
 }
 
 /*
