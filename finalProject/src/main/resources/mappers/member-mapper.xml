@@ -39,4 +39,23 @@
 		)
 	</insert>
 	
+	<!-- 회원정보 불러오는 테이블 -->
+	<select id="userInfo" resultMap="memberResult">
+		SELECT  MEM_NO,
+				MEM_EMAIL,
+				MEM_PWD,
+				MEM_NAME,
+				MEM_CONCERN,
+				MEM_PRO,
+				PHONE,
+				LOCATION,
+				STATUS,
+				MEM_GEN,
+				POINT,
+				FILE_PATH,
+				ACCOUNT
+		FROM MEMBER
+		WHERE MEM_EMAIL = #{memberEmail}
+		AND STATUS = 'Y'
+	</select>
 </mapper>

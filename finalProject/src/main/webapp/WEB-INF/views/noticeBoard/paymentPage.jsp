@@ -20,10 +20,8 @@
 	width: 340px;
 	height: 150px;
 	position: absolute;
-	top: 27%;
-	left: 15%;
 	top: 15%;
-	left: 17%;
+	left: 22%;
 	border-radius: 10px;
 }
 
@@ -32,10 +30,8 @@
 	width: 340px;
 	height: 150px;
 	position: absolute;
-	top: 46%;
-	left: 15%;
-	top: 35%;
-	left: 17%;
+	top: 32%;
+	left: 22%;
 	border-radius: 10px;
 }
 
@@ -45,8 +41,6 @@
 	height: 400px;
 	height: 415px;
 	position: absolute;
-	top: 27%;
-	left: 42%;
 	top: 15%;
 	left: 41%;
 	border-radius: 10px;
@@ -57,10 +51,8 @@
 	width: 340px;
 	height: 150px;
 	position: absolute;
-	top: 27%;
-	left: 69%;
 	top: 15%;
-	left: 64%;
+	left: 60%;
 	border-radius: 10px;
 }
 
@@ -69,10 +61,8 @@
 	width: 340px;
 	height: 150px;
 	position: absolute;
-	top: 46%;
-	left: 69%;
-	top: 34%;
-	left: 64%;
+	top: 32%;
+	left: 60%;
 	border-radius: 10px;
 }
 
@@ -81,15 +71,13 @@
 	width: 340px;
 	height: 120px;
 	position: absolute;
-	top: 65%;
-	left: 69%;
-	top: 53%;
-	left: 64%;
+	top: 49%;
+	left: 60%;
 	border-radius: 10px;
 }
 
 .title {
-	font-size: 17px;
+	font-size: 14px;
 	margin-left: 25px;
 	display: block;
 	margin-top: 13px;
@@ -102,7 +90,7 @@
 }
 
 .small-title {
-	font-size: 20px;
+	font-size: 16px;
 	font-weight: bold;
 }
 
@@ -112,7 +100,7 @@
 }
 
 .pay-name {
-	font-size: 20px;
+	font-size: 16px;
 	font-weight: bold;
 }
 
@@ -126,12 +114,13 @@
 	position: absolute;
 	top: 77px;
 	right: 20px;
-	width: 66px;
-	height: 35px;
-	font-size: 16px;
-	background-color: rgb(0, 199, 174);
-	border: none;
-	color: white;
+	width: 60px;
+	height: 28px;
+	font-size: 13px;
+	border: 1px solid rgba(96, 96, 96, 0.5);
+	background-color: rgba(224, 224, 224, 0.5);
+	border-radius: 4px;
+	color: black;
 }
 
 .delivery-text {
@@ -145,7 +134,7 @@
 	margin-bottom: 10px;
 	width: 91%;
 	height: 45px;
-	border-radius: 10px;
+	border-radius: 4px;
 	background-color: rgb(0, 199, 174);
 	border: none;
 	color: white;
@@ -156,7 +145,8 @@
 	width: 91%;
 	height: 15%;
 	max-height: 50%;
-
+	border: 1px solid rgba(96, 96, 96, 0.5);
+	border-radius: 4px;
 	&::-webkit-scrollbar {
 				display: none;
 			}
@@ -172,13 +162,13 @@
 	height: 40px;
 	background-color: rgb(0, 199, 174);
 	margin-top: 57px;
-	border-radius: 5px;
+	border-radius: 0px 0px 5px 5px;
 	border: none;
 	color: white;
 }
 
 .check-font {
-	font-size: 18px;
+	font-size: 16px;
 	position: absolute;
 	top: 25px;
 	left: 15px;
@@ -243,6 +233,17 @@
 .community-big {
 	margin-bottom: 660px;
 }
+.number{
+	font-size: 12	px;
+}
+.custom-select custom-select-sm mb-3{
+	border: 1px solid rgba(96, 96, 96, 0.5);
+}
+.pay-met{
+	margin: 20px 0px 0px 26px;
+	padding: 0.2em 0.4em;
+	font-size: 14px;
+	}
 </style>
 
 </head>
@@ -326,7 +327,7 @@
 				<form action="completePage.jsp" method="get">
 					<div class="pay-page">
 						<span class="title">결제 방법</span>
-						<div class="pay">
+						<div class="pay-met">
 							<label><input type="radio" name="pay-radio" checked required>카카오페이 </label>
 							<label><input type="radio" name="pay-radio">신용카드</label>
 							<label><input type="radio" name="pay-radio">가상계좌</label>

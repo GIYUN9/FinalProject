@@ -17,6 +17,7 @@
         position: absolute;
         top: 40%;
         left: 16%;
+        padding: 10px;
     }
 
     .complete-finsh{
@@ -42,7 +43,7 @@
     }
 
     .complete-font2{
-        font-size: 17px;
+        font-size: 19px;
         font-weight: bold;
     }
 
@@ -69,7 +70,7 @@
 
     .complete-main-four{
         position: absolute;
-        left: 30em;
+        left: 28em;
         top: 19%;
         line-height: 26px;
         font-size: 13px;
@@ -89,24 +90,24 @@
         background-color: rgb(195,244,238);
         color: black;
         border: none;
-        width: 80px;
-        height: 30px;
-        border-radius: 8px;
+        width: 100px;
+        height: 40px;
+        border-radius: 4px;
         cursor: pointer;
         position: relative;
-        top: 65px;
+        top: 55px;
     }
 
     .complete-btn-my{
         background-color: rgb(0,199,174);
         color: white;
         border: none;
-        width: 80px;
-        height: 30px;
-        border-radius: 8px;
+        width: 100px;
+        height: 40px;
+        border-radius: 4px;
         cursor: pointer;
         position: relative;
-        top: 65px;
+        top: 55px;
     }
 
     .complete-font4, .complete-font5 {
@@ -143,7 +144,7 @@
     
         <div class="complete-finsh">
             <h2 class="big-font">주문 완료</h2><br>
-            <img src="/finalProject/resources/image/logobg.png" alt="로고" class="logo-img">
+            <img src="././resources/image/logobg.png" alt="로고" class="logo-img">
             <span class="small-font">주문번호 : 22305687458569</span><br>
             <span class="small-font">품앗이를 이용해주셔서 감사합니다.</span>
         </div>
