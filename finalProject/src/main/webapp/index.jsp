@@ -8,6 +8,7 @@
 </head>
 <body>	
 		
+		<jsp:forward page="WEB-INF/views/myPage/userInfo.jsp"/>
   
 	<%--
 		김경보
