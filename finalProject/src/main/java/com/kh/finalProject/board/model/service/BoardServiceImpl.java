@@ -20,23 +20,26 @@ public class BoardServiceImpl implements BoardService {
 	private BoardDao boardDao;
 
 	@Override
+	//게시판 도와줄게요 조회
 	public ArrayList<Board> selectList(PageInfo pi) {
 
 		return null;
 	}
 
 	@Override
+	//도와줄게요 게시판 등록
 	public int insertBoard(Board b) {
 		return boardDao.insertBoard(sqlSession, b);
 	}
 
 	@Override
+	//도와줄게요 게시판 수정
 	public int updateBoard(Board b) {
-
-		return 0;
+		return boardDao.updateBoard(sqlSession, b);
 	}
 
 	@Override
+	//도와줄게요 게시판 삭제
 	public int deleteBoard(int boardNo) {
 
 		return 0;

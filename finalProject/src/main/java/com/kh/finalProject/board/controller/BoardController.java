@@ -37,8 +37,9 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="helpinsert.bo")
-	public String helpinsertBoard(Board b, HttpSession session ,Model model) {
+	public String helpinsertBoard(Board b ,HttpSession session ,Model model) {
 		// 도와줄게요 게시글 수정하기
+		
 		int result = boardService.insertBoard(b);
 		
 		if(result > 0) { // 성공 => 도와줄게요 게시글 리스트 페이지 redirect:help.bo

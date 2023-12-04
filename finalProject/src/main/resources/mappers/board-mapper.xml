@@ -13,19 +13,33 @@
   		<result column="CREATEDATE" property="createDate" />
   	</resultMap>
   	
+  	<!-- 도와줄게요 게시글 작성 쿼리문 -->
   	<insert id="insertBoard">
   		INSERT INTO
-  			BOARD (
+  			BOARD 
+  				(
   				BOARD_NO,
   				BOARD_TITLE,
   				BOARD_CONTENT,
   				PRICE
-  				  )
-  			VALUES (
-  				SEQ_BNO.NEXTVAL,
-  				#{boardTitle},
-  				#{boardContent},
-  				#{price}
-  				   )
+  				)
+  				
+  			VALUES 
+  				 (
+  				 SEQ_BNO.NEXTVAL,
+  				 #{boardTitle},
+  				 #{boardContent},
+  				 #{price}
+  				 )
   	</insert>
+  	
+  	<!-- 도와줄게요 게시글 수정 쿼리문 -->
+  	<update id="updateBoard">
+  		UPDATE BOARD
+  			SET BOARD_TITLE = #{boardTitle},
+  			BARD_CONTENT = #{boardContent},
+  			PRICE = #{price}
+  		WHERE BOARD_NO = #{boardNo}
+  	</update>
+  	
   </mapper>
