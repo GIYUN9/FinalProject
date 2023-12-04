@@ -22,8 +22,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	//게시판 도와줄게요 조회
 	public ArrayList<Board> selectList(PageInfo pi) {
-
-		return null;
+		return boardDao.selectList(sqlSession, pi);
 	}
 
 	@Override
@@ -41,8 +40,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	//도와줄게요 게시판 삭제
 	public int deleteBoard(int boardNo) {
-
-		return 0;
+		return boardDao.deleteBoard(sqlSession, boardNo);
 	}
 	
 }

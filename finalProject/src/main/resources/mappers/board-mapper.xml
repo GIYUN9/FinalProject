@@ -37,9 +37,15 @@
   	<update id="updateBoard">
   		UPDATE BOARD
   			SET BOARD_TITLE = #{boardTitle},
-  			BARD_CONTENT = #{boardContent},
+  			BOARD_CONTENT = #{boardContent},
   			PRICE = #{price}
   		WHERE BOARD_NO = #{boardNo}
   	</update>
   	
+  	<!-- 도와줄게요 게시글 삭제 쿼리문 -->
+  	<update id="deleteBoard">
+  		UPDATE BOARD
+  			SET STATUS = 'N'
+  		WHERE BOARD_NO = #{boardNo}
+  	</update>
   </mapper>

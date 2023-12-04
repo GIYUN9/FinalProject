@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>도와줄게요 게시글 작성</title>
 <style>
 	*,
 	*::before,
@@ -206,7 +206,7 @@
                     <div class="hu-top-section">
                         <p>도와줄게요 게시글 작성</p>
                     </div>
-                  <from id="helpu" method="post" action="">
+               <form method="post" action="helpList.bo" enctype="multipart/form-data">
                     <div class="hu-align">
                         <div class="hu-input-area">
                             <div class="aa">
@@ -236,7 +236,7 @@
                             </div>  
                             <div class="aa">
                                 <input class="hu-price" type="text" id="price" placeholder="최소 1,000">
-                                <p class="price-measure2">원</p>
+                                <p class="price-measure2">${b.price}원</p>
                                     <div class="ee">
                                         희망가격
                                     </div>
@@ -248,6 +248,7 @@
                         <button type="reset" class="hu-cancle-btn">취소</button>
                         <button type="submit" class="hu-submit-btn">등록</button>
                     </div>
+                </form>
             </div>
         </div>
     </div>

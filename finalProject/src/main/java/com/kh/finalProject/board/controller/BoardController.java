@@ -1,16 +1,13 @@
 package com.kh.finalProject.board.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
-import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 import com.kh.finalProject.board.model.service.BoardService;
-import com.kh.finalProject.board.model.vo.Board;
+
+
 
 @Controller
 public class BoardController {
@@ -39,19 +36,24 @@ public class BoardController {
 	}
 	
 	// 도와줄게요 게시글 조회
-	@RequestMapping(value="helpListBoard.bo")
+	@RequestMapping(value="helpList.bo")
 	public String helpListBoard() {
+		
 		return "board/helpBoardList";
 	}
-
-	// 도와줄게요 게시글 등록하기
-	@RequestMapping(value="helpinsert.bo")
+	
+	// 도와줄게요 게시글 작성하기
+	@RequestMapping(value="helpu.bo")
 	public String helpinsertBoard() {
+		
 		return "board/helpu";
 	}
 	
-	
-	
+	// 도와줄게요 게시글 삭제
+	@RequestMapping(value="helpDelete.bo")
+	public String DeleteBoard() {
+		return "board/helpBoardList";
+	}
 
 	@RequestMapping(value = "/curious.co")
 	public String curiousBoard(){
