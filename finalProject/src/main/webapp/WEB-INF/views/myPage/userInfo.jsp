@@ -95,17 +95,17 @@
 						</form>
 					</div>
 					<div class="ui-formOuter">
-						<form action="">
+						<form action="updateUserInfo.me" method="post">
 							<table class="user-info-table">
 								<th>이름</th>
 								<tr>
-									<td><input class="info-input" placeholder="${loginUser.memberName}"></td>
+									<td><input class="info-input" name="memberName" value="${loginUser.memberName}"></td>
 								</tr>
 								<th>이메일</th>
 								<tr>
 									<td>
 										<div class = "normal-input-box">
-											<input class="email-input" placeholder="${loginUser.memberEmail}">
+											<input class="email-input" name="memberEmail" value="${loginUser.memberEmail}" readonly="readonly">
 											<button class="btn" onclick="newEmail()">인증하기</button>
 										</div>
 									</td>
@@ -114,7 +114,7 @@
 								<tr>
 									<td>
 										<div class = "normal-input-box">
-											<input class="phone-input" placeholder="${loginUser.phone}">
+											<input class="phone-input" name="phone" value="${loginUser.phone}" readonly="readonly">
 											<button class="btn" onclick="newPhone()">재인증</button>
 										</div>
 									</td>
@@ -123,7 +123,7 @@
 								<tr>
 									<td>
 										<div class="normal-input-box">
-											<input class="info-input" value=" ${loginUser.account} POINT" readonly="readonly">
+											<input class="info-input" value="${loginUser.account}" readonly="readonly">
 											<button class="btn" onclick="payAdd()">충전하기</button>
 										</div>
 									</td>
@@ -134,7 +134,7 @@
 								</tr>
 								<th>관심사</th>
 								<tr>
-									<td><input class="info-input" placeholder="${loginUser.memberConcern}"></td>
+									<td><input class="info-input" name="memberConcern" value="${loginUser.memberConcern}"></td>
 								</tr>
 								<button class="ui-submit-btn" type="submit" class="btn" style="float: right;">수정하기</button>
 							</table>
