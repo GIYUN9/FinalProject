@@ -66,4 +66,26 @@
   			SET STATUS = 'N'
   		WHERE BOARD_NO = #{boardNo}
   	</update>
+  	
+  	<select id="selectCommListCount" resultType="_int">
+  		SELECT  COUNT(*)
+				FROM BOARD
+		WHERE BOARD_TYPE = 3
+		AND STATUS = 'Y'
+  	</select>
+  	
+  	<select id="selectCommList" resultMap="boardResult">
+  		SELECT  BOARD_NO,
+				BOARD_TITLE,
+				BOARD_CONTENT,
+				PRICE,
+				BOARD_TYPE,
+				CREATEDATE,
+				STATUS,
+				MEM_NO,
+				CATEGORY_NO
+				FROM BOARD
+		WHERE BOARD_TYPE = 3
+		AND STATUS = 'Y'
+  	</select>
   </mapper>

@@ -9,7 +9,7 @@ import com.kh.finalProject.common.vo.PageInfo;
 public interface BoardService {
 	
 	//게시판 도와줄게요 조회
-	ArrayList<Board> selectList(PageInfo pi);
+	ArrayList<Board> selectCommList(PageInfo pi);
 	
 	//게시글 상세조회
 	Board selectBoard(int boardNo);
@@ -22,6 +22,9 @@ public interface BoardService {
 	
 	//도와줄게요 게시판 삭제
 	int deleteBoard(int boardNo);
+	
+	//커뮤니티 게시글 수(조회)
+	int selectCommListCount();
 	
 	
 	

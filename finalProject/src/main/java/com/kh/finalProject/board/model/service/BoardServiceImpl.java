@@ -19,13 +19,6 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	private BoardDao boardDao;
 
-	//게시글 리스트 조회
-	@Override
-	//게시판 도와줄게요 조회
-	public ArrayList<Board> selectList(PageInfo pi) {
-		return boardDao.selectList(sqlSession, pi);
-	}
-
 	//게시글 등록
 	@Override
 	//도와줄게요 게시판 등록
@@ -52,5 +45,16 @@ public class BoardServiceImpl implements BoardService {
 	public Board selectBoard(int boardNo) {
 		return boardDao.selectBoard(sqlSession, boardNo);
 	}
+
+	//게시글 전체 갯수 count(*)조회
+	@Override
+	public int selectCommListCount() {
+		return boardDao.selectCommListCount(sqlSession);
+	}
 	
+	//게시글 리스트 조회
+	@Override
+	public ArrayList<Board> selectCommList(PageInfo pi) {
+		return boardDao.selectCommList(sqlSession, pi);
+	}
 }

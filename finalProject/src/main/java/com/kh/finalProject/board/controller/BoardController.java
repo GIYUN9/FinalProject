@@ -75,18 +75,22 @@ public class BoardController {
 //		//화면 전환용 임시 데이터는 없는상태
 //		return "noticeBoard/curiousBoard";
 	
-	//게시글 리스트 전체보기
-//	public ModelAndView selectList
-//	(@RequestParam(value="cpage", defaultValue="1") int currentPage,  ModelAndView mv) {
-//				
-//			PageInfo pi = Pagenation.getPageInfo(boardService.selectListCount(), currentPage, 10, 5);
-//			
-//			mv.addObject("pi",pi)
-//			  .addObject("list", boardService.selectList(pi))
-//			  .setViewName("board/boardListView");
-//			
-//			return mv;
-//		}
+//	게시글 리스트 전체보기
+	@RequestMapping(value = "list.co")
+	public ModelAndView commList
+	(@RequestParam(value = "cpage", defaultValue = "1") int currentPage, ModelAndView mv) {
+		int listCount = boardService.selectCommListCount();
+		
+		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 4);
+		ArrayList<Board> list = boardService.selectCommList(pi);
+		mv.addObject("pi", pi)
+			.addObject("list", list)
+			.setViewName("noticeBoard/allBoard");
+		System.out.println(boardService.selectCommList(pi));
+		
+		System.out.println(list.toString());
+		return mv;
+	}
 		
 	
 	//궁금해요
@@ -141,7 +145,7 @@ public class BoardController {
 	public String helpInsert(Board b) {
 		b.setMemberNo(2); // 임시데이터
 		b.setCatrgoryNo(200); // 임시데이터
-		int result1 = boardService.helpInsert(b);
+//		int result1 = boardService.helpInsert(b);
 		
 		
 		
