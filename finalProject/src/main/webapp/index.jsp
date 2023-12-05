@@ -9,15 +9,12 @@
 <body>	
 		
 		
-<jsp:forward page="WEB-INF/views/member/passwordFind.jsp"/>
+	<jsp:forward page="WEB-INF/views/member/passwordFind.jsp"/>
 
 	
 	
  
-	
-<body>
 
-	<jsp:forward page="WEB-INF/views/board/helpBoardList.jsp"/>
 
 	<%--
 		김경보

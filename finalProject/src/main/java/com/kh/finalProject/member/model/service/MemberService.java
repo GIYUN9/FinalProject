@@ -9,7 +9,7 @@ public interface MemberService {
 	int insertMember(Member m);
 	
 	//아이디 중복체크
-	int emailCheck(String checkEmail);
+	Member emailCheck(Member m);
 	
 	// 회원정보 불러오는 서비스(select)
 	Member userInfo(Member m);
