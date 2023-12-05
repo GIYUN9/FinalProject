@@ -3,6 +3,7 @@ package com.kh.finalProject.board.controller;
 import java.util.ArrayList;
 import javax.servlet.http.HttpSession;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.finalProject.board.model.service.BoardService;
 import com.kh.finalProject.board.model.vo.Board;
 import com.kh.finalProject.common.vo.Attachment;
-
+import com.kh.finalProject.common.vo.Notice;
 import com.kh.finalProject.common.Pagenation;
 import com.kh.finalProject.common.vo.PageInfo;
 
@@ -69,39 +70,27 @@ public class BoardController {
 	public String DeleteBoard() {
 		return "board/helpBoardList";
 	}
-
-//	@RequestMapping(value= "curious.co")
-//	public String curiousBoard(){
-//		//화면 전환용 임시 데이터는 없는상태
-//		return "noticeBoard/curiousBoard";
 	
-	//게시글 리스트 전체보기
-//	public ModelAndView selectList
-//	(@RequestParam(value="cpage", defaultValue="1") int currentPage,  ModelAndView mv) {
-//				
-//			PageInfo pi = Pagenation.getPageInfo(boardService.selectListCount(), currentPage, 10, 5);
-//			
-//			mv.addObject("pi",pi)
-//			  .addObject("list", boardService.selectList(pi))
-//			  .setViewName("board/boardListView");
-//			
-//			return mv;
-//		}
+//	게시글 리스트 전체보기
+	@RequestMapping(value = "list.co")
+	public ModelAndView commList
+	(@RequestParam(value = "cpage", defaultValue = "1") int currentPage, ModelAndView mv) {
+		int listCount = boardService.selectCommListCount();
 		
-	
+		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 4);
+		ArrayList<Board> list = boardService.selectCommList(pi);
+		mv.addObject("pi", pi)
+			.addObject("list", list)
+			.setViewName("noticeBoard/allBoard");
+		
+		return mv;
+	}
+		
 	//궁금해요
-//	@RequestMapping(value = "/curious.co")
-//	public ModelAndView curiousBoard(Model model){
-//		
-//		ArrayList<Board> list = boardService.selectList(pi);
-//		
-//		model.addAttribute("list", list);
-//		model.addAttribute("pi", pi);
-//		
-//		return mv;
-//		
-//		}
-
+	@RequestMapping(value = "/curious.co")
+	public String curiousBoard(){
+		return "noticeBoard/curiousBoard";
+	}
 	
 	//얼마에요
 	@RequestMapping(value = "/much.co")
@@ -120,15 +109,11 @@ public class BoardController {
 	
 	//공지사항
 	@RequestMapping(value = "/notice.co")
-	public String noticeBoard(){
-		//화면 전환용 임시 데이터는 없는상태
+	public String noticeBoard(Model model){
+		ArrayList<Notice> nList = boardService.noticeList();
+		System.out.println(nList);
+		model.addAttribute("nList",nList);
 		return "noticeBoard/noticeBoard";
-	}
-	
-	@RequestMapping(value = "/viewall.co")
-	public String allBoardBoard(){
-		//화면 전환용 임시 데이터는 없는상태
-		return "noticeBoard/allBoard";
 	}
 	
 	@RequestMapping(value = "/helpuForm.bo")
@@ -141,7 +126,10 @@ public class BoardController {
 	public String helpInsert(Board b) {
 		b.setMemberNo(2); // 임시데이터
 		b.setCatrgoryNo(200); // 임시데이터
-		int result1 = boardService.helpInsert(b);
+//		int result1 = boardService.helpInsert(b);
+		
+		
+		
 		return "";
 	}
 
