@@ -100,8 +100,8 @@
                         <h5>가입한 이메일 주소를 입력해주세요</h5>
                         <input class="input-email" type="text" placeholder="example@poomasi.com">
                         <div class="pf-text">
-                            가입하신 이메일 주소를 입력해주시면<br>
-                            새로운 비밀번호를 설정 가능한 링크를 보내드립니다.
+				                            가입하신 이메일 주소를 입력해주시면<br>
+				                            새로운 비밀번호를 설정 가능한 링크를 보내드립니다.
                         </div>
                         <button type="submit" class="emailSend-btn" onclick="emailSend()">이메일 전송하기</button> 
                     </div>
