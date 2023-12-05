@@ -136,18 +136,26 @@ public class MemberController {
 	@ResponseBody
 	@RequestMapping(value = "/emailCheck.me")
 	public String idCheck(String checkEmail) {
-
-		
 		return memberService.emailCheck(checkEmail) > 0 ? "NNNNN" : "NNNNY";
 	}
 	
-
-	
-	@RequestMapping(value = "/next.me")
-	public String nextEnroll() {
-		//도와줄게요 화면
-		return "ember/userEnroll";
+	@RequestMapping(value = "/login.me")
+	public ModelAndView loginMember(Member m, ModelAndView mv, HttpSession session) {
+		System.out.println("zzzzzzzzzzzzzzzz" + m);
+		Member loginUser = memberService.loginMember(m);
+		System.out.println("zzzzzzzzzzzzzzzz" + m);
+		if(loginUser == null || !(m.getMemberPwd().equals(loginUser.getMemberPwd()))){//로그인 실패경우 (조건이 정확한지 확인받기)
+			mv.addObject("errorMsg", "로그인 실패"); 
+			mv.setViewName("common/errorPage");//경로가 정확히 이게 맞을까?
+		}else {
+			session.setAttribute("loginUser", loginUser);
+			System.out.println("로그인 성공!");
+			mv.setViewName("redirect:/");
+		}
+		return mv;
 	}
+	
+
 	
 }
 
