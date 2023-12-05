@@ -10,7 +10,6 @@
 
 	<jsp:forward page="WEB-INF/views/board/helpBoardList.jsp"/>
 
-
 	<%--
 		김경보
 		<jsp:forward page="WEB-INF/views/common/main.jsp"/> 메인페이지 
@@ -62,7 +61,7 @@
 		<jsp:forward page="WEB-INF/views/noticeBoard/togetherBorder.jsp"/> 커뮤니티 게시판 함께해요
 		<jsp:forward page="WEB-INF/views/noticeBoard/announcementBorder.jsp"/> 커뮤니티 게시판 공지사항
 	--%> 
-
+	
 
 </body>
 </html>

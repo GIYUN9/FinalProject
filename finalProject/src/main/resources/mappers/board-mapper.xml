@@ -27,9 +27,7 @@
   				BOARD_NO,
   				BOARD_TITLE,
   				BOARD_CONTENT,
-  				PRICE,
-  				BOARD_TYPE,
-  				CREATEDATE
+  				PRICE
   				)
   				
   			VALUES 
@@ -37,9 +35,7 @@
   				 SEQ_BNO.NEXTVAL,
   				 #{boardTitle},
   				 #{boardContent},
-  				 #{price},
-  				 #{boardType},
-  				 #{createDate}
+  				 #{price}
   				 )
   	</insert>
   	
