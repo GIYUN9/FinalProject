@@ -19,28 +19,32 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	private BoardDao boardDao;
 
+	//게시글 리스트 조회
 	@Override
 	public ArrayList<Board> selectList(PageInfo pi) {
 
-		return null;
+		return boardDao.selectList(sqlSession, pi);
 	}
 
+	//게시글 등록
 	@Override
 	public int insertBoard(Board b) {
 
-		return 0;
+		return boardDao.insertBoard(sqlSession, b);
 	}
 
+	//게시글 수정
 	@Override
 	public int updateBoard(Board b) {
 
-		return 0;
+		return boardDao.updateBoard(sqlSession, b);
 	}
 
+	//게시글 삭제
 	@Override
 	public int deleteBoard(int boardNo) {
-
-		return 0;
+		
+		return boardDao.deleteBoard(sqlSession, boardNo);
 	}
 	
 }
