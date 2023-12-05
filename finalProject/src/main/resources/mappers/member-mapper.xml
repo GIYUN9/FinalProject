@@ -128,4 +128,12 @@
 		SET MEM_PWD = #{memberPwd}
 		WHERE MEM_NO = #{memberNo}
 	</update>
+	
+	<!-- 회원탈퇴 쿼리 -->
+	<update id="deleteMember">
+		UPDATE MEMBER
+		SET STATUS = 'N'
+		WHERE MEM_NO = #{memberNo}
+		AND MEM_EMAIL = #{memberEmail}
+	</update>
 </mapper>

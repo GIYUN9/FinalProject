@@ -55,5 +55,9 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int emailCheck(String checkEmail) {
 		return memberDao.emailCheck(sqlSession, checkEmail);
+
+	@Override
+	public int deleteMember(Member m) {
+		return memberDao.deleteMember(sqlSession, m);
 	}
 }

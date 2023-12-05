@@ -96,7 +96,7 @@
 			<h3 style="margin: 10px 0 0 20px;">회원 탈퇴</h3>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="user-info" style="margin-top: 15px;">
-					<form action="" class="df-form">
+					<form action="delete.me" class="df-form">
 						<h4 style="margin-bottom: 5px;">떠나시는 이유를 알려주세요.</h4>
 						<div class="reason-box">
 							<label class="label-css"><input type="radio" name="reason" value="1"> 이용하고 싶은 서비스가 없어요</label>
@@ -107,7 +107,7 @@
 							<label class="label-css"><input type="radio" name="reason" value="6"> 쿠폰 &middot; 적립금등 혜택이 적어요</label>
 						</div>
 						<h4 style="margin-bottom: 5px; margin-top: 15px;">이메일 확인</h4>
-						<input class="emailInput" placeholder="가입하신 이메일을 입력해주세요.">
+						<input class="emailInput" name="memberEmail" placeholder="가입하신 이메일을 입력해주세요.">
 						<h4 style="margin-bottom: 5px; margin-top: 15px;">주의 사항</h4>
 						<textarea class="df-text-box" rows="15" cols="96%" readonly="readonly">
 1. 현재 사용 중인 계정 정보는~~~

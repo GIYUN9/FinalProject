@@ -74,7 +74,7 @@ public class MemberController {
 		return "myPage/changePwd";
 	}
 	
-	//비밀번경하는 컨트롤러
+	//비밀번호 변경하는 컨트롤러
 	@RequestMapping(value = "/updatePwd.me")
 	public String updatePwd(Member m, String newPwd){
 		m.setMemberNo(2); //임시데이터
@@ -86,11 +86,26 @@ public class MemberController {
 		//프론트에서 기존비밀번호가 일치하고 새로운 비밀번호 확인까지 일치한다면 버튼 클릭가능하기만들기
 	}
 	
+	//화면 전환용
 	@RequestMapping(value = "/deleteForm.me")
 	public String deleteForm(){
-		//화면 전환용 임시 데이터는 없는상태
 		return "myPage/deleteForm";
 	}
+	
+	//회원탈퇴 컨트롤러 (업데이트)
+	@RequestMapping(value = "/delete.me")
+	public String deleteMember(Member m, HttpSession session) {
+		m.setMemberNo(2); //임시데이터
+		int result = memberService.deleteMember(m);
+		
+		if(result > 0) {
+			session.removeAttribute("loginUser");
+			return "common/main";
+		} else {
+			return "redirect:/";
+		}
+	}
+	
 	@RequestMapping(value = "/schedule.me")
 	public String schedule(){
 		//화면 전환용 임시 데이터는 없는상태
