@@ -8,7 +8,7 @@
 </head>
 <body>	
 
-	<jsp:forward page="WEB-INF/views/noticeBoard/community.jsp"/>
+	<jsp:forward page="WEB-INF/views/noticeBoard/curiousBoard.jsp"/>
 	
  
 	
