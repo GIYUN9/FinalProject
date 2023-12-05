@@ -4,6 +4,11 @@
 <%
 	String contextPath = request.getContextPath();
 %>
+<% 
+  
+	out.println("loginUser: " + session.getAttribute("loginUser"));
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -273,8 +278,9 @@
 </style>
 </head>
 <body>
+	${empty loginUser}
     <c:choose>
-        <c:when test="${ empty loginUser }">
+        <c:when test="${empty loginUser}">
             <header>
                 <div class="hd-left-section">
                     <a href="#" class="hd-hu">도와줄게요</a>
@@ -303,30 +309,13 @@
                     <img class="logowh1" src="">
                 </div>
                 <div class="hd-right-section">
-                    <a class="hd-login" data-toggle="modal" data-target="#myModal">로그인</a>
-                    <a class="hd-re" data-toggle="modal" data-target="#myModal1">회원가입</a>
+                    <a class="hd-login" onclick="logout()"  >로그아웃</a>
+                    <a class="hd-re" data-toggle="modal" data-target="#myModal1">OOO님 V</a>
                 </div>
             </header>
         </c:otherwise>
     </c:choose>
 
-
-
-   <header>
-         <div class="hd-left-section">
-             <a href="#" class="hd-hu">도와줄게요</a>
-             <a href="#" class="hd-hm">도와주세요</a>  
-         </div>    
-         <div class="hd-middle-section">
-             <img class="logowh" src="././resources/image/logowh.png" onclick="redirectToHome()">
-             <input class="hd-searchbar" placeholder="검색"></input>        
-	<img class="logowh1" src="">
-         </div>
-         <div class="hd-right-section">
-             <a class="hd-login" data-toggle="modal" data-target="#myModal">로그인</a>
-             <a class="hd-re" data-toggle="modal" data-target="#myModal1">회원가입</a>
-         </div>
-    </header>
     
         <!-- 첫번째 모달 -->
         <div class="modal" id="myModal" >
@@ -452,6 +441,9 @@
 		function redirectToHome() {  // 클릭 시 리다이렉션을 수행할 URL을 지정합니다.
 		  var redirectUrl = '<%=request.getContextPath()%>/'; 
 		  window.location.href = redirectUrl;
+		}
+		function logout() {
+			location.href = "logout.me"
 		}
 	</script>
 </body>

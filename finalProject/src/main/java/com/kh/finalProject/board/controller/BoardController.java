@@ -124,14 +124,12 @@ public class BoardController {
 		//화면 전환용 임시 데이터는 없는상태
 		return "noticeBoard/noticeBoard";
 	}
-<<<<<<< HEAD
+	
 	@RequestMapping(value = "/viewall.co")
 	public String allBoardBoard(){
 		//화면 전환용 임시 데이터는 없는상태
 		return "noticeBoard/allBoard";
 	}
-=======
->>>>>>> 53edffcc821930a89ec3a4b76ba420f81668f5ed
 	
 	@RequestMapping(value = "/helpuForm.bo")
 	public String helpuForm() {
@@ -144,9 +142,6 @@ public class BoardController {
 		b.setMemberNo(2); // 임시데이터
 		b.setCatrgoryNo(200); // 임시데이터
 		int result1 = boardService.helpInsert(b);
-		
-		
-		
 		return "";
 	}
 
