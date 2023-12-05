@@ -146,6 +146,7 @@ public class BoardController {
 		
 		
 		
+		int result1 = boardService.helpInsert(b);
 		return "";
 	}
 

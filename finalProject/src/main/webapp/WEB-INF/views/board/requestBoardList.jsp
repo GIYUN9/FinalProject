@@ -196,13 +196,6 @@
         border-radius: 8px;
         color: white;
     }
-    
-    
-    a{
-        color: white;
-        
-    }
-
     option:hover {
         background-color: rgb(0, 0, 0);
     }
@@ -232,38 +225,38 @@
         <div class = "nav-center-items">
             <div class = "nav-item">
                 <div class="nav-item-content">
-                    <a href="#">전체보기</a>
+                    <a href="#" style="color: white;">전체보기</a>
                 </div>
             </div>
             <div class = "nav-item"><a href="#">&#60;</a></div>
             <div class = "nav-item">
                 <div class="nav-item-content">
-                    <a href="#">취미,레슨</a>
+                    <a href="#" style="color: white;">취미,레슨</a>
                 </div>
             </div>
             <div class = "nav-item">
                 <div class="nav-item-content">
-                    <a href="#">디자인</a>
+                    <a href="#" style="color: white;">디자인</a>
                 </div>
             </div>
             <div class = "nav-item">
                 <div class="nav-item-content">
-                    <a href="#">마케팅</a>
+                    <a href="#" style="color: white;">마케팅</a>
                 </div>
             </div>
             <div class = "nav-item">
                 <div class="nav-item-content" style="background-color: rgba(255, 255, 255, 0.22);">
-                    <a href="#">운동</a>
+                    <a href="#" style="color: white;">운동</a>
                 </div>
             </div>
             <div class = "nav-item">
                 <div class="nav-item-content">
-                    <a href="#">게임</a>
+                    <a href="#" style="color: white;">게임</a>
                 </div>
             </div>
             <div class = "nav-item">
                 <div class="nav-item-content">
-                    <a href="#">미술</a>
+                    <a href="#" style="color: white;">미술</a>
                 </div>
             </div>
            
