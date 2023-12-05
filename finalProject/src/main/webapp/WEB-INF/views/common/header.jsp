@@ -293,7 +293,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body" >
-                        <form action="" method="post">
+                        <form action="login.me" method="post">
                             <button style="border: none; background-color: transparent;"><img class="close-btn-login" class="close-btn-login" src="././resources/icon/close.png" onclick="aa()" ></button>
                         <!--입력하면 값 넘어갈 수 있게끔-->
                             <h2 class="modal-title" style="text-align: center; font-weight: bold; margin: 0 auto;">Login</h2>
@@ -325,37 +325,37 @@
                 <h4 class="modal-title" style="text-align: center; color: white; font-weight: bold; margin: 0 auto;">품앗이에 오신걸 환영합니다</h4>
                 <div class="modal-content" style="height: 800px;">
                     <div class="modal-body" >
-                        <form action="" method="post">
+                        <form action="insert.me" method="post">
                             <div>
                                 <p>
-                                    이름
+                                    	이름
                                     <span class="as-re">*</span>
                                 </p>
                                 <p>
-                                    <input class="en-input" type="text" placeholder="이름(실명)을 입력해주세요">
+                                    <input class="en-input" id="memberName" name ="memberName" type="text" placeholder="이름(실명)을 입력해주세요">
                                 </p>
                                 <p>
-                                    이메일
+                                   	 이메일
                                     <span class="as-re">*</span>
                                 </p>
                                 <p>
-                                    <input class="en-input" type="text" placeholder="example@poomasi.com">
+                                    <input class="en-input" id="memberEmail" name ="memberEmail" type="text" placeholder="example@poomasi.com">
                                 </p>
                                 <p>
-                                    비밀번호
+                                   	 비밀번호
                                     <span class="as-re">*</span>
                                 </p>
                                 <p>
-                                    <input class="en-input" type="password" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요">
+                                    <input class="en-input" id="memberPwd" name ="memberPwd" type="password" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요">
                                 </p>
                                 <p>
-                                    관심사 선택(중복 선택 가능)
+                                    	관심사 선택(중복 선택 가능)
                                     <span class="as-re">*</span>
                                 </p>
                                 <div class="dropdown">
                                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" 
                                     style="width: 100%;"  data-bs-toggle="dropdown" aria-expanded="false">
-                                    관심사를 선택해주세요
+                                    	관심사를 선택해주세요
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="width: 100%;">
                                         <li><a class="dropdown-item" href="#">이사</a></li>
@@ -363,6 +363,15 @@
                                         <li><a class="dropdown-item" href="#">취미/자기계발</a></li>
                                     </ul>
                                 </div>
+                                 <div class ="">                                   
+	                               
+	                    			<input type="tel" class="form-control" id="phone" placeholder="Please Enter Phone" name="phone"> <br>               
+	                                <label for=""> &nbsp; Gender : </label> &nbsp;&nbsp;
+				                    <input type="radio" id="Male" value="M" name="memberGender" checked>
+				                    <label for="Male">남자</label> &nbsp;&nbsp;
+				                    <input type="radio" id="Female" value="F" name="memberGender">
+				                    <label for="Female">여자</label> &nbsp;&nbsp;
+                                </div> 
                                 <form method="get" action="form-action.html">
                                 <br>
                                 <div class="cb-agree-all">전체 동의</div>

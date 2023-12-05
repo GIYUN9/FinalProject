@@ -28,7 +28,7 @@ CREATE TABLE MEMBER(
     MEM_EMAIL VARCHAR2(60) NOT NULL UNIQUE,
     MEM_PWD VARCHAR2(60) NOT NULL,
     MEM_NAME VARCHAR2(60) NOT NULL,
-    MEM_CONCERN VARCHAR2(30) NOT NULL,
+    MEM_CONCERN VARCHAR2(30),
     MEM_PRO NUMBER DEFAULT 1 NOT NULL,
     PHONE VARCHAR2(30) NOT NULL,
     LOCATION VARCHAR2(100),
@@ -124,10 +124,11 @@ CREATE TABLE ATTACHMENT(
 
 ---------------------더미데이터-----------------------
 -- 멤버
-INSERT INTO MEMBER VALUES(1, 'admin@naver.com', '1234' ,'관리자', '음악', 1, 
+INSERT INTO MEMBER VALUES(1, 'admin@naver.com', '1234' ,'관리자', '음악', 1,
         '010-1111-0000', '서울시 강남구', 'Y', 'M', '4', 'C:\Users\바탕 화면', NULL, NULL);
 INSERT INTO MEMBER VALUES(SEQ_MNO.NEXTVAL, 'user01@naver.com','1234' ,'홍길동', '음악', 1, 
         '010-1111-1111', '서울시 송파구', 'Y', 'M', '4', 'C:\Users\바탕 화면', NULL, NULL);
+
 INSERT INTO MEMBER(
             MEM_NO,
 			MEM_EMAIL,
@@ -164,6 +165,6 @@ INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알
 
 -- ATTACHEMT 사진
 
-
+        
 ---트랜잭션
 commit;

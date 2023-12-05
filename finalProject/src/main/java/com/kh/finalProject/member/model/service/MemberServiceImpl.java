@@ -10,6 +10,7 @@ import com.kh.finalProject.member.model.vo.Professional;
 
 @Service
 public class MemberServiceImpl implements MemberService {
+	
 	@Autowired
 	private MemberDao memberDao;
 	
@@ -19,6 +20,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int insertMember(Member m) {
 		return memberDao.insertMember(sqlSession, m);
+	}
+	
+	@Override
+	public Member loginMember(Member m) {
+		return memberDao.loginMember(sqlSession, m);
 	}
 
 	@Override
@@ -45,6 +51,10 @@ public class MemberServiceImpl implements MemberService {
 	public int updatePwd(Member m) {
 		return memberDao.updatePwd(sqlSession, m);
 	}
+	
+	@Override
+	public int emailCheck(String checkEmail) {
+		return memberDao.emailCheck(sqlSession, checkEmail);
 
 	@Override
 	public int deleteMember(Member m) {
