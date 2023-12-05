@@ -15,6 +15,14 @@
 		<result column="POINT" property="point"/>
 		<result column="FILE_PATH" property="filePath"/>
 		<result column="ACCOUNT" property="account"/>
+		<result column="INTRO" property="intro"/>
+	</resultMap>
+	
+	<resultMap type="Professional" id="professionalResult">
+		<result column="PRO_NO" property="proNo"/>
+		<result column="PRO_JOB" property="proJob"/>
+		<result column="CATEGORY_NO" property="categoryNo"/>
+		<result column="MEM_NO" property="memberNo"/>
 	</resultMap>
 	
 	<!-- 회원가입 -->
@@ -24,7 +32,6 @@
 			MEM_EMAIL,
 			MEM_PWD,
 			MEM_NAME,
-			MEM_CONCERN,
 			PHONE,
 			MEM_GEN
 		)
@@ -33,13 +40,40 @@
 			#{memberEmail},
 			#{memberPwd},
 			#{memberName},
-			#{memberConcern},
 			#{phone},
 			#{memberGender}	
 		)
 	</insert>
+	<!-- 아이디 중복체크 -->
+	<select id="emailCheck" resultType="_int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE MEMBER_EMAIL = #{memberEmail}
+	</select>
 	
-	<!-- 회원정보 불러오는 테이블 -->
+	<!-- 로그인 -->
+	<select id="loginMember" resultMap="memberResult">
+		SELECT MEM_NO,
+			MEM_EMAIL,
+			MEM_PWD,
+			MEM_NAME,
+			MEM_CONCERN,
+			MEM_PRO,
+			PHONE,
+			LOCATION,
+			STATUS,
+			MEM_GEN,
+			POINT,
+			FILE_PATH,
+			ACCOUNT,
+			INTRO
+		FROM MEMBER
+		WHERE MEM_EMAIL = #{memberEmail}
+			AND MEM_PWD = #{memberPwd}
+		AND STATUS = 'Y'
+	</select>
+	
+	<!-- 회원정보 불러오는 쿼리 -->
 	<select id="userInfo" resultMap="memberResult">
 		SELECT  MEM_NO,
 				MEM_EMAIL,
@@ -53,9 +87,53 @@
 				MEM_GEN,
 				POINT,
 				FILE_PATH,
-				ACCOUNT
+				ACCOUNT,
+				INTRO
 		FROM MEMBER
-		WHERE MEM_EMAIL = #{memberEmail}
+		WHERE MEM_NO = #{memberNo}
 		AND STATUS = 'Y'
 	</select>
+	
+	<!-- 회원정보를 수정하는 쿼리 -->
+	<update id="updateUserInfo">
+		UPDATE MEMBER 
+		SET MEM_EMAIL = #{memberEmail},
+				MEM_NAME = #{memberName},
+				MEM_CONCERN = #{memberConcern},
+				PHONE = #{phone},
+				POINT = #{point}
+		WHERE MEM_NO = #{memberNo}
+	</update>
+	
+	<!-- 멤버번호로 프로페셔널테이블 불러오는 쿼리 -->
+	<select id="proInfo" resultMap="professionalResult">
+		SELECT  PRO_NO,
+				PRO_JOB,
+				CATEGORY_NO,
+				MEM_NO
+				FROM PROFESSIONAL
+				WHERE MEM_NO = #{memberNo}
+	</select>
+	
+	<!-- 멤버번호로 구별 / 전문가페이지에서 자기소개 수정하는 쿼리 -->
+	<update id="updateProInfo">
+		UPDATE MEMBER
+		SET INTRO = #{intro}
+		WHERE MEM_NO = #{memberNo}
+	</update>
+	
+	<!--비밀번호 수정 쿼리 -->
+	<update id="updatePwd">
+		UPDATE MEMBER
+		SET MEM_PWD = #{memberPwd}
+		WHERE MEM_NO = #{memberNo}
+	</update>
+	
+	<!-- 회원탈퇴 쿼리 -->
+	<update id="deleteMember">
+		UPDATE MEMBER
+		SET STATUS = 'N'
+		WHERE MEM_NO = #{memberNo}
+		AND MEM_EMAIL = #{memberEmail}
+	</update>
 </mapper>

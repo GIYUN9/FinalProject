@@ -34,31 +34,34 @@
 						</form>
 					</div>
 					<div>
-						<table class="user-info-table">
-							<th>전문가 닉네임</th>
-							<tr>
-								<td><input placeholder="고수임"></td>
-							</tr>
-							<th>자기소개</th>
-							<tr>
-								<td style="padding-bottom: 3px;">
-									<textarea style="resize: none; width: 98%; height: 50px;"></textarea>
-								</td>
-							</tr>
-							<th>지역</th>
-							<tr>
-								<td><input placeholder="카카오 지도 api들어갈자리"></td>
-							</tr>
-							<th>전문분야 및 상세분야 <br><span style="font-size: x-small;">최대 3개를 선택해주세요.</span><span style="font-size: x-small; color: red;">필수</span></th>
-							<tr>
-								<td><input placeholder="자격증정보 api? / 데이터베이스 직접?"></td>
-							</tr>
-							<th>보유기술 <br><span style="font-size: x-small;">최대 20개를 선택해주세요.</span><span style="font-size: x-small; color: red;">필수</span></th>
-							<tr>
-							<!-- 보유기술 고르는 창 드롭다운? ajax써야하나? -->
-								<td><input placeholder="기술검색 드롭다운?" style="height: 80px;"></td>
-							</tr>
-						</table>
+						<form action="updateProInfo.me">
+							<table class="user-info-table">
+								<th>전문가 이름</th>
+								<tr>
+									<td><input value="${loginUser.memberName}" name="memberName" readonly="readonly"></td>
+								</tr>
+								<th>자기소개</th>
+								<tr>
+									<td style="padding-bottom: 3px;">
+										<textarea style="resize: none; width: 98%; height: 50px;" name="intro">${loginUser.intro}</textarea>
+									</td>
+								</tr>
+								<th>지역</th>
+								<tr>
+									<td><input value="${loginUser.location}" readonly="readonly"></td>
+								</tr>
+								<th>전문분야 및 상세분야 <br><span style="font-size: x-small;">최대 3개를 선택해주세요.</span><span style="font-size: x-small; color: red;">필수</span></th>
+								<tr>
+									<td><input placeholder="자격증정보 api? / 데이터베이스 직접?"></td>
+								</tr>
+								<th>보유기술 <br><span style="font-size: x-small;">최대 20개를 선택해주세요.</span><span style="font-size: x-small; color: red;">필수</span></th>
+								<tr>
+								<!-- 보유기술 고르는 창 드롭다운? ajax써야하나? -->
+									<td><input placeholder="기술검색 드롭다운?" style="height: 80px;"></td>
+								</tr>
+							</table>
+							<button type="submit">수정하기</button>
+						</form>
 					</div>
 				</div>
 			</div>		

@@ -4,11 +4,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.finalProject.member.model.service.MemberService;
 import com.kh.finalProject.member.model.vo.Member;
+import com.kh.finalProject.member.model.vo.Professional;
 
 @Controller
 public class MemberController {
@@ -21,31 +24,88 @@ public class MemberController {
 //	@Autowired
 //	private BCryptPasswordEncoder bcryptPasswordEncoder;
 	
+	//멤버 마이페이지 불러오는 컨트롤러
 	@RequestMapping(value = "/userInfo.me")
-	public ModelAndView userInfo(ModelAndView mv, HttpSession session){
-		String memberEmail = (String)session.getAttribute("memberEmail"); // 로그인 되어있는 유저의 이메일(아이디)를 세션에 서꺼내옴
-		memberEmail = "user01@naver.com"; // 임시 데이터
-		Member loginUser = memberService.userInfo(memberEmail);
-
+	public ModelAndView userInfo(Member m, ModelAndView mv, HttpSession session){
+		System.out.println(m);
+		m.setMemberNo(2); //임시데이터
+		Member loginUser = memberService.userInfo(m);
 		session.setAttribute("loginUser", loginUser);
 		mv.setViewName("myPage/userInfo");
 		return mv;
 	}
+	//멤버 마이페이지 수정하는 컨트롤러
+	@RequestMapping(value = "/updateUserInfo.me")
+	public String updateUserInfo(Member m) {
+		m.setMemberNo(2); //임시데이터
+		int result = memberService.updateUserInfo(m);
+		
+		return "redirect:/userInfo.me";
+	}
+	
+	//멤버 전문가페이지 불러오는 컨트롤러
 	@RequestMapping(value = "/proInfo.me")
-	public String proInfo(){
-		//화면 전환용 임시 데이터는 없는상태
+	public String proInfo(Member m, HttpSession session){
+		m.setMemberNo(2); //임시데이터
+		
+		Member loginUser = memberService.userInfo(m);
+		session.setAttribute("loginUser", loginUser);
+		
+		Professional p = memberService.proInfo(m);
+		session.setAttribute("p", p);
+		
 		return "myPage/proInfo";
 	}
+	
+	//멤버 전문가페이지에서 수정하고 다시 페이지를 부르는 컨트롤러
+	@RequestMapping(value = "/updateProInfo.me")
+	public String updateProInfo(Member m, Professional p, HttpSession session) {
+		m.setMemberNo(2); //임시데이터
+		int result = memberService.updateProInfo(m);
+		
+		// 전문 분야 및 상세 분야 보류 여기에 추가해야함
+		// int result = memberService.updateUserInfo(m, p); ~~~
+		return "redirect:/proInfo.me";
+	}
+	
+	//비밀번경페이지 호출 컨트롤러
 	@RequestMapping(value = "/changePwd.me")
 	public String changePwd(){
-		//화면 전환용 임시 데이터는 없는상태
 		return "myPage/changePwd";
 	}
+	
+	//비밀번호 변경하는 컨트롤러
+	@RequestMapping(value = "/updatePwd.me")
+	public String updatePwd(Member m, String newPwd){
+		m.setMemberNo(2); //임시데이터
+		m.setMemberPwd(newPwd);
+		int result = memberService.updatePwd(m);
+		
+		return "redirect:/changePwd.me";
+		//성공 얼럴트창 띄우기
+		//프론트에서 기존비밀번호가 일치하고 새로운 비밀번호 확인까지 일치한다면 버튼 클릭가능하기만들기
+	}
+	
+	//화면 전환용
 	@RequestMapping(value = "/deleteForm.me")
 	public String deleteForm(){
-		//화면 전환용 임시 데이터는 없는상태
 		return "myPage/deleteForm";
 	}
+	
+	//회원탈퇴 컨트롤러 (업데이트)
+	@RequestMapping(value = "/delete.me")
+	public String deleteMember(Member m, HttpSession session) {
+		m.setMemberNo(2); //임시데이터
+		int result = memberService.deleteMember(m);
+		
+		if(result > 0) {
+			session.removeAttribute("loginUser");
+			return "common/main";
+		} else {
+			return "redirect:/";
+		}
+	}
+	
 	@RequestMapping(value = "/schedule.me")
 	public String schedule(){
 		//화면 전환용 임시 데이터는 없는상태
@@ -68,6 +128,50 @@ public class MemberController {
 		//화면 전환용 임시 데이터는 없는상태
 		return "myPage/ask2";
 	}
+	
+	
+
+	@RequestMapping(value = "/insert.me")
+	public String insertMember(Member m, HttpSession session, Model model) {
+		// bcryptPasswordEncoder 사용? => 일단 보류
+		System.out.println("zzzzzzzzzzzzzz" + m);
+		System.out.println("zzzzzzzzzzzzzz" + m);
+	
+		int result = memberService.insertMember(m); // 아이디로만 멤버객체 가져오기
+		
+		if(result > 0) {
+			session.setAttribute("alertMsg", "성공적으로 회원가입이 완료되었습니다.");
+			return "redirect:/";
+		} else {
+			model.addAttribute("errorMsg", "회원가입 실패");
+			return "common/errorPage";
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/emailCheck.me")
+	public String idCheck(String checkEmail) {
+		return memberService.emailCheck(checkEmail) > 0 ? "NNNNN" : "NNNNY";
+	}
+	
+	@RequestMapping(value = "/login.me")
+	public ModelAndView loginMember(Member m, ModelAndView mv, HttpSession session) {
+		System.out.println("zzzzzzzzzzzzzzzz" + m);
+		Member loginUser = memberService.loginMember(m);
+		System.out.println("zzzzzzzzzzzzzzzz" + m);
+		if(loginUser == null || !(m.getMemberPwd().equals(loginUser.getMemberPwd()))){//로그인 실패경우 (조건이 정확한지 확인받기)
+			mv.addObject("errorMsg", "로그인 실패"); 
+			mv.setViewName("common/errorPage");//경로가 정확히 이게 맞을까?
+		}else {
+			session.setAttribute("loginUser", loginUser);
+			System.out.println("로그인 성공!");
+			mv.setViewName("redirect:/");
+		}
+		return mv;
+	}
+	
+
+	
 }
 
 /*

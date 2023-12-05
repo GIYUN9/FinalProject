@@ -28,7 +28,7 @@ CREATE TABLE MEMBER(
     MEM_EMAIL VARCHAR2(60) NOT NULL UNIQUE,
     MEM_PWD VARCHAR2(60) NOT NULL,
     MEM_NAME VARCHAR2(60) NOT NULL,
-    MEM_CONCERN VARCHAR2(30) NOT NULL,
+    MEM_CONCERN VARCHAR2(30),
     MEM_PRO NUMBER DEFAULT 1 NOT NULL,
     PHONE VARCHAR2(30) NOT NULL,
     LOCATION VARCHAR2(100),
@@ -36,7 +36,8 @@ CREATE TABLE MEMBER(
     MEM_GEN VARCHAR2(10) NOT NULL CHECK(MEM_GEN IN ('M','F')), 
     POINT NUMBER,
     FILE_PATH VARCHAR2(3000),
-    ACCOUNT NUMBER DEFAULT 0
+    ACCOUNT NUMBER DEFAULT 0,
+    INTRO VARCHAR2(3000)
 );
 
 --멤버 시퀀스
@@ -123,10 +124,11 @@ CREATE TABLE ATTACHMENT(
 
 ---------------------더미데이터-----------------------
 -- 멤버
-INSERT INTO MEMBER VALUES(1, 'admin@naver.com', '1234' ,'관리자', '음악', 1, 
-        '010-1111-0000', '서울시 강남구', 'Y', 'M', '4', 'C:\Users\바탕 화면', NULL);
+INSERT INTO MEMBER VALUES(1, 'admin@naver.com', '1234' ,'관리자', '음악', 1,
+        '010-1111-0000', '서울시 강남구', 'Y', 'M', '4', 'C:\Users\바탕 화면', NULL, NULL);
 INSERT INTO MEMBER VALUES(SEQ_MNO.NEXTVAL, 'user01@naver.com','1234' ,'홍길동', '음악', 1, 
-        '010-1111-1111', '서울시 송파구', 'Y', 'M', '4', 'C:\Users\바탕 화면', NULL);
+        '010-1111-1111', '서울시 송파구', 'Y', 'M', '4', 'C:\Users\바탕 화면', NULL, NULL);
+
 INSERT INTO MEMBER(
             MEM_NO,
 			MEM_EMAIL,
@@ -134,7 +136,8 @@ INSERT INTO MEMBER(
 			MEM_NAME,
 			MEM_CONCERN,
 			PHONE,
-			MEM_GEN
+			MEM_GEN,
+            INTRO
 		)
 		VALUES(
             SEQ_MNO.NEXTVAL,
@@ -143,7 +146,8 @@ INSERT INTO MEMBER(
 			'김개똥',
 			'요리',
 			'010-2222-2222',
-			'M'	
+			'M',
+            NULL
 		);
 --카테고리
 INSERT INTO CATEGORY VALUES(SEQ_CNO.NEXTVAL, '음악');
@@ -161,6 +165,6 @@ INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알
 
 -- ATTACHEMT 사진
 
-
+        
 ---트랜잭션
 commit;
