@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.finalProject.board.model.dao.BoardDao;
 import com.kh.finalProject.board.model.vo.Board;
+import com.kh.finalProject.common.vo.Notice;
 import com.kh.finalProject.common.vo.PageInfo;
 
 @Service
@@ -56,5 +57,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public ArrayList<Board> selectCommList(PageInfo pi) {
 		return boardDao.selectCommList(sqlSession, pi);
+	}
+
+	//공지사항 리스트조회
+	@Override
+	public ArrayList<Notice> noticeList() {
+		return boardDao.noticeList(sqlSession);
 	}
 }

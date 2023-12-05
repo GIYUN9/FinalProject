@@ -200,10 +200,10 @@
 		
 			<a class="myPageSideBar" href="list.co" style="font-weight: bolder;
 			background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">전체보기</a>
-			<a class="myPageSideBar" href="#">궁금해요</a>
-			<a class="myPageSideBar" href="">얼마예요</a>
-			<a class="myPageSideBar" href="">함께해요</a>
-			<a class="myPageSideBar" href="">공지사항</a>
+			<a class="myPageSideBar" href="curious.co">궁금해요</a>
+			<a class="myPageSideBar" href="much.co">얼마예요</a>
+			<a class="myPageSideBar" href="together.co">함께해요</a>
+			<a class="myPageSideBar" href="notice.co">공지사항</a>
 		</div>
 		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">전체보기</h3>
@@ -238,6 +238,30 @@
 					</ul>
 					</c:forEach>
                 </div>
+                <div id="pagingArea">
+                <ul class="pagination" style="justify-content: center;">
+                	<c:choose>
+                		<c:when test="${pi.currentPage eq 1 }">
+							<li class="page-item disabled"><a class="page-link" href="#">Back</a></li>
+                   		</c:when>
+                   		<c:otherwise>
+                   			<li class="page-item"><a class="page-link" href="list.co?cpage=${pi.currentPage - 1}">Back</a></li>
+                   		</c:otherwise>
+					</c:choose>
+					<c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage }">
+                   		<li class="page-item"><a class="page-link" href="list.co?cpage=${p}">${p}</a></li>
+                    </c:forEach>
+                    
+                    <c:choose>
+                    	<c:when test="${pi.currentPage eq pi.maxPage}">
+                  			<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+                		</c:when>
+                		<c:otherwise>
+                   			<li class="page-item"><a class="page-link" href="list.co?cpage=${pi.currentPage + 1}">Next</a></li>
+                   		</c:otherwise>
+                	</c:choose>
+                </ul>
+            </div>
 			</div>		
 		</div>
 	</div>

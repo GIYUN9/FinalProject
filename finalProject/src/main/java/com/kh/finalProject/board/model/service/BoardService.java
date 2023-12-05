@@ -3,6 +3,7 @@ package com.kh.finalProject.board.model.service;
 import java.util.ArrayList;
 
 import com.kh.finalProject.board.model.vo.Board;
+import com.kh.finalProject.common.vo.Notice;
 import com.kh.finalProject.common.vo.PageInfo;
 
 
@@ -26,6 +27,8 @@ public interface BoardService {
 	//커뮤니티 게시글 수(조회)
 	int selectCommListCount();
 	
+	//공지사항 리스트(조회)
+	ArrayList<Notice> noticeList();
 	
 	
 	

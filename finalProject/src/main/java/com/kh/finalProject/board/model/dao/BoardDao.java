@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.finalProject.board.model.vo.Board;
+import com.kh.finalProject.common.vo.Notice;
 import com.kh.finalProject.common.vo.PageInfo;
 
 @Repository
@@ -39,5 +40,9 @@ public class BoardDao {
 	
 	public int selectCommListCount(SqlSessionTemplate sqlSeesion) {
 		return sqlSeesion.selectOne("boardMapper.selectCommListCount");
+	}
+	
+	public ArrayList<Notice> noticeList(SqlSessionTemplate sqlSeesion){
+		return (ArrayList)sqlSeesion.selectList("boardMapper.noticeList");
 	}
 }
