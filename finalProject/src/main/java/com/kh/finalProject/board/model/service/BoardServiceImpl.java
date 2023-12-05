@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.finalProject.board.model.dao.BoardDao;
 import com.kh.finalProject.board.model.vo.Board;
+import com.kh.finalProject.common.vo.Attachment;
 import com.kh.finalProject.common.vo.PageInfo;
 
 @Service
@@ -51,6 +52,12 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public Board selectBoard(int boardNo) {
 		return boardDao.selectBoard(sqlSession, boardNo);
+	}
+
+	//게시글 사진첨부
+	@Override
+	public int helpAttachment(Attachment at) {
+		return boardDao.helpAttachment(sqlSession, at);
 	}
 	
 }

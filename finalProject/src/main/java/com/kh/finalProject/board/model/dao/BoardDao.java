@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.finalProject.board.model.vo.Board;
+import com.kh.finalProject.common.vo.Attachment;
 import com.kh.finalProject.common.vo.PageInfo;
 
 @Repository
@@ -35,5 +36,9 @@ public class BoardDao {
 	
 	public Board selectBoard(SqlSessionTemplate sqlSession, int boardNo) {
 		return sqlSession.selectOne("boardMapper.selectBoard", boardNo);
+	}
+	
+	public Attachment helpAttachment(SqlSessionTemplate sqlSession, Attachment at) {
+		return sqlSession.selectOne("boardMapper.helpAttachment", at);
 	}
 }
