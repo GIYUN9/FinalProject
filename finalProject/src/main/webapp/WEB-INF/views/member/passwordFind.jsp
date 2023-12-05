@@ -87,12 +87,12 @@
 	
 	<div style="margin-top: 55px;">
 		<!-- 버튼 클릭 시 모달 열기 -->
-	    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-	        비밀번호 찾기
+	    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">
+	        	비밀번호 찾기
 	    </button>
         
 	    <!-- 첫번째 모달 -->
-	    <div class="modal" id="myModal" >
+	    <div class="modal" id="myModal3" >
 	        <div class="modal-dialog">
                 <h4 class="modal-title" style="text-align: center; font-weight: bold; margin: 0 auto;">비밀번호 찾기</h4>
 	            <div class="modal-content">

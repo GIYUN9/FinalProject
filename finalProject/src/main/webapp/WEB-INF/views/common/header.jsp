@@ -273,19 +273,19 @@
 </head>
 <body>
    <header>
-            <div class="hd-left-section">
-                <a href="#" class="hd-hu">도와줄게요</a>
-                <a href="#" class="hd-hm">도와주세요</a>  
-            </div>    
-            <div class="hd-middle-section">
-                <img class="logowh" src="././resources/image/logowh.png" onclick="redirectToHome()">
-                <input class="hd-searchbar" placeholder="검색"></input>        
-				<img class="logowh1" src="">
-            </div>
-            <div class="hd-right-section">
-                <a class="hd-login" data-toggle="modal" data-target="#myModal">로그인</a>
-                <a class="hd-re" data-toggle="modal" data-target="#myModal1">회원가입</a>
-            </div>
+         <div class="hd-left-section">
+             <a href="#" class="hd-hu">도와줄게요</a>
+             <a href="#" class="hd-hm">도와주세요</a>  
+         </div>    
+         <div class="hd-middle-section">
+             <img class="logowh" src="././resources/image/logowh.png" onclick="redirectToHome()">
+             <input class="hd-searchbar" placeholder="검색"></input>        
+	<img class="logowh1" src="">
+         </div>
+         <div class="hd-right-section">
+             <a class="hd-login" data-toggle="modal" data-target="#myModal">로그인</a>
+             <a class="hd-re" data-toggle="modal" data-target="#myModal1">회원가입</a>
+         </div>
     </header>
     
         <!-- 첫번째 모달 -->

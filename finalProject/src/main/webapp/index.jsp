@@ -9,9 +9,9 @@
 <body>	
 		
 		
- <jsp:forward page="WEB-INF/views/common/main.jsp"/>
+<jsp:forward page="WEB-INF/views/member/passwordFind.jsp"/>
 
-	<jsp:forward page="WEB-INF/views/noticeBoard/curiousBoard.jsp"/>
+	
 	
  
 	
