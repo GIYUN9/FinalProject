@@ -8,11 +8,17 @@ public interface MemberService {
 	// 회원가입 서비스 (insert)
 	int insertMember(Member m);
 	
+	//아이디 중복체크
+	int emailCheck(String checkEmail);
+	
 	// 회원정보 불러오는 서비스(select)
 	Member userInfo(Member m);
 	
 	// 회원정보 수정 서비스(update)
 	int updateUserInfo(Member m);
+	
+	//로그인 서비스
+	Member loginMember(Member m);
 	
 	// 회원정보들고 프로페셔널 테이블 조회 서비스(select)
 	Professional proInfo(Member m);
