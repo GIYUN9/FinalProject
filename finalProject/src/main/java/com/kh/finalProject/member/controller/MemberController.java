@@ -156,10 +156,11 @@ public class MemberController {
 	
 	@RequestMapping(value = "/login.me")
 	public ModelAndView loginMember(Member m, ModelAndView mv, HttpSession session) {
-		System.out.println("zzzzzzzzzzzzzzzz" + m);
+		
 		Member loginUser = memberService.loginMember(m);
-		System.out.println("zzzzzzzzzzzzzzzz" + m);
-		if(loginUser == null || !(m.getMemberPwd().equals(loginUser.getMemberPwd()))){//로그인 실패경우 (조건이 정확한지 확인받기)
+		
+		//!(m.getMemberPwd().equals(loginUser.getMemberPwd()))
+		if(loginUser == null){//로그인 실패경우 (조건이 정확한지 확인받기)
 			mv.addObject("errorMsg", "로그인 실패"); 
 			mv.setViewName("common/errorPage");//경로가 정확히 이게 맞을까?
 		}else {
