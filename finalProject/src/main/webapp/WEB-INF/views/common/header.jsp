@@ -110,168 +110,204 @@
         text-decoration: none;
     }
 
-/*    
-    login 합본
-*/
-.modal-content{
-            margin: 80px 0px 0px 0px;
-            width: 600px;
-            height: 500px;
-        }
+    /*    
+        login 합본
+    */
+    .modal-content{
+        margin: 80px 0px 0px 0px;
+        width: 600px;
+        height: 500px;
+    }
 
-        .modal-header{
-            text-align: center;
-            font-weight: bold;
-            margin: 20px;
-       }
-
-       .modal-title{
-            text-align: center;
-            font-weight: bold;
-       }
-
-       .modal-body {
-            position: relative;
-            -webkit-box-flex: 1;
-            -ms-flex: 1 1 auto;
-            flex: 1 1 auto;
-            padding: 1rem;
-            margin: 20px 60px;
-        }
-
-       .login-email-btn {
-            color: white;
-            background-color: rgb(3, 199, 90);
-            border: none;
-            width: 300px;
-            height: 40px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            border-radius: 4px;
-        }
-
-       .login-kakao-btn {
-            color: black;
-            background-color: rgb(250, 225, 0);
-            border: none;
-            width: 300px;
-            height: 40px;
-            font-weight: bold;
-            border-radius: 4px;
-        }
-        .l-ver-line{
-            width: 1px;
-            height: 13px;
-            margin-left: 10px;
-            border: 1px solid rgb(224, 224, 224);
-            margin-right: 10px;
-        }
-        .l-align{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .l-email-input{
-            width: 300px;
-            height: 40px;
-            border: 1px solid rgba(96, 96, 96, 0.5);
-            border-radius: 4px;
-            margin-bottom: 20px;
-        }
-        .l-pwd-input{
-            width: 300px;
-            height: 40px;
-            border: 1px solid rgba(96, 96, 96, 0.5);
-            border-radius: 4px;
-            margin-bottom: 20px;
-        }
-        .l-text{
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-        .l-text1{
-            margin-bottom: 10px;
-            font-weight: bold;
-            margin-top: 35px;
-        }
-        .loginSearch{
-            font-size: 12px;
-        }
-        .btn-area{
-            margin-top: 10px;
-        }
-        .close-btn-login{
-            width: 10px;
-            right: -40px;
-            position: absolute;
-            cursor: pointer;
-            top: 0px;
-        }
-        
-
-
-        /*
-        회원가입
-        */
-        .modal-content{
-            margin: 80px 0px 0px 0px;
-            width: 594px;
-        }
-
-        .modal-header{
+    .modal-header{
         text-align: center;
         font-weight: bold;
         margin: 20px;
-       }
+    }
 
-       .modal-title{
+    .modal-title{
         text-align: center;
         font-weight: bold;
-       }
+    }
 
-       .modal-body{
-         margin: 20px 80px;
-       }
+    .modal-body {
+        position: relative;
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        padding: 1rem;
+        margin: 20px 60px;
+    }
 
+    .login-email-btn {
+        color: white;
+        background-color: rgb(3, 199, 90);
+        border: none;
+        width: 300px;
+        height: 40px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-radius: 4px;
+    }
 
-       .login-btn {
-            color: black;
-            background-color: yellow;
-            border: none;
-            width: 100%;
-        }
+    .login-kakao-btn {
+        color: black;
+        background-color: rgb(250, 225, 0);
+        border: none;
+        width: 300px;
+        height: 40px;
+        font-weight: bold;
+        border-radius: 4px;
+    }
+    .l-ver-line{
+        width: 1px;
+        height: 13px;
+        margin-left: 10px;
+        border: 1px solid rgb(224, 224, 224);
+        margin-right: 10px;
+    }
+    .l-align{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .l-email-input{
+        width: 300px;
+        height: 40px;
+        border: 1px solid rgba(96, 96, 96, 0.5);
+        border-radius: 4px;
+        margin-bottom: 20px;
+    }
+    .l-pwd-input{
+        width: 300px;
+        height: 40px;
+        border: 1px solid rgba(96, 96, 96, 0.5);
+        border-radius: 4px;
+        margin-bottom: 20px;
+    }
+    .l-text{
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    .l-text1{
+        margin-bottom: 10px;
+        font-weight: bold;
+        margin-top: 35px;
+    }
+    .loginSearch{
+        font-size: 12px;
+    }
+    .btn-area{
+        margin-top: 10px;
+    }
+    .close-btn-login{
+        width: 10px;
+        right: -40px;
+        position: absolute;
+        cursor: pointer;
+        top: 0px;
+    }
+    
+    /*
+    회원가입
+    */
+    .modal-content{
+        margin: 80px 0px 0px 0px;
+        width: 594px;
+    }
 
-        .emailSend-btn{
-            color: #fff;
-            background-color: rgb(0, 199, 174);
-            border: none;
-            width: 100%;
-        }
+    .modal-header{
+    text-align: center;
+    font-weight: bold;
+    margin: 20px;
+    }
 
-        .sign-up-btn{
-            color: #fff;
-            background-color: rgb(0, 199, 174);
-            border: none;
-            width: 100%;
-            height: 40px;
-            border-radius: 4px;
-            margin-top: 30px;
-        }
-        .as-re{
-            color: red;
-        }
-        .en-input{
-            border: 1px solid rgba(96, 96, 96, 0.5);;
-            border-radius: 8px;
-            height: 45px;
-            width: 400px;
-        }
-        .cb-agree-all{
-            padding-bottom: 15px;
-            border-bottom: 2px solid rgba(96, 96, 96, 0.5);
-        }
+    .modal-title{
+    text-align: center;
+    font-weight: bold;
+    }
+
+    .modal-body{
+        margin: 20px 80px;
+    }
+
+    .login-btn {
+        color: black;
+        background-color: yellow;
+        border: none;
+        width: 100%;
+    }
+
+    .emailSend-btn{
+        color: #fff;
+        background-color: rgb(0, 199, 174);
+        border: none;
+        width: 100%;
+    }
+
+    .sign-up-btn{
+        color: #fff;
+        background-color: rgb(0, 199, 174);
+        border: none;
+        width: 100%;
+        height: 40px;
+        border-radius: 4px;
+        margin-top: 30px;
+    }
+    .as-re{
+        color: red;
+    }
+    .en-input{
+        border: 1px solid rgba(96, 96, 96, 0.5);;
+        border-radius: 8px;
+        height: 45px;
+        width: 400px;
+    }
+    .cb-agree-all{
+        padding-bottom: 15px;
+        border-bottom: 2px solid rgba(96, 96, 96, 0.5);
+    }
+
+    /*
+    부트스트랩
+    */
+    .dd-img{
+        width: 20px;
+        height: 20px;
+    }
+    .dropdown{
+        position : relative;
+        display : inline-block;
+        margin-left: 10px;
+        width: max-content;
+    }
+
+    .dropdown-content{
+        /* display : none;
+        position : absolute;
+        z-index : 1; /*다른 요소들보다 앞에 배치
+        width: max-content; */
+        opacity: 0; /* 초기 상태는 투명 */
+        display: block;
+        position: absolute;
+        z-index: 1;
+        width: max-content;
+        transition: opacity 0.3s ease; /* 트랜지션 속성 설정 (시간, 타이밍 함수) */
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .dropdown-content a{
+        display : block;
+    }
+
+    .dropdown:hover .dropdown-content {
+        /* display: block; */
+        opacity: 1; /* 호버 시 투명도 1로 변경 */
+    }
+
 </style>
 </head>
 <body>
@@ -306,8 +342,19 @@
                     <img class="logowh1" src="">
                 </div>
                 <div class="hd-right-section">
-                    <a class="hd-login" onclick="logout()"  >로그아웃</a>
-                    <a class="hd-re" onclick="myPage()" >OOO님 V</a>
+                    <a class="hd-login" onclick="logout()" >로그아웃</a>
+                    <div class="dropdown">
+                        <span class="dropbtn">
+                             OOO님                           
+                            <img class="dd-img" src="././resources/icon/down-arrow.png" alt="">
+                        </span>
+                        <div class="dropdown-content">
+                            <a href="userInfo.me" style="color: white;">마이페이지</a>
+                            <a href="#" style="color: white;">게시판</a>
+                            <a href="#" style="color: white;">게시판</a>
+                            <a href="#" style="color: white;">게시판</a>
+                        </div>
+                    </div> 
                 </div>
             </header>
         </c:otherwise>
@@ -323,13 +370,10 @@
                             <button style="border: none; background-color: transparent;"><img class="close-btn-login" class="close-btn-login" src="././resources/icon/close.png" onclick="aa()" ></button>
                         <!--입력하면 값 넘어갈 수 있게끔-->
                             <h2 class="modal-title" style="text-align: center; font-weight: bold; margin: 0 auto;">Login</h2>
-                                <div class="l-text1" style="font-weight: bold;">이메일</div>
-                                <input class="l-email-input" name="memberEmail" type="text" style="width: 100%;" placeholder="example@poomasi.com" >
-
-                                <div class="l-text" style="font-weight: bold;">비밀번호</div>
-                                <input class="l-pwd-input" name="memberPwd" type="password" style="width: 100%;" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요">
-
-
+                            <div class="l-text1" style="font-weight: bold;">이메일</div>
+                            <input class="l-email-input" name="memberEmail" type="text" style="width: 100%;" placeholder="example@poomasi.com" >
+                            <div class="l-text" style="font-weight: bold;">비밀번호</div>
+                            <input class="l-pwd-input" name="memberPwd" type="password" style="width: 100%;" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요">
                             <div class="l-align">
                                 <a class="loginSearch" href="#" style="color: black;"> 비밀번호 찾기</a>
                                 <div class="l-ver-line"></div>
@@ -337,7 +381,6 @@
                             </div>
                             <div class="btn-area">
                                 <button type="submit" class="login-email-btn" style="width: 100%;"> 이메일 로그인</button>
-
                                 <button type="submit" class="login-kakao-btn" style="width: 100%;" onclick="kakaoLogin()" >카카오 로그인</button>
                             </div>
                         </form>
@@ -354,7 +397,7 @@
                         <form action="insert.me" method="post">
                             <div>
                                 <p>
-                                    	이름
+                                    이름
                                     <span class="as-re">*</span>
                                 </p>
                                 <p>
@@ -375,7 +418,7 @@
                                     <input class="en-input" id="memberPwd" name ="memberPwd" type="password" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요">
                                 </p>
                                 <p>
-                                    	관심사 선택(중복 선택 가능)
+                                    관심사 선택(중복 선택 가능)
                                     <span class="as-re">*</span>
                                 </p>
                                 <div class="dropdown">
