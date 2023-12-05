@@ -138,18 +138,18 @@
         padding-bottom: 120px;
     }
     .box{
-		background-color: rgba(60, 59, 59, 0.27);
-		color: white;
-		display: flex;
-		padding-left: 20px;
-	}
+      background-color: rgba(60, 59, 59, 0.27);
+      color: white;
+      display: flex;
+      padding-left: 20px;
+   }
 </style>
 
 </head>
 <body>
     <jsp:include page="../common/header.jsp"></jsp:include>
 
-	<div class="box" style="margin-top: 120px">
+   <div class="box" style="margin-top: 120px">
         <div class="community-big">
             <ul class="community-ul">
                 <li class="community-list">커뮤니티</li>
