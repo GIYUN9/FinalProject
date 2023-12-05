@@ -206,7 +206,7 @@
                     <div class="hu-top-section">
                         <p>도와줄게요 게시글 작성</p>
                     </div>
-               <form method="post" action="helpu.bo" enctype="multipart/form-data">
+               <form method="post" action="helpuForm.bo" enctype="multipart/form-data">
                     <div class="hu-align">
                         <div class="hu-input-area">
                             <div class="aa">

@@ -34,7 +34,9 @@
   				BOARD_NO,
   				BOARD_TITLE,
   				BOARD_CONTENT,
-  				PRICE
+  				PRICE,
+  				MEM_NO,
+  				CATEGORY_NO
   				)
  
   			VALUES 
@@ -42,9 +44,12 @@
   				 SEQ_BNO.NEXTVAL,
   				 #{boardTitle},
   				 #{boardContent},
-  				 #{price}
+  				 #{price},
+  				 #{memberNo},
+  				 #{categoryNo}
   				 )
   	</insert>
+  	
   	
   	<!-- 도와줄게요 게시글 수정 쿼리문 -->
   	<update id="updateBoard">
