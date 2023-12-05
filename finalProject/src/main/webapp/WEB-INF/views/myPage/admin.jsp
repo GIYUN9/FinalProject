@@ -57,7 +57,17 @@
         .ad-table{
             border: none;
         }
-        .
+        .ad-btn{
+            width: 61%;
+            border: none;
+            color: white;
+            background: red;
+            border-radius: 4px;
+            /* width: 30px; */
+            height: 30px;
+            margin-top: 30px;
+            margin-bottom: -30px;
+        }
     </style>
 </head>
 <body>

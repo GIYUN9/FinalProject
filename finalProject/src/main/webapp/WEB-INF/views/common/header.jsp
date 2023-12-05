@@ -3,12 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String contextPath = request.getContextPath();
-%>
-<% 
-  
 	out.println("loginUser: " + session.getAttribute("loginUser"));
-
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -283,8 +280,8 @@
         <c:when test="${empty loginUser}">
             <header>
                 <div class="hd-left-section">
-                    <a href="#" class="hd-hu">도와줄게요</a>
-                    <a href="#" class="hd-hm">도와주세요</a>  
+                    <a class="hd-hu" onclick="javascript:btn('로그인 해주세요')">도와줄게요</a>
+                    <a class="hd-hm" onclick="javascript:btn('로그인 해주세요')">도와주세요</a>  
                 </div>    
                 <div class="hd-middle-section">
                     <img class="logowh" src="././resources/image/logowh.png" onclick="redirectToHome()">
@@ -300,8 +297,8 @@
         <c:otherwise>
             <header>
                 <div class="hd-left-section">
-                    <a href="#" class="hd-hu">도와줄게요</a>
-                    <a href="#" class="hd-hm">도와주세요</a>  
+                    <a class="hd-hu" onclick="helpU()">도와줄게요</a>
+                    <a class="hd-hm" onclick="needHelp()">도와주세요</a>  
                 </div>    
                 <div class="hd-middle-section">
                     <img class="logowh" src="././resources/image/logowh.png" onclick="redirectToHome()">
@@ -310,7 +307,7 @@
                 </div>
                 <div class="hd-right-section">
                     <a class="hd-login" onclick="logout()"  >로그아웃</a>
-                    <a class="hd-re" data-toggle="modal" data-target="#myModal1">OOO님 V</a>
+                    <a class="hd-re" onclick="myPage()" >OOO님 V</a>
                 </div>
             </header>
         </c:otherwise>
@@ -348,7 +345,7 @@
                 </div>
             </div>
         </div>
-        <!-- 첫번째 모달 -->
+        <!-- 2번째 모달 -->
         <div class="modal" id="myModal1" >
             <div class="modal-dialog">
                 <h4 class="modal-title" style="text-align: center; color: white; font-weight: bold; margin: 0 auto;">품앗이에 오신걸 환영합니다</h4>
@@ -415,11 +412,7 @@
                 </div>
             </div>
         </div>
-
-
-
 	<script>
-        
         $(document).ready(function(){
             $('.dropdown-toggle').dropdown();
         });
@@ -444,6 +437,18 @@
 		}
 		function logout() {
 			location.href = "logout.me"
+		}
+		function myPage() {
+			location.href = "userInfo.me"
+		}
+		function needHelp() {
+			location.href = "request.bo"
+		}
+		function helpU() {
+			location.href = "helpList.bo"
+		}
+		function btn(){
+		    alert('로그인 후 사용 가능합니다.');
 		}
 	</script>
 </body>
