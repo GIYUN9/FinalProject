@@ -298,10 +298,10 @@
                         <!--입력하면 값 넘어갈 수 있게끔-->
                             <h2 class="modal-title" style="text-align: center; font-weight: bold; margin: 0 auto;">Login</h2>
                                 <div class="l-text1" style="font-weight: bold;">이메일</div>
-                                <input class="l-email-input" type="text" style="width: 100%;" placeholder="example@poomasi.com" >
+                                <input class="l-email-input" name="memberEmail" type="text" style="width: 100%;" placeholder="example@poomasi.com" >
 
                                 <div class="l-text" style="font-weight: bold;">비밀번호</div>
-                                <input class="l-pwd-input" type="password" style="width: 100%;" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요">
+                                <input class="l-pwd-input" name="memberPwd" type="password" style="width: 100%;" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요">
 
 
                             <div class="l-align">
