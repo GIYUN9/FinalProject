@@ -21,4 +21,6 @@ public class Board {
 	private int boardType; //boardType에 따라 데이터 다르게
 	private Date createDate;
 	private String status; 
+	private int memberNo;
+	private int catrgoryNo;
 }

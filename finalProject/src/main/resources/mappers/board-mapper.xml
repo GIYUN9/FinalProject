@@ -13,12 +13,57 @@
   		<result column="CREATEDATE" property="createDate" />
   	</resultMap>
   	
-  	<select id="selectList" resultMap="boardResult">
-  		SELECT BOARD_NO,
-  			   BOARD_TITLE,
-  			   PRICE
-  		FROM BOARD
-  		  WHERE STATUS = 'Y'
-  		ORDER BY BOARD_NO DESC
+  	<resultMap type="Attachment" id="attachmentResult">
+  		<result column="ATT_NO" property="attNo" />
+  		<result column="ORIGIN_NAME" property="originName" />
+  		<result column="CHANGE_NAME" property="changeName" />
+  		<result column="FILE_PATH" property="filePath" />
+  	</resultMap>
+  	
+ 	
+  	<!-- 도와줄게요 게시글 조회 쿼리문 -->
+  	<select id="selectBoard">
+  	
   	</select>
+  	
+  	<!-- 도와줄게요 게시글 등록 쿼리문 -->
+  	<insert id="insertBoard">
+  		INSERT INTO
+  			BOARD 
+  				(
+  				BOARD_NO,
+  				BOARD_TITLE,
+  				BOARD_CONTENT,
+  				PRICE,
+  				MEM_NO,
+  				CATEGORY_NO
+  				)
+ 
+  			VALUES 
+  				 (
+  				 SEQ_BNO.NEXTVAL,
+  				 #{boardTitle},
+  				 #{boardContent},
+  				 #{price},
+  				 #{memberNo},
+  				 #{categoryNo}
+  				 )
+  	</insert>
+  	
+  	
+  	<!-- 도와줄게요 게시글 수정 쿼리문 -->
+  	<update id="updateBoard">
+  		UPDATE BOARD
+  			SET BOARD_TITLE = #{boardTitle},
+  			BOARD_CONTENT = #{boardContent},
+  			PRICE = #{price}
+  		WHERE BOARD_NO = #{boardNo}
+  	</update>
+  	
+  	<!-- 도와줄게요 게시글 삭제 쿼리문 -->
+  	<update id="deleteBoard">
+  		UPDATE BOARD
+  			SET STATUS = 'N'
+  		WHERE BOARD_NO = #{boardNo}
+  	</update>
   </mapper>

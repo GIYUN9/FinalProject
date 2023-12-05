@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>도와줄게요 게시글 작성</title>
 <style>
 	*,
 	*::before,
@@ -205,6 +206,7 @@
                     <div class="hu-top-section">
                         <p>도와줄게요 게시글 작성</p>
                     </div>
+               <form method="post" action="helpuForm.bo" enctype="multipart/form-data">
                     <div class="hu-align">
                         <div class="hu-input-area">
                             <div class="aa">
@@ -219,7 +221,7 @@
                                 </div>
                                 <textarea class="hu-content" type="text"></textarea>
                             </div>  
-                            <div class="aa">
+                      		<div class="aa">
                                 <label class="hu-upfile" className="input-file-button" for="hu-upfile">
                                     파일첨부
                                     <img class="clip-img" src="././resources/icon/paperclip.png" for="hu-upfile">
@@ -232,9 +234,10 @@
                                 </div>
                                 <input id="hu-upfile" class="hu-upfile" type="file" style="display: none;"  onchange="javascript:document.getElementById('fileName').value = this.value">
                             </div>  
+                       
                             <div class="aa">
                                 <input class="hu-price" type="text" id="price" placeholder="최소 1,000">
-                                <p class="price-measure2">원</p>
+                                <p class="price-measure2">${b.price}원</p>
                                     <div class="ee">
                                         희망가격
                                     </div>
@@ -243,9 +246,10 @@
                         </div>
                     </div>
                     <div class="hu-btn-area">
-                        <button class="hu-cancle-btn">취소</button>
-                        <button class="hu-submit-btn">등록</button>
+                        <button type="reset" class="hu-cancle-btn">취소</button>
+                        <button type="submit" class="hu-submit-btn">등록</button>
                     </div>
+                </form>
             </div>
         </div>
     </div>

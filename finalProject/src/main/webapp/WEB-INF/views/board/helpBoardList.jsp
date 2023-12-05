@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>도와줄게요 전체 게시판</title>
 <style>
     * {
         list-style: none; 
@@ -192,8 +192,6 @@
     #category-item > option{
         background-color: rgba(83, 82, 82, 0.65);
     }
-
-    
    
 
 </style>
@@ -254,7 +252,10 @@
                 <div class = "content-head">
                    <div id = "head-count">총 1063개의 서비스</div>
                    <div id = "head-category">
+					
+			
                         <form>
+                        	<a class="btn btn-secondary" href="helpuForm.bo">글쓰기</a>
                             <select name="" id="category-item">
                                 <option class = "category-item-list" value="date" selected>날짜순</option>
                                 <option class = "category-item-list" value="interest">인기순</option>
@@ -266,30 +267,30 @@
                 <div class = "content-item">
                     <a href ="././WEB-INF/views/board/boardDetailView.jsp">
                         <img  class = "content-img" src = "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzEwMTdfNTgg%2FMDAxNjk3NTM5MTYyMDU1.2FTbuIwYW-lYUnwwsOymlHEzSOePqb98wZL9dmdJQ44g.9OmmX2wPWyBWzDkmuySWmSj3gIDYOiH40xw5mXgGJmsg.JPEG.suninefreeimage%2F_Z5A4454.jpg&type=sc960_832">
-                        <div class = "content-item-title">어울리는 머리 찾아드려요!</div>
-                        <div class = "content-item-price">20000원</div>
+                        <div class = "content-item-title">${b.title}</div>
+                        <div class = "content-item-price">${b.price}원</div>
                     </a>
                 </div>
                 <div class = "content-item">
                     <a href = "#">
                          <img  class = "content-img" src = "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzEwMTdfNTgg%2FMDAxNjk3NTM5MTYyMDU1.2FTbuIwYW-lYUnwwsOymlHEzSOePqb98wZL9dmdJQ44g.9OmmX2wPWyBWzDkmuySWmSj3gIDYOiH40xw5mXgGJmsg.JPEG.suninefreeimage%2F_Z5A4454.jpg&type=sc960_832">
-                        <div class = "content-item-title">연기학원 연기 알려드려요^^</div>
-                        <div class = "content-item-price">50000원</div>
+                        <div class = "content-item-title">${b.title}</div>
+                        <div class = "content-item-price">${b.price}원</div>
                     </a>
                 </div>
                 <div class = "content-item">
                     <a href = "#">
                          <img  class = "content-img" src = "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzEwMTdfNTgg%2FMDAxNjk3NTM5MTYyMDU1.2FTbuIwYW-lYUnwwsOymlHEzSOePqb98wZL9dmdJQ44g.9OmmX2wPWyBWzDkmuySWmSj3gIDYOiH40xw5mXgGJmsg.JPEG.suninefreeimage%2F_Z5A4454.jpg&type=sc960_832">
-                        <div class = "content-item-title">뮤지컬 배워봐요</div>
-                        <div class = "content-item-price">15000원</div>
+                        <div class = "content-item-title">${b.title}</div>
+                        <div class = "content-item-price">${b.price}원</div>
                     </a>
                 </div>
                 
                 <div class = "content-item">
                     <a href = "#">
                         <img class = "content-img" src = "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fimage.utoimage.com%2Fpreview%2Fcp996406%2F2023%2F09%2F202309004664_800.jpg&type=sc960_832">
-                        <div class = "content-item-title">노래도 배워봐요</div>
-                        <div class = "content-item-price">5000원</div>
+                        <div class = "content-item-title">${b.title}</div>
+                        <div class = "content-item-price">${b.price}원</div>
                     </a>
                 </div>
                 <div class = "content-item">
