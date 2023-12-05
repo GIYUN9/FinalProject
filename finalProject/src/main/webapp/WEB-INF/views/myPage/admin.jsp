@@ -7,28 +7,6 @@
     <title>Insert title here</title>
     <link rel="stylesheet" href="././resources/css/myPgae.css">
     <style>
-        .p-btn {
-            display: inline-block;
-            margin: 0 auto;
-            padding: 10px 11px;
-            font-size: 14px;
-            background: rgba(255, 255, 255, 0.22);
-            border-radius: 8px;
-            cursor: pointer;
-            letter-spacing: -2px;
-            font-weight: bolder;
-        }
-        .p-btn1 {
-            display: inline-block;
-            margin: 0 auto;
-            padding: 10px 11px;
-            font-size: 14px;
-            background: rgba(255, 255, 255, 0);
-            border-radius: 8px;
-            cursor: pointer;
-            letter-spacing: -2px;
-            font-weight: bolder;
-        }
         p::after{
             display:block;
             content: '';
@@ -58,68 +36,7 @@
         .top-center{
             margin-bottom: -15px;
         }
-        .req-outer{
-            border: 1px solid rgba(96, 96, 96, 0.5);
-            border-radius: 10px;
-            width: 96%;
-            margin-top: 10px;
-            height: 150px;
-            padding-left: 15px;
-            padding-top: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .req-desc{
-            font-size: 12px;
-            margin-top: 20px;
-        }
-        .req-text{
-            display: flex;
-            flex-direction: column;
-        }
-        .req-info{
-            display: flex;
-            align-items: flex-end;
-            flex-direction: column;
-            margin-right: 10px;
-        }
-        .req-align{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-        .req-no{
-            font-size: 12px;
-        }
-        .req-id{
-            font-size: 14px;
-        }
-        .req-answer-btn{
-            background: rgb(218, 76, 60);
-            border: none;
-            width: 100px;
-            height: 30px;
-            border-radius: 4px;
-            color: white;
-            margin-right: 5px;
-            cursor: pointer;
-        }
-        .req-detail-btn{
-            background: rgb(0, 199, 174);
-            border: none;
-            width: 100px;
-            height: 30px;
-            border-radius: 4px;
-            color: white;
-            cursor: pointer;
-        }
-        .req-btn-area{
-            display: flex;
-            justify-content: end;
-            margin-right: 10px;
-            margin-bottom: 10px;
-        }
+
         .close-btn{
             width: 10px;
             position: absolute;
@@ -127,6 +44,20 @@
             top: 11px;
             cursor: pointer;
         }
+        .ad-table{
+            border-collapse: collapse;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        td{
+            padding: 10px;
+        }
+        .ad-table{
+            border: none;
+        }
+        .
     </style>
 </head>
 <body>
@@ -135,7 +66,6 @@
 		<div class="sideBar">
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">계정 설정</h3>
 			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 180px;">
-		
 			<a class="myPageSideBar" href="userInfo.me">나의 정보</a>
 			<a class="myPageSideBar" href="proInfo.me">전문가 정보</a>
 			<a class="myPageSideBar" href="changePwd.me">비밀번호 변경</a>
@@ -143,61 +73,82 @@
 			<a class="myPageSideBar" href="schedule.me">일정 관리</a>
 			<a class="myPageSideBar" href="ask.me" style="font-weight: bolder; 
 			background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">문의 내역</a>
+            <a class="myPageSideBar" href="">회원 관리</a>
 		</div>
 		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">문의 내역</h3>
 			<br>
-			<div class="top-center"
-				style="display: flex; justify-content: space-around; margin-left: 20px; margin-right: 20px">
-				<!-- 호버되면 밑줄 만들어주세요 ㅋㅋ -->
-				<div>
-					<p class="p-btn" id="from" onclick="from()">등록된 문의</p>
-				</div>
-				<div>
-					<p class="p-btn1" id="send" onclick="send()">처리된 문의</p>
-				</div>
-			</div>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="user-info">
-					<form action="">
-						<div class="res-title">답변등록</div>
-						<div class="align-userinfo">
-							<div class="customer-req">
-								<h5>제목</h5>
-								<div class="cu-re-title">결제 관련 문의</div>
-								<h5>작성자</h5>
-								<div class="cu-email">asdasd@naver.com</div>
-								<h5>설명</h5>
-								<textarea class="cu-desc">결제가 안됩니다.</textarea>
-								<h5>첨부파일</h5>
-								<div class="cu-file">첨부된 파일 이름.jpg</div>
-							</div>
-							<div class="admin-res">
-								<div>
-									<div><h5>답변</h5></div>
-									<input class="ad-email" type="text">
-								</div>
-								<div><textarea class="ad-desc" name="" id="" cols="30" rows="10"></textarea></div>
-								<button class="submit-btn" style="cursor: pointer;">제출</button>
-							</div>
-						</div>
-					</form>
+                    <div>
+                        <table border="1" class="ad-table">
+                            <thead>
+                                <input type="text" name="" id="" placeholder="검색">
+                                <tr>
+                                    <th>선택</th>
+                                    <th>번호</th>
+                                    <th>이메일</th>
+                                    <th>이름</th>
+                                    <th>구분</th>
+                                    <th>가입일</th>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>1</td>
+                                    <td>asd@navve.rcom</td>
+                                    <td>김김김</td>
+                                    <td>일반회원</td>
+                                    <td>2023-12-05</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>1</td>
+                                    <td>asd@navve.rcom</td>
+                                    <td>김김김</td>
+                                    <td>일반회원</td>
+                                    <td>2023-12-05</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>1</td>
+                                    <td>asd@navve.rcom</td>
+                                    <td>김김김</td>
+                                    <td>일반회원</td>
+                                    <td>2023-12-05</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>1</td>
+                                    <td>asd@navve.rcom</td>
+                                    <td>김김김</td>
+                                    <td>일반회원</td>
+                                    <td>2023-12-05</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>1</td>
+                                    <td>asd@navve.rcom</td>
+                                    <td>김김김</td>
+                                    <td>일반회원</td>
+                                    <td>2023-12-05</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>1</td>
+                                    <td>asd@navve.rcom</td>
+                                    <td>김김김</td>
+                                    <td>일반회원</td>
+                                    <td>2023-12-05</td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <button>탈퇴</button>
 				</div>
 			</div>		
 		</div>
 	</div>
 	<jsp:include page="../common/footer.jsp" />
 	
-	<script>
-		function from() {
-			location.href = "ask.me";
-		}
-
-		function send() {
-			location.href = "ask1.me";
-		}
-		
-		// 로그인한 유저가 관리자라면 ask2로 
-	</script>
 </body>
 </html>
