@@ -49,7 +49,8 @@
 		<jsp:forward page="WEB-INF/views/member/proEnroll2.jsp"/>아마추어 회원가입2단계
 		<jsp:forward page="WEB-INF/views/member/proEnroll3.jsp"/>아마추어 회원가입3단계
 		<jsp:forward page="WEB-INF/views/member/proEnroll4.jsp"/>아마추어 회원가입4단계
-
+		<jsp:forward page="WEB-INF/views/member/proEnroll5.jsp"/>아마추어 회원가입5단계  - 삭제
+		
 		이지혜
 		<jsp:forward page="WEB-INF/views/noticeBoard/paymentPage.jsp"/> 결제
 		<jsp:forward page="WEB-INF/views/noticeBoard/completePage.jsp"/> 결제완료
