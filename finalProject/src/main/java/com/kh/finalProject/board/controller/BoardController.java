@@ -4,11 +4,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kh.finalProject.board.model.service.BoardService;
 import com.kh.finalProject.board.model.vo.Board;
-
+import com.kh.finalProject.common.vo.Attachment;
 
 
 @Controller
@@ -45,12 +46,11 @@ public class BoardController {
 	}
 	
 	// 도와줄게요 게시글 등록
-	@RequestMapping(value="helpu.bo")
-	public String helpinsertBoard() {
-//		int result = boardService.insertBoard(b);
-//		System.out.println(result);
-		return "board/helpu";
-	}
+//	@RequestMapping(value="helpu.bo")
+//	public String helpinsertBoard() {
+//		
+//		return "board/helpu"; //보류
+//	}
 	
 	// 도와줄게요 게시글 수정
 	@RequestMapping(value="helpRetouch.bo")
@@ -90,6 +90,12 @@ public class BoardController {
 	public String allBoardBoard(){
 		//화면 전환용 임시 데이터는 없는상태
 		return "noticeBoard/allBoard";
+	}
+	
+	@RequestMapping(value = "/helpuForm.bo")
+	public String helpuForm() {
+		
+		return "board/helpu";
 	}
 
 

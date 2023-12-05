@@ -255,7 +255,7 @@
 					
 			
                         <form>
-                        	<a class="btn btn-secondary" href="helpu.bo">글쓰기</a>
+                        	<a class="btn btn-secondary" href="helpuForm.bo">글쓰기</a>
                             <select name="" id="category-item">
                                 <option class = "category-item-list" value="date" selected>날짜순</option>
                                 <option class = "category-item-list" value="interest">인기순</option>

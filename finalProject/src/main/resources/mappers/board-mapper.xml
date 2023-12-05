@@ -13,10 +13,17 @@
   		<result column="CREATEDATE" property="createDate" />
   	</resultMap>
   	
+  	<resultMap type="Attachment" id="attachmentResult">
+  		<result column="ATT_NO" property="attNo" />
+  		<result column="ORIGIN_NAME" property="originName" />
+  		<result column="CHANGE_NAME" property="changeName" />
+  		<result column="FILE_PATH" property="filePath" />
+  	</resultMap>
   	
+ 	
   	<!-- 도와줄게요 게시글 조회 쿼리문 -->
   	<select id="selectBoard">
-  		
+  	
   	</select>
   	
   	<!-- 도와줄게요 게시글 등록 쿼리문 -->
@@ -29,7 +36,7 @@
   				BOARD_CONTENT,
   				PRICE
   				)
-  				
+ 
   			VALUES 
   				 (
   				 SEQ_BNO.NEXTVAL,
