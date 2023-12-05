@@ -221,7 +221,7 @@
                                 </div>
                                 <textarea class="hu-content" type="text"></textarea>
                             </div>  
-                            <div class="aa">
+                      		<div class="aa">
                                 <label class="hu-upfile" className="input-file-button" for="hu-upfile">
                                     파일첨부
                                     <img class="clip-img" src="././resources/icon/paperclip.png" for="hu-upfile">
@@ -234,6 +234,7 @@
                                 </div>
                                 <input id="hu-upfile" class="hu-upfile" type="file" style="display: none;"  onchange="javascript:document.getElementById('fileName').value = this.value">
                             </div>  
+                       
                             <div class="aa">
                                 <input class="hu-price" type="text" id="price" placeholder="최소 1,000">
                                 <p class="price-measure2">${b.price}원</p>

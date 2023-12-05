@@ -1,11 +1,13 @@
 package com.kh.finalProject.board.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 import com.kh.finalProject.board.model.service.BoardService;
+import com.kh.finalProject.board.model.vo.Board;
 
 
 
@@ -42,11 +44,19 @@ public class BoardController {
 		return "board/helpBoardList";
 	}
 	
-	// 도와줄게요 게시글 작성하기
+	// 도와줄게요 게시글 등록
 	@RequestMapping(value="helpu.bo")
 	public String helpinsertBoard() {
-		
+//		int result = boardService.insertBoard(b);
+//		System.out.println(result);
 		return "board/helpu";
+	}
+	
+	// 도와줄게요 게시글 수정
+	@RequestMapping(value="helpRetouch.bo")
+	public String updateBoard() {
+		
+		return "";
 	}
 	
 	// 도와줄게요 게시글 삭제
