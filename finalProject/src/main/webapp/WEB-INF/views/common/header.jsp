@@ -273,19 +273,19 @@
 </head>
 <body>
    <header>
-            <div class="hd-left-section">
-                <a href="#" class="hd-hu">도와줄게요</a>
-                <a href="#" class="hd-hm">도와주세요</a>  
-            </div>    
-            <div class="hd-middle-section">
-                <img class="logowh" src="././resources/image/logowh.png" onclick="redirectToHome()">
-                <input class="hd-searchbar" placeholder="검색"></input>        
-				<img class="logowh1" src="">
-            </div>
-            <div class="hd-right-section">
-                <a class="hd-login" data-toggle="modal" data-target="#myModal">로그인</a>
-                <a class="hd-re" data-toggle="modal" data-target="#myModal1">회원가입</a>
-            </div>
+         <div class="hd-left-section">
+             <a href="#" class="hd-hu">도와줄게요</a>
+             <a href="#" class="hd-hm">도와주세요</a>  
+         </div>    
+         <div class="hd-middle-section">
+             <img class="logowh" src="././resources/image/logowh.png" onclick="redirectToHome()">
+             <input class="hd-searchbar" placeholder="검색"></input>        
+	<img class="logowh1" src="">
+         </div>
+         <div class="hd-right-section">
+             <a class="hd-login" data-toggle="modal" data-target="#myModal">로그인</a>
+             <a class="hd-re" data-toggle="modal" data-target="#myModal1">회원가입</a>
+         </div>
     </header>
     
         <!-- 첫번째 모달 -->
@@ -298,10 +298,10 @@
                         <!--입력하면 값 넘어갈 수 있게끔-->
                             <h2 class="modal-title" style="text-align: center; font-weight: bold; margin: 0 auto;">Login</h2>
                                 <div class="l-text1" style="font-weight: bold;">이메일</div>
-                                <input class="l-email-input" type="text" style="width: 100%;" placeholder="example@poomasi.com" >
+                                <input class="l-email-input" name="memberEmail" type="text" style="width: 100%;" placeholder="example@poomasi.com" >
 
                                 <div class="l-text" style="font-weight: bold;">비밀번호</div>
-                                <input class="l-pwd-input" type="password" style="width: 100%;" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요">
+                                <input class="l-pwd-input" name="memberPwd" type="password" style="width: 100%;" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요">
 
 
                             <div class="l-align">
@@ -363,8 +363,7 @@
                                         <li><a class="dropdown-item" href="#">취미/자기계발</a></li>
                                     </ul>
                                 </div>
-                                 <div class ="">                                   
-	                               
+                                 <div class ="">                                   	                           
 	                    			<input type="tel" class="form-control" id="phone" placeholder="Please Enter Phone" name="phone"> <br>               
 	                                <label for=""> &nbsp; Gender : </label> &nbsp;&nbsp;
 				                    <input type="radio" id="Male" value="M" name="memberGender" checked>

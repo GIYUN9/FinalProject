@@ -87,12 +87,12 @@
 	
 	<div style="margin-top: 55px;">
 		<!-- 버튼 클릭 시 모달 열기 -->
-	    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-	        비밀번호 찾기
+	    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">
+	        	비밀번호 찾기
 	    </button>
         
 	    <!-- 첫번째 모달 -->
-	    <div class="modal" id="myModal" >
+	    <div class="modal" id="myModal3" >
 	        <div class="modal-dialog">
                 <h4 class="modal-title" style="text-align: center; font-weight: bold; margin: 0 auto;">비밀번호 찾기</h4>
 	            <div class="modal-content">
@@ -100,8 +100,8 @@
                         <h5>가입한 이메일 주소를 입력해주세요</h5>
                         <input class="input-email" type="text" placeholder="example@poomasi.com">
                         <div class="pf-text">
-                            가입하신 이메일 주소를 입력해주시면<br>
-                            새로운 비밀번호를 설정 가능한 링크를 보내드립니다.
+				                            가입하신 이메일 주소를 입력해주시면<br>
+				                            새로운 비밀번호를 설정 가능한 링크를 보내드립니다.
                         </div>
                         <button type="submit" class="emailSend-btn" onclick="emailSend()">이메일 전송하기</button> 
                     </div>

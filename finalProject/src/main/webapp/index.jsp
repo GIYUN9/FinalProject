@@ -6,6 +6,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<body>	
+		
+		
+<jsp:forward page="WEB-INF/views/member/passwordFind.jsp"/>
+
+	
+	
+ 
+	
 <body>
 
 	<jsp:forward page="WEB-INF/views/board/helpBoardList.jsp"/>
@@ -60,6 +69,7 @@
 		<jsp:forward page="WEB-INF/views/noticeBoard/togetherBorder.jsp"/> 커뮤니티 게시판 함께해요
 		<jsp:forward page="WEB-INF/views/noticeBoard/announcementBorder.jsp"/> 커뮤니티 게시판 공지사항
 	--%> 
+
 	
 
 </body>
