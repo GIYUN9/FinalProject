@@ -22,4 +22,9 @@ public interface BoardService {
 	
 	//도와줄게요 게시판 삭제
 	int deleteBoard(int boardNo);
+	
+	
+	
+	
+	
 }
