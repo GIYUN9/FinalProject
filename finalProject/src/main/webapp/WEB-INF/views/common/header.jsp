@@ -363,8 +363,7 @@
                                         <li><a class="dropdown-item" href="#">취미/자기계발</a></li>
                                     </ul>
                                 </div>
-                                 <div class ="">                                   
-	                               
+                                 <div class ="">                                   	                           
 	                    			<input type="tel" class="form-control" id="phone" placeholder="Please Enter Phone" name="phone"> <br>               
 	                                <label for=""> &nbsp; Gender : </label> &nbsp;&nbsp;
 				                    <input type="radio" id="Male" value="M" name="memberGender" checked>

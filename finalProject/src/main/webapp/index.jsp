@@ -9,7 +9,7 @@
 <body>	
 		
 		
- <jsp:forward page="WEB-INF/views/member/login.jsp"/>
+ <jsp:forward page="WEB-INF/views/common/main.jsp"/>
  
 	<%--
 		김경보
