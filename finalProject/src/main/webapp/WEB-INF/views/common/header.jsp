@@ -371,7 +371,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body" >
-                        <form action="login.me" method="post">
+                        <form action="login.me" name = "loginForm" method="post" onsubmit="return loginCheck();">
                             <button style="border: none; background-color: transparent;"><img class="close-btn-login" class="close-btn-login" src="././resources/icon/close.png" onclick="aa()" ></button>
                         <!--입력하면 값 넘어갈 수 있게끔-->
                             <h2 class="modal-title" style="text-align: center; font-weight: bold; margin: 0 auto;">Login</h2>
@@ -398,9 +398,9 @@
             <div class="modal-dialog">
                 <h4 class="modal-title" style="text-align: center; color: white; font-weight: bold; margin: 0 auto; margin-top: 60px; margin-bottom: -60px;
                 ">품앗이에 오신걸 환영합니다</h4>
-                <div class="modal-content" style="height: 800px;">
+                <div class="modal-content" style="height: 850px;">
                     <div class="modal-body" >
-                        <form action="insert.me" method="post">
+                        <form action="insert.me" method="post" name="joinForm" onsubmit="return join();">
                             <div>
                                 <p>
                                     	이름
@@ -421,18 +421,24 @@
                                     <span class="as-re">*</span>
                                 </p>
                                 <p>
-                                    <input class="en-input" id="memberPwd" name ="memberPwd" type="password" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요">
+                                    <input class="en-input" name ="memberPwd" type="password" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요">
+                                </p>
+                                <p>
+                                        비밀번호확인
+                                    <span class="as-re">*</span>
+                                </p>
+                                <p>
+                                    <input class="en-input" name ="memberPwd2" type="password" placeholder="올바르게 입력해주세요">
                                 </p>
                                 <p>
                                     	관심사 선택(중복 선택 가능)
                                     <span class="as-re">*</span>
                                 </p>
-                               	<div class="insert-category">
-		                        	
-		                        	<select name ="" id ="in-category">
-		                        		<option value="music">음악</option>
-		                        		<option value="cook">요리</option>
-		                        		<option value="health">운동</option>
+                               	<div class="insert-category">	            
+		                        	<select name ="all-category" id ="in-category">
+		                        		<option name = "music" value="music">음악</option>
+		                        		<option name = "cook" value="cook">요리</option>
+		                        		<option name = "health" value="health">운동</option>
 		                        	</select>
 		                        	 <br>
 		                        </div>
@@ -449,15 +455,15 @@
 				                    <input type="radio" id="Female" value="F" name="memberGender">
 				                    <label for="Female">여자</label> &nbsp;&nbsp;
                                 </div> 
-                                <form method="get" action="form-action.html">
+                                
                                 <br>
-                                <div class="cb-agree-all">전체 동의</div>
+                                <div class="cb-agree-all"><input type="checkbox" name="category" value="selectall" onclick='selectAll(this)'>전체 동의</div>
                                 <br>
                                 <label><input type="checkbox" name="category" value="agree"> (필수) 이용약관 동의</label>
                                 <label><input type="checkbox" name="category" value="privateAgree"> (필수) 개인정보 수집 및 이용 동의</label>
-                                <label><input type="checkbox" name="category" value="#"> (필수) 14세 이상입니다</label>
-                                </form>
-                                <button type="submit" class="sign-up-btn" onclick="signUp()">회원가입</button>
+                                <label><input type="checkbox" name="category" value="ageagree"> (필수) 14세 이상입니다</label>
+                               
+                                <button type="submit" class="sign-up-btn">회원가입</button>
                             </div>                 
                         </form>
                     </div>
@@ -465,14 +471,143 @@
             </div>
         </div>
 	<script>
+		//회원가입 마지막 전체 체크박스
+		function selectAll(selectAll){
+			const checkboxes = document.getElementsByName('category');
+           
+            checkboxes.forEach((checkbox) => {
+                checkbox.checked = selectAll.checked;
+            })
+		}
+		
+        
         $(document).ready(function(){
             $('.dropdown-toggle').dropdown();
         });
 
-        function signUp() {
-            // 여기에 회원가입을 처리하는 코드 작성 필요
-            // 그에 맞는 함수를 호출하거나 필요한 동작을 수행
+        //회원가입 버튼 시 조건 확인
+        function join() {
+            const joinForm = document.joinForm; 
+            const memberEmail = joinForm.memberEmail;
+
+            //이메일 아무것도 입력 안 했을 경우
+            if(memberEmail.value == ""){
+                alert("아이디를 입력하세요");
+                memberEmail.focus();
+                return false;
+            }
+
+            // 이메일 조건확인
+            var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+            if(exptext.test(memberEmail.value) == false){
+                alert("Email식이 올바르지 않습니다.");
+                memberEmail.focus();
+                return false;
+            }
+        
+            const memberPwd = joinForm.memberPwd;
+            const memberPwd2 = joinForm.memberPwd2;
+
+             //비밀번호 입력 없을 경우
+            if(memberPwd.value == ""){
+                alert("비밀번호를 입력하세요");
+                memberPwd.focus();
+                return false;
+            }
+
+            //비밀번호 제약조건
+            if(memberPwd.value.length < 8){
+                alert("비밀번호 8자리 이상!");
+                memberPwd.focus();
+                return false;
+            }
+
+            //비밀번호 공백 있나 확인
+            if(memberPwd.value.search(" ") != -1){
+                alert("비밀번호는 공백을 포함할 수 없습니다.!");
+                memberPwd.focus();
+                return false;
+            }
+
+            //비밀번호 확인
+            if(memberPwd2.value == ""){
+                alert("비밀번호를 확인해주세요");
+                memberPwd2.focus();
+                return false;
+            }
+
+            //비밀번호 확인이 틀렸을 경우
+            if(memberPwd.value != memberPwd2.value){
+                alert("비밀번호를  다시 확인해주세요 일치하지 않습니다.");
+                memberPwd.focus();
+                return false;
+            }
+
+            //이름입력 안 했을 경우
+            const memberName = joinForm.memberName;
+            if(memberName.value == ""){
+                alert("이름을 입력하세요");
+                memberName.focus();
+                return false;
+            } 
+
+            const phone = joinForm.phone;
+            if(phone.value == ""){
+                alert("휴대폰 번호를 입력하세요");
+                phone.focus();
+                return false;
+            }
+            return true;        
         }
+
+        //로그인 시 제약조건
+        function loginCheck(){
+            const loginForm = document.loginForm;
+            const memberEmail = loginForm.memberEmail;
+
+             //이메일 아무것도 입력 안 했을 경우
+             if(memberEmail.value == ""){
+                alert("이메일을 입력하세요");
+                memberEmail.focus();
+                return false;
+            }
+
+            // 이메일 조건확인
+            var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+            if(exptext.test(memberEmail.value) == false){
+                alert("Email 방식이 올바르지 않습니다.");
+                memberEmail.focus();
+                return false;
+            }
+
+            const memberPwd = loginForm.memberPwd;
+            
+
+             //비밀번호 입력 없을 경우
+            if(memberPwd.value == ""){
+                alert("비밀번호를 입력하세요");
+                memberPwd.focus();
+                return false;
+            }
+
+            //비밀번호 제약조건
+            if(memberPwd.value.length < 8){
+                alert("비밀번호 8자리 이상!");
+                memberPwd.focus();
+                return false;
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
 
         function kakaoLogin() {
           // 여기에 카카오 로그인을 처리하는 코드 작성 필요
