@@ -148,8 +148,15 @@ public class BoardController {
 			model.addAttribute("errorMsg", "공지사항 작성 실패");
 			return "common/errorMsg";
 		}
+	}
+	
+	//공지사항 삭제
+	@RequestMapping(value = "/deleteNotice.co")
+	public String deleteNotice(Notice n, Model model) {
 		
+		int result = boardService.deleteNotice(n);
 		
+		return "redirect:/notice.co";
 	}
 	
 	@RequestMapping(value = "/helpuForm.bo")

@@ -22,5 +22,5 @@ public class Board {
 	private Date createDate;
 	private String status; 
 	private int memberNo;
-	private int catrgoryNo;
+	private int categoryNo;
 }

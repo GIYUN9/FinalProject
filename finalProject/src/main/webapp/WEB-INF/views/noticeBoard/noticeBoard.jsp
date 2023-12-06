@@ -380,9 +380,15 @@
                                     </div>
                                     <div id="collapse${n.noticeNo}" class="collapse show" data-parent="#accordion">
                                       <div class="card-body">
-                                      		  품앗이 사이트는 전문가 및 준전문가와 수요자의 매칭을 해주는 사이트입니다.
                                         ${n.noticeContent}
                                       </div>
+                                      <c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
+	                                      <form action="deleteNotice.co" style="float: right; margin-right: 10px; margin-bottom: 10px;">
+	                                      	<input type="hidden" name="noticeNo" value="${n.noticeNo}">
+	                                      	<button type="submit">공지 삭제</button>
+	                                      </form>
+                                      </c:if>
+                                      
                                     </div>
                                 </div>
                             </li>
