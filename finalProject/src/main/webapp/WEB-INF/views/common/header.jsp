@@ -131,6 +131,7 @@
     .modal-title{
         text-align: center;
         font-weight: bold;
+       
     }
 
     .modal-body {
@@ -402,7 +403,7 @@
                         <form action="insert.me" method="post">
                             <div>
                                 <p>
-                                    이름
+                                    	이름
                                     <span class="as-re">*</span>
                                 </p>
                                 <p>
@@ -423,20 +424,10 @@
                                     <input class="en-input" id="memberPwd" name ="memberPwd" type="password" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요">
                                 </p>
                                 <p>
-                                    관심사 선택(중복 선택 가능)
+                                    	관심사 선택(중복 선택 가능)
                                     <span class="as-re">*</span>
                                 </p>
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" 
-                                    style="width: 100%;"  data-bs-toggle="dropdown" aria-expanded="false">
-                                    	관심사를 선택해주세요
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="width: 100%;">
-                                        <li><a class="dropdown-item" href="#">이사</a></li>
-                                        <li><a class="dropdown-item" href="#">청소/정리</a></li>
-                                        <li><a class="dropdown-item" href="#">취미/자기계발</a></li>
-                                    </ul>
-                                </div>
+                               
                                  <div class ="">                                   	                           
 	                    			<input type="tel" class="form-control" id="phone" placeholder="Please Enter Phone" name="phone"> <br>               
 	                                <label for=""> &nbsp; Gender : </label> &nbsp;&nbsp;

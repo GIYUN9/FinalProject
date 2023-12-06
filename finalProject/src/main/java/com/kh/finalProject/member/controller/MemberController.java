@@ -148,11 +148,7 @@ public class MemberController {
 		}
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/emailCheck.me")
-	public String idCheck(String checkEmail) {
-		return memberService.emailCheck(checkEmail) > 0 ? "NNNNN" : "NNNNY";
-	}
+	
 	
 	@RequestMapping(value = "/login.me")
 	public ModelAndView loginMember(Member m, ModelAndView mv, HttpSession session) {

@@ -198,7 +198,7 @@
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">커뮤니티</h3>
 			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 180px;">
 		
-			<a class="myPageSideBar" href="viewall.co">전체보기</a>
+			<a class="myPageSideBar" href="list.co">전체보기</a>
 			<a class="myPageSideBar" href="curious.co">궁금해요</a>
 			<a class="myPageSideBar" href="much.co">얼마예요</a>
 			<a class="myPageSideBar" href="together.co" style="font-weight: bolder;

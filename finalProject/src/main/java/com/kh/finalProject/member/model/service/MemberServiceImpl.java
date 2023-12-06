@@ -53,8 +53,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public int emailCheck(String checkEmail) {
-		return memberDao.emailCheck(sqlSession, checkEmail);
+	public Member emailCheck(Member m) {
+		return memberDao.emailCheck(sqlSession, m);
 	}
 
 	@Override
