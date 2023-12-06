@@ -86,17 +86,30 @@ public class BoardController {
 		return mv;
 	}
 		
-	//궁금해요
+	//궁금해요 리스트
 	@RequestMapping(value = "/curious.co")
-	public String curiousBoard(){
-		return "noticeBoard/curiousBoard";
+	public ModelAndView curiousList(@RequestParam(value = "cpage", defaultValue = "1") int currentPage, ModelAndView mv) {	
+		int listCount = boardService.selectCuriousListCount();
+		
+		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 3);
+		ArrayList<Board> list = boardService.selectCuriousList(pi);
+		mv.addObject("pi", pi)
+		.addObject("list", list)
+		.setViewName("noticeBoard/curiousBoard");
+		return mv;
 	}
 	
-	//얼마에요
+	//얼마에요 리스트
 	@RequestMapping(value = "/much.co")
-	public String muchBoard(){
-		//화면 전환용 임시 데이터는 없는상태
-		return "noticeBoard/muchBoard";
+	public ModelAndView muchList(@RequestParam(value = "cpage", defaultValue = "1") int currentPage, ModelAndView mv){
+		int listCount = boardService.selectMuchListCount();
+		
+		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 3);
+		ArrayList<Board> list = boardService.selectMuchList(pi);
+		mv.addObject("pi", pi)
+		.addObject("list", list)
+		.setViewName("noticeBoard/muchBoard");
+		return mv;
 	}
 	
 	//함께해요
@@ -149,8 +162,15 @@ public class BoardController {
 			model.addAttribute("errorMsg", "공지사항 작성 실패");
 			return "common/errorMsg";
 		}
+	}
+	
+	//공지사항 삭제
+	@RequestMapping(value = "/deleteNotice.co")
+	public String deleteNotice(Notice n, Model model) {
 		
+		int result = boardService.deleteNotice(n);
 		
+		return "redirect:/notice.co";
 	}
 	
 	@RequestMapping(value = "/helpuForm.bo")
@@ -159,11 +179,18 @@ public class BoardController {
 		return "board/helpu";
 	}
 	
+//	@RequestMapping(value = "helpInsert.bo")
+//	public String helpInsert(Board b) {
+//		b.setMemberNo(2); // 임시데이터
+//		b.setCatrgoryNo(200); // 임시데이터
+//		int result1 = boardService.helpInsert(b);
+//		return "";
+//	}
 	
 	@RequestMapping(value = "helpInsert.bo")
 	public String helpInsert(Board b) {
 		b.setMemberNo(2); // 임시데이터
-		b.setCatrgoryNo(200); // 임시데이터
+//		b.setCatrgoryNo(200); // 임시데이터
 //		int result1 = boardService.helpInsert(b);
 		
 		

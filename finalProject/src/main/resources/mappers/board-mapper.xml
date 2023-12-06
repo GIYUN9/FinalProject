@@ -11,6 +11,9 @@
   		<result column="PRICE" property="price" />
   		<result column="BOARD_TYPE" property="boardType" />
   		<result column="CREATEDATE" property="createDate" />
+  		<result column="STATUS" property="status" />
+  		<result column="MEM_NO" property="memberNo" />
+  		<result column="CATEGORY_NO" property="categoryNo" />
   	</resultMap>
   	
   	<resultMap type="Attachment" id="attachmentResult">
@@ -29,11 +32,11 @@
   		<result column="STATUS" property="status" />
   	</resultMap>
  	
-  	<!-- 도와줄게요 게시글 조회 쿼리문 -->
+  	<!-- 도와줄게요 게시글 조회 쿼리문 
   	<select id="selectBoard">
   	
   	</select>
-  	
+  	-->
   	<!-- 도와줄게요 게시글 등록 쿼리문 -->
   	<insert id="insertBoard">
   		INSERT INTO
@@ -78,23 +81,74 @@
   	<select id="selectCommListCount" resultType="_int">
   		SELECT  COUNT(*)
 				FROM BOARD
+		WHERE BOARD_TYPE <![CDATA[>]]>= 3
+		AND STATUS = 'Y'
+  	</select>
+  	
+  	<select id="selectCuriousListCount" resultType="_int">
+  		SELECT  COUNT(*)
+				FROM BOARD
 		WHERE BOARD_TYPE = 3
 		AND STATUS = 'Y'
   	</select>
   	
-  	<select id="selectCommList" resultMap="boardResult">
-  		SELECT  BOARD_NO,
-				BOARD_TITLE,
-				BOARD_CONTENT,
-				PRICE,
-				BOARD_TYPE,
-				CREATEDATE,
-				STATUS,
-				MEM_NO,
-				CATEGORY_NO
+  	<select id="selectMuchListCount" resultType="_int">
+  		SELECT  COUNT(*)
 				FROM BOARD
-		WHERE BOARD_TYPE = 3
+		WHERE BOARD_TYPE = 4
 		AND STATUS = 'Y'
+  	</select>
+  	
+  	<select id="selectMuchList" resultMap="boardResult">
+  		SELECT  B.BOARD_NO,
+				B.BOARD_TITLE,
+				B.BOARD_CONTENT,
+				B.PRICE,
+				B.BOARD_TYPE,
+				B.CREATEDATE,
+				B.STATUS,
+				B.MEM_NO,
+                M.LOCATION,
+				B.CATEGORY_NO
+				FROM BOARD B
+        JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
+		WHERE B.BOARD_TYPE = 4
+		AND B.STATUS = 'Y'
+  	</select>
+  	
+  	<select id="selectCuriousList" resultMap="boardResult">
+  		SELECT  B.BOARD_NO,
+				B.BOARD_TITLE,
+				B.BOARD_CONTENT,
+				B.PRICE,
+				B.BOARD_TYPE,
+				B.CREATEDATE,
+				B.STATUS,
+				B.MEM_NO,
+                M.LOCATION,
+				B.CATEGORY_NO
+				FROM BOARD B
+        JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
+		WHERE B.BOARD_TYPE = 3
+		AND B.STATUS = 'Y'
+  	</select>
+  	
+  	<select id="selectCommList" resultMap="boardResult">
+		SELECT  B.BOARD_NO,
+				B.BOARD_TITLE,
+				B.BOARD_CONTENT,
+				B.PRICE,
+				B.BOARD_TYPE,
+				B.CREATEDATE,
+				B.STATUS,
+				B.MEM_NO,
+                M.LOCATION,
+				B.CATEGORY_NO
+				FROM BOARD B
+        JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
+		WHERE B.BOARD_TYPE <![CDATA[>]]>= 3
+		AND B.STATUS = 'Y'
+		ORDER BY B.CREATEDATE DESC
   	</select>
   	
   	<select id="noticeList" resultMap="noticeResult">
@@ -126,4 +180,10 @@
 		        'Y'
 		        )
   	</insert>
+  	
+  	<update id="deleteNotice">
+  		UPDATE NOTICE
+  			SET STATUS = 'N'
+  		WHERE NOTICE_NO = #{noticeNo}
+  	</update>
   </mapper>

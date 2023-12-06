@@ -333,16 +333,29 @@
 		align-self: end;
 		width: 120px;
 	    height: 35px;
-	    margin-right: 28px;
 	    padding-top: 10px;
 	    cursor: pointer;
 	    text-decoration: none;
 	    color: white;
 	}
 	.createNotice-btn:hover {
-		opacity: 0.5;
+        color: white;
 	}
-	
+	.del-not{
+        background: rgb(218, 76, 60);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 5px;
+        font-size: 13px;
+    }
+    .del-not:hover{
+        scale: 0.98;
+    }
+    .write-icon{
+        width: 20px;
+        height: 20px;
+    }
 	</style>
 </head>
 <body>
@@ -362,7 +375,10 @@
 			<div class="centerTitle">
 				<h3 style="margin: 10px 0 0 20px;">공지사항</h3>
 				<c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
-					<a class="createNotice-btn" href="noticeEnrollForm.co">공지사항 글작성</a>
+					<a class="createNotice-btn" href="noticeEnrollForm.co">
+                        <img class="write-icon" src="././resources/icon/pencil.png" alt="">
+                        공지 작성
+                    </a>
 				</c:if>
 			</div>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
@@ -373,12 +389,10 @@
                             <li class="card-list">
                                 <div class="card">
                                     <div class="card-header">
-                                    <button onclick= "insertBoard()">글쓰기버튼@@@@@@@@@@@@@@@</button>
-                                      <a class="card-link" data-toggle="collapse" href="#collapseOne">
-                                        <span>필독</span>
-                                        <span class="poom-span">품앗이에 대하여</span>
-                                        <span class="date">2022-10-24</span>
-                                      <a class="card-link" data-toggle="collapse" href="#collapse${n.noticeNo}">
+                                      <a class="card-link" data-toggle="collapse" href="#collapse${n.noticeNo}" 
+                                      style="color: black" 
+                                      onmouseover="this.style.color='rgb(0, 199, 174)'" 
+                                      onmouseout="this.style.color='black';">
                                         <span>${n.noticeType}</span>
                                         <span class="poom-span">${n.noticeTitle}</span>
                                         <span class="date">${n.createDate}</span>
@@ -386,9 +400,15 @@
                                     </div>
                                     <div id="collapse${n.noticeNo}" class="collapse show" data-parent="#accordion">
                                       <div class="card-body">
-                                      		  품앗이 사이트는 전문가 및 준전문가와 수요자의 매칭을 해주는 사이트입니다.
                                         ${n.noticeContent}
                                       </div>
+                                      <c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
+	                                      <form action="deleteNotice.co" style="float: right; margin-right: 10px; margin-bottom: 10px;">
+	                                      	<input type="hidden" name="noticeNo" value="${n.noticeNo}">
+	                                      	<button class="del-not" type="submit">공지 삭제</button>
+	                                      </form>
+                                      </c:if>
+                                      
                                     </div>
                                 </div>
                             </li>
