@@ -16,6 +16,7 @@
   		<typeAlias type="com.kh.finalProject.member.model.vo.Member" alias="Member" />
   		<typeAlias type="com.kh.finalProject.member.model.vo.Professional" alias="Professional" />
   		<typeAlias type="com.kh.finalProject.common.vo.Attachment" alias="Attachment" />
+  		<typeAlias type="com.kh.finalProject.common.vo.Notice" alias="Notice" />
   	</typeAliases>
   	
   	<mappers>

@@ -18,8 +18,8 @@ public class MemberDao {
 		return sqlSession.selectOne("memberMapper.loginMember", m);
 	}
 	
-	public int emailCheck(SqlSessionTemplate sqlSession, String checkEmail) {
-		return sqlSession.selectOne("memberMapper.emailCheck", checkEmail);
+	public Member emailCheck(SqlSessionTemplate sqlSession, Member m) {
+		return sqlSession.selectOne("memberMapper.emailCheck", m);
 	}
 	
 

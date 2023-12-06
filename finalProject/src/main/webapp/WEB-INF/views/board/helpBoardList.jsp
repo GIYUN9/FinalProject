@@ -208,32 +208,32 @@
             <div class = "nav-item"><a href="#">&#60;</a></div>
             <div class = "nav-item">
                 <div class="aaa">
-                    <a href="#">취미,레슨</a>
+                    <a href="#"  style="color: white;">취미,레슨</a>
                 </div>
             </div>
             <div class = "nav-item">
                 <div class="aaa">
-                    <a href="#">디자인</a>
+                    <a href="#" style="color: white;">디자인</a>
                 </div>
             </div>
             <div class = "nav-item">
                 <div class="aaa">
-                    <a href="#">마케팅</a>
+                    <a href="#" style="color: white;">마케팅</a>
                 </div>
             </div>
             <div class = "nav-item">
                 <div class="aaa">
-                    <a href="#">운동</a>
+                    <a href="#" style="color: white;">운동</a>
                 </div>
             </div>
             <div class = "nav-item">
                 <div class="aaa">
-                    <a href="#">게임</a>
+                    <a href="#" style="color: white;">게임</a>
                 </div>
             </div>
             <div class = "nav-item">
                 <div class="aaa">
-                    <a href="#">미술</a>
+                    <a href="#" style="color: white;">미술</a>
                 </div>
             </div>
            

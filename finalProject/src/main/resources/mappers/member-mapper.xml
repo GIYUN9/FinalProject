@@ -45,10 +45,13 @@
 		)
 	</insert>
 	<!-- 아이디 중복체크 -->
-	<select id="emailCheck" resultType="_int">
-		SELECT COUNT(*)
+	<select id="emailCheck" resultMap="memberResult">
+		SELECT MEM_EMAIL,
+			MEM_PWD,
+			MEM_NAME
 		FROM MEMBER
-		WHERE MEMBER_EMAIL = #{memberEmail}
+		WHERE MEM_EMAIL = #{memberEmail}
+			AND STATUS = 'Y'
 	</select>
 	
 	<!-- 로그인 -->

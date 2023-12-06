@@ -148,11 +148,7 @@ public class MemberController {
 		}
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/emailCheck.me")
-	public String idCheck(String checkEmail) {
-		return memberService.emailCheck(checkEmail) > 0 ? "NNNNN" : "NNNNY";
-	}
+	
 	
 	@RequestMapping(value = "/login.me")
 	public ModelAndView loginMember(Member m, ModelAndView mv, HttpSession session) {
@@ -163,16 +159,24 @@ public class MemberController {
 		if(loginUser == null){//로그인 실패경우 (조건이 정확한지 확인받기)
 			mv.addObject("errorMsg", "로그인 실패"); 
 			mv.setViewName("common/errorPage");//경로가 정확히 이게 맞을까?
+			System.out.println(loginUser);
 		}else {
 			session.setAttribute("loginUser", loginUser);
 			System.out.println("로그인 성공!");
 			mv.setViewName("redirect:/");
+			System.out.println(loginUser);
 		}
 		return mv;
 	}
 	
-
-	
+	@RequestMapping("/logout.me")
+	public ModelAndView logoutMember(ModelAndView mv, HttpSession session) {
+		session.removeAttribute("loginUser");
+		
+		mv.setViewName("redirect:/");
+		
+		return mv;
+	}
 }
 
 /*

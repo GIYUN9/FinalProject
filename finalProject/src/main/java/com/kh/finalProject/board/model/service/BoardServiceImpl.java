@@ -8,7 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.kh.finalProject.board.model.dao.BoardDao;
 import com.kh.finalProject.board.model.vo.Board;
+
 import com.kh.finalProject.common.vo.Attachment;
+
+import com.kh.finalProject.common.vo.Notice;
+
 import com.kh.finalProject.common.vo.PageInfo;
 
 @Service
@@ -19,13 +23,14 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Autowired
 	private BoardDao boardDao;
-	
+
 	
 	@Override
 	//게시판 도와줄게요 조회
-	public ArrayList<Board> selectList(PageInfo pi) {
-		return boardDao.selectList(sqlSession, pi);
+	public ArrayList<Board> helpselectList(PageInfo pi) {
+		return boardDao.helpselectList(sqlSession, pi);
 	}
+
 
 	//게시글 등록
 	@Override
@@ -64,5 +69,28 @@ public class BoardServiceImpl implements BoardService {
 	public int helpselect() {
 		return boardDao.helpselect(sqlSession);
 	}
+
+	//게시글 전체 갯수 count(*)조회
+	@Override
+	public int selectCommListCount() {
+		return boardDao.selectCommListCount(sqlSession);
+
+	}
 	
+	//게시글 리스트 조회
+	@Override
+	public ArrayList<Board> selectCommList(PageInfo pi) {
+		return boardDao.selectCommList(sqlSession, pi);
+	}
+
+	//공지사항 리스트조회
+	@Override
+	public ArrayList<Notice> noticeList() {
+		return boardDao.noticeList(sqlSession);
+	}
+
+	@Override
+	public int insertNotice(Notice n) {
+		return boardDao.insertNotice(sqlSession, n);
+	}
 }
