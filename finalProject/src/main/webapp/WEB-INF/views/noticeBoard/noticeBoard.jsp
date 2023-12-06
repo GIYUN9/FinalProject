@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -328,7 +329,8 @@
 		<div class="sideBar">
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">커뮤니티</h3>
 			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 180px;">
-			<div class="myPageSideBar"><a class="SideBar-text" href="viewall.co">전체보기</a></div>
+			
+			<div class="myPageSideBar"><a class="SideBar-text" href="list.co">전체보기</a></div>
 			<a class="myPageSideBar" href="curious.co">궁금해요</a>
 			<a class="myPageSideBar" href="much.co">얼마예요</a>
 			<a class="myPageSideBar" href="together.co">함께해요</a>
@@ -341,6 +343,7 @@
 				<div class="community-big">   
                     <div id="accordion">
                         <ul>
+                        <c:forEach var="n" items="${nList}">
                             <li class="card-list">
                                 <div class="card">
                                     <div class="card-header">
@@ -349,107 +352,21 @@
                                         <span>필독</span>
                                         <span class="poom-span">품앗이에 대하여</span>
                                         <span class="date">2022-10-24</span>
+                                      <a class="card-link" data-toggle="collapse" href="#collapse${n.noticeNo}">
+                                        <span>${n.noticeType}</span>
+                                        <span class="poom-span">${n.noticeTitle}</span>
+                                        <span class="date">${n.createDate}</span>
                                       </a>
                                     </div>
-                                    <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                                    <div id="collapse${n.noticeNo}" class="collapse show" data-parent="#accordion">
                                       <div class="card-body">
                                       		  품앗이 사이트는 전문가 및 준전문가와 수요자의 매칭을 해주는 사이트입니다.
+                                        ${n.noticeContent}
                                       </div>
                                     </div>
-                                  </div>
+                                </div>
                             </li>
-                        
-                            <li class="card-list">
-                                <div class="card">
-                                    <div class="card-header">
-                                      <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-                                        <span>필독</span>
-                                        <span class="poom-span">품앗이 채용 사칭 스미싱 문자 주의</span>
-                                        <span class="date">2021-12-24</span>
-                                    </a>
-                                    </div>
-                                    <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                                      <div class="card-body">
-                                        다른 번호 외에 전화를 걸지 말아 주시고,<br>
-                                        소비자 보호를 위해 스미싱 사이트에 접속하지 말아주시길 당부 드립니다.
-                                      </div>
-                                    </div>
-                                  </div>
-                            </li>
-            
-                            <li class="card-list">
-                                <div class="card">
-                                    <div class="card-header">
-                                      <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
-                                        <span>공지</span>
-                                        <span class="poom-span">품앗이 서비스 점검안내</span>
-                                        <span class="date">2023-12-14</span>
-                                      </a>
-                                    </div>
-                                    <div id="collapseThree" class="collapse" data-parent="#accordion">
-                                      <div class="card-body">
-                                        사이트 및 서버 점검이 진행 될 예정입니다.<br>
-                                        점검시간 동안 품앗이 사이트 서비스 이용이 불가능하오니 양해 부탁드립니다.
-                                      </div>
-                                    </div>
-                                  </div>
-                            </li>
-            
-                            <li class="card-list">
-                                <div class="card">
-                                    <div class="card-header">
-                                      <a class="collapsed card-link" data-toggle="collapse" href="#collapseFour">
-                                        <span>공지</span>
-                                        <span class="poom-span">품앗이 사기 당했을 경우</span>
-                                        <span class="date">2023-12-01</span>
-                                      </a>
-                                    </div>
-                                    <div id="collapseFour" class="collapse" data-parent="#accordion">
-                                      <div class="card-body">
-                                        사기 당했을 경우 신고바랍니다.
-                                      </div>
-                                    </div>
-                                  </div>
-                        
-                            </li>
-            
-                            <li class="card-list"> 
-                                <div class="card">
-                                    <div class="card-header">
-                                      <a class="collapsed card-link" data-toggle="collapse" href="#collapseFive">
-                                        <span>공지</span>
-                                        <span class="poom-span">품앗이 현피뜰 경우</span>
-                                        <span class="date">2023-11-24</span>
-                                      </a>
-                                    </div>
-                                    <div id="collapseFive" class="collapse" data-parent="#accordion">
-                                      <div class="card-body">
-                                        2023-11-24 공지사항<br>
-                                        금일은 서비스 점검으로 인해 오후에 사용이 어려울 수 있습니다.<br>
-                                        고객놈들께서는 참고하시고 이용을 하든지 말든지 진짜 귀찮게 굴지 마시고<br>
-                                        알아서 하시길...
-                                      </div>
-                                    </div>
-                                  </div>
-                            </li>
-            
-                            <li class="card-list">
-                                <div class="card">
-                                    <div class="card-header">
-                                      <a class="collapsed card-link" data-toggle="collapse" href="#collapseSix">
-                                        <span>공지</span>
-                                        <span class="poom-span">품앗이생활은 감옥생활</span>
-                                        <span class="date">2023-10-06</span>
-                                      </a>
-                                    </div>
-                                    <div id="collapseSix" class="collapse" data-parent="#accordion">
-                                      <div class="card-body">
-                                        품앗이 생활 한번 시작하면은 못빠져나간다
-                                      </div>
-                                    </div>
-                                  </div>
-                            </li>
-            
+            			</c:forEach>
                         </ul>
             
                       </div>

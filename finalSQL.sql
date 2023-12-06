@@ -122,6 +122,32 @@ CREATE TABLE ATTACHMENT(
     BOARD_NO NUMBER REFERENCES BOARD(BOARD_NO)
 );
 
+--ATTACHMENT 시퀀스
+CREATE SEQUENCE SEQ_ANO
+START WITH 10000
+INCREMENT BY 1
+MAXVALUE 15000
+NOCYCLE
+NOCACHE;
+
+--NOTICE 공지사항 테이블
+CREATE TABLE NOTICE(
+    NOTICE_NO NUMBER PRIMARY KEY,
+    NOTICE_TYPE VARCHAR2(30) DEFAULT '공지',
+    NOTICE_TITLE VARCHAR2(2000),
+    NOTICE_CONTENT VARCHAR2(2000),
+    CREATEDATE DATE DEFAULT SYSDATE,
+    STATUS VARCHAR2(3) DEFAULT 'Y'
+);
+
+--NOTICE 시퀀스
+CREATE SEQUENCE SEQ_NNO
+START WITH 15001
+INCREMENT BY 1
+MAXVALUE 20000
+NOCYCLE
+NOCACHE;
+
 ---------------------더미데이터-----------------------
 -- 멤버
 INSERT INTO MEMBER VALUES(1, 'admin@naver.com', '1234' ,'관리자', '음악', 1,
@@ -162,9 +188,25 @@ INSERT INTO PROFESSIONAL VALUES(SEQ_PNO.NEXTVAL, '피아니스트', 200, 2);
 
 --게시판(보드)
 INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, SYSDATE, 'Y', 2, 200);
-
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '커뮤니티용 음악레슨합니다1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 50000, 3, SYSDATE, 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '커뮤니티용 음악레슨합니다2', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 3, SYSDATE, 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '커뮤니티용 음악레슨합니다3', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 3, SYSDATE, 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '커뮤니티용 음악레슨합니다4', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 3, SYSDATE, 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '커뮤니티용 음악레슨합니다5', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 3, SYSDATE, 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '커뮤니티용 음악레슨합니다6', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 3, SYSDATE, 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '커뮤니티용 페이징처리', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 3, SYSDATE, 'Y', 2, 200);
 -- ATTACHEMT 사진
 
-        
+-- NOTICE
+INSERT INTO NOTICE VALUES(SEQ_NNO.NEXTVAL, '필독', '품앗이에 대하여', '품앗이 사이트는 전문가 및 준전문가와 수요자의 매칭을 해주는 사이트입니다.', SYSDATE, 'Y');
+INSERT INTO NOTICE VALUES(SEQ_NNO.NEXTVAL, '필독', '품앗이 채용 사칭 스미싱 문자 주의', '다른 번호 외에 전화를 걸지 말아 주시고,
+소비자 보호를 위해 스미싱 사이트에 접속하지 말아주시길 당부 드립니다.', SYSDATE, 'Y');
+INSERT INTO NOTICE VALUES(SEQ_NNO.NEXTVAL, '공지', '품앗이 서비스 점검안내', '사이트 및 서버 점검이 진행 될 예정입니다.
+점검시간 동안 품앗이 사이트 서비스 이용이 불가능하오니 양해 부탁드립니다.', SYSDATE, 'Y');
+INSERT INTO NOTICE VALUES(SEQ_NNO.NEXTVAL, '공지', '품앗이 사기 당했을 경우', '사기 당했을 경우 신고바랍니다.', SYSDATE, 'Y');
+INSERT INTO NOTICE VALUES(SEQ_NNO.NEXTVAL, '공지', '품앗이 현피뜰 경우', '금일은 서비스 점검으로 인해 오후에 사용이 어려울 수 있습니다.
+고객놈들께서는 참고하시고 이용을 하든지 말든지 진짜 귀찮게 굴지 마시고
+알아서 하시길...', SYSDATE, 'Y');
+INSERT INTO NOTICE VALUES(SEQ_NNO.NEXTVAL, '공지', '품앗이생활은 감옥생활', '품앗이 생활 한번 시작하면은 못빠져나간다', SYSDATE, 'Y');
 ---트랜잭션
 commit;
