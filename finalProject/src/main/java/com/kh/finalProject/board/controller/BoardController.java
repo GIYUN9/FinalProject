@@ -115,6 +115,22 @@ public class BoardController {
 		return "noticeBoard/noticeBoard";
 	}
 	
+
+	//공지사항 글쓰기
+	@RequestMapping(value = "/insert.co")
+	public String noticeBoard(HttpSession session, Model model) {
+		
+		
+		return "noticeBoard/annoucementBoard";
+	}
+	
+	@RequestMapping(value = "/viewall.co")
+	public String allBoardBoard(){
+		//화면 전환용 임시 데이터는 없는상태
+		return "noticeBoard/allBoard";
+	}
+	
+
 	//공지사항 글쓰기 화면 전환용
 	@RequestMapping(value = "/noticeEnrollForm.co")
 	public String noticeEnrollForm(Notice n) {
@@ -142,6 +158,7 @@ public class BoardController {
 		return "board/helpu";
 	}
 	
+	
 	@RequestMapping(value = "helpInsert.bo")
 	public String helpInsert(Board b) {
 		b.setMemberNo(2); // 임시데이터
@@ -150,7 +167,17 @@ public class BoardController {
 		
 		
 		
+
+//		int result1 = boardService.helpInsert(b);
+
 		return "";
+	}
+	
+	//게시글 쓰기 페이지 이동
+	@RequestMapping(value ="pageMove.no")
+	public String pageMoveBoard(){
+		
+		return "noticeBoard/insertNotice";
 	}
 
 	//게시글 등록
