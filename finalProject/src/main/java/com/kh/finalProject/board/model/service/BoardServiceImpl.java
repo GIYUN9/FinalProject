@@ -19,8 +19,8 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Autowired
 	private BoardDao boardDao;
-
-	//게시글 리스트 조회
+	
+	
 	@Override
 	//게시판 도와줄게요 조회
 	public ArrayList<Board> selectList(PageInfo pi) {
@@ -58,6 +58,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int helpAttachment(Attachment at) {
 		return boardDao.helpAttachment(sqlSession, at);
+	}
+
+	@Override
+	public int helpselect() {
+		return boardDao.helpselect(sqlSession);
 	}
 	
 }

@@ -265,11 +265,11 @@
                    </div>
                 </div>
                 <div class = "content-item">
-                    <a href ="././WEB-INF/views/board/boardDetailView.jsp">
+                     <a href ="././WEB-INF/views/board/boardDetailView.jsp">
                         <img  class = "content-img" src = "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzEwMTdfNTgg%2FMDAxNjk3NTM5MTYyMDU1.2FTbuIwYW-lYUnwwsOymlHEzSOePqb98wZL9dmdJQ44g.9OmmX2wPWyBWzDkmuySWmSj3gIDYOiH40xw5mXgGJmsg.JPEG.suninefreeimage%2F_Z5A4454.jpg&type=sc960_832">
                         <div class = "content-item-title">${b.title}</div>
                         <div class = "content-item-price">${b.price}원</div>
-                    </a>
+                     </a> 
                 </div>
                 <div class = "content-item">
                     <a href = "#">

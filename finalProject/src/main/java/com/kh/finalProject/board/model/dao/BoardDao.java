@@ -38,7 +38,11 @@ public class BoardDao {
 		return sqlSession.selectOne("boardMapper.selectBoard", boardNo);
 	}
 	
-	public Attachment helpAttachment(SqlSessionTemplate sqlSession, Attachment at) {
+	public int helpAttachment(SqlSessionTemplate sqlSession, Attachment at) {
 		return sqlSession.selectOne("boardMapper.helpAttachment", at);
+	}
+	
+	public int helpselect(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("boardMapper.helpselect");
 	}
 }

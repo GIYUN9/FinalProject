@@ -9,6 +9,8 @@ import com.kh.finalProject.common.vo.PageInfo;
 
 public interface BoardService {
 	
+	//게시글 총 페이지
+	int helpselect();
 	
 	//게시판 도와줄게요 조회
 	ArrayList<Board> selectList(PageInfo pi);
