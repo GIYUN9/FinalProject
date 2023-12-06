@@ -47,4 +47,10 @@ public interface BoardService {
 	
 	//얼마예요 리스트 (조회)
 	ArrayList<Board> selectMuchList(PageInfo pi);
+	
+	//함께해요 게시글 수 (조회)
+	int selectTogetherListCount();
+	
+	//함께해요 리스트(조회)
+	ArrayList<Board> selectTogetherList(PageInfo pi);
 }

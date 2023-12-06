@@ -100,5 +100,15 @@ public class BoardServiceImpl implements BoardService {
 	public ArrayList<Board> selectMuchList(PageInfo pi) {
 		return boardDao.selectMuchList(sqlSession, pi);
 	}
+
+	@Override
+	public int selectTogetherListCount() {
+		return boardDao.selectTogetherListCount(sqlSession);
+	}
+
+	@Override
+	public ArrayList<Board> selectTogetherList(PageInfo pi) {
+		return boardDao.selectTogetherList(sqlSession, pi);
+	}
 	
 }
