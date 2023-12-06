@@ -27,8 +27,7 @@ public class MemberController {
 	//멤버 마이페이지 불러오는 컨트롤러
 	@RequestMapping(value = "/userInfo.me")
 	public ModelAndView userInfo(Member m, ModelAndView mv, HttpSession session){
-		System.out.println(m);
-		m.setMemberNo(2); //임시데이터
+		m = (Member)session.getAttribute("loginUser");
 		Member loginUser = memberService.userInfo(m);
 		session.setAttribute("loginUser", loginUser);
 		mv.setViewName("myPage/userInfo");
@@ -36,8 +35,8 @@ public class MemberController {
 	}
 	//멤버 마이페이지 수정하는 컨트롤러
 	@RequestMapping(value = "/updateUserInfo.me")
-	public String updateUserInfo(Member m) {
-		m.setMemberNo(2); //임시데이터
+	public String updateUserInfo(Member m, HttpSession session) {
+		m = (Member)session.getAttribute("loginUser");
 		int result = memberService.updateUserInfo(m);
 		
 		return "redirect:/userInfo.me";
@@ -46,8 +45,7 @@ public class MemberController {
 	//멤버 전문가페이지 불러오는 컨트롤러
 	@RequestMapping(value = "/proInfo.me")
 	public String proInfo(Member m, HttpSession session){
-		m.setMemberNo(2); //임시데이터
-		
+		m = (Member)session.getAttribute("loginUser");
 		Member loginUser = memberService.userInfo(m);
 		session.setAttribute("loginUser", loginUser);
 		
@@ -60,7 +58,7 @@ public class MemberController {
 	//멤버 전문가페이지에서 수정하고 다시 페이지를 부르는 컨트롤러
 	@RequestMapping(value = "/updateProInfo.me")
 	public String updateProInfo(Member m, Professional p, HttpSession session) {
-		m.setMemberNo(2); //임시데이터
+		m = (Member)session.getAttribute("loginUser");
 		int result = memberService.updateProInfo(m);
 		
 		// 전문 분야 및 상세 분야 보류 여기에 추가해야함
@@ -76,8 +74,8 @@ public class MemberController {
 	
 	//비밀번호 변경하는 컨트롤러
 	@RequestMapping(value = "/updatePwd.me")
-	public String updatePwd(Member m, String newPwd){
-		m.setMemberNo(2); //임시데이터
+	public String updatePwd(Member m, String newPwd, HttpSession session){
+		m = (Member)session.getAttribute("loginUser");
 		m.setMemberPwd(newPwd);
 		int result = memberService.updatePwd(m);
 		
@@ -95,7 +93,7 @@ public class MemberController {
 	//회원탈퇴 컨트롤러 (업데이트)
 	@RequestMapping(value = "/delete.me")
 	public String deleteMember(Member m, HttpSession session) {
-		m.setMemberNo(2); //임시데이터
+		m = (Member)session.getAttribute("loginUser");
 		int result = memberService.deleteMember(m);
 		
 		if(result > 0) {

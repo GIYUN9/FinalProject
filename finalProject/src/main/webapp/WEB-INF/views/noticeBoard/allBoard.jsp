@@ -235,7 +235,7 @@
 					    <li class="main-list">
 					        <a href="" class="a-click"></a>
 					        <div class="border-one">
-					            <span class="community-p">카테고리{list..사용?}</span>
+					            <span class="community-p">${b.boardType == 3 ? '궁금해요' : b.boardType == 4 ? '얼마예요' : '함께해요'}</span>
 					            <h4>${b.boardTitle}</h4>
 					            <p class="text1">${b.boardContent}</p>
 					            <p class="text2">지역?</p>
