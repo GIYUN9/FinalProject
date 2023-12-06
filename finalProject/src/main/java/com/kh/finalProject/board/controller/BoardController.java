@@ -159,6 +159,13 @@ public class BoardController {
 		return "board/helpu";
 	}
 	
+//	@RequestMapping(value = "helpInsert.bo")
+//	public String helpInsert(Board b) {
+//		b.setMemberNo(2); // 임시데이터
+//		b.setCatrgoryNo(200); // 임시데이터
+//		int result1 = boardService.helpInsert(b);
+//		return "";
+//	}
 	
 	@RequestMapping(value = "helpInsert.bo")
 	public String helpInsert(Board b) {
