@@ -125,6 +125,14 @@ public class BoardController {
 		return "noticeBoard/noticeBoard";
 	}
 	
+	//공지사항 글쓰기
+	@RequestMapping(value = "/insert.co")
+	public String noticeBoard(HttpSession session, Model model) {
+		
+		int
+		return "noticeBoard/annoucementBoard";
+	}
+	
 	@RequestMapping(value = "/viewall.co")
 	public String allBoardBoard(){
 		//화면 전환용 임시 데이터는 없는상태

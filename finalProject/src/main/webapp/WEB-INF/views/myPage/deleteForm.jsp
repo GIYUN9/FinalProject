@@ -110,13 +110,13 @@
 						<input class="emailInput" name="memberEmail" placeholder="가입하신 이메일을 입력해주세요.">
 						<h4 style="margin-bottom: 5px; margin-top: 15px;">주의 사항</h4>
 						<textarea class="df-text-box" rows="15" cols="96%" readonly="readonly">
-1. 현재 사용 중인 계정 정보는~~~
-2. 진행 중인 거래 건이 있거나~~
-3. 탈퇴 후 ~~
-4. 현재 보유 중인~~
-5. 구매후기~~
-
-110. 충전캐시~~
+								1. 현재 사용 중인 계정 정보는~~~
+								2. 진행 중인 거래 건이 있거나~~
+								3. 탈퇴 후 ~~
+								4. 현재 보유 중인~~
+								5. 구매후기~~
+								
+								110. 충전캐시~~
 						</textarea><br>
 						<div class="df-bottom">
 							<label class="label-css"><input id="cT" type="checkbox"> 주의사항을 모두 확인하였습니다.</label>

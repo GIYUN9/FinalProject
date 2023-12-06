@@ -9,9 +9,9 @@
 <body>	
 		
 		
-	<jsp:forward page="WEB-INF/views/member/passwordFind.jsp"/>
-
 	
+
+<jsp:forward page="WEB-INF/views/noticeBoard/region.jsp"/> 
 	
  
 
@@ -65,6 +65,8 @@
 		<jsp:forward page="WEB-INF/views/noticeBoard/muchBorder.jsp"/> 커뮤니티 게시판 얼마예요
 		<jsp:forward page="WEB-INF/views/noticeBoard/togetherBorder.jsp"/> 커뮤니티 게시판 함께해요
 		<jsp:forward page="WEB-INF/views/noticeBoard/announcementBorder.jsp"/> 커뮤니티 게시판 공지사항
+	
+		announcementBoard 랑 noticeBoard의 차이가 뭐지?
 	--%> 
 
 	
