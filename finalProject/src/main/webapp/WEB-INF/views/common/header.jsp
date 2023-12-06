@@ -422,10 +422,23 @@
                                     	관심사 선택(중복 선택 가능)
                                     <span class="as-re">*</span>
                                 </p>
-                               
-                                 <div class ="">                                   	                           
-	                    			<input type="tel" class="form-control" id="phone" placeholder="Please Enter Phone" name="phone"> <br>               
-	                                <label for=""> &nbsp; Gender : </label> &nbsp;&nbsp;
+                               	<div class="insert-category">
+		                        	
+		                        	<select name ="" id ="in-category">
+		                        		<option value="music">음악</option>
+		                        		<option value="cook">요리</option>
+		                        		<option value="health">운동</option>
+		                        	</select>
+		                        	 <br>
+		                        </div>
+                                <div class ="">
+                                	 <br> 
+                                	<p>
+	                                    	휴대폰번호
+	                                    <span class="as-re">*</span>
+	                                </p>                                   	                           
+	                    			<input type="tel" class="form-control" id="phone" placeholder="010-0000-0000" name="phone"> <br>              
+	                                <label for=""> &nbsp; 성별 : </label> &nbsp;&nbsp;
 				                    <input type="radio" id="Male" value="M" name="memberGender" checked>
 				                    <label for="Male">남자</label> &nbsp;&nbsp;
 				                    <input type="radio" id="Female" value="F" name="memberGender">
