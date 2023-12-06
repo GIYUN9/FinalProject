@@ -45,4 +45,8 @@ public class BoardDao {
 	public ArrayList<Notice> noticeList(SqlSessionTemplate sqlSeesion){
 		return (ArrayList)sqlSeesion.selectList("boardMapper.noticeList");
 	}
+	
+	public int insertNotice(SqlSessionTemplate sqlSeesion, Notice n) {
+		return sqlSeesion.insert("boardMapper.insertNotice", n);
+	}
 }

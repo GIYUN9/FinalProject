@@ -64,4 +64,9 @@ public class BoardServiceImpl implements BoardService {
 	public ArrayList<Notice> noticeList() {
 		return boardDao.noticeList(sqlSession);
 	}
+
+	@Override
+	public int insertNotice(Notice n) {
+		return boardDao.insertNotice(sqlSession, n);
+	}
 }

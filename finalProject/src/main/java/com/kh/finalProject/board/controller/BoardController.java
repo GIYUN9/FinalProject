@@ -111,9 +111,29 @@ public class BoardController {
 	@RequestMapping(value = "/notice.co")
 	public String noticeBoard(Model model){
 		ArrayList<Notice> nList = boardService.noticeList();
-		System.out.println(nList);
 		model.addAttribute("nList",nList);
 		return "noticeBoard/noticeBoard";
+	}
+	
+	//공지사항 글쓰기 화면 전환용
+	@RequestMapping(value = "/noticeEnrollForm.co")
+	public String noticeEnrollForm(Notice n) {
+		
+		return "noticeBoard/noticeEnrollForm";
+	}
+	
+	//공지사항 글쓰기
+	@RequestMapping(value = "/insertNotice.co")
+	public String insertNotice(Notice n, Model model) {
+		int result = boardService.insertNotice(n);
+		if(result > 0) {
+			return "redirect:/notice.co";
+		} else {
+			model.addAttribute("errorMsg", "공지사항 작성 실패");
+			return "common/errorMsg";
+		}
+		
+		
 	}
 	
 	@RequestMapping(value = "/helpuForm.bo")
