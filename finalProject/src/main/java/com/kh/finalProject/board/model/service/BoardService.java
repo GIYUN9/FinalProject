@@ -33,6 +33,8 @@ public interface BoardService {
 	//공지사항 등록
 	int insertNotice(Notice n);
 	
+	//공지사항 삭제
+	int deleteNotice(Notice n);
 	
 	
 }
