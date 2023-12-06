@@ -124,7 +124,7 @@ public class BoardController {
 		//화면 전환용 임시 데이터는 없는상태
 		return "noticeBoard/noticeBoard";
 	}
-	
+	//
 	@RequestMapping(value = "/viewall.co")
 	public String allBoardBoard(){
 		//화면 전환용 임시 데이터는 없는상태

@@ -295,6 +295,7 @@
     }
     .SideBar-text:hover{
       border-bottom: 2px solid white;
+      color: white;
     }
 
     .card-header {

@@ -213,7 +213,7 @@
                             <div class="main-a">
                                 <span class="main-span1">공지</span>
                                 <span class="main-span2">품앗이 가이드라인</span>
-                                <img src="././resources/borderImage/right-arrow-icon.png" alt="오른쪽 화살표" class="arrow-img">
+                                <a href="notice.co"><img src="././resources/borderImage/right-arrow-icon.png" alt="오른쪽 화살표" class="arrow-img" ></a>
                             </div>                        
                             <ul>
                                 <li class="main-list">
