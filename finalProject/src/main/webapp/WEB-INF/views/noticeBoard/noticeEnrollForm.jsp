@@ -297,51 +297,11 @@
     .SideBar-text:hover{
       border-bottom: 2px solid white;
     }
-
-    .card-header {
-      padding: 0.75rem 1.25rem;
-      margin-bottom: 0;
-      background-color: rgb(255 171 72 / 3%);
-      border-bottom: 1px solid rgba(224,224,224,0.5);
-      border-radius: 5px;  
+    
+    .enroll-style{
+    	display: flex;
+    	flex-direction: column;
     }
-    .collapse show{
-      border-bottom: 1px solid rgba(224,224,224,0.5);
-
-    }
-/*
-    a::after{
-		display:block;
-		content: '';
-		border-bottom: solid 2px #ffffff;  
-		transform: scaleX(0);  
-		transition: transform 250ms ease-in-out;
-	}
-    a:hover::after{
-        transform: scaleX(1);
-    }
-*/
-
-	.centerTitle{
-		display: flex;
-	    flex-direction: row;
-	    justify-content: space-between;
-	}
-	
-	.createNotice-btn{
-		align-self: end;
-		width: 120px;
-	    height: 35px;
-	    margin-right: 28px;
-	    padding-top: 10px;
-	    cursor: pointer;
-	    text-decoration: none;
-	    color: white;
-	}
-	.createNotice-btn:hover {
-		opacity: 0.5;
-	}
-	
 	</style>
 </head>
 <body>
@@ -359,46 +319,43 @@
 		</div>
 		<div class="main-box">
 			<div class="centerTitle">
-				<h3 style="margin: 10px 0 0 20px;">공지사항</h3>
-				<c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
-					<a class="createNotice-btn" href="noticeEnrollForm.co">공지사항 글작성</a>
-				</c:if>
+				<h3 style="margin: 10px 0 0 20px;">공지사항 글작성</h3>
+				
 			</div>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
-				<div class="community-big">   
-                    <div id="accordion">
-                        <ul>
-                        <c:forEach var="n" items="${nList}">
-                            <li class="card-list">
-                                <div class="card">
-                                    <div class="card-header">
-                                    <button onclick= "insertBoard()">글쓰기버튼@@@@@@@@@@@@@@@</button>
-                                      <a class="card-link" data-toggle="collapse" href="#collapseOne">
-                                        <span>필독</span>
-                                        <span class="poom-span">품앗이에 대하여</span>
-                                        <span class="date">2022-10-24</span>
-                                      <a class="card-link" data-toggle="collapse" href="#collapse${n.noticeNo}">
-                                        <span>${n.noticeType}</span>
-                                        <span class="poom-span">${n.noticeTitle}</span>
-                                        <span class="date">${n.createDate}</span>
-                                      </a>
-                                    </div>
-                                    <div id="collapse${n.noticeNo}" class="collapse show" data-parent="#accordion">
-                                      <div class="card-body">
-                                      		  품앗이 사이트는 전문가 및 준전문가와 수요자의 매칭을 해주는 사이트입니다.
-                                        ${n.noticeContent}
-                                      </div>
-                                    </div>
-                                </div>
-                            </li>
-            			</c:forEach>
-                        </ul>
-            
-                      </div>
-                </div>
+				<div class="community-big">
+					<div>
+						<form class="enroll-style" action="insertNotice.co">
+							<div>
+								카테고리
+								<select name="noticeType">
+									<option value="필독">필독</option>
+									<option value="공지">공지</option>
+								</select>
+							</div>
+							<div>
+								제목
+								<input type="text" name="noticeTitle" required="required">
+							</div>
+							<div>
+								내용
+								<input type="text" name="noticeContent" required="required">
+							</div>
+							<div>
+								<button type="submit" id="insertBtn">등록하기</button>
+							</div>
+							
+						</form>
+					</div>
+				</div>
 			</div>		
 		</div>
 	</div>
 	<jsp:include page="../common/footer.jsp" />
+	<script>
+		document.getElementById("insertBtn").addEventListener("click", function() {
+		  alert("등록이 완료되었습니다.");
+		});
+	</script>
 </body>
 </html>
