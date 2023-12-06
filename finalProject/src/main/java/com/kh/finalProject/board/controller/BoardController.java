@@ -51,18 +51,76 @@ public class BoardController {
 	
 	// 도와줄게요 전체 게시글 조회
 	@RequestMapping(value="helpList.bo")
-	public ModelAndView helpListBoard(@RequestParam(value="cpage", defaultValue="1") int currentPage, 
-			ModelAndView mv) {
-		
-		PageInfo pi = Pagenation.getPageInfo(boardService.helpselect(), currentPage, 8, 5);
-
-		mv.addObject("pi",pi)
-		.addObject("list", boardService.selectList(pi))
-		.addObject("list", boardService.helpselectList(pi))
-		.setViewName("board/helpBoardList");
-		
-		return mv;
+	public String helpListBoard() {
+		// 클릭시 도와줄게요 전체 게시글보기 페이지로 이동
+		return "board/helpBoardList";
 	}
+	
+	//도와줄게요 게시글 등록 페이지
+	@RequestMapping(value = "helpInsert.bo")
+	public String helpInsert(Board b, Attachment at, MultipartFile upfile,  HttpSession session, Model model) { // , Atta~~ a
+		b.setMemberNo(2); // 임시데이터
+		b.setCatrgoryNo(200); // 임시데이터
+
+			
+		if(!upfile.getOriginalFilename().equals("")) {
+				
+			String atChangeName = saveFile(upfile, session, "/resources/borderImage/");
+				
+			at.setOriginName(upfile.getOriginalFilename());
+			at.setChangeName("resources/borderImage/" + atChangeName);
+		}
+			
+		int result1 = boardService.insertBoard(b);
+		int result2 = boardService.helpAttachment(at);
+			
+		if(result1 > 1) {
+				
+		} else if(result2 > 0) {
+				
+		} if((result1 * result2) > 0) {
+			session.setAttribute("alertMsg", "게시글 등록 성공");
+			return "redirect:helpList.bo";
+		} else {
+			model.addAttribute("errorMsg", "게시글 등록 실패");
+			return "common/errorPage";
+		}
+		// result1 > 1 => 인서트가 정상적으로 완료 
+		// int result2 = board~~~~.insertAttc(a);
+		// result2 > 0 => attc파일 첨부 정상적으로 종료
+			
+//		if((result1 * result 2) > 0) {return "정상적으로 종료시 보내줄페이지"} else{에러났을때(글작성 실패시) return ""}
+			
+		}
+		
+		public String saveFile(MultipartFile upfile,  HttpSession session, String path) {
+			//원래 파일명
+			String helpOrigin = upfile.getOriginalFilename();
+			
+			//시간정보
+			String helpTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+			
+			//랜덤숫자
+			int helprandom = (int)(Math.random() * 90000) + 10000;
+			
+			//확장자
+			String ext = helpOrigin.substring(helpOrigin.lastIndexOf("."));
+			
+			//변경된 이름
+			String helpChange = helpTime + helprandom + ext;
+			
+			//첨부파일 저장할 폴더의 물리적인 경로
+			String helpPath = session.getServletContext().getRealPath(path);
+
+			try {
+				upfile.transferTo(new File(helpPath + helpChange));
+			} catch (IllegalStateException | IOException e) {
+				e.printStackTrace();
+			}
+			
+			return helpChange;
+
+		}
 	
 
 	// 도와줄게요 게시글 수정
@@ -109,8 +167,8 @@ public class BoardController {
 		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 4);
 		ArrayList<Board> list = boardService.selectCommList(pi);
 		mv.addObject("pi", pi)
-			.addObject("list", list)
-			.setViewName("noticeBoard/allBoard");
+		  .addObject("list", list)
+		  .setViewName("noticeBoard/allBoard");
 		
 		return mv;
 	}
@@ -188,81 +246,6 @@ public class BoardController {
 		return "board/helpu";
 	}
 	
-
-	// 게시글 등록 페이지
-
-	@RequestMapping(value = "helpInsert.bo")
-	public String helpInsert(Board b, Attachment at, MultipartFile upfile,  HttpSession session, Model model) { // , Atta~~ a
-		b.setMemberNo(2); // 임시데이터
-		b.setCatrgoryNo(200); // 임시데이터
-
-		
-		if(!upfile.getOriginalFilename().equals("")) {
-			
-			String atChangeName = saveFile(upfile, session, "/resources/borderImage/");
-			
-			at.setOriginName(upfile.getOriginalFilename());
-			at.setChangeName("resources/borderImage/" + atChangeName);
-		}
-		
-		int result1 = boardService.insertBoard(b);
-		int result2 = boardService.helpAttachment(at);
-		
-		if(result1 > 1) {
-			
-		} else if(result2 > 0) {
-	
-		} if((result1 * result2) > 0) {
-			session.setAttribute("alertMsg", "게시글 등록 성공");
-			return "redirect:helpList.bo";
-		} else {
-			model.addAttribute("errorMsg", "게시글 등록 실패");
-			return "common/errorPage";
-		}
-		// result1 > 1 => 인서트가 정상적으로 완료 
-		// int result2 = board~~~~.insertAttc(a);
-		// result2 > 0 => attc파일 첨부 정상적으로 종료
-		
-//		if((result1 * result 2) > 0) {return "정상적으로 종료시 보내줄페이지"} else{에러났을때(글작성 실패시) return ""}
-		
-	}
-	
-	public String saveFile(MultipartFile upfile,  HttpSession session, String path) {
-		//원래 파일명
-		String helpOrigin = upfile.getOriginalFilename();
-		
-		//시간정보
-		String helpTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-		
-		//랜덤숫자
-		int helprandom = (int)(Math.random() * 90000) + 10000;
-		
-		//확장자
-		String ext = helpOrigin.substring(helpOrigin.lastIndexOf("."));
-		
-		//변경된 이름
-		String helpChange = helpTime + helprandom + ext;
-		
-		//첨부파일 저장할 폴더의 물리적인 경로
-		String helpPath = session.getServletContext().getRealPath(path);
-
-//		int result1 = boardService.helpInsert(b);
-
-		
-		
-		try {
-			upfile.transferTo(new File(helpPath + helpChange));
-		} catch (IllegalStateException | IOException e) {
-			e.printStackTrace();
-		}
-		
-
-		return helpChange;
-
-
-//		int result1 = boardService.helpInsert(b);
-
-	}
 	
 	//게시글 쓰기 페이지 이동
 	@RequestMapping(value ="pageMove.no")
@@ -293,7 +276,13 @@ public class BoardController {
 	
 	//게시글 삭제
 	
+	//도와주세요 게시글 조회
 	
+	//도와주세요 게시글 등록
+	
+	//도와주세요 게시글 수정
+	
+	//도와주세요 게시글 삭제
 	
 	
 	

@@ -60,6 +60,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	//게시글 사진첨부
+	// 도와줄게요 사진 첨부
 	@Override
 	public int helpAttachment(Attachment at) {
 		return boardDao.helpAttachment(sqlSession, at);
@@ -92,5 +93,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int insertNotice(Notice n) {
 		return boardDao.insertNotice(sqlSession, n);
+	}
+
+
+	@Override
+	public int seleteHelpListCount() {
+		return boardDao.seleteHelpListCount(sqlSession);
 	}
 }

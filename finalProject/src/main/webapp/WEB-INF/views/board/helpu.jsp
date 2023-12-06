@@ -206,20 +206,20 @@
                     <div class="hu-top-section">
                         <p>도와줄게요 게시글 작성</p>
                     </div>
-               <form method="post" action="helpuForm.bo" enctype="multipart/form-data">
+               <form method="post" action="helpList.bo" enctype="multipart/form-data">
                     <div class="hu-align">
                         <div class="hu-input-area">
                             <div class="aa">
                                 <div class="bb">
                                     제목
                                 </div>
-                                <input class="hu-title" type="text"/>
+                                <input class="hu-title" type="text" name="title"/>
                             </div>  
                             <div class="aa">
                                 <div class="cc">
                                     내용
                                 </div>
-                                <textarea class="hu-content" type="text"></textarea>
+                                <textarea class="hu-content" type="text" name="content"></textarea>
                             </div>  
                       		<div class="aa">
                                 <label class="hu-upfile" className="input-file-button" for="hu-upfile">
@@ -236,7 +236,7 @@
                             </div>  
                        
                             <div class="aa">
-                                <input class="hu-price" type="text" id="price" placeholder="최소 1,000">
+                                <input class="hu-price" type="text" id="price" name="price" placeholder="최소 1,000">
                                 <p class="price-measure2">${b.price}원</p>
                                     <div class="ee">
                                         희망가격

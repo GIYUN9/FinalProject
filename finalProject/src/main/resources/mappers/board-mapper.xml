@@ -29,26 +29,25 @@
   		<result column="STATUS" property="status" />
   	</resultMap>
  	
- 	
- 	<!-- 게시글 총 갯수 조회 -->
- 	<select id="helpselect">
- 		SELECT BOARD_NO
- 			FROM ATTACHMENT
- 		WHERE STATUS = 'Y'
+ 	<!-- 도와줄게요 게시글 총 갯수 조회 -->
+ 	<select id="helpselect" resultType="_int">
+ 		SELECT COUNT(*)
+ 		  FROM BOARD
+ 		 WHERE BOARD_TYPE = 1
+ 		AND STATUS = 'Y'
  	</select>
  	
- 	<!-- 도와줄게요 게시판 전체 조회 -->
- 	<select id="helpselectList">
+ 	<!-- 도와줄게요 게시글 전체 조회 -->
+ 	<select id="helpselectList" resultMap="boardResult">
  		SELECT BOARD_NO,
  			   BOARD_TITLE,
- 			   BOARD_CONTENT,
  			   PRICE,
- 			   BOARD_TYPE,
- 			   CREATEDATE
+ 			   BOARD_TYPE
  		FROM BOARD
- 		 WHERE BOARD_TYPE = '1'
- 		ORDER BY BOARD_NO DESC
+ 		 WHERE BOARD_TYPE = 1
  	</select>
+ 	
+ 	<!-- 도와주세요 게시판 전체 조회 -->
  	
   	
   	<!-- 도와줄게요 게시글 등록 쿼리문 -->
@@ -75,6 +74,10 @@
   				 )
   	</insert>
   	
+  	<!-- 도와주세요 게시글 등록 쿼리문 -->
+  	
+  	
+  	<!-- 사진 등록 쿼리문 -->
   	<insert id="insertAttachment">
   		INSERT INTO
   			ATTACHMENT

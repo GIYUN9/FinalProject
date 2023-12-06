@@ -16,9 +16,10 @@ public interface BoardService {
 	//게시글 총 페이지
 	int helpselect();
 	
-	//게시판 도와줄게요 조회
-	ArrayList<Board> selectCommList(PageInfo pi);
+	//게시판 도와줄게요 리스트조회
 	ArrayList<Board> helpselectList(PageInfo pi);
+	
+	ArrayList<Board> selectCommList(PageInfo pi);
 	
 	//게시글 상세조회
 	Board selectBoard(int boardNo);
@@ -44,4 +45,6 @@ public interface BoardService {
 	//공지사항 등록
 	int insertNotice(Notice n);
 	
+	//도와줄께요 게시판 리스트 count(*)조회
+	int seleteHelpListCount();
 }

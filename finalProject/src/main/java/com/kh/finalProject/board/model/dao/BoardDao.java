@@ -71,4 +71,8 @@ public class BoardDao {
 		return sqlSeesion.insert("boardMapper.insertNotice", n);
 
 	}
+	
+	public int seleteHelpListCount(SqlSessionTemplate sqlSeesion) {
+		return sqlSeesion.selectOne("boardMapper.seleteHelpListCount");
+	}
 }
