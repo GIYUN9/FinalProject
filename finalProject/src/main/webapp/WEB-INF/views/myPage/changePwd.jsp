@@ -66,15 +66,15 @@
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="user-info">
 					<form action="updatePwd.me" method="post" style="margin-top: 19px;">
-						<h4>현재 비밀번호</h4>
+						<h6>현재 비밀번호</h6>
 						<input class="nomal-input-style" name="memberPwd" type="password" placeholder="현재 사용중인 비밀번호를 입력해주세요." required="required">
 						<div style="display: flex; margin-top: 24px;">
 							<div>
-								<h4>변경할 비밀번호</h4>
+								<h6>변경할 비밀번호</h6>
 								<input class="nomal-input-style" name="newPwd" id="newPwd" type="password" placeholder="변경할 비밀번호를 입력해주세요." required="required">
 							</div>
 							<div style="margin-left: 55px;">
-								<h4>한번 더 입력</h4>
+								<h6>한번 더 입력</h6>
 								<input class="nomal-input-style" id="confirmPwd" type="password" placeholder="변경할 비밀번호를 한번 더 입력해주세요." required="required">
 							</div>
 						</div>

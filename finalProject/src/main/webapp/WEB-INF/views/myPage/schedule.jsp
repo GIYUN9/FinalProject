@@ -166,6 +166,7 @@
 		}
 		.user-nickname{
 			margin-bottom: 7px;
+			font-weight: 600;
 		}
 	</style>
 </head>
@@ -205,7 +206,7 @@
 				<div id="view1" class="user-info"
 					style="flex-direction: column; margin-left: 5px; margin-right: 5px; display: '';">
 					<div style="width: 100%; margin: 10px 0px 10px 8px;">
-						<h4 style="float: left;">요청 현황 (<span style="color: red;">3</span>건)</h4>
+						<h6 style="float: left;">요청 현황 (<span style="color: red;">3</span>건)</h6>
 					</div>
 					<div style="width: 98%; overflow: scroll; height: 414px;" class="scrolleffect">
 						<div class="alarm-section">
@@ -213,7 +214,7 @@
 								이미지 자리
 							</div>
 							<div style="width: 31%;">
-								<h4 class="user-nickname">홍길동</h4>
+								<h5 class="user-nickname">홍길동</h5>
 								<p>희망지역: 서울시 강남구 역삼동</p>
 								<p>키보드 / 기타 레슨</p>
 							</div>
@@ -234,7 +235,7 @@
 								이미지 자리
 							</div>
 							<div style="width: 31%;">
-								<h4 class="user-nickname">홍길동</h4>
+								<h5 class="user-nickname">홍길동</h5>
 								<p>희망지역: 서울시 강남구 역삼동</p>
 								<p>키보드 / 기타 레슨</p>
 							</div>
@@ -254,7 +255,7 @@
 								이미지 자리
 							</div>
 							<div style="width: 31%;">
-								<h4 class="user-nickname">홍길동</h4>
+								<h5 class="user-nickname">홍길동</h5>
 								<p>희망지역: 서울시 강남구 역삼동</p>
 								<p>키보드 / 기타 레슨</p>
 							</div>
@@ -275,7 +276,7 @@
 								이미지 자리
 							</div>
 							<div style="width: 31%;">
-								<h4 class="user-nickname">홍길동</h4>
+								<h5 class="user-nickname">홍길동</h5>
 								<p>희망지역: 서울시 강남구 역삼동</p>
 								<p>키보드 / 기타 레슨</p>
 							</div>
@@ -302,14 +303,14 @@
 					</div>
 
 					<div style="width: 100%; margin: 10px 0px 10px 8px;">
-						<h4 style="float: left;">해결한요청 (20)건</h4>
+						<h6 style="float: left;">해결한요청 (20)건</h6>
 					</div>
 
 				</div>
 				<div id="view2" class="user-info"
 					style="flex-direction: column; margin-left: 5px; margin-right: 5px; display: none;">
 					<div style="width: 100%; margin: 10px 0px 10px 8px;">
-						<h4 style="float: left;">보낸 요청</h4>
+						<h6 style="float: left;">보낸 요청</h6>
 					</div>
 					<div style="width: 98%;">
 						<div class="alarm-section">
@@ -317,7 +318,7 @@
 								이미지 자리
 							</div>
 							<div style="width: 31%;">
-								<h3>홍길동</h3>
+								<h5 class="user-nickname">홍길동</h5>
 								<p>희망지역: 서울시 강남구 역삼동</p>
 								<p>키보드 / 기타 레슨</p>
 							</div>
@@ -347,7 +348,7 @@
 								이미지 자리
 							</div>
 							<div style="width: 31%;">
-								<h3>홍길동</h3>
+								<h5 class="user-nickname">홍길동</h5>
 								<p>희망지역: 서울시 강남구 역삼동</p>
 								<p>키보드 / 기타 레슨</p>
 							</div>
