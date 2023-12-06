@@ -21,4 +21,5 @@ public class Notice {
 	private Date createDate;
 	private String status;
 	
+	private String location;
 }

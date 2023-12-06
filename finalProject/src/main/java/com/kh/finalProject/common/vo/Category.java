@@ -12,6 +12,6 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Category {
-	private int catrgoryNo;
+	private int categoryNo;
 	private String categoryName;
 }

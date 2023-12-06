@@ -200,9 +200,8 @@
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">커뮤니티</h3>
 			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 180px;">
 		
-			<a class="myPageSideBar" href="viewall.co">전체보기</a>
-			<a class="myPageSideBar" href="curious.co" style="font-weight: bolder;
-			background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">궁금해요</a>
+			<a class="myPageSideBar" href="list.co">전체보기</a>
+			<a class="myPageSideBar" href="curious.co" style="font-weight: bolder; background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">궁금해요</a>
 			<a class="myPageSideBar" href="much.co">얼마예요</a>
 			<a class="myPageSideBar" href="together.co">함께해요</a>
 			<a class="myPageSideBar" href="notice.co">공지사항</a>
@@ -217,75 +216,53 @@
                                 <a href="notice.co"><img src="././resources/borderImage/right-arrow-icon.png" alt="오른쪽 화살표" class="arrow-img" ></a>
                             </div>                        
                         <ul>
-                            <li class="main-list">
-                                <a href="" class="a-click">
-                                    <div class="border-one">
-                                        <span class="community-p">궁금해요 수학 과외</span>
-                                        <h4>수학과외 비용 궁금해요!</h4>
-                                        <span class="text1">주2일만 과외 받을건데 비용이 궁금해요!</span><br>
-                                        <span class="text2">전국</span>
-                                        <div>
-                                            <a href="" class="a-click">
-                                                <img src="././resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
-                                                <span>0</span>
-                                            </a>
-                                            <a href="" class="a-click">
-                                                <img src="././resources/borderImage/speech-bubble-icon.png" alt="말풍선아이콘" class="img">
-                                                <span>0</span>
-                                            </a>
-                                            <span class="time-span">방금 전</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
+                        	<c:forEach var="b" items="${list}">
+	                            <li class="main-list">
+	                                <a href="" class="a-click">
+	                                    <div class="border-one">
+	                                        <span class="community-p">${b.boardType == 3 ? '궁금해요' : b.boardType == 4 ? '얼마예요' : '함께해요'}</span>
+	                                        <h4>${b.boardTitle}</h4>
+	                                        <span class="text1">${b.boardContent}</span><br>
+	                                        <span class="text2">${b.location}</span>
+	                                        <div>
+	                                            <a href="" class="a-click">
+	                                                <img src="././resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
+	                                                <span>0</span>
+	                                            </a>
+	                                            <a href="" class="a-click">
+	                                                <img src="././resources/borderImage/speech-bubble-icon.png" alt="말풍선아이콘" class="img">
+	                                                <span>0</span>
+	                                            </a>
+	                                            <span class="time-span">${b.createDate}</span>
+	                                        </div>
+	                                    </div>
+	                                </a>
+	                            </li>
+	                            <hr class="line">
+	                    	</c:forEach>
                         </ul>
-                        <hr class="line">
-                        <ul>
-                            <li class="main-list">
-                                <a href="" class="a-click">
-                                    <div class="border-two">
-                                        <span class="community-p">얼마예요 테니스 레슨</span>
-                                        <h4>테니스 배우고 싶이요!</h4>
-                                        <p class="text1">테니스 레슨 비용이 궁금해요</p>
-                                        <p class="text2">서울</p>
-                                        <a href="" class="a-click">
-                                            <img src="././resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
-                                            <span>12</span>
-                                        </a>
-                                        <a href="" class="a-click">
-                                            <img src="././resources/borderImage/speech-bubble-icon.png" alt="말풍선아이콘" class="img">
-                                            <span>7</span>
-                                        </a>
-                                        <span class="time-span">30분 전</span>
-                                        <div class="line"></div>
-                                    </div> 
-                                </a>  
-                            </li>
-                        </ul>
-                        <hr class="line">
-                        <ul>
-                            <li class="main-list">
-                                <a href="" class="a-click">
-                                    <div class="border-three">
-                                        <span class="community-p">함께해요 코딩 공부</span>
-                                        <h4>같이 코딩공부해요!</h4>
-                                        <p class="text1">코딩 공부 같이 하실분~~~?</p>
-                                        <p class="text2">경기도</p>
-                                        <a href="" class="a-click">
-                                            <img src="resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
-                                            <span>12</span>
-                                        </a>
-                                        <a href="" class="a-click">
-                                            <img src="resources/borderImage/speech-bubble-icon.png" alt="말풍선아이콘" class="img">
-                                            <span>7</span>
-                                        </a>
-                                        <span class="time-span">1시간 전</span>
-                                        <div class="line"></div>
-                                    </div> 
-                                </a>  
-                            </li>
-                        </ul>
-                        <hr class="line">    
+	                 <ul class="pagination" style="justify-content: center;">
+	                	<c:choose>
+	                		<c:when test="${pi.currentPage eq 1 }">
+								<li class="page-item disabled"><a class="page-link" href="#">Back</a></li>
+	                   		</c:when>
+	                   		<c:otherwise>
+	                   			<li class="page-item"><a class="page-link" href="curious.co?cpage=${pi.currentPage - 1}">Back</a></li>
+	                   		</c:otherwise>
+						</c:choose>
+						<c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage }">
+	                   		<li class="page-item"><a class="page-link" href="curious.co?cpage=${p}">${p}</a></li>
+	                    </c:forEach>
+	                    
+	                    <c:choose>
+	                    	<c:when test="${pi.currentPage eq pi.maxPage}">
+	                  			<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+	                		</c:when>
+	                		<c:otherwise>
+	                   			<li class="page-item"><a class="page-link" href="curious.co?cpage=${pi.currentPage + 1}">Next</a></li>
+	                   		</c:otherwise>
+	                	</c:choose>
+	                </ul>                    
                 </div>
 			</div>		
 		</div>

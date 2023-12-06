@@ -187,14 +187,14 @@ INSERT INTO CATEGORY VALUES(SEQ_CNO.NEXTVAL, '요리');
 INSERT INTO PROFESSIONAL VALUES(SEQ_PNO.NEXTVAL, '피아니스트', 200, 2);
 
 --게시판(보드)
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, SYSDATE, 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '커뮤니티용 음악레슨합니다1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 50000, 3, SYSDATE, 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '얼마예요1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 4, SYSDATE, 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '함께해요1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 5, SYSDATE, 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '궁금해요2', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 3, SYSDATE, 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '얼마예요2', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 4, SYSDATE, 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '함께2', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 5, SYSDATE, 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '커뮤니티용 페이징처리', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 3, SYSDATE, 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-01-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '커뮤니티용 음악레슨합니다1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 50000, 3, '2020-01-02', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '얼마예요1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 4, '2020-01-03', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '함께해요1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 5, '2020-01-04', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '궁금해요2', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 3, '2020-01-05', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '얼마예요2', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 4, '2020-01-06', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '함께2', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 5, '2020-01-07', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '커뮤니티용 페이징처리', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 3, '2020-01-08', 'Y', 2, 200);
 -- ATTACHEMT 사진
 
 -- NOTICE

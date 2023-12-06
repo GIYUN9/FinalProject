@@ -76,4 +76,29 @@ public class BoardServiceImpl implements BoardService {
 	public int deleteNotice(Notice n) {
 		return boardDao.deleteNotice(sqlSession, n);
 	}
+
+	//게시글 궁금해요 갯수 count(*)조회
+	@Override
+	public int selectCuriousListCount() {
+		return boardDao.selectCuriousListCount(sqlSession);
+	}
+
+	//게시글 궁금해요 리스트
+	@Override
+	public ArrayList<Board> selectCuriousList(PageInfo pi) {
+		return boardDao.selectCuriousList(sqlSession, pi);
+	}
+	
+	//게시글 얼마예요 count(*)조회
+	@Override
+	public int selectMuchListCount() {
+		return boardDao.selectMuchListCount(sqlSession);
+	}
+	
+	//게시글 얼마예요 리스트
+	@Override
+	public ArrayList<Board> selectMuchList(PageInfo pi) {
+		return boardDao.selectMuchList(sqlSession, pi);
+	}
+	
 }
