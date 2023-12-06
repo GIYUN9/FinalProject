@@ -188,7 +188,18 @@
         margin-left: 33px;
         line-height: 27px;
     }
-
+	#board-create{
+            width: 80px;
+            position: absolute;
+            bottom: 122px;
+            right: 43px;
+            background: rgb(0, 199, 174);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px;
+            cursor: pointer;
+        }
 	</style>
 </head>
 <body>
@@ -207,6 +218,7 @@
 		</div>
 		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">함께해요</h3>
+			<button id="board-create" onclick="pageMove()">글쓰기</button>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="community-big">
                     <div class="main-a">
@@ -215,78 +227,62 @@
                         <a href="notice.co"><img src="././resources/borderImage/right-arrow-icon.png" alt="오른쪽 화살표" class="arrow-img" ></a>
                     </div>                        
                     <ul>
-                        <li class="main-list">
-                            <a href="" class="a-click">
-                                <div class="border-one">
-                                    <span class="community-p">함께해요 커피 레슨</span>
-                                    <h4>커피 교육합니다!</h4>
-                                    <p class="text1">커피에 관심있으신 분들 함께해요!</p>
-                                    <p class="text2">전국</p>
-                                    <a href="" class="a-click">
-                                        <img src="./resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
-                                        <span>12</span>
-                                    </a>
-                                    <a href="" class="a-click">
-                                        <img src="./resources/borderImage/speech-bubble-icon.png" alt="말풍선아이콘" class="img">
-                                        <span>7</span>
-                                    </a>
-                                    <span class="time-span">방금 전</span>
-                                    <div class="line"></div>
-                                </div> 
-                            </a>  
-                        </li>
+                        <c:forEach var="b" items="${list}">
+	                            <li class="main-list">
+	                                <a href="" class="a-click">
+	                                    <div class="border-one">
+	                                        <span class="community-p">${b.boardType == 3 ? '궁금해요' : b.boardType == 4 ? '얼마예요' : '함께해요'}</span>
+	                                        <h4>${b.boardTitle}</h4>
+	                                        <span class="text1">${b.boardContent}</span><br>
+	                                        <span class="text2">${b.location}</span>
+	                                        <div>
+	                                            <a href="" class="a-click">
+	                                                <img src="././resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
+	                                                <span>0</span>
+	                                            </a>
+	                                            <a href="" class="a-click">
+	                                                <img src="././resources/borderImage/speech-bubble-icon.png" alt="말풍선아이콘" class="img">
+	                                                <span>0</span>
+	                                            </a>
+	                                            <span class="time-span">${b.createDate}</span>
+	                                        </div>
+	                                    </div>
+	                                </a>
+	                            </li>
+	                            <hr class="line">
+	                     </c:forEach>
+	                 <ul class="pagination" style="justify-content: center;">
+	                	<c:choose>
+	                		<c:when test="${pi.currentPage eq 1 }">
+								<li class="page-item disabled"><a class="page-link" href="#">Back</a></li>
+	                   		</c:when>
+	                   		<c:otherwise>
+	                   			<li class="page-item"><a class="page-link" href="much.co?cpage=${pi.currentPage - 1}">Back</a></li>
+	                   		</c:otherwise>
+						</c:choose>
+						<c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage }">
+	                   		<li class="page-item"><a class="page-link" href="much.co?cpage=${p}">${p}</a></li>
+	                    </c:forEach>
+	                    
+	                    <c:choose>
+	                    	<c:when test="${pi.currentPage eq pi.maxPage}">
+	                  			<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+	                		</c:when>
+	                		<c:otherwise>
+	                   			<li class="page-item"><a class="page-link" href="much.co?cpage=${pi.currentPage + 1}">Next</a></li>
+	                   		</c:otherwise>
+	                	</c:choose>
+	                </ul>
                     </ul>
-                    <hr class="line">
-                    <ul>
-                        <li class="main-list">
-                            <a href="" class="a-click">
-                                <div class="border-two">
-                                    <span class="community-p">함께해요 썸네일 제작</span>
-                                    <h4>썸네일 제작해드려요</h4>
-                                    <p class="text1">비용 저렴하게 썸네일 만들어드려요~!</p>
-                                    <p class="text2">강원도</p>
-                                    <a href="" class="a-click">
-                                        <img src="./resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
-                                        <span>12</span>
-                                    </a>
-                                    <a href="" class="a-click">
-                                        <img src="./resources/borderImage/speech-bubble-icon.png" alt="말풍선아이콘" class="img">
-                                        <span>7</span>
-                                    </a>
-                                    <span class="time-span">30분 전</span>
-                                    <div class="line"></div>
-                                </div> 
-                            </a>  
-                        </li>
-                    </ul>
-                    <hr class="line">
-                    <ul>
-                        <li class="main-list">
-                            <a href="" class="a-click">
-                                <div class="border-three">
-                                    <span class="community-p">함께해요 코딩 공부</span>
-                                    <h4>같이 코딩공부해요!</h4>
-                                    <p class="text1">코딩 공부 같이 하실분~~~?</p>
-                                    <p class="text2">경기도</p>
-                                    <a href="" class="a-click">
-                                        <img src="./resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
-                                        <span>12</span>
-                                    </a>
-                                    <a href="" class="a-click">
-                                        <img src="./resources/borderImage/speech-bubble-icon.png" alt="말풍선아이콘" class="img">
-                                        <span>7</span>
-                                    </a>
-                                    <span class="time-span">1시간 전</span>
-                                    <div class="line"></div>
-                                </div> 
-                            </a>  
-                        </li>
-                    </ul>
-                    <hr class="line">
                 </div>
 			</div>		
 		</div>
 	</div>
 	<jsp:include page="../common/footer.jsp" />
+		<script>
+		function pageMove(){
+			location.href = "pageMove.no"
+		}
+	</script>
 </body>
 </html>
