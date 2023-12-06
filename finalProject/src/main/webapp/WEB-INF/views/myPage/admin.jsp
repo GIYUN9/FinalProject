@@ -80,9 +80,21 @@
         .user-info2{
             width: 295px;
             margin-left: 5px;
+            height: 300px;
             border: 1px solid rgba(96, 96, 96, 0.4);
-            border-radius: 8px;
+            border-top: none;
             position: relative;
+            overflow-y: auto;
+        }
+        .user-info2-top{
+            margin-left: 5px;
+            border: 1px solid rgba(96, 96, 96, 0.4);
+            border-radius: 8px 8px 0px 0px;
+            background: rgba(226, 226, 226, 0.4);
+            font-size: 17px;
+            height: 31px;
+            text-align: center;
+            font-weight: 600;
         }
         .table-area{
             height: 300px;
@@ -96,20 +108,57 @@
             width: 100%;
         }
         .ad-can{
-            position: absolute;
-            top: 343px;
             right: 0px;
             border: none;
-            border-top: 1px solid black;
-            border-radius: 0px 0px 8px 8px;
-            width: 100%;
+            width: 295px;
+            height: 30px;
+            margin-left: 5px;
+            border: 1px solid rgba(96, 96, 96, 0.4);
+            border-top: none;
+            border-radius: 0px 0px 9px 9px;
+            cursor: pointer;
         }
         .sel-mem{
-            border-top: 1px solid;
-            border-bottom: 1px solid;
+            border-bottom: 1px solid rgba(96, 96, 96, 0.4);
             width: 100%;
             height: 50px;
-            padding: 10px;
+            padding: 10px;  
+            line-height: 1.0;
+            display: flex;
+            flex-direction: column;
+        }
+        .sel-mem2{
+            border-bottom: 1px solid rgba(96, 96, 96, 0.4);
+            width: 100%;
+            height: 50px;
+            padding: 10px;  
+            line-height: 1.0;
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+        }
+        .user-info2::-webkit-scrollbar {
+			width: 0px; 
+		}
+        .align-mem{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .align-mem:hover{
+            background: black;
+            background-color: rgba(226, 226, 226, 0.4);
+        }
+        .upper-text{
+            font-size: 9px; 
+            margin-bottom: 10px; 
+            margin-top: -8px; 
+            margin-left: -5px; 
+            color: rgba(147, 147, 150);
+        }
+        .lower-text{
+            margin-top: 7px; 
+            margin-left: -5px;
         }
     </style>
 </head>
@@ -125,8 +174,10 @@
 			<a class="myPageSideBar" href="deleteForm.me">회원 탈퇴</a>
 			<a class="myPageSideBar" href="schedule.me">일정 관리</a>
 			<a class="myPageSideBar" href="ask.me">문의 내역</a>
-            <a class="myPageSideBar" href=""  style="font-weight: bolder; 
-			background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">회원 관리</a>
+            <c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
+                <a class="myPageSideBar" href=""  style="font-weight: bolder; 
+			    background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">회원 관리</a>
+            </c:if>            
 		</div>
 		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">회원 관리</h3>
@@ -258,7 +309,8 @@
                                     <td>일반회원</td>
                                     <td>2023-12-05</td>
                                 </tr>
-                                <var>                                <tr>
+                                <var>                                
+                                <tr>
                                     <td><input type="checkbox"></td>
                                     <td>1</td>
                                     <td>asd@navve.rcom</td>
@@ -272,10 +324,96 @@
                     </div>
                     <button class="ad-btn">탈퇴</button>
 				</div>
-                <div class="user-info2">
-                    <div class="sel-mem">asdadsadsd</div>
+                <div>
+                    <div class="user-info2-top">
+                        회원관리
+                    </div>
+                    <div class="user-info2">
+                        <div class="align-mem">                        
+                            <div class="sel-mem">
+                                <span class="upper-text">일반회원</span>
+                                <span class="lower-text">김김김</span>
+                            </div>
+                            <div class="sel-mem2">
+                                <span class="upper-text">No. 1</span>
+                                <span class="lower-text">qweasd@anver,com</span>
+                            </div>
+                        </div>
+                        <div class="align-mem">                        
+                            <div class="sel-mem">
+                                <span class="upper-text">일반회원</span>
+                                <span class="lower-text">이이이</span>
+                            </div>
+                            <div class="sel-mem2">
+                                <span class="upper-text">No. 2</span>
+                                <span class="lower-text">dfchg@anver,com</span>
+                            </div>
+                        </div>
+                        <div class="align-mem">                        
+                            <div class="sel-mem">
+                                <span class="upper-text">일반회원</span>
+                                <span class="lower-text">박박박</span>
+                            </div>
+                            <div class="sel-mem2">
+                                <span class="upper-text">No. 3</span>
+                                <span class="lower-text">rey@anver,com</span>
+                            </div>
+                        </div>
+                        <div class="align-mem">                        
+                            <div class="sel-mem">
+                                <span class="upper-text">일반회원</span>
+                                <span class="lower-text">최최최</span>
+                            </div>
+                            <div class="sel-mem2">
+                                <span class="upper-text">No. 4</span>
+                                <span class="lower-text">cdfgh@anver,com</span>
+                            </div>
+                        </div>
+                        <div class="align-mem">                        
+                            <div class="sel-mem">
+                                <span class="upper-text">일반회원</span>
+                                <span class="lower-text">구구구</span>
+                            </div>
+                            <div class="sel-mem2">
+                                <span class="upper-text">No. 5</span>
+                                <span class="lower-text">xcv@anver,com</span>
+                            </div>
+                        </div>
+                        <div class="align-mem">                        
+                            <div class="sel-mem">
+                                <span class="upper-text">일반회원</span>
+                                <span class="lower-text">광광광</span>
+                            </div>
+                            <div class="sel-mem2">
+                                <span class="upper-text">No. 6</span>
+                                <span class="lower-text">tyu@anver,com</span>
+                            </div>
+                        </div>
+                        <div class="align-mem">                        
+                            <div class="sel-mem">
+                                <span class="upper-text">일반회원</span>
+                                <span class="lower-text">조조조</span>
+                            </div>
+                            <div class="sel-mem2">
+                                <span class="upper-text">No. 7</span>
+                                <span class="lower-text">xzdu@anver,com</span>
+                            </div>
+                        </div>
+                        <div class="align-mem">                        
+                            <div class="sel-mem">
+                                <span class="upper-text">일반회원</span>
+                                <span class="lower-text">윤윤윤</span>
+                            </div>
+                            <div class="sel-mem2">
+                                <span class="upper-text">No. 8</span>
+                                <span class="lower-text">sngf@anver,com</span>
+                            </div>
+                        </div>    
+                    </div>
                     <button class="ad-can">취소</button>
                 </div>
+                
+
 			</div>		
 		</div>
 	</div>

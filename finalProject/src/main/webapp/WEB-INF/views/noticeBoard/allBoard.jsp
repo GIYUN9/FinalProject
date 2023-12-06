@@ -8,8 +8,12 @@
 <title>품앗이-마이페이지</title>
 	<link rel="stylesheet" href="././resources/css/myPgae.css">
 	<style>
+        .main-box{
+            position: relative;
+        }
 		.pageBox{
 			margin-bottom: 100px;
+            min-height: 721px;
 		}
 
 		.profile-btn-area{
@@ -188,7 +192,18 @@
             margin-left: 33px;
             line-height: 27px;
         }
-
+        #board-create{
+            width: 80px;
+            position: absolute;
+            bottom: 122px;
+            right: 43px;
+            background: rgb(0, 199, 174);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px;
+            cursor: pointer;
+        }
 	</style>
 </head>
 <body>
@@ -211,7 +226,7 @@
 					<div class="main-a">
 					    <span class="main-span1">공지</span>
 					    <span class="main-span2">품앗이 가이드라인</span>
-                        <a href="notice.co">>
+                        <a href="notice.co">
                             <img src="././resources/borderImage/right-arrow-icon.png" alt="오른쪽 화살표" class="arrow-img">
                         </a>
 					</div>
