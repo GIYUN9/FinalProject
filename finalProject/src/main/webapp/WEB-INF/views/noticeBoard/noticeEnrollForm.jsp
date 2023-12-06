@@ -301,6 +301,7 @@
     .enroll-style{
     	display: flex;
     	flex-direction: column;
+        padding: 20px;
     }
 	</style>
 </head>
@@ -339,7 +340,7 @@
 							</div>
 							<div>
 								내용
-								<input type="text" name="noticeContent" required="required">
+								<textarea type="text" name="noticeContent" required="required">
 							</div>
 							<div>
 								<button type="submit" id="insertBtn">등록하기</button>
