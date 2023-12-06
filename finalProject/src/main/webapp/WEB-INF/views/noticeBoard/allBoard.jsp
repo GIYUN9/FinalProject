@@ -223,7 +223,7 @@
 					            <span class="community-p">${b.boardType == 3 ? '궁금해요' : b.boardType == 4 ? '얼마예요' : '함께해요'}</span>
 					            <h4>${b.boardTitle}</h4>
 					            <p class="text1">${b.boardContent}</p>
-					            <p class="text2">지역?</p>
+					            <p class="text2">${b.location}</p>
 					            <a href="" class="a-click">
 					                <img src="./resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
 					                 <span>0</span>

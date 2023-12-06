@@ -198,10 +198,9 @@
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">커뮤니티</h3>
 			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 180px;">
 		
-			<a class="myPageSideBar" href="viewall.co">전체보기</a>
+			<a class="myPageSideBar" href="list.co">전체보기</a>
 			<a class="myPageSideBar" href="curious.co">궁금해요</a>
-			<a class="myPageSideBar" href="much.co" style="font-weight: bolder;
-			background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">얼마예요</a>
+			<a class="myPageSideBar" href="much.co" style="font-weight: bolder; background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">얼마예요</a>
 			<a class="myPageSideBar" href="together.co">함께해요</a>
 			<a class="myPageSideBar" href="notice.co">공지사항</a>
 		</div>
@@ -215,48 +214,53 @@
                                 <img src="././resources/borderImage/right-arrow-icon.png" alt="오른쪽 화살표" class="arrow-img">
                             </div>                        
                             <ul>
-                                <li class="main-list">
-                                    <a href="" class="a-click"></a>
-                                    <div class="border-one">
-                                        <span class="community-p">얼마예요 피아노 레슨</span>
-                                        <h4>레슨 비용 알고 싶어요!</h4>
-                                        <p class="text1">피아노 기초부터 배우고 싶은데 비용이 얼마나 되나요?</p>
-                                        <p class="text2">전국</p>
-                                        <a href="" class="a-click">
-                                            <img src="./resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
-                                             <span>0</span>
-                                        </a> 
-                                        <a href="" class="a-click"> 
-                                            <img src="./resources/borderImage/speech-bubble-icon.png" alt="말풍선아이콘" class="img">
-                                             <span>0</span>
-                                        </a> 
-                                        <span class="time-span">방금 전</span>
-                                    </div>
-                                </li>
+                                <c:forEach var="b" items="${list}">
+	                            <li class="main-list">
+	                                <a href="" class="a-click">
+	                                    <div class="border-one">
+	                                        <span class="community-p">${b.boardType == 3 ? '궁금해요' : b.boardType == 4 ? '얼마예요' : '함께해요'}</span>
+	                                        <h4>${b.boardTitle}</h4>
+	                                        <span class="text1">${b.boardContent}</span><br>
+	                                        <span class="text2">${b.location}</span>
+	                                        <div>
+	                                            <a href="" class="a-click">
+	                                                <img src="././resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
+	                                                <span>0</span>
+	                                            </a>
+	                                            <a href="" class="a-click">
+	                                                <img src="././resources/borderImage/speech-bubble-icon.png" alt="말풍선아이콘" class="img">
+	                                                <span>0</span>
+	                                            </a>
+	                                            <span class="time-span">${b.createDate}</span>
+	                                        </div>
+	                                    </div>
+	                                </a>
+	                            </li>
+	                            <hr class="line">
+	                    	</c:forEach>
                             </ul>
-                            <hr class="line">
-                            
-                            <ul>
-                                <li class="main-list">
-                                    <a href="" class="a-click"></a>
-                                    <div class="border-one">
-                                        <span class="community-p">얼마예요 피아노 레슨</span>
-                                        <h4>레슨 비용 알고 싶어요!</h4>
-                                        <p class="text1">피아노 기초부터 배우고 싶은데 비용이 얼마나 되나요?</p>
-                                        <p class="text2">전국</p>
-                                        <a href="" class="a-click">
-                                            <img src="./resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
-                                             <span>0</span>
-                                        </a> 
-                                        <a href="" class="a-click"> 
-                                            <img src="./resources/borderImage/speech-bubble-icon.png" alt="말풍선아이콘" class="img">
-                                             <span>0</span>
-                                        </a> 
-                                        <span class="time-span">방금 전</span>
-                                    </div>
-                                </li>
-                            </ul>
-                            <hr class="line">
+                            <ul class="pagination" style="justify-content: center;">
+	                	<c:choose>
+	                		<c:when test="${pi.currentPage eq 1 }">
+								<li class="page-item disabled"><a class="page-link" href="#">Back</a></li>
+	                   		</c:when>
+	                   		<c:otherwise>
+	                   			<li class="page-item"><a class="page-link" href="much.co?cpage=${pi.currentPage - 1}">Back</a></li>
+	                   		</c:otherwise>
+						</c:choose>
+						<c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage }">
+	                   		<li class="page-item"><a class="page-link" href="much.co?cpage=${p}">${p}</a></li>
+	                    </c:forEach>
+	                    
+	                    <c:choose>
+	                    	<c:when test="${pi.currentPage eq pi.maxPage}">
+	                  			<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+	                		</c:when>
+	                		<c:otherwise>
+	                   			<li class="page-item"><a class="page-link" href="much.co?cpage=${pi.currentPage + 1}">Next</a></li>
+	                   		</c:otherwise>
+	                	</c:choose>
+	                </ul>  
                 </div>
 			</div>		
 		</div>
