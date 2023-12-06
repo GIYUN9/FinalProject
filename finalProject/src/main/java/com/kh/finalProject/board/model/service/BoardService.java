@@ -30,6 +30,8 @@ public interface BoardService {
 	//공지사항 리스트(조회)
 	ArrayList<Notice> noticeList();
 	
+	//공지사항 등록
+	int insertNotice(Notice n);
 	
 	
 	

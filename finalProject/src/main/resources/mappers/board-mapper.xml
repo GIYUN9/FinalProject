@@ -107,4 +107,23 @@
 		WHERE STATUS = 'Y'
         ORDER BY NOTICE_TYPE DESC
   	</select>
+  	
+  	<insert id="insertNotice">
+  		INSERT INTO NOTICE (
+					NOTICE_NO,
+					NOTICE_TYPE,
+					NOTICE_TITLE,
+					NOTICE_CONTENT,
+					CREATEDATE,
+					STATUS
+            		)
+		VALUES(
+		        SEQ_NNO.NEXTVAL,
+		        #{noticeType},
+		        #{noticeTitle},
+		        #{noticeContent},
+		        SYSDATE,
+		        'Y'
+		        )
+  	</insert>
   </mapper>

@@ -7,9 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<jsp:forward page="WEB-INF/views/noticeBoard/allBoard.jsp"/>
-
+<jsp:forward page="WEB-INF/views/noticeBoard/allBoard.jsp"/>
 	<%--
 		김경보
 		<jsp:forward page="WEB-INF/views/common/main.jsp"/> 메인페이지 
