@@ -75,4 +75,32 @@ public class BoardDao {
 	public int seleteHelpListCount(SqlSessionTemplate sqlSeesion) {
 		return sqlSeesion.selectOne("boardMapper.seleteHelpListCount");
 	}
+	
+	public int deleteNotice(SqlSessionTemplate sqlSeesion, Notice n) {
+		return sqlSeesion.insert("boardMapper.deleteNotice", n);
+	}
+	
+	public int selectCuriousListCount(SqlSessionTemplate sqlSeesion) {
+		return sqlSeesion.selectOne("boardMapper.selectCuriousListCount");
+	}
+	
+	public ArrayList<Board> selectCuriousList(SqlSessionTemplate sqlSession, PageInfo pi){
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		return (ArrayList)sqlSession.selectList("boardMapper.selectCuriousList", null, rowBounds);
+	}
+	
+	public int selectMuchListCount(SqlSessionTemplate sqlSeesion) {
+		return sqlSeesion.selectOne("boardMapper.selectMuchListCount");
+	}
+	
+	public ArrayList<Board> selectMuchList(SqlSessionTemplate sqlSession, PageInfo pi){
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		return (ArrayList)sqlSession.selectList("boardMapper.selectMuchList", null, rowBounds);
+	}
 }

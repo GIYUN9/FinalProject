@@ -373,11 +373,6 @@
                             <li class="card-list">
                                 <div class="card">
                                     <div class="card-header">
-                                    <button onclick= "insertBoard()">글쓰기버튼@@@@@@@@@@@@@@@</button>
-                                      <a class="card-link" data-toggle="collapse" href="#collapseOne">
-                                        <span>필독</span>
-                                        <span class="poom-span">품앗이에 대하여</span>
-                                        <span class="date">2022-10-24</span>
                                       <a class="card-link" data-toggle="collapse" href="#collapse${n.noticeNo}">
                                         <span>${n.noticeType}</span>
                                         <span class="poom-span">${n.noticeTitle}</span>
@@ -386,9 +381,15 @@
                                     </div>
                                     <div id="collapse${n.noticeNo}" class="collapse show" data-parent="#accordion">
                                       <div class="card-body">
-                                      		  품앗이 사이트는 전문가 및 준전문가와 수요자의 매칭을 해주는 사이트입니다.
                                         ${n.noticeContent}
                                       </div>
+                                      <c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
+	                                      <form action="deleteNotice.co" style="float: right; margin-right: 10px; margin-bottom: 10px;">
+	                                      	<input type="hidden" name="noticeNo" value="${n.noticeNo}">
+	                                      	<button type="submit">공지 삭제</button>
+	                                      </form>
+                                      </c:if>
+                                      
                                     </div>
                                 </div>
                             </li>

@@ -18,9 +18,11 @@ public class Board {
 	private String boardTitle;
 	private String boardContent;
 	private int Price;
-	private int boardType; //boardType에 따라 데이터 다르게
+	private int boardType;
 	private Date createDate;
 	private String status; 
 	private int memberNo;
-	private int catrgoryNo;
+	private int categoryNo;
+	
+	private String location;
 }

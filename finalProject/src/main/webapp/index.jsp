@@ -8,13 +8,9 @@
 </head>
 <body>	
 
-<<<<<<< HEAD
+
 	<jsp:forward page="WEB-INF/views/board/helpBoardList.jsp"/>
 
-=======
-	<jsp:forward page="WEB-INF/views/common/main.jsp"/>
-	
->>>>>>> 3d951c4bbece4b14468b592113c8158898263f17
 	<%--
 		김경보
 		<jsp:forward page="WEB-INF/views/common/main.jsp"/> 메인페이지 
