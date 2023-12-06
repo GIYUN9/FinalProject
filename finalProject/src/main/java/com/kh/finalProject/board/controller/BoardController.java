@@ -116,12 +116,12 @@ public class BoardController {
 		return "noticeBoard/noticeBoard";
 	}
 	
-<<<<<<< HEAD
+
 	//공지사항 글쓰기
 	@RequestMapping(value = "/insert.co")
 	public String noticeBoard(HttpSession session, Model model) {
 		
-		int
+		
 		return "noticeBoard/annoucementBoard";
 	}
 	
@@ -131,8 +131,7 @@ public class BoardController {
 		return "noticeBoard/allBoard";
 	}
 	
-=======
->>>>>>> 75b37fb962a8ccce1cddac2f40cc4e52a850a001
+
 	@RequestMapping(value = "/helpuForm.bo")
 	public String helpuForm() {
 		
@@ -148,11 +147,17 @@ public class BoardController {
 		
 		
 		
-<<<<<<< HEAD
-		int result1 = boardService.helpInsert(b);
-=======
->>>>>>> 75b37fb962a8ccce1cddac2f40cc4e52a850a001
+
+//		int result1 = boardService.helpInsert(b);
+
 		return "";
+	}
+	
+	//게시글 쓰기 페이지 이동
+	@RequestMapping(value ="pageMove.no")
+	public String pageMoveBoard(){
+		
+		return "noticeBoard/insertNotice";
 	}
 
 	//게시글 등록
