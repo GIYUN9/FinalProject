@@ -56,17 +56,60 @@
         }
         .ad-table{
             border: none;
+            margin-top: 30px;
         }
         .ad-btn{
-            width: 61%;
+            width: 100%;
             border: none;
             color: white;
-            background: red;
+            background: rgb(218, 76, 60);
             border-radius: 4px;
             /* width: 30px; */
             height: 30px;
             margin-top: 30px;
             margin-bottom: -30px;
+            cursor: pointer;
+        }
+        .src-mem{
+            width: 467px;
+            margin-bottom: 20px;
+            border: 1px solid #3b3b3b5c;
+            border-radius: 8px;
+            padding-left: 10px;
+        }
+        .user-info2{
+            width: 295px;
+            margin-left: 5px;
+            border: 1px solid rgba(96, 96, 96, 0.4);
+            border-radius: 8px;
+            position: relative;
+        }
+        .table-area{
+            height: 300px;
+            overflow-y: auto;
+        }
+        .table-area::-webkit-scrollbar {
+			width: 0px; 
+		}
+        .src-area{
+            position: absolute;
+            width: 100%;
+        }
+        .ad-can{
+            position: absolute;
+            top: 343px;
+            right: 0px;
+            border: none;
+            border-top: 1px solid black;
+            border-radius: 0px 0px 8px 8px;
+            width: 100%;
+        }
+        .sel-mem{
+            border-top: 1px solid;
+            border-bottom: 1px solid;
+            width: 100%;
+            height: 50px;
+            padding: 10px;
         }
     </style>
 </head>
@@ -81,19 +124,20 @@
 			<a class="myPageSideBar" href="changePwd.me">비밀번호 변경</a>
 			<a class="myPageSideBar" href="deleteForm.me">회원 탈퇴</a>
 			<a class="myPageSideBar" href="schedule.me">일정 관리</a>
-			<a class="myPageSideBar" href="ask.me" style="font-weight: bolder; 
-			background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">문의 내역</a>
-            <a class="myPageSideBar" href="">회원 관리</a>
+			<a class="myPageSideBar" href="ask.me">문의 내역</a>
+            <a class="myPageSideBar" href=""  style="font-weight: bolder; 
+			background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">회원 관리</a>
 		</div>
 		<div class="main-box">
-			<h3 style="margin: 10px 0 0 20px;">문의 내역</h3>
-			<br>
-			<div class="pageBox" style="display: flex; flex-direction: column;">
+			<h3 style="margin: 10px 0 0 20px;">회원 관리</h3>
+			<div class="pageBox" style="display: flex; flex-direction: row;">
 				<div class="user-info">
-                    <div>
+                    <div class="table-area">
                         <table border="1" class="ad-table">
                             <thead>
-                                <input type="text" name="" id="" placeholder="검색">
+                                <div class="src-area">                                
+                                    <input class="src-mem" type="text" name="" id="" placeholder="검색">
+                                </div>
                                 <tr>
                                     <th>선택</th>
                                     <th>번호</th>
@@ -150,11 +194,88 @@
                                     <td>일반회원</td>
                                     <td>2023-12-05</td>
                                 </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>1</td>
+                                    <td>asd@navve.rcom</td>
+                                    <td>김김김</td>
+                                    <td>일반회원</td>
+                                    <td>2023-12-05</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>1</td>
+                                    <td>asd@navve.rcom</td>
+                                    <td>김김김</td>
+                                    <td>일반회원</td>
+                                    <td>2023-12-05</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>1</td>
+                                    <td>asd@navve.rcom</td>
+                                    <td>김김김</td>
+                                    <td>일반회원</td>
+                                    <td>2023-12-05</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>1</td>
+                                    <td>asd@navve.rcom</td>
+                                    <td>김김김</td>
+                                    <td>일반회원</td>
+                                    <td>2023-12-05</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>1</td>
+                                    <td>asd@navve.rcom</td>
+                                    <td>김김김</td>
+                                    <td>일반회원</td>
+                                    <td>2023-12-05</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>1</td>
+                                    <td>asd@navve.rcom</td>
+                                    <td>김김김</td>
+                                    <td>일반회원</td>
+                                    <td>2023-12-05</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>1</td>
+                                    <td>asd@navve.rcom</td>
+                                    <td>김김김</td>
+                                    <td>일반회원</td>
+                                    <td>2023-12-05</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>1</td>
+                                    <td>asd@navve.rcom</td>
+                                    <td>김김김</td>
+                                    <td>일반회원</td>
+                                    <td>2023-12-05</td>
+                                </tr>
+                                <var>                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>1</td>
+                                    <td>asd@navve.rcom</td>
+                                    <td>김김김</td>
+                                    <td>일반회원</td>
+                                    <td>2023-12-05</td>
+                                </tr>
+                            </var>
                             </thead>
                         </table>
                     </div>
-                    <button>탈퇴</button>
+                    <button class="ad-btn">탈퇴</button>
 				</div>
+                <div class="user-info2">
+                    <div class="sel-mem">asdadsadsd</div>
+                    <button class="ad-can">취소</button>
+                </div>
 			</div>		
 		</div>
 	</div>

@@ -210,6 +210,80 @@
 			<button id="board-create" onclick="pageMove()">글쓰기</button>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="community-big">
+                            <div class="main-a">
+                                <span class="main-span1">공지</span>
+                                <span class="main-span2">품앗이 가이드라인</span>
+                                <a href="notice.co"><img src="././resources/borderImage/right-arrow-icon.png" alt="오른쪽 화살표" class="arrow-img" ></a>
+                            </div>                        
+                            <ul>
+                                <li class="main-list">
+                                    <a href="" class="a-click"></a>
+                                    <div class="border-one">
+                                        <span class="community-p">얼마예요 피아노 레슨</span>
+                                        <h4>레슨 비용 알고 싶어요!</h4>
+                                        <p class="text1">피아노 기초부터 배우고 싶은데 비용이 얼마나 되나요?</p>
+                                        <p class="text2">전국</p>
+                                        <a href="" class="a-click">
+                                            <img src="./resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
+                                             <span>0</span>
+                                        </a> 
+                                        <a href="" class="a-click"> 
+                                            <img src="./resources/borderImage/speech-bubble-icon.png" alt="말풍선아이콘" class="img">
+                                             <span>0</span>
+                                        </a> 
+                                        <span class="time-span">방금 전</span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <hr class="line">
+                            
+                            <ul>
+                                <li class="main-list">
+                                    <a href="" class="a-click">
+                                        <div class="border-one">
+                                            <span class="community-p">궁금해요 수학 과외</span>
+                                            <h4>수학과외 비용 궁금해요!</h4>
+                                            <span class="text1">주2일만 과외 받을건데 비용이 궁금해요!</span><br>
+                                            <span class="text2">전국</span>
+                                            <div>
+                                                <a href="" class="a-click">
+                                                    <img src="././resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
+                                                    <span>0</span>
+                                                </a>
+                                                <a href="" class="a-click">
+                                                    <img src="././resources/borderImage/speech-bubble-icon.png" alt="말풍선아이콘" class="img">
+                                                    <span>0</span>
+                                                </a>
+                                                <span class="time-span">방금 전</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <hr class="line">
+
+                            <ul>
+                                <li class="main-list">
+                                    <a href="" class="a-click">
+                                        <div class="border-one">
+                                            <span class="community-p">함께해요 커피 레슨</span>
+                                            <h4>커피 교육합니다!</h4>
+                                            <p class="text1">커피에 관심있으신 분들 함께해요!</p>
+                                            <p class="text2">전국</p>
+                                            <a href="" class="a-click">
+                                                <img src="./resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
+                                                <span>12</span>
+                                            </a>
+                                            <a href="" class="a-click">
+                                                <img src="./resources/borderImage/speech-bubble-icon.png" alt="말풍선아이콘" class="img">
+                                                <span>7</span>
+                                            </a>
+                                            <span class="time-span">방금 전</span>
+                                            <div class="line"></div>
+                                        </div> 
+                                    </a>  
+                                </li>
+                            </ul>
 					<div class="main-a">
 					    <span class="main-span1">공지</span>
 					    <span class="main-span2">품앗이 가이드라인</span>
