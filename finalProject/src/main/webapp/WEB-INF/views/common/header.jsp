@@ -105,8 +105,11 @@
     	align-items: center;
     	margin-right: 40px;
     }
-    a:hover{
+    .myPageSideBar:hover{
         color: white;
+    }
+    a:hover{
+        color: black;
         text-decoration: none;
     }
 
@@ -205,7 +208,7 @@
     }
     .close-btn-login{
         width: 10px;
-        right: -40px;
+        right: -60px;
         position: absolute;
         cursor: pointer;
         top: 0px;
@@ -215,8 +218,9 @@
     회원가입
     */
     .modal-content{
-        margin: 80px 0px 0px 0px;
+        margin: 80px 0px 0px -30px;
         width: 594px;
+        margin-top: 60px;
     }
 
     .modal-header{
@@ -351,7 +355,7 @@
                         </span>
                         <div class="dropdown-content">
                             <a href="userInfo.me" style="color: white;">마이페이지</a>
-                            <a href="#" style="color: white;">게시판</a>
+                            <a href="viewall.co" style="color: white;">게시판</a>
                             <a href="#" style="color: white;">게시판</a>
                             <a href="#" style="color: white;">게시판</a>
                         </div>
@@ -392,7 +396,8 @@
         <!-- 2번째 모달 -->
         <div class="modal" id="myModal1" >
             <div class="modal-dialog">
-                <h4 class="modal-title" style="text-align: center; color: white; font-weight: bold;  margin-top: 50px;">품앗이에 오신걸 환영합니다</h4>
+                <h4 class="modal-title" style="text-align: center; color: white; font-weight: bold; margin: 0 auto; margin-top: 60px; margin-bottom: -60px;
+                ">품앗이에 오신걸 환영합니다</h4>
                 <div class="modal-content" style="height: 800px;">
                     <div class="modal-body" >
                         <form action="insert.me" method="post">

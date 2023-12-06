@@ -182,18 +182,25 @@
         border-radius: 8px;
         color: white;
     }
-    
-
-    a{
-        color: white;
-        
-    }
 
     #category-item > option{
         background-color: rgba(83, 82, 82, 0.65);
     }
-   
-
+    .write-btn{
+        color: white;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+    .write-area{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        text-align: center;
+    }
 </style>
 </head>
 <body>
@@ -202,7 +209,7 @@
         <div class = "nav-center-items">
             <div class = "nav-item">
                 <div class="aaa">
-                    <a href="#">전체보기</a>
+                    <a href="#" style="color: white;">전체보기</a>
                 </div>
             </div>
             <div class = "nav-item"><a href="#">&#60;</a></div>
@@ -254,8 +261,8 @@
                    <div id = "head-category">
 					
 			
-                        <form>
-                        	<a class="btn btn-secondary" href="helpuForm.bo">글쓰기</a>
+                        <form class="write-area">
+                        	<a class="write-btn" href="helpuForm.bo">글쓰기</a>
                             <select name="" id="category-item">
                                 <option class = "category-item-list" value="date" selected>날짜순</option>
                                 <option class = "category-item-list" value="interest">인기순</option>

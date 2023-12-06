@@ -143,6 +143,7 @@ public class BoardController {
 		model.addAttribute("nList",nList);
 		return "noticeBoard/noticeBoard";
 	}
+
 	
 
 	//공지사항 글쓰기
