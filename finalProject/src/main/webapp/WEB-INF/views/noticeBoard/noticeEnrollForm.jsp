@@ -340,7 +340,7 @@
 							</div>
 							<div>
 								내용
-								<textarea type="text" name="noticeContent" required="required">
+								<textarea type="text" name="noticeContent" required="required"></textarea>
 							</div>
 							<div>
 								<button type="submit" id="insertBtn">등록하기</button>

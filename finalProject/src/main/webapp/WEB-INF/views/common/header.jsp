@@ -591,11 +591,11 @@
             }
 
             //비밀번호 제약조건
-            if(memberPwd.value.length < 8){
-                alert("비밀번호 8자리 이상!");
-                memberPwd.focus();
-                return false;
-            }
+           // if(memberPwd.value.length < 8){
+               // alert("비밀번호 8자리 이상!");
+                //memberPwd.focus();
+               // return false;
+          //  }
 
         }
 

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -218,12 +218,13 @@
                         <ul>
                         	<c:forEach var="b" items="${list}">
 	                            <li class="main-list">
-	                                <a href="" class="a-click">
+	                                <a href="sdafasdffasdf?boardNo?=${b.boardNo }" class="a-click">
 	                                    <div class="border-one">
 	                                        <span class="community-p">${b.boardType == 3 ? '궁금해요' : b.boardType == 4 ? '얼마예요' : '함께해요'}</span>
 	                                        <h4>${b.boardTitle}</h4>
 	                                        <span class="text1">${b.boardContent}</span><br>
 	                                        <span class="text2">${b.location}</span>
+	                               
 	                                        <div>
 	                                            <a href="" class="a-click">
 	                                                <img src="././resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
@@ -236,7 +237,7 @@
 	                                            <span class="time-span">${b.createDate}</span>
 	                                        </div>
 	                                    </div>
-	                                </a>
+	                                 </a>
 	                            </li>
 	                            <hr class="line">
 	                    	</c:forEach>
