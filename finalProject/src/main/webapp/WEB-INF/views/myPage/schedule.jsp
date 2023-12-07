@@ -209,27 +209,29 @@
 						<h6 style="float: left;">요청 현황 (<span style="color: red;">3</span>건)</h6>
 					</div>
 					<div style="width: 98%; overflow: scroll; height: 414px;" class="scrolleffect">
-						<div class="alarm-section">
-							<div style="width: 14%;">
-								이미지 자리
+					<!-- 
+						<c:foreach var="s" items="${sList}">
+							<div class="alarm-section">
+								<div style="width: 14%;">
+									이미지 자리
+								</div>
+								<div style="width: 31%;">
+									<h5 class="user-nickname">${s.writer}</h5>
+									<p>희망지역: ${s.location} }</p>
+									<p>${s.category } / ${s.service}</p>
+								</div>
+								<div style="width: 40%;">
+									<p class="textarea-maxSize">
+										${s.content}
+									</p>
+								</div>
+								<div style="width: 15%; display: flex; flex-direction: column;">
+									<button class="schedule-btn" style="background-color: rgb(0, 199, 174)" id="btn-open-popup">보기</button>
+									<button class="schedule-btn" style="background-color: rgb(218, 76, 60)" onclick="refuse()">거절</button>
+								</div>
 							</div>
-							<div style="width: 31%;">
-								<h5 class="user-nickname">홍길동</h5>
-								<p>희망지역: 서울시 강남구 역삼동</p>
-								<p>키보드 / 기타 레슨</p>
-							</div>
-							<div style="width: 40%;">
-								<p class="textarea-maxSize">
-									overflow 대신 넘칠 시글자 수 ...처리?
-									> 요청 상세보기시 전체 텍스트와 스크롤 나오게
-								</p>
-							</div>
-							<div style="width: 15%; display: flex; flex-direction: column;">
-								<button class="schedule-btn" style="background-color: rgb(0, 199, 174)" id="btn-open-popup">보기</button>
-								<button class="schedule-btn" style="background-color: rgb(218, 76, 60)" onclick="refuse()">거절</button>
-							</div>
-						</div>
-						
+						</c:foreach>
+					-->
 						<div class="alarm-section">
 							<div style="width: 14%;">
 								이미지 자리

@@ -1,5 +1,7 @@
 package com.kh.finalProject.member.model.dao;
 
+import java.util.ArrayList;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -46,5 +48,10 @@ public class MemberDao {
 	public int deleteMember(SqlSessionTemplate sqlSession, Member m) {
 		return sqlSession.update("memberMapper.deleteMember", m);
 	}
+/*
+	public ArrayList<Member> scheduleList(SqlSessionTemplate sqlSession) {
+		return (ArrayList)sqlSession.selectList("memberMapper.scheduleList");
+	}
+*/	
 }
 
