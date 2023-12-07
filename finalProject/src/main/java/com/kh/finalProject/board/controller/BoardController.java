@@ -112,11 +112,18 @@ public class BoardController {
 		return mv;
 	}
 	
-	//함께해요
+	//함께해요 리스트
 	@RequestMapping(value = "/together.co")
-	public String togetherBoard(){
-		//화면 전환용 임시 데이터는 없는상태
-		return "noticeBoard/togetherBoard";
+	public ModelAndView togetherBoard(@RequestParam(value = "cpage", defaultValue = "1") int currentPage, ModelAndView mv){
+		int listCount = boardService.selectTogetherListCount();
+		
+		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 3);
+		ArrayList<Board> list = boardService.selectTogetherList(pi);
+		mv.addObject("pi", pi)
+		.addObject("list", list)
+		.setViewName("noticeBoard/togetherBoard");
+		
+		return mv;
 	}
 	
 	

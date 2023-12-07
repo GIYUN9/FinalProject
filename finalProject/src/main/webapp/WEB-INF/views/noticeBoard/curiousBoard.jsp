@@ -191,6 +191,18 @@
         a:hover{
             color: black;
         }
+        #board-create{
+            width: 80px;
+            position: absolute;
+            bottom: 122px;
+            right: 43px;
+            background: rgb(0, 199, 174);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px;
+            cursor: pointer;
+        }
 	</style>
 </head>
 <body>
@@ -208,6 +220,7 @@
 		</div>
 		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">궁금해요</h3>
+			<button id="board-create" onclick="pageMove()">글쓰기</button>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="community-big">
                             <div class="main-a">
@@ -269,5 +282,10 @@
 		</div>
 	</div>
 	<jsp:include page="../common/footer.jsp" />
+		<script>
+		function pageMove(){
+			location.href = "pageMove.no"
+		}
+	</script>
 </body>
 </html>

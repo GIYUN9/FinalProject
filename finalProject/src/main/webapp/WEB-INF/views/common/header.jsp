@@ -355,7 +355,7 @@
                         </span>
                         <div class="dropdown-content">
                             <a href="userInfo.me" style="color: white;">마이페이지</a>
-                            <a href="viewall.co" style="color: white;">게시판</a>
+                            <a href="list.co" style="color: white;">게시판</a>
                             <a href="#" style="color: white;">게시판</a>
                             <a href="#" style="color: white;">게시판</a>
                         </div>

@@ -142,6 +142,7 @@
     .main-box{
     	margin-left: 235px;
     	margin-top: 5px;
+		position: relative;
     }
     
     .nomal-input-style{

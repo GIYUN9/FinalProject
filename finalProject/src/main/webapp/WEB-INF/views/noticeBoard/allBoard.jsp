@@ -203,6 +203,7 @@
             border-radius: 4px;
             padding: 5px;
             cursor: pointer;
+            z-index: 1;
         }
 	</style>
 </head>
@@ -221,7 +222,7 @@
 		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">전체보기</h3>
 			<button id="board-create" onclick="pageMove()">글쓰기</button>
-			<div class="pageBox" style="display: flex; flex-direction: column;">
+			<div class="pageBox" style="display: flex; flex-direction: column; position: relative;">
 				<div class="community-big">
 					<div class="main-a">
 					    <span class="main-span1">공지</span>
