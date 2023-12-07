@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -237,6 +237,7 @@
 	                                        <h4>${b.boardTitle}</h4>
 	                                        <span class="text1">${b.boardContent}</span><br>
 	                                        <span class="text2">${b.location}</span>
+	                               
 	                                        <div>
 	                                            <a href="" class="a-click">
 	                                                <img src="././resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
@@ -249,7 +250,7 @@
 	                                            <span class="time-span">${b.createDate}</span>
 	                                        </div>
 	                                    </div>
-	                                </a>
+	                                 </a>
 	                            </li>
 	                            <hr class="line">
 	                    	</c:forEach>
