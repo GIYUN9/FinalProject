@@ -111,4 +111,10 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.selectTogetherList(sqlSession, pi);
 	}
 	
+	//얼마예요 궁금해요 등 게시글 상세조회
+	@Override
+	public Board selectCommBoard(int boardNo) {
+		return boardDao.selectCommBoard(sqlSession, boardNo);
+	}
+	
 }

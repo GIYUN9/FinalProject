@@ -12,8 +12,11 @@ public interface BoardService {
 	//커뮤니티 전체보기 조회
 	ArrayList<Board> selectCommList(PageInfo pi);
 	
-	//게시글 상세조회
+	//게시글 상세조회 
 	Board selectBoard(int boardNo);
+	
+	//얼마예요 궁금해요 등 게시글 상세조회
+	Board selectCommBoard(int boardNo);
 	
 	//도와줄게요 게시판 등록
 	int insertBoard(Board b);

@@ -89,4 +89,10 @@ public class BoardDao {
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		return (ArrayList)sqlSession.selectList("boardMapper.selectTogetherList", null, rowBounds);
 	}
+	
+	//도와주세요 도와줄게요 등 게시판 상세조회
+	public Board selectCommBoard(SqlSessionTemplate sqlSession, int boardNo) {
+		return sqlSession.selectOne("boardMapper.selectCommBoard", boardNo);
+	}
+	
 }

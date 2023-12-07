@@ -25,4 +25,6 @@ public class Board {
 	private int categoryNo;
 	
 	private String location;
+	
+	private String memberName;
 }

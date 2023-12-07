@@ -231,10 +231,21 @@ public class BoardController {
 	}
 	
 
-	@RequestMapping("detail.co")
-	public String detailCommBoard(int boardNo) {
+	@RequestMapping("detailcomm.co")
+	public String detailCommBoard(int boardNo, HttpSession session, Model model) {
 		// 클릭시 상세페이지 이동 (하나밖에 없음)
-		return "noticeBoard/noticeDetailView";
+		
+		Board b = boardService.selectCommBoard(boardNo);
+		
+		if(b != null) { //성공
+			session.setAttribute("b", b);
+			session.setAttribute("alertMsg", "게시글 상세보기 완료");
+			return "noticeBoard/noticeDetailView";
+		}else { //실패
+			model.addAttribute("errorMsg", "게시글 상세보기 실패");
+			return "common/errorMsg";
+		}
+		
 	}
 	
 	

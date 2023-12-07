@@ -234,7 +234,7 @@
 					<c:forEach var="b" items="${list}">                  
 					<ul>
 					    <li class="main-list">
-					        <a href="detail.co?boardNo?=${b.boardNo }" class="a-click">
+					        <a href="detailcomm.co?boardNo=${b.boardNo }" class="a-click">
 						        <div class="border-one">
 						            <span class="community-p">${b.boardType == 3 ? '궁금해요' : b.boardType == 4 ? '얼마예요' : '함께해요'}</span>
 						            <h4>${b.boardTitle}</h4>
