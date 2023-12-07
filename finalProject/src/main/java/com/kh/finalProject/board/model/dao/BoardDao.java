@@ -95,4 +95,7 @@ public class BoardDao {
 		return sqlSession.selectOne("boardMapper.selectCommBoard", boardNo);
 	}
 	
+	public int insertCommboard(SqlSessionTemplate sqlSession, Board b) {
+		return sqlSession.insert("boardMapper.insertCommboard", b);
+	}
 }

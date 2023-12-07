@@ -56,4 +56,7 @@ public interface BoardService {
 	
 	//함께해요 리스트(조회)
 	ArrayList<Board> selectTogetherList(PageInfo pi);
+	
+	//커뮤니티 게시글 등록
+	int insertCommboard(Board b);
 }

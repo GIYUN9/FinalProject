@@ -101,14 +101,22 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.selectMuchList(sqlSession, pi);
 	}
 
+	//게시글 함께해요 count(*)조회
 	@Override
 	public int selectTogetherListCount() {
 		return boardDao.selectTogetherListCount(sqlSession);
 	}
 
+	//게시글 함께해요 리스트
 	@Override
 	public ArrayList<Board> selectTogetherList(PageInfo pi) {
 		return boardDao.selectTogetherList(sqlSession, pi);
+	}
+
+	//커뮤니티 게시글 쓰기 등록 
+	@Override
+	public int insertCommboard(Board b) {
+		return boardDao.insertCommboard(sqlSession, b);
 	}
 	
 	//얼마예요 궁금해요 등 게시글 상세조회

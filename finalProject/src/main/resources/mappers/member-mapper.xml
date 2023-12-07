@@ -139,4 +139,5 @@
 		WHERE MEM_NO = #{memberNo}
 		AND MEM_EMAIL = #{memberEmail}
 	</update>
+
 </mapper>
