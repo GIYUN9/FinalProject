@@ -8,7 +8,7 @@
 </head>
 <body>	
 
-	<jsp:forward page="WEB-INF/views/common/main.jsp"/>
+	<jsp:forward page="WEB-INF/views/common/find.jsp"/>
 	
 	<%--
 		김경보
@@ -43,6 +43,7 @@
 		muchBoard.jsp = 얼마예요
 		togetherBoard.jsp = 함께해요
 		noticeBoard.jsp = 공지사항
+		<jsp:forward page="WEB-INF/views/common/find.jsp"/>
 		
 		최창영
 		<jsp:forward page="WEB-INF/views/board/helpBoardList.jsp"/> 도와줄게요
