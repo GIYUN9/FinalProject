@@ -114,7 +114,7 @@
 									<td>
 										<div class = "normal-input-box">
 											<input class="email-input" name="memberEmail" value="${loginUser.memberEmail}" readonly="readonly">
-											<button class="btn" onclick="newEmail()">인증하기</button>
+											<button class="btn" onclick="newEmail()" style="font-size: 12px;">인증하기</button>
 										</div>
 									</td>
 								</tr>
@@ -123,7 +123,7 @@
 									<td>
 										<div class = "normal-input-box">
 											<input class="phone-input" name="phone" value="${loginUser.phone}" readonly="readonly">
-											<button class="btn" onclick="newPhone()">재인증</button>
+											<button class="btn" onclick="newPhone()" style="font-size: 12px;">재인증</button>
 										</div>
 									</td>
 								</tr>
@@ -132,7 +132,7 @@
 									<td>
 										<div class="normal-input-box">
 											<input class="info-input" value="${loginUser.account}" readonly="readonly">
-											<button class="btn" onclick="payAdd()">충전하기</button>
+											<button class="btn" onclick="payAdd()" style="font-size: 12px;">충전하기</button>
 										</div>
 									</td>
 								</tr>
