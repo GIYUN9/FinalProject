@@ -230,12 +230,12 @@ public class BoardController {
 		}
 	}
 	
-	//게시글 수정
-	
-	
-	
-	
-	//게시글 삭제
+
+	@RequestMapping("detail.co")
+	public String detailCommBoard(int boardNo) {
+		// 클릭시 상세페이지 이동 (하나밖에 없음)
+		return "noticeBoard/noticeDetailView";
+	}
 	
 	
 	
