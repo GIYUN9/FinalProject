@@ -42,26 +42,31 @@
 			bottom: 13px;
 			width: 484px;
 			background: none;
-			border: 1px solid rgb(147, 147, 150);
+			border: none;
+			color: white;
+			background: rgb(0, 199, 174);
 			border-radius: 5px;
 			height: 35px;
 			cursor: pointer;
 		}
 		.email-input{
-			height: 35px
+			height: 35px;
+			padding-left: 5px;
 		}
 		.phone-input{
-			height: 35px
+			height: 35px;
+			padding-left: 5px;
 		}
 		.info-input{
 			width: 100%;
+			padding-left: 5px;
 		}
 
 		.normal-input-box > button {
 			width: 80px;
 			height: 35px;
-			border: 1px solid rgb(147, 147, 150);
 			border-radius: 5px;
+			font-size: 15px;
 		}
 		.ui-formOuter{
 			position: relative;

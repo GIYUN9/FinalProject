@@ -114,17 +114,17 @@
 						</form>
 					</div>
 					<div class="ui-formOuter">
-						<form action="">
+						<form action="updateProInfo.me">
 							<table class="user-info-table">
 								<th>전문가 닉네임</th>
 								<tr>
-									<td><input class="info-input" placeholder="고수임"></td>
+									<td><input class="info-input" value="${loginUser.memberName}" name="memberName" readonly="readonly"></td>
 								</tr>
 								<th>자기소개</th>
 								<tr>
 									<td>
 										<div class = "normal-input-box">
-                                            <textarea class="pro-pr"></textarea>
+                                            <textarea class="pro-pr" name="intro">${loginUser.intro}</textarea>
 										</div>
 									</td>
 								</tr>
@@ -132,12 +132,20 @@
 								<tr>
 									<td>
 										<div class = "normal-input-box">
-											<input class="phone-input" placeholder="인증 누를시 활동지역 팝업">
+											<input class="phone-input" value="${loginUser.location}" readonly="readonly">
 											<button class="btn" onclick="newPhone()">인증</button>
 										</div>
 									</td>
 								</tr>
-								<th>전문분야 및 상세분야 <br><span style="font-size: x-small;">최대 3개를 선택해주세요.</span><span style="font-size: x-small; color: red;">필수</span></th>
+								<th>
+									전문분야 및 상세분야 <br>
+									<span style="font-size: x-small;">
+										최대 3개를 선택해주세요.
+									</span>
+									<span style="font-size: x-small; color: red;">
+										필수
+									</span>
+								</th>
 								<tr>
 									<td>
 										<div class="normal-input-box">
