@@ -18,8 +18,8 @@
 			border-radius: 5px;
 			background: rgba(224, 224, 224, 0.25);
 			color: black;
-			height: 28px;
-			width: 75px;
+			height: 48px;
+			width: 320px;
 			font-weight: bold;
 			float: right;
 		}
@@ -34,12 +34,26 @@
 		}
 		.user-info{
 			padding: 15px;
+			justify-content: center;
 		}
 		.nomal-input-style {
 			width: 320px;
-			height: 28px;
+			height: 48px;
 			border: 1px solid rgb(147, 147, 150);
 			border-radius: 5px;
+			margin-top: 15px;
+			padding-left: 10px;
+		}
+		.cp-text{
+			text-align: center;
+			margin-top: 30px;
+		}
+		.user-info{
+			margin-left: 0px;
+		}
+		.lock-img{
+			width: 120px;
+			height: 120px;
 		}
 	</style>
 </head>
@@ -66,16 +80,20 @@
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="user-info">
 					<form action="updatePwd.me" method="post" style="margin-top: 19px;">
-						<h6>현재 비밀번호</h6>
-						<input class="nomal-input-style" name="memberPwd" type="password" placeholder="현재 사용중인 비밀번호를 입력해주세요." required="required">
-						<div style="display: flex; margin-top: 24px;">
+						<div style="display: flex; margin-top: 24px; flex-direction: column; align-items: center;">
+							<img class="lock-img" src="././resources/icon/lock.png" alt="">
+							<span class="cp-text">
+								개인정보 ~에 의거하여<br>
+								6개월에 한 번씩 비밀번호를 변경해야합니다.
+							</span>
 							<div>
-								<h6>변경할 비밀번호</h6>
-								<input class="nomal-input-style" name="newPwd" id="newPwd" type="password" placeholder="변경할 비밀번호를 입력해주세요." required="required">
+								<input class="nomal-input-style" name="memberPwd" type="password" placeholder="현재 비밀번호 입력" required="required">
 							</div>
-							<div style="margin-left: 55px;">
-								<h6>한번 더 입력</h6>
-								<input class="nomal-input-style" id="confirmPwd" type="password" placeholder="변경할 비밀번호를 한번 더 입력해주세요." required="required">
+							<div>
+								<input class="nomal-input-style" name="newPwd" id="newPwd" type="password" placeholder="신규 비밀번호 입력" required="required">
+							</div>
+							<div>
+								<input class="nomal-input-style" id="confirmPwd" type="password" placeholder="신규 비밀번호 확인" required="required">
 							</div>
 						</div>
 						<br>
