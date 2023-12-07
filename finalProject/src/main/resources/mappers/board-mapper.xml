@@ -210,4 +210,25 @@
   			SET STATUS = 'N'
   		WHERE NOTICE_NO = #{noticeNo}
   	</update>
+  		
+	<insert id = "insertCommboard">
+		INSERT INTO BOARD	(
+							BOARD_NO,
+							BOARD_TITLE,
+							BOARD_CONTENT,
+							BOARD_TYPE,
+							CREATEDATE,
+							STATUS,
+							MEM_NO
+							)
+					VALUES	(
+							SEQ_BNO.NEXTVAL,
+							#{boardTitle},
+							#{boardContent},
+							#{boardType},
+							SYSDATE,
+							'Y',
+							#{memberNo}
+							)
+	</insert>
   </mapper>
