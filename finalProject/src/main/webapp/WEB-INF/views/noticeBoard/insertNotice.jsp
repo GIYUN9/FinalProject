@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>도와줄게요 게시글 작성</title>
+<title>커뮤니티 게시글 작성</title>
 <style>
 	*,
 	*::before,
@@ -170,38 +170,36 @@
             <div class="board-top-section">
                 <img class="b-close-btn" src="././resources/icon/close.png">
                     <div class="b-top-section">
-                        <p>게시판 글쓰기</p>
+                        <p>커뮤니티 게시판 글쓰기</p>
                     </div>
                    
-               <form method="post" action="insert.bo" enctype="multipart/form-data">
+               <form method="post" action="insertBoard.co">
+               <input type="hidden" name="memberNo" value="${loginUser.memberNo}">
                     <div class="b-align">                
                         <div class="b-input-area">
                         <div class="category-container">
                         	<label id = "category-label" for ="category">카테고리</label>
-                        	<select name ="" id ="category">
-                        		<option value="">궁금해요</option>
-                        		<option value="">얼마예요</option>
-                        		<option value="">함께해요</option>
+                        	<select name ="boardType" id ="category">
+                        		<option value="3">궁금해요</option>
+                        		<option value="4">얼마예요</option>
+                        		<option value="5">함께해요</option>
                         	</select>
                         </div>
                             <div class="b-aa">
 	                            <div class="b-bb">
 	                                   	제목
 	                            </div>
-                                <input class="b-title" type="text"/>
+                                <input class="b-title" name="boardTitle" type="text"/>
                             </div>  
                             <div class="b-aa">
                                 <div class="b-cc">
                                     	내용
                                 </div>
-                                <textarea class="b-content" type="text"></textarea>
-                            </div>  
-                      		
-                       
-                             
+                                <textarea class="b-content" name="boardContent" type="text"></textarea>
+                            </div>     
                         </div>
                     </div>
-                    <div class="b-btn-area">
+                    <div class="b-btn-area" style="justify-content: center;">
                         <button type="reset" class="b-cancle-btn">취소</button>
                         <button type="submit" class="b-submit-btn">등록</button>
                     </div>

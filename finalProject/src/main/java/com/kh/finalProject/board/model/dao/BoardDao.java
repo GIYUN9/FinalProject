@@ -89,4 +89,8 @@ public class BoardDao {
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		return (ArrayList)sqlSession.selectList("boardMapper.selectTogetherList", null, rowBounds);
 	}
+	
+	public int insertCommboard(SqlSessionTemplate sqlSession, Board b) {
+		return sqlSession.insert("boardMapper.insertCommboard", b);
+	}
 }
