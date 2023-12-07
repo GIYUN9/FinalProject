@@ -231,7 +231,7 @@
                             <img src="././resources/borderImage/right-arrow-icon.png" alt="오른쪽 화살표" class="arrow-img">
                         </a>
 					</div>
-					<c:forEach var="b" items="${list}">                  
+					<c:forEach var="b" items="${list}">               
 					<ul>
 					    <li class="main-list">
 					        <a href="detail.co?boardNo?=${b.boardNo }" class="a-click">
@@ -252,7 +252,6 @@
 						        </div>
 					        </a>
 					    </li>
-                   
 					    <hr class="line">
 					</ul>
 					</c:forEach>

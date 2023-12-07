@@ -143,13 +143,6 @@ public class BoardController {
 		return "noticeBoard/annoucementBoard";
 	}
 	
-	@RequestMapping(value = "/viewall.co")
-	public String allBoardBoard(){
-		//화면 전환용 임시 데이터는 없는상태
-		return "noticeBoard/allBoard";
-	}
-	
-
 	//공지사항 글쓰기 화면 전환용
 	@RequestMapping(value = "/noticeEnrollForm.co")
 	public String noticeEnrollForm(Notice n) {
