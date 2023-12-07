@@ -139,9 +139,7 @@ public class BoardController {
 
 	//공지사항 글쓰기
 	@RequestMapping(value = "/insert.co")
-	public String noticeBoard(HttpSession session, Model model) {
-		
-		
+	public String noticeBoard(HttpSession session, Model model) {		
 		return "noticeBoard/annoucementBoard";
 	}
 	
@@ -208,11 +206,24 @@ public class BoardController {
 		return "";
 	}
 	
-	//게시글 쓰기 페이지 이동
+	//커뮤니티 게시글 쓰기 페이지 이동
 	@RequestMapping(value ="pageMove.no")
 	public String pageMoveBoard(){
 		
 		return "noticeBoard/insertNotice";
+	}
+	
+	//커뮤니티 게시글 insert 등록
+	@RequestMapping(value = "/insertBoard.co")
+	public String insertCommBoard(Board b, Model model) {
+		int result = boardService.insertCommboard(b);
+		if(result>0) {
+			return "redirect:/list.co";
+		} else {
+			model.addAttribute("errorMsg", "게시글 등록 실패");
+			return "common/errorPage";
+		}
+		
 	}
 
 	//게시글 등록
