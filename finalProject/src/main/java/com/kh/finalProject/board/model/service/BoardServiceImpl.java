@@ -118,5 +118,10 @@ public class BoardServiceImpl implements BoardService {
 	public int insertCommboard(Board b) {
 		return boardDao.insertCommboard(sqlSession, b);
 	}
+
+	@Override
+	public ArrayList<Notice> noticeListTwo() {
+		return boardDao.noticeListTwo(sqlSession);
+	}
 	
 }

@@ -93,4 +93,8 @@ public class BoardDao {
 	public int insertCommboard(SqlSessionTemplate sqlSession, Board b) {
 		return sqlSession.insert("boardMapper.insertCommboard", b);
 	}
+	
+	public ArrayList<Notice> noticeListTwo(SqlSessionTemplate sqlSeesion){
+		return (ArrayList)sqlSeesion.selectList("boardMapper.noticeListTwo");
+	}
 }

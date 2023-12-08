@@ -231,4 +231,23 @@
 							#{memberNo}
 							)
 	</insert>
+	
+	<select id="noticeListTwo" resultMap="noticeResult">
+		SELECT  NOTICE_NO,
+				NOTICE_TYPE,
+				NOTICE_TITLE,
+				NOTICE_CONTENT,
+				CREATEDATE        		        
+		FROM	(
+			    SELECT  NOTICE_NO,
+						NOTICE_TYPE,
+						NOTICE_TITLE,
+						NOTICE_CONTENT,
+						CREATEDATE
+				FROM NOTICE
+				WHERE STATUS = 'Y'
+		        ORDER BY CREATEDATE DESC
+		        )
+		WHERE ROWNUM <![CDATA[<]]>= 2
+	</select>
   </mapper>

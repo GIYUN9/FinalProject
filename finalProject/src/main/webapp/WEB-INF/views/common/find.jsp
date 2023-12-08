@@ -17,12 +17,14 @@
 		
 		.findBox-1{
 			border: 1px solid white;
-			width: 40%;
+			width: 42%;
+			height: 100%;
 		}
 		
 		.findBox-2{
 			border: 1px solid white;
 			width: 30%;
+			height: 100%;
 		}
 		
 		.carousel-item .your-div-class {
@@ -46,6 +48,10 @@
 			margin-top: 0px;
 			margin-bottom: 5px;
 			margin-left: 25px;
+		}
+		
+		.board-sep-line{
+			border: 0px; border-bottom: 1px solid white; margin-top: 10px; margin-bottom: 0px;
 		}
 	</style>
 </head>
@@ -100,19 +106,33 @@
 					  </button>
 					</div>
 				</div>
+				<br>
 			<div class="findBox">
 				<div class="findBox-1">
 					<h3>도와줄게요</h3>
 					<div>
-						dddddddddddddd
-						ddddddddddddddd
-						ddddddddddddd
+						<h5>도와줄게요 게시글 제목 1</h5>
+						<div>
+							내용 내용 내용
+						</div>
+						<hr class="board-sep-line">
+					</div>
+					<div>
+						<h5>도와줄게요 게시글 제목 2</h5>
+						<div>
+							내용2 내용2 내용2
+						</div>
+						<hr class="board-sep-line">
 					</div>
 				</div>
 				<div class="findBox-1">
 					<h3>도와주세요</h3>
 					<div>
-						도와주세요 내용
+						<h5>도와주세요 게시글 제목 1</h5>
+						<div>
+							내용 내용 내용2
+						</div>
+						<hr class="board-sep-line">
 					</div>
 				</div>
 			</div>
@@ -123,25 +143,38 @@
 				<div class="findBox-2">
 					<h3>궁금해요</h3>
 					<div>
-						dddddddddddddd
-						ddddddddddddddd
-						ddddddddddddd
+						<h5>궁금해요 게시글 제목 1</h5>
+						<div>
+							궁금해요궁금해요궁금해요궁금해요
+						</div>
+						<hr class="board-sep-line">
 					</div>
 				</div>
 				<div class="findBox-2">
 					<h3>얼마예요</h3>
 					<div>
-						얼마예요 내용
+						<h5>얼마예요 게시글 제목 1</h5>
+						<div>
+							얼마예요얼마예요얼마예요얼마예요얼마예요얼마예요얼마예요얼마예요얼마예요얼마예요
+						</div>
+						<hr class="board-sep-line">
 					</div>
 				</div>
 				<div class="findBox-2">
 					<h3>함께해요</h3>
 					<div>
-						함께해요 내용
+						<h5>함께해요 게시글 제목 1</h5>
+						<div>
+							함께해요함께해요함께해요함께해요함께해요함께해요함께해요함께해요함께해요함께해요함께해요
+						</div>
+						<hr class="board-sep-line">
 					</div>
 				</div>
 			</div>
 		</div>
+		<br>
+		<br>
+		<br>
 	</div>
 	<jsp:include page="../common/footer.jsp" />
 </body>
