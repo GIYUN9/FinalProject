@@ -117,6 +117,7 @@
 				</div>
 			</div>
 			<br>
+			<hr style="width: 90%; color: white; border: solid;">
 			<br>
 			<div class="findBox">
 				<div class="findBox-2">
