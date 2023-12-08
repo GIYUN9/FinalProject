@@ -134,5 +134,53 @@ public class BoardServiceImpl implements BoardService {
 	public Board helpselectOne(Board b) {
 		return boardDao.helpselectOne(sqlSession ,b);
 	}
+	//게시글 함께해요 count(*)조회
+	@Override
+	public int selectTogetherListCount() {
+		return boardDao.selectTogetherListCount(sqlSession);
+	}
+
+	//게시글 함께해요 리스트
+	@Override
+	public ArrayList<Board> selectTogetherList(PageInfo pi) {
+		return boardDao.selectTogetherList(sqlSession, pi);
+	}
+
+	//커뮤니티 게시글 쓰기 등록 
+	@Override
+	public int insertCommboard(Board b) {
+		return boardDao.insertCommboard(sqlSession, b);
+	}
+
+	@Override
+	public ArrayList<Notice> noticeListTwo() {
+		return boardDao.noticeListTwo(sqlSession);
+	}
+
+	@Override
+	public ArrayList<Board> findBoardList1(String keyWord) {
+		return boardDao.findBoardList1(sqlSession, keyWord);
+	}
+
+	@Override
+	public ArrayList<Board> findBoardList2(String keyWord) {
+		return boardDao.findBoardList2(sqlSession, keyWord);
+	}
+
+	@Override
+	public ArrayList<Board> findBoardList3(String keyWord) {
+		return boardDao.findBoardList3(sqlSession, keyWord);
+	}
+
+	@Override
+	public ArrayList<Board> findBoardList4(String keyWord) {
+		return boardDao.findBoardList4(sqlSession, keyWord);
+	}
+
+	@Override
+	public ArrayList<Board> findBoardList5(String keyWord) {
+		return boardDao.findBoardList5(sqlSession, keyWord);
+
+	}
 	
 }

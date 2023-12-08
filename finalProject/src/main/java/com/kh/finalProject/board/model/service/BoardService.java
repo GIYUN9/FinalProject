@@ -44,6 +44,9 @@ public interface BoardService {
 	//공지사항 리스트(조회)
 	ArrayList<Notice> noticeList();
 	
+	//공지사항 리스트 2개조회
+	ArrayList<Notice> noticeListTwo();
+	
 	//공지사항 등록
 	int insertNotice(Notice n);
 	
@@ -67,4 +70,21 @@ public interface BoardService {
 
 	//도와줄게요 보드번호 가져오는 중간 쿼리
 	Board helpselectOne(Board b);
+	
+	//함께해요 게시글 수 (조회)
+	int selectTogetherListCount();
+	
+	//함께해요 리스트(조회)
+	ArrayList<Board> selectTogetherList(PageInfo pi);
+	
+	//커뮤니티 게시글 등록
+	int insertCommboard(Board b);
+	
+	//도와주세요, 도와줄게요, 궁금해요, 얼마예요, 함께해요 가장빠른 등록일기준 2개
+	ArrayList<Board> findBoardList1(String keyWord);
+	ArrayList<Board> findBoardList2(String keyWord);
+	ArrayList<Board> findBoardList3(String keyWord);
+	ArrayList<Board> findBoardList4(String keyWord);
+	ArrayList<Board> findBoardList5(String keyWord);
+
 }

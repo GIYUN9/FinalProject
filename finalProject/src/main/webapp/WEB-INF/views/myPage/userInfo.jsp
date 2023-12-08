@@ -42,26 +42,31 @@
 			bottom: 13px;
 			width: 484px;
 			background: none;
-			border: 1px solid rgb(147, 147, 150);
+			border: none;
+			color: white;
+			background: rgb(0, 199, 174);
 			border-radius: 5px;
 			height: 35px;
 			cursor: pointer;
 		}
 		.email-input{
-			height: 35px
+			height: 35px;
+			padding-left: 5px;
 		}
 		.phone-input{
-			height: 35px
+			height: 35px;
+			padding-left: 5px;
 		}
 		.info-input{
 			width: 100%;
+			padding-left: 5px;
 		}
 
 		.normal-input-box > button {
 			width: 80px;
 			height: 35px;
-			border: 1px solid rgb(147, 147, 150);
 			border-radius: 5px;
+			font-size: 15px;
 		}
 		.ui-formOuter{
 			position: relative;
@@ -82,6 +87,9 @@
 			<a class="myPageSideBar" href="deleteForm.me">회원 탈퇴</a>
 			<a class="myPageSideBar" href="schedule.me">일정 관리</a>
 			<a class="myPageSideBar" href="ask.me">문의 내역</a>
+			<c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
+                <a class="myPageSideBar" href="">회원 관리</a>
+            </c:if>            
 		</div>
 		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">나의 정보</h3>
@@ -106,7 +114,7 @@
 									<td>
 										<div class = "normal-input-box">
 											<input class="email-input" name="memberEmail" value="${loginUser.memberEmail}" readonly="readonly">
-											<button class="btn" onclick="newEmail()">인증하기</button>
+											<button class="btn" onclick="newEmail()" style="font-size: 12px;">인증하기</button>
 										</div>
 									</td>
 								</tr>
@@ -115,7 +123,7 @@
 									<td>
 										<div class = "normal-input-box">
 											<input class="phone-input" name="phone" value="${loginUser.phone}" readonly="readonly">
-											<button class="btn" onclick="newPhone()">재인증</button>
+											<button class="btn" onclick="newPhone()" style="font-size: 12px;">재인증</button>
 										</div>
 									</td>
 								</tr>
@@ -124,7 +132,7 @@
 									<td>
 										<div class="normal-input-box">
 											<input class="info-input" value="${loginUser.account}" readonly="readonly">
-											<button class="btn" onclick="payAdd()">충전하기</button>
+											<button class="btn" onclick="payAdd()" style="font-size: 12px;">충전하기</button>
 										</div>
 									</td>
 								</tr>

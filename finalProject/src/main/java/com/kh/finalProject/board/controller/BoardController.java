@@ -193,11 +193,18 @@ public class BoardController {
 		return mv;
 	}
 	
-	//함께해요
+	//함께해요 리스트
 	@RequestMapping(value = "/together.co")
-	public String togetherBoard(){
-		//화면 전환용 임시 데이터는 없는상태
-		return "noticeBoard/togetherBoard";
+	public ModelAndView togetherBoard(@RequestParam(value = "cpage", defaultValue = "1") int currentPage, ModelAndView mv){
+		int listCount = boardService.selectTogetherListCount();
+		
+		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 3);
+		ArrayList<Board> list = boardService.selectTogetherList(pi);
+		mv.addObject("pi", pi)
+		.addObject("list", list)
+		.setViewName("noticeBoard/togetherBoard");
+		
+		return mv;
 	}
 	
 	
@@ -213,19 +220,10 @@ public class BoardController {
 
 	//공지사항 글쓰기
 	@RequestMapping(value = "/insert.co")
-	public String noticeBoard(HttpSession session, Model model) {
-		
-		
+	public String noticeBoard(HttpSession session, Model model) {		
 		return "noticeBoard/annoucementBoard";
 	}
 	
-	@RequestMapping(value = "/viewall.co")
-	public String allBoardBoard(){
-		//화면 전환용 임시 데이터는 없는상태
-		return "noticeBoard/allBoard";
-	}
-	
-
 	//공지사항 글쓰기 화면 전환용
 	@RequestMapping(value = "/noticeEnrollForm.co")
 	public String noticeEnrollForm(Notice n) {
@@ -270,10 +268,38 @@ public class BoardController {
 //	}
 	
 	//게시글 쓰기 페이지 이동
+	@RequestMapping(value = "helpInsert.bo")
+	public String helpInsert(Board b) {
+		b.setMemberNo(2); // 임시데이터
+//		b.setCatrgoryNo(200); // 임시데이터
+//		int result1 = boardService.helpInsert(b);
+		
+		
+		
+
+//		int result1 = boardService.helpInsert(b);
+
+		return "";
+	}
+	
+	//커뮤니티 게시글 쓰기 페이지 이동
 	@RequestMapping(value ="pageMove.no")
 	public String pageMoveBoard(){
 		
 		return "noticeBoard/insertNotice";
+	}
+	
+	//커뮤니티 게시글 insert 등록
+	@RequestMapping(value = "/insertBoard.co")
+	public String insertCommBoard(Board b, Model model) {
+		int result = boardService.insertCommboard(b);
+		if(result>0) {
+			return "redirect:/list.co";
+		} else {
+			model.addAttribute("errorMsg", "게시글 등록 실패");
+			return "common/errorPage";
+		}
+		
 	}
 
 //	//게시글 등록
@@ -311,11 +337,42 @@ public class BoardController {
 	
 	
 	//게시글 수정
+	@RequestMapping("detail.co")
+	public String detailCommBoard(int boardNo) {
+		// 클릭시 상세페이지 이동 (하나밖에 없음)
+		return "noticeBoard/noticeDetailView";
+	}
 	
-	
-	
-	
-	//게시글 삭제
+	@RequestMapping(value = "find.bo")
+	public String findBoardKeyWord(String keyWord, Model model) {
+		
+		//최대 최근등록 2개 공통
+		//공지사항
+		ArrayList<Notice> nList = boardService.noticeListTwo();
+		model.addAttribute("nList", nList);
+		
+		//도와줄게요 서비스
+		ArrayList<Board> list1 = boardService.findBoardList1(keyWord);
+		model.addAttribute("list1", list1);
+		System.out.println(list1);
+		//도와주세요 서비스
+		ArrayList<Board> list2 = boardService.findBoardList2(keyWord);
+		model.addAttribute("list2", list2);
+		
+		//궁금해요 서비스
+		ArrayList<Board> list3 = boardService.findBoardList3(keyWord);
+		model.addAttribute("list3", list3);
+		
+		//얼마예요 서비스
+		ArrayList<Board> list4 = boardService.findBoardList4(keyWord);
+		model.addAttribute("list4", list4);
+		
+		//함께해요 서비스
+		ArrayList<Board> list5 = boardService.findBoardList5(keyWord);
+		model.addAttribute("list5", list5);
+		
+		return "common/find";
+	}
 	
 	//도와주세요 게시글 조회
 	

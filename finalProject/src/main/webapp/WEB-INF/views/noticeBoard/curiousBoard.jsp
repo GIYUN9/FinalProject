@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -191,6 +191,18 @@
         a:hover{
             color: black;
         }
+        #board-create{
+            width: 80px;
+            position: absolute;
+            bottom: 122px;
+            right: 43px;
+            background: rgb(0, 199, 174);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px;
+            cursor: pointer;
+        }
 	</style>
 </head>
 <body>
@@ -208,6 +220,7 @@
 		</div>
 		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">궁금해요</h3>
+			<button id="board-create" onclick="pageMove()">글쓰기</button>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="community-big">
                             <div class="main-a">
@@ -224,6 +237,7 @@
 	                                        <h4>${b.boardTitle}</h4>
 	                                        <span class="text1">${b.boardContent}</span><br>
 	                                        <span class="text2">${b.location}</span>
+	                               
 	                                        <div>
 	                                            <a href="" class="a-click">
 	                                                <img src="././resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
@@ -236,7 +250,7 @@
 	                                            <span class="time-span">${b.createDate}</span>
 	                                        </div>
 	                                    </div>
-	                                </a>
+	                                 </a>
 	                            </li>
 	                            <hr class="line">
 	                    	</c:forEach>
@@ -268,5 +282,10 @@
 		</div>
 	</div>
 	<jsp:include page="../common/footer.jsp" />
+		<script>
+		function pageMove(){
+			location.href = "pageMove.no"
+		}
+	</script>
 </body>
 </html>

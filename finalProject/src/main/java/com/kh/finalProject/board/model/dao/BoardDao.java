@@ -107,4 +107,40 @@ public class BoardDao {
 	public Board helpselectOne(SqlSessionTemplate sqlSession, Board b) {
 		return sqlSession.selectOne("boardMapper.helpselectOne" ,b);
 	}
+	
+	public int selectTogetherListCount(SqlSessionTemplate sqlSeesion) {
+		return sqlSeesion.selectOne("boardMapper.selectTogetherListCount");
+	}
+	
+	public ArrayList<Board> selectTogetherList(SqlSessionTemplate sqlSession, PageInfo pi){
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		return (ArrayList)sqlSession.selectList("boardMapper.selectTogetherList", null, rowBounds);
+	}
+	
+	public int insertCommboard(SqlSessionTemplate sqlSession, Board b) {
+		return sqlSession.insert("boardMapper.insertCommboard", b);
+	}
+	
+	public ArrayList<Notice> noticeListTwo(SqlSessionTemplate sqlSeesion){
+		return (ArrayList)sqlSeesion.selectList("boardMapper.noticeListTwo");
+	}
+	
+	public ArrayList<Board> findBoardList1(SqlSessionTemplate sqlSeesion, String keyWord){
+		return (ArrayList)sqlSeesion.selectList("boardMapper.findBoardList1", keyWord);
+	}
+	public ArrayList<Board> findBoardList2(SqlSessionTemplate sqlSeesion, String keyWord){
+		return (ArrayList)sqlSeesion.selectList("boardMapper.findBoardList2", keyWord);
+	}
+	public ArrayList<Board> findBoardList3(SqlSessionTemplate sqlSeesion, String keyWord){
+		return (ArrayList)sqlSeesion.selectList("boardMapper.findBoardList3", keyWord);
+	}
+	public ArrayList<Board> findBoardList4(SqlSessionTemplate sqlSeesion, String keyWord){
+		return (ArrayList)sqlSeesion.selectList("boardMapper.findBoardList4", keyWord);
+	}
+	public ArrayList<Board> findBoardList5(SqlSessionTemplate sqlSeesion, String keyWord){
+		return (ArrayList)sqlSeesion.selectList("boardMapper.findBoardList5", keyWord);
+	}
 }

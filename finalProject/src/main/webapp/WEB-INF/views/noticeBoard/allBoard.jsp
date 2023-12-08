@@ -8,8 +8,12 @@
 <title>품앗이-마이페이지</title>
 	<link rel="stylesheet" href="././resources/css/myPgae.css">
 	<style>
+        .main-box{
+            position: relative;
+        }
 		.pageBox{
 			margin-bottom: 100px;
+            min-height: 721px;
 		}
 
 		.profile-btn-area{
@@ -188,7 +192,19 @@
             margin-left: 33px;
             line-height: 27px;
         }
-
+        #board-create{
+            width: 80px;
+            position: absolute;
+            bottom: 122px;
+            right: 43px;
+            background: rgb(0, 199, 174);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px;
+            cursor: pointer;
+            z-index: 1;
+        }
 	</style>
 </head>
 <body>
@@ -206,34 +222,35 @@
 		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">전체보기</h3>
 			<button id="board-create" onclick="pageMove()">글쓰기</button>
-			<div class="pageBox" style="display: flex; flex-direction: column;">
+			<div class="pageBox" style="display: flex; flex-direction: column; position: relative;">
 				<div class="community-big">
 					<div class="main-a">
 					    <span class="main-span1">공지</span>
 					    <span class="main-span2">품앗이 가이드라인</span>
-                        <a href="notice.co">>
+                        <a href="notice.co">
                             <img src="././resources/borderImage/right-arrow-icon.png" alt="오른쪽 화살표" class="arrow-img">
                         </a>
 					</div>
-					<c:forEach var="b" items="${list}">                  
+					<c:forEach var="b" items="${list}">               
 					<ul>
 					    <li class="main-list">
-					        <a href="" class="a-click"></a>
-					        <div class="border-one">
-					            <span class="community-p">${b.boardType == 3 ? '궁금해요' : b.boardType == 4 ? '얼마예요' : '함께해요'}</span>
-					            <h4>${b.boardTitle}</h4>
-					            <p class="text1">${b.boardContent}</p>
-					            <p class="text2">${b.location}</p>
-					            <a href="" class="a-click">
+					        <a href="detail.co?boardNo?=${b.boardNo }" class="a-click">
+						        <div class="border-one">
+						            <span class="community-p">${b.boardType == 3 ? '궁금해요' : b.boardType == 4 ? '얼마예요' : '함께해요'}</span>
+						            <h4>${b.boardTitle}</h4>
+						            <p class="text1">${b.boardContent}</p>
+						            <p class="text2">${b.location}</p>
+						          
 					                <img src="./resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
 					                <span>0</span>
-					            </a> 
-					            <a href="" class="a-click"> 
+					          
+					      
 					                <img src="./resources/borderImage/speech-bubble-icon.png" alt="말풍선아이콘" class="img">
 					                <span>0</span>
-					            </a> 
-					            <span class="time-span">${b.createDate}</span>
-					        </div>
+						         
+						            <span class="time-span">${b.createDate}</span>
+						        </div>
+					        </a>
 					    </li>
 					    <hr class="line">
 					</ul>
