@@ -198,12 +198,12 @@ INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '커뮤니티용 페이징처리', '커뮤니티용 �
 -- ATTACHEMT 사진
 
 -- NOTICE
-INSERT INTO NOTICE VALUES(SEQ_NNO.NEXTVAL, '필독', '품앗이에 대하여', '품앗이 사이트는 전문가 및 준전문가와 수요자의 매칭을 해주는 사이트입니다.', SYSDATE, 'Y');
+INSERT INTO NOTICE VALUES(SEQ_NNO.NEXTVAL, '필독', '품앗이에 대하여', '품앗이 사이트는 전문가 및 준전문가와 수요자의 매칭을 해주는 사이트입니다.', '2020-01-01', 'Y');
 INSERT INTO NOTICE VALUES(SEQ_NNO.NEXTVAL, '필독', '품앗이 채용 사칭 스미싱 문자 주의', '다른 번호 외에 전화를 걸지 말아 주시고,
-소비자 보호를 위해 스미싱 사이트에 접속하지 말아주시길 당부 드립니다.', SYSDATE, 'Y');
+소비자 보호를 위해 스미싱 사이트에 접속하지 말아주시길 당부 드립니다.', '2020-01-01', 'Y');
 INSERT INTO NOTICE VALUES(SEQ_NNO.NEXTVAL, '공지', '품앗이 서비스 점검안내', '사이트 및 서버 점검이 진행 될 예정입니다.
-점검시간 동안 품앗이 사이트 서비스 이용이 불가능하오니 양해 부탁드립니다.', SYSDATE, 'Y');
-INSERT INTO NOTICE VALUES(SEQ_NNO.NEXTVAL, '공지', '품앗이 사기 당했을 경우', '사기 당했을 경우 신고바랍니다.', SYSDATE, 'Y');
+점검시간 동안 품앗이 사이트 서비스 이용이 불가능하오니 양해 부탁드립니다.', '2020-01-01', 'Y');
+INSERT INTO NOTICE VALUES(SEQ_NNO.NEXTVAL, '공지', '품앗이 사기 당했을 경우', '사기 당했을 경우 신고바랍니다.', '2020-01-01', 'Y');
 INSERT INTO NOTICE VALUES(SEQ_NNO.NEXTVAL, '공지', '품앗이 현피뜰 경우', '금일은 서비스 점검으로 인해 오후에 사용이 어려울 수 있습니다.
 고객놈들께서는 참고하시고 이용을 하든지 말든지 진짜 귀찮게 굴지 마시고
 알아서 하시길...', SYSDATE, 'Y');

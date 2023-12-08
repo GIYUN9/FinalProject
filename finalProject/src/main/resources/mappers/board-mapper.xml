@@ -231,4 +231,139 @@
 							#{memberNo}
 							)
 	</insert>
+	
+	<select id="noticeListTwo" resultMap="noticeResult">
+		SELECT  NOTICE_NO,
+				NOTICE_TYPE,
+				NOTICE_TITLE,
+				NOTICE_CONTENT,
+				CREATEDATE        		        
+		FROM	(
+			    SELECT  NOTICE_NO,
+						NOTICE_TYPE,
+						NOTICE_TITLE,
+						NOTICE_CONTENT,
+						CREATEDATE
+				FROM NOTICE
+				WHERE STATUS = 'Y'
+		        ORDER BY CREATEDATE DESC
+		        )
+		WHERE ROWNUM <![CDATA[<]]>= 2
+	</select>
+	
+	<select id="findBoardList1" resultMap="boardResult">
+		SELECT BOARD_NO,
+		        BOARD_TITLE,
+		        BOARD_CONTENT,
+		        PRICE,
+		        CREATEDATE,
+		        MEM_NAME,
+		        CATEGORY_NAME
+		FROM (SELECT B.BOARD_NO,
+		        B.BOARD_TITLE,
+		        B.BOARD_CONTENT,
+		        B.PRICE,
+		        B.CREATEDATE,
+		        M.MEM_NAME,
+		        C.CATEGORY_NAME
+		FROM BOARD B, MEMBER M, CATEGORY C
+		WHERE (B.MEM_NO=M.MEM_NO)
+		AND (B.CATEGORY_NO=C.CATEGORY_NO)
+		AND B.BOARD_TYPE = 1
+		ORDER BY B.CREATEDATE DESC)
+		WHERE ROWNUM <![CDATA[<]]>= 2
+		AND BOARD_TITLE LIKE '%'||#{keyWord}||'%'
+	</select>
+	<select id="findBoardList2" resultMap="boardResult">
+		SELECT BOARD_NO,
+		        BOARD_TITLE,
+		        BOARD_CONTENT,
+		        PRICE,
+		        CREATEDATE,
+		        MEM_NAME,
+		        CATEGORY_NAME
+		FROM (SELECT B.BOARD_NO,
+		        B.BOARD_TITLE,
+		        B.BOARD_CONTENT,
+		        B.PRICE,
+		        B.CREATEDATE,
+		        M.MEM_NAME,
+		        C.CATEGORY_NAME
+		FROM BOARD B, MEMBER M, CATEGORY C
+		WHERE (B.MEM_NO=M.MEM_NO)
+		AND (B.CATEGORY_NO=C.CATEGORY_NO)
+		AND B.BOARD_TYPE = 2
+		ORDER BY B.CREATEDATE DESC)
+		WHERE ROWNUM <![CDATA[<]]>= 2
+		AND BOARD_TITLE LIKE '%'||#{keyWord}||'%'
+	</select>
+	<select id="findBoardList3" resultMap="boardResult">
+		SELECT BOARD_NO,
+		        BOARD_TITLE,
+		        BOARD_CONTENT,
+		        PRICE,
+		        CREATEDATE,
+		        MEM_NAME,
+		        CATEGORY_NAME
+		FROM (SELECT B.BOARD_NO,
+		        B.BOARD_TITLE,
+		        B.BOARD_CONTENT,
+		        B.PRICE,
+		        B.CREATEDATE,
+		        M.MEM_NAME,
+		        C.CATEGORY_NAME
+		FROM BOARD B, MEMBER M, CATEGORY C
+		WHERE (B.MEM_NO=M.MEM_NO)
+		AND (B.CATEGORY_NO=C.CATEGORY_NO)
+		AND B.BOARD_TYPE = 3
+		ORDER BY B.CREATEDATE DESC)
+		WHERE ROWNUM <![CDATA[<]]>= 2
+		AND BOARD_TITLE LIKE '%'||#{keyWord}||'%'
+	</select>
+	<select id="findBoardList4" resultMap="boardResult">
+		SELECT BOARD_NO,
+		        BOARD_TITLE,
+		        BOARD_CONTENT,
+		        PRICE,
+		        CREATEDATE,
+		        MEM_NAME,
+		        CATEGORY_NAME
+		FROM (SELECT B.BOARD_NO,
+		        B.BOARD_TITLE,
+		        B.BOARD_CONTENT,
+		        B.PRICE,
+		        B.CREATEDATE,
+		        M.MEM_NAME,
+		        C.CATEGORY_NAME
+		FROM BOARD B, MEMBER M, CATEGORY C
+		WHERE (B.MEM_NO=M.MEM_NO)
+		AND (B.CATEGORY_NO=C.CATEGORY_NO)
+		AND B.BOARD_TYPE = 4
+		ORDER BY B.CREATEDATE DESC)
+		WHERE ROWNUM <![CDATA[<]]>= 2
+		AND BOARD_TITLE LIKE '%'||#{keyWord}||'%'
+	</select>
+	<select id="findBoardList5" resultMap="boardResult">
+		SELECT BOARD_NO,
+		        BOARD_TITLE,
+		        BOARD_CONTENT,
+		        PRICE,
+		        CREATEDATE,
+		        MEM_NAME,
+		        CATEGORY_NAME
+		FROM (SELECT B.BOARD_NO,
+		        B.BOARD_TITLE,
+		        B.BOARD_CONTENT,
+		        B.PRICE,
+		        B.CREATEDATE,
+		        M.MEM_NAME,
+		        C.CATEGORY_NAME
+		FROM BOARD B, MEMBER M, CATEGORY C
+		WHERE (B.MEM_NO=M.MEM_NO)
+		AND (B.CATEGORY_NO=C.CATEGORY_NO)
+		AND B.BOARD_TYPE = 5
+		ORDER BY B.CREATEDATE DESC)
+		WHERE ROWNUM <![CDATA[<]]>= 2
+		AND BOARD_TITLE LIKE '%'||#{keyWord}||'%'
+	</select>
   </mapper>

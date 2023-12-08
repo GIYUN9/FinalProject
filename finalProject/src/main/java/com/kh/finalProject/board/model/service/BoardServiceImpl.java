@@ -118,5 +118,35 @@ public class BoardServiceImpl implements BoardService {
 	public int insertCommboard(Board b) {
 		return boardDao.insertCommboard(sqlSession, b);
 	}
+
+	@Override
+	public ArrayList<Notice> noticeListTwo() {
+		return boardDao.noticeListTwo(sqlSession);
+	}
+
+	@Override
+	public ArrayList<Board> findBoardList1(String keyWord) {
+		return boardDao.findBoardList1(sqlSession, keyWord);
+	}
+
+	@Override
+	public ArrayList<Board> findBoardList2(String keyWord) {
+		return boardDao.findBoardList2(sqlSession, keyWord);
+	}
+
+	@Override
+	public ArrayList<Board> findBoardList3(String keyWord) {
+		return boardDao.findBoardList3(sqlSession, keyWord);
+	}
+
+	@Override
+	public ArrayList<Board> findBoardList4(String keyWord) {
+		return boardDao.findBoardList4(sqlSession, keyWord);
+	}
+
+	@Override
+	public ArrayList<Board> findBoardList5(String keyWord) {
+		return boardDao.findBoardList5(sqlSession, keyWord);
+	}
 	
 }

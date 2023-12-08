@@ -326,7 +326,7 @@
                 </div>    
                 <div class="hd-middle-section">
                     <img class="logowh" src="././resources/image/logowh.png" onclick="redirectToHome()">
-                    <input class="hd-searchbar" placeholder="검색"></input>        
+                    <input class="hd-searchbar" onkeyup="if(window.event.keyCode==13){loginPlz()}" placeholder="검색"></input>        
                     <img class="logowh1" src="">
                 </div>
                 <div class="hd-right-section">
@@ -343,7 +343,7 @@
                 </div>    
                 <div class="hd-middle-section">
                     <img class="logowh" src="././resources/image/logowh.png" onclick="redirectToHome()">
-                    <input class="hd-searchbar" placeholder="검색"></input>        
+                    <input class="hd-searchbar" name="searchKey" onkeyup="if(window.event.keyCode==13){find()}" placeholder="검색"></input>        
                     <img class="logowh1" src="">
                 </div>
                 <div class="hd-right-section">
@@ -637,6 +637,17 @@
 		function btn(){
 		    alert('로그인 후 사용 가능합니다.');
 		}
+		
+		function find(){
+            const keyWord = document.querySelector("input[name='searchKey']").value;
+            console.log(keyWord);
+            location.href = "find.bo?keyWord=" + keyWord;
+        }
+
+        function loginPlz(){
+            alert('로그인 후 사용 가능합니다.');
+        }
+
 	</script>
 </body>
 </html>
