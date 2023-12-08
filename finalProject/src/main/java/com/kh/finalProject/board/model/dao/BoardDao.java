@@ -143,4 +143,18 @@ public class BoardDao {
 	public ArrayList<Board> findBoardList5(SqlSessionTemplate sqlSeesion, String keyWord){
 		return (ArrayList)sqlSeesion.selectList("boardMapper.findBoardList5", keyWord);
 	}
+	
+	public ArrayList<Board> helpmeselectList(SqlSessionTemplate sqlSeesion, PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		return (ArrayList)sqlSession.helpmeselectList("boardMapper.helpmeselectList", null, rowBounds);
+	}
+	
+	public int seleteHelpmeListCount(SqlSessionTemplate sqlSeesion) {
+		return sqlSeesion.selectOne("boardMapper.seleteHelpmeListCount");
+	}
+	
+
 }

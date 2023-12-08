@@ -374,9 +374,27 @@ public class BoardController {
 		return "common/find";
 	}
 	
-	//도와주세요 게시글 조회
 	
+	//도와주세요 게시글 전체 조회
+	@RequestMapping(value = "")
+	public ModelAndView seleteHelpmeListCount(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv) {
+		int listCount = boardService.seleteHelpmeListCount();
+		
+		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
+		ArrayList<Board> list = boardService.helpselectList(pi);
+		
+		mv.addObject("pi",pi)
+			.addObject("list",list)
+			.setViewName("board/requestBoardList");
+		
+		return mv;
+	}
 	
+	//도와주세요 게시글 작성 페이지
+	@RequestMapping(value = "helpmeList.bo")
+	public String helpmeForm() {
+		return "board/requestBoardList";
+	}
 	
 	//도와주세요 게시글 등록
 	

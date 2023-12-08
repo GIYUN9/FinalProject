@@ -86,5 +86,10 @@ public interface BoardService {
 	ArrayList<Board> findBoardList3(String keyWord);
 	ArrayList<Board> findBoardList4(String keyWord);
 	ArrayList<Board> findBoardList5(String keyWord);
-
+	
+	//도와주세요 게시글 전체 게시글 조회
+//	ArrayList<Board> helpmeselectList(PageInfo pi);
+	
+	//도와주세요 게시판 리스트 count(*)조회
+	int seleteHelpmeListCount();
 }

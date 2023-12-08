@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>도와주세요</title>
 <style>
     * {
         list-style: none; 
@@ -217,6 +217,23 @@
     .head-category-slist{
         background-color: rgba(83, 82, 82, 0.65);
     }
+    
+    .write-btn{
+        color: white;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+    
+    .write-area{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        text-align: center;
+    }
 </style>
 </head>
 <body>
@@ -275,7 +292,8 @@
                 <div class = "content-head">
                    <div id = "head-count">총 1063개의 서비스</div>
                    <div id = "head-category">
-                        <form>
+                        <form class="write-area">
+                        	<a class="write-btn" href="helpmeForm.bo">글쓰기</a>
                             <select name="" id="head-category-list">
                                 <option class = "head-category-slist" value="date" selected>날짜순</option>
                                 <option class = "head-category-slist" value="interest">인기순</option>

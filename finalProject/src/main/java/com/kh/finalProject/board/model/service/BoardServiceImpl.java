@@ -183,4 +183,16 @@ public class BoardServiceImpl implements BoardService {
 
 	}
 	
+	//도와주세요 게시글 전체 갯수 count(*)조회
+	@Override
+	public int seleteHelpmeListCount() {
+		return boardDao.seleteHelpmeListCount(sqlSession);
+	}
+	
+	//게시판 도와주세요 조회
+	@Override
+	public ArrayList<Board> helpmeselectList(PageInfo pi) {
+		return boardDao.helpmeselectList(sqlSession, pi);
+	}
+	
 }
