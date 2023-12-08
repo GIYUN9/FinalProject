@@ -35,6 +35,9 @@ public interface MemberService {
 	//회원탈퇴 서비스
 	int deleteMember(Member m);
 	
+	//프로필 이미지 변경
+	int updateUserImg(String memberNo, String filePath);
+	
 	//일정관리
 	/*
 	ArrayList<Member> scheduleList();

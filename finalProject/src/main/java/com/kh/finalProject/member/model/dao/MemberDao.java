@@ -1,6 +1,7 @@
 package com.kh.finalProject.member.model.dao;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -53,5 +54,11 @@ public class MemberDao {
 		return (ArrayList)sqlSession.selectList("memberMapper.scheduleList");
 	}
 */	
+	public int updateUserImg(SqlSessionTemplate sqlSession, String memberNo, String filePath) {
+		Map<String, String> tmp = new HashMap();
+		tmp.put("memberNo", memberNo);
+		tmp.put("filePath", filePath);
+		return sqlSession.update("memberMapper.updateUserImg", tmp);
+	}
 }
 
