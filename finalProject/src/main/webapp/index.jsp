@@ -29,7 +29,7 @@
 		<jsp:forward page="WEB-INF/views/noticeBoard/noticeBoard.jsp"/> 공지 게시판 - 스타일 통일, 매핑
 		<jsp:forward page="WEB-INF/views/myPage/proInfo2.jsp"/> 전문가 마이페이지-스타일 통일
 		<jsp:forward page="WEB-INF/views/myPage/admin.jsp"/> 
-		<jsp:forward page="WEB-INF/views/board/comDetail.jsp"/>
+		<jsp:forward page="WEB-INF/views/board/comboard.jsp"/>
 		
 		
 		나기윤
