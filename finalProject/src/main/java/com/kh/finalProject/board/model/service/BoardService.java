@@ -27,7 +27,7 @@ public interface BoardService {
 	Board selectBoard(int boardNo);
 	
 	//도와줄게요 게시판 등록
-	int insertBoard(Board b);
+	int helpinsertBoard(Board b);
 	
 	//도와줄게요 사진 첨부
 	int helpAttachment(Attachment at);
@@ -65,4 +65,6 @@ public interface BoardService {
 	//얼마예요 리스트 (조회)
 	ArrayList<Board> selectMuchList(PageInfo pi);
 
+	//도와줄게요 보드번호 가져오는 중간 쿼리
+	Board helpselectOne(Board b);
 }

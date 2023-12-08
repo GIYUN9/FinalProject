@@ -34,8 +34,8 @@ public class BoardDao {
 	}
 	
 	
-	public int insertBoard(SqlSessionTemplate sqlSession, Board b) {
-		return sqlSession.insert("boardMapper.insertBoard", b);
+	public int helpinsertBoard(SqlSessionTemplate sqlSession, Board b) {
+		return sqlSession.insert("boardMapper.helpinsertBoard", b);
 	}
 
 	public int updateBoard(SqlSessionTemplate sqlSession, Board b) {
@@ -52,7 +52,7 @@ public class BoardDao {
 	
 
 	public int helpAttachment(SqlSessionTemplate sqlSession, Attachment at) {
-		return sqlSession.selectOne("boardMapper.helpAttachment", at);
+		return sqlSession.insert("boardMapper.helpAttachment", at);
 	}
 	
 	public int helpselect(SqlSessionTemplate sqlSession) {
@@ -102,5 +102,9 @@ public class BoardDao {
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		return (ArrayList)sqlSession.selectList("boardMapper.selectMuchList", null, rowBounds);
+	}
+	
+	public Board helpselectOne(SqlSessionTemplate sqlSession, Board b) {
+		return sqlSession.selectOne("boardMapper.helpselectOne" ,b);
 	}
 }

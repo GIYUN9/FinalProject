@@ -34,8 +34,8 @@ public class BoardServiceImpl implements BoardService {
 	//게시글 등록
 	@Override
 	//도와줄게요 게시판 등록
-	public int insertBoard(Board b) {
-		return boardDao.insertBoard(sqlSession, b);
+	public int helpinsertBoard(Board b) {
+		return boardDao.helpinsertBoard(sqlSession, b);
 	}
 
 	//게시글 수정
@@ -128,6 +128,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public ArrayList<Board> selectMuchList(PageInfo pi) {
 		return boardDao.selectMuchList(sqlSession, pi);
+	}
+
+	@Override
+	public Board helpselectOne(Board b) {
+		return boardDao.helpselectOne(sqlSession ,b);
 	}
 	
 }

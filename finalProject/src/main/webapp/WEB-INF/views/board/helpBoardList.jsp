@@ -273,68 +273,19 @@
                    </div>
                 </div>
                 
-                <div class = "content-item">
-                     <a href ="././WEB-INF/views/board/boardDetailView.jsp">
-                        <img  class = "content-img" src = "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzEwMTdfNTgg%2FMDAxNjk3NTM5MTYyMDU1.2FTbuIwYW-lYUnwwsOymlHEzSOePqb98wZL9dmdJQ44g.9OmmX2wPWyBWzDkmuySWmSj3gIDYOiH40xw5mXgGJmsg.JPEG.suninefreeimage%2F_Z5A4454.jpg&type=sc960_832">
-                        <div class = "content-item-title">${b.title}</div>
-                        <div class = "content-item-price">${b.price}원</div>
-                     </a> 
-                </div>
-                
-                <div class = "content-item">
-                    <a href = "#">
-                         <img  class = "content-img" src = "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzEwMTdfNTgg%2FMDAxNjk3NTM5MTYyMDU1.2FTbuIwYW-lYUnwwsOymlHEzSOePqb98wZL9dmdJQ44g.9OmmX2wPWyBWzDkmuySWmSj3gIDYOiH40xw5mXgGJmsg.JPEG.suninefreeimage%2F_Z5A4454.jpg&type=sc960_832">
-                        <div class = "content-item-title">${b.title}</div>
-                        <div class = "content-item-price">${b.price}원</div>
-                    </a>
-                </div>
-                
-                <div class = "content-item">
-                    <a href = "#">
-                         <img  class = "content-img" src = "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzEwMTdfNTgg%2FMDAxNjk3NTM5MTYyMDU1.2FTbuIwYW-lYUnwwsOymlHEzSOePqb98wZL9dmdJQ44g.9OmmX2wPWyBWzDkmuySWmSj3gIDYOiH40xw5mXgGJmsg.JPEG.suninefreeimage%2F_Z5A4454.jpg&type=sc960_832">
-                        <div class = "content-item-title">${b.title}</div>
-                        <div class = "content-item-price">${b.price}원</div>
-                    </a>
-                </div>
-                
-                <div class = "content-item">
-                    <a href = "#">
-                        <img class = "content-img" src = "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fimage.utoimage.com%2Fpreview%2Fcp996406%2F2023%2F09%2F202309004664_800.jpg&type=sc960_832">
-                        <div class = "content-item-title">${b.title}</div>
-                        <div class = "content-item-price">${b.price}원</div>
-                    </a>
-                </div>
-                <div class = "content-item">
-                    <a href = "#">
-                        <img class = "content-img" src = "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fimage.utoimage.com%2Fpreview%2Fcp996406%2F2023%2F09%2F202309004664_800.jpg&type=sc960_832">
-                        <div class = "content-item-title">자바배워봐요</div>
-                        <div class = "content-item-price">200원</div>
-                    </a>
-                </div>
-                <div class = "content-item">
-                    <a href = "#">
-                        <img class = "content-img" src = "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fimage.utoimage.com%2Fpreview%2Fcp996406%2F2023%2F09%2F202309004664_800.jpg&type=sc960_832">
-                        <div class = "content-item-title">스프링 배워봐요</div>
-                        <div class = "content-item-price">300원</div>
-                    </a>
-                </div>
-                <div class = "content-item">
-                    <a href = "#">
-                        <img class = "content-img" src = "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fimage.utoimage.com%2Fpreview%2Fcp996406%2F2023%2F09%2F202309004664_800.jpg&type=sc960_832">
-                        <div class = "content-item-title">추위에 떨어봐요</div>
-                        <div class = "content-item-price">90000원</div>
-                    </a>
-                </div>
-                <div class = "content-item">
-                    <a href = "#">
-                       <img class = "content-img" src = "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fimage.utoimage.com%2Fpreview%2Fcp996406%2F2023%2F09%2F202309004664_800.jpg&type=sc960_832">
-                        <div class = "content-item-title">과자도 먹어봐요</div>
-                        <div class = "content-item-price">500원</div>
-                    </a>
-                </div>
+                <c:forEach var="b" items="${list}">
+                	<div class = "content-item">
+	                     <a href ="${b.boardNo }">
+	                        <img  class = "content-img" src = "${b.filePath}${b.changeName}">
+	                        <div class = "content-item-title">${b.boardTitle}</div>
+	                        <div class = "content-item-price">${b.price}원</div>
+	                     </a> 
+                	</div>
+                </c:forEach>               
             </div>
         </div>
     </div>
+
    
 <%@ include file = "../common/footer.jsp"%>            
 </body>
