@@ -428,5 +428,4 @@
 		WHERE ROWNUM <![CDATA[<]]>= 2
 		AND BOARD_TITLE LIKE '%'||#{keyWord}||'%'
 	</select>
->>>>>>> 532b5368eb6bd53e28219d4a66cfe8bdeb6ff770
   </mapper>
