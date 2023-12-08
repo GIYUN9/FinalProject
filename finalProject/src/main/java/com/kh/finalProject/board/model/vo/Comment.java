@@ -1,4 +1,4 @@
-package com.kh.finalProject.common.vo;
+package com.kh.finalProject.board.model.vo;
 
 import java.sql.Date;
 
@@ -13,11 +13,10 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Attachment {
-	private int attNo;
-	private String originName;
-	private String changeName;
-	private String filePath;
-	private String status;
+public class Comment {
+	private int commentNo; // 댓글번호
+	private Date commentCreated; //댓글작성일
+	private String content; // 댓글내용
 	private int boardNo;
+	private int memberNo;
 }
