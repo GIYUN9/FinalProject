@@ -1,5 +1,7 @@
 package com.kh.finalProject.member.model.service;
 
+import java.util.ArrayList;
+
 import com.kh.finalProject.member.model.vo.Member;
 import com.kh.finalProject.member.model.vo.Professional;
 
@@ -32,4 +34,9 @@ public interface MemberService {
 	
 	//회원탈퇴 서비스
 	int deleteMember(Member m);
+	
+	//일정관리
+	/*
+	ArrayList<Member> scheduleList();
+	*/
 }
