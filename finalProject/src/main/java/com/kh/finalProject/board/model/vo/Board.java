@@ -17,7 +17,7 @@ public class Board {
 	private int boardNo;
 	private String boardTitle;
 	private String boardContent;
-	private int Price;
+	private int price;
 	private int boardType;
 	private Date createDate;
 	private String status; 
@@ -25,4 +25,6 @@ public class Board {
 	private int categoryNo;
 	
 	private String location;
+	private String changeName;
+	private String filePath;
 }

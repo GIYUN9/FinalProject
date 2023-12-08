@@ -188,6 +188,12 @@ INSERT INTO PROFESSIONAL VALUES(SEQ_PNO.NEXTVAL, '피아니스트', 200, 2);
 
 --게시판(보드)
 INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-01-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-02-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-03-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-04-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-05-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-06-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-07-01', 'Y', 2, 200);
 INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '커뮤니티용 음악레슨합니다1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 50000, 3, '2020-01-02', 'Y', 2, 200);
 INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '얼마예요1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 4, '2020-01-03', 'Y', 2, 200);
 INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '함께해요1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 5, '2020-01-04', 'Y', 2, 200);
@@ -196,7 +202,13 @@ INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '얼마예요2', '커뮤니티용 음악 정말 즐�
 INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '함께2', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 5, '2020-01-07', 'Y', 2, 200);
 INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '커뮤니티용 페이징처리', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 3, '2020-01-08', 'Y', 2, 200);
 -- ATTACHEMT 사진
-
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, '22', '33', '4' , 'Y' ,1000);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, '22', '33', '4' , 'Y' ,1001);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, '22', '33', '4' , 'Y' ,1002);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, '22', '33', '4' , 'Y' ,1003);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, '22', '33', '4' , 'Y' ,1004);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, '22', '33', '4' , 'Y' ,1005);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, '22', '33', '4' , 'Y' ,1006);
 -- NOTICE
 INSERT INTO NOTICE VALUES(SEQ_NNO.NEXTVAL, '필독', '품앗이에 대하여', '품앗이 사이트는 전문가 및 준전문가와 수요자의 매칭을 해주는 사이트입니다.', '2020-01-01', 'Y');
 INSERT INTO NOTICE VALUES(SEQ_NNO.NEXTVAL, '필독', '품앗이 채용 사칭 스미싱 문자 주의', '다른 번호 외에 전화를 걸지 말아 주시고,

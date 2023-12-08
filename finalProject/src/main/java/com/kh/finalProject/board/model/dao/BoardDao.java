@@ -7,7 +7,11 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.finalProject.board.model.vo.Board;
+
+import com.kh.finalProject.common.vo.Attachment;
+
 import com.kh.finalProject.common.vo.Notice;
+
 import com.kh.finalProject.common.vo.PageInfo;
 
 @Repository
@@ -21,9 +25,17 @@ public class BoardDao {
 		return (ArrayList)sqlSession.selectList("boardMapper.selectCommList", null, rowBounds);
 	}
 	
+	public ArrayList<Board> helpselectList(SqlSessionTemplate sqlSession, PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		return (ArrayList)sqlSession.selectList("boardMapper.helpselectList", null, rowBounds);
+	}
 	
-	public int insertBoard(SqlSessionTemplate sqlSession, Board b) {
-		return sqlSession.insert("boardMapper.insertBoard", b);
+	
+	public int helpinsertBoard(SqlSessionTemplate sqlSession, Board b) {
+		return sqlSession.insert("boardMapper.helpinsertBoard", b);
 	}
 
 	public int updateBoard(SqlSessionTemplate sqlSession, Board b) {
@@ -38,6 +50,15 @@ public class BoardDao {
 		return sqlSession.selectOne("boardMapper.selectBoard", boardNo);
 	}
 	
+
+	public int helpAttachment(SqlSessionTemplate sqlSession, Attachment at) {
+		return sqlSession.insert("boardMapper.helpAttachment", at);
+	}
+	
+	public int helpselect(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("boardMapper.helpselect");
+	}
+
 	public int selectCommListCount(SqlSessionTemplate sqlSeesion) {
 		return sqlSeesion.selectOne("boardMapper.selectCommListCount");
 	}
@@ -48,6 +69,11 @@ public class BoardDao {
 	
 	public int insertNotice(SqlSessionTemplate sqlSeesion, Notice n) {
 		return sqlSeesion.insert("boardMapper.insertNotice", n);
+
+	}
+	
+	public int seleteHelpListCount(SqlSessionTemplate sqlSeesion) {
+		return sqlSeesion.selectOne("boardMapper.seleteHelpListCount");
 	}
 	
 	public int deleteNotice(SqlSessionTemplate sqlSeesion, Notice n) {
@@ -76,6 +102,10 @@ public class BoardDao {
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		return (ArrayList)sqlSession.selectList("boardMapper.selectMuchList", null, rowBounds);
+	}
+	
+	public Board helpselectOne(SqlSessionTemplate sqlSession, Board b) {
+		return sqlSession.selectOne("boardMapper.helpselectOne" ,b);
 	}
 	
 	public int selectTogetherListCount(SqlSessionTemplate sqlSeesion) {

@@ -21,6 +21,8 @@
   		<result column="ORIGIN_NAME" property="originName" />
   		<result column="CHANGE_NAME" property="changeName" />
   		<result column="FILE_PATH" property="filePath" />
+  		<result column="STATUS" property="status" />
+  		<result column="BOARD_NO" property="boardNo" />
   	</resultMap>
   	
   	<resultMap type="Notice" id="noticeResult">
@@ -32,35 +34,78 @@
   		<result column="STATUS" property="status" />
   	</resultMap>
  	
-  	<!-- 도와줄게요 게시글 조회 쿼리문 
-  	<select id="selectBoard">
-  	
-  	</select>
-  	-->
+ 	
+ 	
+ 	<!-- 도와줄게요 게시글 총 갯수 조회 -->
+ 	<select id="seleteHelpListCount" resultType="_int">
+ 		SELECT COUNT(*)
+ 		  FROM BOARD
+ 		 WHERE BOARD_TYPE = 1
+ 		AND STATUS = 'Y'
+ 	</select>
+ 	
+ 	<!-- 도와줄게요 게시글 전체 조회 -->
+ 	<select id="helpselectList" resultMap="boardResult">
+ 		SELECT  B.BOARD_NO,
+ 			  	B.BOARD_TITLE,
+ 			   	B.PRICE,
+ 			   	A.FILE_PATH,
+               	A.CHANGE_NAME
+ 		FROM BOARD B
+        JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
+ 		 WHERE B.BOARD_TYPE = 1
+         AND B.STATUS = 'Y'
+ 	</select>
+ 	
+ 	<!-- 도와주세요 게시판 전체 조회 -->
+ 	
+  
+
   	<!-- 도와줄게요 게시글 등록 쿼리문 -->
-  	<insert id="insertBoard">
+  	<insert id="helpinsertBoard">
   		INSERT INTO
   			BOARD 
   				(
   				BOARD_NO,
+  				CATEGORY_NO,
   				BOARD_TITLE,
   				BOARD_CONTENT,
   				PRICE,
-  				MEM_NO,
-  				CATEGORY_NO
+  				BOARD_TYPE,
+  				MEM_NO
   				)
  
   			VALUES 
   				 (
   				 SEQ_BNO.NEXTVAL,
+  				 #{categoryNo},
   				 #{boardTitle},
   				 #{boardContent},
   				 #{price},
-  				 #{memberNo},
-  				 #{categoryNo}
+  				 #{boardType},
+  				 #{memberNo}
   				 )
   	</insert>
   	
+  	<!-- 사진 등록 쿼리문 -->
+  	<insert id="helpAttachment">
+  		INSERT INTO
+  			ATTACHMENT
+  					  (
+  					  ATT_NO,
+  					  ORIGIN_NAME,
+  					  CHANGE_NAME,
+  					  BOARD_NO
+  					  )
+  			
+  			VALUES
+  				  (
+  				  SEQ_ANO.NEXTVAL,
+  				  #{originName},
+  				  #{changeName},
+  				  #{boardNo}			
+  				  )
+  	</insert>
   	
   	<!-- 도와줄게요 게시글 수정 쿼리문 -->
   	<update id="updateBoard">
@@ -210,6 +255,23 @@
   			SET STATUS = 'N'
   		WHERE NOTICE_NO = #{noticeNo}
   	</update>
+  	
+  	<select id="helpselectOne" resultMap="boardResult">
+  		SELECT  BOARD_NO,
+  				CATEGORY_NO,
+  				BOARD_TITLE,
+  				BOARD_CONTENT,
+  				PRICE,
+  				BOARD_TYPE,
+  				MEM_NO
+  		FROM BOARD
+  		WHERE CATEGORY_NO = #{categoryNo}
+  		AND		BOARD_TITLE = #{boardTitle}
+  		AND		BOARD_CONTENT = #{boardContent}
+		AND		PRICE = #{price}
+		AND		BOARD_TYPE = #{boardType}
+		AND		MEM_NO = #{memberNo}
+  	</select>
   		
 	<insert id = "insertCommboard">
 		INSERT INTO BOARD	(
