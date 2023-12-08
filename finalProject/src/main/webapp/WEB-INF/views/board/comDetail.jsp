@@ -50,10 +50,46 @@
         .img{
             width: 20px;
             height: 20px;
+            cursor: pointer;
         }
         .img-area{
             position: absolute;
             bottom: 1px;
+            margin-bottom: 10px;
+            color: #888888;
+            margin-top: 10px;
+        }
+        .reply-align{
+            display: flex;
+            flex-direction: row;
+            padding: 10px;
+        }
+        .reply-top{
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            margin-bottom: 10px;
+            color: #888888;
+        }
+        .reply-bot{
+            color: #888888;
+        }
+        .req-btn{
+            position: absolute;
+            right: 1px;
+            color: #00c7ae;
+            background-color: #eafaf9;
+            border: 0;
+            padding: .3125rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .reply-writer{
+            color: black;
+            font-size: 17px;
+            font-weight: 600;
         }
 	</style>
 </head>
@@ -139,15 +175,69 @@
                     간단하게 셀프로 보수 해볼만한 방법 있을까요?
                     몰딩이 까져서.. 마음은 이미 포기했는데요<br>
                     간단하게 셀프로 보수 해볼만한 방법 있을까요?
+                    <br><br><br>
                     <div class="img-area">
                         <img src="./resources/borderImage/good-icon.png" class="img">
-                        <span>39</span>
-                        <img src="./resources/borderImage/speech-bubble-icon.png" class="img">
-                        <span>104</span>
+                        <span>좋아요 39</span>
+                        <img src="./resources/icon/LIKE.png" class="img">
+                        <span>조회수 104</span>
                     </div>
                 </div>
                 <div class="reply-area">
-
+                    <div class="reply-align">
+                        <div class="profile-area">
+                            <img style="width: 45px; height: 45px; margin: 5px; border-radius: 15px;" src="./resources/icon/profileTest.png">
+                        </div>
+                        <div class="reply-info">
+                            <div class="reply-top">
+                                <div class="reply-writer">
+                                    정훈 
+                                </div>
+                                <div>
+                                    일러스트 디자인+8개서비스 고수 
+                                </div>
+                                <button class="req-btn">견적요청</button>
+                            </div>
+                            <div class="reply-cont">
+                                뜯어져나갈 부분은 깔끔하게 뜯어내시고 가까운 철물점에서 퍼티랑 사포 사셔서 퍼티로 평평하게 바르시고 마르면 사포로 다듬으시고 시트지를 붙여야될 것 같아요 같은 시트지가 있을지 모르겠네요
+                            </div>
+                            <div class="reply-bot">
+                                <span> 2시간 전 ·</span>
+                                <img src="./resources/icon/LIKE.png" class="img">
+                                <span>39</span>
+                                <img src="./resources/icon/dislike.png" class="img">
+                                <span>-5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="reply-area">
+                    <div class="reply-align">
+                        <div class="profile-area">
+                            <img style="width: 45px; height: 45px; margin: 5px; border-radius: 15px;" src="./resources/icon/profileTest.png">
+                        </div>
+                        <div class="reply-info">
+                            <div class="reply-top">
+                                <div class="reply-writer">
+                                    정훈 
+                                </div>
+                                <div>
+                                    일러스트 디자인+8개서비스 고수 
+                                </div>
+                                <button class="req-btn">견적요청</button>
+                            </div>
+                            <div class="reply-cont">
+                                뜯어져나갈 부분은 깔끔하게 뜯어내시고 가까운 철물점에서 퍼티랑 사포 사셔서 퍼티로 평평하게 바르시고 마르면 사포로 다듬으시고 시트지를 붙여야될 것 같아요 같은 시트지가 있을지 모르겠네요
+                            </div>
+                            <div class="reply-bot">
+                                <span> 2시간 전 ·</span>
+                                <img src="./resources/borderImage/good-icon.png" class="img">
+                                <span>39</span>
+                                <img src="./resources/borderImage/good-icon.png" class="img">
+                                <span>-5</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 			</div>		
 		</div>
