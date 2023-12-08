@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,22 +80,17 @@
 						    	</div>
 					    	</div>
 					    </div>
-					    <div class="carousel-item">
-						    <div class="your-div-class">
-								<div class="no-add">
-						      		<h3>공지사항 </h3>
-		   							<p style="margin: 10px;">품앗이에 오신것을 환영합니다~</p>					    	
-								</div>
-					    	</div>
-					    </div>
-					    <div class="carousel-item">
-						    <div class="your-div-class">
-								<div class="no-add">
-						      		<h3>공지사항 </h3>
-		   							<p style="margin: 10px;">품앗이에 오신것을 환영합니다~</p>					    	
-								</div>
-					    	</div>
-					    </div>
+					    <c:forEach var="n" items="${nList}">
+						    <div class="carousel-item">
+							    <div class="your-div-class">
+									<div class="no-add">
+										<h5>${n.noticeType}</h5>
+							      		<h3>${n.noticeTitle}</h3>
+			   							<p style="margin: 10px;">${n.noticeContent}</p>					    	
+									</div>
+						    	</div>
+						    </div>
+					    </c:forEach>
 					  </div>
 					  
 					  <!-- Left and right controls/icons -->

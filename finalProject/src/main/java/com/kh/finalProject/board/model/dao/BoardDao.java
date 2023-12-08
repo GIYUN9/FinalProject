@@ -97,4 +97,20 @@ public class BoardDao {
 	public ArrayList<Notice> noticeListTwo(SqlSessionTemplate sqlSeesion){
 		return (ArrayList)sqlSeesion.selectList("boardMapper.noticeListTwo");
 	}
+	
+	public ArrayList<Board> findBoardList1(SqlSessionTemplate sqlSeesion, String keyWord){
+		return (ArrayList)sqlSeesion.selectList("boardMapper.findBoardList1", keyWord);
+	}
+	public ArrayList<Board> findBoardList2(SqlSessionTemplate sqlSeesion, String keyWord){
+		return (ArrayList)sqlSeesion.selectList("boardMapper.findBoardList2", keyWord);
+	}
+	public ArrayList<Board> findBoardList3(SqlSessionTemplate sqlSeesion, String keyWord){
+		return (ArrayList)sqlSeesion.selectList("boardMapper.findBoardList3", keyWord);
+	}
+	public ArrayList<Board> findBoardList4(SqlSessionTemplate sqlSeesion, String keyWord){
+		return (ArrayList)sqlSeesion.selectList("boardMapper.findBoardList4", keyWord);
+	}
+	public ArrayList<Board> findBoardList5(SqlSessionTemplate sqlSeesion, String keyWord){
+		return (ArrayList)sqlSeesion.selectList("boardMapper.findBoardList5", keyWord);
+	}
 }

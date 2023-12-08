@@ -247,26 +247,26 @@ public class BoardController {
 		//최대 최근등록 2개 공통
 		//공지사항
 		ArrayList<Notice> nList = boardService.noticeListTwo();
-		model.addAttribute("n", nList);
+		model.addAttribute("nList", nList);
 		
 		//도와줄게요 서비스
-		ArrayList<Notice> list1 = boardService.findBoardList1(keyWord);
+		ArrayList<Board> list1 = boardService.findBoardList1(keyWord);
 		model.addAttribute("list1", list1);
-		
+		System.out.println(list1);
 		//도와주세요 서비스
-		ArrayList<Notice> list2 = boardService.findBoardList2(keyWord);
+		ArrayList<Board> list2 = boardService.findBoardList2(keyWord);
 		model.addAttribute("list2", list2);
 		
 		//궁금해요 서비스
-		ArrayList<Notice> list3 = boardService.findBoardList3(keyWord);
+		ArrayList<Board> list3 = boardService.findBoardList3(keyWord);
 		model.addAttribute("list3", list3);
 		
 		//얼마예요 서비스
-		ArrayList<Notice> list4 = boardService.findBoardList4(keyWord);
+		ArrayList<Board> list4 = boardService.findBoardList4(keyWord);
 		model.addAttribute("list4", list4);
 		
 		//함께해요 서비스
-		ArrayList<Notice> list5 = boardService.findBoardList5(keyWord);
+		ArrayList<Board> list5 = boardService.findBoardList5(keyWord);
 		model.addAttribute("list5", list5);
 		
 		return "common/find";
