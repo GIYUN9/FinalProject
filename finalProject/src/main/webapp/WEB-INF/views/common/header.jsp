@@ -42,10 +42,10 @@
         color: white;
     }
     .hd-searchbar{
-        border: none;
         width: 500px;
         height: 36px;
         border-radius: 45px;
+        border: 1px solid rgba(226, 226, 226, 0.4);
     }
     .hd-left-section{
         padding-left: 10px;

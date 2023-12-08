@@ -14,10 +14,10 @@
 		}
 		
 		.updatePwd-btn{
-			border: solid 1px gray;
+			border: none;
 			border-radius: 5px;
-			background: rgba(224, 224, 224, 0.25);
-			color: black;
+			background: rgb(0, 199, 174);
+			color: white;
 			height: 48px;
 			width: 320px;
 			font-weight: bold;

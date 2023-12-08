@@ -1,5 +1,7 @@
 package com.kh.finalProject.member.model.service;
 
+import java.util.ArrayList;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,4 +63,10 @@ public class MemberServiceImpl implements MemberService {
 	public int deleteMember(Member m) {
 		return memberDao.deleteMember(sqlSession, m);
 	}
+/*
+	@Override
+	public ArrayList<Member> scheduleList() {
+		return memberDao.scheduleList(sqlSession);
+	}
+*/
 }
