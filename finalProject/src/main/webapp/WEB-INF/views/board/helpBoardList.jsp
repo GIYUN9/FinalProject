@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>도와줄게요 전체 게시판</title>
 <style>
     * {
         list-style: none; 
@@ -182,20 +183,25 @@
         border-radius: 8px;
         color: white;
     }
-    
-
-    a{
-        color: white;
-        
-    }
 
     #category-item > option{
         background-color: rgba(83, 82, 82, 0.65);
     }
-
-    
-   
-
+    .write-btn{
+        color: white;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+    .write-area{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        text-align: center;
+    }
 </style>
 </head>
 <body>
@@ -204,38 +210,38 @@
         <div class = "nav-center-items">
             <div class = "nav-item">
                 <div class="aaa">
-                    <a href="#">전체보기</a>
+                    <a href="#" style="color: white;">전체보기</a>
                 </div>
             </div>
             <div class = "nav-item"><a href="#">&#60;</a></div>
             <div class = "nav-item">
                 <div class="aaa">
-                    <a href="#">취미,레슨</a>
+                    <a href="#"  style="color: white;">취미,레슨</a>
                 </div>
             </div>
             <div class = "nav-item">
                 <div class="aaa">
-                    <a href="#">디자인</a>
+                    <a href="#" style="color: white;">디자인</a>
                 </div>
             </div>
             <div class = "nav-item">
                 <div class="aaa">
-                    <a href="#">마케팅</a>
+                    <a href="#" style="color: white;">마케팅</a>
                 </div>
             </div>
             <div class = "nav-item">
                 <div class="aaa">
-                    <a href="#">운동</a>
+                    <a href="#" style="color: white;">운동</a>
                 </div>
             </div>
             <div class = "nav-item">
                 <div class="aaa">
-                    <a href="#">게임</a>
+                    <a href="#" style="color: white;">게임</a>
                 </div>
             </div>
             <div class = "nav-item">
                 <div class="aaa">
-                    <a href="#">미술</a>
+                    <a href="#" style="color: white;">미술</a>
                 </div>
             </div>
            
@@ -254,7 +260,10 @@
                 <div class = "content-head">
                    <div id = "head-count">총 1063개의 서비스</div>
                    <div id = "head-category">
-                        <form>
+					
+			
+                        <form class="write-area">
+                        	<a class="write-btn" href="helpuForm.bo">글쓰기</a>
                             <select name="" id="category-item">
                                 <option class = "category-item-list" value="date" selected>날짜순</option>
                                 <option class = "category-item-list" value="interest">인기순</option>
@@ -263,66 +272,20 @@
                         </form>
                    </div>
                 </div>
-                <div class = "content-item">
-                    <a href ="././WEB-INF/views/board/boardDetailView.jsp">
-                        <img  class = "content-img" src = "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzEwMTdfNTgg%2FMDAxNjk3NTM5MTYyMDU1.2FTbuIwYW-lYUnwwsOymlHEzSOePqb98wZL9dmdJQ44g.9OmmX2wPWyBWzDkmuySWmSj3gIDYOiH40xw5mXgGJmsg.JPEG.suninefreeimage%2F_Z5A4454.jpg&type=sc960_832">
-                        <div class = "content-item-title">어울리는 머리 찾아드려요!</div>
-                        <div class = "content-item-price">20000원</div>
-                    </a>
-                </div>
-                <div class = "content-item">
-                    <a href = "#">
-                         <img  class = "content-img" src = "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzEwMTdfNTgg%2FMDAxNjk3NTM5MTYyMDU1.2FTbuIwYW-lYUnwwsOymlHEzSOePqb98wZL9dmdJQ44g.9OmmX2wPWyBWzDkmuySWmSj3gIDYOiH40xw5mXgGJmsg.JPEG.suninefreeimage%2F_Z5A4454.jpg&type=sc960_832">
-                        <div class = "content-item-title">연기학원 연기 알려드려요^^</div>
-                        <div class = "content-item-price">50000원</div>
-                    </a>
-                </div>
-                <div class = "content-item">
-                    <a href = "#">
-                         <img  class = "content-img" src = "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzEwMTdfNTgg%2FMDAxNjk3NTM5MTYyMDU1.2FTbuIwYW-lYUnwwsOymlHEzSOePqb98wZL9dmdJQ44g.9OmmX2wPWyBWzDkmuySWmSj3gIDYOiH40xw5mXgGJmsg.JPEG.suninefreeimage%2F_Z5A4454.jpg&type=sc960_832">
-                        <div class = "content-item-title">뮤지컬 배워봐요</div>
-                        <div class = "content-item-price">15000원</div>
-                    </a>
-                </div>
                 
-                <div class = "content-item">
-                    <a href = "#">
-                        <img class = "content-img" src = "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fimage.utoimage.com%2Fpreview%2Fcp996406%2F2023%2F09%2F202309004664_800.jpg&type=sc960_832">
-                        <div class = "content-item-title">노래도 배워봐요</div>
-                        <div class = "content-item-price">5000원</div>
-                    </a>
-                </div>
-                <div class = "content-item">
-                    <a href = "#">
-                        <img class = "content-img" src = "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fimage.utoimage.com%2Fpreview%2Fcp996406%2F2023%2F09%2F202309004664_800.jpg&type=sc960_832">
-                        <div class = "content-item-title">자바배워봐요</div>
-                        <div class = "content-item-price">200원</div>
-                    </a>
-                </div>
-                <div class = "content-item">
-                    <a href = "#">
-                        <img class = "content-img" src = "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fimage.utoimage.com%2Fpreview%2Fcp996406%2F2023%2F09%2F202309004664_800.jpg&type=sc960_832">
-                        <div class = "content-item-title">스프링 배워봐요</div>
-                        <div class = "content-item-price">300원</div>
-                    </a>
-                </div>
-                <div class = "content-item">
-                    <a href = "#">
-                        <img class = "content-img" src = "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fimage.utoimage.com%2Fpreview%2Fcp996406%2F2023%2F09%2F202309004664_800.jpg&type=sc960_832">
-                        <div class = "content-item-title">추위에 떨어봐요</div>
-                        <div class = "content-item-price">90000원</div>
-                    </a>
-                </div>
-                <div class = "content-item">
-                    <a href = "#">
-                       <img class = "content-img" src = "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fimage.utoimage.com%2Fpreview%2Fcp996406%2F2023%2F09%2F202309004664_800.jpg&type=sc960_832">
-                        <div class = "content-item-title">과자도 먹어봐요</div>
-                        <div class = "content-item-price">500원</div>
-                    </a>
-                </div>
+                <c:forEach var="b" items="${list}">
+                	<div class = "content-item">
+	                     <a href ="${b.boardNo }">
+	                        <img  class = "content-img" src = "${b.filePath}${b.changeName}">
+	                        <div class = "content-item-title">${b.boardTitle}</div>
+	                        <div class = "content-item-price">${b.price}원</div>
+	                     </a> 
+                	</div>
+                </c:forEach>               
             </div>
         </div>
     </div>
+
    
 <%@ include file = "../common/footer.jsp"%>            
 </body>

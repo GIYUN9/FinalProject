@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,45 +38,58 @@
 		.ui-submit-btn{
 			float: right;
 			position: absolute;
-			right: 70px;
-			bottom: 233px;
-			width: 460px;
+			right: 56px;
+			bottom: 13px;
+			width: 484px;
 			background: none;
-			border: 1px solid rgb(147, 147, 150);
+			border: none;
+			color: white;
+			background: rgb(0, 199, 174);
 			border-radius: 5px;
-			height: 28px;
+			height: 35px;
+			cursor: pointer;
 		}
 		.email-input{
-			height: 35px
+			height: 35px;
+			padding-left: 5px;
 		}
 		.phone-input{
-			height: 35px
+			height: 35px;
+			padding-left: 5px;
 		}
 		.info-input{
 			width: 100%;
+			padding-left: 5px;
 		}
 
 		.normal-input-box > button {
 			width: 80px;
 			height: 35px;
-			border: 1px solid rgb(147, 147, 150);
 			border-radius: 5px;
+			font-size: 15px;
+		}
+		.ui-formOuter{
+			position: relative;
 		}
 	</style>
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
-	<div class="box" style="margin-top: 55px">
+	<div class="box" style="margin-top: 120px">
 		<div class="sideBar">
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">계정 설정</h3>
-			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 280px;">
+			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 180px;">
 		
-			<a class="myPageSideBar" href="userInfo.me" style="font-weight: bolder; font-size: 1.1em;">나의 정보</a>
+			<a class="myPageSideBar" href="userInfo.me" style="font-weight: bolder;
+			background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">나의 정보</a>
 			<a class="myPageSideBar" href="proInfo.me">전문가 정보</a>
 			<a class="myPageSideBar" href="changePwd.me">비밀번호 변경</a>
 			<a class="myPageSideBar" href="deleteForm.me">회원 탈퇴</a>
 			<a class="myPageSideBar" href="schedule.me">일정 관리</a>
 			<a class="myPageSideBar" href="ask.me">문의 내역</a>
+			<c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
+                <a class="myPageSideBar" href="">회원 관리</a>
+            </c:if>            
 		</div>
 		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">나의 정보</h3>
@@ -89,18 +103,18 @@
 						</form>
 					</div>
 					<div class="ui-formOuter">
-						<form action="">
+						<form action="updateUserInfo.me" method="post">
 							<table class="user-info-table">
-								<th>닉네임</th>
+								<th>이름</th>
 								<tr>
-									<td><input class="info-input" placeholder="user01"></td>
+									<td><input class="info-input" name="memberName" value="${loginUser.memberName}"></td>
 								</tr>
 								<th>이메일</th>
 								<tr>
 									<td>
 										<div class = "normal-input-box">
-											<input class="email-input" placeholder="example@poomasi.com">
-											<button class="btn">인증하기</button>
+											<input class="email-input" name="memberEmail" value="${loginUser.memberEmail}" readonly="readonly">
+											<button class="btn" onclick="newEmail()" style="font-size: 12px;">인증하기</button>
 										</div>
 									</td>
 								</tr>
@@ -108,22 +122,27 @@
 								<tr>
 									<td>
 										<div class = "normal-input-box">
-											<input class="phone-input" placeholder="01012345678">
-											<button class="btn">재인증</button>
+											<input class="phone-input" name="phone" value="${loginUser.phone}" readonly="readonly">
+											<button class="btn" onclick="newPhone()" style="font-size: 12px;">재인증</button>
 										</div>
 									</td>
 								</tr>
-								<th>직업</th>
+								<th>포인트</th>
 								<tr>
-									<td><input class="info-input" placeholder="example@poomasi.com"></td>
+									<td>
+										<div class="normal-input-box">
+											<input class="info-input" value="${loginUser.account}" readonly="readonly">
+											<button class="btn" onclick="payAdd()" style="font-size: 12px;">충전하기</button>
+										</div>
+									</td>
 								</tr>
-								<th>비즈니스 분야</th>
+								<th>사용 보류 (삭제할수도있음)</th>
 								<tr>
-									<td><input class="info-input" placeholder="example@poomasi.com"></td>
+									<td><input class="info-input" placeholder="사용 보류 (삭제할수도있음)"></td>
 								</tr>
 								<th>관심사</th>
 								<tr>
-									<td><input class="info-input" placeholder="example@poomasi.com"></td>
+									<td><input class="info-input" name="memberConcern" value="${loginUser.memberConcern}"></td>
 								</tr>
 								<button class="ui-submit-btn" type="submit" class="btn" style="float: right;">수정하기</button>
 							</table>

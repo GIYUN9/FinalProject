@@ -160,21 +160,21 @@
         <div style="margin-top: 55px;">
             <!-- 버튼 클릭 시 모달 열기 -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-            회원가입  	
+          		  회원가입  	
             </button>
 
             <!-- 첫번째 모달 -->
             <div class="modal" id="myModal" >
                 <div class="modal-dialog">
                     <div class="modal-content">
-
                             <div class="modal-body">
+                            <form action="insert.me" method="post">
                                 <div class="pe-pg-bar">
                                     <div class="pe-pg-bar-per">100%
                                     </div>
                                 </div>
-                            <div class="pe-info">
-                                <h5 style="text-align: center; font-weight: bold;">마지막으로 필수 정보를 입력해주세요.</h5>
+                            	<div class="pe-info">
+                                	<h5 style="text-align: center; font-weight: bold;">마지막으로 필수 정보를 입력해주세요.</h5>
                                     <div class="a">
                                         <p>성별</p>
                                         <div class="pe-btn-area">
@@ -182,31 +182,17 @@
                                             <button type="button" class="btn-woman">여자</button>
                                         </div>
 
-                                        <p>휴대전화 번호 인증</p>
-                                        <input class="phone-certification" type="text" placeholder="010-2222-2222 형식으로 입력하시오">
-
-                                        <p>인증번호</p>
-                                        <input class="phone-certification" type="text" placeholder="인증번호를 입력하시오">
-                                        <form method="get" action="form-action.html">
-                                            <div class="agree-area">
-                                                전체 동의
-                                            </div>
-                                            <div class="label-area">
-                                                <label><input type="checkbox" name="category" value="agree"> (필수) 이용약관 동의</label>
-                                                <label><input type="checkbox" name="category" value="privateAgree"> (필수) 개인정보 수집 및 이용 동의</label>
-                                                <label><input type="checkbox" name="category" value="#"> (필수) 14세 이상입니다</label>
-                                            </div>
-    
-                                        </form>
+                                        <p>휴대전화 번호 입력</p>
+                                        <input class="phone-certification" type="text" placeholder="010-2222-2222 형식으로 입력하시오">                                                             
                                     </div>
 
-                            </div>
+                            	</div>
 
-                            <div style="display: flex; justify-content: flex-end; margin-top: 30px; width: 110%;">
-                                <button type="submit" class="btn-before">이전</button>
+                            <div style="display: flex; justify-content: flex-end; margin-top: 30px; width: 110%;">         
                                 <span style="margin-right: 15px;"></span> 
                                 <button type="submit" class="btn-next">다음</button>
                             </div>
+                            </form>
                         </div>                            
 
 

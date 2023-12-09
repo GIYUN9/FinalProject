@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -165,23 +166,45 @@
 		}
 		.user-nickname{
 			margin-bottom: 7px;
+			font-weight: 600;
+		}
+		.modal-textarea{
+			width: 100%;;
+			text-align: left;
+			padding: 5px;
+			border: 1px solid rgba(96, 96, 96, 0.5);
+			resize: none;
+			border-radius: 8px;
+		}
+		.desc-align{
+			display: flex;
+			flex-direction: row;
+			position: relative;
+		}
+		.modal-category{
+			position: absolute;
+    		right: -355px;
 		}
 	</style>
 </head>
 
 <body>
 	<jsp:include page="../common/header.jsp" />
-	<div class="box" style="margin-top: 55px;">
+	<div class="box" style="margin-top: 120px;">
 		<div class="sideBar">
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">계정 설정</h3>
-			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 280px;">
+			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 180px;">
 
 			<a class="myPageSideBar" href="userInfo.me">나의 정보</a>
 			<a class="myPageSideBar" href="proInfo.me">전문가 정보</a>
 			<a class="myPageSideBar" href="changePwd.me">비밀번호 변경</a>
 			<a class="myPageSideBar" href="deleteForm.me">회원 탈퇴</a>
-			<a class="myPageSideBar" href="schedule.me" style="font-weight: bolder; font-size: 1.1em;">일정 관리</a>
+			<a class="myPageSideBar" href="schedule.me" style="font-weight: bolder;
+			background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">일정 관리</a>
 			<a class="myPageSideBar" href="ask.me">문의 내역</a>
+			<c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
+                <a class="myPageSideBar" href="">회원 관리</a>
+            </c:if>        
 		</div>
 		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">일정 관리</h3>
@@ -200,7 +223,7 @@
 				<div id="view1" class="user-info"
 					style="flex-direction: column; margin-left: 5px; margin-right: 5px; display: '';">
 					<div style="width: 100%; margin: 10px 0px 10px 8px;">
-						<h4 style="float: left;">요청 현황 (<span style="color: red;">3</span>건)</h4>
+						<h6 style="float: left; font-weight: bold;">요청 현황 (<span style="color: red;">3</span>건)</h6>
 					</div>
 					<div style="width: 98%; overflow: scroll; height: 414px;" class="scrolleffect">
 						<div class="alarm-section">
@@ -208,28 +231,7 @@
 								이미지 자리
 							</div>
 							<div style="width: 31%;">
-								<h4 class="user-nickname">홍길동</h4>
-								<p>희망지역: 서울시 강남구 역삼동</p>
-								<p>키보드 / 기타 레슨</p>
-							</div>
-							<div style="width: 40%;">
-								<p class="textarea-maxSize">
-									overflow 대신 넘칠 시글자 수 ...처리?
-									> 요청 상세보기시 전체 텍스트와 스크롤 나오게
-								</p>
-							</div>
-							<div style="width: 15%; display: flex; flex-direction: column;">
-								<button class="schedule-btn" style="background-color: rgb(0, 199, 174)" id="btn-open-popup">보기</button>
-								<button class="schedule-btn" style="background-color: rgb(218, 76, 60)" onclick="refuse()">거절</button>
-							</div>
-						</div>
-						
-						<div class="alarm-section">
-							<div style="width: 14%;">
-								이미지 자리
-							</div>
-							<div style="width: 31%;">
-								<h4 class="user-nickname">홍길동</h4>
+								<h5 class="user-nickname">홍길동</h5>
 								<p>희망지역: 서울시 강남구 역삼동</p>
 								<p>키보드 / 기타 레슨</p>
 							</div>
@@ -239,7 +241,7 @@
 								</p>
 							</div>
 							<div style="width: 15%; display: flex; flex-direction: column;">
-								<button class="schedule-btn" style="background-color: rgb(0, 199, 174)" id="btn-open-popup">확인</button>
+								<button class="schedule-btn" style="background-color: rgb(0, 199, 174)" id="btn-open-schedule-modal">일정 모달 열기</button>
 								<button class="schedule-btn" style="background-color: rgb(218, 76, 60)" onclick="refuse()">거절</button>
 							</div>
 						</div>
@@ -249,7 +251,7 @@
 								이미지 자리
 							</div>
 							<div style="width: 31%;">
-								<h4 class="user-nickname">홍길동</h4>
+								<h5 class="user-nickname">홍길동</h5>
 								<p>희망지역: 서울시 강남구 역삼동</p>
 								<p>키보드 / 기타 레슨</p>
 							</div>
@@ -270,7 +272,7 @@
 								이미지 자리
 							</div>
 							<div style="width: 31%;">
-								<h4 class="user-nickname">홍길동</h4>
+								<h5 class="user-nickname">홍길동</h5>
 								<p>희망지역: 서울시 강남구 역삼동</p>
 								<p>키보드 / 기타 레슨</p>
 							</div>
@@ -297,14 +299,14 @@
 					</div>
 
 					<div style="width: 100%; margin: 10px 0px 10px 8px;">
-						<h4 style="float: left;">해결한요청 (20)건</h4>
+						<h6 style="float: left; font-weight: bold;">해결한요청 (20)건</h6>
 					</div>
 
 				</div>
 				<div id="view2" class="user-info"
 					style="flex-direction: column; margin-left: 5px; margin-right: 5px; display: none;">
 					<div style="width: 100%; margin: 10px 0px 10px 8px;">
-						<h4 style="float: left;">보낸 요청</h4>
+						<h6 style="float: left;">보낸 요청</h6>
 					</div>
 					<div style="width: 98%;">
 						<div class="alarm-section">
@@ -312,7 +314,7 @@
 								이미지 자리
 							</div>
 							<div style="width: 31%;">
-								<h3>홍길동</h3>
+								<h5 class="user-nickname">홍길동</h5>
 								<p>희망지역: 서울시 강남구 역삼동</p>
 								<p>키보드 / 기타 레슨</p>
 							</div>
@@ -342,7 +344,7 @@
 								이미지 자리
 							</div>
 							<div style="width: 31%;">
-								<h3>홍길동</h3>
+								<h5 class="user-nickname">홍길동</h5>
 								<p>희망지역: 서울시 강남구 역삼동</p>
 								<p>키보드 / 기타 레슨</p>
 							</div>
@@ -374,47 +376,53 @@
 	</div>
 	<jsp:include page="../common/footer.jsp" />
 
-	<div class="modal">
+	<div class="modal" id="scheduleModal">
 		<div class="modal_body" style="padding-top: 10px;">
-			<img id="x-btnImg" src="././resources/icon/x-btn.png" alt="" style="width: 35px; height: 35px; float: right; margin-right: 7px;">
+			<img id="x-btnImg" src="././resources/icon/close.png" alt="" style="width: 14px; height: 14px; float: right; margin-right: 10px;">
 			<div style="margin-top: 10px;">
 				요청 상세 보기
 			</div>
 			<form action="" style="margin-top: 10px;">
 				<div class="alarm-section" style="display: flex; flex-direction: column; align-items: baseline; height: auto; width: 95%; margin: 19px; padding: 12px;">
-					<div style="flex-direction: row; justify-content: space-between; width: 100%; display: flex; flex-direction: row;">
-						<div>이미지 자리</div>
-						<div>키보드 / 기타 레슨</div>
+					<div class="desc-align"> 
+						<div style="flex-direction: row; justify-content: space-between; display: flex; flex-direction: row;">
+							<div>
+								<img style="width: 100px; height: 100px; margin: 15px; border-radius: 25px;" src="./resources/icon/profileTest.png">
+							</div>
+						</div>
+						<div style="float: left; display: flex; flex-direction: column; margin-bottom: 10px; justify-content: space-evenly;">
+							<div>
+								<h6 style="float: left; margin-bottom: 5px; font-weight: bold;">
+									홍길동 님
+								</h6>
+							</div>
+							<div>
+								<p style="margin-bottom: 0px;">희망지역: 서울시 강남구 역삼동</p>
+								<p style="margin-bottom: 0px; text-align: left;">010-1111-1111</p>
+							</div>
+						</div>
+						<div class="modal-category">키보드 / 기타 레슨</div>
 					</div>
-					<div style="float: left; flex-direction: column; margin-top: 10px;">
-						<div><h3 style="float: left; margin-bottom: 5px;">홍길동 님</h3></div>
-						<div><p style="float: left;">희망지역: 서울시 강남구 역삼동</p></div>
-						<div><p style="float: left;">010-1111-1111</p></div>
-					</div>
-					<div style="float: left; flex-direction: column; margin-top: 10px;">
-						<div><h4 style="float: left;">세부 사항</h4></div>
-						<div style="float: left; flex-direction: column; margin-top: 5px; margin-left: 5px;">
-							<div><p style="float: left;">의뢰비 - 합의 후 결정</p></div>
-							<div><p style="float: left;">시간대 - 토요일 3시 이후 or 일요일</p></div>
-							<div><p style="float: left;">희망하는 점 - 엄하게 가르쳐 주세요</p></div>
+					<div style="float: left; flex-direction: column; margin-top: 10px; display: flex;">
+						<h6 style="text-align: left; font-weight: bold; margin-left: 5px;">세부 사항</h6>
+						<div style="display: flex; float: left; flex-direction: column; margin-top: 5px; margin-left: 5px; text-align: left;">
+							<p style="float: left; margin-bottom: 0px;">의뢰비 - 합의 후 결정</p>
+							<p style="float: left; margin-bottom: 0px;">시간대 - 토요일 3시 이후 or 일요일</p>
+							<p style="float: left; margin-bottom: 0px;">희망하는 점 - 엄하게 가르쳐 주세요</p>
 						</div>
 					</div>
 					<div style="width: 100%;">
 						<div style="float: left; margin-top: 20px; margin-bottom: 5px;">요청자 메세지</div>
-						<p class="textarea-maxSize" style="width: 100%; text-align: left; padding: 5px;">
-							블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라
-							블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라
-							블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라
-							블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라
-						</p>
+						<textarea class="modal-textarea" style="width: 100%; height: 150px; text-align: left; padding: 5px;">
+							ddd
+						</textarea>
 					</div>
 					<div style="display: flex; flex-direction: row; justify-content: flex-end; width: 100%;" >
-						<button type="submit" class="schedule-btn" style="background-color: rgb(0, 199, 174); width: 90px;" id="btn-open-popup">채팅 하기</button>
-						<button type="button" class="schedule-btn" style="background-color: rgb(218, 76, 60); width: 90px;" onclick="refuse()">거절 하기</button>
+						<button type="button" class="schedule-btn" style="background-color: rgb(218, 76, 60); width: 110px;" onclick="refuse()">거절 하기</button>
+						<button type="submit" class="schedule-btn" style="background-color: rgb(0, 199, 174); width: 110px;" id="btn-open-popup">채팅 하기</button>
 					</div>
 				</div>
 			</form>
-			
 		</div>
 	</div>
 
@@ -444,23 +452,23 @@
 			});
 		}
 
-		const modal = document.querySelector('.modal');
-    	const btnOpenPopup = document.querySelector('#btn-open-popup');
-		btnOpenPopup.addEventListener('click', () => {
-    		modal.style.display = 'block';
-    	});
+		// schedule.jsp의 모달을 열기 위한 코드
+		const scheduleModal = document.querySelector('#scheduleModal');
+		const btnOpenScheduleModal = document.querySelector('#btn-open-schedule-modal');
+		btnOpenScheduleModal.addEventListener('click', () => {
+			scheduleModal.style.display = 'block';
+		});
 
-		modal.classList.toggle('show');
+		// schedule.jsp의 모달을 닫기 위한 코드
+		const btnCloseScheduleModal = document.querySelector('#x-btnImg-schedule');
+		btnCloseScheduleModal.addEventListener('click', () => {
+			scheduleModal.style.display = 'none';
+		});
 
-		function refuse(){
-			
+		// 거절 버튼 클릭 시 모달 닫기 (예시로 추가)
+		function refuseSchedule() {
+			scheduleModal.style.display = 'none';
 		}
-		
-		const modals = document.querySelector('.modal');
-    	const btnImg = document.querySelector('#x-btnImg');
-    	btnImg.addEventListener('click', () => {
-    		modals.style.display = 'none';
-    	});
 
 	</script>
 </body>

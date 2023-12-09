@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -80,6 +81,7 @@
 			border-radius: 10px;
 			padding: 10px;
 			margin-bottom: 10px;
+			resize: none;
 		}
 		.ad-email{
 			width: 320px;
@@ -87,6 +89,7 @@
 			border-radius: 10px;
 			height: 30px;
 			font-weight: bolder;
+			background-color: rgba(224, 224, 224, 0.5);
 		}
 		.ad-desc{
 			padding: 10px;
@@ -95,6 +98,9 @@
 			border: 1px solid rgba(96, 96, 96, 0.5);
 			border-radius: 10px;
 			height: 320px;
+			background-color: rgba(224, 224, 224, 0.5);
+			overflow-y: scroll;
+			resize: none;
 		}
 		.align-userinfo{
 			display: flex;
@@ -139,21 +145,31 @@
 		.top-center{
 			margin-bottom: -15px;
 		}
+		.ad-desc::-webkit-scrollbar {
+			width: 0px; 
+		}
+		.cu-desc::-webkit-scrollbar {
+			width: 0px; 
+		}
 	</style>
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
-	<div class="box" style="margin-top: 55px">
+	<div class="box" style="margin-top: 120px">
 		<div class="sideBar">
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">계정 설정</h3>
-			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 280px;">
+			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 180px;">
 		
 			<a class="myPageSideBar" href="userInfo.me">나의 정보</a>
 			<a class="myPageSideBar" href="proInfo.me">전문가 정보</a>
 			<a class="myPageSideBar" href="changePwd.me">비밀번호 변경</a>
 			<a class="myPageSideBar" href="deleteForm.me">회원 탈퇴</a>
 			<a class="myPageSideBar" href="schedule.me">일정 관리</a>
-			<a class="myPageSideBar" href="ask.me" style="font-weight: bolder; font-size: 1.1em;">문의 내역</a>
+			<a class="myPageSideBar" href="ask.me" style="font-weight: bolder; 
+			background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">문의 내역</a>
+			<c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
+				<a class="myPageSideBar" href="">회원 관리</a>
+			</c:if>        
 		</div>
 		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">문의 내역</h3>
@@ -174,20 +190,32 @@
 					<div class="align-userinfo">
 						<div class="customer-req">
 							<h5>제목</h5>
-							<div class="cu-re-title">결제 관련 문의</div>
+							<div class="cu-re-title" aria-readonly="true">결제 관련 문의</div>
 							<h5>작성자</h5>
-							<div class="cu-email">asdasd@naver.com</div>
+							<div class="cu-email" aria-readonly="true">asdasd@naver.com</div>
 							<h5>설명</h5>
-							<textarea class="cu-desc">결제가 안됩니다.</textarea>
+							<textarea class="cu-desc" readonly="true">결제가 안됩니다.</textarea>
 							<h5>첨부파일</h5>
-							<div class="cu-file">첨부된 파일 이름.jpg</div>
+							<div class="cu-file" aria-readonly="true">첨부된 파일 이름.jpg</div>
 						</div>
 						<div class="admin-res">
 							<div>
 								<div><h5>답변</h5></div>
-								<input class="ad-email" type="text">
+								<input class="ad-email" type="text" readonly="true" value=" 관리자 (hgd@naver.com)">
 							</div>
-							<div><textarea class="ad-desc" name="" id="" cols="30" rows="10"></textarea></div>
+							<div>
+								<textarea class="ad-desc" name="" id="" cols="30" rows="10" readonly="true">
+									안녕하세요! 품앗이입니다.
+
+									홍길동 님께서 문의해 주신사항 확인하였습니다.
+									
+									<홍길동 (hgd@naver.com)>님이 작성
+									결제가 안됩니다. 카카오측에서는 문제가 없다고합니다.
+									확인해주세요결제가 안됩니다. 카카오측에서는 문제가 없다고....
+									확인결과 단순 서버지연으로인한 문제였습니다.
+									지금은 정상적으로 이용이 가능하니 앞으로 도 품앗이 많은 이용부탁드립니다!
+								</textarea>
+							</div>
 						</div>
 					</div>
 				</div>

@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="boardMapper">
+  	<resultMap type="Board" id="boardResult">
+  		<result column="BOARD_NO" property="boardNo" />
+  		<result column="BOARD_TITLE" property="boardTitle" />
+  		<result column="BOARD_CONTENT" property="boardContent" />
+  		<result column="PRICE" property="price" />
+  		<result column="BOARD_TYPE" property="boardType" />
+  		<result column="CREATEDATE" property="createDate" />
+  		<result column="STATUS" property="status" />
+  		<result column="MEM_NO" property="memberNo" />
+  		<result column="CATEGORY_NO" property="categoryNo" />
+  	</resultMap>
+  	
+  	<resultMap type="Attachment" id="attachmentResult">
+  		<result column="ATT_NO" property="attNo" />
+  		<result column="ORIGIN_NAME" property="originName" />
+  		<result column="CHANGE_NAME" property="changeName" />
+  		<result column="FILE_PATH" property="filePath" />
+  		<result column="STATUS" property="status" />
+  		<result column="BOARD_NO" property="boardNo" />
+  	</resultMap>
+  	
+  	<resultMap type="Notice" id="noticeResult">
+  		<result column="NOTICE_NO" property="noticeNo" />
+  		<result column="NOTICE_TYPE" property="noticeType" />
+  		<result column="NOTICE_TITLE" property="noticeTitle" />
+  		<result column="NOTICE_CONTENT" property="noticeContent" />
+  		<result column="CREATEDATE" property="createDate" />
+  		<result column="STATUS" property="status" />
+  	</resultMap>
+ 	
+ 	
+ 	
+ 	<!-- 도와줄게요 게시글 총 갯수 조회 -->
+ 	<select id="seleteHelpListCount" resultType="_int">
+ 		SELECT COUNT(*)
+ 		  FROM BOARD
+ 		 WHERE BOARD_TYPE = 1
+ 		AND STATUS = 'Y'
+ 	</select>
+ 	
+ 	<!-- 도와줄게요 게시글 전체 조회 -->
+ 	<select id="helpselectList" resultMap="boardResult">
+ 		SELECT  B.BOARD_NO,
+ 			  	B.BOARD_TITLE,
+ 			   	B.PRICE,
+ 			   	A.FILE_PATH,
+               	A.CHANGE_NAME
+ 		FROM BOARD B
+        JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
+ 		 WHERE B.BOARD_TYPE = 1
+         AND B.STATUS = 'Y'
+ 	</select>
+ 	
+ 	<!-- 도와주세요 게시판 전체 조회 -->
+ 	
+  
+
+  	<!-- 도와줄게요 게시글 등록 쿼리문 -->
+  	<insert id="helpinsertBoard">
+  		INSERT INTO
+  			BOARD 
+  				(
+  				BOARD_NO,
+  				CATEGORY_NO,
+  				BOARD_TITLE,
+  				BOARD_CONTENT,
+  				PRICE,
+  				BOARD_TYPE,
+  				MEM_NO
+  				)
+ 
+  			VALUES 
+  				 (
+  				 SEQ_BNO.NEXTVAL,
+  				 #{categoryNo},
+  				 #{boardTitle},
+  				 #{boardContent},
+  				 #{price},
+  				 #{boardType},
+  				 #{memberNo}
+  				 )
+  	</insert>
+  	
+  	<!-- 사진 등록 쿼리문 -->
+  	<insert id="helpAttachment">
+  		INSERT INTO
+  			ATTACHMENT
+  					  (
+  					  ATT_NO,
+  					  ORIGIN_NAME,
+  					  CHANGE_NAME,
+  					  BOARD_NO
+  					  )
+  			
+  			VALUES
+  				  (
+  				  SEQ_ANO.NEXTVAL,
+  				  #{originName},
+  				  #{changeName},
+  				  #{boardNo}			
+  				  )
+  	</insert>
+  	
+  	<!-- 도와줄게요 게시글 수정 쿼리문 -->
+  	<update id="updateBoard">
+  		UPDATE BOARD
+  			SET BOARD_TITLE = #{boardTitle},
+  			BOARD_CONTENT = #{boardContent},
+  			PRICE = #{price}
+  		WHERE BOARD_NO = #{boardNo}
+  	</update>
+  	
+  	<!-- 도와줄게요 게시글 삭제 쿼리문 -->
+  	<update id="deleteBoard">
+  		UPDATE BOARD
+  			SET STATUS = 'N'
+  		WHERE BOARD_NO = #{boardNo}
+  	</update>
+  	
+  	<select id="selectCommListCount" resultType="_int">
+  		SELECT  COUNT(*)
+				FROM BOARD
+		WHERE BOARD_TYPE <![CDATA[>]]>= 3
+		AND STATUS = 'Y'
+  	</select>
+  	
+  	<select id="selectCuriousListCount" resultType="_int">
+  		SELECT  COUNT(*)
+				FROM BOARD
+		WHERE BOARD_TYPE = 3
+		AND STATUS = 'Y'
+  	</select>
+  	
+  	<select id="selectMuchListCount" resultType="_int">
+  		SELECT  COUNT(*)
+				FROM BOARD
+		WHERE BOARD_TYPE = 4
+		AND STATUS = 'Y'
+  	</select>
+  	
+  	<select id="selectTogetherListCount" resultType="_int">
+  		SELECT  COUNT(*)
+				FROM BOARD
+		WHERE BOARD_TYPE = 5
+		AND STATUS = 'Y'
+  	</select>
+  	
+  	<select id="selectTogetherList" resultMap="boardResult">
+  		SELECT  B.BOARD_NO,
+				B.BOARD_TITLE,
+				B.BOARD_CONTENT,
+				B.PRICE,
+				B.BOARD_TYPE,
+				B.CREATEDATE,
+				B.STATUS,
+				B.MEM_NO,
+                M.LOCATION,
+				B.CATEGORY_NO
+				FROM BOARD B
+        JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
+		WHERE B.BOARD_TYPE = 5
+		AND B.STATUS = 'Y'
+  	</select>
+  	
+  	<select id="selectMuchList" resultMap="boardResult">
+  		SELECT  B.BOARD_NO,
+				B.BOARD_TITLE,
+				B.BOARD_CONTENT,
+				B.PRICE,
+				B.BOARD_TYPE,
+				B.CREATEDATE,
+				B.STATUS,
+				B.MEM_NO,
+                M.LOCATION,
+				B.CATEGORY_NO
+				FROM BOARD B
+        JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
+		WHERE B.BOARD_TYPE = 4
+		AND B.STATUS = 'Y'
+  	</select>
+  	
+  	<select id="selectCuriousList" resultMap="boardResult">
+  		SELECT  B.BOARD_NO,
+				B.BOARD_TITLE,
+				B.BOARD_CONTENT,
+				B.PRICE,
+				B.BOARD_TYPE,
+				B.CREATEDATE,
+				B.STATUS,
+				B.MEM_NO,
+                M.LOCATION,
+				B.CATEGORY_NO
+				FROM BOARD B
+        JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
+		WHERE B.BOARD_TYPE = 3
+		AND B.STATUS = 'Y'
+  	</select>
+  	
+  	<select id="selectCommList" resultMap="boardResult">
+		SELECT  B.BOARD_NO,
+				B.BOARD_TITLE,
+				B.BOARD_CONTENT,
+				B.PRICE,
+				B.BOARD_TYPE,
+				B.CREATEDATE,
+				B.STATUS,
+				B.MEM_NO,
+                M.LOCATION,
+				B.CATEGORY_NO
+				FROM BOARD B
+        JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
+		WHERE B.BOARD_TYPE <![CDATA[>]]>= 3
+		AND B.STATUS = 'Y'
+		ORDER BY B.CREATEDATE DESC
+  	</select>
+  	
+  	<select id="noticeList" resultMap="noticeResult">
+  		SELECT  NOTICE_NO,
+				NOTICE_TYPE,
+				NOTICE_TITLE,
+				NOTICE_CONTENT,
+				CREATEDATE
+		FROM NOTICE
+		WHERE STATUS = 'Y'
+        ORDER BY NOTICE_TYPE DESC
+  	</select>
+  	
+  	<insert id="insertNotice">
+  		INSERT INTO NOTICE (
+					NOTICE_NO,
+					NOTICE_TYPE,
+					NOTICE_TITLE,
+					NOTICE_CONTENT,
+					CREATEDATE,
+					STATUS
+            		)
+		VALUES(
+		        SEQ_NNO.NEXTVAL,
+		        #{noticeType},
+		        #{noticeTitle},
+		        #{noticeContent},
+		        SYSDATE,
+		        'Y'
+		        )
+  	</insert>
+  	
+  	<update id="deleteNotice">
+  		UPDATE NOTICE
+  			SET STATUS = 'N'
+  		WHERE NOTICE_NO = #{noticeNo}
+  	</update>
+  	
+  	<select id="helpselectOne" resultMap="boardResult">
+  		SELECT  BOARD_NO,
+  				CATEGORY_NO,
+  				BOARD_TITLE,
+  				BOARD_CONTENT,
+  				PRICE,
+  				BOARD_TYPE,
+  				MEM_NO
+  		FROM BOARD
+  		WHERE CATEGORY_NO = #{categoryNo}
+  		AND		BOARD_TITLE = #{boardTitle}
+  		AND		BOARD_CONTENT = #{boardContent}
+		AND		PRICE = #{price}
+		AND		BOARD_TYPE = #{boardType}
+		AND		MEM_NO = #{memberNo}
+  	</select>
+  		
+	<insert id = "insertCommboard">
+		INSERT INTO BOARD	(
+							BOARD_NO,
+							BOARD_TITLE,
+							BOARD_CONTENT,
+							BOARD_TYPE,
+							CREATEDATE,
+							STATUS,
+							MEM_NO
+							)
+					VALUES	(
+							SEQ_BNO.NEXTVAL,
+							#{boardTitle},
+							#{boardContent},
+							#{boardType},
+							SYSDATE,
+							'Y',
+							#{memberNo}
+							)
+	</insert>
+	
+	<select id="noticeListTwo" resultMap="noticeResult">
+		SELECT  NOTICE_NO,
+				NOTICE_TYPE,
+				NOTICE_TITLE,
+				NOTICE_CONTENT,
+				CREATEDATE        		        
+		FROM	(
+			    SELECT  NOTICE_NO,
+						NOTICE_TYPE,
+						NOTICE_TITLE,
+						NOTICE_CONTENT,
+						CREATEDATE
+				FROM NOTICE
+				WHERE STATUS = 'Y'
+		        ORDER BY CREATEDATE DESC
+		        )
+		WHERE ROWNUM <![CDATA[<]]>= 2
+	</select>
+	
+	<select id="findBoardList1" resultMap="boardResult">
+		SELECT BOARD_NO,
+		        BOARD_TITLE,
+		        BOARD_CONTENT,
+		        PRICE,
+		        CREATEDATE,
+		        MEM_NAME,
+		        CATEGORY_NAME
+		FROM (SELECT B.BOARD_NO,
+		        B.BOARD_TITLE,
+		        B.BOARD_CONTENT,
+		        B.PRICE,
+		        B.CREATEDATE,
+		        M.MEM_NAME,
+		        C.CATEGORY_NAME
+		FROM BOARD B, MEMBER M, CATEGORY C
+		WHERE (B.MEM_NO=M.MEM_NO)
+		AND (B.CATEGORY_NO=C.CATEGORY_NO)
+		AND B.BOARD_TYPE = 1
+		ORDER BY B.CREATEDATE DESC)
+		WHERE ROWNUM <![CDATA[<]]>= 2
+		AND BOARD_TITLE LIKE '%'||#{keyWord}||'%'
+	</select>
+	<select id="findBoardList2" resultMap="boardResult">
+		SELECT BOARD_NO,
+		        BOARD_TITLE,
+		        BOARD_CONTENT,
+		        PRICE,
+		        CREATEDATE,
+		        MEM_NAME,
+		        CATEGORY_NAME
+		FROM (SELECT B.BOARD_NO,
+		        B.BOARD_TITLE,
+		        B.BOARD_CONTENT,
+		        B.PRICE,
+		        B.CREATEDATE,
+		        M.MEM_NAME,
+		        C.CATEGORY_NAME
+		FROM BOARD B, MEMBER M, CATEGORY C
+		WHERE (B.MEM_NO=M.MEM_NO)
+		AND (B.CATEGORY_NO=C.CATEGORY_NO)
+		AND B.BOARD_TYPE = 2
+		ORDER BY B.CREATEDATE DESC)
+		WHERE ROWNUM <![CDATA[<]]>= 2
+		AND BOARD_TITLE LIKE '%'||#{keyWord}||'%'
+	</select>
+	<select id="findBoardList3" resultMap="boardResult">
+		SELECT BOARD_NO,
+		        BOARD_TITLE,
+		        BOARD_CONTENT,
+		        PRICE,
+		        CREATEDATE,
+		        MEM_NAME,
+		        CATEGORY_NAME
+		FROM (SELECT B.BOARD_NO,
+		        B.BOARD_TITLE,
+		        B.BOARD_CONTENT,
+		        B.PRICE,
+		        B.CREATEDATE,
+		        M.MEM_NAME,
+		        C.CATEGORY_NAME
+		FROM BOARD B, MEMBER M, CATEGORY C
+		WHERE (B.MEM_NO=M.MEM_NO)
+		AND (B.CATEGORY_NO=C.CATEGORY_NO)
+		AND B.BOARD_TYPE = 3
+		ORDER BY B.CREATEDATE DESC)
+		WHERE ROWNUM <![CDATA[<]]>= 2
+		AND BOARD_TITLE LIKE '%'||#{keyWord}||'%'
+	</select>
+	<select id="findBoardList4" resultMap="boardResult">
+		SELECT BOARD_NO,
+		        BOARD_TITLE,
+		        BOARD_CONTENT,
+		        PRICE,
+		        CREATEDATE,
+		        MEM_NAME,
+		        CATEGORY_NAME
+		FROM (SELECT B.BOARD_NO,
+		        B.BOARD_TITLE,
+		        B.BOARD_CONTENT,
+		        B.PRICE,
+		        B.CREATEDATE,
+		        M.MEM_NAME,
+		        C.CATEGORY_NAME
+		FROM BOARD B, MEMBER M, CATEGORY C
+		WHERE (B.MEM_NO=M.MEM_NO)
+		AND (B.CATEGORY_NO=C.CATEGORY_NO)
+		AND B.BOARD_TYPE = 4
+		ORDER BY B.CREATEDATE DESC)
+		WHERE ROWNUM <![CDATA[<]]>= 2
+		AND BOARD_TITLE LIKE '%'||#{keyWord}||'%'
+	</select>
+	<select id="findBoardList5" resultMap="boardResult">
+		SELECT BOARD_NO,
+		        BOARD_TITLE,
+		        BOARD_CONTENT,
+		        PRICE,
+		        CREATEDATE,
+		        MEM_NAME,
+		        CATEGORY_NAME
+		FROM (SELECT B.BOARD_NO,
+		        B.BOARD_TITLE,
+		        B.BOARD_CONTENT,
+		        B.PRICE,
+		        B.CREATEDATE,
+		        M.MEM_NAME,
+		        C.CATEGORY_NAME
+		FROM BOARD B, MEMBER M, CATEGORY C
+		WHERE (B.MEM_NO=M.MEM_NO)
+		AND (B.CATEGORY_NO=C.CATEGORY_NO)
+		AND B.BOARD_TYPE = 5
+		ORDER BY B.CREATEDATE DESC)
+		WHERE ROWNUM <![CDATA[<]]>= 2
+		AND BOARD_TITLE LIKE '%'||#{keyWord}||'%'
+	</select>
+  </mapper>

@@ -1,5 +1,30 @@
 package com.kh.finalProject.board.model.vo;
 
-public class Board {
+import java.sql.Date;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
+public class Board {
+	private int boardNo;
+	private String boardTitle;
+	private String boardContent;
+	private int price;
+	private int boardType;
+	private Date createDate;
+	private String status; 
+	private int memberNo;
+	private int categoryNo;
+	
+	private String location;
+	private String changeName;
+	private String filePath;
 }

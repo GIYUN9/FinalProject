@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>도와줄게요 게시글 작성</title>
 <style>
 	*,
 	*::before,
@@ -20,7 +21,7 @@
 	.helpme-board{
         background-color: white;
         width: 700px;
-        height: 500px;
+        height: 100%;
         margin-left: 30%;
         margin-top: 7%;
         margin-bottom: 10%;
@@ -30,7 +31,7 @@
 	}
     .helpu-top-section{
         display: flex;
-        padding: 15px;
+        padding: 10px;
         align-items: center;
         justify-content: center;
         flex-direction: column;
@@ -42,7 +43,7 @@
         right: 20px;
         position: absolute;
         cursor: pointer;
-        top: 4px;
+        top: 0px;
 	}
     .hu-submit-btn{
         background: rgb(218, 76, 60);
@@ -160,12 +161,12 @@
         left: -86px;
         font-size: 13px;
         font-weight: bolder;
-        top: 214px;
+        top: 219px;
     }
     .ee{
         position: absolute;
         left: -86px;
-        top: 280px;
+        top: 287px;
         font-size: 13px;
         font-weight: bolder;
     }
@@ -173,8 +174,8 @@
         width: 30px;
         position: absolute;
         left: 96px;
-        height: 30px;
-        bottom: 76px;
+    height: 30px;
+    bottom: 100px;
     }
     .upfile-text{
         width: 100%;
@@ -193,6 +194,34 @@
     .hu-filename{
         border: none;
     }
+    
+    .cate-no{
+    	position: absolute;
+	    top: -35px;
+	    left: -100px;
+	    font-weight: bold;
+	    font-size: 13px;
+    }
+    
+    .hu-category{
+   		width: 300px;
+	    height: 20px;
+	    border: 1px solid rgba(96, 96, 96, 0.5);
+	    border-radius: 8px;
+	    position: absolute;
+	    top: -36px;
+    }
+    #category-check{
+    	width: 100%;
+	    position: absolute;
+	    top: -36px;
+	    border-radius: 8px;
+	    height: 21px;
+    }
+    
+    #boardType-check{
+    }
+
 </style>
 
 </head>
@@ -203,49 +232,77 @@
             <div class="helpu-top-section">
                 <img class="hu-close-btn" src="././resources/icon/close.png">
                     <div class="hu-top-section">
-                        <p>도와줄게요 게시글 작성</p>
+                        <p style="margin-bottom: 2rem;">도와줄게요 게시글 작성</p>
                     </div>
+               <form method="post" action="helpInsert.bo" enctype="multipart/form-data">
+               	<input type="hidden" value="${loginUser.memberNo}" name="memberNo">
                     <div class="hu-align">
-                        <div class="hu-input-area">
+                        <div class="hu-input-area">                   
+                           <div class="category">
+                               <div class="cate-no">
+                                   카테고리 번호
+                               </div>
+                               <select name="categoryNo" id="category-check">
+                               		<option value="200">200</option>
+                               		<option value="201">201</option>
+                               		<option value="202">202</option>
+                               		<option value="203">203</option>
+                               		<option value="204">204</option>
+                               		<option value="205">205</option>
+                               </select>
+                           </div> 
+                   
                             <div class="aa">
                                 <div class="bb">
                                     제목
                                 </div>
-                                <input class="hu-title" type="text"/>
+                                <input class="hu-title" type="text" name="boardTitle"/>
                             </div>  
                             <div class="aa">
                                 <div class="cc">
                                     내용
                                 </div>
-                                <textarea class="hu-content" type="text"></textarea>
+                                <textarea class="hu-content" type="text" name="boardContent"></textarea>
                             </div>  
-                            <div class="aa">
-                                <label class="hu-upfile" className="input-file-button" for="hu-upfile">
+                      		<div class="aa">
+                                <label class="hu-upfile" for="hu-upfile">
                                     파일첨부
-                                    <img class="clip-img" src="././resources/icon/paperclip.png" for="hu-upfile">
+                                    <img class="clip-img" src="././resources/icon/paperclip.png">
                                 </label>
                                 <div class="hu-uploaded">
-                                    <input class="hu-filename" type="text" id="fileName"  name="fileName">
+                                    <input class="hu-filename" type="text" id="fileName" name="upfile">
                                 </div>
                                 <div class="dd">
                                     파일첨부
                                 </div>
-                                <input id="hu-upfile" class="hu-upfile" type="file" style="display: none;"  onchange="javascript:document.getElementById('fileName').value = this.value">
+                                <input id="hu-upfile" class="hu-upfile" type="file" name="upfile" style="display: none;" onchange="javascript:document.getElementById('fileName').value = this.value">
                             </div>  
+                       
                             <div class="aa">
-                                <input class="hu-price" type="text" id="price" placeholder="최소 1,000">
+                                <input class="hu-price" type="number" id="price" name="price" placeholder="최소 1,000">
                                 <p class="price-measure2">원</p>
                                     <div class="ee">
                                         희망가격
                                     </div>
-                                </input>
-                            </div>  
+                            </div> 
+                             <div class="category">
+                               <div class="cate-no" style="    top: 328px;
+    left: -77px;
+                               ">
+                                   게시판
+                               </div>
+                               <select name="boardType" id="boardType-check">
+                               		<option value="1">도와줄게요</option>
+                               		<option value="2">도와주세요</option>
+                               </select>
+                           </div>
                         </div>
                     </div>
                     <div class="hu-btn-area">
-                        <button class="hu-cancle-btn">취소</button>
-                        <button class="hu-submit-btn">등록</button>
+                        <button type="reset" class="hu-cancle-btn">취소</button>
+                        <button type="submit" class="hu-submit-btn">등록</button>
                     </div>
+                </form>
             </div>
         </div>
     </div>
@@ -265,8 +322,6 @@
 
 
 <%@ include file="../common/footer.jsp" %>
-
-
 
 
 </body>

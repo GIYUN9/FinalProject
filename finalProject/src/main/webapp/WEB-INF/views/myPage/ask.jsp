@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,10 +52,10 @@
 			margin-left: 0px;
 		}
 		.cu-re-title{
+			background-color: rgba(224, 224, 224, 0.5);
 			font-size: 14px;
 			width: 320px;
 			height: 30px;
-			background-color: rgba(224, 224, 224, 0.5);
 			border: 1px solid rgba(96, 96, 96, 0.5);
 			border-radius: 10px;
 			padding: 3px;
@@ -62,20 +63,20 @@
 			font-weight: bolder;
 		}
 		.cu-email{
+			background-color: rgba(224, 224, 224, 0.5);
 			font-size: 14px;
 			width: 320px;
 			height: 30px;
-			background-color: rgba(224, 224, 224, 0.5);
 			border: 1px solid rgba(96, 96, 96, 0.5);
 			border-radius: 10px;
 			padding: 3px;
 			margin-bottom: 10px;
 		}
 		.cu-desc{
+			background-color: rgba(224, 224, 224, 0.5);
 			font-size: 14px;
 			width: 320px;
 			height: 250px;
-			background-color: rgba(224, 224, 224, 0.5);
 			border: 1px solid rgba(96, 96, 96, 0.5);
 			border-radius: 10px;
 			padding: 10px;
@@ -107,6 +108,7 @@
 			font-size: 14px;
 			font-weight: 700;
 			margin-bottom: 20px;
+			text-align: center;
 		}
 		.customer-req{
 			margin-right: 40px;
@@ -143,17 +145,21 @@
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
-	<div class="box" style="margin-top: 55px">
+	<div class="box" style="margin-top: 120px">
 		<div class="sideBar">
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">계정 설정</h3>
-			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 280px;">
+			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 180px;">
 		
 			<a class="myPageSideBar" href="userInfo.me">나의 정보</a>
 			<a class="myPageSideBar" href="proInfo.me">전문가 정보</a>
 			<a class="myPageSideBar" href="changePwd.me">비밀번호 변경</a>
 			<a class="myPageSideBar" href="deleteForm.me">회원 탈퇴</a>
 			<a class="myPageSideBar" href="schedule.me">일정 관리</a>
-			<a class="myPageSideBar" href="ask.me" style="font-weight: bolder; font-size: 1.1em;">문의 내역</a>
+			<a class="myPageSideBar" href="ask.me" style="font-weight: bolder; 
+			background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">문의 내역</a>
+			<c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
+				<a class="myPageSideBar" href="">회원 관리</a>
+			</c:if>        
 		</div>
 		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">문의 내역</h3>

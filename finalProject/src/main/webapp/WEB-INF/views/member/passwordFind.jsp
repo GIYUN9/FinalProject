@@ -87,29 +87,37 @@
 	
 	<div style="margin-top: 55px;">
 		<!-- 버튼 클릭 시 모달 열기 -->
-	    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-	        비밀번호 찾기
+	    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">
+	        	비밀번호 찾기
 	    </button>
-        
+        <!-- redirect 이후에 알림 메시지를 출력할 부분 -->
+		<div class="alert alert-success" style="display:none">
+		  ${successMsg}
+		</div>
 	    <!-- 첫번째 모달 -->
-	    <div class="modal" id="myModal" >
+	    <div class="modal" id="myModal3" >
 	        <div class="modal-dialog">
                 <h4 class="modal-title" style="text-align: center; font-weight: bold; margin: 0 auto;">비밀번호 찾기</h4>
 	            <div class="modal-content">
+	            <form action="sendmail.pwd" method="post">
                     <div class="pf-div">
                         <h5>가입한 이메일 주소를 입력해주세요</h5>
-                        <input class="input-email" type="text" placeholder="example@poomasi.com">
+                        <input class="input-email" name="memberEmail" type="text" placeholder="example@poomasi.com">
                         <div class="pf-text">
-                            가입하신 이메일 주소를 입력해주시면<br>
-                            새로운 비밀번호를 설정 가능한 링크를 보내드립니다.
+				                            가입하신 이메일 주소를 입력해주시면<br>
+				                            새로운 비밀번호를 설정 가능한 링크를 보내드립니다.
                         </div>
-                        <button type="submit" class="emailSend-btn" onclick="emailSend()">이메일 전송하기</button> 
+                        <button type="submit" class="emailSend-btn">이메일 전송하기</button> 
                     </div>
+                   </form>
 	            </div>
 	        </div>
 	    </div>
 	</div>
 	
+	<script>
+	   
+	</script>
 
 
 	<script>

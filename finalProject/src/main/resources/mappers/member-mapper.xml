@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="memberMapper">
+	<resultMap type="Member" id="memberResult">
+		<result column="MEM_NO" property="memberNo"/>
+		<result column="MEM_EMAIL" property="memberEmail"/>
+		<result column="MEM_PWD" property="memberPwd"/>
+		<result column="MEM_NAME" property="memberName"/>
+		<result column="MEM_CONCERN" property="memberConcern"/>
+		<result column="MEM_PRO" property="memberPro"/>
+		<result column="PHONE" property="phone"/>
+		<result column="LOCATION" property="location"/>
+		<result column="STATUS" property="status"/>
+		<result column="MEM_GEN" property="memberGender"/>
+		<result column="POINT" property="point"/>
+		<result column="FILE_PATH" property="filePath"/>
+		<result column="ACCOUNT" property="account"/>
+		<result column="INTRO" property="intro"/>
+	</resultMap>
+	
+	<resultMap type="Professional" id="professionalResult">
+		<result column="PRO_NO" property="proNo"/>
+		<result column="PRO_JOB" property="proJob"/>
+		<result column="CATEGORY_NO" property="categoryNo"/>
+		<result column="MEM_NO" property="memberNo"/>
+	</resultMap>
+<!-- 	
+	<resultMap type="Schedule" id="scheduleResult">
+		<result column="SCHE_NO" property="scheNo"/>
+		<result column="SCHE_Title" property="Title"/>		
+		<result column="SCHE_WRITER" property="Writer"/>
+		<result column="SCHE_CATEGORY" property="Category"/>
+		<result column="SCHE_SERVICE" property="Service"/>
+		<result column="SCHE_CONTENT" property="Content"/>
+		<result column="MEM_NO" property="memNo"/>
+		<result column="CREATEDATE" property="createDate"/>
+		<result column="STATUS" property="status"/>
+	</resultMap>
+ -->
+	<!-- 회원가입 -->
+	<insert id = "insertMember">
+		INSERT INTO MEMBER(
+			MEM_NO,
+			MEM_EMAIL,
+			MEM_PWD,
+			MEM_NAME,
+			PHONE,
+			MEM_GEN
+		)
+		VALUES(
+			SEQ_MNO.NEXTVAL,
+			#{memberEmail},
+			#{memberPwd},
+			#{memberName},
+			#{phone},
+			#{memberGender}	
+		)
+	</insert>
+	<!-- 아이디 중복체크 -->
+	<select id="emailCheck" resultMap="memberResult">
+		SELECT MEM_EMAIL,
+			MEM_PWD,
+			MEM_NAME
+		FROM MEMBER
+		WHERE MEM_EMAIL = #{memberEmail}
+			AND STATUS = 'Y'
+	</select>
+	
+	<!-- 로그인 -->
+	<select id="loginMember" resultMap="memberResult">
+		SELECT MEM_NO,
+			MEM_EMAIL,
+			MEM_PWD,
+			MEM_NAME,
+			MEM_CONCERN,
+			MEM_PRO,
+			PHONE,
+			LOCATION,
+			STATUS,
+			MEM_GEN,
+			POINT,
+			FILE_PATH,
+			ACCOUNT,
+			INTRO
+		FROM MEMBER
+		WHERE MEM_EMAIL = #{memberEmail}
+			AND MEM_PWD = #{memberPwd}
+		AND STATUS = 'Y'
+	</select>
+	
+	<!-- 회원정보 불러오는 쿼리 -->
+	<select id="userInfo" resultMap="memberResult">
+		SELECT  MEM_NO,
+				MEM_EMAIL,
+				MEM_PWD,
+				MEM_NAME,
+				MEM_CONCERN,
+				MEM_PRO,
+				PHONE,
+				LOCATION,
+				STATUS,
+				MEM_GEN,
+				POINT,
+				FILE_PATH,
+				ACCOUNT,
+				INTRO
+		FROM MEMBER
+		WHERE MEM_NO = #{memberNo}
+		AND STATUS = 'Y'
+	</select>
+	
+	<!-- 회원정보를 수정하는 쿼리 -->
+	<update id="updateUserInfo">
+		UPDATE MEMBER 
+		SET MEM_EMAIL = #{memberEmail},
+				MEM_NAME = #{memberName},
+				MEM_CONCERN = #{memberConcern},
+				PHONE = #{phone},
+				POINT = #{point}
+		WHERE MEM_NO = #{memberNo}
+	</update>
+	
+	<!-- 멤버번호로 프로페셔널테이블 불러오는 쿼리 -->
+	<select id="proInfo" resultMap="professionalResult">
+		SELECT  PRO_NO,
+				PRO_JOB,
+				CATEGORY_NO,
+				MEM_NO
+				FROM PROFESSIONAL
+				WHERE MEM_NO = #{memberNo}
+	</select>
+	
+	<!-- 멤버번호로 구별 / 전문가페이지에서 자기소개 수정하는 쿼리 -->
+	<update id="updateProInfo">
+		UPDATE MEMBER
+		SET INTRO = #{intro}
+		WHERE MEM_NO = #{memberNo}
+	</update>
+	
+	<!--비밀번호 수정 쿼리 -->
+	<update id="updatePwd">
+		UPDATE MEMBER
+		SET MEM_PWD = #{memberPwd}
+		WHERE MEM_NO = #{memberNo}
+	</update>
+	
+	<!-- 회원탈퇴 쿼리 -->
+	<update id="deleteMember">
+		UPDATE MEMBER
+		SET STATUS = 'N'
+		WHERE MEM_NO = #{memberNo}
+		AND MEM_EMAIL = #{memberEmail}
+	</update>
+	
+	<!-- 일정 관리 리스트 쿼리 -->
+	<!-- 
+	<select id="scheduleList" resultMap="scheduleResult">
+		SELECT  SCHE_NO,
+				SCHE_WRITER,
+				SCHE_CATEGORY,
+				SCHE_SERVICE,
+				SCHE_CONTENT,
+				MEM_NO,
+				CREATEDATE
+				FROM SCHEDULE
+				WHERE STATUS = 'Y'
+	</select> -->		
+</mapper>
