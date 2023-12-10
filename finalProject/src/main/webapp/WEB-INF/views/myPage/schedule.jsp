@@ -226,26 +226,27 @@
 						<h6 style="float: left; font-weight: bold;">요청 현황 (<span style="color: red;">3</span>건)</h6>
 					</div>
 					<div style="width: 98%; overflow: scroll; height: 414px;" class="scrolleffect">
-						<div class="alarm-section">
-							<div style="width: 14%;">
-								이미지 자리
+                       	<c:forEach var="s" items="${sList}">			
+							<div class="alarm-section">
+								<div style="width: 14%;">
+									이미지 자리
+								</div>
+								<div style="width: 31%;">
+									<h5 class="user-nickname">${s.writer}</h5>
+									<p>희망지역: 서울시 강남구 역삼동</p>
+									<p>${s.category} / ${s.service}</p>
+								</div>
+								<div style="width: 40%;">
+									<p class="textarea-maxSize">
+										ex) 달마ㅏ바사앚맟카탗판ㅇ랗알하낭란ㅇ라ㅁ나안ㅁ암나란ㅇㄹ항라호아로할화라홀하ㅘㄹ활하ㅘㄹ활하ㅘㅇㄹ하ㅗ라화라호라홀하....
+									</p>
+								</div>
+								<div style="width: 15%; display: flex; flex-direction: column;">
+									<button class="schedule-btn" style="background-color: rgb(0, 199, 174)" id="btn-open-schedule-modal">일정 모달 열기</button>
+									<button class="schedule-btn" style="background-color: rgb(218, 76, 60)" onclick="refuse()">거절</button>
+								</div>
 							</div>
-							<div style="width: 31%;">
-								<h5 class="user-nickname">홍길동</h5>
-								<p>희망지역: 서울시 강남구 역삼동</p>
-								<p>키보드 / 기타 레슨</p>
-							</div>
-							<div style="width: 40%;">
-								<p class="textarea-maxSize">
-									ex) 달마ㅏ바사앚맟카탗판ㅇ랗알하낭란ㅇ라ㅁ나안ㅁ암나란ㅇㄹ항라호아로할화라홀하ㅘㄹ활하ㅘㄹ활하ㅘㅇㄹ하ㅗ라화라호라홀하....
-								</p>
-							</div>
-							<div style="width: 15%; display: flex; flex-direction: column;">
-								<button class="schedule-btn" style="background-color: rgb(0, 199, 174)" id="btn-open-schedule-modal">일정 모달 열기</button>
-								<button class="schedule-btn" style="background-color: rgb(218, 76, 60)" onclick="refuse()">거절</button>
-							</div>
-						</div>
-	
+						</c:forEach> 
 						<div class="alarm-section">
 							<div style="width: 14%;">
 								이미지 자리

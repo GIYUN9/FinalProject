@@ -1,11 +1,13 @@
 package com.kh.finalProject.member.model.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.finalProject.common.vo.Schedule;
 import com.kh.finalProject.member.model.vo.Member;
 import com.kh.finalProject.member.model.vo.Professional;
 
@@ -49,11 +51,11 @@ public class MemberDao {
 	public int deleteMember(SqlSessionTemplate sqlSession, Member m) {
 		return sqlSession.update("memberMapper.deleteMember", m);
 	}
-/*
-	public ArrayList<Member> scheduleList(SqlSessionTemplate sqlSession) {
+
+	public ArrayList<Schedule> scheduleList(SqlSessionTemplate sqlSession) {
 		return (ArrayList)sqlSession.selectList("memberMapper.scheduleList");
 	}
-*/	
+	
 	public int updateUserImg(SqlSessionTemplate sqlSession, String memberNo, String filePath) {
 		Map<String, String> tmp = new HashMap();
 		tmp.put("memberNo", memberNo);
