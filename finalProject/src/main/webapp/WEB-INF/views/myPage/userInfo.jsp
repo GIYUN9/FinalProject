@@ -42,26 +42,31 @@
 			bottom: 13px;
 			width: 484px;
 			background: none;
-			border: 1px solid rgb(147, 147, 150);
+			border: none;
+			color: white;
+			background: rgb(0, 199, 174);
 			border-radius: 5px;
 			height: 35px;
 			cursor: pointer;
 		}
 		.email-input{
-			height: 35px
+			height: 35px;
+			padding-left: 5px;
 		}
 		.phone-input{
-			height: 35px
+			height: 35px;
+			padding-left: 5px;
 		}
 		.info-input{
 			width: 100%;
+			padding-left: 5px;
 		}
 
 		.normal-input-box > button {
 			width: 80px;
 			height: 35px;
-			border: 1px solid rgb(147, 147, 150);
 			border-radius: 5px;
+			font-size: 15px;
 		}
 		.ui-formOuter{
 			position: relative;
@@ -91,9 +96,11 @@
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="user-info">
 					<div style="margin-top: 55px; display: flex; flex-direction: column; align-self: flex-start;">
-						<img style="width: 100px; height: 100px; margin: 15px; border-radius: 25px;" src="./resources/icon/profileTest.png">
+						<label onclick="changeImg()"><img style="width: 100px; height: 100px; margin: 15px; border-radius: 25px;" src="${loginUser.filePath}"></label>
 
-						<form class="profile-btn-area" action="" >
+						<form class="profile-btn-area" action="updateUserImg.me" method="post" enctype="multipart/form-data">
+							<input type="hidden" name="memberNo" value="${loginUser.memberNo}">
+							<input type="file" id="upload-photo-input" name="upfile" style="display: none;">
 							<button type="submit" class="pr-btn">프로필 변경</button>
 						</form>
 					</div>
@@ -109,7 +116,7 @@
 									<td>
 										<div class = "normal-input-box">
 											<input class="email-input" name="memberEmail" value="${loginUser.memberEmail}" readonly="readonly">
-											<button class="btn" onclick="newEmail()">인증하기</button>
+											<button class="btn" onclick="newEmail()" style="font-size: 12px;">인증하기</button>
 										</div>
 									</td>
 								</tr>
@@ -118,7 +125,7 @@
 									<td>
 										<div class = "normal-input-box">
 											<input class="phone-input" name="phone" value="${loginUser.phone}" readonly="readonly">
-											<button class="btn" onclick="newPhone()">재인증</button>
+											<button class="btn" onclick="newPhone()" style="font-size: 12px;">재인증</button>
 										</div>
 									</td>
 								</tr>
@@ -127,7 +134,7 @@
 									<td>
 										<div class="normal-input-box">
 											<input class="info-input" value="${loginUser.account}" readonly="readonly">
-											<button class="btn" onclick="payAdd()">충전하기</button>
+											<button class="btn" onclick="payAdd()" style="font-size: 12px;">충전하기</button>
 										</div>
 									</td>
 								</tr>
@@ -149,5 +156,31 @@
 		</div>
 	</div>
 	<jsp:include page="../common/footer.jsp" />
+	
+	<script>
+	function changeImg() {
+		  // input 태그 활성화
+		  $("#upload-photo-input").trigger("click");
+
+		  // 파일 선택 이벤트 등록
+		  $("#upload-photo-input").change(function(event) {
+		    // 선택된 파일 정보
+		    var file = event.target.files[0];
+
+		    // FileReader 객체 생성
+		    var reader = new FileReader();
+
+		    // 파일 로딩
+		    reader.onload = function(event) {
+		      // 이미지 태그 src 속성 변경
+		      $("img[src='${loginUser.filePath}']").attr("src", event.target.result);
+		    };
+
+		    // 파일 읽기 시작
+		    reader.readAsDataURL(file);
+		  });
+	}
+	
+	</script>
 </body>
 </html>

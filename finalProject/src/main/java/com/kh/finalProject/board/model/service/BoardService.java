@@ -3,12 +3,23 @@ package com.kh.finalProject.board.model.service;
 import java.util.ArrayList;
 
 import com.kh.finalProject.board.model.vo.Board;
+
+import com.kh.finalProject.common.vo.Attachment;
+
 import com.kh.finalProject.common.vo.Notice;
+
 import com.kh.finalProject.common.vo.PageInfo;
 
 
 public interface BoardService {
 	
+	//게시글 총 페이지
+	int helpselect();
+	
+	//게시판 도와줄게요 리스트조회
+	ArrayList<Board> helpselectList(PageInfo pi);
+	
+
 	//커뮤니티 전체보기 조회
 	ArrayList<Board> selectCommList(PageInfo pi);
 	
@@ -19,7 +30,10 @@ public interface BoardService {
 	Board selectCommBoard(int boardNo);
 	
 	//도와줄게요 게시판 등록
-	int insertBoard(Board b);
+	int helpinsertBoard(Board b);
+	
+	//도와줄게요 사진 첨부
+	int helpAttachment(Attachment at);
 	
 	//도와줄게요 게시판 수정
 	int updateBoard(Board b);
@@ -33,9 +47,15 @@ public interface BoardService {
 	//공지사항 리스트(조회)
 	ArrayList<Notice> noticeList();
 	
+	//공지사항 리스트 2개조회
+	ArrayList<Notice> noticeListTwo();
+	
 	//공지사항 등록
 	int insertNotice(Notice n);
 	
+	//도와줄께요 게시판 리스트 count(*)조회
+	int seleteHelpListCount();
+
 	//공지사항 삭제
 	int deleteNotice(Notice n);
 	
@@ -50,6 +70,9 @@ public interface BoardService {
 	
 	//얼마예요 리스트 (조회)
 	ArrayList<Board> selectMuchList(PageInfo pi);
+
+	//도와줄게요 보드번호 가져오는 중간 쿼리
+	Board helpselectOne(Board b);
 	
 	//함께해요 게시글 수 (조회)
 	int selectTogetherListCount();
@@ -59,4 +82,12 @@ public interface BoardService {
 	
 	//커뮤니티 게시글 등록
 	int insertCommboard(Board b);
+	
+	//도와주세요, 도와줄게요, 궁금해요, 얼마예요, 함께해요 가장빠른 등록일기준 2개
+	ArrayList<Board> findBoardList1(String keyWord);
+	ArrayList<Board> findBoardList2(String keyWord);
+	ArrayList<Board> findBoardList3(String keyWord);
+	ArrayList<Board> findBoardList4(String keyWord);
+	ArrayList<Board> findBoardList5(String keyWord);
+
 }

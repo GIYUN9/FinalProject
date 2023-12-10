@@ -13,11 +13,16 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Attachment {
-	private int attNo;
-	private String originName;
-	private String changeName;
-	private String filePath;
+public class Schedule {
+	private int scheNo;
+	private String title;
+	private String writer;
+	private String img;
+	private String location;
+	private String category;
+	private String service;
+	private String content;
+	private int memNo;
+	private Date createaDate;
 	private String status;
-	private int boardNo;
 }

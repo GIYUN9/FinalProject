@@ -13,20 +13,10 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Board {
+public class Comment {
+	private int commentNo; // 댓글번호
+	private Date commentCreated; //댓글작성일
+	private String content; // 댓글내용
 	private int boardNo;
-	private String boardTitle;
-	private String boardContent;
-	private int price;
-	private int boardType;
-	private Date createDate;
-	private String status; 
 	private int memberNo;
-	private int categoryNo;
-	
-	private String location;
-	
-	private String memberName;
-	private String changeName;
-	private String filePath;
 }
