@@ -1,6 +1,9 @@
 package com.kh.finalProject.member.controller;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpSession;
 
@@ -8,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.finalProject.member.model.service.MemberService;
@@ -184,6 +188,55 @@ public class MemberController {
 		
 		return mv;
 	}
+	
+	@RequestMapping(value = "/updateUserImg.me")
+	public String updateUserImg(String memberNo, MultipartFile upfile, HttpSession session, Model model) {
+		if(!upfile.getOriginalFilename().equals("")) {
+			
+			String changeName = saveFile(upfile, session, "resources/memberProfileImg/");
+			
+			String filePath = "resources/memberProfileImg/" + changeName;
+			
+			int result = memberService.updateUserImg(memberNo, filePath);
+			
+			return "redirect:/userInfo.me";
+		} else {
+			model.addAttribute("errorMsg", "프로필 변경 실패");
+			return "common/errorPage";
+		}
+		
+	}
+	
+	private String saveFile(MultipartFile upfile, HttpSession session, String path) {
+		//파일명 수정 후 서버 업로드 시키기("음악스트리밍.png" => 20231109102712345.png)
+		//년월일시분초 + 랜덤숫자 5개 + 확장자
+		
+		//원래 파일명
+		String originName = upfile.getOriginalFilename();
+		
+		//시간정보(년월일시분초)
+		String currentTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+		
+		//랜덤숫자 5자리
+		int ranNum = (int)((Math.random() * 90000) + 10000);
+		
+		//확장자
+		String ext = originName.substring(originName.lastIndexOf("."));
+		
+		String changeName = currentTime + ranNum + ext;
+		
+		//첨부파일 저장할 폴더의 물리적인 경우
+		String savePath = session.getServletContext().getRealPath(path);
+		
+		try {
+			upfile.transferTo(new File(savePath + changeName));
+		} catch (IllegalStateException | IOException e) {
+			e.printStackTrace();
+		}
+		
+		return changeName;
+	}
+	
 }
 
 /*
