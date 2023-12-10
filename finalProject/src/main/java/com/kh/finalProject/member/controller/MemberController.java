@@ -2,8 +2,9 @@ package com.kh.finalProject.member.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.finalProject.common.vo.Schedule;
 import com.kh.finalProject.member.model.service.MemberService;
 import com.kh.finalProject.member.model.vo.Member;
 import com.kh.finalProject.member.model.vo.Professional;
@@ -108,19 +110,22 @@ public class MemberController {
 			return "redirect:/";
 		}
 	}
-	/*
+	
 	@RequestMapping(value = "/schedule.me")
-	public String schedule(Model model){
-		ArrayList<Member> sList = memberService.scheduleList();
-		model.addAttribute("sList",sList);
-		return "myPage/schedule";
+	public String schedule(Model model) {
+	    ArrayList<Schedule> sList = memberService.scheduleList();
+	    for (Schedule schedule : sList) {
+	        System.out.println(schedule); // 로깅을 통해 데이터 출력
+	    }
+	    model.addAttribute("sList", sList);
+	    return "myPage/schedule";
 	}
-	*/
-	@RequestMapping(value = "/schedule.me")
-	public String schedule(){
-		//화면 전환용 임시 데이터는 없는상태
-		return "myPage/schedule";
-	}
+//	
+//	@RequestMapping(value = "/schedule.me")
+//	public String schedule(){
+//		//화면 전환용 임시 데이터는 없는상태
+//		return "myPage/schedule";
+//	}
 	
 	@RequestMapping(value = "/ask.me")
 	public String ask(){
