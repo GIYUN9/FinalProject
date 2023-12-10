@@ -223,7 +223,7 @@
 		</div>
 		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">전체보기</h3>
-			<button id="board-create" onclick="">글쓰기</button>
+			
 			<div class="pageBox" style="display: flex; flex-direction: column; position: relative;">
 				<div class="community-big">
 					 <div class="de-title">
@@ -253,18 +253,36 @@
                         	
                         </div>
                      </div> 
-					<button>등록</button>
-                    <!-- 수정은 관리자 혹은 작성자에게만 보이게 조건걸어주기 -->
-                    <button >수정</button>
+					
+                    
+                    
 
-                    <!-- 수정하기, 삭제하기 버튼은 이 글이 본인이 작성한 글일 경우에만 보여져야 함 -->
-                    <c:if test="${loginUser.memberName eq b.memberName">   		
-                    <div align="center">
-                        <a class="" onclick="postFormSubmit(1)">수정하기</a>
-                        <a class="" onclick="postFormSubmit(2)">삭제하기</a>
-                    </div>
-                    <br><br>
-                </c:if>
+                    <!-- 수정하기 삭제하기는 관리자 혹은 작성자에게만 보이게 조건걸어주기 -->
+                    <c:if test="${loginUser.memberName eq b.memberName || loginUser.memberName=='관리자'}">
+					    <div align="center">
+					        <a class="" onclick="postFormSubmit(1)">수정하기</a>
+					        <a class="" onclick="postFormSubmit(2)">삭제하기</a>				
+					    </div>
+					    <br><br>
+					</c:if>
+					
+					 <form action="" method="post" id="postForm">
+		           		<input type="hidden" name="boardNo" value="${b.boardNo}">	      
+		             </form>
+		             
+					<script>
+						function postFormSubmit(num){
+							if(num === 1){
+		                        $("#postForm").attr('action', '수정은 어디로 갈까');
+								// document.querySelector('#postForm').setAttribute('action', 'updateForm.bo');
+							} else{
+		                        $("#postForm").attr('action', '삭제는 어디로 갈까');
+								// document.querySelector('#postForm').setAttribute('action', 'deleteForm.bo');
+							}
+		                    $("#postForm").submit();
+		                    // document.querySelector('#postForm').submit();
+						}
+					</script>
                 </div>
 			</div>		
 		</div>

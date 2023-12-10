@@ -13,7 +13,7 @@
   		<result column="CREATEDATE" property="createDate" />
   		<result column="STATUS" property="status" />
   		<result column="MEM_NO" property="memberNo" />
-  		<result column="CATEGORY_NO" property="categoryNo" />
+  		<result column="CATEGORY_NO" property="cㅠategoryNo" />
   		<result column="MEM_NAME" property="memberName" />
   	</resultMap>
   	
