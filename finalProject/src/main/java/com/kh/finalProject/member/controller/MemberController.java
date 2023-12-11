@@ -120,8 +120,9 @@ public class MemberController {
 	@RequestMapping(value = "/schedule.me")
 	public String schedule(Schedule s, Model model) {
 	    ArrayList<Schedule> sList = memberService.scheduleList(s);
-	    System.out.println(sList);
 	    model.addAttribute("sList", sList);
+	    ArrayList<Schedule> sList2 = memberService.scheduleSendList(s);
+	    model.addAttribute("sList2", sList2);
 	    return "myPage/schedule";
 	}
 //	
@@ -254,6 +255,14 @@ public class MemberController {
 		}
 		
 		return changeName;
+	}
+	
+	//보낸요청삭제
+	//여기 페이지 리다이렉트했을때 값 넘어가게 수정해야함
+	@RequestMapping(value = "requestCancel.bo")
+	public String requestCancel(Schedule s, Model model) {
+		int result = memberService.requestCancel(s);
+		return "redirect:/schedule.me";
 	}
 	
 }

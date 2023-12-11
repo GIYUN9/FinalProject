@@ -62,5 +62,13 @@ public class MemberDao {
 		tmp.put("filePath", filePath);
 		return sqlSession.update("memberMapper.updateUserImg", tmp);
 	}
+	
+	public ArrayList<Schedule> scheduleSendList(SqlSessionTemplate sqlSession, Schedule s){
+		return (ArrayList)sqlSession.selectList("memberMapper.scheduleSendList", s);
+	}
+	
+	public int requestCancel(SqlSessionTemplate sqlSession, Schedule s) {
+		return sqlSession.update("memberMapper.requestCancel", s);
+	}
 }
 
