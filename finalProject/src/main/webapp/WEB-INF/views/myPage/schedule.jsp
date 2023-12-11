@@ -204,6 +204,7 @@
 			<a class="myPageSideBar" href="ask.me">문의 내역</a>
 			<c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
                 <a class="myPageSideBar" href="">회원 관리</a>
+                <a class="myPageSideBar" href="ask.me">신고 내역</a>                
             </c:if>        
 		</div>
 		<div class="main-box">
@@ -246,7 +247,7 @@
 									<button class="schedule-btn" style="background-color: rgb(218, 76, 60)" onclick="refuse()">거절</button>
 								</div>
 							</div>
-						</c:forEach>
+						</c:forEach> 
 					</div>
 
 					<div style="width: 100%; margin: 10px 0px 10px 8px;">

@@ -109,7 +109,7 @@
         color: white;
     }
     a:hover{
-        color: black;
+        color: rgb(0, 199, 174);
         text-decoration: none;
     }
 
