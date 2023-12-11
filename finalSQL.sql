@@ -35,7 +35,7 @@ CREATE TABLE MEMBER(
     STATUS VARCHAR2(1) DEFAULT 'Y' CHECK (STATUS IN('Y', 'N')),
     MEM_GEN VARCHAR2(10) NOT NULL CHECK(MEM_GEN IN ('M','F')), 
     POINT NUMBER,
-    FILE_PATH VARCHAR2(3000),
+    FILE_PATH VARCHAR2(3000) DEFAULT 'resources/memberProfileImg/userDefaultProFile.png',
     ACCOUNT NUMBER DEFAULT 0,
     INTRO VARCHAR2(3000)
 );
@@ -148,6 +148,24 @@ MAXVALUE 20000
 NOCYCLE
 NOCACHE;
 
+--SCHEDULE(요청) 테이블
+CREATE TABLE SCHEDULE(
+    SCHE_NO NUMBER PRIMARY KEY,
+    SCHE_TITLE VARCHAR2(2000) NOT NULL,
+    SCHE_WRITER VARCHAR2(2000) NOT NULL,
+    SCHE_IMG VARCHAR2(2000),    
+    SCHE_LOCATION VARCHAR2(2000),
+    SCHE_CATEGORY VARCHAR2(2000) NOT NULL,
+    SCHE_SERVICE VARCHAR2(2000) NOT NULL,
+    SCHE_CONTENT VARCHAR2(2000) NOT NULL,
+    MEM_NO NUMBER REFERENCES MEMBER(MEM_NO),
+    CREATEDATE DATE DEFAULT SYSDATE NOT NULL,
+    STATUS VARCHAR2(3) DEFAULT 'Y' NOT NULL
+);
+
+-- SCHEDULE(요청)시퀀스
+CREATE SEQUENCE SEQ_SNO START WITH 1000 INCREMENT BY 1 MAXVALUE 9999 NOCYCLE NOCACHE;
+
 ---------------------더미데이터-----------------------
 -- 멤버
 INSERT INTO MEMBER VALUES(1, 'admin@naver.com', '1234' ,'관리자', '음악', 1,
@@ -187,13 +205,13 @@ INSERT INTO CATEGORY VALUES(SEQ_CNO.NEXTVAL, '요리');
 INSERT INTO PROFESSIONAL VALUES(SEQ_PNO.NEXTVAL, '피아니스트', 200, 2);
 
 --게시판(보드)
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-01-01', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-02-01', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-03-01', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-04-01', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-05-01', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-06-01', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-07-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요1', 50000, 1, '2020-01-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요2', 50000, 1, '2020-02-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요3', 50000, 1, '2020-03-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요4', 50000, 1, '2020-04-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요5', 50000, 1, '2020-05-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요6', 50000, 1, '2020-06-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요7', 50000, 1, '2020-07-01', 'Y', 2, 200);
 INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '커뮤니티용 음악레슨합니다1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 50000, 3, '2020-01-02', 'Y', 2, 200);
 INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '얼마예요1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 4, '2020-01-03', 'Y', 2, 200);
 INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '함께해요1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 5, '2020-01-04', 'Y', 2, 200);
@@ -220,5 +238,11 @@ INSERT INTO NOTICE VALUES(SEQ_NNO.NEXTVAL, '공지', '품앗이 현피뜰 경우', '금일은
 고객놈들께서는 참고하시고 이용을 하든지 말든지 진짜 귀찮게 굴지 마시고
 알아서 하시길...', SYSDATE, 'Y');
 INSERT INTO NOTICE VALUES(SEQ_NNO.NEXTVAL, '공지', '품앗이생활은 감옥생활', '품앗이 생활 한번 시작하면은 못빠져나간다', SYSDATE, 'Y');
+-- SCHEDULE
+INSERT INTO SCHEDULE VALUES(SEQ_SNO.NEXTVAL, '제목', '작성자', '이미지경로', '서울', '카테고리', '서비스', '내용', '3', '2023-12-07', 'Y');
+INSERT INTO SCHEDULE VALUES(SEQ_SNO.NEXTVAL, '제목1', '작성자2', '이미지경로', '서울', '음악', '피아노 연주', '내용', '3', '2023-12-07', 'Y');
+INSERT INTO SCHEDULE VALUES(SEQ_SNO.NEXTVAL, '제목2', '작성자3', '이미지경로', '서울', '운동', 'PT', '내용', '3', '2023-12-07', 'Y');
+INSERT INTO SCHEDULE VALUES(SEQ_SNO.NEXTVAL, '제목3', '작성자4', '이미지경로', '서울', '게임', '랭겜대리', '내용', '3', '2023-12-07', 'Y');
+
 ---트랜잭션
 commit;

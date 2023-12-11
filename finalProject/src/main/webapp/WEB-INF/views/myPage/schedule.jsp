@@ -380,7 +380,7 @@
 
 	<div class="modal" id="scheduleModal">
 		<div class="modal_body" style="padding-top: 10px;">
-			<img id="x-btnImg" src="././resources/icon/close.png" alt="" style="width: 14px; height: 14px; float: right; margin-right: 10px;">
+			<form action=""><button type="submit" style="float: right; border:none; outline:none; background: none; color: none;"><img id="x-btnImg" src="././resources/icon/close.png" alt="" style="width: 14px; height: 14px; float: right; margin-right: 10px;"></button></form>
 			<div style="margin-top: 10px;">
 				요청 상세 보기
 			</div>
@@ -471,6 +471,7 @@
 		function refuseSchedule() {
 			scheduleModal.style.display = 'none';
 		}
+		
 
 	</script>
 </body>
