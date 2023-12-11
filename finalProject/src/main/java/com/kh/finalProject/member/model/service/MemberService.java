@@ -40,6 +40,6 @@ public interface MemberService {
 	int updateUserImg(String memberNo, String filePath);
 	
 	//일정관리
-	ArrayList<Schedule> scheduleList();
+	ArrayList<Schedule> scheduleList(Schedule s);
 	
 }

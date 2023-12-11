@@ -66,11 +66,10 @@ public class MemberServiceImpl implements MemberService {
 	}
 
     @Override
-    public ArrayList<Schedule> scheduleList() {
-        ArrayList<Schedule> scheduleList = memberDao.scheduleList(sqlSession);
+    public ArrayList<Schedule> scheduleList(Schedule s) {
+        ArrayList<Schedule> scheduleList = memberDao.scheduleList(sqlSession, s);
         return scheduleList;
     }
-
 
 	@Override
 	public int updateUserImg(String memberNo, String filePath) {

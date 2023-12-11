@@ -118,8 +118,8 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/schedule.me")
-	public String schedule(Model model) {
-	    ArrayList<Schedule> sList = memberService.scheduleList();
+	public String schedule(Schedule s, Model model) {
+	    ArrayList<Schedule> sList = memberService.scheduleList(s);
 	    System.out.println(sList);
 	    model.addAttribute("sList", sList);
 	    return "myPage/schedule";
