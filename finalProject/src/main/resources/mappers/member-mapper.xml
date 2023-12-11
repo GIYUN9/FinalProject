@@ -30,16 +30,17 @@
 	
 	<resultMap type="Schedule" id="scheduleResult">
 		<result column="SCHE_NO" property="scheNo"/>
-		<result column="SCHE_TITLE" property="title"/>		
-		<result column="SCHE_WRITER" property="writer"/>
-		<result column="IMG" property="img"/>
-		<result column="SCHE_LOCATION" property="location"/>		
-		<result column="SCHE_CATEGORY" property="category"/>
-		<result column="SCHE_SERVICE" property="service"/>
-		<result column="SCHE_CONTENT" property="content"/>
-		<result column="MEM_NO" property="memberNo"/>
-		<result column="CREATEDATE" property="createDate"/>
+		<result column="SCHE_TITLE" property="scheTitle"/>		
+		<result column="SCHE_CONTENT" property="scheContent"/>
+		<result column="BOARD_NO" property="boardNo"/>		
+		<result column="FROM_MNO" property="fromMemberNo"/>
+		<result column="TO_MNO" property="toMemberNo"/>
+		<result column="CATEGORY_NO" property="categoryNo"/>
 		<result column="STATUS" property="status"/>
+		<result column="CREATEDATE" property="createDate"/>
+		<result column="LOCATION" property="location"/>
+		<result column="MEM_NAME" property="memberName"/>
+		<result column="CATEGORY_NAME" property="categoryName"/>
 	</resultMap>
 
 	<!-- 회원가입 -->
@@ -160,16 +161,20 @@
 	<!-- 일정 관리 리스트 쿼리 -->
 	<select id="scheduleList" resultMap="scheduleResult">
 		SELECT  S.SCHE_NO,
-				S.SCHE_WRITER,
-				S.SCHE_CATEGORY,
-				S.SCHE_SERVICE,
+				S.SCHE_TITLE,
 				S.SCHE_CONTENT,
-				S.MEM_NO,
+				B.BOARD_NO,
+				M.MEM_NAME,
+				C.CATEGORY_NAME,
+				S.STATUS,
 				S.CREATEDATE,
-				S.SCHE_LOCATION
-		FROM SCHEDULE S
-		JOIN MEMBER M ON S.MEM_NO = M.MEM_NO
-		WHERE S.STATUS = 'Y'				
+				S.LOCATION
+		FROM SCHEDULE S, MEMBER M, BOARD B, CATEGORY C
+		WHERE S.STATUS = 'Y'
+		AND (B.BOARD_NO = S.BOARD_NO)
+		AND (M.MEM_NO = S.FROM_MNO)
+		AND (C.CATEGORY_NO = S.CATEGORY_NO)
+        AND S.TO_MNO = #{toMemberNo}
 	</select>
 	
 	<update id="updateUserImg">
