@@ -52,8 +52,8 @@ public class MemberDao {
 		return sqlSession.update("memberMapper.deleteMember", m);
 	}
 
-	public ArrayList<Schedule> scheduleList(SqlSessionTemplate sqlSession) {
-		return (ArrayList)sqlSession.selectList("memberMapper.scheduleList");
+	public ArrayList<Schedule> scheduleList(SqlSessionTemplate sqlSession, Schedule s) {
+		return (ArrayList)sqlSession.selectList("memberMapper.scheduleList", s);
 	}
 	
 	public int updateUserImg(SqlSessionTemplate sqlSession, String memberNo, String filePath) {
