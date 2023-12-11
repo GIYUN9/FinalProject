@@ -59,6 +59,11 @@
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
+	<c:if test="${not empty alertMsg}">
+		<script>
+   			 alert("${alertMsg}");
+  		</script>
+	</c:if>
 	<div class="box" style="margin-top: 120px">	
 		<div class="sideBar">
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">계정 설정</h3>
@@ -87,7 +92,7 @@
 								6개월에 한 번씩 비밀번호를 변경해야합니다.
 							</span>
 							<div>
-								<input class="nomal-input-style" name="memberPwd" type="password" placeholder="현재 비밀번호 입력" required="required">
+								<input class="nomal-input-style" name="originMemberPwd" type="password" placeholder="현재 비밀번호 입력" required="required">
 							</div>
 							<div>
 								<input class="nomal-input-style" name="newPwd" id="newPwd" type="password" placeholder="신규 비밀번호 입력" required="required">

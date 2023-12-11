@@ -79,12 +79,18 @@ public class MemberController {
 	
 	//비밀번호 변경하는 컨트롤러
 	@RequestMapping(value = "/updatePwd.me")
-	public String updatePwd(Member m, String newPwd, HttpSession session){
+	public String updatePwd(Member m, String newPwd, String originMemberPwd, HttpSession session, Model model){
 		m = (Member)session.getAttribute("loginUser");
-		m.setMemberPwd(newPwd);
-		int result = memberService.updatePwd(m);
+		if(originMemberPwd.equals(m.getMemberPwd())) {
+			m.setMemberPwd(newPwd);
+			int result = memberService.updatePwd(m);
+			model.addAttribute("alertMsg", "비밀번호를 성공적으로 변경하였습니다.");
+			return "forward:/changePwd.me";
+		} else {
+			model.addAttribute("alertMsg", "비밀번호 변경에 실패하였습니다.\n 기존비밀번호가 일치하지 않습니다.");
+			return "forward:/changePwd.me";
+		}
 		
-		return "redirect:/changePwd.me";
 		//성공 얼럴트창 띄우기
 		//프론트에서 기존비밀번호가 일치하고 새로운 비밀번호 확인까지 일치한다면 버튼 클릭가능하기만들기
 	}
