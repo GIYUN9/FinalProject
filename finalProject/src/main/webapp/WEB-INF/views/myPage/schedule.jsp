@@ -105,6 +105,7 @@
 			color: white;
 			cursor: pointer;
 			font-weight: bold;
+			font-size: 13px;
 		}
 
 		.schedule-btn:hover {
@@ -308,7 +309,7 @@
 				<div id="view2" class="user-info"
 					style="flex-direction: column; margin-left: 5px; margin-right: 5px; display: none;">
 					<div style="width: 100%; margin: 10px 0px 10px 8px;">
-						<h6 style="float: left;">보낸 요청</h6>
+						<h6 style="float: left; font-weight: bold;">보낸 요청</h6>
 					</div>
 					<div style="width: 98%;">
 						<div class="alarm-section">
