@@ -2,6 +2,7 @@ package com.kh.finalProject.member.model.service;
 
 import java.util.ArrayList;
 
+import com.kh.finalProject.common.vo.Schedule;
 import com.kh.finalProject.member.model.vo.Member;
 import com.kh.finalProject.member.model.vo.Professional;
 
@@ -39,7 +40,6 @@ public interface MemberService {
 	int updateUserImg(String memberNo, String filePath);
 	
 	//일정관리
-	/*
-	ArrayList<Member> scheduleList();
-	*/
+	ArrayList<Schedule> scheduleList();
+	
 }
