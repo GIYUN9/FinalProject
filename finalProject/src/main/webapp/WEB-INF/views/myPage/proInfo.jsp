@@ -90,6 +90,11 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
         .pro-pr::-webkit-scrollbar {
 			width: 0px; 
 		}
+		
+		.hover-img:hover {
+			opacity: 0.5;
+			cursor: pointer;
+		}
 	</style>
 </head>
 <body>
@@ -115,10 +120,12 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="user-info">
 					<div style="margin-top: 55px; display: flex; flex-direction: column; align-self: flex-start;">
-						<img style="width: 100px; height: 100px; margin: 15px; border-radius: 25px;" src="./resources/icon/profileTest.png">
+						<label class="hover-img" onclick="changeImg()"><img style="width: 100px; height: 100px; margin: 15px; border-radius: 25px;" src="${loginUser.filePath}"></label>
 
-						<form class="profile-btn-area" action="" >
-							<button type="submit" class="pr-btn">프로필 변경</button>
+						<form class="profile-btn-area" action="updateUserImg.me" method="post" enctype="multipart/form-data">
+							<input type="hidden" name="memberNo" value="${loginUser.memberNo}">
+							<input type="file" id="upload-photo-input" name="upfile" style="display: none;">
+							<button type="submit" class="pr-btn" disabled="disabled">프로필 변경</button>
 						</form>
 					</div>
 					<div class="ui-formOuter">
@@ -233,6 +240,42 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 					document.getElementById("sample6_detailAddress").focus();
 				}
 			}).open();
+		}
+		
+		function changeImg() {
+			  // input 태그 활성화
+			  $("#upload-photo-input").trigger("click");
+
+			  // 파일 선택 이벤트 등록
+			  $("#upload-photo-input").change(function(event) {
+			    // 선택된 파일 정보
+			    var file = event.target.files[0];
+
+			    // FileReader 객체 생성
+			    var reader = new FileReader();
+
+			    // 파일 로딩
+			    reader.onload = function(event) {
+			      // 이미지 태그 src 속성 변경
+			      $("img[src='${loginUser.filePath}']").attr("src", event.target.result);
+			    };
+
+			    // 파일 읽기 시작
+			    reader.readAsDataURL(file);
+			    
+			    
+			 	// 파일 선택되면 disabled 속성 제거
+			    $(".pr-btn").removeAttr("disabled");
+			 	
+			    // 프로필 변경 버튼 css 변경
+			    $(".pr-btn").css("background-color", "rgb(0, 199, 174)");
+			    $(".pr-btn").css("border-color", "rgb(0, 199, 174)");
+			    $(".pr-btn").css("font-weight", "bold");
+			    $(".pr-btn").css("color", "white");
+			    $(".pr-btn").css("cursor", "pointer");
+			  });
+			  
+			  
 		}
 	</script>	   
 </body>
