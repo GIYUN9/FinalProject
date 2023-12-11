@@ -204,6 +204,7 @@
 			<a class="myPageSideBar" href="ask.me">문의 내역</a>
 			<c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
                 <a class="myPageSideBar" href="">회원 관리</a>
+                <a class="myPageSideBar" href="ask.me">신고 내역</a>                
             </c:if>        
 		</div>
 		<div class="main-box">
@@ -263,7 +264,7 @@
 								</p>
 							</div>
 							<div style="width: 15%; display: flex; flex-direction: column;">
-								<button class="schedule-btn" style="background-color: rgb(0, 199, 174)">상세</button>
+								<button class="schedule-btn" style="background-color: rgb(0, 199, 174)" id="btn-open-schedule-modal">상세</button>
 								<button class="schedule-btn" style="background-color: rgb(218, 76, 60)">거절</button>
 							</div>
 						</div>
@@ -293,7 +294,7 @@
 								</p>
 							</div>
 							<div style="width: 15%; display: flex; flex-direction: column;">
-								<button class="schedule-btn" style="background-color: rgb(0, 199, 174)">상세</button>
+								<button class="schedule-btn" style="background-color: rgb(0, 199, 174)" id="btn-open-schedule-modal">상세</button>
 								<button class="schedule-btn" style="background-color: rgb(218, 76, 60)">거절</button>
 							</div>
 						</div>
