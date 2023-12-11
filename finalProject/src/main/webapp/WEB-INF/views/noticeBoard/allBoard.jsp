@@ -82,7 +82,7 @@
             margin: 15px;
         }
 
-        .list-btn:hover {
+        .list-btn: {
             color: black
         }
 
@@ -126,7 +126,7 @@
             margin: 3px; 
             width: 56px;
             height: 27px;
-                cursor: pointer;
+            cursor: pointer;
         }
 
         .text1{
@@ -166,11 +166,6 @@
         .a-click {
             text-decoration-line: none;
             color: black;
-        }
-
-        .img {
-            width: 0.8em;
-            height: auto;
         }
 
         .line {
@@ -241,11 +236,11 @@
 						            <p class="text1">${b.boardContent}</p>
 						            <p class="text2">${b.location}</p>
 						          
-					                <img src="./resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
+                            		<img src="./resources/icon/LIKE.png" class="img" style="margin-bottom: 10px;">
 					                <span>0</span>
 					          
 					      
-					                <img src="./resources/borderImage/speech-bubble-icon.png" alt="말풍선아이콘" class="img">
+					                <img src="./resources/icon/speech-bubble.png" alt="말풍선아이콘" class="img">
 					                <span>0</span>
 						         
 						            <span class="time-span">${b.createDate}</span>
