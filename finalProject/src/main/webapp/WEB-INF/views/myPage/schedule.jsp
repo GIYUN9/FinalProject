@@ -262,7 +262,7 @@
 								</p>
 							</div>
 							<div style="width: 15%; display: flex; flex-direction: column;">
-								<button class="schedule-btn" style="background-color: rgb(0, 199, 174)">상세</button>
+								<button class="schedule-btn" style="background-color: rgb(0, 199, 174)" id="btn-open-schedule-modal">상세</button>
 								<button class="schedule-btn" style="background-color: rgb(218, 76, 60)">거절</button>
 							</div>
 						</div>
@@ -292,7 +292,7 @@
 								</p>
 							</div>
 							<div style="width: 15%; display: flex; flex-direction: column;">
-								<button class="schedule-btn" style="background-color: rgb(0, 199, 174)">상세</button>
+								<button class="schedule-btn" style="background-color: rgb(0, 199, 174)" id="btn-open-schedule-modal">상세</button>
 								<button class="schedule-btn" style="background-color: rgb(218, 76, 60)">거절</button>
 							</div>
 						</div>
