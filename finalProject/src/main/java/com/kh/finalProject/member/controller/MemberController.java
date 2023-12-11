@@ -120,9 +120,7 @@ public class MemberController {
 	@RequestMapping(value = "/schedule.me")
 	public String schedule(Model model) {
 	    ArrayList<Schedule> sList = memberService.scheduleList();
-	    for (Schedule schedule : sList) {
-	        System.out.println(schedule); // 로깅을 통해 데이터 출력
-	    }
+	    System.out.println(sList);
 	    model.addAttribute("sList", sList);
 	    return "myPage/schedule";
 	}
