@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.finalProject.common.vo.Schedule;
 import com.kh.finalProject.member.model.dao.MemberDao;
 import com.kh.finalProject.member.model.vo.Member;
 import com.kh.finalProject.member.model.vo.Professional;
@@ -63,10 +64,22 @@ public class MemberServiceImpl implements MemberService {
 	public int deleteMember(Member m) {
 		return memberDao.deleteMember(sqlSession, m);
 	}
-/*
+
+    @Override
+    public ArrayList<Schedule> scheduleList() {
+        ArrayList<Schedule> scheduleList = memberDao.scheduleList(sqlSession);
+
+        // 데이터 확인을 위해 로깅
+        for (Schedule schedule : scheduleList) {
+            System.out.println(schedule);
+        }
+
+        return scheduleList;
+    }
+
+
 	@Override
-	public ArrayList<Member> scheduleList() {
-		return memberDao.scheduleList(sqlSession);
+	public int updateUserImg(String memberNo, String filePath) {
+		return memberDao.updateUserImg(sqlSession, memberNo, filePath);
 	}
-*/
 }

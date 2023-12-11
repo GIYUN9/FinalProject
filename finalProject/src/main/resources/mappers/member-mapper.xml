@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
 <mapper namespace="memberMapper">
 	<resultMap type="Member" id="memberResult">
 		<result column="MEM_NO" property="memberNo"/>
@@ -24,19 +27,21 @@
 		<result column="CATEGORY_NO" property="categoryNo"/>
 		<result column="MEM_NO" property="memberNo"/>
 	</resultMap>
-<!-- 	
+	
 	<resultMap type="Schedule" id="scheduleResult">
 		<result column="SCHE_NO" property="scheNo"/>
-		<result column="SCHE_Title" property="Title"/>		
-		<result column="SCHE_WRITER" property="Writer"/>
-		<result column="SCHE_CATEGORY" property="Category"/>
-		<result column="SCHE_SERVICE" property="Service"/>
-		<result column="SCHE_CONTENT" property="Content"/>
+		<result column="SCHE_TITLE" property="title"/>		
+		<result column="SCHE_WRITER" property="writer"/>
+		<result column="IMG" property="img"/>
+		<result column="SCHE_LOCATION" property="location"/>		
+		<result column="SCHE_CATEGORY" property="category"/>
+		<result column="SCHE_SERVICE" property="service"/>
+		<result column="SCHE_CONTENT" property="content"/>
 		<result column="MEM_NO" property="memNo"/>
 		<result column="CREATEDATE" property="createDate"/>
 		<result column="STATUS" property="status"/>
 	</resultMap>
- -->
+
 	<!-- 회원가입 -->
 	<insert id = "insertMember">
 		INSERT INTO MEMBER(
@@ -153,16 +158,24 @@
 	</update>
 	
 	<!-- 일정 관리 리스트 쿼리 -->
-	<!-- 
 	<select id="scheduleList" resultMap="scheduleResult">
-		SELECT  SCHE_NO,
-				SCHE_WRITER,
-				SCHE_CATEGORY,
-				SCHE_SERVICE,
-				SCHE_CONTENT,
-				MEM_NO,
-				CREATEDATE
-				FROM SCHEDULE
-				WHERE STATUS = 'Y'
-	</select> -->		
+		SELECT  S.SCHE_NO,
+				S.SCHE_WRITER,
+				S.SCHE_CATEGORY,
+				S.SCHE_SERVICE,
+				S.SCHE_CONTENT,
+				S.MEM_NO,
+				S.CREATEDATE,
+				S.SCHE_LOCATION
+		FROM SCHEDULE S
+		JOIN MEMBER M ON S.MEM_NO = M.MEM_NO
+		WHERE STATUS = 'Y'				
+	</select>
+	
+	<update id="updateUserImg">
+		UPDATE MEMBER
+		SET FILE_PATH = #{filePath}
+		WHERE MEM_NO = #{memberNo}
+		AND STATUS = 'Y'
+	</update>
 </mapper>

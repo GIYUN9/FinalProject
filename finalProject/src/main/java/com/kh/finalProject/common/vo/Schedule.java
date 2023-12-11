@@ -23,6 +23,6 @@ public class Schedule {
 	private String service;
 	private String content;
 	private int memNo;
-	private Date createadate;
+	private Date createaDate;
 	private String status;
 }
