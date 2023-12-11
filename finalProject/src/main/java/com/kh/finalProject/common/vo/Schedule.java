@@ -22,7 +22,7 @@ public class Schedule {
 	private String category;
 	private String service;
 	private String content;
-	private int memNo;
-	private Date createaDate;
+	private int memberNo;
 	private String status;
+	private Date createDate;
 }

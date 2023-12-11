@@ -71,6 +71,13 @@
 		.ui-formOuter{
 			position: relative;
 		}
+		
+		.hover-img:hover {
+			opacity: 0.5;
+			cursor: pointer;
+		}
+		
+		
 	</style>
 </head>
 <body>
@@ -96,12 +103,12 @@
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="user-info">
 					<div style="margin-top: 55px; display: flex; flex-direction: column; align-self: flex-start;">
-						<label onclick="changeImg()"><img style="width: 100px; height: 100px; margin: 15px; border-radius: 25px;" src="${loginUser.filePath}"></label>
+						<label class="hover-img" onclick="changeImg()"><img style="width: 100px; height: 100px; margin: 15px; border-radius: 25px;" src="${loginUser.filePath}"></label>
 
 						<form class="profile-btn-area" action="updateUserImg.me" method="post" enctype="multipart/form-data">
 							<input type="hidden" name="memberNo" value="${loginUser.memberNo}">
 							<input type="file" id="upload-photo-input" name="upfile" style="display: none;">
-							<button type="submit" class="pr-btn">프로필 변경</button>
+							<button type="submit" class="pr-btn" disabled="disabled">프로필 변경</button>
 						</form>
 					</div>
 					<div class="ui-formOuter">
@@ -178,9 +185,21 @@
 
 		    // 파일 읽기 시작
 		    reader.readAsDataURL(file);
+		    
+		    
+		 	// 파일 선택되면 disabled 속성 제거
+		    $(".pr-btn").removeAttr("disabled");
+		 	
+		    // 프로필 변경 버튼 css 변경
+		    $(".pr-btn").css("background-color", "rgb(0, 199, 174)");
+		    $(".pr-btn").css("border-color", "rgb(0, 199, 174)");
+		    $(".pr-btn").css("font-weight", "bold");
+		    $(".pr-btn").css("color", "white");
+		    $(".pr-btn").css("cursor", "pointer");
 		  });
+		  
+		  
 	}
-	
 	</script>
 </body>
 </html>
