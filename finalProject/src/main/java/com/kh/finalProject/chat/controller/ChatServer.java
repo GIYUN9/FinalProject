@@ -1,4 +1,4 @@
-package com.kh.finalProject.chat;
+package com.kh.finalProject.chat.controller;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -11,7 +11,7 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.google.gson.Gson;
-import com.kh.finalProject.chat.vo.Message;
+import com.kh.finalProject.chat.model.vo.Message;
 
 import lombok.extern.slf4j.Slf4j;
 
