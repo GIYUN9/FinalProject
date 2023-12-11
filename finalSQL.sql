@@ -187,13 +187,13 @@ INSERT INTO CATEGORY VALUES(SEQ_CNO.NEXTVAL, '¿ä¸®');
 INSERT INTO PROFESSIONAL VALUES(SEQ_PNO.NEXTVAL, 'ÇÇ¾Æ´Ï½ºÆ®', 200, 2);
 
 --°Ô½ÃÆÇ(º¸µå)
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, 'À½¾Ç·¹½¼ÇÕ´Ï´Ù', 'À½¾Ç Á¤¸» Áñ°Ì°Ô ¾Ë·Áµå·Á¿ä', 50000, 1, '2020-01-01', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, 'À½¾Ç·¹½¼ÇÕ´Ï´Ù', 'À½¾Ç Á¤¸» Áñ°Ì°Ô ¾Ë·Áµå·Á¿ä', 50000, 1, '2020-02-01', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, 'À½¾Ç·¹½¼ÇÕ´Ï´Ù', 'À½¾Ç Á¤¸» Áñ°Ì°Ô ¾Ë·Áµå·Á¿ä', 50000, 1, '2020-03-01', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, 'À½¾Ç·¹½¼ÇÕ´Ï´Ù', 'À½¾Ç Á¤¸» Áñ°Ì°Ô ¾Ë·Áµå·Á¿ä', 50000, 1, '2020-04-01', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, 'À½¾Ç·¹½¼ÇÕ´Ï´Ù', 'À½¾Ç Á¤¸» Áñ°Ì°Ô ¾Ë·Áµå·Á¿ä', 50000, 1, '2020-05-01', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, 'À½¾Ç·¹½¼ÇÕ´Ï´Ù', 'À½¾Ç Á¤¸» Áñ°Ì°Ô ¾Ë·Áµå·Á¿ä', 50000, 1, '2020-06-01', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, 'À½¾Ç·¹½¼ÇÕ´Ï´Ù', 'À½¾Ç Á¤¸» Áñ°Ì°Ô ¾Ë·Áµå·Á¿ä', 50000, 1, '2020-07-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, 'À½¾Ç·¹½¼ÇÕ´Ï´Ù', 'À½¾Ç Á¤¸» Áñ°Ì°Ô ¾Ë·Áµå·Á¿ä1', 50000, 1, '2020-01-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, 'À½¾Ç·¹½¼ÇÕ´Ï´Ù', 'À½¾Ç Á¤¸» Áñ°Ì°Ô ¾Ë·Áµå·Á¿ä2', 50000, 1, '2020-02-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, 'À½¾Ç·¹½¼ÇÕ´Ï´Ù', 'À½¾Ç Á¤¸» Áñ°Ì°Ô ¾Ë·Áµå·Á¿ä3', 50000, 1, '2020-03-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, 'À½¾Ç·¹½¼ÇÕ´Ï´Ù', 'À½¾Ç Á¤¸» Áñ°Ì°Ô ¾Ë·Áµå·Á¿ä4', 50000, 1, '2020-04-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, 'À½¾Ç·¹½¼ÇÕ´Ï´Ù', 'À½¾Ç Á¤¸» Áñ°Ì°Ô ¾Ë·Áµå·Á¿ä5', 50000, 1, '2020-05-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, 'À½¾Ç·¹½¼ÇÕ´Ï´Ù', 'À½¾Ç Á¤¸» Áñ°Ì°Ô ¾Ë·Áµå·Á¿ä6', 50000, 1, '2020-06-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, 'À½¾Ç·¹½¼ÇÕ´Ï´Ù', 'À½¾Ç Á¤¸» Áñ°Ì°Ô ¾Ë·Áµå·Á¿ä7', 50000, 1, '2020-07-01', 'Y', 2, 200);
 INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, 'Ä¿¹Â´ÏÆ¼¿ë À½¾Ç·¹½¼ÇÕ´Ï´Ù1', 'Ä¿¹Â´ÏÆ¼¿ë À½¾Ç Á¤¸» Áñ°Ì°Ô ¾Ë·Áµå·Á¿ä', 50000, 3, '2020-01-02', 'Y', 2, 200);
 INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '¾ó¸¶¿¹¿ä1', 'Ä¿¹Â´ÏÆ¼¿ë À½¾Ç Á¤¸» Áñ°Ì°Ô ¾Ë·Áµå·Á¿ä', 40000, 4, '2020-01-03', 'Y', 2, 200);
 INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, 'ÇÔ²²ÇØ¿ä1', 'Ä¿¹Â´ÏÆ¼¿ë À½¾Ç Á¤¸» Áñ°Ì°Ô ¾Ë·Áµå·Á¿ä', 40000, 5, '2020-01-04', 'Y', 2, 200);

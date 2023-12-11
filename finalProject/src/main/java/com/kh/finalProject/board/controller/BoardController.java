@@ -354,7 +354,7 @@ public class BoardController {
 		//도와줄게요 서비스
 		ArrayList<Board> list1 = boardService.findBoardList1(keyWord);
 		model.addAttribute("list1", list1);
-		System.out.println(list1);
+		
 		//도와주세요 서비스
 		ArrayList<Board> list2 = boardService.findBoardList2(keyWord);
 		model.addAttribute("list2", list2);
