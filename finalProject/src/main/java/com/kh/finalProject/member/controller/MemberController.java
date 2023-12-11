@@ -145,8 +145,18 @@ public class MemberController {
 		return "myPage/ask2";
 	}
 	
+	@RequestMapping(value = "/careMem.me")
+	public String careMem(){
+		//화면 전환용 임시 데이터는 없는상태
+		return "myPage/careMember";
+	}
+		
+	@RequestMapping(value = "/viewReport.me")
+	public String viewReport(){
+		//화면 전환용 임시 데이터는 없는상태
+		return "myPage/viewReport";
+	}
 	
-
 	@RequestMapping(value = "/insert.me")
 	public String insertMember(Member m, HttpSession session, Model model) {
 		// bcryptPasswordEncoder 사용? => 일단 보류

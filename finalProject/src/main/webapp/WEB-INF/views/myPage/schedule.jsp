@@ -204,6 +204,7 @@
 			<a class="myPageSideBar" href="ask.me">문의 내역</a>
 			<c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
                 <a class="myPageSideBar" href="">회원 관리</a>
+                <a class="myPageSideBar" href="ask.me">신고 내역</a>                
             </c:if>        
 		</div>
 		<div class="main-box">
