@@ -186,6 +186,34 @@
 			position: absolute;
     		right: -355px;
 		}
+		.empty-title{
+			font-size: 35px;
+			text-align: center;
+			font-weight: bold;
+			margin-top: 45px;
+		}
+		.empty-text{
+			text-align: center;
+			font-weight: bold;
+		}
+		.empty-align{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		.empty-btn{
+			border: none;
+			color: white;
+			font-weight: white;
+			background-color: rgb(0, 199, 174);
+			width: 300px;
+			height: 35px;
+			border-radius: 4px;
+			padding: 5px;
+			margin-top: 20px;
+			cursor: pointer;
+		}
 	</style>
 </head>
 
@@ -228,6 +256,14 @@
 						<h6 style="float: left; font-weight: bold;">요청 현황 (<span style="color: red;">3</span>건)</h6>
 					</div>
 					<div style="width: 98%; overflow: scroll; height: 414px;" class="scrolleffect">
+						<c:if test="${empty sList}">
+							<div class="empty-align">
+								<p class="empty-title">받은 요청이 없습니다.</p>
+								<p class="empty-text">전문가 프로필 등록하러 가기</p>
+								<button class="empty-btn" onclick="location.href='proInfo.me'">전문가 등록</button>
+								<button class="empty-btn" onclick="location.href='helpuForm.bo'">도와줄게요 등록</button>
+							</div>
+						</c:if>
                        	<c:forEach var="s" items="${sList}">			
 							<div class="alarm-section">
 								<div style="width: 14%;">
