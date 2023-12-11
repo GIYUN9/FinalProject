@@ -234,12 +234,12 @@
 								</div>
 								<div style="width: 31%;">
 									<h5 class="user-nickname">${s.writer}</h5>
-									<p>희망지역: 서울시 강남구 역삼동</p>
+									<p>희망지역: ${s.location}</p>
 									<p>${s.category} / ${s.service}</p>
 								</div>
 								<div style="width: 40%;">
 									<p class="textarea-maxSize">
-										ex) 달마ㅏ바사앚맟카탗판ㅇ랗알하낭란ㅇ라ㅁ나안ㅁ암나란ㅇㄹ항라호아로할화라홀하ㅘㄹ활하ㅘㄹ활하ㅘㅇㄹ하ㅗ라화라호라홀하....
+										${s.content }
 									</p>
 								</div>
 								<div style="width: 15%; display: flex; flex-direction: column;">

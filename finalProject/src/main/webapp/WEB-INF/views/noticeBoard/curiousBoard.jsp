@@ -164,11 +164,6 @@
             color: black;
         }
 
-        .img {
-            width: 0.8em;
-            height: auto;
-        }
-
         .line {
             width: 96%;
             margin-left: 11px;
@@ -240,11 +235,11 @@
 	                               
 	                                        <div>
 	                                            <a href="" class="a-click">
-	                                                <img src="././resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
+                            						<img src="./resources/icon/LIKE.png" class="img" style="margin-bottom: 10px;">
 	                                                <span>0</span>
 	                                            </a>
 	                                            <a href="" class="a-click">
-	                                                <img src="././resources/borderImage/speech-bubble-icon.png" alt="말풍선아이콘" class="img">
+					                				<img src="./resources/icon/speech-bubble.png" alt="말풍선아이콘" class="img">
 	                                                <span>0</span>
 	                                            </a>
 	                                            <span class="time-span">${b.createDate}</span>
