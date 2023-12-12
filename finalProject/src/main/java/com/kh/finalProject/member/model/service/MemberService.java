@@ -42,4 +42,7 @@ public interface MemberService {
 	//일정관리
 	ArrayList<Schedule> scheduleList(Schedule s);
 	
+	//멤버 목록(회원 관리)
+	ArrayList<Member> memberList(Member m);
+
 }

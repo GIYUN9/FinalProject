@@ -62,5 +62,9 @@ public class MemberDao {
 		tmp.put("filePath", filePath);
 		return sqlSession.update("memberMapper.updateUserImg", tmp);
 	}
+	
+	public ArrayList<Member> memberList(SqlSessionTemplate sqlSession, Member m) {
+		return (ArrayList)sqlSession.selectList("memberMapper.viewAllMem", m);
+	}
 }
 

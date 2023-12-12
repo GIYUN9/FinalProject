@@ -150,10 +150,13 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/careMem.me")
-	public String careMem(){
-		//화면 전환용 임시 데이터는 없는상태
-		return "myPage/careMember";
+	public String careMem(Member m, Model model) {
+	    ArrayList<Member> mList = memberService.memberList(m);
+	    System.out.println(mList);
+	    model.addAttribute("mList", mList);
+	    return "myPage/careMember";
 	}
+	
 		
 	@RequestMapping(value = "/viewReport.me")
 	public String viewReport(){
