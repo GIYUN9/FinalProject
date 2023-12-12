@@ -50,7 +50,28 @@ public class BoardController {
 		return "board/boardDetailView";
 	}
 	
+	//도와줄게요 게시글 작성 페이지
+	@RequestMapping(value = "/helpuForm.bo")
+	public String helpuForm() {
+			
+		return "board/helpu";
+	}
 	
+	//도와줄게요 리스트
+	@RequestMapping(value="helpList.bo")
+	public ModelAndView helpSelectList(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv) {
+		int listCount = boardService.seleteHelpListCount();
+			
+		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
+		ArrayList<Board> list = boardService.helpselectList(pi);
+			
+		mv.addObject("pi",pi)
+			.addObject("list",list)
+			.setViewName("board/helpBoardList");
+			
+		return mv;
+	}
+
 	//도와줄게요 게시글 등록 페이지
 	@RequestMapping(value="helpInsert.bo", method = RequestMethod.POST)
 	public String helpInsertBoard(Board b, MultipartFile upfile, Attachment at ,HttpSession session, Model model) { // , Atta~~ a
@@ -70,6 +91,7 @@ public class BoardController {
 		at.setBoardNo(b.getBoardNo());
 		result2 = boardService.helpAttachment(at);
 		if(result1 > 0 && result2 > 0) {
+			session.setAttribute("alertMsg", "게시글 작성 완료");
 			return "redirect:/helpList.bo";
 		} else {
 			model.addAttribute("errorMsg", "게시글 작성 실패");
@@ -83,6 +105,86 @@ public class BoardController {
 //		if((result1 * result 2) > 0) {return "정상적으로 종료시 보내줄페이지"} else{에러났을때(글작성 실패시) return ""}
 			
 		}
+	
+	//도와줄게요 디테일 페이지 이동
+	@RequestMapping(value="helpDetail.bo")
+	public String helpDetailBoard(int boardNo, Model model)  {
+		
+		int result = boardService.seleteHelpListCount();
+		
+		if(result > 0) {
+			Board b = boardService.helpSelectBoard(boardNo);
+			model.addAttribute("b",b);
+			return "board/helpDetail";
+		} else {
+			model.addAttribute("errorMsg", "게시글 조회 실패");
+			return "common/errorPage";
+		}
+	}
+	
+	//도와줄게요 게시글 수정 이동
+	@RequestMapping(value="helpUpdateForm.bo")
+	public String helpUpdateForm(int boardNo, Model model) {
+		
+		Board b = boardService.helpSelectBoard(boardNo);
+		model.addAttribute("b",b);
+		
+		return "board/helpuRetouch";
+	}
+	
+	// 도와줄게요 게시글 수정
+	@RequestMapping(value="helpUpdate.bo", method = RequestMethod.POST)
+	public String helpupdateBoard(Board b, Attachment at, MultipartFile reupfile, HttpSession session, Model model) {
+		
+		System.out.println(b);
+		System.out.println(reupfile);
+		int result1 = 0;
+		int result2 = 0;
+		
+		if(!reupfile.getOriginalFilename().equals("")) {
+			
+			String changeName = saveFile(reupfile, session, "/resources/borderImage/");
+			
+			if(at.getOriginName() != null) {
+				new File(session.getServletContext().getRealPath(at.getChangeName())).delete();
+			}
+			
+			at.setOriginName(reupfile.getOriginalFilename());
+			at.setChangeName("resources/borderImage/" + changeName);
+		}
+		
+		result1 = boardService.helpinsertBoard(b);
+		b = boardService.helpselectOne(b);
+		at.setBoardNo(b.getBoardNo());
+		result2 = boardService.helpAttachment(at);
+		
+		if(result1 > 0 && result2 > 0) {
+			session.setAttribute("alertMsg", "게시글 수정 완료");
+			return "redirect:/helpDetail.bo?boardNo=" + at.getBoardNo();
+		} else {
+			model.addAttribute("errorMsg", "게시글 수정 실패");
+			return "common/errorPage";
+		}	
+	}
+		
+	// 도와줄게요 게시글 삭제
+	@RequestMapping(value="helpDelete.bo")
+	public String helpDeleteBoard(int boardNo, String filePath, HttpSession session, Model model) {
+			
+		int result = boardService.helpdeleteBoard(boardNo);
+			
+		if(result > 0) {
+			if(!filePath.equals("")) {
+				new File(session.getServletContext().getRealPath(filePath)).delete();
+		}
+			session.setAttribute("alertMsg", "게시글 삭제 성공");
+			return "redirect:/helpList.bo";
+		} else {
+			model.addAttribute("errorMsg", "게시글 삭제 실패");
+			return "common/errorMsg";
+		}
+
+	}
 	
 		
 	public String saveFile(MultipartFile upfile, HttpSession session, String path) {
@@ -116,41 +218,6 @@ public class BoardController {
 		return changeName;
 	}
 	
-
-	// 도와줄게요 게시글 수정
-	@RequestMapping(value="helpUpdate.bo")
-	public String updateBoard(Board b, MultipartFile reupfile, HttpSession session, Model model) {
-		
-		int result = boardService.updateBoard(b);
-		
-		if(result > 0) {
-			session.setAttribute("alertMsg", "게시글 수정 성공");
-			return "redirect:/update.bo?hno=" + b.getBoardNo();
-		} else {
-			model.addAttribute("errorMsg","게시글 수정 실패");
-			return "common/errorMsg";
-		}
-	}
-	
-	// 도와줄게요 게시글 삭제
-	@RequestMapping(value="helpDelete.bo")
-	public String DeleteBoard(int boardNo, String filePath, HttpSession session, Model model) {
-		
-		int result = boardService.deleteBoard(boardNo);
-		
-		if(result > 0) {
-			if(!filePath.equals("")) {
-				new File(session.getServletContext().getRealPath(filePath)).delete();
-			}
-			
-			session.setAttribute("alertMsg", "게시글 삭제 성공");
-			return "redirect:/helpList.bo";
-		} else {
-			model.addAttribute("errorMsg", "게시글 삭제 실패");
-			return "common/errorMsg";
-		}
-
-	}
 	
 //	게시글 리스트 전체보기
 	@RequestMapping(value = "list.co")
@@ -252,13 +319,6 @@ public class BoardController {
 		return "redirect:/notice.co";
 	}
 	
-	//도와줄게요 게시글 작성 페이지
-	@RequestMapping(value = "/helpuForm.bo")
-	public String helpuForm() {
-		
-		return "board/helpu";
-	}
-	
 //	@RequestMapping(value = "helpInsert.bo")
 //	public String helpInsert(Board b) {
 //		b.setMemberNo(2); // 임시데이터
@@ -318,24 +378,6 @@ public class BoardController {
 		}
 	}
 	
-	//도와줄께요 리스트
-	@RequestMapping(value="helpList.bo")
-	public ModelAndView helpSelectList(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv) {
-		int listCount = boardService.seleteHelpListCount();
-		
-		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
-		ArrayList<Board> list = boardService.helpselectList(pi);
-		
-		mv.addObject("pi",pi)
-			.addObject("list",list)
-			.setViewName("board/helpBoardList");
-		
-		return mv;
-	}
-	
-
-	
-	
 	//게시글 수정
 	@RequestMapping("detail.co")
 	public String detailCommBoard(int boardNo) {
@@ -375,33 +417,103 @@ public class BoardController {
 	}
 	
 	
-	//도와주세요 게시글 전체 조회
-	@RequestMapping(value = "")
-	public ModelAndView seleteHelpmeListCount(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv) {
+	//도와주세요 전체 조회
+	@RequestMapping(value="helpmeList.bo")
+	public ModelAndView helpmeselectList(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv) {
 		int listCount = boardService.seleteHelpmeListCount();
 		
-		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
-		ArrayList<Board> list = boardService.helpselectList(pi);
 		
+		PageInfo pi =  Pagenation.getPageInfo(listCount, currentPage, 5, 8);
+		ArrayList<Board> list = boardService.helpmeselectList(pi);
+		System.out.println(list);
 		mv.addObject("pi",pi)
-			.addObject("list",list)
-			.setViewName("board/requestBoardList");
-		
+		  .addObject("list",list)
+		  .setViewName("board/requestBoardList");
+			
 		return mv;
 	}
 	
 	//도와주세요 게시글 작성 페이지
-	@RequestMapping(value = "helpmeList.bo")
+	@RequestMapping(value = "helpmeForm.bo")
 	public String helpmeForm() {
-		return "board/requestBoardList";
+		return "board/requestHelpme";
 	}
 	
 	//도와주세요 게시글 등록
+	@RequestMapping(value = "helpmeInsert.bo", method = RequestMethod.POST)
+	public String helpmeInsertBoard(Board b, Attachment at, MultipartFile upfile, HttpSession session, Model model) {
+		int result1 = 0;
+		int result2 = 0;
+		
+		if(!upfile.getOriginalFilename().equals("")) {
+			
+			String changeName = saveFile(upfile, session, "/resources/borderImage/");
+			
+			at.setOriginName(upfile.getOriginalFilename());
+			at.setChangeName("/resources/borderImage/" + changeName);
+		}
+		
+		result1 = boardService.helpmeInsertBoard(b);
+		b = boardService.helpmeselectOne(b);
+		at.setBoardNo(b.getBoardNo());
+		result2 = boardService.helpmeAttachment(at);
+		
+		if(result1 > 0 && result2 > 0) {
+			return "redirect:/helpmeList.bo";
+		} else {
+			model.addAttribute("errorMsg", "게시글 작성 실패");
+			return "common/errorPage";
+		}
+	}
+	
+	//도와주세요 디테일 페이지 이동
+	@RequestMapping(value="helpmeDetail.bo")
+	public String helpmeDetailBoard(int boardNo, Model model) {
+		int result = boardService.seleteHelpmeListCount();
+		
+		if(result > 0) {
+			Board b = boardService.helpmeSelectBoard(boardNo);
+			model.addAttribute("b",b);
+			return "board/requestHelpmeDetail";
+		} else {
+			model.addAttribute("errorMsg", "게시글 작성 실패");
+			return "common/errorPage";
+		}
+	}
 	
 	//도와주세요 게시글 수정
+	@RequestMapping(value="helpmeUpdate.bo")
+	public String helpmeUpdateBoard(Board b, MultipartFile reupfile, Model model, HttpSession session) {
+		
+		int result = boardService.helpmeUpdateBoard(b);
+		
+		if(result > 0) {
+			session.setAttribute("alertMsg", "게시글 수정 성공");
+			return "redirect:/helpmeUpdate.bo?hno=" + b.getBoardNo();
+		} else {
+			model.addAttribute("errorMsg","게시글 수정 실패");
+			return "common/errorMsg";
+		}
+	}
 	
 	//도와주세요 게시글 삭제
-	
+	@RequestMapping(value="helpmeDelete.bo")
+	public String helpmeDeleteBoard(int boardNo, String filePath, HttpSession session, Model model) {
+		
+		int result = boardService.helpmeDeleteBoard(boardNo);
+		
+		if(result > 0) {
+			if(!filePath.equals("")) {
+				new File(session.getServletContext().getRealPath(filePath)).delete();
+			}
+
+			return "redirect:/helpmeList.bo";
+		} else {
+			model.addAttribute("errorMsg", "게시글 삭제 실패");
+			return "common/errorMsg";
+		}
+
+	}
 	
 	
 //	스크립트 기능 후 가진 정보 보내주는 기능 

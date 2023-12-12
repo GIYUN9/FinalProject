@@ -25,6 +25,7 @@ public class Board {
 	private int categoryNo;
 	
 	private String location;
+	private String originName;
 	private String changeName;
 	private String filePath;
 }

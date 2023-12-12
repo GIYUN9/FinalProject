@@ -3,11 +3,8 @@ package com.kh.finalProject.board.model.service;
 import java.util.ArrayList;
 
 import com.kh.finalProject.board.model.vo.Board;
-
 import com.kh.finalProject.common.vo.Attachment;
-
 import com.kh.finalProject.common.vo.Notice;
-
 import com.kh.finalProject.common.vo.PageInfo;
 
 
@@ -15,16 +12,21 @@ public interface BoardService {
 	
 	//게시글 총 페이지
 	int helpselect();
-	
-	//게시판 도와줄게요 리스트조회
-	ArrayList<Board> helpselectList(PageInfo pi);
-	
 
 	//커뮤니티 전체보기 조회
 	ArrayList<Board> selectCommList(PageInfo pi);
 	
 	//게시글 상세조회
 	Board selectBoard(int boardNo);
+	
+	//도와줄게요 리스트조회
+	ArrayList<Board> helpselectList(PageInfo pi);
+		
+	//도와줄게요 게시글 상세조회
+	Board helpSelectBoard(int boardNo);
+	
+	//도와줄게요 게시판 리스트 count(*)조회
+	int seleteHelpListCount();
 	
 	//도와줄게요 게시판 등록
 	int helpinsertBoard(Board b);
@@ -33,10 +35,10 @@ public interface BoardService {
 	int helpAttachment(Attachment at);
 	
 	//도와줄게요 게시판 수정
-	int updateBoard(Board b);
+	int helpupdateBoard(Board b);
 	
 	//도와줄게요 게시판 삭제
-	int deleteBoard(int boardNo);
+	int helpdeleteBoard(int boardNo);
 	
 	//커뮤니티 게시글 수(조회)
 	int selectCommListCount();
@@ -49,9 +51,6 @@ public interface BoardService {
 	
 	//공지사항 등록
 	int insertNotice(Notice n);
-	
-	//도와줄께요 게시판 리스트 count(*)조회
-	int seleteHelpListCount();
 
 	//공지사항 삭제
 	int deleteNotice(Notice n);
@@ -87,9 +86,27 @@ public interface BoardService {
 	ArrayList<Board> findBoardList4(String keyWord);
 	ArrayList<Board> findBoardList5(String keyWord);
 	
-	//도와주세요 게시글 전체 게시글 조회
-//	ArrayList<Board> helpmeselectList(PageInfo pi);
+	//도와주세요 보드번호 가져오는 중간 쿼리
+	Board helpmeselectOne(Board b);
+	
+	//도와주세요 리스트 조회
+	ArrayList<Board> helpmeselectList(PageInfo pi);
 	
 	//도와주세요 게시판 리스트 count(*)조회
 	int seleteHelpmeListCount();
+	
+	//도와주세요 게시글 등록
+	int helpmeInsertBoard(Board b);
+	
+	//도와주세요 사진 첨부
+	int helpmeAttachment(Attachment at);
+	
+	//도와주세요 게시글 상세조회
+	Board helpmeSelectBoard(int boardNo);
+	
+	//도와주세요 게시글 수정
+	int helpmeUpdateBoard(Board b);
+	
+	//도와주세요 게시글 삭제
+	int helpmeDeleteBoard(int boardNo);
 }

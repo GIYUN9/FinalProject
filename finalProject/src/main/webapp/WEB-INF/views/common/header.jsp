@@ -629,7 +629,7 @@
 			location.href = "userInfo.me"
 		}
 		function needHelp() {
-			location.href = "request.bo"
+			location.href = "helpmeList.bo"
 		}
 		function helpU() {
 			location.href = "helpList.bo"

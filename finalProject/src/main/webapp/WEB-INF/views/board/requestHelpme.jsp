@@ -234,7 +234,7 @@
                     <div class="hu-top-section">
                         <p style="margin-bottom: 2rem;">도와주세요 게시글 작성</p>
                     </div>
-               <form method="post" action="helpmeWrite.bo" enctype="multipart/form-data">
+               <form method="post" action="helpmeInsert.bo" enctype="multipart/form-data">
                	<input type="hidden" value="${loginUser.memberNo}" name="memberNo">
                     <div class="hu-align">
                         <div class="hu-input-area">                   
@@ -256,13 +256,13 @@
                                 <div class="bb">
                                     제목
                                 </div>
-                                <input class="hu-title" type="text" name="boardTitle"/>
+                                <input class="hu-title" type="text" name="boardTitle" value="${b.boardTitle}"/>
                             </div>  
                             <div class="aa">
                                 <div class="cc">
                                     내용
                                 </div>
-                                <textarea class="hu-content" type="text" name="boardContent"></textarea>
+                                <textarea class="hu-content" type="text" name="boardContent" value="${b.boardContent}"></textarea>
                             </div>  
                       		<div class="aa">
                                 <label class="hu-upfile" for="hu-upfile">
@@ -286,9 +286,7 @@
                                     </div>
                             </div> 
                              <div class="category">
-                               <div class="cate-no" style="    top: 328px;
-    left: -77px;
-                               ">
+                               <div class="cate-no" style="top: 328px; left: -77px;">
                                    게시판
                                </div>
                                <select name="boardType" id="boardType-check">

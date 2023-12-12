@@ -57,10 +57,22 @@
          AND B.STATUS = 'Y'
  	</select>
  	
- 	<!-- 도와주세요 게시판 전체 조회 -->
+ 	<!-- 도와줄게요 게시글 상세조회 관련 쿼리문 -->
+	<select id="helpSelectBoard" resultMap="boardResult">
+		SELECT B.BOARD_NO,
+			   B.CATEGORY_NO,
+			   B.BOARD_CONTENT,
+			   A.ORIGIN_NAME,
+			   A.CHANGE_NAME,
+			   B.BOARD_TITLE,
+			   B.PRICE,
+			   B.BOARD_TYPE
+		FROM BOARD B
+		JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
+		  WHERE B.STATUS = 'Y'
+		AND B.BOARD_NO = #{boardNo}
+	</select>
  	
-  
-
   	<!-- 도와줄게요 게시글 등록 쿼리문 -->
   	<insert id="helpinsertBoard">
   		INSERT INTO
@@ -108,16 +120,20 @@
   	</insert>
   	
   	<!-- 도와줄게요 게시글 수정 쿼리문 -->
-  	<update id="updateBoard">
-  		UPDATE BOARD
-  			SET BOARD_TITLE = #{boardTitle},
-  			BOARD_CONTENT = #{boardContent},
-  			PRICE = #{price}
-  		WHERE BOARD_NO = #{boardNo}
+  	<update id="helpupdateBoard">
+  		UPDATE BOARD AS B
+	  		SET B.CATEGORY_NO = #{categoryNo},
+	  			B.BOARD_TITLE = #{boardTitle},
+	  			B.BOARD_CONTENT = #{boardContent},
+	  			AT.ORIGIN_NAME = #{originName},
+	  			AT.CHANGE_NAME = #{changeName},
+	  			B.PRICE = #{price}
+	  		JOIN ATTACHMENT AS AT ON B.BOARD_NO = AT.ATT_NO
+  		WHERE B.BOARD_NO = #{boardNo}
   	</update>
   	
   	<!-- 도와줄게요 게시글 삭제 쿼리문 -->
-  	<update id="deleteBoard">
+  	<update id="helpdeleteBoard">
   		UPDATE BOARD
   			SET STATUS = 'N'
   		WHERE BOARD_NO = #{boardNo}
@@ -438,7 +454,7 @@
                	A.CHANGE_NAME
  		FROM BOARD B
         JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
- 		 WHERE B.BOARD_TYPE = 1
+ 		 WHERE B.BOARD_TYPE = 2
          AND B.STATUS = 'Y'
 				
 	</select>
@@ -450,5 +466,103 @@
 		WHERE BOARD_TYPE = 2
 		AND	STATUS = 'Y'
 	</select>
+	
+	<!-- 도와주세요 게시글 등록  -->
+	<insert id="helpmeInsertBoard">
+		INSERT INTO
+			BOARD(
+				  BOARD_NO,
+			      CATEGORY_NO,
+			      BOARD_TITLE,
+			      BOARD_CONTENT,
+			      PRICE,
+			      BOARD_TYPE,
+			      MEM_NO
+				  )
+				  
+			VALUES(
+				   SEQ_BNO.NEXTVAL,
+				   #{categoryNo},
+				   #{boardTitle},
+				   #{boardContent},
+				   #{price},
+				   #{boardType},
+				   #{memberNo}
+				  )
+	</insert>
+	
+	<!-- 도와주세요 게시글 사진 첨부 -->
+	<insert id="helpmeAttachment">
+		INSERT INTO
+  			ATTACHMENT
+  					  (
+  					  ATT_NO,
+  					  ORIGIN_NAME,
+  					  CHANGE_NAME,
+  					  BOARD_NO
+  					  )
+  			
+  			VALUES
+  				  (
+  				  SEQ_ANO.NEXTVAL,
+  				  #{originName},
+  				  #{changeName},
+  				  #{boardNo}			
+  				  )
+	</insert>
+	
+	<!-- 도와주세요 보드번호 중간 쿼리문 -->
+	<select id="helpmeselectOne" resultMap="boardResult">
+  		SELECT  BOARD_NO,
+  				CATEGORY_NO,
+  				BOARD_TITLE,
+  				BOARD_CONTENT,
+  				PRICE,
+  				BOARD_TYPE,
+  				MEM_NO
+  		FROM BOARD
+  		WHERE CATEGORY_NO = #{categoryNo}
+  		AND		BOARD_TITLE = #{boardTitle}
+  		AND		BOARD_CONTENT = #{boardContent}
+		AND		PRICE = #{price}
+		AND		BOARD_TYPE = #{boardType}
+		AND		MEM_NO = #{memberNo}
+  	</select>
+  	
+  	<!--도와주세요 상세조회 관련 쿼리문 -->
+  	<select id="helpmeSelectBoard" resultMap="boardResult">
+  		SELECT B.BOARD_NO,
+			   B.CATEGORY_NO,
+			   B.BOARD_CONTENT,
+			   A.ORIGIN_NAME,
+			   A.CHANGE_NAME,
+			   B.BOARD_TITLE,
+			   B.PRICE,
+			   B.BOARD_TYPE
+		FROM BOARD B
+		JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
+		  WHERE B.STATUS = 'Y'
+		AND B.BOARD_NO = #{boardNo}
+  	</select>
+	
+	<!-- 도와주세요 게시글 수정 쿼리문 -->
+  	<update id="helpmeUpdateBoard">
+  		UPDATE BOARD AS B
+	  		SET B.CATEGORY_NO = #{categoryNo},
+	  			B.BOARD_TITLE = #{boardTitle},
+	  			B.BOARD_CONTENT = #{boardContent},
+	  			AT.ORIGIN_NAME = #{originName},
+	  			AT.CHANGE_NAME = #{changeName},
+	  			B.PRICE = #{price}
+	  		JOIN ATTACHMENT AS AT ON B.BOARD_NO = AT.ATT_NO
+  		WHERE B.BOARD_NO = #{boardNo}
+  	</update>
+	
+	<!-- 도와주세요 게시글 삭제 -->
+	<update id="helpmeDeleteBoard">
+		UPDATE BOARD
+  			SET STATUS = 'N'
+  		WHERE BOARD_NO = #{boardNo}
+	</update>
 	
   </mapper>

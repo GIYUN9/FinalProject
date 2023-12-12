@@ -38,11 +38,11 @@ public class BoardDao {
 		return sqlSession.insert("boardMapper.helpinsertBoard", b);
 	}
 
-	public int updateBoard(SqlSessionTemplate sqlSession, Board b) {
+	public int helpupdateBoard(SqlSessionTemplate sqlSession, Board b) {
 		return sqlSession.update("boardMapper.updateBoard", b);
 	}
 	
-	public int deleteBoard(SqlSessionTemplate sqlSession, int boardNo) {
+	public int helpdeleteBoard(SqlSessionTemplate sqlSession, int boardNo) {
 		return sqlSession.update("boardMapper.deleteBoard", boardNo);
 	}
 	
@@ -144,17 +144,43 @@ public class BoardDao {
 		return (ArrayList)sqlSeesion.selectList("boardMapper.findBoardList5", keyWord);
 	}
 	
-	public ArrayList<Board> helpmeselectList(SqlSessionTemplate sqlSeesion, PageInfo pi) {
+	public ArrayList<Board> helpmeselectList(SqlSessionTemplate sqlSession, PageInfo pi) {
 		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
 		int limit = pi.getBoardLimit();
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
-		return (ArrayList)sqlSession.helpmeselectList("boardMapper.helpmeselectList", null, rowBounds);
+		return (ArrayList)sqlSession.selectList("boardMapper.helpmeselectList", null, rowBounds);
 	}
 	
 	public int seleteHelpmeListCount(SqlSessionTemplate sqlSeesion) {
 		return sqlSeesion.selectOne("boardMapper.seleteHelpmeListCount");
 	}
 	
-
+	public int helpmeInsertBoard(SqlSessionTemplate sqlSession, Board b) {
+		return sqlSession.insert("boardMapper.helpmeInsertBoard", b);
+	}
+	
+	public Board helpmeselectOne(SqlSessionTemplate sqlSeesion, Board b) {
+		return sqlSeesion.selectOne("boardMapper.helpmeselectOne", b);
+	}
+	
+	public int helpmeAttachment(SqlSessionTemplate sqlSeesion, Attachment at) {
+		return sqlSeesion.insert("boardMapper.helpmeAttachment", at);
+	}
+	
+	public int helpmeUpdateBoard(SqlSessionTemplate sqlSeesion, Board b) {
+		return sqlSeesion.update("boardMapper.helpmeUpdateBoard", b);
+	}
+	
+	public int helpmeDeleteBoard(SqlSessionTemplate sqlSeesion, int boardNo) {
+		return sqlSeesion.update("boardMapper.helpmeDeleteBoard", boardNo);
+	}
+	
+	public Board helpSelectBoard(SqlSessionTemplate sqlSeesion, int boardNo) {
+		return sqlSeesion.selectOne("boardMapper.helpSelectBoard", boardNo);
+	}
+	
+	public Board helpmeSelectBoard(SqlSessionTemplate sqlSeesion, int boardNo) {
+		return sqlSeesion.selectOne("boardMapper.helpmeSelectBoard", boardNo);
+	}
 }

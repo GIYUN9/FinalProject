@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>도와주세요</title>
+<title>도와주세요 전체 게시판</title>
 <style>
     * {
         list-style: none; 
@@ -21,10 +22,10 @@
         margin-top: 70px;
     }
 
+   
     .nav-center-items{
         display: flex;
         margin: auto;
-       
     }
 
     .nav-item{
@@ -36,10 +37,9 @@
         font-weight: bold;
         color: white;
     }
-
-    /* .nav-item-content{
+    .content-item:hover{
         background-color: rgba(255, 255, 255, 0.22);
-    } */
+    }
     
 
     /* a::after{
@@ -68,18 +68,12 @@
     }
 
     .category{
-        width: 100px; 
+        width: 70px; 
         text-align: center;  
-        height: 200px;
     }
 
     .category-item {
-        width: 100px;
-        height: 40px;   
-        text-align: center;
-        padding-top: 10px;
-        margin-top: 10px;
-        border-radius: 10px;
+        margin-top: 20px;   
     }
 
     .category-item > a{
@@ -123,10 +117,6 @@
         margin-right: 15px;
         background-color: rgba(83, 82, 82, 0.65)
 
-    }
-
-    .content-item:hover{
-        background-color: rgba(255, 255, 255, 0.22);
     }
 
     .content-img{
@@ -182,42 +172,21 @@
 
     #category-item {
         color: white;
-        font-size: 18px;
+        font-size: 14px;
         border: none;
-        /* width: 100px; */
-       
-        margin-top: 10px;
-       
+        background-color: transparent; 
     }
 
-    .nav-item-content{
+    .aaa{
         width: 95px;
         padding: 9px;
         border-radius: 8px;
         color: white;
     }
-    option:hover {
-        background-color: rgb(0, 0, 0);
-    }
-    option:checked {
-        background-color: rgb(0, 0, 0);
-    }
 
-    .aaa:visited{
-        background-color: black;
-        color: white;
-    }
-
-    #head-category-list{
-        background-color: transparent; 
-        color: white;
-        border: none;
-    }
-
-    .head-category-slist{
+    #category-item > option{
         background-color: rgba(83, 82, 82, 0.65);
     }
-    
     .write-btn{
         color: white;
         position: relative;
@@ -225,7 +194,6 @@
         align-items: center;
         display: flex;
     }
-    
     .write-area{
         display: flex;
         flex-direction: row;
@@ -241,38 +209,38 @@
    <div class = "nav">
         <div class = "nav-center-items">
             <div class = "nav-item">
-                <div class="nav-item-content">
+                <div class="aaa">
                     <a href="#" style="color: white;">전체보기</a>
                 </div>
             </div>
             <div class = "nav-item"><a href="#">&#60;</a></div>
             <div class = "nav-item">
-                <div class="nav-item-content">
-                    <a href="#" style="color: white;">취미,레슨</a>
+                <div class="aaa">
+                    <a href="#"  style="color: white;">취미,레슨</a>
                 </div>
             </div>
             <div class = "nav-item">
-                <div class="nav-item-content">
+                <div class="aaa">
                     <a href="#" style="color: white;">디자인</a>
                 </div>
             </div>
             <div class = "nav-item">
-                <div class="nav-item-content">
+                <div class="aaa">
                     <a href="#" style="color: white;">마케팅</a>
                 </div>
             </div>
             <div class = "nav-item">
-                <div class="nav-item-content" style="background-color: rgba(255, 255, 255, 0.22);">
+                <div class="aaa">
                     <a href="#" style="color: white;">운동</a>
                 </div>
             </div>
             <div class = "nav-item">
-                <div class="nav-item-content">
+                <div class="aaa">
                     <a href="#" style="color: white;">게임</a>
                 </div>
             </div>
             <div class = "nav-item">
-                <div class="nav-item-content">
+                <div class="aaa">
                     <a href="#" style="color: white;">미술</a>
                 </div>
             </div>
@@ -283,7 +251,7 @@
    <div class = "back-ground">
         <div class="main">
             <div class = "category" style="display: inline-block;">
-                <div class = "category-item" style="background-color: rgba(255, 255, 255, 0.22);"><a href="#">광고 홍보</a></div>
+                <div class = "category-item"><a href="#">광고 홍보</a></div>
                 <div class = "category-item"><a href="#">드론 촬영</a></div>
                 <div class = "category-item"><a href="#">홍보 사진</a></div>
                 <div class = "category-item"><a href="#">사진 보정</a></div>     
@@ -292,76 +260,34 @@
                 <div class = "content-head">
                    <div id = "head-count">총 1063개의 서비스</div>
                    <div id = "head-category">
+					
+			
                         <form class="write-area">
                         	<a class="write-btn" href="helpmeForm.bo">글쓰기</a>
-                            <select name="" id="head-category-list">
-                                <option class = "head-category-slist" value="date" selected>날짜순</option>
-                                <option class = "head-category-slist" value="interest">인기순</option>
-                                <option class = "head-category-slist" value="check">조회순</option>
+                            <select name="" id="category-item">
+                                <option class = "category-item-list" value="date" selected>날짜순</option>
+                                <option class = "category-item-list" value="interest">인기순</option>
+                                <option class = "category-item-list" value="check">조회순</option>
                             </select>
                         </form>
                    </div>
                 </div>
-                <div class = "content-item">
-                    <a href = "#">
-                        <img  class = "content-img" src = "././resources/image/기타녀.jpg">
-                        <div class = "content-item-title">도와줘!</div>
-                        <div class = "content-item-price">2000원</div>
-                    </a>
-                </div>
-                <div class = "content-item">
-                    <a href = "#">
-                         <img  class = "content-img" src = "././resources/image/기타녀.jpg">
-                        <div class = "content-item-title">도와주세요!</div>
-                        <div class = "content-item-price">5000원</div>
-                    </a>
-                </div>
-                <div class = "content-item">
-                    <a href = "#">
-                        <img  class = "content-img" src = "././resources/image/기타녀.jpg">
-                        <div class = "content-item-title">help me!</div>
-                        <div class = "content-item-price">1000원</div>
-                    </a>
-                </div>
                 
-                <div class = "content-item">
-                    <a href = "#">
-                        <img  class = "content-img" src = "././resources/image/기타녀.jpg">
-                        <div class = "content-item-title">ㅠㅠ</div>
-                        <div class = "content-item-price">5000원</div>
-                    </a>
-                </div>
-                <div class = "content-item">
-                    <a href = "#">
-                        <img  class = "content-img" src = "././resources/image/기타녀.jpg">
-                        <div class = "content-item-title">슬퍼요</div>
-                        <div class = "content-item-price">200원</div>
-                    </a>
-                </div>
-                <div class = "content-item">
-                    <a href = "#">
-                        <img  class = "content-img" src = "././resources/image/기타녀.jpg">
-                        <div class = "content-item-title">도와달라고</div>
-                        <div class = "content-item-price">300원</div>
-                    </a>
-                </div>
-                <div class = "content-item">
-                    <a href = "#">
-                        <img  class = "content-img" src = "././resources/image/기타녀.jpg">
-                        <div class = "content-item-title">?</div>
-                        <div class = "content-item-price">90000원</div>
-                    </a>
-                </div>
-                <div class = "content-item">
-                    <a href = "#">
-                       <img  class = "content-img" src = "././resources/image/기타녀.jpg">
-                        <div class = "content-item-title">한 번만요..</div>
-                        <div class = "content-item-price">500원</div>
-                    </a>
-                </div>
+                <c:forEach var="b" items="${list}">
+                	<div class = "content-item">
+	                     <a href ="helpDetail.bo?boardNo=${b.boardNo}">
+	                        <img  class = "content-img" src = "${b.filePath}${b.changeName}">
+	                        <div class = "content-item-title">
+	                        	${b.boardTitle}
+	                        </div>
+	                        <div class = "content-item-price">${b.price}원</div>
+	                     </a> 
+                	</div>
+                </c:forEach>               
             </div>
         </div>
     </div>
+
    
 <%@ include file = "../common/footer.jsp"%>            
 </body>
@@ -373,6 +299,4 @@
         })
     })
 </script> -->
-
-
 </html>
