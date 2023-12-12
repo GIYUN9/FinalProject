@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -172,11 +173,12 @@
 			<a class="myPageSideBar" href="proInfo.me">전문가 정보</a>
 			<a class="myPageSideBar" href="changePwd.me">비밀번호 변경</a>
 			<a class="myPageSideBar" href="deleteForm.me">회원 탈퇴</a>
-			<a class="myPageSideBar" href="schedule.me">일정 관리</a>
+			<a class="myPageSideBar" href="schedule.me?toMemberNo=${loginUser.memberNo}">일정 관리</a>
 			<a class="myPageSideBar" href="ask.me">문의 내역</a>
             <c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
-                <a class="myPageSideBar" href=""  style="font-weight: bolder; 
+                <a class="myPageSideBar" href="careMem.me"  style="font-weight: bolder; 
 			    background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">회원 관리</a>
+            <a class="myPageSideBar" href="ask.me">신고 내역</a>
             </c:if>            
 		</div>
 		<div class="main-box">
@@ -309,7 +311,6 @@
                                     <td>일반회원</td>
                                     <td>2023-12-05</td>
                                 </tr>
-                                <var>                                
                                 <tr>
                                     <td><input type="checkbox"></td>
                                     <td>1</td>
@@ -318,7 +319,6 @@
                                     <td>일반회원</td>
                                     <td>2023-12-05</td>
                                 </tr>
-                            </var>
                             </thead>
                         </table>
                     </div>

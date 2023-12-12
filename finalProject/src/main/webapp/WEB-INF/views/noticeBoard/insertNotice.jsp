@@ -123,9 +123,7 @@
         flex-direction: row;
         margin-top: 15px;
     }
-    .b-aa{
 
-    }
     .b-bb{
         position: absolute;
         left: -71px;

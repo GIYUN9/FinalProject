@@ -167,12 +167,7 @@
         text-decoration-line: none;
         color: black;
     }
-
-    .img {
-        width: 0.8em;
-        height: auto;
-    }
-
+    
     .line {
         width: 96%;
         margin-left: 11px;

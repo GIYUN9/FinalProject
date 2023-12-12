@@ -81,12 +81,18 @@ public class MemberController {
 	
 	//비밀번호 변경하는 컨트롤러
 	@RequestMapping(value = "/updatePwd.me")
-	public String updatePwd(Member m, String newPwd, HttpSession session){
+	public String updatePwd(Member m, String newPwd, String originMemberPwd, HttpSession session, Model model){
 		m = (Member)session.getAttribute("loginUser");
-		m.setMemberPwd(newPwd);
-		int result = memberService.updatePwd(m);
+		if(originMemberPwd.equals(m.getMemberPwd())) {
+			m.setMemberPwd(newPwd);
+			int result = memberService.updatePwd(m);
+			model.addAttribute("alertMsg", "비밀번호를 성공적으로 변경하였습니다.");
+			return "forward:/changePwd.me";
+		} else {
+			model.addAttribute("alertMsg", "비밀번호 변경에 실패하였습니다.\n 기존비밀번호가 일치하지 않습니다.");
+			return "forward:/changePwd.me";
+		}
 		
-		return "redirect:/changePwd.me";
 		//성공 얼럴트창 띄우기
 		//프론트에서 기존비밀번호가 일치하고 새로운 비밀번호 확인까지 일치한다면 버튼 클릭가능하기만들기
 	}
@@ -112,11 +118,9 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/schedule.me")
-	public String schedule(Model model) {
-	    ArrayList<Schedule> sList = memberService.scheduleList();
-	    for (Schedule schedule : sList) {
-	        System.out.println(schedule); // 로깅을 통해 데이터 출력
-	    }
+	public String schedule(Schedule s, Model model) {
+	    ArrayList<Schedule> sList = memberService.scheduleList(s);
+	    System.out.println(sList);
 	    model.addAttribute("sList", sList);
 	    return "myPage/schedule";
 	}
@@ -145,8 +149,18 @@ public class MemberController {
 		return "myPage/ask2";
 	}
 	
+	@RequestMapping(value = "/careMem.me")
+	public String careMem(){
+		//화면 전환용 임시 데이터는 없는상태
+		return "myPage/careMember";
+	}
+		
+	@RequestMapping(value = "/viewReport.me")
+	public String viewReport(){
+		//화면 전환용 임시 데이터는 없는상태
+		return "myPage/viewReport";
+	}
 	
-
 	@RequestMapping(value = "/insert.me")
 	public String insertMember(Member m, HttpSession session, Model model) {
 		// bcryptPasswordEncoder 사용? => 일단 보류

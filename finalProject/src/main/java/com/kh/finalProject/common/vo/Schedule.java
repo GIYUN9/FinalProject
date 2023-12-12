@@ -15,14 +15,16 @@ import lombok.ToString;
 @ToString
 public class Schedule {
 	private int scheNo;
-	private String title;
-	private String writer;
-	private String img;
-	private String location;
-	private String category;
-	private String service;
-	private String content;
-	private int memNo;
-	private Date createaDate;
+	private String scheTitle;
+	private String scheContent;
+	private int boardNo;
+	private int fromMemberNo;
+	private int toMemberNo;
+	private int categoryNo;
 	private String status;
+	private Date createDate;
+	private String location;
+	
+	private String memberName;
+	private String categoryName;
 }

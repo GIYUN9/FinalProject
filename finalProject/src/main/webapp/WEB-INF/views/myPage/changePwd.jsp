@@ -59,6 +59,11 @@
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
+	<c:if test="${not empty alertMsg}">
+		<script>
+   			 alert("${alertMsg}");
+  		</script>
+	</c:if>
 	<div class="box" style="margin-top: 120px">	
 		<div class="sideBar">
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">계정 설정</h3>
@@ -69,10 +74,11 @@
 			<a class="myPageSideBar" href="changePwd.me" style="font-weight: bolder;
 			background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">비밀번호 변경</a>
 			<a class="myPageSideBar" href="deleteForm.me">회원 탈퇴</a>
-			<a class="myPageSideBar" href="schedule.me">일정 관리</a>
+			<a class="myPageSideBar" href="schedule.me?toMemberNo=${loginUser.memberNo}">일정 관리</a>
 			<a class="myPageSideBar" href="ask.me">문의 내역</a>
 			<c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
-                <a class="myPageSideBar" href="">회원 관리</a>
+                <a class="myPageSideBar" href="careMem.me">회원 관리</a>
+                <a class="myPageSideBar" href="ask.me">신고 내역</a>
             </c:if>        
 		</div>
 		<div class="main-box">
@@ -87,7 +93,7 @@
 								6개월에 한 번씩 비밀번호를 변경해야합니다.
 							</span>
 							<div>
-								<input class="nomal-input-style" name="memberPwd" type="password" placeholder="현재 비밀번호 입력" required="required">
+								<input class="nomal-input-style" name="originMemberPwd" type="password" placeholder="현재 비밀번호 입력" required="required">
 							</div>
 							<div>
 								<input class="nomal-input-style" name="newPwd" id="newPwd" type="password" placeholder="신규 비밀번호 입력" required="required">

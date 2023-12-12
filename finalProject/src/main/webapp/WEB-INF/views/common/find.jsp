@@ -54,6 +54,12 @@
 		.board-sep-line{
 			border: 0px; border-bottom: 1px solid white; margin-top: 10px; margin-bottom: 0px;
 		}
+		
+		.notice-content{
+			overflow: hidden;  		
+			text-overflow: ellipsis;  	
+			white-space: nowrap;
+		}
 	</style>
 </head>
 <body>
@@ -86,7 +92,7 @@
 									<div class="no-add">
 										<h5>${n.noticeType}</h5>
 							      		<h3>${n.noticeTitle}</h3>
-			   							<p style="margin: 10px;">${n.noticeContent}</p>					    	
+			   							<p class="notice-content" style="margin: 10px;">${n.noticeContent}</p>					    	
 									</div>
 						    	</div>
 						    </div>
@@ -105,31 +111,44 @@
 				<br>
 			<div class="findBox">
 				<div class="findBox-1">
-					<h3>도와줄게요</h3>
-					<div>
-						<h5>도와줄게요 게시글 제목 1</h5>
-						<div>
-							내용 내용 내용
-						</div>
-						<hr class="board-sep-line">
-					</div>
-					<div>
-						<h5>도와줄게요 게시글 제목 2</h5>
-						<div>
-							내용2 내용2 내용2
-						</div>
-						<hr class="board-sep-line">
-					</div>
+					<c:choose>
+						<c:when test="${not empty list1}">
+							<c:forEach var="f" items="${list1}">
+								<h3>도와줄게요</h3>
+								<div>
+									<h5>${f.boardTitle}</h5>
+									<div>
+										${f.boardContent}
+									</div>
+									<hr class="board-sep-line">
+								</div>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<h3>도와줄게요 게시판에 아직 게시글이 없습니다</h3>
+							<h4>첫번째 게시글을 작성해보세요!</h4>
+						</c:otherwise>
+					</c:choose>	
 				</div>
 				<div class="findBox-1">
-					<h3>도와주세요</h3>
-					<div>
-						<h5>도와주세요 게시글 제목 1</h5>
-						<div>
-							내용 내용 내용2
-						</div>
-						<hr class="board-sep-line">
-					</div>
+					<c:choose>
+						<c:when test="${not empty list2}">
+							<c:forEach var="s" items="${list2}">
+								<h3>도와주세요</h3>
+								<div>
+									<h5>${s.boardTitle}</h5>
+									<div>
+										${s.boardContent}
+									</div>
+									<hr class="board-sep-line">
+								</div>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<h3>도와주세요 게시판에 아직 게시글이 없습니다.</h3>
+							<h4>첫번째 게시글을 작성해보세요!</h4>
+						</c:otherwise>
+					</c:choose>	
 				</div>
 			</div>
 			<br>
@@ -137,34 +156,64 @@
 			<br>
 			<div class="findBox">
 				<div class="findBox-2">
-					<h3>궁금해요</h3>
-					<div>
-						<h5>궁금해요 게시글 제목 1</h5>
-						<div>
-							궁금해요궁금해요궁금해요궁금해요
-						</div>
-						<hr class="board-sep-line">
-					</div>
+					<c:choose>
+						<c:when test="${not empty list3}">
+							<c:forEach var="t" items="${list3}">
+								<h3>궁금해요</h3>
+								<div>
+									<h5>${t.boardTitle}</h5>
+									<div>
+										${t.boardContent}
+									</div>
+									<hr class="board-sep-line">
+								</div>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<h3>궁금해요 커뮤니티에 아직 게시글이 없습니다.</h3>
+							<h4>첫번째 게시글을 작성해보세요!</h4>
+						</c:otherwise>
+					</c:choose>
 				</div>
 				<div class="findBox-2">
-					<h3>얼마예요</h3>
-					<div>
-						<h5>얼마예요 게시글 제목 1</h5>
-						<div>
-							얼마예요얼마예요얼마예요얼마예요얼마예요얼마예요얼마예요얼마예요얼마예요얼마예요
-						</div>
-						<hr class="board-sep-line">
-					</div>
+					<c:choose>
+						<c:when test="${not empty list4}">
+							<c:forEach var="f" items="${list4}">
+								<h3>얼마예요</h3>
+								<div>
+									<h5>${f.boardTitle}</h5>
+									<div>
+										${f.boardContent}
+									</div>
+									<hr class="board-sep-line">
+								</div>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<h3>얼마예요 커뮤니티에 아직 게시글이 없습니다.</h3>
+							<h4>첫번째 게시글을 작성해보세요!</h4>
+						</c:otherwise>
+					</c:choose>
 				</div>
 				<div class="findBox-2">
-					<h3>함께해요</h3>
-					<div>
-						<h5>함께해요 게시글 제목 1</h5>
-						<div>
-							함께해요함께해요함께해요함께해요함께해요함께해요함께해요함께해요함께해요함께해요함께해요
-						</div>
-						<hr class="board-sep-line">
-					</div>
+					<c:choose>
+						<c:when test="${not empty list5}">
+							<c:forEach var="fi" items="${list5}">
+								<h3>함께해요</h3>
+								<div>
+									<h5>${fi.boardTitle}</h5>
+									<div>
+										${fi.boardContent}
+									</div>
+									<hr class="board-sep-line">
+								</div>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<h3>함께해요 커뮤니티에 아직 게시글이 없습니다.</h3>
+							<h4>첫번째 게시글을 작성해보세요!</h4>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 		</div>

@@ -105,6 +105,7 @@
 			color: white;
 			cursor: pointer;
 			font-weight: bold;
+			font-size: 13px;
 		}
 
 		.schedule-btn:hover {
@@ -185,6 +186,34 @@
 			position: absolute;
     		right: -355px;
 		}
+		.empty-title{
+			font-size: 35px;
+			text-align: center;
+			font-weight: bold;
+			margin-top: 45px;
+		}
+		.empty-text{
+			text-align: center;
+			font-weight: bold;
+		}
+		.empty-align{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		.empty-btn{
+			border: none;
+			color: white;
+			font-weight: white;
+			background-color: rgb(0, 199, 174);
+			width: 300px;
+			height: 35px;
+			border-radius: 4px;
+			padding: 5px;
+			margin-top: 20px;
+			cursor: pointer;
+		}
 	</style>
 </head>
 
@@ -199,11 +228,12 @@
 			<a class="myPageSideBar" href="proInfo.me">전문가 정보</a>
 			<a class="myPageSideBar" href="changePwd.me">비밀번호 변경</a>
 			<a class="myPageSideBar" href="deleteForm.me">회원 탈퇴</a>
-			<a class="myPageSideBar" href="schedule.me" style="font-weight: bolder;
+			<a class="myPageSideBar" href="schedule.me?toMemberNo=${loginUser.memberNo}" style="font-weight: bolder;
 			background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">일정 관리</a>
 			<a class="myPageSideBar" href="ask.me">문의 내역</a>
 			<c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
                 <a class="myPageSideBar" href="">회원 관리</a>
+                <a class="myPageSideBar" href="ask.me">신고 내역</a>                
             </c:if>        
 		</div>
 		<div class="main-box">
@@ -226,19 +256,27 @@
 						<h6 style="float: left; font-weight: bold;">요청 현황 (<span style="color: red;">3</span>건)</h6>
 					</div>
 					<div style="width: 98%; overflow: scroll; height: 414px;" class="scrolleffect">
+						<c:if test="${empty sList}">
+							<div class="empty-align">
+								<p class="empty-title">받은 요청이 없습니다.</p>
+								<p class="empty-text">전문가 프로필 등록하러 가기</p>
+								<button class="empty-btn" onclick="location.href='proInfo.me'">전문가 등록</button>
+								<button class="empty-btn" onclick="location.href='helpuForm.bo'">도와줄게요 등록</button>
+							</div>
+						</c:if>
                        	<c:forEach var="s" items="${sList}">			
 							<div class="alarm-section">
 								<div style="width: 14%;">
 									이미지 자리
 								</div>
 								<div style="width: 31%;">
-									<h5 class="user-nickname">${s.writer}</h5>
-									<p>희망지역: 서울시 강남구 역삼동</p>
-									<p>${s.category} / ${s.service}</p>
+									<h5 class="user-nickname">${s.memberName}</h5>
+									<p>희망지역 : ${s.location}</p>
+									<p>카테고리 : ${s.categoryName}</p>
 								</div>
 								<div style="width: 40%;">
 									<p class="textarea-maxSize">
-										ex) 달마ㅏ바사앚맟카탗판ㅇ랗알하낭란ㅇ라ㅁ나안ㅁ암나란ㅇㄹ항라호아로할화라홀하ㅘㄹ활하ㅘㄹ활하ㅘㅇㄹ하ㅗ라화라호라홀하....
+										${s.scheContent}
 									</p>
 								</div>
 								<div style="width: 15%; display: flex; flex-direction: column;">
@@ -247,56 +285,6 @@
 								</div>
 							</div>
 						</c:forEach> 
-						<div class="alarm-section">
-							<div style="width: 14%;">
-								이미지 자리
-							</div>
-							<div style="width: 31%;">
-								<h5 class="user-nickname">홍길동</h5>
-								<p>희망지역: 서울시 강남구 역삼동</p>
-								<p>키보드 / 기타 레슨</p>
-							</div>
-							<div style="width: 40%;">
-								<p class="textarea-maxSize">
-
-
-								</p>
-							</div>
-							<div style="width: 15%; display: flex; flex-direction: column;">
-								<button class="schedule-btn" style="background-color: rgb(0, 199, 174)">상세</button>
-								<button class="schedule-btn" style="background-color: rgb(218, 76, 60)">거절</button>
-							</div>
-						</div>
-	
-						<div class="alarm-section">
-							<div style="width: 14%;">
-								이미지 자리
-							</div>
-							<div style="width: 31%;">
-								<h5 class="user-nickname">홍길동</h5>
-								<p>희망지역: 서울시 강남구 역삼동</p>
-								<p>키보드 / 기타 레슨</p>
-							</div>
-							<div style="width: 40%;">
-								<p class="textarea-maxSize">
-									가야 할 때가 언제인가를
-									분명히 알고 가는 이의
-									뒷모습은 얼마나 아름다운가.
-	
-									봄 한철
-									격정을 인내한
-									나의 사랑은 지고 있다.
-	
-									분분한 낙화.
-									결별이 이룩하는 축복에 싸여
-									지금은 가야 할 때
-								</p>
-							</div>
-							<div style="width: 15%; display: flex; flex-direction: column;">
-								<button class="schedule-btn" style="background-color: rgb(0, 199, 174)">상세</button>
-								<button class="schedule-btn" style="background-color: rgb(218, 76, 60)">거절</button>
-							</div>
-						</div>
 					</div>
 
 					<div style="width: 100%; margin: 10px 0px 10px 8px;">
@@ -307,7 +295,7 @@
 				<div id="view2" class="user-info"
 					style="flex-direction: column; margin-left: 5px; margin-right: 5px; display: none;">
 					<div style="width: 100%; margin: 10px 0px 10px 8px;">
-						<h6 style="float: left;">보낸 요청</h6>
+						<h6 style="float: left; font-weight: bold;">보낸 요청</h6>
 					</div>
 					<div style="width: 98%;">
 						<div class="alarm-section">
@@ -461,7 +449,7 @@
 		});
 
 		// schedule.jsp의 모달을 닫기 위한 코드
-		const btnCloseScheduleModal = document.querySelector('#x-btnImg-schedule');
+		const btnCloseScheduleModal = document.querySelector('#x-btnImg');
 		btnCloseScheduleModal.addEventListener('click', () => {
 			scheduleModal.style.display = 'none';
 		});
@@ -470,6 +458,7 @@
 		function refuseSchedule() {
 			scheduleModal.style.display = 'none';
 		}
+		
 
 	</script>
 </body>

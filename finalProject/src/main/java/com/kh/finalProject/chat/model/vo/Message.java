@@ -1,4 +1,4 @@
-package com.kh.finalProject.chat.vo;
+package com.kh.finalProject.chat.model.vo;
 import lombok.Data;
 @Data
 

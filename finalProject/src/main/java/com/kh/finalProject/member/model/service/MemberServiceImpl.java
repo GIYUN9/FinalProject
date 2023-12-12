@@ -66,17 +66,10 @@ public class MemberServiceImpl implements MemberService {
 	}
 
     @Override
-    public ArrayList<Schedule> scheduleList() {
-        ArrayList<Schedule> scheduleList = memberDao.scheduleList(sqlSession);
-
-        // 데이터 확인을 위해 로깅
-        for (Schedule schedule : scheduleList) {
-            System.out.println(schedule);
-        }
-
+    public ArrayList<Schedule> scheduleList(Schedule s) {
+        ArrayList<Schedule> scheduleList = memberDao.scheduleList(sqlSession, s);
         return scheduleList;
     }
-
 
 	@Override
 	public int updateUserImg(String memberNo, String filePath) {
