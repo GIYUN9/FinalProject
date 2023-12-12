@@ -83,10 +83,12 @@ public class MemberController {
 	//비밀번호 변경하는 컨트롤러
 	@RequestMapping(value = "/updatePwd.me")
 	public String updatePwd(Member m, String newPwd, String originMemberPwd, HttpSession session, Model model){
-		m = (Member)session.getAttribute("loginUser");
-		if(originMemberPwd.equals(m.getMemberPwd())) {
-			m.setMemberPwd(newPwd);
-			int result = memberService.updatePwd(m);
+		Member loginUser = memberService.loginMember(m);
+		
+		if(bcryptPasswordEncoder.matches(originMemberPwd, loginUser.getMemberPwd())) {
+			String encPwd = bcryptPasswordEncoder.encode(newPwd); // 새로 입력한 비밀번호 암호화
+			m.setMemberPwd(encPwd); // 암호화된 비밀번호 객체에 넣어주기
+			int result = memberService.updatePwd(m); // 수정
 			model.addAttribute("alertMsg", "비밀번호를 성공적으로 변경하였습니다.");
 			return "forward:/changePwd.me";
 		} else {

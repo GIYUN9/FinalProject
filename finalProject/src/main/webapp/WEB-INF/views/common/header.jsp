@@ -324,6 +324,12 @@
 </style>
 </head>
 <body>
+	<c:if test="${ not empty alertMsg }">
+		<script>
+			alertify.alert('알림', "${alertMsg}");
+		</script>
+		<c:remove var="alertMsg" scope="session"/>
+	</c:if>
 	${empty loginUser}
     <c:choose>
         <c:when test="${empty loginUser}">
