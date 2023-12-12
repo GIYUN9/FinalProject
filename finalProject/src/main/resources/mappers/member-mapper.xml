@@ -90,7 +90,6 @@
 			INTRO
 		FROM MEMBER
 		WHERE MEM_EMAIL = #{memberEmail}
-			AND MEM_PWD = #{memberPwd}
 		AND STATUS = 'Y'
 	</select>
 	

@@ -167,9 +167,9 @@ CREATE SEQUENCE SEQ_SNO START WITH 100000 INCREMENT BY 1 MAXVALUE 109999 NOCYCLE
 
 ---------------------더미데이터-----------------------
 -- 멤버
-INSERT INTO MEMBER VALUES(1, 'admin@naver.com', '1234' ,'관리자', '음악', 1,
+INSERT INTO MEMBER VALUES(1, 'admin@naver.com', '$2a$10$Oa0Xd4NXm4.5/lgBkeBbBu2Y3gHAkhdOT9zgvilBHgO0dBYu1dNCm' ,'관리자', '음악', 1,
         '010-1111-0000', '서울시 강남구', 'Y', 'M', '4', 'resources/memberProfileImg/userDefaultProFile.png', NULL, NULL);
-INSERT INTO MEMBER VALUES(SEQ_MNO.NEXTVAL, 'user01@naver.com','1234' ,'홍길동', '음악', 1, 
+INSERT INTO MEMBER VALUES(SEQ_MNO.NEXTVAL, 'user01@naver.com','$2a$10$Oa0Xd4NXm4.5/lgBkeBbBu2Y3gHAkhdOT9zgvilBHgO0dBYu1dNCm' ,'홍길동', '음악', 1, 
         '010-1111-1111', '서울시 송파구', 'Y', 'M', '4', 'resources/memberProfileImg/userDefaultProFile.png', NULL, NULL);
 
 INSERT INTO MEMBER(

@@ -9,6 +9,7 @@ import java.util.Date;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,8 +29,8 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-//	@Autowired
-//	private BCryptPasswordEncoder bcryptPasswordEncoder;
+	@Autowired
+	private BCryptPasswordEncoder bcryptPasswordEncoder;
 	
 	//멤버 마이페이지 불러오는 컨트롤러
 	@RequestMapping(value = "/userInfo.me")
@@ -117,6 +118,7 @@ public class MemberController {
 		}
 	}
 	
+	//스케줄 컨트롤러(로그인한 유저의 정보를 포함하여)
 	@RequestMapping(value = "/schedule.me")
 	public String schedule(Schedule s, Model model) {
 	    ArrayList<Schedule> sList = memberService.scheduleList(s);
@@ -165,9 +167,11 @@ public class MemberController {
 	@RequestMapping(value = "/insert.me")
 	public String insertMember(Member m, HttpSession session, Model model) {
 		// bcryptPasswordEncoder 사용? => 일단 보류
-		System.out.println("zzzzzzzzzzzzzz" + m);
-		System.out.println("zzzzzzzzzzzzzz" + m);
-	
+
+		//암호화 작업
+		String encPwd = bcryptPasswordEncoder.encode(m.getMemberPwd());
+		//암호화한 비밀번호를 객체에 적용
+		m.setMemberPwd(encPwd);
 		int result = memberService.insertMember(m); // 아이디로만 멤버객체 가져오기
 		
 		if(result > 0) {
@@ -180,14 +184,14 @@ public class MemberController {
 	}
 	
 	
-	
+	//로그인 컨트롤러
 	@RequestMapping(value = "/login.me")
 	public ModelAndView loginMember(Member m, ModelAndView mv, HttpSession session) {
-		
 		Member loginUser = memberService.loginMember(m);
+		System.out.println(loginUser);
 		
 		//!(m.getMemberPwd().equals(loginUser.getMemberPwd()))
-		if(loginUser == null){//로그인 실패경우 (조건이 정확한지 확인받기)
+		if(loginUser == null || !bcryptPasswordEncoder.matches(m.getMemberPwd(), loginUser.getMemberPwd())){//로그인 실패경우 (조건이 정확한지 확인받기)
 			mv.addObject("errorMsg", "로그인 실패"); 
 			mv.setViewName("common/errorPage");//경로가 정확히 이게 맞을까?
 			System.out.println(loginUser);
