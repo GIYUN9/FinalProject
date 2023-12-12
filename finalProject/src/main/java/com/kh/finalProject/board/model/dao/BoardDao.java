@@ -148,4 +148,12 @@ public class BoardDao {
 	public ArrayList<Board> findBoardList5(SqlSessionTemplate sqlSeesion, String keyWord){
 		return (ArrayList)sqlSeesion.selectList("boardMapper.findBoardList5", keyWord);
 	}
+	
+	public int updateCommBoard(SqlSessionTemplate sqlSession, Board b) {
+		return sqlSession.update("boardMapper.updateCommBoard", b);
+	}
+	
+	public int deleteCommBoard(SqlSessionTemplate sqlSession, int boardNo) {
+		return sqlSession.update("boardMapper.deleteCommBoard", boardNo);
+	}
 }

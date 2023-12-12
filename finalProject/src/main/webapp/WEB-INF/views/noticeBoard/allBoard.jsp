@@ -209,6 +209,7 @@
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
+	
 	<div class="box" style="margin-top: 120px">
 		<div class="sideBar">
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">커뮤니티</h3>

@@ -89,5 +89,9 @@ public interface BoardService {
 	ArrayList<Board> findBoardList3(String keyWord);
 	ArrayList<Board> findBoardList4(String keyWord);
 	ArrayList<Board> findBoardList5(String keyWord);
+	
+	int updateCommBoard(Board b);
+	
+	int deleteCommBoard(int boardNo);
 
 }

@@ -7,210 +7,118 @@
 <meta charset="UTF-8">
 <title>품앗이-상세보기</title>
 	<link rel="stylesheet" href="././resources/css/myPgae.css">
-	<style>
+		<style>
         .main-box{
             position: relative;
         }
 		.pageBox{
 			margin-bottom: 100px;
             min-height: 721px;
+            padding: 20px;
 		}
-
-		.profile-btn-area{
-			justify-content: center;
-    		display: flex;
-			align-self: center; 
-			width: 100%;
-		}
-		.user-info-table{
-			width: 80%;	
-			position: relative;
-			margin-bottom: 70px;
-		}
-		.user-info-table td{
-			padding-bottom: 0px;
-		}
-		.user-info-table input{
-			height: 22px;
-			border: 1px solid rgb(147, 147, 150);
-			border-radius: 5px;
-			height: 35px;
-		}
-		.ui-formOuter{
-			width: 100%;
-		}
-		.ui-submit-btn{
-			float: right;
-			position: absolute;
-			right: 70px;
-			bottom: 233px;
-			width: 460px;
-			background: none;
-			border: 1px solid rgb(147, 147, 150);
-			border-radius: 5px;
-			height: 28px;
-		}
-		.email-input{
-			height: 35px
-		}
-		.phone-input{
-			height: 35px
-		}
-		.info-input{
-			width: 100%;
-		}
-
-		.normal-input-box > button {
-			width: 80px;
-			height: 35px;
-			border: 1px solid rgb(147, 147, 150);
-			border-radius: 5px;
-		}
-        .list{
-            list-style: none;
+        .com-title{
+            font-weight: bold;
         }
-
-        .list > .list-btn{
-            background-color: transparent;
-            border: none;
+        .com-service{
+            font-size: 14px;
+            color: rgb(147, 147, 150);
+            font-weight: bold;
+        }
+        .com-loca{
+            font-size: 14px;
+            color:rgb(147, 147, 150);
+            font-weight: bold;
+        }
+        .com-thum{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .board-info{
+            font-size: 14px;
+            color: rgb(147, 147, 150);
+        }
+        .cont-area{
+            width: 100%;
+            border-top: 1px solid rgba(226, 226, 226, 0.4);
+            border-bottom: 1px solid rgba(226, 226, 226, 0.4);
+            min-height: 200px;
+            position: relative;
+            padding: 30px;
+        }
+        .img{
+            width: 20px;
+            height: 20px;
             cursor: pointer;
         }
-
-        .list-btn {
-            font-size: 17px;
-            color: white;
-            margin: 15px;
-        }
-
-        .list-btn:hover {
-            color: black
-        }
-
-        .community-list {
-            list-style: none;
-            font-size: 25px;
-            font-weight: bold;
-            text-decoration: underline;
-            margin: 18px;
-        }
-
-        .main{
-            background-color: white;
-            width: 700px;
-            height: 62%;
+        .img-area{
             position: absolute;
-            left: 50%;
-            margin-left: -322px;
-            top: 50%;
-            margin-top: -260px;
-            border-radius: 10px;
-        }
-
-        .community-ul{
-            width: 170px;
-            height: 500px;
-            margin: 220px 0px 0px 315px;
-            color: white;
-        }
-
-        .time-span{
-            float: right;
-            margin-right: 25px;
-            font-size: 13px;
-        }
-
-        .community-btn{
-            border-radius: 12px;
-            background-color: white;
-            border-width: thin;
-            margin: 3px; 
-            width: 56px;
-            height: 27px;
-                cursor: pointer;
-        }
-
-        .text1{
-            font-size: 14px;
-        }
-
-        .text2{
-            font-size: 12px;
-        }
-
-        .community-p{
-            font-size: 10px;
-        }
-
-        .main-span1{
-            font-weight: bold;
-            font-size: 14px;
-            margin-left: 15px;
-        }
-
-        .main-span2{
-        font-size: 12px; 
-        }
-
-        .main-list{
-            list-style: none;
-        }
-
-        .main-a{
-            padding: 13px 0px 10px 20px;
-        }
-
-        .main-b{
-            padding: 13px 0px 0px 30px;
-        }
-
-        .a-click {
-            text-decoration-line: none;
-            color: black;
-        }
-
-        .img {
-            width: 0.8em;
-            height: auto;
-        }
-
-        .line {
-            width: 96%;
-            margin-left: 11px;
+            bottom: 1px;
+            margin-bottom: 10px;
+            color: #888888;
             margin-top: 10px;
+            display: flex;
+            width: 95%;
+            flex-direction: row;
+            justify-content: space-between;
+            font-size: 14px;
         }
-
-        .arrow-img{
-            width: 15px;
-            height: 15px;
-            float: right;
-            margin-right: 10px;
-            margin-top: 2px;
-            cursor: pointer;
+        .reply-align{
+            display: flex;
+            flex-direction: row;
+            padding: 10px;
         }
-
-        .border-one,  .border-two, .border-three{
-            margin-left: 33px;
-            line-height: 27px;
+        .reply-top{
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            margin-bottom: 10px;
+            color: #888888;
         }
-        #board-create{
-            width: 80px;
+        .reply-bot{
+            color: #888888;
+        }
+        .req-btn{
             position: absolute;
-            bottom: 122px;
-            right: 43px;
-            background: rgb(0, 199, 174);
-            color: white;
-            border: none;
+            right: 1px;
+            color: #00c7ae;
+            background-color: #eafaf9;
+            border: 0;
+            padding: .3125rem 0.5rem;
             border-radius: 4px;
-            padding: 5px;
             cursor: pointer;
-            z-index: 1;
+            font-weight: bold;
+            font-size: 14px;
         }
+        .reply-writer{
+            color: black;
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .re-input-btn{
+            background-color: #00c7ae;
+            cursor: pointer;
+            font-weight: bold;
+            padding: .3125rem 0.5rem;  
+        }
+
+        .re-input-btn:hover{
+            opacity: 0.5;
+        }
+	</style>
 
        
 	</style>
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
+	<c:if test="${not empty alertMsg}">
+	    <script>
+	        alert("${alertMsg}");
+	    </script>
+	</c:if>
 	<div class="box" style="margin-top: 120px">
 		<div class="sideBar">
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">커뮤니티</h3>
@@ -224,40 +132,95 @@
 		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">전체보기</h3>
 			
+			
 			<div class="pageBox" style="display: flex; flex-direction: column; position: relative;">
-				<div class="community-big">
-					 <div class="de-title">
-                        <div class="title-a">
-                               	제목
-                        </div>
-                        <div class = "title-b">
-                            ${b.boardTitle }
-                        </div>  
-                     </div>  
-                     <br>
-                     <div class="de-name">
-                        <div class="name-a">
-                                	작성자 
-                        </div>
-                        <div class="name-b">
-                            ${b.memberName}
-                        </div>              
-                     </div> 
-                     <br>
-                     <div class="de-content">
-                        <div class="content-a">
-                            	내용
-                        </div>
-                        <div class="content-b">
-                            ${b.boardContent } 
-                        	
-                        </div>
-                     </div> 
-					
-                    
-                    
+                <div class="title-area"> 
+                    <p class="com-service">${b.boardType == 3 ? '궁금해요' : b.boardType == 4 ? '얼마예요' : '함께해요'}</p>
+                    <h4 class="com-title">${b.boardTitle}</h4>                                          
+						
+						<c:choose>
+						    <c:when test="${b.location == null}">
+						        <p class="com-loca">주소 알 수 없음</p>
+						    </c:when>
+						    <c:otherwise>
+						        <p class="com-loca">${b.location}</p>
+						    </c:otherwise>
+						</c:choose>
+                                                                                                          
+                </div>
 
-                    <!-- 수정하기 삭제하기는 관리자 혹은 작성자에게만 보이게 조건걸어주기 -->
+                <div class="com-thum">
+                    <div>         
+                        <img style="width: 70px; height: 70px; margin: 15px; border-radius: 15px;" src="./resources/icon/profileTest.png">
+                    </div>
+                    <div>
+                        <div style="margin-bottom: 5px;"> ${b.memberName}</div>
+                        <div class="board-info"> ${b.createDate } ·조회 101</div>
+                    </div>                    
+                </div>
+
+                <div class="cont-area">
+                    ${b.boardContent } 
+                    <br><br><br>
+                    <div class="img-area">
+                        <div>
+                            <img src="./resources/icon/LIKE.png" class="img" style="margin-bottom: 10px;">
+                            <span>좋아요 39 ·</span>
+                            <span>조회수 104</span>
+                        </div>
+                        <div>
+                             ${b.createDate } 
+                        </div>
+                    </div>
+                </div>
+                <div class="reply-area">
+                	 <div>
+                        <c:choose>
+						    <c:when test="${loginUser !=null }">
+                            <div id = "comment-write">
+                                <div id="reply-boardNo" hidden>${b.boardNo}</div>
+                                <div id = "commentWriter">${loginUser.memberName}</div>
+						        <input id = "commentContents" class="reply-content" name="replyContent" type="text" style="width: 80%;" placeholder="댓글을 입력해주세요">
+                                <button id="comment-write-btn" class="re-input-btn" onclick="commentWrite()" readonly>등록</button>
+                            </div>
+						    </c:when>
+						    <c:otherwise>
+                                <input class="reply-input" name="replyContent" type="text" style="width: 80%;" readonly placeholder="로그인 후 댓글작성이 가능합니다.">
+						    </c:otherwise>
+						</c:choose>
+                    </div>
+                    <div class="reply-align">
+                        <div class="profile-area">
+                            <img style="width: 45px; height: 45px; margin: 5px; border-radius: 15px;" src="./resources/icon/profileTest.png">
+                        </div>
+                        <div class="reply-info">
+                            <div class="reply-top">
+                                <div class="reply-writer">
+                                   	 정훈 
+                                </div>
+                                <div>
+                                    일러스트 디자인+8개서비스 고수 
+                                </div>
+                                <button class="req-btn">견적요청</button>
+                            </div>
+                            <div class="reply-cont">
+                                뜯어져나갈 부분은 깔끔하게 뜯어내시고 가까운 철물점에서 퍼티랑 사포 사셔서 퍼티로 평평하게 바르시고 마르면 사포로 다듬으시고 시트지를 붙여야될 것 같아요 같은 시트지가 있을지 모르겠네요
+                            </div>
+                            <div class="reply-bot">
+                                <span> 2시간 전 ·</span>
+                                <img src="./resources/icon/LIKE.png" class="img" style="margin-bottom: 10px;">
+                                <span>좋아요 39 ·</span>
+                                <img src="./resources/icon/dislike.png" class="img" style="margin-top: 7px;">
+                                <span>싫어요 -5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+			</div>		
+		</div>
+	</div>
+	                <!-- 수정하기 삭제하기는 관리자 혹은 작성자에게만 보이게 조건걸어주기 -->
                     <c:if test="${loginUser.memberName eq b.memberName || loginUser.memberName=='관리자'}">
 					    <div align="center">
 					        <a class="" onclick="postFormSubmit(1)">수정하기</a>
@@ -273,15 +236,40 @@
 					<script>
 						function postFormSubmit(num){
 							if(num === 1){
-		                        $("#postForm").attr('action', '수정은 어디로 갈까');
+		                        $("#postForm").attr('action', 'updatePage.co');
 								// document.querySelector('#postForm').setAttribute('action', 'updateForm.bo');
 							} else{
-		                        $("#postForm").attr('action', '삭제는 어디로 갈까');
+		                        $("#postForm").attr('action', 'deletePage.co');
 								// document.querySelector('#postForm').setAttribute('action', 'deleteForm.bo');
 							}
 		                    $("#postForm").submit();
 		                    // document.querySelector('#postForm').submit();
 						}
+                        
+                        const commentWrite = () => {
+                            const boardNo = document.getElementById("reply-boardNo").innerText;
+                            const writer = document.getElementById("commentWriter").innerText;
+                            const contents = document.getElementById("commentContents").value;
+                            console.log("보드넘버 : ", boardNo);
+                            console.log("작성자 : ", writer);
+                            console.log("내용 : ", contents);
+
+                            $.ajax({
+                                type : "post",
+                                url : "insert.re",
+                                data : {
+                                    "memberName" : writer,
+                                    "content" : contents,
+                                    "boardNo" : boardNo
+                                },
+                                success: function(res){
+                                    console.log("요청성공", res);
+                                },
+                                error:function(err){
+                                    console.log("요청 실패", err);
+                                }
+                            });
+                        }
 					</script>
                 </div>
 			</div>		

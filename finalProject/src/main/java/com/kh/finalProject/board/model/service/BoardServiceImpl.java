@@ -189,4 +189,14 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.selectCommBoard(sqlSession, boardNo);
 	}
 	
+	@Override
+	public int updateCommBoard(Board b) {
+		return boardDao.updateCommBoard(sqlSession, b);
+	}
+	
+	@Override
+	public int deleteCommBoard(int boardNo) {
+		return boardDao.deleteCommBoard(sqlSession, boardNo);
+	}
+	
 }

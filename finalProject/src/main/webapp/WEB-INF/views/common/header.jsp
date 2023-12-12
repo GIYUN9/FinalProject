@@ -350,7 +350,7 @@
                     <a class="hd-login" onclick="logout()" >로그아웃</a>
                     <div class="dropdown">
                         <span class="dropbtn">
-                             OOO님                           
+                             ${loginUser.memberName }님                           
                             <img class="dd-img" src="././resources/icon/down-arrow.png" alt="">
                         </span>
                         <div class="dropdown-content">
