@@ -19,6 +19,7 @@
 		<result column="FILE_PATH" property="filePath"/>
 		<result column="ACCOUNT" property="account"/>
 		<result column="INTRO" property="intro"/>
+		<result column="ENROLL_DATE" property="enrollDate"/>
 	</resultMap>
 	
 	<resultMap type="Professional" id="professionalResult">
@@ -109,7 +110,8 @@
 				POINT,
 				FILE_PATH,
 				ACCOUNT,
-				INTRO
+				INTRO,
+				ENROLL_DATE
 		FROM MEMBER
 		WHERE MEM_NO = #{memberNo}
 		AND STATUS = 'Y'
@@ -183,4 +185,43 @@
 		WHERE MEM_NO = #{memberNo}
 		AND STATUS = 'Y'
 	</update>
+	
+		<!-- 회원정보 불러오는 쿼리 -->
+	<select id="viewAllMem" resultMap="memberResult">
+		SELECT  MEM_NO,
+				MEM_EMAIL,
+				MEM_PWD,
+				MEM_NAME,
+				MEM_CONCERN,
+				MEM_PRO,
+				PHONE,
+				LOCATION,
+				STATUS,
+				MEM_GEN,
+				POINT,
+				FILE_PATH,
+				ACCOUNT,
+				INTRO,
+				ENROLL_DATE
+		FROM MEMBER
+	</select>
+	<select id="viewSpcMem" resultMap="memberResult">
+		SELECT  MEM_NO,
+				MEM_EMAIL,
+				MEM_PWD,
+				MEM_NAME,
+				MEM_CONCERN,
+				MEM_PRO,
+				PHONE,
+				LOCATION,
+				STATUS,
+				MEM_GEN,
+				POINT,
+				FILE_PATH,
+				ACCOUNT,
+				INTRO,
+				ENROLL_DATE
+		FROM MEMBER
+		WHERE MEM_NAME = #{memberName}
+	</select>
 </mapper>

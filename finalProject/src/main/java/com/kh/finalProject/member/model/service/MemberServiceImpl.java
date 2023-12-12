@@ -75,4 +75,10 @@ public class MemberServiceImpl implements MemberService {
 	public int updateUserImg(String memberNo, String filePath) {
 		return memberDao.updateUserImg(sqlSession, memberNo, filePath);
 	}
+	
+    @Override
+    public ArrayList<Member> memberList(Member m) {
+        ArrayList<Member> memberList = memberDao.memberList(sqlSession, m);
+        return memberList;
+    }
 }

@@ -54,6 +54,7 @@
         }
         td{
             padding: 10px;
+            font-size: 13px;
         }
         .ad-table{
             border: none;
@@ -71,13 +72,7 @@
             margin-bottom: -30px;
             cursor: pointer;
         }
-        .src-mem{
-            width: 467px;
-            margin-bottom: 20px;
-            border: 1px solid #3b3b3b5c;
-            border-radius: 8px;
-            padding-left: 10px;
-        }
+
         .user-info2{
             width: 295px;
             margin-left: 5px;
@@ -104,10 +99,31 @@
         .table-area::-webkit-scrollbar {
 			width: 0px; 
 		}
+
+        /* 검색 css */
         .src-area{
             position: absolute;
             width: 100%;
         }
+        .src-mem{
+            width: 453px;
+            border: 1px solid #3b3b3b5c;
+            border-radius: 8px;
+            padding-left: 0px;
+            height: 29px;
+        }
+        .src-img{
+            width: 20px;
+            height: auto;
+            position: absolute;
+            right: 354px;
+            top: 4px;
+            cursor: pointer;
+        }
+        .src-btn{
+            
+        }
+
         .ad-can{
             right: 0px;
             border: none;
@@ -119,6 +135,8 @@
             border-radius: 0px 0px 9px 9px;
             cursor: pointer;
         }
+
+        /* 선택된 회원 */
         .sel-mem{
             border-bottom: 1px solid rgba(96, 96, 96, 0.4);
             width: 100%;
@@ -161,6 +179,9 @@
             margin-top: 7px; 
             margin-left: -5px;
         }
+        .hidden {
+    		display: none;
+		}
     </style>
 </head>
 <body>
@@ -186,10 +207,11 @@
 			<div class="pageBox" style="display: flex; flex-direction: row;">
 				<div class="user-info">
                     <div class="table-area">
-                        <table border="1" class="ad-table">
-                            <thead>
+                        <table border="1" class="ad-table" id="memberTable">
+                            <thead style="font-size: 15px;">
                                 <div class="src-area">                                
-                                    <input class="src-mem" type="text" name="" id="" placeholder="검색">
+                                    <input class="src-mem" type="text" name="" id="searchInput" placeholder="검색">
+                                    <img class="src-img" src="././resources/icon/glass-icon.png" alt="">
                                 </div>
                                 <tr>
                                     <th>선택</th>
@@ -199,126 +221,16 @@
                                     <th>구분</th>
                                     <th>가입일</th>
                                 </tr>
-                                <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td>1</td>
-                                    <td>asd@navve.rcom</td>
-                                    <td>김김김</td>
-                                    <td>일반회원</td>
-                                    <td>2023-12-05</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td>1</td>
-                                    <td>asd@navve.rcom</td>
-                                    <td>김김김</td>
-                                    <td>일반회원</td>
-                                    <td>2023-12-05</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td>1</td>
-                                    <td>asd@navve.rcom</td>
-                                    <td>김김김</td>
-                                    <td>일반회원</td>
-                                    <td>2023-12-05</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td>1</td>
-                                    <td>asd@navve.rcom</td>
-                                    <td>김김김</td>
-                                    <td>일반회원</td>
-                                    <td>2023-12-05</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td>1</td>
-                                    <td>asd@navve.rcom</td>
-                                    <td>김김김</td>
-                                    <td>일반회원</td>
-                                    <td>2023-12-05</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td>1</td>
-                                    <td>asd@navve.rcom</td>
-                                    <td>김김김</td>
-                                    <td>일반회원</td>
-                                    <td>2023-12-05</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td>1</td>
-                                    <td>asd@navve.rcom</td>
-                                    <td>김김김</td>
-                                    <td>일반회원</td>
-                                    <td>2023-12-05</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td>1</td>
-                                    <td>asd@navve.rcom</td>
-                                    <td>김김김</td>
-                                    <td>일반회원</td>
-                                    <td>2023-12-05</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td>1</td>
-                                    <td>asd@navve.rcom</td>
-                                    <td>김김김</td>
-                                    <td>일반회원</td>
-                                    <td>2023-12-05</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td>1</td>
-                                    <td>asd@navve.rcom</td>
-                                    <td>김김김</td>
-                                    <td>일반회원</td>
-                                    <td>2023-12-05</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td>1</td>
-                                    <td>asd@navve.rcom</td>
-                                    <td>김김김</td>
-                                    <td>일반회원</td>
-                                    <td>2023-12-05</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td>1</td>
-                                    <td>asd@navve.rcom</td>
-                                    <td>김김김</td>
-                                    <td>일반회원</td>
-                                    <td>2023-12-05</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td>1</td>
-                                    <td>asd@navve.rcom</td>
-                                    <td>김김김</td>
-                                    <td>일반회원</td>
-                                    <td>2023-12-05</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td>1</td>
-                                    <td>asd@navve.rcom</td>
-                                    <td>김김김</td>
-                                    <td>일반회원</td>
-                                    <td>2023-12-05</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td>1</td>
-                                    <td>asd@navve.rcom</td>
-                                    <td>김김김</td>
-                                    <td>일반회원</td>
-                                    <td>2023-12-05</td>
-                                </tr>
+								<c:forEach var="m" items="${mList}">		
+									<tr>
+	                                    <td><input type="checkbox"></td>
+	                                    <td>${m.memberNo}</td>
+	                                    <td>${m.memberEmail}</td>
+	                                    <td>${m.memberName}</td>
+	                                    <td>${m.memberPro} 가 1이면 일반</td>
+	                                    <td>${m.enrollDate}</td>
+	                                </tr>
+								</c:forEach> 								                         
                             </thead>
                         </table>
                     </div>
@@ -329,86 +241,7 @@
                         회원관리
                     </div>
                     <div class="user-info2">
-                        <div class="align-mem">                        
-                            <div class="sel-mem">
-                                <span class="upper-text">일반회원</span>
-                                <span class="lower-text">김김김</span>
-                            </div>
-                            <div class="sel-mem2">
-                                <span class="upper-text">No. 1</span>
-                                <span class="lower-text">qweasd@anver,com</span>
-                            </div>
-                        </div>
-                        <div class="align-mem">                        
-                            <div class="sel-mem">
-                                <span class="upper-text">일반회원</span>
-                                <span class="lower-text">이이이</span>
-                            </div>
-                            <div class="sel-mem2">
-                                <span class="upper-text">No. 2</span>
-                                <span class="lower-text">dfchg@anver,com</span>
-                            </div>
-                        </div>
-                        <div class="align-mem">                        
-                            <div class="sel-mem">
-                                <span class="upper-text">일반회원</span>
-                                <span class="lower-text">박박박</span>
-                            </div>
-                            <div class="sel-mem2">
-                                <span class="upper-text">No. 3</span>
-                                <span class="lower-text">rey@anver,com</span>
-                            </div>
-                        </div>
-                        <div class="align-mem">                        
-                            <div class="sel-mem">
-                                <span class="upper-text">일반회원</span>
-                                <span class="lower-text">최최최</span>
-                            </div>
-                            <div class="sel-mem2">
-                                <span class="upper-text">No. 4</span>
-                                <span class="lower-text">cdfgh@anver,com</span>
-                            </div>
-                        </div>
-                        <div class="align-mem">                        
-                            <div class="sel-mem">
-                                <span class="upper-text">일반회원</span>
-                                <span class="lower-text">구구구</span>
-                            </div>
-                            <div class="sel-mem2">
-                                <span class="upper-text">No. 5</span>
-                                <span class="lower-text">xcv@anver,com</span>
-                            </div>
-                        </div>
-                        <div class="align-mem">                        
-                            <div class="sel-mem">
-                                <span class="upper-text">일반회원</span>
-                                <span class="lower-text">광광광</span>
-                            </div>
-                            <div class="sel-mem2">
-                                <span class="upper-text">No. 6</span>
-                                <span class="lower-text">tyu@anver,com</span>
-                            </div>
-                        </div>
-                        <div class="align-mem">                        
-                            <div class="sel-mem">
-                                <span class="upper-text">일반회원</span>
-                                <span class="lower-text">조조조</span>
-                            </div>
-                            <div class="sel-mem2">
-                                <span class="upper-text">No. 7</span>
-                                <span class="lower-text">xzdu@anver,com</span>
-                            </div>
-                        </div>
-                        <div class="align-mem">                        
-                            <div class="sel-mem">
-                                <span class="upper-text">일반회원</span>
-                                <span class="lower-text">윤윤윤</span>
-                            </div>
-                            <div class="sel-mem2">
-                                <span class="upper-text">No. 8</span>
-                                <span class="lower-text">sngf@anver,com</span>
-                            </div>
-                        </div>    
+
                     </div>
                     <button class="ad-can">취소</button>
                 </div>
@@ -419,5 +252,170 @@
 	</div>
 	<jsp:include page="../common/footer.jsp" />
 	
+	<script>
+    function displaySelectedMembers() {
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        var userInfo2Div = document.querySelector('.user-info2');
+
+        // div의 내용 지우기
+        userInfo2Div.innerHTML = '';
+
+        // 체크박스를 통해 선택된 것을 찾기 위해 반복
+        checkboxes.forEach(function(checkbox, index) {
+            if (checkbox.checked) {
+                // 해당하는 <td> 요소 가져오기
+                var tds = checkbox.parentElement.parentElement.getElementsByTagName('td');
+
+                // <td> 요소에서 값 추출
+                var userType = tds[4].innerText;
+                var userName = tds[3].innerText;
+                var userNo = tds[1].innerText;
+                var userEmail = tds[2].innerText;
+
+                // align-mem에 두 개의 div 추가
+                var alignMemDiv = document.createElement('div');
+                alignMemDiv.classList.add('align-mem');
+
+                // sel-mem 추가
+                var selMemDiv = document.createElement('div');
+                selMemDiv.classList.add('sel-mem');
+
+                var upperTextSpanSelMem = document.createElement('span');
+                upperTextSpanSelMem.classList.add('upper-text');
+                upperTextSpanSelMem.innerText = userType;
+                selMemDiv.appendChild(upperTextSpanSelMem);
+
+                var lowerTextSpanSelMem = document.createElement('span');
+                lowerTextSpanSelMem.classList.add('lower-text');
+                lowerTextSpanSelMem.innerText = userName;
+                selMemDiv.appendChild(lowerTextSpanSelMem);
+
+                alignMemDiv.appendChild(selMemDiv);
+
+                // sel-mem2 추가
+                var selMem2Div = document.createElement('div');
+                selMem2Div.classList.add('sel-mem2');
+
+                var upperTextSpanSelMem2 = document.createElement('span');
+                upperTextSpanSelMem2.classList.add('upper-text');
+                upperTextSpanSelMem2.innerText = 'No. ' + userNo;
+                selMem2Div.appendChild(upperTextSpanSelMem2);
+
+                var lowerTextSpanSelMem2 = document.createElement('span');
+                lowerTextSpanSelMem2.classList.add('lower-text');
+                lowerTextSpanSelMem2.innerText = userEmail;
+                selMem2Div.appendChild(lowerTextSpanSelMem2);
+
+                alignMemDiv.appendChild(selMem2Div);
+
+                // user-info2Div에 alignMemDiv 추가
+                userInfo2Div.appendChild(alignMemDiv);
+            }
+        });
+    }
+
+    // 첫 번째 블록
+    document.addEventListener("DOMContentLoaded", function() {
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        var userInfo2Div = document.querySelector('.user-info2');
+        var cancelButton = document.querySelector('.ad-can');
+        var searchInput = document.querySelector('.src-mem');
+        var searchIcon = document.querySelector('.src-img');
+        var tableRows = document.querySelectorAll('.ad-table tbody tr');
+
+        // 각 체크박스에 클릭 이벤트 리스너 추가
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                displaySelectedMembers();
+            });
+        });
+
+        // 검색어 입력 이벤트 처리
+        searchInput.addEventListener('input', function() {
+            filterTable(searchInput.value);
+        });
+
+        // 검색 아이콘 클릭 이벤트 처리
+        searchIcon.addEventListener('click', function() {
+            filterTable(searchInput.value);
+        });
+
+        // 검색 기능 함수
+        function filterTable(query) {
+            query = query.toLowerCase();
+
+            tableRows.forEach(function(row) {
+                var data = row.textContent.toLowerCase();
+                if (data.includes(query)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        // 나머지 코드 작성 ...
+        cancelButton.addEventListener('click', function() {
+            // 취소 버튼 클릭 시 align-mem의 내용 초기화 및 체크박스의 checked 해제
+            userInfo2Div.innerHTML = '';
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = false;
+            });
+        });
+    });
+
+    // 두 번째 블록
+    document.addEventListener("DOMContentLoaded", function() {
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        var userInfo2Div = document.querySelector('.user-info2');
+        var cancelButton = document.querySelector('.ad-can');
+
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                // 첫 번째 블록에서 정의한 함수 호출
+                displaySelectedMembers();
+            });
+        });
+
+        // 나머지 코드 작성 ...
+        cancelButton.addEventListener('click', function() {
+            // 취소 버튼 클릭 시 align-mem의 내용 초기화 및 체크박스의 checked 해제
+            userInfo2Div.innerHTML = '';
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = false;
+            });
+        });
+    });
+    document.addEventListener("DOMContentLoaded", function() {
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        var userInfo2Div = document.querySelector('.user-info2');
+        var cancelButton = document.querySelector('.ad-can');
+        var searchInput = document.querySelector('.src-mem');
+        var tableRows = document.querySelectorAll('.ad-table tbody tr');
+
+        // 각 체크박스에 클릭 이벤트 리스너 추가
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                displaySelectedMembers();
+            });
+        });
+
+        // 취소 버튼 클릭 이벤트 처리
+        cancelButton.addEventListener('click', function() {
+            // 취소 버튼 클릭 시 align-mem의 내용 초기화 및 체크박스의 checked 해제
+            userInfo2Div.innerHTML = '';
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = false;
+            });
+        });
+
+        // displaySelectedMembers 함수
+        function displaySelectedMembers() {
+            // ... (이하 생략)
+        }
+    });
+    
+
+	</script>
 </body>
 </html>

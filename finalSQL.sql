@@ -37,7 +37,8 @@ CREATE TABLE MEMBER(
     POINT NUMBER,
     FILE_PATH VARCHAR2(3000) DEFAULT 'resources/memberProfileImg/userDefaultProFile.png',
     ACCOUNT NUMBER DEFAULT 0,
-    INTRO VARCHAR2(3000)
+    INTRO VARCHAR2(3000),
+    ENROLL_DATE DATE DEFAULT SYSDATE
 );
 
 --멤버 시퀀스
@@ -168,9 +169,9 @@ CREATE SEQUENCE SEQ_SNO START WITH 100000 INCREMENT BY 1 MAXVALUE 109999 NOCYCLE
 ---------------------더미데이터-----------------------
 -- 멤버
 INSERT INTO MEMBER VALUES(1, 'admin@naver.com', '1234' ,'관리자', '음악', 1,
-        '010-1111-0000', '서울시 강남구', 'Y', 'M', '4', 'resources/memberProfileImg/userDefaultProFile.png', NULL, NULL);
+        '010-1111-0000', '서울시 강남구', 'Y', 'M', '4', 'resources/memberProfileImg/userDefaultProFile.png', NULL, NULL, SYSDATE);
 INSERT INTO MEMBER VALUES(SEQ_MNO.NEXTVAL, 'user01@naver.com','1234' ,'홍길동', '음악', 1, 
-        '010-1111-1111', '서울시 송파구', 'Y', 'M', '4', 'resources/memberProfileImg/userDefaultProFile.png', NULL, NULL);
+        '010-1111-1111', '서울시 송파구', 'Y', 'M', '4', 'resources/memberProfileImg/userDefaultProFile.png', NULL, NULL, SYSDATE);
 
 INSERT INTO MEMBER(
             MEM_NO,
@@ -180,7 +181,8 @@ INSERT INTO MEMBER(
 			MEM_CONCERN,
 			PHONE,
 			MEM_GEN,
-            INTRO
+            INTRO,
+            ENROLL_DATE
 		)
 		VALUES(
             SEQ_MNO.NEXTVAL,
@@ -190,7 +192,8 @@ INSERT INTO MEMBER(
 			'요리',
 			'010-2222-2222',
 			'M',
-            NULL
+            NULL,
+            SYSDATE
 		);
 --카테고리
 INSERT INTO CATEGORY VALUES(SEQ_CNO.NEXTVAL, '음악');
