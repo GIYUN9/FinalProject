@@ -3,11 +3,9 @@ package com.kh.finalProject.board.model.service;
 import java.util.ArrayList;
 
 import com.kh.finalProject.board.model.vo.Board;
-
+import com.kh.finalProject.board.model.vo.Reply;
 import com.kh.finalProject.common.vo.Attachment;
-
 import com.kh.finalProject.common.vo.Notice;
-
 import com.kh.finalProject.common.vo.PageInfo;
 
 
@@ -93,5 +91,9 @@ public interface BoardService {
 	int updateCommBoard(Board b);
 	
 	int deleteCommBoard(int boardNo);
+	
+	int insertReply(Reply r);
+	
+	ArrayList<Reply> selectReplyList(Board b);
 
 }

@@ -177,19 +177,19 @@
                 	 <div>
                         <c:choose>
 						    <c:when test="${loginUser !=null }">
-                            <div id = "comment-write">
-                                <div id="reply-boardNo" hidden>${b.boardNo}</div>
-                                <div id = "commentWriter">${loginUser.memberName}</div>
-						        <input id = "commentContents" class="reply-content" name="replyContent" type="text" style="width: 80%;" placeholder="댓글을 입력해주세요">
-                                <button id="comment-write-btn" class="re-input-btn" onclick="commentWrite()" readonly>등록</button>
-                            </div>
+                            <div id="comment-write">
+							    <input id="reply-boardNo" type="hidden" value="${b.boardNo}">
+							    <div id="WriterNo">${loginUser.memberNo}</div>
+							    <input id="reply-content" class="reply-content" name="replyContent" type="text" style="width: 80%;" placeholder="댓글을 입력해주세요">
+							    <button id="comment-write-btn" class="re-input-btn" onclick="insertReply()">등록</button>
+							</div>
 						    </c:when>
 						    <c:otherwise>
                                 <input class="reply-input" name="replyContent" type="text" style="width: 80%;" readonly placeholder="로그인 후 댓글작성이 가능합니다.">
 						    </c:otherwise>
 						</c:choose>
                     </div>
-                    <div class="reply-align">
+                    <div class="reply-align" id ="reply-align">
                         <div class="profile-area">
                             <img style="width: 45px; height: 45px; margin: 5px; border-radius: 15px;" src="./resources/icon/profileTest.png">
                         </div>
@@ -245,28 +245,64 @@
 		                    $("#postForm").submit();
 		                    // document.querySelector('#postForm').submit();
 						}
-                        
-                        const commentWrite = () => {
-                            const boardNo = document.getElementById("reply-boardNo").innerText;
-                            const writer = document.getElementById("commentWriter").innerText;
-                            const contents = document.getElementById("commentContents").value;
+						
+						window.onload = function(){
+							//댓글 가져와서 그려주기
+							selectReplyList();
+							
+						}
+						
+					
+						function selectReplyList() {
+						    $.ajax({
+						        url: "list.re",
+						        data: {
+						            boardNo: document.getElementById("reply-boardNo").value
+						        },
+						        success: function(res) {
+						            let str = "";
+						            for (let reply of res) {
+						                console.log(reply);
+						                str += "<tr>" +
+						                    "<td>" + reply.memberNo + "</td>" +
+						                    "<td>" + reply.replyContent + "</td>" +
+						                    "<td>" + reply.createDate + "</td>" +
+						                    "</tr>";
+						            }
+						            document.querySelector('#reply-align').innerHTML = str;
+						        },
+						        error: function() {
+						            console.log("댓글 목록 조회 실패");
+						        }
+						    });
+						}
+                        function insertReply(){
+                            const boardNo = document.getElementById("reply-boardNo").value;
+                            const memberNo = document.getElementById("WriterNo").innerText;
+                            const contents = document.getElementById("reply-content").value;
                             console.log("보드넘버 : ", boardNo);
-                            console.log("작성자 : ", writer);
+                            console.log("작성자번호: ", memberNo);
                             console.log("내용 : ", contents);
+                           
 
                             $.ajax({
                                 type : "post",
                                 url : "insert.re",
                                 data : {
-                                    "memberName" : writer,
-                                    "content" : contents,
+                                    "memberNo" : memberNo,
+                                    "replyContent" : contents,
                                     "boardNo" : boardNo
                                 },
-                                success: function(res){
-                                    console.log("요청성공", res);
+                                success: function(result){                    
+                                    
+                                    if(result >0){ //댓글 작성성공
+                                    	console.log("인설트 성공!! ");
+                                        document.getElementById("reply-content").value = "";
+                                    	selectReplyList();	
+                                    }
                                 },
-                                error:function(err){
-                                    console.log("요청 실패", err);
+                                error:function(){
+                                    console.log("요청 실패");
                                 }
                             });
                         }
