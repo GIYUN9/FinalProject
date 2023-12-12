@@ -260,9 +260,12 @@ public class MemberController {
 	//보낸요청삭제
 	//여기 페이지 리다이렉트했을때 값 넘어가게 수정해야함
 	@RequestMapping(value = "requestCancel.bo")
-	public String requestCancel(Schedule s, Model model) {
+	public String requestCancel(Schedule s, Model model, HttpSession session) {
 		int result = memberService.requestCancel(s);
-		return "redirect:/schedule.me";
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		int tmp = loginUser.getMemberNo();
+		
+		return "redirect:/schedule.me?toMemberNo="+ tmp;
 	}
 	
 }

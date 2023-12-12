@@ -254,7 +254,6 @@
 				<div id="view1" class="user-info"
 					style="flex-direction: column; margin-left: 5px; margin-right: 5px; display: '';">
 					<div style="width: 100%; margin: 10px 0px 10px 8px;">
-						<h6 style="float: left; font-weight: bold;">요청 현황 (<span style="color: red;">3</span>건)</h6>
 						<h6 style="float: left; font-weight: bold;">요청 현황 (<span style="color: red;">${fn:length(sList)}</span>건)</h6>
 					</div>
 					<div style="width: 98%; overflow: scroll; height: 414px;" class="scrolleffect">
@@ -294,46 +293,10 @@
 					</div>
 
 				</div>
-				<div id="view2" class="user-info"
-					style="flex-direction: column; margin-left: 5px; margin-right: 5px; display: none;">
-					<div style="width: 100%; margin: 10px 0px 10px 8px;">
-						<h6 style="float: left; font-weight: bold;">보낸 요청</h6>
-					</div>
-					<div style="width: 98%;">
-						<div class="alarm-section">
-							<div style="width: 14%;">
-								이미지 자리
-							</div>
-							<div style="width: 31%;">
-								<h5 class="user-nickname">홍길동</h5>
-								<p>희망지역: 서울시 강남구 역삼동</p>
-								<p>키보드 / 기타 레슨</p>
-							</div>
-							<div style="width: 40%;">
-								<p class="textarea-maxSize">
-									가야 할 때가 언제인가를
-									분명히 알고 가는 이의
-									뒷모습은 얼마나 아름다운가.
-
-									봄 한철
-									격정을 인내한
-									나의 사랑은 지고 있다.
-
-									분분한 낙화.
-									결별이 이룩하는 축복에 싸여
-									지금은 가야 할 때
-								</p>
-							</div>
-							<div style="width: 15%; display: flex; flex-direction: column;">
-								<button class="schedule-btn" style="background-color: rgb(0, 199, 174)">확인 중</button>
-								<button class="schedule-btn" style="background-color: rgba(224, 224, 224, 0.5); color: black; border: 1px solid rgba(224, 224, 224, 0.5);">취소</button>
-							</div>
-=======
 					<div id="view2" class="user-info"
 						style="flex-direction: column; margin-left: 5px; margin-right: 5px; display: none;">
 						<div style="width: 100%; margin: 10px 0px 10px 8px;">
 							<h6 style="float: left;">보낸 요청</h6>
->>>>>>> eb51a8157b3f1775d744ee353560ecc849b06e8a
 						</div>
 						<div style="width: 98%;">
 							<c:forEach var="s2" items="${sList2}">
