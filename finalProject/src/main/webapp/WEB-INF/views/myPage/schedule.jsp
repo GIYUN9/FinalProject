@@ -289,7 +289,7 @@
 					</div>
 
 					<div style="width: 100%; margin: 10px 0px 10px 8px;">
-						<h6 style="float: left; font-weight: bold;">해결한요청 (20)건</h6>
+						<h6 style="float: left; font-weight: bold;">해결한요청 (<span style="color: red;">20</span>건)</h6>
 					</div>
 
 				</div>

@@ -76,6 +76,7 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.updateUserImg(sqlSession, memberNo, filePath);
 	}
 
+
 	@Override
 	public ArrayList<Schedule> scheduleSendList(Schedule s) {
 		ArrayList<Schedule> scheduleSendList = memberDao.scheduleSendList(sqlSession, s);
@@ -86,4 +87,11 @@ public class MemberServiceImpl implements MemberService {
 	public int requestCancel(Schedule s) {
 		return memberDao.requestCancel(sqlSession, s);
 	}
+	
+  @Override
+  public ArrayList<Member> memberList(Member m) {
+      ArrayList<Member> memberList = memberDao.memberList(sqlSession, m);
+      return memberList;
+  }
+
 }
