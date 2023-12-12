@@ -19,6 +19,7 @@
 		<result column="FILE_PATH" property="filePath"/>
 		<result column="ACCOUNT" property="account"/>
 		<result column="INTRO" property="intro"/>
+		<result column="ENROLL_DATE" property="enrollDate"/>
 	</resultMap>
 	
 	<resultMap type="Professional" id="professionalResult">
@@ -90,7 +91,6 @@
 			INTRO
 		FROM MEMBER
 		WHERE MEM_EMAIL = #{memberEmail}
-			AND MEM_PWD = #{memberPwd}
 		AND STATUS = 'Y'
 	</select>
 	
@@ -109,7 +109,8 @@
 				POINT,
 				FILE_PATH,
 				ACCOUNT,
-				INTRO
+				INTRO,
+				ENROLL_DATE
 		FROM MEMBER
 		WHERE MEM_NO = #{memberNo}
 		AND STATUS = 'Y'
@@ -177,10 +178,75 @@
         AND S.TO_MNO = #{toMemberNo}
 	</select>
 	
+	<select id="scheduleSendList" resultMap="scheduleResult">
+		SELECT  S.SCHE_NO,
+				S.SCHE_TITLE,
+				S.SCHE_CONTENT,
+				B.BOARD_NO,
+				M.MEM_NAME,
+				C.CATEGORY_NAME,
+				S.STATUS,
+				S.CREATEDATE,
+				S.LOCATION
+		FROM SCHEDULE S, MEMBER M, BOARD B, CATEGORY C
+		WHERE S.STATUS = 'Y'
+		AND (B.BOARD_NO = S.BOARD_NO)
+		AND (M.MEM_NO = S.TO_MNO)
+		AND (C.CATEGORY_NO = S.CATEGORY_NO)
+        AND S.FROM_MNO = #{toMemberNo}
+	</select>
+	
 	<update id="updateUserImg">
 		UPDATE MEMBER
 		SET FILE_PATH = #{filePath}
 		WHERE MEM_NO = #{memberNo}
 		AND STATUS = 'Y'
 	</update>
+	
+
+	<update id="requestCancel">
+		UPDATE SCHEDULE
+		SET STATUS = 'N'
+		WHERE SCHE_NO = #{scheNo}
+	</update>
+
+		<!-- 회원정보 불러오는 쿼리 -->
+	<select id="viewAllMem" resultMap="memberResult">
+		SELECT  MEM_NO,
+				MEM_EMAIL,
+				MEM_PWD,
+				MEM_NAME,
+				MEM_CONCERN,
+				MEM_PRO,
+				PHONE,
+				LOCATION,
+				STATUS,
+				MEM_GEN,
+				POINT,
+				FILE_PATH,
+				ACCOUNT,
+				INTRO,
+				ENROLL_DATE
+		FROM MEMBER
+	</select>
+	<select id="viewSpcMem" resultMap="memberResult">
+		SELECT  MEM_NO,
+				MEM_EMAIL,
+				MEM_PWD,
+				MEM_NAME,
+				MEM_CONCERN,
+				MEM_PRO,
+				PHONE,
+				LOCATION,
+				STATUS,
+				MEM_GEN,
+				POINT,
+				FILE_PATH,
+				ACCOUNT,
+				INTRO,
+				ENROLL_DATE
+		FROM MEMBER
+		WHERE MEM_NAME = #{memberName}
+	</select>
+
 </mapper>

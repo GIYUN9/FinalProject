@@ -9,6 +9,7 @@ import java.util.Date;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,8 +29,8 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-//	@Autowired
-//	private BCryptPasswordEncoder bcryptPasswordEncoder;
+	@Autowired
+	private BCryptPasswordEncoder bcryptPasswordEncoder;
 	
 	//멤버 마이페이지 불러오는 컨트롤러
 	@RequestMapping(value = "/userInfo.me")
@@ -82,11 +83,13 @@ public class MemberController {
 	//비밀번호 변경하는 컨트롤러
 	@RequestMapping(value = "/updatePwd.me")
 	public String updatePwd(Member m, String newPwd, String originMemberPwd, HttpSession session, Model model){
-		m = (Member)session.getAttribute("loginUser");
-		if(originMemberPwd.equals(m.getMemberPwd())) {
-			m.setMemberPwd(newPwd);
-			int result = memberService.updatePwd(m);
-			model.addAttribute("alertMsg", "비밀번호를 성공적으로 변경하였습니다.");
+		Member loginUser = memberService.loginMember(m);
+		
+		if(bcryptPasswordEncoder.matches(originMemberPwd, loginUser.getMemberPwd())) {
+			String encPwd = bcryptPasswordEncoder.encode(newPwd); // 새로 입력한 비밀번호 암호화
+			m.setMemberPwd(encPwd); // 암호화된 비밀번호 객체에 넣어주기
+			int result = memberService.updatePwd(m); // 수정
+			session.setAttribute("alertMsg", "비밀번호를 성공적으로 변경하였습니다.");
 			return "forward:/changePwd.me";
 		} else {
 			model.addAttribute("alertMsg", "비밀번호 변경에 실패하였습니다.\n 기존비밀번호가 일치하지 않습니다.");
@@ -117,11 +120,13 @@ public class MemberController {
 		}
 	}
 	
+	//스케줄 컨트롤러(로그인한 유저의 정보를 포함하여)
 	@RequestMapping(value = "/schedule.me")
 	public String schedule(Schedule s, Model model) {
 	    ArrayList<Schedule> sList = memberService.scheduleList(s);
-	    System.out.println(sList);
 	    model.addAttribute("sList", sList);
+	    ArrayList<Schedule> sList2 = memberService.scheduleSendList(s);
+	    model.addAttribute("sList2", sList2);
 	    return "myPage/schedule";
 	}
 //	
@@ -150,10 +155,13 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/careMem.me")
-	public String careMem(){
-		//화면 전환용 임시 데이터는 없는상태
-		return "myPage/careMember";
+	public String careMem(Member m, Model model) {
+	    ArrayList<Member> mList = memberService.memberList(m);
+	    System.out.println(mList);
+	    model.addAttribute("mList", mList);
+	    return "myPage/careMember";
 	}
+	
 		
 	@RequestMapping(value = "/viewReport.me")
 	public String viewReport(){
@@ -164,9 +172,11 @@ public class MemberController {
 	@RequestMapping(value = "/insert.me")
 	public String insertMember(Member m, HttpSession session, Model model) {
 		// bcryptPasswordEncoder 사용? => 일단 보류
-		System.out.println("zzzzzzzzzzzzzz" + m);
-		System.out.println("zzzzzzzzzzzzzz" + m);
-	
+
+		//암호화 작업
+		String encPwd = bcryptPasswordEncoder.encode(m.getMemberPwd());
+		//암호화한 비밀번호를 객체에 적용
+		m.setMemberPwd(encPwd);
 		int result = memberService.insertMember(m); // 아이디로만 멤버객체 가져오기
 		
 		if(result > 0) {
@@ -179,14 +189,14 @@ public class MemberController {
 	}
 	
 	
-	
+	//로그인 컨트롤러
 	@RequestMapping(value = "/login.me")
 	public ModelAndView loginMember(Member m, ModelAndView mv, HttpSession session) {
-		
 		Member loginUser = memberService.loginMember(m);
+		System.out.println(loginUser);
 		
 		//!(m.getMemberPwd().equals(loginUser.getMemberPwd()))
-		if(loginUser == null){//로그인 실패경우 (조건이 정확한지 확인받기)
+		if(loginUser == null || !bcryptPasswordEncoder.matches(m.getMemberPwd(), loginUser.getMemberPwd())){//로그인 실패경우 (조건이 정확한지 확인받기)
 			mv.addObject("errorMsg", "로그인 실패"); 
 			mv.setViewName("common/errorPage");//경로가 정확히 이게 맞을까?
 			System.out.println(loginUser);
@@ -254,6 +264,17 @@ public class MemberController {
 		}
 		
 		return changeName;
+	}
+	
+	//보낸요청삭제
+	//여기 페이지 리다이렉트했을때 값 넘어가게 수정해야함
+	@RequestMapping(value = "requestCancel.bo")
+	public String requestCancel(Schedule s, Model model, HttpSession session) {
+		int result = memberService.requestCancel(s);
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		int tmp = loginUser.getMemberNo();
+		
+		return "redirect:/schedule.me?toMemberNo="+ tmp;
 	}
 	
 }

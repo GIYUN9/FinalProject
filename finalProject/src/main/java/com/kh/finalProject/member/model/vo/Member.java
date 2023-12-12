@@ -1,5 +1,7 @@
 package com.kh.finalProject.member.model.vo;
 
+import java.sql.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,5 +34,5 @@ public class Member {
 	private String filePath;
 	private int account;
 	private String intro;
-	
+	private Date enrollDate;
 }

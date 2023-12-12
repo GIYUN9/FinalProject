@@ -59,11 +59,6 @@
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
-	<c:if test="${not empty alertMsg}">
-		<script>
-   			 alert("${alertMsg}");
-  		</script>
-	</c:if>
 	<div class="box" style="margin-top: 120px">	
 		<div class="sideBar">
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">계정 설정</h3>
@@ -103,6 +98,8 @@
 							</div>
 						</div>
 						<br>
+						<input type="hidden" name="memberNo" value="${loginUser.memberNo}">
+						<input type="hidden" name="memberEmail" value="${loginUser.memberEmail}">
 						<button class="updatePwd-btn" type="submit" disabled>변경하기</button>
 					</form>
 				</div>
