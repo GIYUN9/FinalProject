@@ -296,9 +296,17 @@
 					<div id="view2" class="user-info"
 						style="flex-direction: column; margin-left: 5px; margin-right: 5px; display: none;">
 						<div style="width: 100%; margin: 10px 0px 10px 8px;">
-							<h6 style="float: left;">보낸 요청</h6>
+							<h6 style="float: left; font-weight: bold;">보낸요청 (<span style="color: red;">${fn:length(sList2)}</span>건)</h6>
 						</div>
 						<div style="width: 98%;">
+						<c:if test="${empty sList2}">
+							<div class="empty-align">
+								<p class="empty-title">보낸 요청이 없습니다.</p>
+								<p class="empty-text">전문가에게 요청 보내러 가기</p>
+								<button class="empty-btn" onclick="helpU()">도와줄게요 게시판</button>
+								<br><br><br><br>
+							</div>
+						</c:if>
 							<c:forEach var="s2" items="${sList2}">
 								<div class="alarm-section">
 									<div style="width: 14%;">

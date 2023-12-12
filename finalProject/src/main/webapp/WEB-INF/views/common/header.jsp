@@ -414,7 +414,7 @@
                                     <span class="as-re">*</span>
                                 </p>
                                 <p>
-                                    <input class="en-input" id="memberEmail" name ="memberEmail" type="text" placeholder="example@poomasi.com">
+                                    <input class="en-input" id="memberEmail" name ="memberEmail" type="text" placeholder="example@poomasi.com"><button type="button">인증 번호 발송</button>
                                 </p>
                                 <p>
                                    	 비밀번호
