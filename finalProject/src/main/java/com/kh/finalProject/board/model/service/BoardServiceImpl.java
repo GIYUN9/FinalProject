@@ -8,11 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.kh.finalProject.board.model.dao.BoardDao;
 import com.kh.finalProject.board.model.vo.Board;
-import com.kh.finalProject.board.model.vo.Comment;
+import com.kh.finalProject.board.model.vo.Reply;
+
 import com.kh.finalProject.common.vo.Attachment;
-
 import com.kh.finalProject.common.vo.Notice;
-
 import com.kh.finalProject.common.vo.PageInfo;
 
 @Service
@@ -242,26 +241,54 @@ public class BoardServiceImpl implements BoardService {
 	
 	//도와줄게요 댓글 리스트
 	@Override
-	public ArrayList<Comment> helpSelectComment(int boardNo) {
-		return boardDao.helpSelectComment(sqlSession, boardNo);
+	public ArrayList<Reply> helpSelectReply(int boardNo) {
+		return boardDao.helpSelectReply(sqlSession, boardNo);
 	}
 
 	//도와줄게요 댓글 작성
 	@Override
-	public int helpInsertComment(Comment c) {
-		return boardDao.helpInsertComment(sqlSession, c);
+	public int helpInsertReply(Reply r) {
+		return boardDao.helpInsertReply(sqlSession, r);
 	}
 
 	//도와주세요 댓글 리스트
 	@Override
-	public ArrayList<Comment> helpmeComment(int boardNo) {
-		return boardDao.helpmeComment(sqlSession, boardNo);
+	public ArrayList<Reply> helpmeReply(int boardNo) {
+		return boardDao.helpmeReply(sqlSession, boardNo);
 	}
 
 	//도와주세요 댓글 작성
 	@Override
-	public int helpmeInsertComment(Comment c) {
-		return boardDao.helpmeInsertComment(sqlSession, c);
+	public int helpmeInsertReply(Reply r) {
+		return boardDao.helpmeInsertReply(sqlSession, r);
+	}
+	
+	//얼마예요 궁금해요 등 게시글 상세조회
+	@Override
+	public Board selectCommBoard(int boardNo) {
+		return boardDao.selectCommBoard(sqlSession, boardNo);
+	}
+	
+	@Override
+	public int updateCommBoard(Board b) {
+		return boardDao.updateCommBoard(sqlSession, b);
+	}
+	
+	@Override
+	public int deleteCommBoard(int boardNo) {
+		return boardDao.deleteCommBoard(sqlSession, boardNo);
+	}
+	
+	@Override
+	public int insertReply(Reply r) {
+		return boardDao.insertReply(sqlSession, r);
+	}
+	
+	@Override
+	public ArrayList<Reply> selectReplyList(Board b){
+		
+		return boardDao.selectReplyList(sqlSession, b);
+
 	}
 	
 }

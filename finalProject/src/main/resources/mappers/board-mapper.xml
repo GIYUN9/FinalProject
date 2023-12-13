@@ -14,6 +14,8 @@
   		<result column="STATUS" property="status" />
   		<result column="MEM_NO" property="memberNo" />
   		<result column="CATEGORY_NO" property="categoryNo" />
+  		<result column="MEM_NAME" property="memberName" />
+  		<result column="LOCATION" property="location" />
   	</resultMap>
   	
   	<resultMap type="Attachment" id="attachmentResult">
@@ -32,6 +34,15 @@
   		<result column="NOTICE_CONTENT" property="noticeContent" />
   		<result column="CREATEDATE" property="createDate" />
   		<result column="STATUS" property="status" />
+  	</resultMap>
+  	
+  	<resultMap type="Reply" id="replyResult">
+  		<result column="REPLY_NO" property="replyNo" />
+  		<result column="REPLY_CONTENT" property="replyContent" />
+  		<result column="CREATEDATE" property="createDate" />
+  		<result column="MEM_NO" property="memberNo" />
+  		<result column="MEM_NAME" property="memberName" />
+  		<result column="BOARD_NO" property="boardNo" />
   	</resultMap>
  	
  	
@@ -272,6 +283,23 @@
   		WHERE NOTICE_NO = #{noticeNo}
   	</update>
   	
+  	<select id="selectCommBoard" resultMap="boardResult">
+  		SELECT  B.BOARD_NO,
+				B.BOARD_TITLE,
+				B.BOARD_CONTENT,
+				B.PRICE,
+				B.BOARD_TYPE,
+				B.CREATEDATE,
+				B.STATUS,
+				B.MEM_NO,
+                M.MEM_NAME,
+                M.LOCATION,
+				B.CATEGORY_NO
+				FROM BOARD B
+        JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
+		WHERE B.BOARD_NO = #{boardNo}
+		AND B.STATUS = 'Y'
+	</select>
   	<select id="helpselectOne" resultMap="boardResult">
   		SELECT  BOARD_NO,
   				CATEGORY_NO,
@@ -296,7 +324,7 @@
 							BOARD_CONTENT,
 							BOARD_TYPE,
 							CREATEDATE,
-							STATUS,
+							STATUS,	
 							MEM_NO
 							)
 					VALUES	(
@@ -305,7 +333,7 @@
 							#{boardContent},
 							#{boardType},
 							SYSDATE,
-							'Y',
+							'Y',							
 							#{memberNo}
 							)
 	</insert>
@@ -565,4 +593,47 @@
   		WHERE BOARD_NO = #{boardNo}
 	</update>
 	
+	<update id ="updateCommBoard">
+		UPDATE BOARD
+			SET BOARD_TITLE = #{boardTitle},
+				BOARD_CONTENT = #{boardContent}
+		WHERE BOARD_NO = #{boardNo}
+			AND STATUS = 'Y'
+	</update>
+	<update id="deleteCommBoard">
+		UPDATE BOARD
+			SET STATUS = 'N'
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+	
+	<insert id="insertReply">
+  		INSERT INTO REPLY (
+					REPLY_NO,
+					REPLY_CONTENT,			
+					MEM_NO,
+					BOARD_NO,
+					CREATEDATE,
+					STATUS		
+            		)
+		VALUES(
+		        SEQ_RNO.NEXTVAL,
+		        #{replyContent},
+		        #{memberNo},
+		        #{boardNo},
+		        SYSDATE,
+		        'Y'
+		        )
+  	</insert>
+  	<select id="selectReplyList" resultMap="replyResult">
+		SELECT  R.REPLY_NO,
+				R.REPLY_CONTENT,
+				M.MEM_NAME,
+				R.CREATEDATE        		        
+		FROM	REPLY R	
+		JOIN MEMBER M ON (R.MEM_NO = M.MEM_NO) 
+		WHERE R.STATUS = 'Y'
+			AND BOARD_NO = #{boardNo}
+		ORDER BY REPLY_NO DESC
+	</select>
+  	
   </mapper>

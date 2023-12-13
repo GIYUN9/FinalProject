@@ -1,9 +1,8 @@
 package com.kh.finalProject.board.model.service;
 
 import java.util.ArrayList;
-
 import com.kh.finalProject.board.model.vo.Board;
-import com.kh.finalProject.board.model.vo.Comment;
+import com.kh.finalProject.board.model.vo.Reply;
 import com.kh.finalProject.common.vo.Attachment;
 import com.kh.finalProject.common.vo.Notice;
 import com.kh.finalProject.common.vo.PageInfo;
@@ -17,7 +16,7 @@ public interface BoardService {
 	//커뮤니티 전체보기 조회
 	ArrayList<Board> selectCommList(PageInfo pi);
 	
-	//게시글 상세조회
+	//게시글 상세조회 
 	Board selectBoard(int boardNo);
 	
 	//도와줄게요 리스트조회
@@ -28,6 +27,9 @@ public interface BoardService {
 	
 	//도와줄게요 게시판 리스트 count(*)조회
 	int seleteHelpListCount();
+
+	//얼마예요 궁금해요 등 게시글 상세조회
+	Board selectCommBoard(int boardNo);
 	
 	//도와줄게요 게시판 등록
 	int helpinsertBoard(Board b);
@@ -42,10 +44,10 @@ public interface BoardService {
 	int helpDeleteBoard(int boardNo);
 	
 	//도와줄게요 댓글 리스트
-	ArrayList<Comment> helpSelectComment(int boardNo);
+	ArrayList<Reply> helpSelectReply(int boardNo);
 	
 	//도와줄게요 댓글 작성
-	int helpInsertComment(Comment c);
+	int helpInsertReply(Reply r);
 	
 	//커뮤니티 게시글 수(조회)
 	int selectCommListCount();
@@ -118,8 +120,16 @@ public interface BoardService {
 	int helpmeDeleteBoard(int boardNo);
 	
 	//도와주세요 댓글 리스트
-	ArrayList<Comment> helpmeComment(int boardNo);
+	ArrayList<Reply> helpmeReply(int boardNo);
 	
 	//도와주세요 댓글 작성
-	int helpmeInsertComment(Comment c);
+	int helpmeInsertReply(Reply r);
+
+	int updateCommBoard(Board b);
+	
+	int deleteCommBoard(int boardNo);
+	
+	int insertReply(Reply r);
+	
+	ArrayList<Reply> selectReplyList(Board b);
 }

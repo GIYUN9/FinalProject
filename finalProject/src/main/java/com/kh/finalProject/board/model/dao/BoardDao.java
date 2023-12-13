@@ -7,7 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.finalProject.board.model.vo.Board;
-import com.kh.finalProject.board.model.vo.Comment;
+import com.kh.finalProject.board.model.vo.Reply;
 import com.kh.finalProject.common.vo.Attachment;
 import com.kh.finalProject.common.vo.Notice;
 import com.kh.finalProject.common.vo.PageInfo;
@@ -60,12 +60,12 @@ public class BoardDao {
 		return sqlSeesion.selectOne("boardMapper.helpSelectBoard", boardNo);
 	}
 	
-	public ArrayList<Comment> helpSelectComment(SqlSessionTemplate sqlSeesion, int boardNo) {
-		return (ArrayList)sqlSeesion.selectList("boardMapper.helpSelectComment", boardNo);
+	public ArrayList<Reply> helpSelectReply(SqlSessionTemplate sqlSeesion, int boardNo) {
+		return (ArrayList)sqlSeesion.selectList("boardMapper.helpSelectReply", boardNo);
 	}
 	
-	public int helpInsertComment(SqlSessionTemplate sqlSeesion, Comment c) {
-		return sqlSeesion.insert("boardMapper.helpInsertComment", c);
+	public int helpInsertReply(SqlSessionTemplate sqlSeesion, Reply r) {
+		return sqlSeesion.insert("boardMapper.helpInsertReply", r);
 	}
 
 	public int selectCommListCount(SqlSessionTemplate sqlSeesion) {
@@ -129,6 +129,11 @@ public class BoardDao {
 		return (ArrayList)sqlSession.selectList("boardMapper.selectTogetherList", null, rowBounds);
 	}
 	
+	//도와주세요 도와줄게요 등 게시판 상세조회
+	public Board selectCommBoard(SqlSessionTemplate sqlSession, int boardNo) {
+		return sqlSession.selectOne("boardMapper.selectCommBoard", boardNo);
+	}
+	
 	public int insertCommboard(SqlSessionTemplate sqlSession, Board b) {
 		return sqlSession.insert("boardMapper.insertCommboard", b);
 	}
@@ -189,11 +194,27 @@ public class BoardDao {
 		return sqlSeesion.selectOne("boardMapper.helpmeSelectBoard", boardNo);
 	}
 	
-	public ArrayList<Comment> helpmeComment(SqlSessionTemplate sqlSeesion, int boardNo) {
-		return (ArrayList)sqlSeesion.selectList("boardMapper.helpmeComment", boardNo);
+	public ArrayList<Reply> helpmeReply(SqlSessionTemplate sqlSeesion, int boardNo) {
+		return (ArrayList)sqlSeesion.selectList("boardMapper.helpmeReply", boardNo);
 	}
 	
-	public int helpmeInsertComment(SqlSessionTemplate sqlSeesion, Comment c) {
-		return sqlSeesion.insert("boardMapper.helpmeInsertComment", c);
+	public int helpmeInsertReply(SqlSessionTemplate sqlSeesion, Reply r) {
+		return sqlSeesion.insert("boardMapper.helpmeInsertReply", r);
+	}
+	
+	public int updateCommBoard(SqlSessionTemplate sqlSession, Board b) {
+		return sqlSession.update("boardMapper.updateCommBoard", b);
+	}
+	
+	public int deleteCommBoard(SqlSessionTemplate sqlSession, int boardNo) {
+		return sqlSession.update("boardMapper.deleteCommBoard", boardNo);
+	}
+	
+	public int insertReply(SqlSessionTemplate sqlSession, Reply r) {
+		return sqlSession.insert("boardMapper.insertReply", r);
+	}
+	
+	public ArrayList<Reply> selectReplyList(SqlSessionTemplate sqlSession, Board b){
+		return (ArrayList)sqlSession.selectList("boardMapper.selectReplyList", b);
 	}
 }

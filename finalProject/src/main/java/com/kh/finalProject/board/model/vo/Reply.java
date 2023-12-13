@@ -13,11 +13,13 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Comment {
-	private int commentNo; // 댓글번호
-	private Date commentCreated; //댓글작성일
-	private String content; // 댓글내용
-	private String writer; //댓글 작성자
+public class Reply {
+
+	private int replyNo;
 	private int boardNo;
+	private Date createDate;
+	private String replyContent;
+	
 	private int memberNo;
+	private String memberName;
 }

@@ -23,9 +23,10 @@ public class Board {
 	private String status; 
 	private int memberNo;
 	private int categoryNo;
-	
 	private String location;
 	private String originName;
+	
+	private String memberName;
 	private String changeName;
 	private String filePath;
 }
