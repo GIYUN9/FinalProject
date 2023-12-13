@@ -3,6 +3,7 @@ package com.kh.finalProject.board.model.service;
 import java.util.ArrayList;
 
 import com.kh.finalProject.board.model.vo.Board;
+import com.kh.finalProject.board.model.vo.Comment;
 import com.kh.finalProject.common.vo.Attachment;
 import com.kh.finalProject.common.vo.Notice;
 import com.kh.finalProject.common.vo.PageInfo;
@@ -38,7 +39,13 @@ public interface BoardService {
 	int helpupdateBoard(Board b);
 	
 	//도와줄게요 게시판 삭제
-	int helpdeleteBoard(int boardNo);
+	int helpDeleteBoard(int boardNo);
+	
+	//도와줄게요 댓글 리스트
+	ArrayList<Comment> helpSelectComment(int boardNo);
+	
+	//도와줄게요 댓글 작성
+	int helpInsertComment(Comment c);
 	
 	//커뮤니티 게시글 수(조회)
 	int selectCommListCount();
@@ -109,4 +116,10 @@ public interface BoardService {
 	
 	//도와주세요 게시글 삭제
 	int helpmeDeleteBoard(int boardNo);
+	
+	//도와주세요 댓글 리스트
+	ArrayList<Comment> helpmeComment(int boardNo);
+	
+	//도와주세요 댓글 작성
+	int helpmeInsertComment(Comment c);
 }

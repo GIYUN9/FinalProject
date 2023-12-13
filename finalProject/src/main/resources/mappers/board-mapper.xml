@@ -133,7 +133,7 @@
   	</update>
   	
   	<!-- 도와줄게요 게시글 삭제 쿼리문 -->
-  	<update id="helpdeleteBoard">
+  	<update id="helpDeleteBoard">
   		UPDATE BOARD
   			SET STATUS = 'N'
   		WHERE BOARD_NO = #{boardNo}

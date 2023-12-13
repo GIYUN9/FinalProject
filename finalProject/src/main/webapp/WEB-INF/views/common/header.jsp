@@ -109,7 +109,7 @@
         color: white;
     }
     a:hover{
-        color: black;
+        color: rgb(0, 199, 174);
         text-decoration: none;
     }
 
@@ -312,10 +312,24 @@
         /* display: block; */
         opacity: 1; /* 호버 시 투명도 1로 변경 */
     }
+    /* 이메일버튼 css */
+    #em-btn{
+    	height: 45px;
+    	font-size: 14px;
+    	border: none;
+    	border-radius: 3px;
+    	cursor: pointer;
+    }
 
 </style>
 </head>
 <body>
+	<c:if test="${ not empty alertMsg }">
+		<script>
+			alert("${alertMsg}");
+		</script>
+		<c:remove var="alertMsg" scope="session"/>
+	</c:if>
 	${empty loginUser}
     <c:choose>
         <c:when test="${empty loginUser}">
@@ -398,7 +412,7 @@
             <div class="modal-dialog">
                 <h4 class="modal-title" style="text-align: center; color: white; font-weight: bold; margin: 0 auto; margin-top: 60px; margin-bottom: -60px;
                 ">품앗이에 오신걸 환영합니다</h4>
-                <div class="modal-content" style="height: 850px;">
+                <div class="modal-content" style="height: 100%;">
                     <div class="modal-body" >
                         <form action="insert.me" method="post" name="joinForm" onsubmit="return join();">
                             <div>
@@ -413,8 +427,9 @@
                                    	 이메일
                                     <span class="as-re">*</span>
                                 </p>
-                                <p>
-                                    <input class="en-input" id="memberEmail" name ="memberEmail" type="text" placeholder="example@poomasi.com">
+                                <p style="display: flex;">
+                                    <input class="en-input" id="memberEmail" name ="memberEmail" type="text" placeholder="example@poomasi.com" style="margin-right: 5px;">
+                                    <button id="em-btn" type="button">인증 번호 발송</button>
                                 </p>
                                 <p>
                                    	 비밀번호
@@ -431,11 +446,11 @@
                                     <input class="en-input" name ="memberPwd2" type="password" placeholder="올바르게 입력해주세요">
                                 </p>
                                 <p>
-                                    	관심사 선택(중복 선택 가능)
+                                    	관심사 선택
                                     <span class="as-re">*</span>
                                 </p>
                                	<div class="insert-category">	            
-		                        	<select name ="all-category" id ="in-category">
+		                        	<select name="all-category" id ="in-category">
 		                        		<option name = "music" value="music">음악</option>
 		                        		<option name = "cook" value="cook">요리</option>
 		                        		<option name = "health" value="health">운동</option>
@@ -517,9 +532,9 @@
 
             //비밀번호 제약조건
             if(memberPwd.value.length < 8){
-                alert("비밀번호 8자리 이상!");
-                memberPwd.focus();
-                return false;
+				alert("비밀번호 8자리 이상!");
+				memberPwd.focus();
+				return false;
             }
 
             //비밀번호 공백 있나 확인
@@ -582,7 +597,6 @@
 
             const memberPwd = loginForm.memberPwd;
             
-
              //비밀번호 입력 없을 경우
             if(memberPwd.value == ""){
                 alert("비밀번호를 입력하세요");
@@ -598,16 +612,6 @@
           //  }
 
         }
-
-
-
-
-
-
-
-
-
-
 
         function kakaoLogin() {
           // 여기에 카카오 로그인을 처리하는 코드 작성 필요
@@ -647,7 +651,8 @@
         function loginPlz(){
             alert('로그인 후 사용 가능합니다.');
         }
-
+	
+        
 	</script>
 </body>
 </html>

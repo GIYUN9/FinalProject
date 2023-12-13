@@ -7,11 +7,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.finalProject.board.model.vo.Board;
-
+import com.kh.finalProject.board.model.vo.Comment;
 import com.kh.finalProject.common.vo.Attachment;
-
 import com.kh.finalProject.common.vo.Notice;
-
 import com.kh.finalProject.common.vo.PageInfo;
 
 @Repository
@@ -42,21 +40,32 @@ public class BoardDao {
 		return sqlSession.update("boardMapper.updateBoard", b);
 	}
 	
-	public int helpdeleteBoard(SqlSessionTemplate sqlSession, int boardNo) {
-		return sqlSession.update("boardMapper.deleteBoard", boardNo);
+	public int helpDeleteBoard(SqlSessionTemplate sqlSession, int boardNo) {
+		return sqlSession.update("boardMapper.helpDeleteBoard", boardNo);
 	}
 	
 	public Board selectBoard(SqlSessionTemplate sqlSession, int boardNo) {
 		return sqlSession.selectOne("boardMapper.selectBoard", boardNo);
 	}
 	
-
 	public int helpAttachment(SqlSessionTemplate sqlSession, Attachment at) {
 		return sqlSession.insert("boardMapper.helpAttachment", at);
 	}
 	
 	public int helpselect(SqlSessionTemplate sqlSession) {
 		return sqlSession.selectOne("boardMapper.helpselect");
+	}
+	
+	public Board helpSelectBoard(SqlSessionTemplate sqlSeesion, int boardNo) {
+		return sqlSeesion.selectOne("boardMapper.helpSelectBoard", boardNo);
+	}
+	
+	public ArrayList<Comment> helpSelectComment(SqlSessionTemplate sqlSeesion, int boardNo) {
+		return (ArrayList)sqlSeesion.selectList("boardMapper.helpSelectComment", boardNo);
+	}
+	
+	public int helpInsertComment(SqlSessionTemplate sqlSeesion, Comment c) {
+		return sqlSeesion.insert("boardMapper.helpInsertComment", c);
 	}
 
 	public int selectCommListCount(SqlSessionTemplate sqlSeesion) {
@@ -176,11 +185,15 @@ public class BoardDao {
 		return sqlSeesion.update("boardMapper.helpmeDeleteBoard", boardNo);
 	}
 	
-	public Board helpSelectBoard(SqlSessionTemplate sqlSeesion, int boardNo) {
-		return sqlSeesion.selectOne("boardMapper.helpSelectBoard", boardNo);
-	}
-	
 	public Board helpmeSelectBoard(SqlSessionTemplate sqlSeesion, int boardNo) {
 		return sqlSeesion.selectOne("boardMapper.helpmeSelectBoard", boardNo);
+	}
+	
+	public ArrayList<Comment> helpmeComment(SqlSessionTemplate sqlSeesion, int boardNo) {
+		return (ArrayList)sqlSeesion.selectList("boardMapper.helpmeComment", boardNo);
+	}
+	
+	public int helpmeInsertComment(SqlSessionTemplate sqlSeesion, Comment c) {
+		return sqlSeesion.insert("boardMapper.helpmeInsertComment", c);
 	}
 }

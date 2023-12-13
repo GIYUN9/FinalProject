@@ -260,7 +260,7 @@
             <div class="report-top-section">
                 <img class="report-close-btn" src="././resources/icon/close.png">
                     <div class="report-top-section">
-                        <p>신고하기</p>
+                        <p>신고글 상세</p>
                     </div>
                     
                         <div class="report-input-area">
@@ -282,7 +282,7 @@
                             </div>  
                             <div class="report-line">
                                 <div  class="re-content" type="text">
-                                    바보 같아서 (신고하면 내용 들어옴)
+                                    바보 같아서 
                                     <div class="re-content3">
                                         내용
                                     </div>
@@ -292,7 +292,7 @@
                                     <div class="ar-text4">
                                         신고 내용
                                     </div>
-                                    <textarea class="ar-report" name=" id="" cols="30" rows="10">"바보 같아서"라고 욕설사용함</textarea>
+                                    <textarea class="ar-report" name=" id="" cols="30" rows="10" readonly>"바보 같아서"라고 욕설사용함</textarea>
                             <div class="aa">
                                 <label class="hu-upfile" for="hu-upfile">
                                     파일첨부
@@ -307,7 +307,7 @@
                                 <input id="hu-upfile" class="hu-upfile" type="file" name="upfile" style="display: none;" onchange="javascript:document.getElementById('fileName').value = this.value">
                             </div>  
                         </div>                    <div class="re-btn-area">
-                        <button class="re-submit-btn">신고하기</button>
+                        <button class="re-submit-btn">답변하기</button>
                         <button class="re-cancle-btn">취소</button>
                     </div>
 

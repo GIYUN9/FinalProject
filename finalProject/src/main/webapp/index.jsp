@@ -8,9 +8,8 @@
 </head>
 <body>	
 
-
-	<jsp:forward page="WEB-INF/views/common/main.jsp"/>
-
+		<jsp:forward page="WEB-INF/views/common/main.jsp"/> 일정
+	
 	<%--
 		김경보
 		<jsp:forward page="WEB-INF/views/common/main.jsp"/> 메인페이지 
@@ -29,7 +28,9 @@
 		<jsp:forward page="WEB-INF/views/noticeBoard/togetherBoard.jsp"/> 궁금해요 게시판 - 스타일 통일, 매핑
 		<jsp:forward page="WEB-INF/views/noticeBoard/noticeBoard.jsp"/> 공지 게시판 - 스타일 통일, 매핑
 		<jsp:forward page="WEB-INF/views/myPage/proInfo2.jsp"/> 전문가 마이페이지-스타일 통일
-		<jsp:forward page="WEB-INF/views/myPage/admin.jsp"/> 
+		<jsp:forward page="WEB-INF/views/myPage/careMember.jsp"/> 회원관리
+		<jsp:forward page="WEB-INF/views/board/comboard.jsp"/> 커뮤니티 게시판 상세
+		<jsp:forward page="WEB-INF/views/board/adminReport.jsp"/>
 		
 		나기윤
 		<jsp:forward page="WEB-INF/views/myPage/deleteForm.jsp"/> 회원탈퇴

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.finalProject.board.model.dao.BoardDao;
 import com.kh.finalProject.board.model.vo.Board;
-
+import com.kh.finalProject.board.model.vo.Comment;
 import com.kh.finalProject.common.vo.Attachment;
 
 import com.kh.finalProject.common.vo.Notice;
@@ -48,8 +48,8 @@ public class BoardServiceImpl implements BoardService {
 	//게시글 삭제
 	@Override
 	//도와줄게요 게시판 삭제
-	public int helpdeleteBoard(int boardNo) {
-		return boardDao.helpdeleteBoard(sqlSession, boardNo);
+	public int helpDeleteBoard(int boardNo) {
+		return boardDao.helpDeleteBoard(sqlSession, boardNo);
 	}
 
 	//게시글 상세조회
@@ -238,6 +238,30 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public Board helpmeSelectBoard(int boardNo) {
 		return boardDao.helpmeSelectBoard(sqlSession, boardNo);
+	}
+	
+	//도와줄게요 댓글 리스트
+	@Override
+	public ArrayList<Comment> helpSelectComment(int boardNo) {
+		return boardDao.helpSelectComment(sqlSession, boardNo);
+	}
+
+	//도와줄게요 댓글 작성
+	@Override
+	public int helpInsertComment(Comment c) {
+		return boardDao.helpInsertComment(sqlSession, c);
+	}
+
+	//도와주세요 댓글 리스트
+	@Override
+	public ArrayList<Comment> helpmeComment(int boardNo) {
+		return boardDao.helpmeComment(sqlSession, boardNo);
+	}
+
+	//도와주세요 댓글 작성
+	@Override
+	public int helpmeInsertComment(Comment c) {
+		return boardDao.helpmeInsertComment(sqlSession, c);
 	}
 	
 }

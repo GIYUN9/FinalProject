@@ -107,21 +107,21 @@
         <br>
 
         <div class="hu-btn-area">
-            <a class="hu-submit-btn" onclick="postFormBtn(1)">수정</a>
-            <a class="hu-cancle-btn" onclick="postFormBtn(2)">취소</a>
+            <a class="hu-submit-btn" onclick="postBtn(1)">수정</a>
+            <a class="hu-cancle-btn" onclick="postBtn(2)">삭제</a>
         </div>
         
-        <form method="post" id="form">
+        <form action="" method="post" id="form">
         	<input type="hidden" name="boardNo" value="${b.boardNo}">
         	<input type="hidden" name="filePath" value="${a.changeName}">
         </form>
         
         <script>
-        	function postFormBtn(num) {
+        	function postBtn(num) {
                 if(num === 1) {
-                    $("#form").attr('action', 'helpUpdateForm.bo');
+                    $("#form").attr('action', 'helpmeUpdate.bo');
                 } else {
-                    $("#form").attr('action', 'cancel');
+                    $("#form").attr('action', 'helpmeDelete.bo');
                 }
                 $("#form").submit();
             }

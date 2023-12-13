@@ -275,8 +275,8 @@
                 
                 <c:forEach var="b" items="${list}">
                 	<div class = "content-item">
-	                     <a href ="helpDetail.bo?boardNo=${b.boardNo}">
-	                        <img  class = "content-img" src = "${b.filePath}${b.changeName}">
+	                     <a href ="helpmeDetail.bo?boardNo=${b.boardNo}">
+	                        <img  class = "content-img" src = "${at.originName}${at.changeName}">
 	                        <div class = "content-item-title">
 	                        	${b.boardTitle}
 	                        </div>

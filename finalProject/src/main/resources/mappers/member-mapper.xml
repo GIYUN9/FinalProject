@@ -19,6 +19,7 @@
 		<result column="FILE_PATH" property="filePath"/>
 		<result column="ACCOUNT" property="account"/>
 		<result column="INTRO" property="intro"/>
+		<result column="ENROLL_DATE" property="enrollDate"/>
 	</resultMap>
 	
 	<resultMap type="Professional" id="professionalResult">
@@ -27,19 +28,22 @@
 		<result column="CATEGORY_NO" property="categoryNo"/>
 		<result column="MEM_NO" property="memberNo"/>
 	</resultMap>
-<!-- 	
+	
 	<resultMap type="Schedule" id="scheduleResult">
 		<result column="SCHE_NO" property="scheNo"/>
-		<result column="SCHE_Title" property="Title"/>		
-		<result column="SCHE_WRITER" property="Writer"/>
-		<result column="SCHE_CATEGORY" property="Category"/>
-		<result column="SCHE_SERVICE" property="Service"/>
-		<result column="SCHE_CONTENT" property="Content"/>
-		<result column="MEM_NO" property="memNo"/>
-		<result column="CREATEDATE" property="createDate"/>
+		<result column="SCHE_TITLE" property="scheTitle"/>		
+		<result column="SCHE_CONTENT" property="scheContent"/>
+		<result column="BOARD_NO" property="boardNo"/>		
+		<result column="FROM_MNO" property="fromMemberNo"/>
+		<result column="TO_MNO" property="toMemberNo"/>
+		<result column="CATEGORY_NO" property="categoryNo"/>
 		<result column="STATUS" property="status"/>
+		<result column="CREATEDATE" property="createDate"/>
+		<result column="LOCATION" property="location"/>
+		<result column="MEM_NAME" property="memberName"/>
+		<result column="CATEGORY_NAME" property="categoryName"/>
 	</resultMap>
- -->
+
 	<!-- 회원가입 -->
 	<insert id = "insertMember">
 		INSERT INTO MEMBER(
@@ -87,7 +91,6 @@
 			INTRO
 		FROM MEMBER
 		WHERE MEM_EMAIL = #{memberEmail}
-			AND MEM_PWD = #{memberPwd}
 		AND STATUS = 'Y'
 	</select>
 	
@@ -106,7 +109,8 @@
 				POINT,
 				FILE_PATH,
 				ACCOUNT,
-				INTRO
+				INTRO,
+				ENROLL_DATE
 		FROM MEMBER
 		WHERE MEM_NO = #{memberNo}
 		AND STATUS = 'Y'
@@ -156,18 +160,41 @@
 	</update>
 	
 	<!-- 일정 관리 리스트 쿼리 -->
-	<!-- 
 	<select id="scheduleList" resultMap="scheduleResult">
-		SELECT  SCHE_NO,
-				SCHE_WRITER,
-				SCHE_CATEGORY,
-				SCHE_SERVICE,
-				SCHE_CONTENT,
-				MEM_NO,
-				CREATEDATE
-				FROM SCHEDULE
-				WHERE STATUS = 'Y'
-	</select> -->
+		SELECT  S.SCHE_NO,
+				S.SCHE_TITLE,
+				S.SCHE_CONTENT,
+				B.BOARD_NO,
+				M.MEM_NAME,
+				C.CATEGORY_NAME,
+				S.STATUS,
+				S.CREATEDATE,
+				S.LOCATION
+		FROM SCHEDULE S, MEMBER M, BOARD B, CATEGORY C
+		WHERE S.STATUS = 'Y'
+		AND (B.BOARD_NO = S.BOARD_NO)
+		AND (M.MEM_NO = S.FROM_MNO)
+		AND (C.CATEGORY_NO = S.CATEGORY_NO)
+        AND S.TO_MNO = #{toMemberNo}
+	</select>
+	
+	<select id="scheduleSendList" resultMap="scheduleResult">
+		SELECT  S.SCHE_NO,
+				S.SCHE_TITLE,
+				S.SCHE_CONTENT,
+				B.BOARD_NO,
+				M.MEM_NAME,
+				C.CATEGORY_NAME,
+				S.STATUS,
+				S.CREATEDATE,
+				S.LOCATION
+		FROM SCHEDULE S, MEMBER M, BOARD B, CATEGORY C
+		WHERE S.STATUS = 'Y'
+		AND (B.BOARD_NO = S.BOARD_NO)
+		AND (M.MEM_NO = S.TO_MNO)
+		AND (C.CATEGORY_NO = S.CATEGORY_NO)
+        AND S.FROM_MNO = #{toMemberNo}
+	</select>
 	
 	<update id="updateUserImg">
 		UPDATE MEMBER
@@ -175,4 +202,51 @@
 		WHERE MEM_NO = #{memberNo}
 		AND STATUS = 'Y'
 	</update>
+	
+
+	<update id="requestCancel">
+		UPDATE SCHEDULE
+		SET STATUS = 'N'
+		WHERE SCHE_NO = #{scheNo}
+	</update>
+
+		<!-- 회원정보 불러오는 쿼리 -->
+	<select id="viewAllMem" resultMap="memberResult">
+		SELECT  MEM_NO,
+				MEM_EMAIL,
+				MEM_PWD,
+				MEM_NAME,
+				MEM_CONCERN,
+				MEM_PRO,
+				PHONE,
+				LOCATION,
+				STATUS,
+				MEM_GEN,
+				POINT,
+				FILE_PATH,
+				ACCOUNT,
+				INTRO,
+				ENROLL_DATE
+		FROM MEMBER
+	</select>
+	<select id="viewSpcMem" resultMap="memberResult">
+		SELECT  MEM_NO,
+				MEM_EMAIL,
+				MEM_PWD,
+				MEM_NAME,
+				MEM_CONCERN,
+				MEM_PRO,
+				PHONE,
+				LOCATION,
+				STATUS,
+				MEM_GEN,
+				POINT,
+				FILE_PATH,
+				ACCOUNT,
+				INTRO,
+				ENROLL_DATE
+		FROM MEMBER
+		WHERE MEM_NAME = #{memberName}
+	</select>
+
 </mapper>

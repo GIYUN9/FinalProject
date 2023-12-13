@@ -270,12 +270,13 @@
                                     <img class="clip-img" src="././resources/icon/paperclip.png">
                                 </label>
                                 <div class="hu-uploaded">
-                                    <input class="hu-filename" type="text" id="fileName" name="upfile">
+                                    <input class="hu-filename" type=text id="fileName" name="upfile" onchange="files(this.files[0])">
                                 </div>
                                 <div class="dd">
                                     파일첨부
                                 </div>
                                 <input id="hu-upfile" class="hu-upfile" type="file" name="upfile" style="display: none;" onchange="javascript:document.getElementById('fileName').value = this.value">
+                                
                             </div>  
                        
                             <div class="aa">
@@ -316,6 +317,14 @@
         input.value = formatValue;
     }
     })
+    
+    function files(file) {
+    	const img = document.getElementById('#fileName');
+        img.src = file.url;
+
+        document.body.appendChild(image);
+    }
+    
 </script>
 
 

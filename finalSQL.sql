@@ -35,9 +35,10 @@ CREATE TABLE MEMBER(
     STATUS VARCHAR2(1) DEFAULT 'Y' CHECK (STATUS IN('Y', 'N')),
     MEM_GEN VARCHAR2(10) NOT NULL CHECK(MEM_GEN IN ('M','F')), 
     POINT NUMBER,
-    FILE_PATH VARCHAR2(3000),
+    FILE_PATH VARCHAR2(3000) DEFAULT 'resources/memberProfileImg/userDefaultProFile.png',
     ACCOUNT NUMBER DEFAULT 0,
-    INTRO VARCHAR2(3000)
+    INTRO VARCHAR2(3000),
+    ENROLL_DATE DATE DEFAULT SYSDATE
 );
 
 --멤버 시퀀스
@@ -148,12 +149,29 @@ MAXVALUE 20000
 NOCYCLE
 NOCACHE;
 
+--SCHEDULE(요청) 테이블
+CREATE TABLE SCHEDULE(
+    SCHE_NO NUMBER PRIMARY KEY,
+    SCHE_TITLE VARCHAR2(2000) NOT NULL,
+    SCHE_CONTENT VARCHAR2(2000) NOT NULL,
+    BOARD_NO NUMBER REFERENCES BOARD(BOARD_NO),
+    FROM_MNO NUMBER REFERENCES MEMBER(MEM_NO),
+    TO_MNO NUMBER REFERENCES MEMBER(MEM_NO),
+    CATEGORY_NO NUMBER REFERENCES CATEGORY(CATEGORY_NO),
+    STATUS VARCHAR2(3) DEFAULT 'Y' NOT NULL,
+    CREATEDATE DATE DEFAULT SYSDATE NOT NULL,
+    LOCATION VARCHAR2(2000) NOT NULL
+);
+
+-- SCHEDULE(요청)시퀀스
+CREATE SEQUENCE SEQ_SNO START WITH 100000 INCREMENT BY 1 MAXVALUE 109999 NOCYCLE NOCACHE;
+
 ---------------------더미데이터-----------------------
 -- 멤버
-INSERT INTO MEMBER VALUES(1, 'admin@naver.com', '1234' ,'관리자', '음악', 1,
-        '010-1111-0000', '서울시 강남구', 'Y', 'M', '4', 'resources/memberProfileImg/userDefaultProFile.png', NULL, NULL);
-INSERT INTO MEMBER VALUES(SEQ_MNO.NEXTVAL, 'user01@naver.com','1234' ,'홍길동', '음악', 1, 
-        '010-1111-1111', '서울시 송파구', 'Y', 'M', '4', 'resources/memberProfileImg/userDefaultProFile.png', NULL, NULL);
+INSERT INTO MEMBER VALUES(1, 'admin@naver.com', '$2a$10$Oa0Xd4NXm4.5/lgBkeBbBu2Y3gHAkhdOT9zgvilBHgO0dBYu1dNCm' ,'관리자', '음악', 1,
+        '010-1111-0000', '서울시 강남구', 'Y', 'M', '4', 'resources/memberProfileImg/userDefaultProFile.png', NULL, NULL, SYSDATE);
+INSERT INTO MEMBER VALUES(SEQ_MNO.NEXTVAL, 'user01@naver.com','$2a$10$Oa0Xd4NXm4.5/lgBkeBbBu2Y3gHAkhdOT9zgvilBHgO0dBYu1dNCm' ,'홍길동', '음악', 1, 
+        '010-1111-1111', '서울시 송파구', 'Y', 'M', '4', 'resources/memberProfileImg/userDefaultProFile.png', NULL, NULL, SYSDATE);
 
 INSERT INTO MEMBER(
             MEM_NO,
@@ -163,7 +181,8 @@ INSERT INTO MEMBER(
 			MEM_CONCERN,
 			PHONE,
 			MEM_GEN,
-            INTRO
+            INTRO,
+            ENROLL_DATE
 		)
 		VALUES(
             SEQ_MNO.NEXTVAL,
@@ -173,7 +192,8 @@ INSERT INTO MEMBER(
 			'요리',
 			'010-2222-2222',
 			'M',
-            NULL
+            NULL,
+            SYSDATE
 		);
 --카테고리
 INSERT INTO CATEGORY VALUES(SEQ_CNO.NEXTVAL, '음악');
@@ -219,5 +239,11 @@ INSERT INTO NOTICE VALUES(SEQ_NNO.NEXTVAL, '공지', '품앗이 현피뜰 경우', '금일은
 고객놈들께서는 참고하시고 이용을 하든지 말든지 진짜 귀찮게 굴지 마시고
 알아서 하시길...', SYSDATE, 'Y');
 INSERT INTO NOTICE VALUES(SEQ_NNO.NEXTVAL, '공지', '품앗이생활은 감옥생활', '품앗이 생활 한번 시작하면은 못빠져나간다', SYSDATE, 'Y');
+-- SCHEDULE
+INSERT INTO SCHEDULE VALUES(SEQ_SNO.NEXTVAL, '음악레슨신청1', '아무것도모르는 초보입니다 그래도 배워보고싶습니다1', 1000, 1, 2, 200, 'Y', SYSDATE, '서울시 강남구 역삼동');
+INSERT INTO SCHEDULE VALUES(SEQ_SNO.NEXTVAL, '음악레슨신청2', '아무것도모르는 초보입니다 그래도 배워보고싶습니다2', 1000, 1, 2, 200, 'Y', SYSDATE, '서울시 강남구 역삼동');
+INSERT INTO SCHEDULE VALUES(SEQ_SNO.NEXTVAL, '음악레슨신청3', '아무것도모르는 초보입니다 그래도 배워보고싶습니다3', 1000, 1, 2, 200, 'Y', SYSDATE, '서울시 강남구 역삼동');
+INSERT INTO SCHEDULE VALUES(SEQ_SNO.NEXTVAL, '음악레슨신청4', '아무것도모르는 초보입니다 그래도 배워보고싶습니다4', 1000, 1, 2, 200, 'Y', SYSDATE, '서울시 강남구 역삼동');
+
 ---트랜잭션
 commit;

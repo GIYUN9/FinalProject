@@ -62,144 +62,139 @@
 			border: 1px solid rgb(147, 147, 150);
 			border-radius: 5px;
 		}
-           .list{
-        list-style: none;
-    }
-
-    .list > .list-btn{
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-    }
-
-    .list-btn {
-        font-size: 17px;
-        color: white;
-        margin: 15px;
-    }
-
-    .list-btn:hover {
-        color: black
-    }
-
-    .community-list {
-        list-style: none;
-        font-size: 25px;
-        font-weight: bold;
-        text-decoration: underline;
-        margin: 18px;
-    }
-
-    .main{
-        background-color: white;
-        width: 700px;
-        height: 62%;
-        position: absolute;
-        left: 50%;
-        margin-left: -322px;
-        top: 50%;
-        margin-top: -260px;
-        border-radius: 10px;
-    }
-
-    .community-ul{
-        width: 170px;
-        height: 500px;
-        margin: 220px 0px 0px 315px;
-        color: white;
-    }
-
-    .time-span{
-        float: right;
-        margin-right: 25px;
-        font-size: 13px;
-    }
-
-    .community-btn{
-        border-radius: 12px;
-        background-color: white;
-        border-width: thin;
-        margin: 3px; 
-        width: 56px;
-        height: 27px;
-            cursor: pointer;
-    }
-
-    .text1{
-        font-size: 14px;
-    }
-
-    .text2{
-        font-size: 12px;
-    }
-
-    .community-p{
-        font-size: 10px;
-    }
-
-    .main-span1{
-        font-weight: bold;
-        font-size: 14px;
-        margin-left: 15px;
-    }
-
-    .main-span2{
-       font-size: 12px; 
-    }
-
-    .main-list{
-        list-style: none;
-    }
-
-    .main-a{
-        padding: 13px 0px 10px 20px;
-    }
-
-    .main-b{
-        padding: 13px 0px 0px 30px;
-    }
-
-    .a-click {
-        text-decoration-line: none;
-        color: black;
-    }
-
-    .img {
-        width: 0.8em;
-        height: auto;
-    }
-
-    .line {
-        width: 96%;
-        margin-left: 11px;
-        margin-top: 10px;
-    }
-
-    .arrow-img{
-        width: 15px;
-        height: 15px;
-        float: right;
-        margin-right: 10px;
-        margin-top: 2px;
-        cursor: pointer;
-    }
-
-    .border-one,  .border-two, .border-three{
-        margin-left: 33px;
-        line-height: 27px;
-    }
-	#board-create{
-            width: 80px;
-            position: absolute;
-            bottom: 122px;
-            right: 43px;
-            background: rgb(0, 199, 174);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 5px;
-            cursor: pointer;
-        }
+        .list{
+        	list-style: none;
+    	}
+	
+	    .list > .list-btn{
+	        background-color: transparent;
+	        border: none;
+	        cursor: pointer;
+	    }
+	
+	    .list-btn {
+	        font-size: 17px;
+	        color: white;
+	        margin: 15px;
+	    }
+	
+	    .list-btn:hover {
+	        color: black
+	    }
+	
+	    .community-list {
+	        list-style: none;
+	        font-size: 25px;
+	        font-weight: bold;
+	        text-decoration: underline;
+	        margin: 18px;
+	    }
+	
+	    .main{
+	        background-color: white;
+	        width: 700px;
+	        height: 62%;
+	        position: absolute;
+	        left: 50%;
+	        margin-left: -322px;
+	        top: 50%;
+	        margin-top: -260px;
+	        border-radius: 10px;
+	    }
+	
+	    .community-ul{
+	        width: 170px;
+	        height: 500px;
+	        margin: 220px 0px 0px 315px;
+	        color: white;
+	    }
+	
+	    .time-span{
+	        float: right;
+	        margin-right: 25px;
+	        font-size: 13px;
+	    }
+	
+	    .community-btn{
+	        border-radius: 12px;
+	        background-color: white;
+	        border-width: thin;
+	        margin: 3px; 
+	        width: 56px;
+	        height: 27px;
+	            cursor: pointer;
+	    }
+	
+	    .text1{
+	        font-size: 14px;
+	    }
+	
+	    .text2{
+	        font-size: 12px;
+	    }
+	
+	    .community-p{
+	        font-size: 10px;
+	    }
+	
+	    .main-span1{
+	        font-weight: bold;
+	        font-size: 14px;
+	        margin-left: 15px;
+	    }
+	
+	    .main-span2{
+	       font-size: 12px; 
+	    }
+	
+	    .main-list{
+	        list-style: none;
+	    }
+	
+	    .main-a{
+	        padding: 13px 0px 10px 20px;
+	    }
+	
+	    .main-b{
+	        padding: 13px 0px 0px 30px;
+	    }
+	
+	    .a-click {
+	        text-decoration-line: none;
+	        color: black;
+	    }
+	
+	    .line {
+	        width: 96%;
+	        margin-left: 11px;
+	        margin-top: 10px;
+	    }
+	
+	    .arrow-img{
+	        width: 15px;
+	        height: 15px;
+	        float: right;
+	        margin-right: 10px;
+	        margin-top: 2px;
+	        cursor: pointer;
+	    }
+	
+	    .border-one,  .border-two, .border-three{
+	        margin-left: 33px;
+	        line-height: 27px;
+	    }
+		#board-create{
+	            width: 80px;
+	            position: absolute;
+	            bottom: 122px;
+	            right: 43px;
+	            background: rgb(0, 199, 174);
+	            color: white;
+	            border: none;
+	            border-radius: 4px;
+	            padding: 5px;
+	            cursor: pointer;
+	        }
 	</style>
 </head>
 <body>
@@ -237,11 +232,11 @@
 	                                        <span class="text2">${b.location}</span>
 	                                        <div>
 	                                            <a href="" class="a-click">
-	                                                <img src="././resources/borderImage/good-icon.png" alt="좋아요아이콘" class="img">
+                            						<img src="./resources/icon/LIKE.png" class="img" style="margin-bottom: 10px;">
 	                                                <span>0</span>
 	                                            </a>
 	                                            <a href="" class="a-click">
-	                                                <img src="././resources/borderImage/speech-bubble-icon.png" alt="말풍선아이콘" class="img">
+					                				<img src="./resources/icon/speech-bubble.png" alt="말풍선아이콘" class="img">
 	                                                <span>0</span>
 	                                            </a>
 	                                            <span class="time-span">${b.createDate}</span>

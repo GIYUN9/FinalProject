@@ -75,6 +75,8 @@ public class BoardController {
 	//도와줄게요 게시글 등록 페이지
 	@RequestMapping(value="helpInsert.bo", method = RequestMethod.POST)
 	public String helpInsertBoard(Board b, MultipartFile upfile, Attachment at ,HttpSession session, Model model) { // , Atta~~ a
+		System.out.println(upfile);
+		
 		int result1 = 0;
 		int result2 = 0;
 		
@@ -138,6 +140,7 @@ public class BoardController {
 		
 		System.out.println(b);
 		System.out.println(reupfile);
+		
 		int result1 = 0;
 		int result2 = 0;
 		
@@ -145,7 +148,7 @@ public class BoardController {
 			
 			String changeName = saveFile(reupfile, session, "/resources/borderImage/");
 			
-			if(at.getOriginName() != null) {
+			if(at.getOriginName().isEmpty()) {
 				new File(session.getServletContext().getRealPath(at.getChangeName())).delete();
 			}
 			
@@ -153,9 +156,7 @@ public class BoardController {
 			at.setChangeName("resources/borderImage/" + changeName);
 		}
 		
-		result1 = boardService.helpinsertBoard(b);
-		b = boardService.helpselectOne(b);
-		at.setBoardNo(b.getBoardNo());
+		result1 = boardService.helpupdateBoard(b);
 		result2 = boardService.helpAttachment(at);
 		
 		if(result1 > 0 && result2 > 0) {
@@ -171,7 +172,7 @@ public class BoardController {
 	@RequestMapping(value="helpDelete.bo")
 	public String helpDeleteBoard(int boardNo, String filePath, HttpSession session, Model model) {
 			
-		int result = boardService.helpdeleteBoard(boardNo);
+		int result = boardService.helpDeleteBoard(boardNo);
 			
 		if(result > 0) {
 			if(!filePath.equals("")) {
@@ -183,9 +184,7 @@ public class BoardController {
 			model.addAttribute("errorMsg", "게시글 삭제 실패");
 			return "common/errorMsg";
 		}
-
 	}
-	
 		
 	public String saveFile(MultipartFile upfile, HttpSession session, String path) {
 		//파일명 수정 후 서버 업로드 시키기("이미지저장용 (2).jpg" => 20231109102712345.jpg)
@@ -396,7 +395,7 @@ public class BoardController {
 		//도와줄게요 서비스
 		ArrayList<Board> list1 = boardService.findBoardList1(keyWord);
 		model.addAttribute("list1", list1);
-		System.out.println(list1);
+		
 		//도와주세요 서비스
 		ArrayList<Board> list2 = boardService.findBoardList2(keyWord);
 		model.addAttribute("list2", list2);
@@ -459,6 +458,7 @@ public class BoardController {
 		result2 = boardService.helpmeAttachment(at);
 		
 		if(result1 > 0 && result2 > 0) {
+			session.setAttribute("alertMsg", "게시글 작성 성공");
 			return "redirect:/helpmeList.bo";
 		} else {
 			model.addAttribute("errorMsg", "게시글 작성 실패");
@@ -499,20 +499,19 @@ public class BoardController {
 	//도와주세요 게시글 삭제
 	@RequestMapping(value="helpmeDelete.bo")
 	public String helpmeDeleteBoard(int boardNo, String filePath, HttpSession session, Model model) {
-		
+			
 		int result = boardService.helpmeDeleteBoard(boardNo);
-		
+			
 		if(result > 0) {
 			if(!filePath.equals("")) {
 				new File(session.getServletContext().getRealPath(filePath)).delete();
-			}
-
+		}
+			session.setAttribute("alertMsg", "게시글 삭제 성공");
 			return "redirect:/helpmeList.bo";
 		} else {
 			model.addAttribute("errorMsg", "게시글 삭제 실패");
 			return "common/errorMsg";
 		}
-
 	}
 	
 	

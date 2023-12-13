@@ -17,6 +17,7 @@ public class Comment {
 	private int commentNo; // 댓글번호
 	private Date commentCreated; //댓글작성일
 	private String content; // 댓글내용
+	private String writer; //댓글 작성자
 	private int boardNo;
 	private int memberNo;
 }

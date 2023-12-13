@@ -269,6 +269,13 @@
                                     파일첨부
                                     <img class="clip-img" src="././resources/icon/paperclip.png">
                                 </label>
+                                <c:if test="${not empty at.originName}">
+                                 현재 파일 :
+                          		<a href="${at.changeName }"></a>
+                          		<input type="hidden" name="originName" value="${at.originName }" />
+                            	<input type="hidden" name="changeName" value="${at.changeName }" />      
+                                </c:if>
+                                
                                 <div class="hu-uploaded">
                                     <input class="hu-filename" type="text" id="fileName" name="upfile">
                                 </div>
