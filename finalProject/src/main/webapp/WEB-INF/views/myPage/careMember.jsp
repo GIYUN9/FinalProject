@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <meta charset="UTF-8">
     <title>Insert title here</title>
     <link rel="stylesheet" href="././resources/css/myPgae.css">
@@ -47,9 +48,6 @@
         }
         .ad-table{
             border-collapse: collapse;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             text-align: center;
         }
         td{
@@ -220,8 +218,10 @@
                                     <th>이름</th>
                                     <th>구분</th>
                                     <th>가입일</th>
-                                </tr>
-								<c:forEach var="m" items="${mList}">		
+                                </tr>							                         
+                            </thead>
+                            <tbody>
+                            	<c:forEach var="m" items="${mList}">		
 									<tr>
 	                                    <td><input type="checkbox"></td>
 	                                    <td>${m.memberNo}</td>
@@ -230,8 +230,8 @@
 	                                    <td>${m.memberPro} 가 1이면 일반</td>
 	                                    <td>${m.enrollDate}</td>
 	                                </tr>
-								</c:forEach> 								                         
-                            </thead>
+								</c:forEach> 	
+                            </tbody>
                         </table>
                     </div>
                     <button class="ad-btn">탈퇴</button>
@@ -415,7 +415,49 @@
         }
     });
     
+    $(document).ready(function() {
+        $('#searchInput').on('keyup', function() {  	
+            let searchText = $(this).val().toLowerCase();
+            console.log("온키업 텍스트:", searchText); // 이 줄을 추가하여 searchText 값을 콘솔에 출력
+            drawMemberList(searchText);
+        });
+    });	
+    
+    function drawMemberList(text){
+        // AJAX를 사용하여 서버에 데이터 요청
+        $.ajax({
+            type: 'GET',
+            url: '/your-server-endpoint', // 서버 엔드포인트를 적절히 설정
+            data: { searchText: text }, // 검색 텍스트를 서버에 전달
+            dataType: 'json',
+            success: function(data) {
+                // 서버에서 받은 데이터를 사용하여 회원 목록을 다시 그림
+                // 예시: 받은 데이터를 이용하여 테이블의 tbody를 업데이트
+                updateMemberTable(data);
+            },
+            error: function(error) {
+                console.error('Error fetching member data:', error);
+            }
+        });
+    }
+    
+    function updateMemberTable(data) {
+        // 받은 데이터를 이용하여 테이블의 tbody를 업데이트
+        // 예시: 받은 데이터를 순회하면서 각 행을 업데이트
+        $('#memberTable tbody').empty(); // 현재 tbody 내용을 비움
 
+        $.each(data, function(index, member) {
+            var newRow = '<tr>' +
+                '<td><input type="checkbox"></td>' +
+                '<td>' + member.memberNo + '</td>' +
+                '<td>' + member.memberEmail + '</td>' +
+                '<td>' + member.memberName + '</td>' +
+                '<td>' + (member.memberPro === 1 ? '일반' : '') + '</td>' +
+                '<td>' + member.enrollDate + '</td>' +
+                '</tr>';
+            $('#memberTable tbody').append(newRow);
+        });
+    }
 	</script>
 </body>
 </html>
