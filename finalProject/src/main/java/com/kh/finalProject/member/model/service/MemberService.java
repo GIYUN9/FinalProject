@@ -52,4 +52,5 @@ public interface MemberService {
 	//멤버 목록(회원 관리)
 	ArrayList<Member> memberList(Member m);
 
+	ArrayList<Member> searchMember(String searchText);
 }
