@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
 import com.kh.finalProject.board.model.service.BoardService;
 import com.kh.finalProject.board.model.vo.Board;
 import com.kh.finalProject.board.model.vo.Reply;
@@ -37,10 +39,14 @@ public class ReplyController {
 	}
 	
 	@RequestMapping(value="list.re")
-	public void replyList(Board b, HttpServletResponse responsetp) {
+	public void replyList(Board b, HttpServletResponse response) throws JsonIOException, IOException {
 		
 		
 		ArrayList<Reply> list = boardService.selectReplyList(b);
+		
+		System.out.println(list);
+		response.setContentType("application/json; charset=utf-8");
+		new Gson().toJson(list, response.getWriter());
 	}
 
 }

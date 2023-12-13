@@ -69,6 +69,9 @@
             flex-direction: row;
             padding: 10px;
         }
+        .reply-info{
+        	width: 100%;
+        }
         .reply-top{
             display: flex;
             position: relative;
@@ -107,7 +110,21 @@
         .re-input-btn:hover{
             opacity: 0.5;
         }
-	</style>
+        
+        .comment_section{
+	        display: table;
+		    width: 100%;
+		    position: relative;
+		    padding: 19px 0 16px;
+		    table-layout: fixed;
+		    box-sizing: border-box;
+        }
+        
+        .reply-input{
+        	width: 110%;
+   			 padding-left: 16px;
+        }
+        
 
        
 	</style>
@@ -173,13 +190,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="reply-area">
-                	 <div>
+                <div class = "reply-input">
                         <c:choose>
 						    <c:when test="${loginUser !=null }">
                             <div id="comment-write">
 							    <input id="reply-boardNo" type="hidden" value="${b.boardNo}">
-							    <div id="WriterNo">${loginUser.memberNo}</div>
+							    <input id="WriterNo" type="hidden" ${loginUser.memberNo}>
 							    <input id="reply-content" class="reply-content" name="replyContent" type="text" style="width: 80%;" placeholder="댓글을 입력해주세요">
 							    <button id="comment-write-btn" class="re-input-btn" onclick="insertReply()">등록</button>
 							</div>
@@ -188,7 +204,9 @@
                                 <input class="reply-input" name="replyContent" type="text" style="width: 80%;" readonly placeholder="로그인 후 댓글작성이 가능합니다.">
 						    </c:otherwise>
 						</c:choose>
-                    </div>
+                  </div>
+                <div class="reply-area">
+                	 
                     <div class="reply-align" id ="reply-align">
                         <div class="profile-area">
                             <img style="width: 45px; height: 45px; margin: 5px; border-radius: 15px;" src="./resources/icon/profileTest.png">
@@ -260,22 +278,46 @@
 						            boardNo: document.getElementById("reply-boardNo").value
 						        },
 						        success: function(res) {
+						        	
 						            let str = "";
 						            for (let reply of res) {
 						                console.log(reply);
-						                str += "<tr>" +
-						                    "<td>" + reply.memberNo + "</td>" +
-						                    "<td>" + reply.replyContent + "</td>" +
-						                    "<td>" + reply.createDate + "</td>" +
-						                    "</tr>";
+						                str += 
+						                "<div class=\"reply-align\" id=\"reply-align\">" +
+						                "<div class=\"profile-area\">" +
+						                "<img style=\"width: 45px; height: 45px; margin: 5px; border-radius: 15px;\" src=\"./resources/icon/profileTest.png\">" +
+						                "</div>" +
+						                "<div class=\"reply-info\">" +
+						                "<div class=\"reply-top\">" +
+						                "<div class=\"reply-writer\">" +
+						                reply.memberName +
+						                "</div>" +
+						                "<div>" +
+						                "일러스트 디자인+8개서비스 고수" +
+						                "</div>" +
+						                "<button class=\"req-btn\">견적요청</button>" +
+						                "</div>" +
+						                "<div class=\"reply-cont\">" +
+						                reply.replyContent +
+						                "</div>" +
+						                "<div class=\"reply-bot\">" +
+						                "<span>" + reply.createDate + " ·</span>" +
+						                "<img src=\"./resources/icon/LIKE.png\" class=\"img\" style=\"margin-bottom: 10px;\">" +
+						                "<span>좋아요 39 ·</span>" +
+						                "<img src=\"./resources/icon/dislike.png\" class=\"img\" style=\"margin-top: 7px;\">" +
+						                "<span>싫어요 -5</span>" +
+						                "</div>" +
+						                "</div>" +
+						                "</div>";
 						            }
-						            document.querySelector('#reply-align').innerHTML = str;
+						            document.querySelector('.reply-area').innerHTML = str;
 						        },
 						        error: function() {
 						            console.log("댓글 목록 조회 실패");
 						        }
 						    });
 						}
+						
                         function insertReply(){
                             const boardNo = document.getElementById("reply-boardNo").value;
                             const memberNo = document.getElementById("WriterNo").innerText;

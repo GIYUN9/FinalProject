@@ -21,6 +21,7 @@ public class Reply {
 	private String replyContent;
 	
 	private int memberNo;
+	private String memberName;
 	
 	
 }

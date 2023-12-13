@@ -204,6 +204,7 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public ArrayList<Reply> selectReplyList(Board b){
+		
 		return boardDao.selectReplyList(sqlSession, b);
 	}
 	

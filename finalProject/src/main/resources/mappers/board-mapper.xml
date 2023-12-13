@@ -41,6 +41,7 @@
   		<result column="REPLY_CONTENT" property="replyContent" />
   		<result column="CREATEDATE" property="createDate" />
   		<result column="MEM_NO" property="memberNo" />
+  		<result column="MEM_NAME" property="memberName" />
   		<result column="BOARD_NO" property="boardNo" />
   	</resultMap>
  	

@@ -281,5 +281,26 @@ INSERT INTO REPLY (
 		        SYSDATE,
 		        'Y'
 		        );
+
+
+		SELECT  R.REPLY_NO,
+				R.REPLY_CONTENT,
+				M.MEM_NAME,
+				R.CREATEDATE        		        
+		FROM	REPLY R	
+		JOIN MEMBER M ON (R.MEM_NO = M.MEM_NO) 
+		WHERE R.STATUS = 'Y'
+			AND BOARD_NO = 1013
+		ORDER BY REPLY_NO DESC;
 ---∆Æ∑£¿Ëº«
+
+SELECT  R.REPLY_NO,
+				R.REPLY_CONTENT,
+				R.MEM_NAME,
+				R.CREATEDATE        		        
+		FROM	REPLY R	
+		JOIN MEMBER M ON (R.MEM_NO = M.MEM_NO) 
+		WHERE R.STATUS = 'Y'
+			AND BOARD_NO =1013
+		ORDER BY REPLY_NO DESC;
 commit;
