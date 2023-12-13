@@ -7,11 +7,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.finalProject.board.model.vo.Board;
-
+import com.kh.finalProject.board.model.vo.Reply;
 import com.kh.finalProject.common.vo.Attachment;
-
 import com.kh.finalProject.common.vo.Notice;
-
 import com.kh.finalProject.common.vo.PageInfo;
 
 @Repository
@@ -120,6 +118,11 @@ public class BoardDao {
 		return (ArrayList)sqlSession.selectList("boardMapper.selectTogetherList", null, rowBounds);
 	}
 	
+	//도와주세요 도와줄게요 등 게시판 상세조회
+	public Board selectCommBoard(SqlSessionTemplate sqlSession, int boardNo) {
+		return sqlSession.selectOne("boardMapper.selectCommBoard", boardNo);
+	}
+	
 	public int insertCommboard(SqlSessionTemplate sqlSession, Board b) {
 		return sqlSession.insert("boardMapper.insertCommboard", b);
 	}
@@ -142,5 +145,21 @@ public class BoardDao {
 	}
 	public ArrayList<Board> findBoardList5(SqlSessionTemplate sqlSeesion, String keyWord){
 		return (ArrayList)sqlSeesion.selectList("boardMapper.findBoardList5", keyWord);
+	}
+	
+	public int updateCommBoard(SqlSessionTemplate sqlSession, Board b) {
+		return sqlSession.update("boardMapper.updateCommBoard", b);
+	}
+	
+	public int deleteCommBoard(SqlSessionTemplate sqlSession, int boardNo) {
+		return sqlSession.update("boardMapper.deleteCommBoard", boardNo);
+	}
+	
+	public int insertReply(SqlSessionTemplate sqlSession, Reply r) {
+		return sqlSession.insert("boardMapper.insertReply", r);
+	}
+	
+	public ArrayList<Reply> selectReplyList(SqlSessionTemplate sqlSession, Board b){
+		return (ArrayList)sqlSession.selectList("boardMapper.selectReplyList", b);
 	}
 }

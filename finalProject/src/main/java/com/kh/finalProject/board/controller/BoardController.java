@@ -301,8 +301,52 @@ public class BoardController {
 		}
 		
 	}
+	
+	//커뮤니티 게시글 update 페이지 이동
+	@RequestMapping(value = "/updatePage.co")
+	public String updatePage(HttpSession session, int boardNo) {
+		Board b = boardService.selectCommBoard(boardNo);
+		session.setAttribute("b", b);
+		
+		return "noticeBoard/boardUpdate";
+	}
+		
 
-//	//게시글 등록
+	
+	//커뮤니티 게시글 update(수정)
+	@RequestMapping(value = "/updateBoard.co")
+	public String updateCommBoard(Board b, HttpSession session, Model model) {
+		int result = boardService.updateCommBoard(b);
+		if (result > 0) {
+		    model.addAttribute("alertMsg", "게시글 수정 성공");
+		    
+		    return "forward:/detailcomm.co";
+		} else {
+			model.addAttribute("errorMsg", "게시글 등록 실패");
+			return "common/errorPage";
+		}
+	};
+		
+	//커뮤니티 게시글 delete(수정) 
+	@RequestMapping(value = "/deletePage.co")
+	public String deleteCommBoard(HttpSession session, int boardNo, Model model) {
+		
+		int result = boardService.deleteCommBoard(boardNo);
+		
+		
+		
+		if(result > 0) {
+			return "forward:/list.co";
+		}else {
+			model.addAttribute("errorMsg", "게시글 등록 실패");
+			return "common/errorPage";
+		}
+		
+	}
+
+
+	
+	//게시글 등록
 
 	@RequestMapping("insert.bo")
 	public String insertBoard(Board b, HttpSession session, Model model) {
@@ -337,10 +381,19 @@ public class BoardController {
 	
 	
 	//게시글 수정
-	@RequestMapping("detail.co")
-	public String detailCommBoard(int boardNo) {
+	@RequestMapping("detailcomm.co")
+	public String detailCommBoard(int boardNo, HttpSession session, Model model) {
 		// 클릭시 상세페이지 이동 (하나밖에 없음)
-		return "noticeBoard/noticeDetailView";
+		
+		Board b = boardService.selectCommBoard(boardNo);
+		
+		if(b != null) { //성공
+			session.setAttribute("b", b);
+			return "noticeBoard/noticeDetailView";
+		}else { //실패
+			return "common/errorMsg";
+		}
+		
 	}
 	
 	@RequestMapping(value = "find.bo")

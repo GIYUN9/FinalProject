@@ -8,11 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.kh.finalProject.board.model.dao.BoardDao;
 import com.kh.finalProject.board.model.vo.Board;
-
+import com.kh.finalProject.board.model.vo.Reply;
 import com.kh.finalProject.common.vo.Attachment;
-
 import com.kh.finalProject.common.vo.Notice;
-
 import com.kh.finalProject.common.vo.PageInfo;
 
 @Service
@@ -181,6 +179,33 @@ public class BoardServiceImpl implements BoardService {
 	public ArrayList<Board> findBoardList5(String keyWord) {
 		return boardDao.findBoardList5(sqlSession, keyWord);
 
+	}
+	
+	//얼마예요 궁금해요 등 게시글 상세조회
+	@Override
+	public Board selectCommBoard(int boardNo) {
+		return boardDao.selectCommBoard(sqlSession, boardNo);
+	}
+	
+	@Override
+	public int updateCommBoard(Board b) {
+		return boardDao.updateCommBoard(sqlSession, b);
+	}
+	
+	@Override
+	public int deleteCommBoard(int boardNo) {
+		return boardDao.deleteCommBoard(sqlSession, boardNo);
+	}
+	
+	@Override
+	public int insertReply(Reply r) {
+		return boardDao.insertReply(sqlSession, r);
+	}
+	
+	@Override
+	public ArrayList<Reply> selectReplyList(Board b){
+		
+		return boardDao.selectReplyList(sqlSession, b);
 	}
 	
 }

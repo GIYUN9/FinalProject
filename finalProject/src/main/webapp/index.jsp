@@ -8,7 +8,7 @@
 </head>
 <body>	
 
-		<jsp:forward page="WEB-INF/views/common/main.jsp"/> 일정
+		<jsp:forward page="WEB-INF/views/member/passwordFind.jsp"/>
 	
 	<%--
 		김경보
