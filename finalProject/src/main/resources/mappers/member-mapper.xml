@@ -229,12 +229,10 @@
 				ENROLL_DATE
 		FROM MEMBER
 	</select>
-	<select id="viewSpcMem" resultMap="memberResult">
+	<select id="searchMem" resultMap="memberResult">
 		SELECT  MEM_NO,
 				MEM_EMAIL,
-				MEM_PWD,
 				MEM_NAME,
-				MEM_CONCERN,
 				MEM_PRO,
 				PHONE,
 				LOCATION,
@@ -246,7 +244,17 @@
 				INTRO,
 				ENROLL_DATE
 		FROM MEMBER
-		WHERE MEM_NAME = #{memberName}
+    WHERE MEM_NAME LIKE '%' || #{searchText} || '%'
+       OR MEM_EMAIL LIKE '%' || #{searchText} || '%'
+       OR MEM_NO LIKE '%' || #{searchText} || '%'
+       OR MEM_PRO LIKE '%' || #{searchText} || '%'
+       OR ENROLL_DATE LIKE '%' || #{searchText} || '%'
 	</select>
-
+	<update id="deleteMem">
+	    <foreach collection="memberNoList" item="memberNo" separator=";">
+	        UPDATE MEMBER
+	        SET STATUS = 'N'
+	        WHERE MEM_NO = #{memberNo}
+	    </foreach>
+	</update>
 </mapper>
