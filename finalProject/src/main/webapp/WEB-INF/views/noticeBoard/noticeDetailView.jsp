@@ -131,11 +131,6 @@
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
-	<c:if test="${not empty alertMsg}">
-	    <script>
-	        alert("${alertMsg}");
-	    </script>
-	</c:if>
 	<div class="box" style="margin-top: 120px">
 		<div class="sideBar">
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">커뮤니티</h3>
@@ -214,7 +209,7 @@
                     <c:if test="${loginUser.memberName eq b.memberName || loginUser.memberName=='관리자'}">
 					    <div align="center">
 					        <a class="" onclick="postFormSubmit(1)">수정하기</a>
-					        <a class="" onclick="postFormSubmit(2)">삭제하dame973기</a>				
+					        <a class="" onclick="postFormSubmit(2)">삭제하기</a>				
 					    </div>
 					    <br><br>
 					</c:if>
