@@ -352,7 +352,7 @@
 	
 	                let upperTextSpanSelMem2 = document.createElement('span');
 	                upperTextSpanSelMem2.classList.add('upper-text');
-	                upperTextSpanSelMem2.innerText = 'No. <span class="select-user-no">' + userNo + '</span>';
+	                upperTextSpanSelMem2.innerHTML = 'No. ' + '<span class="select-user-no">' + userNo + '</span>';
 	                selMem2Div.appendChild(upperTextSpanSelMem2);
 	
 	                let lowerTextSpanSelMem2 = document.createElement('span');
@@ -421,10 +421,7 @@
                 // 서버에서 받은 데이터를 사용하여 회원 목록을 다시 그림
                 updateMemberTable(data);
                 addCheckBoxEvent();
-                displaySelectedMembers();
-                
-             
-         
+                displaySelectedMembers();         
             },
             error: function(error) {
                 console.error('멤버 데이터를 가져오지 못함 :', error);
@@ -433,8 +430,7 @@
     }
     
     function updateMemberTable(data) {
-        // 받은 데이터를 이용하여 테이블의 tbody를 업데이트
-        // 예시: 받은 데이터를 순회하면서 각 행을 업데이트
+        // 받은 데이터를 순회하면서 각 행을 업데이트
         $('#memberTable tbody').empty(); // 현재 tbody 내용을 비움
 
         $.each(data, function(index, member) {
@@ -451,12 +447,21 @@
     }
 
     function a() {
-        $(".select-user-no").for
+        let memberNos = [];
+
+        $(".select-user-no").each(function(index, element) {
+            // 각 요소에서 내용을 가져와서 사용할 수 있습니다.
+            let memberNo = $(element).text();
+            memberNos.push(memberNo);
+            console.log("User Number:", memberNo);
+        });
+        
+        let memberNosString = memberNos.toString();
     	
         $.ajax({
             type: 'POST', 
             url: 'adDelete.me',  
-            data: { memberNoList: memberNoListString },  
+            data: { memberNos: memberNosString },  
             success: function(response) {
             },
             error: function(error) {
