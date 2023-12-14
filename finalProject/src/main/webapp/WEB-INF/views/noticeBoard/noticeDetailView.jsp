@@ -190,59 +190,31 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class = "reply-input">
-                        <c:choose>
-						    <c:when test="${loginUser !=null }">
-                            <div id="comment-write">
+                     <c:choose>
+					    <c:when test="${loginUser !=null }">
+	                         <div id="comment-write">
 							    <input id="reply-boardNo" type="hidden" value="${b.boardNo}">
-							    <input id="WriterNo" type="hidden" ${loginUser.memberNo}>
+							    <input id="WriterNo" type="hidden" value="${loginUser.memberNo}">
 							    <input id="reply-content" class="reply-content" name="replyContent" type="text" style="width: 80%;" placeholder="댓글을 입력해주세요">
 							    <button id="comment-write-btn" class="re-input-btn" onclick="insertReply()">등록</button>
 							</div>
-						    </c:when>
-						    <c:otherwise>
-                                <input class="reply-input" name="replyContent" type="text" style="width: 80%;" readonly placeholder="로그인 후 댓글작성이 가능합니다.">
-						    </c:otherwise>
-						</c:choose>
-                  </div>
+					    </c:when>
+					    <c:otherwise>
+	                              <input class="reply-input" name="replyContent" type="text" style="width: 80%;" readonly placeholder="로그인 후 댓글작성이 가능합니다.">
+					    </c:otherwise>
+					</c:choose>
+               	</div>
+                   
                 <div class="reply-area">
                 	 
-                    <div class="reply-align" id ="reply-align">
-                        <div class="profile-area">
-                            <img style="width: 45px; height: 45px; margin: 5px; border-radius: 15px;" src="./resources/icon/profileTest.png">
-                        </div>
-                        <div class="reply-info">
-                            <div class="reply-top">
-                                <div class="reply-writer">
-                                   	 정훈 
-                                </div>
-                                <div>
-                                    일러스트 디자인+8개서비스 고수 
-                                </div>
-                                <button class="req-btn">견적요청</button>
-                            </div>
-                            <div class="reply-cont">
-                                뜯어져나갈 부분은 깔끔하게 뜯어내시고 가까운 철물점에서 퍼티랑 사포 사셔서 퍼티로 평평하게 바르시고 마르면 사포로 다듬으시고 시트지를 붙여야될 것 같아요 같은 시트지가 있을지 모르겠네요
-                            </div>
-                            <div class="reply-bot">
-                                <span> 2시간 전 ·</span>
-                                <img src="./resources/icon/LIKE.png" class="img" style="margin-bottom: 10px;">
-                                <span>좋아요 39 ·</span>
-                                <img src="./resources/icon/dislike.png" class="img" style="margin-top: 7px;">
-                                <span>싫어요 -5</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-			</div>		
-		</div>
-	</div>
+				</div>
 	                <!-- 수정하기 삭제하기는 관리자 혹은 작성자에게만 보이게 조건걸어주기 -->
                     <c:if test="${loginUser.memberName eq b.memberName || loginUser.memberName=='관리자'}">
 					    <div align="center">
 					        <a class="" onclick="postFormSubmit(1)">수정하기</a>
-					        <a class="" onclick="postFormSubmit(2)">삭제하기</a>				
+					        <a class="" onclick="postFormSubmit(2)">삭제하dame973기</a>				
 					    </div>
 					    <br><br>
 					</c:if>
@@ -250,7 +222,7 @@
 					 <form action="" method="post" id="postForm">
 		           		<input type="hidden" name="boardNo" value="${b.boardNo}">	      
 		             </form>
-		             
+		            
 					<script>
 						function postFormSubmit(num){
 							if(num === 1){
@@ -283,15 +255,22 @@
 						            for (let reply of res) {
 						                console.log(reply);
 						                str += 
+                                      
 						                "<div class=\"reply-align\" id=\"reply-align\">" +
 						                "<div class=\"profile-area\">" +
 						                "<img style=\"width: 45px; height: 45px; margin: 5px; border-radius: 15px;\" src=\"./resources/icon/profileTest.png\">" +
 						                "</div>" +
 						                "<div class=\"reply-info\">" +
 						                "<div class=\"reply-top\">" +
-						                "<div class=\"reply-writer\">" +
-						                reply.memberName +
-						                "</div>" +
+						                "<div class=\"reply-writer\" id = \"reply-writer\">" +                              
+						                reply.memberName;					                
+						                if("${loginUser.memberName}" == reply.memberName || "${loginUser.memberName}" == "관리자"){
+						                	str += "<button id = 'replydelete' onclick='replydelete()'>" + 
+								                "x" + 
+								               "</button>";
+						                }
+	                
+						                str += "</div>" +					               
 						                "<div>" +
 						                "일러스트 디자인+8개서비스 고수" +
 						                "</div>" +
@@ -308,6 +287,7 @@
 						                "<span>싫어요 -5</span>" +
 						                "</div>" +
 						                "</div>" +
+                                        "<input name = \"replyNo\" id=\"replyNo\" type=\"hidden\" value=\"${reply.replyNo}\">"+
 						                "</div>";
 						            }
 						            document.querySelector('.reply-area').innerHTML = str;
@@ -320,7 +300,7 @@
 						
                         function insertReply(){
                             const boardNo = document.getElementById("reply-boardNo").value;
-                            const memberNo = document.getElementById("WriterNo").innerText;
+                            const memberNo = document.getElementById("WriterNo").value;
                             const contents = document.getElementById("reply-content").value;
                             console.log("보드넘버 : ", boardNo);
                             console.log("작성자번호: ", memberNo);
@@ -347,6 +327,17 @@
                                     console.log("요청 실패");
                                 }
                             });
+                        }
+                        
+                        function replydelete() {
+                            console.log("삭제를 시작해볼까?");
+                            const replyNo1 = document.getElementById("replyNo").val;
+                            const replyNo2 = document.querySelector('#replyNo').val;
+                            console.log(replyNo1);
+                            console.log(replyNo2);
+
+                            // 이후에 값을 활용하는 코드를 작성하세요.
+                            // 예: 삭제 요청을 보내거나, 해당 댓글을 삭제하는 등의 작업을 수행할 수 있습니다.
                         }
 					</script>
                 </div>
