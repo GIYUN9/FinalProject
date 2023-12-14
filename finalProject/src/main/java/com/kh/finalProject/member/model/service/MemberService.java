@@ -36,7 +36,7 @@ public interface MemberService {
 	
 	//회원탈퇴 서비스
 	int deleteMember(Member m);
-	int adminDeleteMem(List<String> memberNoList);
+	int adminDeleteMem(String memberNoList);
 	
 	
 	//프로필 이미지 변경

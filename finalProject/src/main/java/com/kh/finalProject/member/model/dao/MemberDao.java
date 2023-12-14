@@ -79,8 +79,13 @@ public class MemberDao {
         parameters.put("searchText", searchText);
         return (ArrayList)sqlSession.selectList("memberMapper.searchMem", parameters);
 	}
-	public int adminDeleteMem(SqlSessionTemplate sqlSession, List<String> memberNoList) {
-		return sqlSession.update("memberMapper.adminDeleteMem", memberNoList);
+	public int adminDeleteMem(SqlSessionTemplate sqlSession, String memberNoList) {
+	    String[] memberNoArray = memberNoList.split(";");
+	    
+	    Map<String, Object> memNoList = new HashMap<>();
+	    memNoList.put("memberNoList", memberNoArray);
+
+		return sqlSession.update("memberMapper.adminDeleteMem", memNoList);
 	}
 }
 

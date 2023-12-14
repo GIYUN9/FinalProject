@@ -101,7 +101,7 @@ public class MemberServiceImpl implements MemberService {
     }
 
 	@Override
-	public int adminDeleteMem(List<String> memberNoList) {
+	public int adminDeleteMem(String memberNoList) {
 		return memberDao.adminDeleteMem(sqlSession, memberNoList) ;
 	}
 

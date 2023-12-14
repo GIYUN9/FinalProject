@@ -365,8 +365,10 @@
             }
         });
         globalMemberNoList = memberNoList;
+        let memberNoListString = globalMemberNoList.toString();
         console.log('memberNoList:', memberNoList);
-        console.log('globalMemberNoList:', memberNoList);
+        console.log('globalMemberNoList:', globalMemberNoList);
+        console.log('memberNoListString:', memberNoListString);
     }
 
  	// 이미 추가된 정보인지 확인하는 함수
@@ -414,10 +416,13 @@
             data: { searchText: text }, // 검색 텍스트를 서버에 전달
             success: function(data) {
                 // 서버에서 받은 데이터를 사용하여 회원 목록을 다시 그림
-                // 예시: 받은 데이터를 이용하여 테이블의 tbody를 업데이트
                 updateMemberTable(data);
                 addCheckBoxEvent();
                 displaySelectedMembers();
+                
+                memberNoListString = globalMemberNoList.toString();
+                console.log('memberNoListString:', memberNoListString);
+                a();
             },
             error: function(error) {
                 console.error('멤버 데이터를 가져오지 못함 :', error);
@@ -450,7 +455,7 @@
         $.ajax({
             type: 'POST', 
             url: 'adDelete.me',  
-            data: { memberNoList: globalMemberNoList },  
+            data: { memberNoList: memberNoListString },  
             success: function(response) {
                 // 서버에서 받은 응답을 처리하는 코드
                 console.log(response);
