@@ -265,6 +265,9 @@
 	<jsp:include page="../common/footer.jsp" />
 	
 	<script>        
+	const cateMemberValue = {}
+	
+	 let globalMemberNoList = [];
     $(document).ready(function() {
     	addCheckBoxEvent();
     	displaySelectedMembers();
@@ -349,7 +352,7 @@
 	
 	                let upperTextSpanSelMem2 = document.createElement('span');
 	                upperTextSpanSelMem2.classList.add('upper-text');
-	                upperTextSpanSelMem2.innerText = 'No. ' + userNo;
+	                upperTextSpanSelMem2.innerText = 'No. <span class="select-user-no">' + userNo + '</span>';
 	                selMem2Div.appendChild(upperTextSpanSelMem2);
 	
 	                let lowerTextSpanSelMem2 = document.createElement('span');
@@ -364,8 +367,8 @@
                 }
             }
         });
-        globalMemberNoList = memberNoList;
-        let memberNoListString = globalMemberNoList.toString();
+      
+        let memberNoListString = memberNoList.toString();
         console.log('memberNoList:', memberNoList);
         console.log('globalMemberNoList:', globalMemberNoList);
         console.log('memberNoListString:', memberNoListString);
@@ -420,9 +423,8 @@
                 addCheckBoxEvent();
                 displaySelectedMembers();
                 
-                memberNoListString = globalMemberNoList.toString();
-                console.log('memberNoListString:', memberNoListString);
-                a();
+             
+         
             },
             error: function(error) {
                 console.error('멤버 데이터를 가져오지 못함 :', error);
@@ -448,21 +450,16 @@
         });
     }
 
-    let globalMemberNoList = [];
     function a() {
-        displaySelectedMembers();
-        
+        $(".select-user-no").for
+    	
         $.ajax({
             type: 'POST', 
             url: 'adDelete.me',  
             data: { memberNoList: memberNoListString },  
             success: function(response) {
-                // 서버에서 받은 응답을 처리하는 코드
-                console.log(response);
             },
             error: function(error) {
-                // 에러 발생 시 처리하는 코드
-                console.error(error);
             }
         });
     }
