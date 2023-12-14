@@ -257,7 +257,7 @@
        OR MEM_PRO LIKE '%' || #{searchText} || '%'
        OR ENROLL_DATE LIKE '%' || #{searchText} || '%'
 	</select>
-	<update id="deleteMem">
+	<update id="adminDeleteMem">
 	    <foreach collection="memberNoList" item="memberNo" separator=";">
 	        UPDATE MEMBER
 	        SET STATUS = 'N'

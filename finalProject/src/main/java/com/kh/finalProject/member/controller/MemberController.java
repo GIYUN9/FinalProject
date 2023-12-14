@@ -13,6 +13,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -118,6 +120,14 @@ public class MemberController {
 		} else {
 			return "redirect:/";
 		}
+	}
+	
+	//관리자 회원탈퇴 컨트롤러 (업데이트)
+	@RequestMapping(value = "/adDelete.me")
+	public String adminDeleteMem(String memberNoList, HttpSession session) {
+	    Member m = (Member) session.getAttribute("loginUser");
+		int result = memberService.adminDeleteMem(memberNoList);
+			return "redirect:/";
 	}
 	
 	//스케줄 컨트롤러(로그인한 유저의 정보를 포함하여)

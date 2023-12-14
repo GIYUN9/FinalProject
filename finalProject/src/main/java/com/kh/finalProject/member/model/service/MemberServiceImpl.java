@@ -1,6 +1,7 @@
 package com.kh.finalProject.member.model.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -113,6 +114,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public EmailCheck checkCreateDate(EmailCheck e) {
 		return memberDao.checkCreateDate(sqlSession, e);
+	}
+	
+	@Override
+	public int adminDeleteMem(String memberNoList) {
+		return memberDao.adminDeleteMem(sqlSession, memberNoList);
 	}
 
 }
