@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -118,6 +119,14 @@ public class MemberController {
 		} else {
 			return "redirect:/";
 		}
+	}
+	
+	//관리자 회원탈퇴 컨트롤러 (업데이트)
+	@RequestMapping(value = "/adDelete.me")
+	public String adminDeleteMem(List<String> memberNoList, HttpSession session) {
+	    Member m = (Member) session.getAttribute("loginUser");
+		int result = memberService.adminDeleteMem(memberNoList);
+			return "redirect:/";
 	}
 	
 	//스케줄 컨트롤러(로그인한 유저의 정보를 포함하여)

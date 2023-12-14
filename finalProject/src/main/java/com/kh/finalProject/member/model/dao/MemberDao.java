@@ -2,6 +2,7 @@ package com.kh.finalProject.member.model.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -67,19 +68,19 @@ public class MemberDao {
 	public ArrayList<Schedule> scheduleSendList(SqlSessionTemplate sqlSession, Schedule s){
 		return (ArrayList)sqlSession.selectList("memberMapper.scheduleSendList", s);
 	}
-	
 	public int requestCancel(SqlSessionTemplate sqlSession, Schedule s) {
 		return sqlSession.update("memberMapper.requestCancel", s);
-  }
+	}
 	public ArrayList<Member> memberList(SqlSessionTemplate sqlSession, Member m) {
 		return (ArrayList)sqlSession.selectList("memberMapper.viewAllMem", m);
-
 	}
 	public ArrayList<Member> searchMember(SqlSessionTemplate sqlSession, String searchText) {
 		Map<String, String> parameters = new HashMap<>();
         parameters.put("searchText", searchText);
         return (ArrayList)sqlSession.selectList("memberMapper.searchMem", parameters);
-
+	}
+	public int adminDeleteMem(SqlSessionTemplate sqlSession, List<String> memberNoList) {
+		return sqlSession.update("memberMapper.adminDeleteMem", memberNoList);
 	}
 }
 
