@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.finalProject.common.vo.Schedule;
+import com.kh.finalProject.mail.EmailCheck;
 import com.kh.finalProject.member.model.dao.MemberDao;
 import com.kh.finalProject.member.model.vo.Member;
 import com.kh.finalProject.member.model.vo.Professional;
@@ -98,5 +99,20 @@ public class MemberServiceImpl implements MemberService {
     public ArrayList<Member> searchMember(String searchText) {
         return memberDao.searchMember(sqlSession, searchText);
     }
+
+	@Override
+	public int insertEmailRandomNo(EmailCheck e) {
+		return memberDao.insertEmailRandomNo(sqlSession, e);
+	}
+
+	@Override
+	public EmailCheck checkRandomNo(EmailCheck e) {
+		return memberDao.checkRandomNo(sqlSession, e);
+	}
+
+	@Override
+	public EmailCheck checkCreateDate(EmailCheck e) {
+		return memberDao.checkCreateDate(sqlSession, e);
+	}
 
 }

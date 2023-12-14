@@ -43,6 +43,13 @@
 		<result column="MEM_NAME" property="memberName"/>
 		<result column="CATEGORY_NAME" property="categoryName"/>
 	</resultMap>
+	
+	<resultMap type="EmailCheck" id="emailCheckResult">
+		<result column="AUTH_NO" property="authNo"/>
+		<result column="AUTH_EMAIL" property="authEmail"/>
+		<result column="AUTH_RANDOM" property="authRandom"/>
+		<result column="CREATEDATE" property="createDate"/>
+	</resultMap>
 
 	<!-- 회원가입 -->
 	<insert id = "insertMember">
@@ -257,4 +264,53 @@
 	        WHERE MEM_NO = #{memberNo}
 	    </foreach>
 	</update>
+	
+	<insert id="insertEmailRandomNo">
+		INSERT INTO AUTHENTICATE
+					(
+		            AUTH_NO,
+		            AUTH_EMAIL,
+		            AUTH_RANDOM,
+		            CREATEDATE
+					)
+            VALUES
+            		(
+		            SEQ_AUNO.NEXTVAL,
+		            #{authEmail},
+		            #{authRandom},
+		            SYSDATE
+		            )
+	</insert>
+	
+	<select id="checkRandomNo" resultMap="emailCheckResult">
+		SELECT  AUTH_NO,
+			    AUTH_EMAIL,
+			    AUTH_RANDOM,
+			    CREATEDATE
+		FROM(		
+				SELECT
+				    AUTH_NO,
+				    AUTH_EMAIL,
+				    AUTH_RANDOM,
+				    CREATEDATE
+				FROM
+				    AUTHENTICATE
+				WHERE
+				    AUTH_EMAIL = #{authEmail}
+				    AND CREATEDATE BETWEEN SYSDATE - INTERVAL '3' MINUTE AND SYSDATE
+				ORDER BY
+				    CREATEDATE DESC)
+		WHERE ROWNUM = 1
+	</select>
+	
+	<select id="checkCreateDate" resultMap="emailCheckResult">
+		SELECT AUTH_NO,
+			    AUTH_EMAIL,
+			    AUTH_RANDOM,
+			    CREATEDATE
+		FROM AUTHENTICATE
+		WHERE CREATEDATE BETWEEN SYSDATE - 3/24/60 AND SYSDATE
+		AND AUTH_EMAIL = #{authEmail}
+		AND AUTH_RANDOM = #{checkNo}
+	</select>
 </mapper>

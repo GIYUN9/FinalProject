@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.finalProject.common.vo.Schedule;
+import com.kh.finalProject.mail.EmailCheck;
 import com.kh.finalProject.member.model.vo.Member;
 import com.kh.finalProject.member.model.vo.Professional;
 
@@ -80,6 +81,18 @@ public class MemberDao {
         parameters.put("searchText", searchText);
         return (ArrayList)sqlSession.selectList("memberMapper.searchMem", parameters);
 
+	}
+	
+	public int insertEmailRandomNo(SqlSessionTemplate sqlSession, EmailCheck e) {
+		return sqlSession.insert("memberMapper.insertEmailRandomNo", e);
+	}
+	
+	public EmailCheck checkRandomNo(SqlSessionTemplate sqlSession, EmailCheck e) {
+		return sqlSession.selectOne("memberMapper.checkRandomNo", e);
+	}
+	
+	public EmailCheck checkCreateDate(SqlSessionTemplate sqlSession, EmailCheck e) {
+		return sqlSession.selectOne("memberMapper.checkCreateDate", e);
 	}
 }
 
