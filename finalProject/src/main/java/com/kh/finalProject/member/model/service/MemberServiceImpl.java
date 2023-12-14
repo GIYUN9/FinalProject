@@ -88,10 +88,15 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.requestCancel(sqlSession, s);
 	}
 	
-  @Override
-  public ArrayList<Member> memberList(Member m) {
-      ArrayList<Member> memberList = memberDao.memberList(sqlSession, m);
-      return memberList;
-  }
+	@Override
+	public ArrayList<Member> memberList(Member m) {
+		ArrayList<Member> memberList = memberDao.memberList(sqlSession, m);
+		return memberList;
+	}
+	
+    @Override
+    public ArrayList<Member> searchMember(String searchText) {
+        return memberDao.searchMember(sqlSession, searchText);
+    }
 
 }

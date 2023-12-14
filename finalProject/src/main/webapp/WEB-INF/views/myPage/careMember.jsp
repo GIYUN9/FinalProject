@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <meta charset="UTF-8">
     <title>Insert title here</title>
     <link rel="stylesheet" href="././resources/css/myPgae.css">
@@ -47,9 +48,6 @@
         }
         .ad-table{
             border-collapse: collapse;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             text-align: center;
         }
         td{
@@ -59,6 +57,8 @@
         .ad-table{
             border: none;
             margin-top: 30px;
+            width: 100%;
+            table-layout: fixed;
         }
         .ad-btn{
             width: 100%;
@@ -95,6 +95,7 @@
         .table-area{
             height: 300px;
             overflow-y: auto;
+            min-width: 454px;
         }
         .table-area::-webkit-scrollbar {
 			width: 0px; 
@@ -106,7 +107,7 @@
             width: 100%;
         }
         .src-mem{
-            width: 453px;
+            width: 468px;
             border: 1px solid #3b3b3b5c;
             border-radius: 8px;
             padding-left: 0px;
@@ -214,24 +215,35 @@
                                     <img class="src-img" src="././resources/icon/glass-icon.png" alt="">
                                 </div>
                                 <tr>
-                                    <th>선택</th>
-                                    <th>번호</th>
-                                    <th>이메일</th>
-                                    <th>이름</th>
-                                    <th>구분</th>
-                                    <th>가입일</th>
-                                </tr>
-								<c:forEach var="m" items="${mList}">		
+                                    <th style="width: 8%;">선택</th>
+                                    <th style="width: 8%;">번호</th>
+                                    <th style="width: 35%;">이메일</th>
+                                    <th style="width: 13%;">이름</th>
+                                    <th style="width: 17%;">구분</th>
+                                    <th style="width: 19%;">가입일</th>
+                                </tr>							                         
+                            </thead>
+                            <tbody>
+                            	<c:forEach var="m" items="${mList}">		
 									<tr>
 	                                    <td><input type="checkbox"></td>
 	                                    <td>${m.memberNo}</td>
 	                                    <td>${m.memberEmail}</td>
 	                                    <td>${m.memberName}</td>
-	                                    <td>${m.memberPro} 가 1이면 일반</td>
+	                                    <td>
+											<c:choose>
+												<c:when test="${m.memberPro == 1}">
+													일반 회원
+												</c:when>
+												<c:when test="${m.memberPro == 2}">
+													전문가
+												</c:when>
+											</c:choose>
+	                                    </td>
 	                                    <td>${m.enrollDate}</td>
 	                                </tr>
-								</c:forEach> 								                         
-                            </thead>
+								</c:forEach> 	
+                            </tbody>
                         </table>
                     </div>
                     <button class="ad-btn">탈퇴</button>
@@ -330,30 +342,6 @@
             });
         });
 
-        // 검색어 입력 이벤트 처리
-        searchInput.addEventListener('input', function() {
-            filterTable(searchInput.value);
-        });
-
-        // 검색 아이콘 클릭 이벤트 처리
-        searchIcon.addEventListener('click', function() {
-            filterTable(searchInput.value);
-        });
-
-        // 검색 기능 함수
-        function filterTable(query) {
-            query = query.toLowerCase();
-
-            tableRows.forEach(function(row) {
-                var data = row.textContent.toLowerCase();
-                if (data.includes(query)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
-        }
-
         // 나머지 코드 작성 ...
         cancelButton.addEventListener('click', function() {
             // 취소 버튼 클릭 시 align-mem의 내용 초기화 및 체크박스의 checked 해제
@@ -390,7 +378,7 @@
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
         var userInfo2Div = document.querySelector('.user-info2');
         var cancelButton = document.querySelector('.ad-can');
-        var searchInput = document.querySelector('.src-mem');
+	        var searchInput = document.querySelector('.src-mem');
         var tableRows = document.querySelectorAll('.ad-table tbody tr');
 
         // 각 체크박스에 클릭 이벤트 리스너 추가
@@ -415,7 +403,55 @@
         }
     });
     
+    $(document).ready(function() {
+        $('#searchInput').on('keyup', function() {  	
+            let searchText = $(this).val().toLowerCase();
+            console.log("온키업 텍스트:", searchText); // 이 줄을 추가하여 searchText 값을 콘솔에 출력
+            drawMemberList(searchText);
+        });
+    });	
+    
+    function drawMemberList(text){
+        // AJAX를 사용하여 서버에 데이터 요청
+        $.ajax({
+            type: 'GET',
+            url: 'src.me', // 서버 엔드포인트를 적절히 설정
+            data: { searchText: text }, // 검색 텍스트를 서버에 전달
+            success: function(data) {
+                // 서버에서 받은 데이터를 사용하여 회원 목록을 다시 그림
+                // 예시: 받은 데이터를 이용하여 테이블의 tbody를 업데이트
+                updateMemberTable(data);
+            },
+            error: function(error) {
+                console.error('멤버 데이터를 가져오지 못함 :', error);
+            }
+        });
+    }
+    
+    function updateMemberTable(data) {
+        // 받은 데이터를 이용하여 테이블의 tbody를 업데이트
+        // 예시: 받은 데이터를 순회하면서 각 행을 업데이트
+        $('#memberTable tbody').empty(); // 현재 tbody 내용을 비움
 
+        $.each(data, function(index, member) {
+            var newRow = '<tr>' +
+                '<td><input type="checkbox"></td>' +
+                '<td>' + member.memberNo + '</td>' +
+                '<td>' + member.memberEmail + '</td>' +
+                '<td>' + member.memberName + '</td>' +
+                '<td>' + (member.memberPro === 1 ? '일반' : '') + '</td>' +
+                '<td>' + member.enrollDate + '</td>' +
+                '</tr>';
+            $('#memberTable tbody').append(newRow);
+        });
+    }
+    
+    let userNo = tds[1].innerText;
+ 	// alignMemDiv에 userNo를 추가
+    let userNoDiv = document.createElement('div');
+    userNoDiv.classList.add('user-no');
+    userNoDiv.innerText = 'No. ' + userNo;
+    alignMemDiv.appendChild(userNoDiv);
 	</script>
 </body>
 </html>

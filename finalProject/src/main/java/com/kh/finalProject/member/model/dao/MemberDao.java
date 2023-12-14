@@ -75,5 +75,11 @@ public class MemberDao {
 		return (ArrayList)sqlSession.selectList("memberMapper.viewAllMem", m);
 
 	}
+	public ArrayList<Member> searchMember(SqlSessionTemplate sqlSession, String searchText) {
+		Map<String, String> parameters = new HashMap<>();
+        parameters.put("searchText", searchText);
+        return (ArrayList)sqlSession.selectList("memberMapper.searchMem", parameters);
+
+	}
 }
 
