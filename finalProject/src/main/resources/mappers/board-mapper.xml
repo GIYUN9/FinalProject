@@ -68,10 +68,22 @@
          AND B.STATUS = 'Y'
  	</select>
  	
- 	<!-- 도와주세요 게시판 전체 조회 -->
+ 	<!-- 도와줄게요 게시글 상세조회 관련 쿼리문 -->
+	<select id="helpSelectBoard" resultMap="boardResult">
+		SELECT B.BOARD_NO,
+			   B.CATEGORY_NO,
+			   B.BOARD_CONTENT,
+			   A.ORIGIN_NAME,
+			   A.CHANGE_NAME,
+			   B.BOARD_TITLE,
+			   B.PRICE,
+			   B.BOARD_TYPE
+		FROM BOARD B
+		JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
+		  WHERE B.STATUS = 'Y'
+		AND B.BOARD_NO = #{boardNo}
+	</select>
  	
-  
-
   	<!-- 도와줄게요 게시글 등록 쿼리문 -->
   	<insert id="helpinsertBoard">
   		INSERT INTO
@@ -99,7 +111,7 @@
   	</insert>
   	
   	<!-- 사진 등록 쿼리문 -->
-  	<insert id="helpAttachment">
+  	<insert id="helpAttachment" parameterType="hashMap">
   		INSERT INTO
   			ATTACHMENT
   					  (
@@ -111,7 +123,7 @@
   			
   			VALUES
   				  (
-  				  SEQ_ANO.NEXTVAL,
+  				  SEQ_ANO.NEXTVAL, 
   				  #{originName},
   				  #{changeName},
   				  #{boardNo}			
@@ -119,16 +131,20 @@
   	</insert>
   	
   	<!-- 도와줄게요 게시글 수정 쿼리문 -->
-  	<update id="updateBoard">
+  	<update id="helpUpdateBoard">
   		UPDATE BOARD
-  			SET BOARD_TITLE = #{boardTitle},
-  			BOARD_CONTENT = #{boardContent},
-  			PRICE = #{price}
-  		WHERE BOARD_NO = #{boardNo}
+	  		SET B.CATEGORY_NO = #{categoryNo},
+	  			B.BOARD_TITLE = #{boardTitle},
+	  			B.BOARD_CONTENT = #{boardContent},
+	  			A.ORIGIN_NAME = #{originName},
+	  			A.CHANGE_NAME = #{changeName},
+	  			B.PRICE = #{price}
+	  		INNER JOIN ATTACHMENT AS A ON B.BOARD_NO = A.ATT_NO
+  		WHERE B.BOARD_NO = #{boardNo}
   	</update>
   	
   	<!-- 도와줄게요 게시글 삭제 쿼리문 -->
-  	<update id="deleteBoard">
+  	<update id="helpDeleteBoard">
   		UPDATE BOARD
   			SET STATUS = 'N'
   		WHERE BOARD_NO = #{boardNo}
@@ -457,6 +473,126 @@
 		AND BOARD_TITLE LIKE '%'||#{keyWord}||'%'
 	</select>
 	
+	<!-- 도와주세요 게시글 전체 조회 쿼리문 -->
+	<select id="helpmeselectList" resultMap="boardResult">
+		SELECT  B.BOARD_NO,
+ 			  	B.BOARD_TITLE,
+ 			   	B.PRICE,
+ 			   	A.FILE_PATH,
+               	A.CHANGE_NAME
+ 		FROM BOARD B
+        JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
+ 		 WHERE B.BOARD_TYPE = 2
+         AND B.STATUS = 'Y'
+				
+	</select>
+	
+	<!-- 도와주세요 총 갯수 조회 -->
+	<select id="seleteHelpmeListCount" resultType="_int">
+		SELECT COUNT(*)
+			FROM BOARD
+		WHERE BOARD_TYPE = 2
+		AND	STATUS = 'Y'
+	</select>
+	
+	<!-- 도와주세요 게시글 등록  -->
+	<insert id="helpmeInsertBoard">
+		INSERT INTO
+			BOARD(
+				  BOARD_NO,
+			      CATEGORY_NO,
+			      BOARD_TITLE,
+			      BOARD_CONTENT,
+			      PRICE,
+			      BOARD_TYPE,
+			      MEM_NO
+				  )
+				  
+			VALUES(
+				   SEQ_BNO.NEXTVAL,
+				   #{categoryNo},
+				   #{boardTitle},
+				   #{boardContent},
+				   #{price},
+				   #{boardType},
+				   #{memberNo}
+				  )
+	</insert>
+	
+	<!-- 도와주세요 게시글 사진 첨부 -->
+	<insert id="helpmeAttachment">
+		INSERT INTO
+  			ATTACHMENT
+  					  (
+  					  ATT_NO,
+  					  ORIGIN_NAME,
+  					  CHANGE_NAME,
+  					  BOARD_NO
+  					  )
+  			
+  			VALUES
+  				  (
+  				  SEQ_ANO.NEXTVAL,
+  				  #{originName},
+  				  #{changeName},
+  				  #{boardNo}			
+  				  )
+	</insert>
+	
+	<!-- 도와주세요 보드번호 중간 쿼리문 -->
+	<select id="helpmeselectOne" resultMap="boardResult">
+  		SELECT  BOARD_NO,
+  				CATEGORY_NO,
+  				BOARD_TITLE,
+  				BOARD_CONTENT,
+  				PRICE,
+  				BOARD_TYPE,
+  				MEM_NO
+  		FROM BOARD
+  		WHERE CATEGORY_NO = #{categoryNo}
+  		AND		BOARD_TITLE = #{boardTitle}
+  		AND		BOARD_CONTENT = #{boardContent}
+		AND		PRICE = #{price}
+		AND		BOARD_TYPE = #{boardType}
+		AND		MEM_NO = #{memberNo}
+  	</select>
+  	
+  	<!--도와주세요 상세조회 관련 쿼리문 -->
+  	<select id="helpmeSelectBoard" resultMap="boardResult">
+  		SELECT B.BOARD_NO,
+			   B.CATEGORY_NO,
+			   B.BOARD_CONTENT,
+			   A.ORIGIN_NAME,
+			   A.CHANGE_NAME,
+			   B.BOARD_TITLE,
+			   B.PRICE,
+			   B.BOARD_TYPE
+		FROM BOARD B
+		JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
+		  WHERE B.STATUS = 'Y'
+		AND B.BOARD_NO = #{boardNo}
+  	</select>
+	
+	<!-- 도와주세요 게시글 수정 쿼리문 -->
+  	<update id="helpmeUpdateBoard">
+  		UPDATE BOARD AS B
+	  		SET B.CATEGORY_NO = #{categoryNo},
+	  			B.BOARD_TITLE = #{boardTitle},
+	  			B.BOARD_CONTENT = #{boardContent},
+	  			AT.ORIGIN_NAME = #{originName},
+	  			AT.CHANGE_NAME = #{changeName},
+	  			B.PRICE = #{price}
+	  		JOIN ATTACHMENT AS AT ON B.BOARD_NO = AT.ATT_NO
+  		WHERE B.BOARD_NO = #{boardNo}
+  	</update>
+	
+	<!-- 도와주세요 게시글 삭제 -->
+	<update id="helpmeDeleteBoard">
+		UPDATE BOARD
+  			SET STATUS = 'N'
+  		WHERE BOARD_NO = #{boardNo}
+	</update>
+	
 	<update id ="updateCommBoard">
 		UPDATE BOARD
 			SET BOARD_TITLE = #{boardTitle},
@@ -492,12 +628,16 @@
 		SELECT  R.REPLY_NO,
 				R.REPLY_CONTENT,
 				M.MEM_NAME,
-				R.CREATEDATE        		        
+				R.CREATEDATE     		        
 		FROM	REPLY R	
 		JOIN MEMBER M ON (R.MEM_NO = M.MEM_NO) 
 		WHERE R.STATUS = 'Y'
 			AND BOARD_NO = #{boardNo}
 		ORDER BY REPLY_NO DESC
 	</select>
-  	
+  	<update id="deleteReply">
+		UPDATE REPLY
+			SET STATUS = 'N'
+		WHERE REPLY_NO = #{replyNo}
+	</update>
   </mapper>

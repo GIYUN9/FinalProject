@@ -17,11 +17,11 @@ public class Reply {
 
 	private int replyNo;
 	private int boardNo;
-	private Date createDate;
+	
 	private String replyContent;
 	
 	private int memberNo;
 	private String memberName;
 	
-	
+	private Date createDate;
 }

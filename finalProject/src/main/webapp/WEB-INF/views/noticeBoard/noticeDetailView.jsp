@@ -94,6 +94,16 @@
             font-weight: bold;
             font-size: 14px;
         }
+        
+        #replydelete{
+        	 color: #00c7ae;
+            font-size: 12px;
+             border: 0;
+             background-color:white;
+             cursor: pointer;
+             padding-left: 3px;
+            
+        }
         .reply-writer{
             color: black;
             font-size: 17px;
@@ -193,7 +203,7 @@
 							    <input id="reply-boardNo" type="hidden" value="${b.boardNo}">
 							    <input id="WriterNo" type="hidden" value="${loginUser.memberNo}">
 							    <input id="reply-content" class="reply-content" name="replyContent" type="text" style="width: 80%;" placeholder="댓글을 입력해주세요">
-							    <button id="comment-write-btn" class="re-input-btn" onclick="insertReply()">등록</button>
+							    <button id="comment-write-btn" class="re-input-btn" onclick="insertReply()" >등록</button>
 							</div>
 					    </c:when>
 					    <c:otherwise>
@@ -251,28 +261,28 @@
 						                console.log(reply);
 						                str += 
                                       
-						                "<div class=\"reply-align\" id=\"reply-align\">" +
-						                "<div class=\"profile-area\">" +
-						                "<img style=\"width: 45px; height: 45px; margin: 5px; border-radius: 15px;\" src=\"./resources/icon/profileTest.png\">" +
-						                "</div>" +
-						                "<div class=\"reply-info\">" +
-						                "<div class=\"reply-top\">" +
-						                "<div class=\"reply-writer\" id = \"reply-writer\">" +                              
-						                reply.memberName;					                
-						                if("${loginUser.memberName}" == reply.memberName || "${loginUser.memberName}" == "관리자"){
-						                	str += "<button id = 'replydelete' onclick='replydelete()'>" + 
-								                "x" + 
-								               "</button>";
-						                }
-	                
-						                str += "</div>" +					               
-						                "<div>" +
-						                "일러스트 디자인+8개서비스 고수" +
-						                "</div>" +
-						                "<button class=\"req-btn\">견적요청</button>" +
-						                "</div>" +
-						                "<div class=\"reply-cont\">" +
-						                reply.replyContent +
+							                "<div class=\"reply-align\" id=\"reply-align\">" +
+							                "<div class=\"profile-area\">" +
+							                "<img style=\"width: 45px; height: 45px; margin: 5px; border-radius: 15px;\" src=\"./resources/icon/profileTest.png\">" +
+							                "</div>" +
+							                "<div class=\"reply-info\">" +
+							                "<div class=\"reply-top\">" +
+							                "<div class=\"reply-writer\" id = \"reply-writer\">" +                              
+							                reply.memberName;					                
+							                if("${loginUser.memberName}" == reply.memberName || "${loginUser.memberName}" == "관리자"){
+							                	str += "<button id = 'replydelete' onclick='replydelete("+reply.replyNo+")'>" + 
+									                "삭제하기" + 
+									               "</button>";
+							                }
+		                
+							                str += "</div>" +					               
+							                "<div>" +
+							                "일러스트 디자인+8개서비스 고수" +
+							                "</div>" +
+							                "<button class=\"req-btn\">견적요청</button>" +
+							                "</div>" +
+							                "<div class=\"reply-cont\">" +
+							                reply.replyContent +
 						                "</div>" +
 						                "<div class=\"reply-bot\">" +
 						                "<span>" + reply.createDate + " ·</span>" +
@@ -324,16 +334,34 @@
                             });
                         }
                         
-                        function replydelete() {
-                            console.log("삭제를 시작해볼까?");
-                            const replyNo1 = document.getElementById("replyNo").val;
-                            const replyNo2 = document.querySelector('#replyNo').val;
-                            console.log(replyNo1);
-                            console.log(replyNo2);
-
-                            // 이후에 값을 활용하는 코드를 작성하세요.
-                            // 예: 삭제 요청을 보내거나, 해당 댓글을 삭제하는 등의 작업을 수행할 수 있습니다.
+                        function replydelete(replyNo) {
+                            console.log("삭제를 시작해볼까? :" + replyNo);
+                           	
+                            $.ajax({
+                            	type : "post",
+                            	url :"delete.re",
+                            	data : {
+                            		"replyNo" : replyNo
+                            	},
+                            	success:function(result){
+                            		if(result >0){ //댓글 작성성공
+                                    	console.log("DELETEM 성공!! ");                                   
+                                    	selectReplyList();	
+                                    }
+                            	},
+                            	error:function(){
+                            		console.log("요청 실패");
+                            	}
+                            	});
                         }
+                        
+                        $("#comment-write-btn").keypress(function(ev) {
+                        	  if (ev.keyCode === 13) {
+                        	    ev.insertReply();
+                        	    // do something
+                        	  }
+                        	});
+                        	
 					</script>
                 </div>
 			</div>		

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.kh.finalProject.board.model.dao.BoardDao;
 import com.kh.finalProject.board.model.vo.Board;
 import com.kh.finalProject.board.model.vo.Reply;
+
 import com.kh.finalProject.common.vo.Attachment;
 import com.kh.finalProject.common.vo.Notice;
 import com.kh.finalProject.common.vo.PageInfo;
@@ -39,15 +40,15 @@ public class BoardServiceImpl implements BoardService {
 	//게시글 수정
 	@Override
 	//도와줄게요 게시판 수정
-	public int updateBoard(Board b) {
-		return boardDao.updateBoard(sqlSession, b);
+	public int helpUpdateBoard(Board b) {
+		return boardDao.helpUpdateBoard(sqlSession, b);
 	}
 
 	//게시글 삭제
 	@Override
 	//도와줄게요 게시판 삭제
-	public int deleteBoard(int boardNo) {
-		return boardDao.deleteBoard(sqlSession, boardNo);
+	public int helpDeleteBoard(int boardNo) {
+		return boardDao.helpDeleteBoard(sqlSession, boardNo);
 	}
 
 	//게시글 상세조회
@@ -62,7 +63,8 @@ public class BoardServiceImpl implements BoardService {
 	public int helpAttachment(Attachment at) {
 		return boardDao.helpAttachment(sqlSession, at);
 	}
-
+	
+	//게시글 총 페이지
 	@Override
 	public int helpselect() {
 		return boardDao.helpselect(sqlSession);
@@ -72,7 +74,6 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int selectCommListCount() {
 		return boardDao.selectCommListCount(sqlSession);
-
 	}
 	
 	//게시글 리스트 조회
@@ -93,6 +94,7 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.insertNotice(sqlSession, n);
 	}
 
+	//도와줄게요 게시판 리스트 count(*)조회
 	@Override
 	public int seleteHelpListCount() {
 		return boardDao.seleteHelpListCount(sqlSession);
@@ -127,11 +129,13 @@ public class BoardServiceImpl implements BoardService {
 	public ArrayList<Board> selectMuchList(PageInfo pi) {
 		return boardDao.selectMuchList(sqlSession, pi);
 	}
-
+	
+	//도와줄게요 보드번호 가져오는 중간 쿼리
 	@Override
 	public Board helpselectOne(Board b) {
 		return boardDao.helpselectOne(sqlSession ,b);
 	}
+	
 	//게시글 함께해요 count(*)조회
 	@Override
 	public int selectTogetherListCount() {
@@ -181,6 +185,60 @@ public class BoardServiceImpl implements BoardService {
 
 	}
 	
+	//도와주세요 게시글 전체 갯수 count(*)조회
+	@Override
+	public int seleteHelpmeListCount() {
+		return boardDao.seleteHelpmeListCount(sqlSession);
+	}
+	
+	//도와주세요 게시판 조회
+	@Override
+	public ArrayList<Board> helpmeselectList(PageInfo pi) {
+		return boardDao.helpmeselectList(sqlSession, pi);
+	}
+	
+	//도와주세요 게시글 등록
+	@Override
+	public int helpmeInsertBoard(Board b) {
+		return boardDao.helpmeInsertBoard(sqlSession, b);
+	}
+
+	//도와주세요 사진 첨부
+	@Override
+	public int helpmeAttachment(Attachment at) {
+		return boardDao.helpmeAttachment(sqlSession, at);
+	}
+	
+	//도와주세요 게시글 수정
+	@Override
+	public int helpmeUpdateBoard(Board b) {
+		return boardDao.helpmeUpdateBoard(sqlSession, b);
+	}
+	
+	//도와주세요 게시글 삭제
+	@Override
+	public int helpmeDeleteBoard(int boardNo) {
+		return boardDao.helpmeDeleteBoard(sqlSession, boardNo);
+	}
+	
+	//도와주세요 보드번호 중간 쿼리
+	@Override
+	public Board helpmeselectOne(Board b) {
+		return boardDao.helpmeselectOne(sqlSession ,b);
+	}
+
+	//도와줄게요 게시글 상세조회
+	@Override
+	public Board helpSelectBoard(int boardNo) {
+		return boardDao.helpSelectBoard(sqlSession, boardNo);
+	}
+	
+	//도와주세요 게시글 상세조회
+	@Override
+	public Board helpmeSelectBoard(int boardNo) {
+		return boardDao.helpmeSelectBoard(sqlSession, boardNo);
+	}
+	
 	//얼마예요 궁금해요 등 게시글 상세조회
 	@Override
 	public Board selectCommBoard(int boardNo) {
@@ -203,9 +261,14 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public ArrayList<Reply> selectReplyList(Board b){
-		
+	public ArrayList<Reply> selectReplyList(Board b){		
 		return boardDao.selectReplyList(sqlSession, b);
+
+	}
+	
+	@Override
+	public int deleteReply(int replyNo) {
+		return boardDao.deleteReply(sqlSession, replyNo);
 	}
 	
 }
