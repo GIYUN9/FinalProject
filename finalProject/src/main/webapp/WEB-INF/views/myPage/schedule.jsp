@@ -281,15 +281,11 @@
 									</p>
 								</div>
 								<div style="width: 15%; display: flex; flex-direction: column;">
-									<button class="schedule-btn" style="background-color: rgb(0, 199, 174)" id="btn-open-schedule-modal">일정 모달 열기</button>
+									<button class="schedule-btn" style="background-color: rgb(0, 199, 174)" id="btn-open-schedule-modal" onclick="tmp(${s.scheNo})">일정 모달 열기</button>
 									<button class="schedule-btn" style="background-color: rgb(218, 76, 60)" onclick="refuse()">거절</button>
 								</div>
 							</div>
 						</c:forEach> 
-					</div>
-
-					<div style="width: 100%; margin: 10px 0px 10px 8px;">
-						<h6 style="float: left; font-weight: bold;">해결한요청 (<span style="color: red;">20</span>건)</h6>
 					</div>
 
 				</div>
@@ -339,56 +335,57 @@
 	</div>
 	<jsp:include page="../common/footer.jsp" />
 
-	<div class="modal" id="scheduleModal">
-		<div class="modal_body" style="padding-top: 10px;">
-			<img id="x-btnImg" src="././resources/icon/close.png" alt="" style="width: 14px; height: 14px; float: right; margin-right: 10px;">
-			<div style="margin-top: 10px;">
-				요청 상세 보기
-			</div>
-			<form action="" style="margin-top: 10px;">
-				<div class="alarm-section" style="display: flex; flex-direction: column; align-items: baseline; height: auto; width: 95%; margin: 19px; padding: 12px;">
-					<div class="desc-align"> 
-						<div style="flex-direction: row; justify-content: space-between; display: flex; flex-direction: row;">
-							<div>
-								<img style="width: 100px; height: 100px; margin: 15px; border-radius: 25px;" src="./resources/icon/profileTest.png">
-							</div>
-						</div>
-						<div style="float: left; display: flex; flex-direction: column; margin-bottom: 10px; justify-content: space-evenly;">
-							<div>
-								<h6 style="float: left; margin-bottom: 5px; font-weight: bold;">
-									홍길동 님
-								</h6>
-							</div>
-							<div>
-								<p style="margin-bottom: 0px;">희망지역: 서울시 강남구 역삼동</p>
-								<p style="margin-bottom: 0px; text-align: left;">010-1111-1111</p>
-							</div>
-						</div>
-						<div class="modal-category">키보드 / 기타 레슨</div>
-					</div>
-					<div style="float: left; flex-direction: column; margin-top: 10px; display: flex;">
-						<h6 style="text-align: left; font-weight: bold; margin-left: 5px;">세부 사항</h6>
-						<div style="display: flex; float: left; flex-direction: column; margin-top: 5px; margin-left: 5px; text-align: left;">
-							<p style="float: left; margin-bottom: 0px;">의뢰비 - 합의 후 결정</p>
-							<p style="float: left; margin-bottom: 0px;">시간대 - 토요일 3시 이후 or 일요일</p>
-							<p style="float: left; margin-bottom: 0px;">희망하는 점 - 엄하게 가르쳐 주세요</p>
-						</div>
-					</div>
-					<div style="width: 100%;">
-						<div style="float: left; margin-top: 20px; margin-bottom: 5px;">요청자 메세지</div>
-						<textarea class="modal-textarea" style="width: 100%; height: 150px; text-align: left; padding: 5px;">
-							ddd
-						</textarea>
-					</div>
-					<div style="display: flex; flex-direction: row; justify-content: flex-end; width: 100%;" >
-						<button type="button" class="schedule-btn" style="background-color: rgb(218, 76, 60); width: 110px;" onclick="refuse()">거절 하기</button>
-						<button type="submit" class="schedule-btn" style="background-color: rgb(0, 199, 174); width: 110px;" id="btn-open-popup">채팅 하기</button>
-					</div>
+	<c:forEach var="s" items="${sList}">
+		<div class="modal" id="scheduleModal${s.scheNo}">
+			<div class="modal_body" style="padding-top: 10px;">
+				<img onclick="tmp2(${s.scheNo})" id="x-btnImg" src="././resources/icon/close.png" alt="" style="width: 14px; height: 14px; float: right; margin-right: 10px;">
+				<div style="margin-top: 10px;">
+					요청 상세 보기
 				</div>
-			</form>
+				<form action="" style="margin-top: 10px;">
+					<div class="alarm-section" style="display: flex; flex-direction: column; align-items: baseline; height: auto; width: 95%; margin: 19px; padding: 12px;">
+						<div class="desc-align"> 
+							<div style="flex-direction: row; justify-content: space-between; display: flex; flex-direction: row;">
+								<div>
+									<img style="width: 100px; height: 100px; margin: 15px; border-radius: 25px;" src="./resources/icon/profileTest.png">
+								</div>
+							</div>
+							<div style="float: left; display: flex; flex-direction: column; margin-bottom: 10px; justify-content: space-evenly;">
+								<div>
+									<h6 style="float: left; margin-bottom: 5px; font-weight: bold;">
+										${s.memberName} 님
+									</h6>
+								</div>
+								<div>
+									<p style="margin-bottom: 0px;">희망지역 : ${s.location}</p>
+									<p style="margin-bottom: 0px; text-align: left;">${s.phone}</p>
+								</div>
+							</div>
+							<div class="modal-category">${s.categoryName}</div>
+						</div>
+						<div style="float: left; flex-direction: column; margin-top: 10px; display: flex;">
+							<h6 style="text-align: left; font-weight: bold; margin-left: 5px;">세부 사항</h6>
+							<div style="display: flex; float: left; flex-direction: column; margin-top: 5px; margin-left: 5px; text-align: left;">
+								<p style="float: left; margin-bottom: 0px;">의뢰비 - 합의 후 결정</p>
+								<p style="float: left; margin-bottom: 0px;">시간대 - 토요일 3시 이후 or 일요일</p>
+								<p style="float: left; margin-bottom: 0px;">희망하는 점 - 엄하게 가르쳐 주세요</p>
+							</div>
+						</div>
+						<div style="width: 100%;">
+							<div style="float: left; margin-top: 20px; margin-bottom: 5px;">요청자 메세지</div>
+							<textarea class="modal-textarea" style="width: 100%; height: 150px; text-align: left; padding: 5px;" readonly="readonly">
+${s.scheContent}
+							</textarea>
+						</div>
+						<div style="display: flex; flex-direction: row; justify-content: flex-end; width: 100%;" >
+							<button type="button" class="schedule-btn" style="background-color: rgb(218, 76, 60); width: 110px;" onclick="refuse()">거절 하기</button>
+							<button type="submit" class="schedule-btn" style="background-color: rgb(0, 199, 174); width: 110px;" id="btn-open-popup">채팅 하기</button>
+						</div>
+					</div>
+				</form>
+			</div>
 		</div>
-	</div>
-
+	</c:forEach>
 	<script>
 
 		function send() {
@@ -416,17 +413,15 @@
 		}
 
 		// schedule.jsp의 모달을 열기 위한 코드
-		const scheduleModal = document.querySelector('#scheduleModal');
-		const btnOpenScheduleModal = document.querySelector('#btn-open-schedule-modal');
-		btnOpenScheduleModal.addEventListener('click', () => {
+		function tmp(num) {
+			const scheduleModal = document.querySelector('#scheduleModal' + num);
 			scheduleModal.style.display = 'block';
-		});
-
+		}
 		// schedule.jsp의 모달을 닫기 위한 코드
-		const btnCloseScheduleModal = document.querySelector('#x-btnImg');
-		btnCloseScheduleModal.addEventListener('click', () => {
+		function tmp2(num) {
+			const scheduleModal = document.querySelector('#scheduleModal' + num);
 			scheduleModal.style.display = 'none';
-		});
+		}
 
 		// 거절 버튼 클릭 시 모달 닫기 (예시로 추가)
 		function refuseSchedule() {
