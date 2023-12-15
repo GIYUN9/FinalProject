@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kh.finalProject.common.vo.Schedule;
+import com.kh.finalProject.mail.EmailCheck;
 import com.kh.finalProject.member.model.vo.Member;
 import com.kh.finalProject.member.model.vo.Professional;
 
@@ -55,4 +56,13 @@ public interface MemberService {
 	ArrayList<Member> memberList(Member m);
 
 	ArrayList<Member> searchMember(String searchText);
+	
+	//난수 저장용
+	int insertEmailRandomNo(EmailCheck e);
+	
+	//난수 불러오기
+	EmailCheck checkRandomNo(EmailCheck e);
+	
+	//
+	EmailCheck checkCreateDate(EmailCheck e);
 }
