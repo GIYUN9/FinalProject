@@ -2,7 +2,6 @@ package com.kh.finalProject.member.model.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -80,13 +79,8 @@ public class MemberDao {
         parameters.put("searchText", searchText);
         return (ArrayList)sqlSession.selectList("memberMapper.searchMem", parameters);
 	}
-	public int adminDeleteMem(SqlSessionTemplate sqlSession, String memberNoList) {
-	    String[] memberNoArray = memberNoList.split(";");
-	    
-	    Map<String, Object> memNoList = new HashMap<>();
-	    memNoList.put("memberNoList", memberNoArray);
-
-		return sqlSession.update("memberMapper.adminDeleteMem", memNoList);
+	public int adminDeleteMem(SqlSessionTemplate sqlSession, int memberNo) {
+		return sqlSession.update("memberMapper.adminDeleteMem", memberNo);
 	}
 	
 	public int insertEmailRandomNo(SqlSessionTemplate sqlSession, EmailCheck e) {
@@ -99,6 +93,7 @@ public class MemberDao {
 	
 	public EmailCheck checkCreateDate(SqlSessionTemplate sqlSession, EmailCheck e) {
 		return sqlSession.selectOne("memberMapper.checkCreateDate", e);
-	}
+	}	
+	
 }
 

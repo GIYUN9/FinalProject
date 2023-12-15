@@ -1,7 +1,7 @@
 package com.kh.finalProject.member.model.service;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -117,8 +117,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public int adminDeleteMem(String memberNoList) {
-		return memberDao.adminDeleteMem(sqlSession, memberNoList);
+	public int adminDeleteMem(int memberNo) {
+		return memberDao.adminDeleteMem(sqlSession, memberNo);
 	}
 
 }
