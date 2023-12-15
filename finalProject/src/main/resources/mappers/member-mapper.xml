@@ -81,6 +81,17 @@
 			AND STATUS = 'Y'
 	</select>
 	
+	<!-- 이메일이랑 휴대폰 번호 체크 -->
+	<select id="emailPhoneCheck" resultMap="memberResult">
+		SELECT MEM_EMAIL,
+			MEM_PWD,
+			MEM_NAME
+		FROM MEMBER
+		WHERE MEM_EMAIL = #{memberEmail}
+			AND PHONE = #{phone}
+			AND STATUS = 'Y'
+	</select>
+	
 	<!-- 로그인 -->
 	<select id="loginMember" resultMap="memberResult">
 		SELECT MEM_NO,
@@ -133,6 +144,13 @@
 				PHONE = #{phone},
 				POINT = #{point}
 		WHERE MEM_NO = #{memberNo}
+	</update>
+	
+	<!-- 이메일로 비밀번호 변경시 업데이트 -->
+	<update id="updateUserPwd">
+		UPDATE MEMBER 
+		SET MEM_PWD = #{memberPwd}
+		WHERE MEM_EMAIL = #{memberEmail}
 	</update>
 	
 	<!-- 멤버번호로 프로페셔널테이블 불러오는 쿼리 -->
