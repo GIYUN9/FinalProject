@@ -63,21 +63,21 @@ public class BoardController {
 	
 	//도와줄게요 리스트
 	@RequestMapping(value="helpList.bo")
-	public ModelAndView helpSelectList(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv, Board b, Attachment at) {
+	public ModelAndView helpSelectList(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv, Attachment at) {
 		int listCount = boardService.seleteHelpListCount();
 			
 		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
 		ArrayList<Board> list = boardService.helpselectList(pi);
 		
-		for(int i = 0; i < list.size(); i++) {
-			System.out.println(b.getBoardNo());
-		}
-//		for(Board b : list) {
+//		
+		for(Board b : list) {
+			
 //			b.getBoardNo(); // 해당 키를 이용해서 첨부파일 가져옴
 //			b.setChangeName(changeName);// 가져온 첨부파일 이름 넣어줌
 //			b.setFilePath(filePath); // 가져온 첨부파일 경로 넣어줌
 //			
-//		}
+		}
+			
 			
 		mv.addObject("pi",pi)
 			.addObject("list",list)
