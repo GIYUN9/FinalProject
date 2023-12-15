@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>도와줄게요 게시글 작성</title>
+<title>도와주세요 게시글 수정</title>
 <style>
 	*,
 	*::before,
@@ -140,7 +140,7 @@
         margin-top: 15px;
     }
     .aa{
-
+	
     }
     .bb{
         position: absolute;
@@ -232,10 +232,10 @@
             <div class="helpu-top-section">
                 <img class="hu-close-btn" src="././resources/icon/close.png">
                     <div class="hu-top-section">
-                        <p style="margin-bottom: 2rem;">도와줄게요 게시글 작성</p>
+                        <p style="margin-bottom: 2rem;">도와주세요 수정</p>
                     </div>
-               <form method="post" action="helpInsert.bo" enctype="multipart/form-data">
-               	<input type="hidden" value="${loginUser.memberNo}" name="memberNo">
+               <form method="post" action="helpmeUpdate.bo" enctype="multipart/form-data">
+               	<input type="hidden" value="${b.boardNo}" name="boardNo">
                     <div class="hu-align">
                         <div class="hu-input-area">                   
                            <div class="category">
@@ -256,13 +256,13 @@
                                 <div class="bb">
                                     제목
                                 </div>
-                                <input class="hu-title" type="text" name="boardTitle"/>
+                                <input class="hu-title" type="text" name="boardTitle" value="${b.boardTitle }">
                             </div>  
                             <div class="aa">
                                 <div class="cc">
                                     내용
                                 </div>
-                                <textarea class="hu-content" type="text" name="boardContent"></textarea>
+                                <textarea class="hu-content" type="text" name="boardContent">${b.boardContent}</textarea>
                             </div>  
                       		<div class="aa">
                                 <label class="hu-upfile" for="hu-upfile">
@@ -270,17 +270,16 @@
                                     <img class="clip-img" src="././resources/icon/paperclip.png">
                                 </label>
                                 <div class="hu-uploaded">
-                                    <input class="hu-filename" type=text id="fileName" name="upfile">
+                                    <input class="hu-filename" type="text" id="fileName" name="upfile">
                                 </div>
                                 <div class="dd">
                                     파일첨부
                                 </div>
                                 <input id="hu-upfile" class="hu-upfile" type="file" name="upfile" style="display: none;" onchange="javascript:document.getElementById('fileName').value = this.value">
-                                
                             </div>  
                        
                             <div class="aa">
-                                <input class="hu-price" type="number" id="price" name="price" placeholder="최소 1,000">
+                                <input class="hu-price" type="number" id="price" name="price" placeholder="최소 1,000" value="${b.price}">
                                 <p class="price-measure2">원</p>
                                     <div class="ee">
                                         희망가격
@@ -290,7 +289,7 @@
                                <div class="cate-no" style="top: 328px; left: -77px;">
                                    게시판
                                </div>
-                               <select name="boardType" id="boardType-check">
+                               <select name="boardType" id="boardType-check" value="${b.boardType }">
                                		<option value="1">도와줄게요</option>
                                		<option value="2">도와주세요</option>
                                </select>
@@ -299,7 +298,7 @@
                     </div>
                     <div class="hu-btn-area">
                         <button type="reset" class="hu-cancle-btn">취소</button>
-                        <button type="submit" class="hu-submit-btn">등록</button>
+                        <button type="submit" class="hu-submit-btn">수정</button>
                     </div>
                 </form>
             </div>
@@ -317,7 +316,6 @@
         input.value = formatValue;
     }
     })
-    
 </script>
 
 

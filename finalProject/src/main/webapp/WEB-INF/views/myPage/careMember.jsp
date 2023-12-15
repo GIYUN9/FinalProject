@@ -217,10 +217,10 @@
                                 <tr>
                                     <th style="width: 8%;">선택</th>
                                     <th style="width: 8%;">번호</th>
-                                    <th style="width: 35%;">이메일</th>
-                                    <th style="width: 13%;">이름</th>
+                                    <th style="width: 33%;">이메일</th>
+                                    <th style="width: 14%;">이름</th>
                                     <th style="width: 17%;">구분</th>
-                                    <th style="width: 19%;">가입일</th>
+                                    <th style="width: 23%;">가입일</th>
                                 </tr>							                         
                             </thead>
                             <tbody>
@@ -233,7 +233,7 @@
 	                                    <td>
 											<c:choose>
 												<c:when test="${m.memberPro == 1}">
-													일반 회원
+													일반회원
 												</c:when>
 												<c:when test="${m.memberPro == 2}">
 													전문가
@@ -246,11 +246,11 @@
                             </tbody>
                         </table>
                     </div>
-                    <button class="ad-btn">탈퇴</button>
+                    <button class="ad-btn" onclick="a()">탈퇴</button>
 				</div>
                 <div>
                     <div class="user-info2-top">
-                        회원관리
+						회원관리
                     </div>
                     <div class="user-info2">
 
@@ -264,121 +264,131 @@
 	</div>
 	<jsp:include page="../common/footer.jsp" />
 	
-	<script>
+	<script>        
+	const cateMemberValue = {}
+	
+	 let globalMemberNoList = [];
+    $(document).ready(function() {
+    	addCheckBoxEvent();
+    	displaySelectedMembers();
+        $('#searchInput').on('keyup', function() {  	
+            let searchText = $(this).val().toLowerCase();
+            console.log("온키업 텍스트:", searchText); // 이 줄을 추가하여 searchText 값을 콘솔에 출력
+            drawMemberList(searchText);
+        });
+    });	
+    
+    function addCheckBoxEvent(){
+	 	let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+	    let userInfo2Div = document.querySelector('.user-info2');
+	    let cancelButton = document.querySelector('.ad-can');
+	    let tableRows = document.querySelectorAll('.ad-table tbody tr');
+	
+	    // 각 체크박스에 클릭 이벤트 리스너 추가
+	    checkboxes.forEach(function(checkbox) {
+	        checkbox.onchange = function(){
+	        	 displaySelectedMembers();
+	        }
+	    });
+	    // 나머지 코드 작성 ...
+	    cancelButton.onclick = function(){
+	    	// 취소 버튼 클릭 시 align-mem의 내용 초기화 및 체크박스의 checked 해제
+	    	userInfo2Div.innerHTML = '';
+	        checkboxes.forEach(function(checkbox) {
+	            checkbox.checked = false;
+	        });
+	    }
+    }
+		
     function displaySelectedMembers() {
-        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        var userInfo2Div = document.querySelector('.user-info2');
+    	console.log("??")
+        let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        let userInfo2Div = document.querySelector('.user-info2');
+        let memberNoList = [];
 
-        // div의 내용 지우기
-        userInfo2Div.innerHTML = '';
+       
 
         // 체크박스를 통해 선택된 것을 찾기 위해 반복
         checkboxes.forEach(function(checkbox, index) {
+
             if (checkbox.checked) {
                 // 해당하는 <td> 요소 가져오기
-                var tds = checkbox.parentElement.parentElement.getElementsByTagName('td');
+                let tds = checkbox.parentElement.parentElement.getElementsByTagName('td');
 
                 // <td> 요소에서 값 추출
-                var userType = tds[4].innerText;
-                var userName = tds[3].innerText;
-                var userNo = tds[1].innerText;
-                var userEmail = tds[2].innerText;
+                let userNo = tds[1].innerText;
+                
+                memberNoList.push(userNo);
+                checkbox.checked = true;
 
-                // align-mem에 두 개의 div 추가
-                var alignMemDiv = document.createElement('div');
-                alignMemDiv.classList.add('align-mem');
+                
+                if (!isUserNoAdded(userNo, userInfo2Div)) {
 
-                // sel-mem 추가
-                var selMemDiv = document.createElement('div');
-                selMemDiv.classList.add('sel-mem');
+	                let userType = tds[4].innerText;
+	                let userName = tds[3].innerText;
+	                let userEmail = tds[2].innerText;
 
-                var upperTextSpanSelMem = document.createElement('span');
-                upperTextSpanSelMem.classList.add('upper-text');
-                upperTextSpanSelMem.innerText = userType;
-                selMemDiv.appendChild(upperTextSpanSelMem);
-
-                var lowerTextSpanSelMem = document.createElement('span');
-                lowerTextSpanSelMem.classList.add('lower-text');
-                lowerTextSpanSelMem.innerText = userName;
-                selMemDiv.appendChild(lowerTextSpanSelMem);
-
-                alignMemDiv.appendChild(selMemDiv);
-
-                // sel-mem2 추가
-                var selMem2Div = document.createElement('div');
-                selMem2Div.classList.add('sel-mem2');
-
-                var upperTextSpanSelMem2 = document.createElement('span');
-                upperTextSpanSelMem2.classList.add('upper-text');
-                upperTextSpanSelMem2.innerText = 'No. ' + userNo;
-                selMem2Div.appendChild(upperTextSpanSelMem2);
-
-                var lowerTextSpanSelMem2 = document.createElement('span');
-                lowerTextSpanSelMem2.classList.add('lower-text');
-                lowerTextSpanSelMem2.innerText = userEmail;
-                selMem2Div.appendChild(lowerTextSpanSelMem2);
-
-                alignMemDiv.appendChild(selMem2Div);
-
-                // user-info2Div에 alignMemDiv 추가
-                userInfo2Div.appendChild(alignMemDiv);
+	                // align-mem에 두 개의 div 추가
+	                let alignMemDiv = document.createElement('div');
+	                alignMemDiv.classList.add('align-mem');
+	
+	                // sel-mem 추가
+	                let selMemDiv = document.createElement('div');
+	                selMemDiv.classList.add('sel-mem');
+	
+	                let upperTextSpanSelMem = document.createElement('span');
+	                upperTextSpanSelMem.classList.add('upper-text');
+	                upperTextSpanSelMem.innerText = userType;
+	                selMemDiv.appendChild(upperTextSpanSelMem);
+	
+	                let lowerTextSpanSelMem = document.createElement('span');
+	                lowerTextSpanSelMem.classList.add('lower-text');
+	                lowerTextSpanSelMem.innerText = userName;
+	                selMemDiv.appendChild(lowerTextSpanSelMem);
+	
+	                alignMemDiv.appendChild(selMemDiv);
+	
+	                // sel-mem2 추가
+	                let selMem2Div = document.createElement('div');
+	                selMem2Div.classList.add('sel-mem2');
+	
+	                let upperTextSpanSelMem2 = document.createElement('span');
+	                upperTextSpanSelMem2.classList.add('upper-text');
+	                upperTextSpanSelMem2.innerHTML = 'No. ' + '<span class="select-user-no">' + userNo + '</span>';
+	                selMem2Div.appendChild(upperTextSpanSelMem2);
+	
+	                let lowerTextSpanSelMem2 = document.createElement('span');
+	                lowerTextSpanSelMem2.classList.add('lower-text');
+	                lowerTextSpanSelMem2.innerText = userEmail;
+	                selMem2Div.appendChild(lowerTextSpanSelMem2);
+	
+	                alignMemDiv.appendChild(selMem2Div);
+	
+	                // user-info2Div에 alignMemDiv 추가
+	                userInfo2Div.appendChild(alignMemDiv);
+                }
             }
         });
+      
+        let memberNoListString = memberNoList.toString();
+        console.log('memberNoList 값:', memberNoList);
+        console.log('globalMemberNoList 값:', globalMemberNoList);
+        console.log('memberNoListString 값:', memberNoListString);
     }
 
-    // 첫 번째 블록
+ 	// 이미 추가된 정보인지 확인하는 함수
+    function isUserNoAdded(userNo, userInfo2Div) {
+        let addedUserNos = Array.from(userInfo2Div.querySelectorAll('.upper-text'))
+            .map(span => span.innerText.replace('No. ', ''));
+        
+        return addedUserNos.includes(userNo);
+    }
+
     document.addEventListener("DOMContentLoaded", function() {
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
         var userInfo2Div = document.querySelector('.user-info2');
         var cancelButton = document.querySelector('.ad-can');
-        var searchInput = document.querySelector('.src-mem');
-        var searchIcon = document.querySelector('.src-img');
-        var tableRows = document.querySelectorAll('.ad-table tbody tr');
-
-        // 각 체크박스에 클릭 이벤트 리스너 추가
-        checkboxes.forEach(function(checkbox) {
-            checkbox.addEventListener('change', function() {
-                displaySelectedMembers();
-            });
-        });
-
-        // 나머지 코드 작성 ...
-        cancelButton.addEventListener('click', function() {
-            // 취소 버튼 클릭 시 align-mem의 내용 초기화 및 체크박스의 checked 해제
-            userInfo2Div.innerHTML = '';
-            checkboxes.forEach(function(checkbox) {
-                checkbox.checked = false;
-            });
-        });
-    });
-
-    // 두 번째 블록
-    document.addEventListener("DOMContentLoaded", function() {
-        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        var userInfo2Div = document.querySelector('.user-info2');
-        var cancelButton = document.querySelector('.ad-can');
-
-        checkboxes.forEach(function(checkbox) {
-            checkbox.addEventListener('change', function() {
-                // 첫 번째 블록에서 정의한 함수 호출
-                displaySelectedMembers();
-            });
-        });
-
-        // 나머지 코드 작성 ...
-        cancelButton.addEventListener('click', function() {
-            // 취소 버튼 클릭 시 align-mem의 내용 초기화 및 체크박스의 checked 해제
-            userInfo2Div.innerHTML = '';
-            checkboxes.forEach(function(checkbox) {
-                checkbox.checked = false;
-            });
-        });
-    });
-    document.addEventListener("DOMContentLoaded", function() {
-        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        var userInfo2Div = document.querySelector('.user-info2');
-        var cancelButton = document.querySelector('.ad-can');
-	        var searchInput = document.querySelector('.src-mem');
+	    var searchInput = document.querySelector('.src-mem');
         var tableRows = document.querySelectorAll('.ad-table tbody tr');
 
         // 각 체크박스에 클릭 이벤트 리스너 추가
@@ -403,14 +413,6 @@
         }
     });
     
-    $(document).ready(function() {
-        $('#searchInput').on('keyup', function() {  	
-            let searchText = $(this).val().toLowerCase();
-            console.log("온키업 텍스트:", searchText); // 이 줄을 추가하여 searchText 값을 콘솔에 출력
-            drawMemberList(searchText);
-        });
-    });	
-    
     function drawMemberList(text){
         // AJAX를 사용하여 서버에 데이터 요청
         $.ajax({
@@ -419,8 +421,9 @@
             data: { searchText: text }, // 검색 텍스트를 서버에 전달
             success: function(data) {
                 // 서버에서 받은 데이터를 사용하여 회원 목록을 다시 그림
-                // 예시: 받은 데이터를 이용하여 테이블의 tbody를 업데이트
                 updateMemberTable(data);
+                addCheckBoxEvent();
+                displaySelectedMembers();         
             },
             error: function(error) {
                 console.error('멤버 데이터를 가져오지 못함 :', error);
@@ -429,8 +432,7 @@
     }
     
     function updateMemberTable(data) {
-        // 받은 데이터를 이용하여 테이블의 tbody를 업데이트
-        // 예시: 받은 데이터를 순회하면서 각 행을 업데이트
+        // 받은 데이터를 순회하면서 각 행을 업데이트
         $('#memberTable tbody').empty(); // 현재 tbody 내용을 비움
 
         $.each(data, function(index, member) {
@@ -439,19 +441,41 @@
                 '<td>' + member.memberNo + '</td>' +
                 '<td>' + member.memberEmail + '</td>' +
                 '<td>' + member.memberName + '</td>' +
-                '<td>' + (member.memberPro === 1 ? '일반' : '') + '</td>' +
+                '<td>' + (member.memberPro === 1 ? '일반회원' : '') + '</td>' +
                 '<td>' + member.enrollDate + '</td>' +
                 '</tr>';
             $('#memberTable tbody').append(newRow);
         });
     }
-    
-    let userNo = tds[1].innerText;
- 	// alignMemDiv에 userNo를 추가
-    let userNoDiv = document.createElement('div');
-    userNoDiv.classList.add('user-no');
-    userNoDiv.innerText = 'No. ' + userNo;
-    alignMemDiv.appendChild(userNoDiv);
+
+    function a() {
+        let memberNos = [];
+
+        $(".select-user-no").each(function(index, element) {
+            // 각 요소에서 내용을 가져와서 사용할 수 있습니다.
+            let memberNo = $(element).text();
+            memberNos.push(memberNo);
+            console.log("memberNo:", memberNo);
+            console.log("memberNos:", memberNos);
+        });
+        
+        let memberNosString = memberNos.toString();
+        console.log("memberNosString:", memberNosString);
+
+    	
+        $.ajax({
+            type: 'GET', 
+            url: 'adDelete.me',  
+            data: { memberNos: memberNosString },  
+            success: function(response) {
+            },
+            error: function(error) {
+            }
+        });
+    }
 	</script>
+	<!-- aligm-mem에 있는 값과 체크박스 비교해서 같으면 체크? 
+	
+	-->
 </body>
 </html>

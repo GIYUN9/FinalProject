@@ -27,4 +27,5 @@ public class Schedule {
 	
 	private String memberName;
 	private String categoryName;
+	private String phone;
 }

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>도와줄게요 게시글 작성</title>
+<title>도와주세요 게시글 작성</title>
 <style>
 	*,
 	*::before,
@@ -232,9 +232,9 @@
             <div class="helpu-top-section">
                 <img class="hu-close-btn" src="././resources/icon/close.png">
                     <div class="hu-top-section">
-                        <p style="margin-bottom: 2rem;">도와줄게요 게시글 작성</p>
+                        <p style="margin-bottom: 2rem;">도와주세요 게시글 작성</p>
                     </div>
-               <form method="post" action="helpInsert.bo" enctype="multipart/form-data">
+               <form method="post" action="helpmeInsert.bo" enctype="multipart/form-data">
                	<input type="hidden" value="${loginUser.memberNo}" name="memberNo">
                     <div class="hu-align">
                         <div class="hu-input-area">                   
@@ -256,13 +256,13 @@
                                 <div class="bb">
                                     제목
                                 </div>
-                                <input class="hu-title" type="text" name="boardTitle"/>
+                                <input class="hu-title" type="text" name="boardTitle" value="${b.boardTitle}"/>
                             </div>  
                             <div class="aa">
                                 <div class="cc">
                                     내용
                                 </div>
-                                <textarea class="hu-content" type="text" name="boardContent"></textarea>
+                                <textarea class="hu-content" type="text" name="boardContent" value="${b.boardContent}"></textarea>
                             </div>  
                       		<div class="aa">
                                 <label class="hu-upfile" for="hu-upfile">
@@ -270,13 +270,12 @@
                                     <img class="clip-img" src="././resources/icon/paperclip.png">
                                 </label>
                                 <div class="hu-uploaded">
-                                    <input class="hu-filename" type=text id="fileName" name="upfile">
+                                    <input class="hu-filename" type="text" id="fileName" name="upfile">
                                 </div>
                                 <div class="dd">
                                     파일첨부
                                 </div>
                                 <input id="hu-upfile" class="hu-upfile" type="file" name="upfile" style="display: none;" onchange="javascript:document.getElementById('fileName').value = this.value">
-                                
                             </div>  
                        
                             <div class="aa">
@@ -317,7 +316,6 @@
         input.value = formatValue;
     }
     })
-    
 </script>
 
 

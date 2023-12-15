@@ -5,9 +5,65 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>도와줄게요 게시글 작성</title>
+<title>도와주세요 상세보기</title>
 <style>
-	*,
+/* .hu-content{
+    height: 157px;
+    width: 300px;
+}
+
+.helpme-board{
+    background-color: white;
+    width: 700px;
+    height: 100%;
+    margin-left: 30%;
+    margin-top: 7%;
+    margin-bottom: 10%;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.hu-submit-btn{
+        background: rgb(218, 76, 60);
+        border: none;
+        border-radius: 4px;
+        width: 100px;
+        height: 30px;
+        color: white;
+        cursor: pointer;
+        margin: 7px;
+        text-align: center;
+    }
+
+.hu-cancle-btn{
+    background-color: rgba(224, 224, 224, 0.5);
+    border: 1px solid rgba(224, 224, 224, 0.5);
+    border-radius: 4px;
+    width: 100px;
+    height: 30px;
+    margin: 7px;
+    text-align: center;
+}
+
+.hu-btn-area{
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    justify-content: center;
+}
+
+.helpu-top-section{
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    margin-top: 15px;
+} */
+
+*,
 	*::before,
 	*::after {
 	margin: 0;
@@ -75,7 +131,7 @@
         height: 157px;
         padding: 10px;
         padding-bottom: 130px;
-        border: 1px solid rgba(96, 96, 96, 0.5);
+        border: none;
         border-radius: 8px;
         margin-bottom: 15px;
         resize: none;
@@ -139,9 +195,7 @@
         flex-direction: row;
         margin-top: 15px;
     }
-    .aa{
 
-    }
     .bb{
         position: absolute;
         left: -71px;
@@ -219,107 +273,121 @@
 	    height: 21px;
     }
     
-    #boardType-check{
+    .helpr-text{
+    	resize:none; 
+    	width:100%;
     }
-
+ 
 </style>
 
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
- 	<div>
-        <div class="helpme-board">
-            <div class="helpu-top-section">
-                <img class="hu-close-btn" src="././resources/icon/close.png">
-                    <div class="hu-top-section">
-                        <p style="margin-bottom: 2rem;">도와줄게요 게시글 작성</p>
-                    </div>
-               <form method="post" action="helpInsert.bo" enctype="multipart/form-data">
-               	<input type="hidden" value="${loginUser.memberNo}" name="memberNo">
-                    <div class="hu-align">
-                        <div class="hu-input-area">                   
-                           <div class="category">
-                               <div class="cate-no">
-                                   카테고리 번호
-                               </div>
-                               <select name="categoryNo" id="category-check">
-                               		<option value="200">200</option>
-                               		<option value="201">201</option>
-                               		<option value="202">202</option>
-                               		<option value="203">203</option>
-                               		<option value="204">204</option>
-                               		<option value="205">205</option>
-                               </select>
-                           </div> 
-                   
-                            <div class="aa">
-                                <div class="bb">
-                                    제목
-                                </div>
-                                <input class="hu-title" type="text" name="boardTitle"/>
-                            </div>  
-                            <div class="aa">
-                                <div class="cc">
-                                    내용
-                                </div>
-                                <textarea class="hu-content" type="text" name="boardContent"></textarea>
-                            </div>  
-                      		<div class="aa">
-                                <label class="hu-upfile" for="hu-upfile">
-                                    파일첨부
-                                    <img class="clip-img" src="././resources/icon/paperclip.png">
-                                </label>
-                                <div class="hu-uploaded">
-                                    <input class="hu-filename" type=text id="fileName" name="upfile">
-                                </div>
-                                <div class="dd">
-                                    파일첨부
-                                </div>
-                                <input id="hu-upfile" class="hu-upfile" type="file" name="upfile" style="display: none;" onchange="javascript:document.getElementById('fileName').value = this.value">
-                                
-                            </div>  
-                       
-                            <div class="aa">
-                                <input class="hu-price" type="number" id="price" name="price" placeholder="최소 1,000">
-                                <p class="price-measure2">원</p>
-                                    <div class="ee">
-                                        희망가격
-                                    </div>
-                            </div> 
-                             <div class="category">
-                               <div class="cate-no" style="top: 328px; left: -77px;">
-                                   게시판
-                               </div>
-                               <select name="boardType" id="boardType-check">
-                               		<option value="1">도와줄게요</option>
-                               		<option value="2">도와주세요</option>
-                               </select>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="hu-btn-area">
-                        <button type="reset" class="hu-cancle-btn">취소</button>
-                        <button type="submit" class="hu-submit-btn">등록</button>
-                    </div>
-                </form>
+
+<div class="helpme-board">
+    <div class="helpu-top-section">
+        <img class="hu-close-btn" src="././resources/icon/close.png">
+            <div class="hu-top-section">
+                <p style="margin-bottom: 2rem;">도와주세요 상세보기</p>
+            </div>
+        
+        <div class="hu-align">
+            <div class="hu-input-area">
+            
+      <table class="table">
+		  <tbody>
+		  
+		    <tr>
+		      <th scope="row">카테고리 번호</th>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		      <td>${b.categoryNo}</td>
+		    </tr>
+		    
+		    <tr>
+		      <th scope="row">제목</th>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		      <td>${b.boardTitle}</td>
+		    </tr>
+		    
+		    <tr>
+		      <th scope="row">내용</th>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		      <td>${b.boardContent}</td>
+		    </tr>
+		    
+		    <tr>
+		      <th scope="row">파일첨부</th>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		      <td>${at.changeName}</td>
+		    </tr>
+		    
+		    <tr>
+		      <th scope="row">희망가격</th>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		      <td>${b.price}</td>
+		    </tr>
+		    
+		    <tr>
+		      <th scope="row">게시판 번호</th>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		      <td>${b.boardType}</td>
+		    </tr>
+		    
+		  </tbody>
+	 </table>
             </div>
         </div>
-    </div>
-<script>
-    const input = document.querySelector('#price');
-    input.addEventListener('keyup', function(e) {
-    let value = e.target.value;
-    value = Number(value.replaceAll(',', ''));
-    if(isNaN(value)) {
-        input.value = 0;
-    }else {
-        const formatValue = value.toLocaleString('ko-KR');
-        input.value = formatValue;
-    }
-    })
-    
-</script>
 
+    
+        <br>
+
+        <div class="hu-btn-area">
+            <a class="hu-submit-btn" onclick="postBtn(1)">수정</a>
+            <a class="hu-cancle-btn" onclick="postBtn(2)">삭제</a>
+        </div>
+        
+        <form action="" method="post" id="form">
+        	<input type="hidden" name="boardNo" value="${b.boardNo}">
+        	<input type="hidden" name="filePath" value="${a.changeName}">
+        </form>
+        
+        <script>
+        	function postBtn(num) {
+                if(num === 1) {
+                    $("#form").attr('action', 'helpmeUpdateForm.bo');
+                } else {
+                    $("#form").attr('action', 'helpmeDelete.bo');
+                }
+                $("#form").submit();
+            }
+        </script>
+        
+    </div>
+</div>
 
 <%@ include file="../common/footer.jsp" %>
 

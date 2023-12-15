@@ -1,8 +1,11 @@
 package com.kh.finalProject.member.model.service;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import com.kh.finalProject.common.vo.Schedule;
+import com.kh.finalProject.mail.EmailCheck;
 import com.kh.finalProject.member.model.vo.Member;
 import com.kh.finalProject.member.model.vo.Professional;
 
@@ -40,6 +43,8 @@ public interface MemberService {
 	
 	//회원탈퇴 서비스
 	int deleteMember(Member m);
+	int adminDeleteMem(int memberNo);
+	
 	
 	//프로필 이미지 변경
 	int updateUserImg(String memberNo, String filePath);
@@ -47,7 +52,6 @@ public interface MemberService {
 	//일정관리  나한테 들어온 리스트
 	ArrayList<Schedule> scheduleList(Schedule s);
 	
-
 	//일정관리 내가 보낸 리스트
 	ArrayList<Schedule> scheduleSendList(Schedule s);
 	
@@ -58,4 +62,13 @@ public interface MemberService {
 	ArrayList<Member> memberList(Member m);
 
 	ArrayList<Member> searchMember(String searchText);
+	
+	//난수 저장용
+	int insertEmailRandomNo(EmailCheck e);
+	
+	//난수 불러오기
+	EmailCheck checkRandomNo(EmailCheck e);
+	
+	//
+	EmailCheck checkCreateDate(EmailCheck e);
 }
