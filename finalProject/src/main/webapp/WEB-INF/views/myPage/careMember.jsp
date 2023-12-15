@@ -369,9 +369,9 @@
         });
       
         let memberNoListString = memberNoList.toString();
-        console.log('memberNoList:', memberNoList);
-        console.log('globalMemberNoList:', globalMemberNoList);
-        console.log('memberNoListString:', memberNoListString);
+        console.log('memberNoList 값:', memberNoList);
+        console.log('globalMemberNoList 값:', globalMemberNoList);
+        console.log('memberNoListString 값:', memberNoListString);
     }
 
  	// 이미 추가된 정보인지 확인하는 함수
@@ -459,9 +459,9 @@
         let memberNosString = memberNos.toString();
     	
         $.ajax({
-            type: 'POST', 
+            type: 'GET', 
             url: 'adDelete.me',  
-            data: { memberNos: memberNosString },  
+            data: { memberNos: memberNo },  
             success: function(response) {
             },
             error: function(error) {
@@ -469,5 +469,8 @@
         });
     }
 	</script>
+	<!-- aligm-mem에 있는 값과 체크박스 비교해서 같으면 체크? 
+		${
+	-->
 </body>
 </html>

@@ -321,6 +321,47 @@
     	cursor: pointer;
     }
 
+    /*password Find*/
+    .input-email{
+        width: 360px;
+        height: 40px;
+        border: 1px solid rgba(231, 229, 229, 0.6);
+        border-radius: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .pf-text{
+        color: rgb(127, 127, 127);
+        margin-top: 10px;
+        margin-bottom: 30px;
+        font-size: 14px;
+    }
+    .pf-div{
+        align-items: center;
+        justify-content: center;
+        width: 462px;
+        height: 312px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn {
+        color: #fff;
+        background-color: rgb(0, 199, 174);
+        border-color: #6c757d;
+    }
+
+    .emailSend-btn{
+        color: #fff;
+        background-color: rgb(0, 199, 174);
+        border: none;
+        width: 360px;
+        height: 40px;
+        border-radius: 5px;
+    }
+    .modal-body{
+        border-radius: 13px;
+    }
 </style>
 </head>
 <body>
@@ -394,9 +435,9 @@
                             <div class="l-text" style="font-weight: bold;">비밀번호</div>
                             <input class="l-pwd-input" name="memberPwd" type="password" style="width: 100%;" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요">
                             <div class="l-align">
-                                <a class="loginSearch" href="#" style="color: black;"> 비밀번호 찾기</a>
+                                <a class="loginSearch" href="#" style="color: black;" data-toggle="modal" data-target="#myModal3"> 비밀번호 찾기</a>
                                 <div class="l-ver-line"></div>
-                                <a class="loginSearch" href="#" style="color: black;"> 회원가입</a>
+                                <a class="loginSearch" href="#" style="color: black;" data-toggle="modal" data-target="#myModal1"> 회원가입</a>
                             </div>
                             <div class="btn-area">
                                 <button type="submit" class="login-email-btn" style="width: 100%;"> 이메일 로그인</button>
@@ -417,7 +458,7 @@
                         <form action="insert.me" method="post" name="joinForm" onsubmit="return join();">
                             <div>
                                 <p>
-                                    	이름
+                                    이름
                                     <span class="as-re">*</span>
                                 </p>
                                 <p>
@@ -439,14 +480,14 @@
                                     <input class="en-input" name ="memberPwd" type="password" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요">
                                 </p>
                                 <p>
-                                        비밀번호확인
+                                    비밀번호확인
                                     <span class="as-re">*</span>
                                 </p>
                                 <p>
                                     <input class="en-input" name ="memberPwd2" type="password" placeholder="올바르게 입력해주세요">
                                 </p>
                                 <p>
-                                    	관심사 선택
+                                    관심사 선택
                                     <span class="as-re">*</span>
                                 </p>
                                	<div class="insert-category">	            
@@ -458,9 +499,9 @@
 		                        	 <br>
 		                        </div>
                                 <div class ="">
-                                	 <br> 
+                                	<br> 
                                 	<p>
-	                                    	휴대폰번호
+	                                    휴대폰번호
 	                                    <span class="as-re">*</span>
 	                                </p>                                   	                           
 	                    			<input type="tel" class="form-control" id="phone" placeholder="010-0000-0000" name="phone"> <br>              
@@ -469,15 +510,24 @@
 				                    <label for="Male">남자</label> &nbsp;&nbsp;
 				                    <input type="radio" id="Female" value="F" name="memberGender">
 				                    <label for="Female">여자</label> &nbsp;&nbsp;
-                                </div> 
-                                
+                                </div>                                 
                                 <br>
-                                <div class="cb-agree-all"><input type="checkbox" name="category" value="selectall" onclick='selectAll(this)'>전체 동의</div>
+                                <div class="cb-agree-all">
+                                    <input type="checkbox" name="category" value="selectall" onclick='selectAll(this)'>
+                                    전체 동의
+                                </div>
                                 <br>
-                                <label><input type="checkbox" name="category" value="agree"> (필수) 이용약관 동의</label>
-                                <label><input type="checkbox" name="category" value="privateAgree"> (필수) 개인정보 수집 및 이용 동의</label>
-                                <label><input type="checkbox" name="category" value="ageagree"> (필수) 14세 이상입니다</label>
-                               
+                                <label>
+                                    <input type="checkbox" name="category" value="agree"> 
+                                    (필수) 이용약관 동의
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="category" value="privateAgree"> 
+                                    (필수) 개인정보 수집 및 이용 동의
+                                </label>
+                                <label><input type="checkbox" name="category" value="ageagree">
+                                     (필수) 14세 이상입니다
+                                </label>                 
                                 <button type="submit" class="sign-up-btn">회원가입</button>
                             </div>                 
                         </form>
@@ -485,8 +535,39 @@
                 </div>
             </div>
         </div>
+        <div style="margin-top: 55px;">
+            <!-- redirect 이후에 알림 메시지를 출력할 부분 -->
+            <div class="alert alert-success" style="display:none">
+              ${successMsg}
+            </div>
+            <!-- 첫번째 모달 -->
+            <div class="modal" id="myModal3" >
+                <div class="modal-dialog">
+                    <h4 class="modal-title" style="text-align: center; font-weight: bold; margin-top: 70px; margin-bottom: -50px; color: white;">비밀번호 찾기</h4>
+                    <div class="modal-content" style="height: 400px; align-items: center;">
+                    <form action="sendmail.pwd" method="post">
+                        <div class="pf-div">
+                            <h5>가입한 이메일 주소를 입력해주세요</h5>
+                            <input class="input-email" name="memberEmail" type="text" placeholder="example@poomasi.com">
+                            <div class="pf-text">
+                                가입하신 이메일 주소를 입력해주시면<br>
+                                새로운 비밀번호를 설정 가능한 링크를 보내드립니다.
+                            </div>
+                            <button type="submit" class="emailSend-btn">이메일 전송하기</button> 
+                        </div>
+                       </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 	<script>
+
+        function emailSend() {
+            // 여기에 이메일 인증을 처리하는 코드 작성 필요
+            // 이메일 인증 API를 사용 -> 그에 맞는 함수를 호출하거나 필요한 동작을 수행
+        }
 		//회원가입 마지막 전체 체크박스
+
 		function selectAll(selectAll){
 			const checkboxes = document.getElementsByName('category');
            
@@ -612,6 +693,31 @@
           //  }
 
         }
+        $(document).ready(function(){
+            // #myModal3이 표시될 때
+            $('#myModal3').on('show.bs.modal', function () {
+                // #myModal의 스타일을 변경
+                $('#myModal').css('display', 'none');
+            });
+
+            // #myModal3이 숨겨질 때
+            $('#myModal3').on('hidden.bs.modal', function () {
+                // #myModal의 스타일을 변경
+                $('#myModal').css('display', 'block');
+            });
+
+            // #myModal1이 표시될 때
+            $('#myModal1').on('show.bs.modal', function () {
+                // #myModal의 스타일을 변경
+                $('#myModal').css('display', 'none');
+            });
+
+            // #myModal1이 숨겨질 때
+            $('#myModal1').on('hidden.bs.modal', function () {
+                // #myModal의 스타일을 변경
+                $('#myModal').css('display', 'block');
+            });
+        });
 
         function kakaoLogin() {
           // 여기에 카카오 로그인을 처리하는 코드 작성 필요
