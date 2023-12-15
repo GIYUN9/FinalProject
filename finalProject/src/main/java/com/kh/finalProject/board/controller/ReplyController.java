@@ -33,20 +33,31 @@ public class ReplyController {
 		if(result > 0) {
 			response.getWriter().print(result);
 		} else {
-			System.out.println("실패실패");
+			System.out.println("댓글 등록 실패");
 		}
 
 	}
 	
 	@RequestMapping(value="list.re")
-	public void replyList(Board b, HttpServletResponse response) throws JsonIOException, IOException {
-		
-		
+	public void replyList(Board b, HttpServletResponse response) throws JsonIOException, IOException {		
 		ArrayList<Reply> list = boardService.selectReplyList(b);
 		
 		System.out.println(list);
 		response.setContentType("application/json; charset=utf-8");
 		new Gson().toJson(list, response.getWriter());
+	}
+	
+	@RequestMapping(value="delete.re")
+	public void deleteReply(int replyNo, HttpServletResponse response) throws IOException {
+		
+		int result = boardService.deleteReply(replyNo);
+		
+		if(result > 0 ) {
+			response.getWriter().print(result);
+		}else {
+			System.out.println("댓글삭제 실패!!");
+		}
+
 	}
 
 }

@@ -162,4 +162,8 @@ public class BoardDao {
 	public ArrayList<Reply> selectReplyList(SqlSessionTemplate sqlSession, Board b){
 		return (ArrayList)sqlSession.selectList("boardMapper.selectReplyList", b);
 	}
+	
+	public int deleteReply(SqlSessionTemplate sqlSession, int replyNo) {
+		return sqlSession.update("boardMapper.deleteReply", replyNo);
+	}
 }

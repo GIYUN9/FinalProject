@@ -14,6 +14,11 @@ public interface MemberService {
 	//아이디 중복체크
 	Member emailCheck(Member m);
 	
+	//아이디랑 이메일 체크
+	Member emailPhoneCheck(Member m);
+	
+	int updateUserPwd(Member user);
+	
 	// 회원정보 불러오는 서비스(select)
 	Member userInfo(Member m);
 	

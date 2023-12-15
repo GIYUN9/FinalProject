@@ -59,6 +59,8 @@ public class MemberServiceImpl implements MemberService {
 	public Member emailCheck(Member m) {
 		return memberDao.emailCheck(sqlSession, m);
 	}
+	
+ 
 
 	@Override
 	public int deleteMember(Member m) {
@@ -98,5 +100,18 @@ public class MemberServiceImpl implements MemberService {
     public ArrayList<Member> searchMember(String searchText) {
         return memberDao.searchMember(sqlSession, searchText);
     }
+    
+    
+    @Override
+	public Member emailPhoneCheck(Member m) {
+		return memberDao.emailPhoneCheck(sqlSession, m);
+	}
+    
+    @Override
+    public int updateUserPwd(Member user) {
+    	return memberDao.updateUserPwd(sqlSession, user);
+    }
+
+
 
 }

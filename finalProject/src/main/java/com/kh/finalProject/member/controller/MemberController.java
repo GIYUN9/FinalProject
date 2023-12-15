@@ -277,6 +277,34 @@ public class MemberController {
 		return "redirect:/schedule.me?toMemberNo="+ tmp;
 	}
 	
+	//이메일에서 링크 클릭했을 경우 페이지 이동해주는 기능
+	@RequestMapping(value = "/pwdChangePage.me")
+	public String pwdChangePage(){
+		return "myPage/changePwdEmail";
+	}
+	
+	//이메일에서 링크타고 와서 이메일과 비밀번호 입력해서 둘의 일치여부 확인 후 비밀번호 변경하는 기능
+	@RequestMapping(value = "pwdChangeEmail.me")
+	public String pwdChangeEmail(Member m, HttpSession session, Model model) {
+		
+		String encPwd = bcryptPasswordEncoder.encode((m.getMemberPwd()));
+		m.setMemberPwd(encPwd);
+		
+		Member user = memberService.emailPhoneCheck(m);
+		
+		System.out.println("유저 : " + user);
+		
+		if(user == null) {
+			System.out.println("if문 : " +user);
+			model.addAttribute("errorMsg", "이메일과 휴대전화 번호가 일치하지 않습니다.");
+			return "common/errorPage";
+		}else {		
+			System.out.println("if문 : " +user);
+			 memberService.updateUserPwd(m);
+			 return "redirect:/";
+		}
+	}
+	
 }
 
 /*

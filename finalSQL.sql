@@ -294,13 +294,32 @@ INSERT INTO REPLY (
 		ORDER BY REPLY_NO DESC;
 ---闘沓先芝
 
+SELECT MEM_EMAIL,
+			MEM_PWD,
+			MEM_NAME
+		FROM MEMBER
+		WHERE MEM_EMAIL = 'aaa@naver.com'
+			AND PHONE ='010-2222-2222'
+			AND STATUS = 'Y';
+            
+UPDATE MEMBER 
+		SET MEM_PWD = '9999'
+		WHERE MEM_EMAIL = 'aaa@naver.com';
+
 SELECT  R.REPLY_NO,
 				R.REPLY_CONTENT,
 				M.MEM_NAME,
-				R.CREATEDATE        		        
+				TO_CHAR(R.CREATEDATE, 'YYYY-MM-DD') AS R.CREATEDATE      		        
 		FROM	REPLY R	
 		JOIN MEMBER M ON (R.MEM_NO = M.MEM_NO) 
 		WHERE R.STATUS = 'Y'
 			AND BOARD_NO =1013
 		ORDER BY REPLY_NO DESC;
+        
+        
+UPDATE BOARD
+			SET BOARD_TITLE = 'せせせせせ',
+				BOARD_CONTENT = 'しししししし'
+		WHERE BOARD_NO = 1001
+			AND STATUS = 'Y';
 commit;

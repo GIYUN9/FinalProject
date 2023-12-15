@@ -95,5 +95,7 @@ public interface BoardService {
 	int insertReply(Reply r);
 	
 	ArrayList<Reply> selectReplyList(Board b);
+	
+	int deleteReply(int replyNo);
 
 }

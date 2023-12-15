@@ -203,9 +203,13 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public ArrayList<Reply> selectReplyList(Board b){
-		
+	public ArrayList<Reply> selectReplyList(Board b){		
 		return boardDao.selectReplyList(sqlSession, b);
+	}
+	
+	@Override
+	public int deleteReply(int replyNo) {
+		return boardDao.deleteReply(sqlSession, replyNo);
 	}
 	
 }

@@ -11,7 +11,10 @@
 	
 	<br>
 	<div align= "center">
-		<h1 style="font-weight:bold; color:red;">${errorMsg }</h1>
+		<h1 style="margin-top: 150px;
+    font-weight: bold;
+    color: red;
+    margin-bottom: 500px;">${errorMsg }</h1>
 	</div>
 	<br>
 	
