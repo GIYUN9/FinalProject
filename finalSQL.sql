@@ -240,13 +240,12 @@ INSERT INTO CATEGORY VALUES(SEQ_CNO.NEXTVAL, '요리');
 INSERT INTO PROFESSIONAL VALUES(SEQ_PNO.NEXTVAL, '피아니스트', 200, 2);
 
 --게시판(보드)
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요1', 50000, 1, '2020-01-01', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요2', 50000, 1, '2020-02-01', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요3', 50000, 1, '2020-03-01', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요4', 50000, 1, '2020-04-01', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요5', 50000, 1, '2020-05-01', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요6', 50000, 1, '2020-06-01', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요7', 50000, 1, '2020-07-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-01-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-02-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-03-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-04-01', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '도와주세요', '피아노 알려주세요', 50000, 2, '2020-01-30', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '운동도와주세요', '테니스 알려주세요', 50000, 2, '2020-02-20', 'Y', 2, 200);
 INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '커뮤니티용 음악레슨합니다1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 50000, 3, '2020-01-02', 'Y', 2, 200);
 INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '얼마예요1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 4, '2020-01-03', 'Y', 2, 200);
 INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '함께해요1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 5, '2020-01-04', 'Y', 2, 200);
@@ -307,8 +306,8 @@ INSERT INTO REPLY (
 		WHERE R.STATUS = 'Y'
 			AND BOARD_NO = 1013
 		ORDER BY REPLY_NO DESC;
+        
 ---트랜잭션
-
 SELECT  R.REPLY_NO,
 				R.REPLY_CONTENT,
 				M.MEM_NAME,

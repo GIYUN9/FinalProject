@@ -22,6 +22,4 @@ public class Reply {
 	
 	private int memberNo;
 	private String memberName;
-	
-	
 }

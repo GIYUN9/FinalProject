@@ -36,19 +36,18 @@ public class BoardDao {
 		return sqlSession.insert("boardMapper.helpinsertBoard", b);
 	}
 
-	public int updateBoard(SqlSessionTemplate sqlSession, Board b) {
-		return sqlSession.update("boardMapper.updateBoard", b);
+	public int helpUpdateBoard(SqlSessionTemplate sqlSession, Board b) {
+		return sqlSession.update("boardMapper.helpUpdateBoard", b);
 	}
 	
-	public int deleteBoard(SqlSessionTemplate sqlSession, int boardNo) {
-		return sqlSession.update("boardMapper.deleteBoard", boardNo);
+	public int helpDeleteBoard(SqlSessionTemplate sqlSession, int boardNo) {
+		return sqlSession.update("boardMapper.helpDeleteBoard", boardNo);
 	}
 	
 	public Board selectBoard(SqlSessionTemplate sqlSession, int boardNo) {
 		return sqlSession.selectOne("boardMapper.selectBoard", boardNo);
 	}
 	
-
 	public int helpAttachment(SqlSessionTemplate sqlSession, Attachment at) {
 		return sqlSession.insert("boardMapper.helpAttachment", at);
 	}
@@ -56,7 +55,11 @@ public class BoardDao {
 	public int helpselect(SqlSessionTemplate sqlSession) {
 		return sqlSession.selectOne("boardMapper.helpselect");
 	}
-
+	
+	public Board helpSelectBoard(SqlSessionTemplate sqlSeesion, int boardNo) {
+		return sqlSeesion.selectOne("boardMapper.helpSelectBoard", boardNo);
+	}
+	
 	public int selectCommListCount(SqlSessionTemplate sqlSeesion) {
 		return sqlSeesion.selectOne("boardMapper.selectCommListCount");
 	}
@@ -145,6 +148,42 @@ public class BoardDao {
 	}
 	public ArrayList<Board> findBoardList5(SqlSessionTemplate sqlSeesion, String keyWord){
 		return (ArrayList)sqlSeesion.selectList("boardMapper.findBoardList5", keyWord);
+	}
+	
+	public ArrayList<Board> helpmeselectList(SqlSessionTemplate sqlSession, PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		return (ArrayList)sqlSession.selectList("boardMapper.helpmeselectList", null, rowBounds);
+	}
+	
+	public int seleteHelpmeListCount(SqlSessionTemplate sqlSeesion) {
+		return sqlSeesion.selectOne("boardMapper.seleteHelpmeListCount");
+	}
+	
+	public int helpmeInsertBoard(SqlSessionTemplate sqlSession, Board b) {
+		return sqlSession.insert("boardMapper.helpmeInsertBoard", b);
+	}
+	
+	public Board helpmeselectOne(SqlSessionTemplate sqlSeesion, Board b) {
+		return sqlSeesion.selectOne("boardMapper.helpmeselectOne", b);
+	}
+	
+	public int helpmeAttachment(SqlSessionTemplate sqlSeesion, Attachment at) {
+		return sqlSeesion.insert("boardMapper.helpmeAttachment", at);
+	}
+	
+	public int helpmeUpdateBoard(SqlSessionTemplate sqlSeesion, Board b) {
+		return sqlSeesion.update("boardMapper.helpmeUpdateBoard", b);
+	}
+	
+	public int helpmeDeleteBoard(SqlSessionTemplate sqlSeesion, int boardNo) {
+		return sqlSeesion.update("boardMapper.helpmeDeleteBoard", boardNo);
+	}
+	
+	public Board helpmeSelectBoard(SqlSessionTemplate sqlSeesion, int boardNo) {
+		return sqlSeesion.selectOne("boardMapper.helpmeSelectBoard", boardNo);
 	}
 	
 	public int updateCommBoard(SqlSessionTemplate sqlSession, Board b) {
