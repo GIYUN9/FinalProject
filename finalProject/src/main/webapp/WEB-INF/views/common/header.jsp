@@ -270,6 +270,12 @@
         height: 45px;
         width: 400px;
     }
+    .en-input3{
+        border: 1px solid rgba(96, 96, 96, 0.5);;
+        border-radius: 8px;
+        height: 45px;
+        width: 400px;
+    }
     .cb-agree-all{
         padding-bottom: 15px;
         border-bottom: 2px solid rgba(96, 96, 96, 0.5);
@@ -319,6 +325,25 @@
     	border: none;
     	border-radius: 3px;
     	cursor: pointer;
+        width: 74px;
+    }
+    
+    #em-btn1{
+    	height: 45px;
+    	font-size: 14px;
+    	border: none;
+    	border-radius: 3px;
+    	cursor: pointer;
+        width: 74px;
+    }
+    
+    #em-btn2{
+    	height: 45px;
+    	font-size: 14px;
+    	border: none;
+    	border-radius: 3px;
+    	cursor: pointer;
+        width: 74px;
     }
 
     /*password Find*/
@@ -361,6 +386,20 @@
     }
     .modal-body{
         border-radius: 13px;
+    .en-input2{
+        border: 1px solid rgba(96, 96, 96, 0.5);;
+        border-radius: 8px;
+        height: 45px;
+        width: 400px;
+    }
+
+    .number-btn{
+        display: none;
+    }
+
+    .en-input2::-webkit-outer-spin-button,
+    .en-input2::-webkit-inner-spin-button {
+    -webkit-appearance: none;
     }
 </style>
 </head>
@@ -469,8 +508,11 @@
                                     <span class="as-re">*</span>
                                 </p>
                                 <p style="display: flex;">
-                                    <input class="en-input" id="memberEmail" name ="memberEmail" type="text" placeholder="example@poomasi.com" style="margin-right: 5px;">
-                                    <button id="em-btn" type="button">인증 번호 발송</button>
+                                    <input class="en-input3" id="memberEmail" name ="memberEmail" type="text" placeholder="example@poomasi.com" style="margin-right: 5px;">
+                                    <button id="em-btn1" type="button" onclick="emailSendNo()">인증 번호 발송</button>
+                                </p>
+                                <p class="number-btn">
+                                    <input class="en-input2" id="checkNo" type="number" style="margin-right: 5px;" placeholder="인증번호 6자리를 3분이내 입력해주세요."><button type="button" id="em-btn2" onclick="randomNumberCheck()">인증하기</button>
                                 </p>
                                 <p>
                                    	 비밀번호
@@ -756,6 +798,49 @@
 
         function loginPlz(){
             alert('로그인 후 사용 가능합니다.');
+        }
+        
+        function emailSendNo(){
+        	const numberBtn = document.querySelector(".number-btn");
+            numberBtn.style.display = "flex";
+
+            $.ajax({
+                url: "emailSendNo.me",
+                type: "POST",
+                data: {
+                    authEmail : document.querySelector('#memberEmail').value
+                },
+                success: function(res) {
+                    console.log('이메일 인증번호 발송 성공')
+                    const memberEmailInput = document.querySelector(".en-input3");
+                    // input 태그를 리드온리로 설정
+                    memberEmailInput.readOnly = true;
+                },
+                error: function() {
+                    console.log("이메일 인증번호 발송 실패");
+                }
+            });
+        }
+
+        function randomNumberCheck(){
+            $.ajax({
+                url: "randomNumberCheck.me",
+                type: "POST",
+                data: {
+                    checkNo : document.querySelector('#checkNo').value,
+                    authEmail : document.querySelector('#memberEmail').value
+                },
+                success: function(res) {
+                    var data = JSON.parse(res);
+                    if (data.data === "NNNNY") {
+                        alert("인증이 완료되었습니다.");
+                        document.getElementById("checkNo").readOnly = true
+                    }
+                },
+                error: function() {
+                    console.log("ERROR");
+                }
+            });
         }
 	
         
