@@ -2,6 +2,7 @@ package com.kh.finalProject.member.model.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.kh.finalProject.common.vo.Schedule;
 import com.kh.finalProject.mail.EmailCheck;
@@ -37,7 +38,7 @@ public interface MemberService {
 	
 	//회원탈퇴 서비스
 	int deleteMember(Member m);
-	int adminDeleteMem(String memberNoList);
+	int adminDeleteMem(int memberNo);
 	
 	
 	//프로필 이미지 변경

@@ -319,6 +319,8 @@
                 let userNo = tds[1].innerText;
                 
                 memberNoList.push(userNo);
+                checkbox.checked = true;
+
                 
                 if (!isUserNoAdded(userNo, userInfo2Div)) {
 
@@ -453,15 +455,18 @@
             // 각 요소에서 내용을 가져와서 사용할 수 있습니다.
             let memberNo = $(element).text();
             memberNos.push(memberNo);
-            console.log("User Number:", memberNo);
+            console.log("memberNo:", memberNo);
+            console.log("memberNos:", memberNos);
         });
         
         let memberNosString = memberNos.toString();
+        console.log("memberNosString:", memberNosString);
+
     	
         $.ajax({
             type: 'GET', 
             url: 'adDelete.me',  
-            data: { memberNos: memberNo },  
+            data: { memberNos: memberNosString },  
             success: function(response) {
             },
             error: function(error) {
@@ -470,7 +475,7 @@
     }
 	</script>
 	<!-- aligm-mem에 있는 값과 체크박스 비교해서 같으면 체크? 
-		${
+	
 	-->
 </body>
 </html>
