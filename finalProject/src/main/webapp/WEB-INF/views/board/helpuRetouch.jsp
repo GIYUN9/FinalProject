@@ -269,21 +269,15 @@
                                     파일첨부
                                     <img class="clip-img" src="././resources/icon/paperclip.png">
                                 </label>
-                                <c:if test="${not empty at.originName}">
-                                 현재 파일 :
-                          		<a href="${at.changeName }"></a>
-                          		<input type="hidden" name="originName" value="${at.originName }" />
-                            	<input type="hidden" name="changeName" value="${at.changeName }" />      
-                                </c:if>
-                                
                                 <div class="hu-uploaded">
-                                    <input class="hu-filename" type="text" id="fileName" name="upfile">
+                                    <input class="hu-filename" type=text id="fileName" name="upfile">
                                 </div>
                                 <div class="dd">
                                     파일첨부
                                 </div>
                                 <input id="hu-upfile" class="hu-upfile" type="file" name="upfile" style="display: none;" onchange="javascript:document.getElementById('fileName').value = this.value">
-                            </div>  
+                                
+                            </div>   
                        
                             <div class="aa">
                                 <input class="hu-price" type="number" id="price" name="price" placeholder="최소 1,000" value="${b.price}">
@@ -296,7 +290,7 @@
                                <div class="cate-no" style="top: 328px; left: -77px;">
                                    게시판
                                </div>
-                               <select name="boardType" id="boardType-check">
+                               <select name="boardType" id="boardType-check" value="${b.boardType }">
                                		<option value="1">도와줄게요</option>
                                		<option value="2">도와주세요</option>
                                </select>

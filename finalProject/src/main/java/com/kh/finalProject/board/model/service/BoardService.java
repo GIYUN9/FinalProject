@@ -38,16 +38,10 @@ public interface BoardService {
 	int helpAttachment(Attachment at);
 	
 	//도와줄게요 게시판 수정
-	int helpupdateBoard(Board b);
+	int helpUpdateBoard(Board b);
 	
 	//도와줄게요 게시판 삭제
 	int helpDeleteBoard(int boardNo);
-	
-	//도와줄게요 댓글 리스트
-	ArrayList<Reply> helpSelectReply(int boardNo);
-	
-	//도와줄게요 댓글 작성
-	int helpInsertReply(Reply r);
 	
 	//커뮤니티 게시글 수(조회)
 	int selectCommListCount();
@@ -118,12 +112,6 @@ public interface BoardService {
 	
 	//도와주세요 게시글 삭제
 	int helpmeDeleteBoard(int boardNo);
-	
-	//도와주세요 댓글 리스트
-	ArrayList<Reply> helpmeReply(int boardNo);
-	
-	//도와주세요 댓글 작성
-	int helpmeInsertReply(Reply r);
 
 	int updateCommBoard(Board b);
 	

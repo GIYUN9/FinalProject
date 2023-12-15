@@ -36,8 +36,8 @@ public class BoardDao {
 		return sqlSession.insert("boardMapper.helpinsertBoard", b);
 	}
 
-	public int helpupdateBoard(SqlSessionTemplate sqlSession, Board b) {
-		return sqlSession.update("boardMapper.updateBoard", b);
+	public int helpUpdateBoard(SqlSessionTemplate sqlSession, Board b) {
+		return sqlSession.update("boardMapper.helpUpdateBoard", b);
 	}
 	
 	public int helpDeleteBoard(SqlSessionTemplate sqlSession, int boardNo) {
@@ -60,14 +60,6 @@ public class BoardDao {
 		return sqlSeesion.selectOne("boardMapper.helpSelectBoard", boardNo);
 	}
 	
-	public ArrayList<Reply> helpSelectReply(SqlSessionTemplate sqlSeesion, int boardNo) {
-		return (ArrayList)sqlSeesion.selectList("boardMapper.helpSelectReply", boardNo);
-	}
-	
-	public int helpInsertReply(SqlSessionTemplate sqlSeesion, Reply r) {
-		return sqlSeesion.insert("boardMapper.helpInsertReply", r);
-	}
-
 	public int selectCommListCount(SqlSessionTemplate sqlSeesion) {
 		return sqlSeesion.selectOne("boardMapper.selectCommListCount");
 	}
@@ -192,14 +184,6 @@ public class BoardDao {
 	
 	public Board helpmeSelectBoard(SqlSessionTemplate sqlSeesion, int boardNo) {
 		return sqlSeesion.selectOne("boardMapper.helpmeSelectBoard", boardNo);
-	}
-	
-	public ArrayList<Reply> helpmeReply(SqlSessionTemplate sqlSeesion, int boardNo) {
-		return (ArrayList)sqlSeesion.selectList("boardMapper.helpmeReply", boardNo);
-	}
-	
-	public int helpmeInsertReply(SqlSessionTemplate sqlSeesion, Reply r) {
-		return sqlSeesion.insert("boardMapper.helpmeInsertReply", r);
 	}
 	
 	public int updateCommBoard(SqlSessionTemplate sqlSession, Board b) {

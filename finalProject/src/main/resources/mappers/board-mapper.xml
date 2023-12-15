@@ -111,7 +111,7 @@
   	</insert>
   	
   	<!-- 사진 등록 쿼리문 -->
-  	<insert id="helpAttachment">
+  	<insert id="helpAttachment" parameterType="hashMap">
   		INSERT INTO
   			ATTACHMENT
   					  (
@@ -123,7 +123,7 @@
   			
   			VALUES
   				  (
-  				  SEQ_ANO.NEXTVAL,
+  				  SEQ_ANO.NEXTVAL, 
   				  #{originName},
   				  #{changeName},
   				  #{boardNo}			
@@ -131,15 +131,15 @@
   	</insert>
   	
   	<!-- 도와줄게요 게시글 수정 쿼리문 -->
-  	<update id="helpupdateBoard">
-  		UPDATE BOARD AS B
+  	<update id="helpUpdateBoard">
+  		UPDATE BOARD
 	  		SET B.CATEGORY_NO = #{categoryNo},
 	  			B.BOARD_TITLE = #{boardTitle},
 	  			B.BOARD_CONTENT = #{boardContent},
-	  			AT.ORIGIN_NAME = #{originName},
-	  			AT.CHANGE_NAME = #{changeName},
+	  			A.ORIGIN_NAME = #{originName},
+	  			A.CHANGE_NAME = #{changeName},
 	  			B.PRICE = #{price}
-	  		JOIN ATTACHMENT AS AT ON B.BOARD_NO = AT.ATT_NO
+	  		INNER JOIN ATTACHMENT AS A ON B.BOARD_NO = A.ATT_NO
   		WHERE B.BOARD_NO = #{boardNo}
   	</update>
   	

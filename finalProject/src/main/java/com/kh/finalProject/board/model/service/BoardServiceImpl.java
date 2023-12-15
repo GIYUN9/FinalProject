@@ -40,8 +40,8 @@ public class BoardServiceImpl implements BoardService {
 	//게시글 수정
 	@Override
 	//도와줄게요 게시판 수정
-	public int helpupdateBoard(Board b) {
-		return boardDao.helpupdateBoard(sqlSession, b);
+	public int helpUpdateBoard(Board b) {
+		return boardDao.helpUpdateBoard(sqlSession, b);
 	}
 
 	//게시글 삭제
@@ -237,30 +237,6 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public Board helpmeSelectBoard(int boardNo) {
 		return boardDao.helpmeSelectBoard(sqlSession, boardNo);
-	}
-	
-	//도와줄게요 댓글 리스트
-	@Override
-	public ArrayList<Reply> helpSelectReply(int boardNo) {
-		return boardDao.helpSelectReply(sqlSession, boardNo);
-	}
-
-	//도와줄게요 댓글 작성
-	@Override
-	public int helpInsertReply(Reply r) {
-		return boardDao.helpInsertReply(sqlSession, r);
-	}
-
-	//도와주세요 댓글 리스트
-	@Override
-	public ArrayList<Reply> helpmeReply(int boardNo) {
-		return boardDao.helpmeReply(sqlSession, boardNo);
-	}
-
-	//도와주세요 댓글 작성
-	@Override
-	public int helpmeInsertReply(Reply r) {
-		return boardDao.helpmeInsertReply(sqlSession, r);
 	}
 	
 	//얼마예요 궁금해요 등 게시글 상세조회

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -275,8 +275,8 @@
                 
                 <c:forEach var="b" items="${list}">
                 	<div class = "content-item">
-	                     <a href ="helpDetail.bo?boardNo=${b.boardNo}">
-	                        <img  class = "content-img" src = "${at.originName}${at.changeName}">
+	                     <a href ="helpDetailPage.bo?boardNo=${b.boardNo}">
+	                        <img  class = "content-img" src = "${b.filePath}${b.changeName}">
 	                        <div class = "content-item-title">${b.boardTitle}</div>
 	                        <div class = "content-item-price">${b.price}원</div>
 	                     </a> 

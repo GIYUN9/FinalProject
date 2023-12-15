@@ -289,7 +289,7 @@
                                <div class="cate-no" style="top: 328px; left: -77px;">
                                    게시판
                                </div>
-                               <select name="boardType" id="boardType-check">
+                               <select name="boardType" id="boardType-check" value="${b.boardType }">
                                		<option value="1">도와줄게요</option>
                                		<option value="2">도와주세요</option>
                                </select>
