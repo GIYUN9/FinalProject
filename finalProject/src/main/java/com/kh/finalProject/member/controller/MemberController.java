@@ -4,7 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -118,6 +123,23 @@ public class MemberController {
 		} else {
 			return "redirect:/";
 		}
+	}
+	
+	//관리자 회원탈퇴 컨트롤러 (업데이트)
+	@RequestMapping(value = "/adDelete.me")
+	public String adminDeleteMem(@RequestParam("memberNos") String memberNos, HttpSession session) {
+		//memberNos = 받아온 값들
+		//memberNoArray = 받아온 값의 String을 , 단위로 끊어서 배열로 넣음
+		//memNos = String []인 memberNoArrays에서 꺼내서 하나씩 memNos에 담음
+	    String[] memberNoArray = memberNos.split(",");
+
+	    int result = 0;
+	    for (String memNos : memberNoArray) {
+	        int memberNo = Integer.parseInt(memNos.trim()); // trim()을 사용하여 앞뒤 공백 제거
+	    	result += memberService.adminDeleteMem(memberNo);
+	    }
+		
+		return "redirect:/";
 	}
 	
 	//스케줄 컨트롤러(로그인한 유저의 정보를 포함하여)

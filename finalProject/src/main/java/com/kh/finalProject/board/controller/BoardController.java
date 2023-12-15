@@ -403,11 +403,11 @@ public class BoardController {
 		int result = boardService.deleteCommBoard(boardNo);
 		
 		
-		
+		session.setAttribute("alertMsg", "게시글 삭제 성공");
 		if(result > 0) {
 			return "forward:/list.co";
 		}else {
-			model.addAttribute("errorMsg", "게시글 등록 실패");
+			model.addAttribute("errorMsg", "게시글 삭제 실패");
 			return "common/errorPage";
 		}
 		

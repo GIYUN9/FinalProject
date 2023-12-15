@@ -42,6 +42,14 @@
 		<result column="LOCATION" property="location"/>
 		<result column="MEM_NAME" property="memberName"/>
 		<result column="CATEGORY_NAME" property="categoryName"/>
+		<result column="PHONE" property="phone"/>
+	</resultMap>
+	
+	<resultMap type="EmailCheck" id="emailCheckResult">
+		<result column="AUTH_NO" property="authNo"/>
+		<result column="AUTH_EMAIL" property="authEmail"/>
+		<result column="AUTH_RANDOM" property="authRandom"/>
+		<result column="CREATEDATE" property="createDate"/>
 	</resultMap>
 
 	<!-- 회원가입 -->
@@ -169,7 +177,8 @@
 				C.CATEGORY_NAME,
 				S.STATUS,
 				S.CREATEDATE,
-				S.LOCATION
+				S.LOCATION,
+				M.PHONE
 		FROM SCHEDULE S, MEMBER M, BOARD B, CATEGORY C
 		WHERE S.STATUS = 'Y'
 		AND (B.BOARD_NO = S.BOARD_NO)
@@ -229,12 +238,10 @@
 				ENROLL_DATE
 		FROM MEMBER
 	</select>
-	<select id="viewSpcMem" resultMap="memberResult">
+	<select id="searchMem" resultMap="memberResult">
 		SELECT  MEM_NO,
 				MEM_EMAIL,
-				MEM_PWD,
 				MEM_NAME,
-				MEM_CONCERN,
 				MEM_PRO,
 				PHONE,
 				LOCATION,
@@ -246,7 +253,64 @@
 				INTRO,
 				ENROLL_DATE
 		FROM MEMBER
-		WHERE MEM_NAME = #{memberName}
+    	WHERE MEM_NAME LIKE '%' || #{searchText} || '%'
+		OR MEM_EMAIL LIKE '%' || #{searchText} || '%'
+		OR MEM_NO LIKE '%' || #{searchText} || '%'
+		OR MEM_PRO LIKE '%' || #{searchText} || '%'
+		OR ENROLL_DATE LIKE '%' || #{searchText} || '%'
 	</select>
-
+	<update id="adminDeleteMem">	   
+	        UPDATE MEMBER
+	        SET STATUS = 'N'
+	        WHERE MEM_NO = #{memberNo}
+	</update>
+	
+	<insert id="insertEmailRandomNo">
+		INSERT INTO AUTHENTICATE
+					(
+		            AUTH_NO,
+		            AUTH_EMAIL,
+		            AUTH_RANDOM,
+		            CREATEDATE
+					)
+            VALUES
+            		(
+		            SEQ_AUNO.NEXTVAL,
+		            #{authEmail},
+		            #{authRandom},
+		            SYSDATE
+		            )
+	</insert>
+	
+	<select id="checkRandomNo" resultMap="emailCheckResult">
+		SELECT  AUTH_NO,
+			    AUTH_EMAIL,
+			    AUTH_RANDOM,
+			    CREATEDATE
+		FROM(		
+				SELECT
+				    AUTH_NO,
+				    AUTH_EMAIL,
+				    AUTH_RANDOM,
+				    CREATEDATE
+				FROM
+				    AUTHENTICATE
+				WHERE
+				    AUTH_EMAIL = #{authEmail}
+				    AND CREATEDATE BETWEEN SYSDATE - INTERVAL '3' MINUTE AND SYSDATE
+				ORDER BY
+				    CREATEDATE DESC)
+		WHERE ROWNUM = 1
+	</select>
+	
+	<select id="checkCreateDate" resultMap="emailCheckResult">
+		SELECT AUTH_NO,
+			    AUTH_EMAIL,
+			    AUTH_RANDOM,
+			    CREATEDATE
+		FROM AUTHENTICATE
+		WHERE CREATEDATE BETWEEN SYSDATE - 3/24/60 AND SYSDATE
+		AND AUTH_EMAIL = #{authEmail}
+		AND AUTH_RANDOM = #{checkNo}
+	</select>
 </mapper>

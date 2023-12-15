@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.finalProject.common.vo.Schedule;
+import com.kh.finalProject.mail.EmailCheck;
 import com.kh.finalProject.member.model.vo.Member;
 import com.kh.finalProject.member.model.vo.Professional;
 
@@ -67,13 +68,32 @@ public class MemberDao {
 	public ArrayList<Schedule> scheduleSendList(SqlSessionTemplate sqlSession, Schedule s){
 		return (ArrayList)sqlSession.selectList("memberMapper.scheduleSendList", s);
 	}
-	
 	public int requestCancel(SqlSessionTemplate sqlSession, Schedule s) {
 		return sqlSession.update("memberMapper.requestCancel", s);
-  }
+	}
 	public ArrayList<Member> memberList(SqlSessionTemplate sqlSession, Member m) {
 		return (ArrayList)sqlSession.selectList("memberMapper.viewAllMem", m);
-
 	}
+	public ArrayList<Member> searchMember(SqlSessionTemplate sqlSession, String searchText) {
+		Map<String, String> parameters = new HashMap<>();
+        parameters.put("searchText", searchText);
+        return (ArrayList)sqlSession.selectList("memberMapper.searchMem", parameters);
+	}
+	public int adminDeleteMem(SqlSessionTemplate sqlSession, int memberNo) {
+		return sqlSession.update("memberMapper.adminDeleteMem", memberNo);
+	}
+	
+	public int insertEmailRandomNo(SqlSessionTemplate sqlSession, EmailCheck e) {
+		return sqlSession.insert("memberMapper.insertEmailRandomNo", e);
+	}
+	
+	public EmailCheck checkRandomNo(SqlSessionTemplate sqlSession, EmailCheck e) {
+		return sqlSession.selectOne("memberMapper.checkRandomNo", e);
+	}
+	
+	public EmailCheck checkCreateDate(SqlSessionTemplate sqlSession, EmailCheck e) {
+		return sqlSession.selectOne("memberMapper.checkCreateDate", e);
+	}	
+	
 }
 
