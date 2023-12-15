@@ -48,6 +48,13 @@
 	<jsp:include page = "header.jsp" />
 	
 	<br>
+
+	<div align= "center">
+		<h1 style="margin-top: 150px;
+    font-weight: bold;
+    color: red;
+    margin-bottom: 500px;">${errorMsg }</h1>
+
 	<div class="er-align">
 		<div class="er-area" align= "center">
 			<h1 class="er-msg">${errorMsg }</h1>
@@ -75,6 +82,7 @@
 			<button class="er-btn">문의하기</button>
 
 		</div>
+
 	</div>
 	<br>
 	
