@@ -285,7 +285,7 @@
                             </div>   
                        
                             <div class="aa">
-                                <input class="hu-price" type="text" id="price" name="price" min="1000" maxlength="10000" inputmode="numeric" placeholder="최대 1,000" value="${b.price}">
+                                <input class="hu-price" type="number" id="price" name="price" min="1000" max="10000" placeholder="최대 1,000" value="${b.price}">
                                 <p class="price-measure2">원</p>
                                     <div class="ee">
                                         희망가격
@@ -311,12 +311,12 @@
         </div>
     </div>
 <script>
-	$(document).on('keyup','input[inputmode=numeric]',
-		function(event){
-			this.value = this.value.replace(/[^0-9]/g,'');   // 입력값이 숫자가 아니면 공백
-			this.value = this.value.replace(/,/g,'');          // ,값 공백처리
-			this.value = this.value.replace(/\B(?=(\d{3})+(?!\d))/g, ","); // 정규식을 이용해서 3자리 마다 , 추가 	
-	});
+	// $(document).on('keyup','input[inputmode=numeric]',
+	// 	function(event){
+	// 		this.value = this.value.replace(/[^0-9]/g,'');   // 입력값이 숫자가 아니면 공백
+	// 		this.value = this.value.replace(/,/g,'');          // ,값 공백처리
+	// 		this.value = this.value.replace(/\B(?=(\d{3})+(?!\d))/g, ","); // 정규식을 이용해서 3자리 마다 , 추가 	
+	// });
 
 </script>
 

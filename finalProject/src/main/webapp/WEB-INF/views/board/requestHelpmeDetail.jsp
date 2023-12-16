@@ -281,7 +281,7 @@
 		      <td></td>
 		      <td></td>
 		      <td></td>
-		      <td>${at.changeName}</td>
+		      <td><img src="${at.changeName}"></td>
 		    </tr>
 		    
 		    <tr>
