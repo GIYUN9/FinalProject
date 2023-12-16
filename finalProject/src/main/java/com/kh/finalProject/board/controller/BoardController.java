@@ -148,32 +148,27 @@ public class BoardController {
 	@RequestMapping(value="helpUpdate.bo")
 	public String helpupdateBoard(Board b, Attachment at, MultipartFile reupfile, HttpSession session, Model model) {
 		
-		int result1 = 0;
-		int result2 = 0;
-		
 		System.out.println(reupfile);
+		System.out.println(at);
+		System.out.println(b);
 		
 		if(!reupfile.getOriginalFilename().equals("")) {
 			
-			String changeName = saveFile(reupfile, session, "././resources/borderImage/");
+			String changeName = saveFile(reupfile, session, "/resources/borderImage/");
 			
 			if(at.getOriginName() != null) {
 				new File(session.getServletContext().getRealPath(at.getChangeName())).delete();
 			}
 			
 			at.setOriginName(reupfile.getOriginalFilename());
-			at.setChangeName("././resources/borderImage/" + changeName);
+			at.setChangeName("/resources/borderImage/" + changeName);
 		}
-	
 		
-		result1 = boardService.helpinsertBoard(b);
-		b = boardService.helpselectOne(b);
-		at.setBoardNo(b.getBoardNo());
-		result2 = boardService.helpAttachment(at);
+		int result = boardService.helpUpdateBoard(b);
 		
-		if(result1 > 0 && result2 > 0) {
+		if (result > 0) {
 			session.setAttribute("alertMsg", "게시글 수정 완료");
-			return "redirect:/helpDetail.bo?boardNo=" + b.getBoardNo();
+			return "redirect:/helpDetailPage.bo?boardNo=" + b.getBoardNo();
 		} else {
 			model.addAttribute("errorMsg", "게시글 수정 실패");
 			return "common/errorPage";
@@ -565,33 +560,28 @@ public class BoardController {
 	}
 	
 	//도와주세요 게시글 수정
-	@RequestMapping(value="helpmeUpdate.bo", method = RequestMethod.POST)
+	@RequestMapping(value="helpmeUpdate.bo")
 	public String helpmeUpdateBoard(Board b, Attachment at, MultipartFile reupfile, Model model, HttpSession session) {
 		
 		System.out.println(b);
 		System.out.println(reupfile);
 		
-		int result1 = 0;
-		int result2 = 0;
-		
 		if(!reupfile.getOriginalFilename().equals("")) {
-			
 			String changeName = saveFile(reupfile, session, "/resources/borderImage/");
 			
-			if(at.getOriginName().isEmpty()) {
+			if(at.getOriginName() != null) {
 				new File(session.getServletContext().getRealPath(at.getChangeName())).delete();
 			}
 			
 			at.setOriginName(reupfile.getOriginalFilename());
-			at.setChangeName("resources/borderImage/" + changeName);
+			at.setChangeName("/resources/borderImage/" + changeName);
 		}
 		
-		result1 = boardService.helpmeUpdateBoard(b);
-		result2 = boardService.helpAttachment(at);
+		int result = boardService.helpmeUpdateBoard(b);
 		
-		if(result1 > 0 && result2 > 0) {
-			session.setAttribute("alertMsg", "게시글 수정 완료");
-			return "redirect:/helpmeDetail.bo?boardNo=" + at.getBoardNo();
+		if(result > 0) {
+			session.setAttribute("alertMsg", "게시글 수정 성공");
+			return "redirect:/helpmeDetail.bo?boardNo=" + b.getBoardNo();
 		} else {
 			model.addAttribute("errorMsg", "게시글 수정 실패");
 			return "common/errorPage";
