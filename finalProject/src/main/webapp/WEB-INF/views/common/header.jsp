@@ -520,14 +520,14 @@
                                 <span class="as-re">*</span>
                             </p>
                             <p>
-                                <input class="en-input" name ="memberPwd" type="password" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요">
+                                <input class="en-input" id="memPwd1" name ="memberPwd" type="password" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요" readonly="readonly">
                             </p>
                             <p>
                                 비밀번호확인
                                 <span class="as-re">*</span>
                             </p>
                             <p>
-                                <input class="en-input" name ="memberPwd2" type="password" placeholder="올바르게 입력해주세요">
+                                <input class="en-input" id="memPwd2" name ="memberPwd2" type="password" placeholder="올바르게 입력해주세요" readonly="readonly">
                             </p>
                             <p>
                                 관심사 선택
@@ -834,7 +834,9 @@
                     var data = JSON.parse(res);
                     if (data.data === "NNNNY") {
                         alert("인증이 완료되었습니다.");
-                        document.getElementById("checkNo").readOnly = true
+                        document.getElementById("checkNo").readOnly = true;
+                        document.getElementById("memPwd1").readOnly = false;
+                        document.getElementById("memPwd2").readOnly = false;
                     }
                 },
                 error: function() {
