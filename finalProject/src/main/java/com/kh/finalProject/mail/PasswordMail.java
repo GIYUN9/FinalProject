@@ -1,18 +1,20 @@
 package com.kh.finalProject.mail;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.google.gson.Gson;
 import com.kh.finalProject.member.model.service.MemberService;
@@ -62,7 +64,7 @@ public class PasswordMail {
 			MimeMessageHelper helper = new MimeMessageHelper(message, false, "UTF-8");
 			
 
-			String[] to = {"dame9735@naver.com"};
+			String[] to = {'"'+ m.getMemberEmail() +'"'};
 			helper.setTo(to);
 			helper.setSubject(loginUser.getMemberName()+"님 안녕하세요 품앗이입니다.");
 			
@@ -72,9 +74,6 @@ public class PasswordMail {
 						 .toUriString();
 			
 			helper.setText("<a href = '" + url + "'>비밀번호 재설정 페이지로 이동 </a>", true);
-
-			String[] to = {"dame9735@naver.com"}; 
-			message.setTo(to);
 			
 			sender.send(message);
 			

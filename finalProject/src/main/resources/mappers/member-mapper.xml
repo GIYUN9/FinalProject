@@ -180,7 +180,8 @@
 	<!-- 회원탈퇴 쿼리 -->
 	<update id="deleteMember">
 		UPDATE MEMBER
-		SET STATUS = 'N'
+		SET STATUS = 'N',
+			MEM_EMAIL = null
 		WHERE MEM_NO = #{memberNo}
 		AND MEM_EMAIL = #{memberEmail}
 	</update>
