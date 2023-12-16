@@ -60,6 +60,7 @@ body{
 	color: white;
 	cursor: pointer;
 	margin: 7px;
+	text-align: center;
 }
 
 .hu-cancle-btn{
@@ -70,6 +71,7 @@ body{
 	height: 30px;
 	margin: 7px;
 	cursor: pointer;
+	text-align: center;
 }
     
 .hu-title{
@@ -330,13 +332,13 @@ input[type=file]::file-selector-button {
         <br>
 
         <div class="hu-btn-area">
-            <a class="hu-submit-btn" onclick="postBtn(1)">수정</a>
             <a class="hu-cancle-btn" onclick="postBtn(2)">삭제</a>
+            <a class="hu-submit-btn" onclick="postBtn(1)">수정</a>
         </div>
         
         <form action="" method="post" id="form">
         	<input type="hidden" name="boardNo" value="${b.boardNo}">
-        	<input type="hidden" name="filePath" value="${a.changeName}">
+        	<input type="hidden" name="filePath" value="${b.changeName}">
         </form>
         
         
