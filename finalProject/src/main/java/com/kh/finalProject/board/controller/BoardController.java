@@ -8,25 +8,22 @@ import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.google.gson.Gson;
 import com.kh.finalProject.board.model.service.BoardService;
 import com.kh.finalProject.board.model.vo.Board;
-import com.kh.finalProject.board.model.vo.Reply;
 import com.kh.finalProject.common.Pagenation;
 import com.kh.finalProject.common.vo.Attachment;
 import com.kh.finalProject.common.vo.Notice;
 import com.kh.finalProject.common.vo.PageInfo;
+import com.kh.finalProject.member.model.vo.Member;
 
 @Controller
 public class BoardController {
@@ -63,21 +60,20 @@ public class BoardController {
 	
 	//도와줄게요 리스트
 	@RequestMapping(value="helpList.bo")
-	public ModelAndView helpSelectList(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv, Board b, Attachment at) {
+	public ModelAndView helpSelectList(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv, Attachment at) {
 		int listCount = boardService.seleteHelpListCount();
 			
 		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
 		ArrayList<Board> list = boardService.helpselectList(pi);
-		
-		for(int i = 0; i < list.size(); i++) {
-			System.out.println(b.getBoardNo());
+			
+		for(Board b : list) {
+			
+			b.getBoardNo(); // 해당 키를 이용해서 첨부파일 가져옴
+			b.setChangeName("2023121312401841908.jpg");// 가져온 첨부파일 이름 넣어줌
+			b.setFilePath("././resources/borderImage/"); // 가져온 첨부파일 경로 넣어줌
+			
 		}
-//		for(Board b : list) {
-//			b.getBoardNo(); // 해당 키를 이용해서 첨부파일 가져옴
-//			b.setChangeName(changeName);// 가져온 첨부파일 이름 넣어줌
-//			b.setFilePath(filePath); // 가져온 첨부파일 경로 넣어줌
-//			
-//		}
+			
 			
 		mv.addObject("pi",pi)
 			.addObject("list",list)
@@ -96,10 +92,10 @@ public class BoardController {
 		
 		if(!upfile.getOriginalFilename().equals("")) {
 			
-			String changeName = saveFile(upfile, session, "/resources/borderImage/");
+			String changeName = saveFile(upfile, session, "././resources/borderImage/");
 			
 			at.setOriginName(upfile.getOriginalFilename());
-			at.setChangeName("/resources/borderImage/" + changeName);
+			at.setChangeName("././resources/borderImage/" + changeName);
 		}
 		
 		result1 = boardService.helpinsertBoard(b);
@@ -150,18 +146,25 @@ public class BoardController {
 	
 	// 도와줄게요 게시글 수정
 	@RequestMapping(value="helpUpdate.bo")
-	public String helpupdateBoard(Board b, Attachment at, MultipartFile updatefile, HttpSession session, Model model) {
+	public String helpupdateBoard(Board b, Attachment at, MultipartFile reupfile, HttpSession session, Model model) {
 		
 		int result1 = 0;
 		int result2 = 0;
 		
-		if(!updatefile.getOriginalFilename().equals("")) {
+		System.out.println(reupfile);
+		
+		if(!reupfile.getOriginalFilename().equals("")) {
 			
-			String changeName = saveFile(updatefile, session, "/resources/borderImage/");
+			String changeName = saveFile(reupfile, session, "././resources/borderImage/");
 			
-			at.setOriginName(updatefile.getOriginalFilename());
-			at.setChangeName("/resources/borderImage/" + changeName);
+			if(at.getOriginName() != null) {
+				new File(session.getServletContext().getRealPath(at.getChangeName())).delete();
+			}
+			
+			at.setOriginName(reupfile.getOriginalFilename());
+			at.setChangeName("././resources/borderImage/" + changeName);
 		}
+	
 		
 		result1 = boardService.helpinsertBoard(b);
 		b = boardService.helpselectOne(b);
@@ -169,7 +172,7 @@ public class BoardController {
 		result2 = boardService.helpAttachment(at);
 		
 		if(result1 > 0 && result2 > 0) {
-			session.setAttribute("alertMsg", "게시글 작성 완료");
+			session.setAttribute("alertMsg", "게시글 수정 완료");
 			return "redirect:/helpDetail.bo?boardNo=" + b.getBoardNo();
 		} else {
 			model.addAttribute("errorMsg", "게시글 수정 실패");
@@ -487,7 +490,14 @@ public class BoardController {
 		
 		PageInfo pi =  Pagenation.getPageInfo(listCount, currentPage, 5, 8);
 		ArrayList<Board> list = boardService.helpmeselectList(pi);
-		System.out.println(list);
+		
+		for(Board b : list) {
+			
+			b.getBoardNo(); // 해당 키를 이용해서 첨부파일 가져옴
+			 b.setChangeName("2023121520271040427.jpg");// 가져온 첨부파일 이름 넣어줌
+			b.setFilePath("././resources/borderImage/"); // 가져온 첨부파일 경로 넣어줌
+		}
+		
 		mv.addObject("pi",pi)
 		  .addObject("list",list)
 		  .setViewName("board/requestBoardList");
@@ -539,7 +549,7 @@ public class BoardController {
 			model.addAttribute("b",b);
 			return "board/requestHelpmeDetail";
 		} else {
-			model.addAttribute("errorMsg", "게시글 작성 실패");
+			model.addAttribute("errorMsg", "게시글 조회 실패");
 			return "common/errorPage";
 		}
 	}
