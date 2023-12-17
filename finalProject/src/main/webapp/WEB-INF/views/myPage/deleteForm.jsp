@@ -104,7 +104,7 @@
 					<form action="delete.me" class="df-form">
 						<h5 style="margin-bottom: 5px;">떠나시는 이유를 알려주세요.</h5>
 						<div class="reason-box">
-							<label class="label-css"><input type="radio" name="reason" value="1"> 이용하고 싶은 서비스가 없어요</label>
+							<label class="label-css"><input type="radio" name="reason" value="1" checked="checked"> 이용하고 싶은 서비스가 없어요</label>
 							<label class="label-css"><input type="radio" name="reason" value="2"> 서비스 퀄리티가 낮아요</label>
 							<label class="label-css"><input type="radio" name="reason" value="3"> 비매너 회원을 만났어요</label>
 							<label class="label-css"><input type="radio" name="reason" value="4"> 잦은 오류가 발생해요</label>
@@ -144,6 +144,8 @@
             	document.querySelector('.retire').disabled = true;
             }
         });
+        
+        
 	</script>
 </body>
 </html>

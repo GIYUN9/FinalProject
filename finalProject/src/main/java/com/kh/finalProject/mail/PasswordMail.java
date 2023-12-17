@@ -7,6 +7,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -65,7 +66,7 @@ public class PasswordMail {
 			MimeMessageHelper helper = new MimeMessageHelper(message, false, "UTF-8");
 			
 
-			String[] to = {"dame9735@naver.com"};
+			String[] to = {'"'+ m.getMemberEmail() +'"'};
 			helper.setTo(to);
 			helper.setSubject(loginUser.getMemberName()+"님 안녕하세요 품앗이입니다.");
 			

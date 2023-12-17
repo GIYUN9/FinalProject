@@ -7,61 +7,6 @@
 <meta charset="UTF-8">
 <title>도와주세요 상세보기</title>
 <style>
-/* .hu-content{
-    height: 157px;
-    width: 300px;
-}
-
-.helpme-board{
-    background-color: white;
-    width: 700px;
-    height: 100%;
-    margin-left: 30%;
-    margin-top: 7%;
-    margin-bottom: 10%;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-}
-
-.hu-submit-btn{
-        background: rgb(218, 76, 60);
-        border: none;
-        border-radius: 4px;
-        width: 100px;
-        height: 30px;
-        color: white;
-        cursor: pointer;
-        margin: 7px;
-        text-align: center;
-    }
-
-.hu-cancle-btn{
-    background-color: rgba(224, 224, 224, 0.5);
-    border: 1px solid rgba(224, 224, 224, 0.5);
-    border-radius: 4px;
-    width: 100px;
-    height: 30px;
-    margin: 7px;
-    text-align: center;
-}
-
-.hu-btn-area{
-    display: flex;
-    flex-direction: row;
-    margin-top: 15px;
-    justify-content: center;
-}
-
-.helpu-top-section{
-    display: flex;
-    padding: 10px;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    position: relative;
-    margin-top: 15px;
-} */
 
 *,
 	*::before,
@@ -110,6 +55,7 @@
         color: white;
         cursor: pointer;
         margin: 7px;
+        text-align: center;
     }
     .hu-cancle-btn{
         background-color: rgba(224, 224, 224, 0.5);
@@ -118,6 +64,7 @@
         width: 100px;
         height: 30px;
         margin: 7px;
+        text-align: center;
     }
     .hu-title{
         width: 300px;
@@ -334,7 +281,7 @@
 		      <td></td>
 		      <td></td>
 		      <td></td>
-		      <td>${at.changeName}</td>
+		      <td><img src="${at.changeName}"></td>
 		    </tr>
 		    
 		    <tr>
@@ -366,8 +313,8 @@
         <br>
 
         <div class="hu-btn-area">
-            <a class="hu-submit-btn" onclick="postBtn(1)">수정</a>
             <a class="hu-cancle-btn" onclick="postBtn(2)">삭제</a>
+            <a class="hu-submit-btn" onclick="postBtn(1)">수정</a>
         </div>
         
         <form action="" method="post" id="form">

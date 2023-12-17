@@ -111,7 +111,7 @@
   	</insert>
   	
   	<!-- 사진 등록 쿼리문 -->
-  	<insert id="helpAttachment" parameterType="hashMap">
+  	<insert id="helpAttachment">
   		INSERT INTO
   			ATTACHMENT
   					  (
@@ -132,15 +132,12 @@
   	
   	<!-- 도와줄게요 게시글 수정 쿼리문 -->
   	<update id="helpUpdateBoard">
-  		UPDATE BOARD
-	  		SET B.CATEGORY_NO = #{categoryNo},
-	  			B.BOARD_TITLE = #{boardTitle},
-	  			B.BOARD_CONTENT = #{boardContent},
-	  			A.ORIGIN_NAME = #{originName},
-	  			A.CHANGE_NAME = #{changeName},
-	  			B.PRICE = #{price}
-	  		INNER JOIN ATTACHMENT AS A ON B.BOARD_NO = A.ATT_NO
-  		WHERE B.BOARD_NO = #{boardNo}
+  		UPDATE BOARD 
+	  			SET CATEGORY_NO = #{categoryNo},
+		  			BOARD_TITLE = #{boardTitle},
+		  			BOARD_CONTENT = #{boardContent},
+		  			PRICE = #{price}
+  			WHERE BOARD_NO = #{boardNo}
   	</update>
   	
   	<!-- 도와줄게요 게시글 삭제 쿼리문 -->
@@ -575,15 +572,12 @@
 	
 	<!-- 도와주세요 게시글 수정 쿼리문 -->
   	<update id="helpmeUpdateBoard">
-  		UPDATE BOARD AS B
-	  		SET B.CATEGORY_NO = #{categoryNo},
-	  			B.BOARD_TITLE = #{boardTitle},
-	  			B.BOARD_CONTENT = #{boardContent},
-	  			AT.ORIGIN_NAME = #{originName},
-	  			AT.CHANGE_NAME = #{changeName},
-	  			B.PRICE = #{price}
-	  		JOIN ATTACHMENT AS AT ON B.BOARD_NO = AT.ATT_NO
-  		WHERE B.BOARD_NO = #{boardNo}
+  		UPDATE BOARD
+	  		SET CATEGORY_NO = #{categoryNo},
+	  			BOARD_TITLE = #{boardTitle},
+	  			BOARD_CONTENT = #{boardContent},
+	  			PRICE = #{price}
+  		WHERE BOARD_NO = #{boardNo}
   	</update>
 	
 	<!-- 도와주세요 게시글 삭제 -->
