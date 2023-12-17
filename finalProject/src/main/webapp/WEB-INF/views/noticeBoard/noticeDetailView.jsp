@@ -111,10 +111,14 @@
         }
 
         .re-input-btn{
-            background-color: #00c7ae;
+			background: rgb(0, 199, 174);
             cursor: pointer;
             font-weight: bold;
-            padding: .3125rem 0.5rem;  
+            color: white;
+            border: none;
+            border-radius: 4px;
+            width: 70px;
+            height: 35px;
         }
 
         .re-input-btn:hover{
@@ -131,11 +135,22 @@
         }
         
         .reply-input{
-        	width: 110%;
+        	width: 100%;
    			 padding-left: 16px;
         }
-        
-
+        .reply-content{
+        	width: 80%;
+        	height: 35px;
+        	border-radius: 8px;
+        	border: 1px solid rgba(96, 96, 96, 0.6);
+        }
+        #comment-write{
+            display: flex;
+            align-items: center;
+            padding: 30px;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
        
 	</style>
 </head>
@@ -202,7 +217,7 @@
 	                         <div id="comment-write">
 							    <input id="reply-boardNo" type="hidden" value="${b.boardNo}">
 							    <input id="WriterNo" type="hidden" value="${loginUser.memberNo}">
-							    <input id="reply-content" class="reply-content" name="replyContent" type="text" style="width: 80%;" placeholder="댓글을 입력해주세요">
+							    <input id="reply-content" class="reply-content" name="replyContent" type="text" placeholder="댓글을 입력해주세요">
 							    <button id="comment-write-btn" class="re-input-btn" onclick="insertReply()" >등록</button>
 							</div>
 					    </c:when>
