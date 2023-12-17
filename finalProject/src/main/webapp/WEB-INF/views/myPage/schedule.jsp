@@ -398,6 +398,18 @@ ${s.scheContent}
 			view2.forEach(element => {
 				element.style.display = '';
 			});
+
+			// .p-btn의 배경을 설정
+			const pBtn = document.querySelectorAll('.p-btn');
+			pBtn.forEach(element => {
+				element.style.background = 'transparent';
+			});
+
+			// .p-btn1의 배경을 설정
+			const pBtn1 = document.querySelectorAll('.p-btn1');
+			pBtn1.forEach(element => {
+				element.style.background = 'rgba(255, 255, 255, 0.22)';
+			});
 		}
 
 		function from() {
@@ -409,6 +421,18 @@ ${s.scheContent}
 			const view2 = document.querySelectorAll('#view2');
 			view2.forEach(element => {
 				element.style.display = 'none';
+			});
+
+			// .p-btn1의 배경을 설정
+			const pBtn1 = document.querySelectorAll('.p-btn1');
+			pBtn1.forEach(element => {
+				element.style.background = 'transparent';
+			});
+
+			// .p-btn의 배경을 설정
+			const pBtn = document.querySelectorAll('.p-btn');
+			pBtn.forEach(element => {
+				element.style.background = 'rgba(255, 255, 255, 0.22)';
 			});
 		}
 
