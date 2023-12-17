@@ -95,7 +95,7 @@ public class MemberController {
 			m.setMemberPwd(encPwd); // 암호화된 비밀번호 객체에 넣어주기
 			int result = memberService.updatePwd(m); // 수정
 			session.setAttribute("alertMsg", "비밀번호를 성공적으로 변경하였습니다.");
-			return "forward:/changePwd.me";
+			return "redirect:/";
 		} else {
 			model.addAttribute("alertMsg", "비밀번호 변경에 실패하였습니다.\n 기존비밀번호가 일치하지 않습니다.");
 			return "forward:/changePwd.me";
