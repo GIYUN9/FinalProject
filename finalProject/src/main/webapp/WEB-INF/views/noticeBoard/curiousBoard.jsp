@@ -231,8 +231,9 @@
 	                                        <span class="community-p">${b.boardType == 3 ? '궁금해요' : b.boardType == 4 ? '얼마예요' : '함께해요'}</span>
 	                                        <h4>${b.boardTitle}</h4>
 	                                        <span class="text1">${b.boardContent}</span><br>
-	                                        <span class="text2">${b.location}</span>
-	                               
+											<div>
+												<span class="text2">${b.location}</span>
+											</div>		
 	                                        <div>
 	                                            <a href="" class="a-click">
                             						<img src="./resources/icon/LIKE.png" class="img" style="margin-bottom: 10px;">

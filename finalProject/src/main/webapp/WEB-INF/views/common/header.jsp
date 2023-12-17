@@ -295,18 +295,32 @@
     }
 
     .dropdown-content{
-        /* display : none;
+        /* /* display : none;
         position : absolute;
         z-index : 1; /*다른 요소들보다 앞에 배치
-        width: max-content; */
-        opacity: 0; /* 초기 상태는 투명 */
+        width: max-content; 
+        opacity: 0; /* 초기 상태는 투명 
         display: block;
         position: absolute;
         z-index: 1;
         width: max-content;
-        transition: opacity 0.3s ease; /* 트랜지션 속성 설정 (시간, 타이밍 함수) */
+        transition: opacity 0.3s ease; /* 트랜지션 속성 설정 (시간, 타이밍 함수) 
         margin-top: 3px;
-        margin-bottom: 3px;
+        margin-bottom: 3px; */
+
+        opacity: 0;
+        display: block;
+        position: absolute;
+        z-index: 1;
+        width: max-content;
+        transition: opacity 0.3s ease;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        line-height: 1.7;
+        background: #00000038;
+        padding: 10px;
+        border-radius: 8px;
+        left: -10px;
     }
 
     .dropdown-content a{
@@ -441,9 +455,9 @@
                         </span>
                         <div class="dropdown-content">
                             <a href="userInfo.me" style="color: white;">마이페이지</a>
-                            <a href="list.co" style="color: white;">게시판</a>
-                            <a href="#" style="color: white;">게시판</a>
-                            <a href="#" style="color: white;">게시판</a>
+                            <a href="list.co" style="color: white;">커뮤니티</a>
+                            <a href="ch.at" style="color: white;">채팅</a>
+                            <a href="#" style="color: white;">미정</a>
                         </div>
                     </div> 
                 </div>
