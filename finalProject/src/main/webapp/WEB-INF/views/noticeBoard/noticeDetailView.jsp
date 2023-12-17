@@ -247,7 +247,7 @@
 							
 						}
 						
-					
+					//댓글 리스트 그리기
 						function selectReplyList() {
 						    $.ajax({
 						        url: "list.re",
@@ -303,6 +303,22 @@
 						    });
 						}
 						
+						
+						//댓글 Enter 입력 시 댓글 등록기능
+						$("#comment-write-btn").click(function() {
+						    insertReply();
+						});
+						
+						$("#reply-content").keypress(function(e) {
+						    if (e.key === "Enter") {
+						        insertReply();
+						    }
+						});
+						
+						
+						
+						
+						//댓글 등록 기능
                         function insertReply(){
                             const boardNo = document.getElementById("reply-boardNo").value;
                             const memberNo = document.getElementById("WriterNo").value;
@@ -334,6 +350,8 @@
                             });
                         }
                         
+						
+						//댓글 삭제하기 기능
                         function replydelete(replyNo) {
                             console.log("삭제를 시작해볼까? :" + replyNo);
                            	

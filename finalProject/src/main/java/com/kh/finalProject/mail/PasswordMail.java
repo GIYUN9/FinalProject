@@ -1,18 +1,21 @@
 package com.kh.finalProject.mail;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.google.gson.Gson;
 import com.kh.finalProject.member.model.service.MemberService;
@@ -28,7 +31,7 @@ public class PasswordMail {
 	private MemberService memberService;
 	
 	@RequestMapping(value = "/sendmail.pwd")
-	public String mail(Member m, Model model) throws MessagingException {
+	public String mail(Member m, Model model, HttpSession session) throws MessagingException {
 		
 		Member loginUser = memberService.emailCheck(m);
 		System.out.println(loginUser);
@@ -73,11 +76,9 @@ public class PasswordMail {
 			
 			helper.setText("<a href = '" + url + "'>비밀번호 재설정 페이지로 이동 </a>", true);
 
-			String[] to = {"dame9735@naver.com"}; 
-			message.setTo(to);
 			
 			sender.send(message);
-			
+			session.setAttribute("alertMsg", "고객님의 메일로 성공적으로 메일을 보냈습니다.");
 			return "redirect:/";
 			
 		}
