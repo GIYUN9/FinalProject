@@ -520,14 +520,14 @@
                                 <span class="as-re">*</span>
                             </p>
                             <p>
-                                <input class="en-input" name ="memberPwd" type="password" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요">
+                                <input class="en-input" id="memPwd1" name ="memberPwd" type="password" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요" readonly="readonly">
                             </p>
                             <p>
                                 비밀번호확인
                                 <span class="as-re">*</span>
                             </p>
                             <p>
-                                <input class="en-input" name ="memberPwd2" type="password" placeholder="올바르게 입력해주세요">
+                                <input class="en-input" id="memPwd2" name ="memberPwd2" type="password" placeholder="올바르게 입력해주세요" readonly="readonly">
                             </p>
                             <p>
                                 관심사 선택
@@ -556,19 +556,19 @@
                             </div>                                 
                             <br>
                             <div class="cb-agree-all">
-                                <input type="checkbox" name="category" value="selectall" onclick='selectAll(this)'>
+                                <input type="checkbox" name="selectall" value="selectall" onclick='selectAll(this)'>
                                 전체 동의
                             </div>
                             <br>
                             <label>
-                                <input type="checkbox" name="category" value="agree"> 
+                                <input type="checkbox" name="category" value="agree" onclick = "checkSelectAll()"> 
                                 (필수) 이용약관 동의
                             </label>
                             <label>
-                                <input type="checkbox" name="category" value="privateAgree"> 
+                                <input type="checkbox" name="category" value="privateAgree" onclick = "checkSelectAll()"> 
                                 (필수) 개인정보 수집 및 이용 동의
                             </label>
-                            <label><input type="checkbox" name="category" value="ageagree">
+                            <label><input type="checkbox" name="category" value="ageagree" onclick = "checkSelectAll()">
                                     (필수) 14세 이상입니다
                             </label>                 
                             <button type="submit" class="sign-up-btn">회원가입</button>
@@ -610,14 +610,35 @@
             // 이메일 인증 API를 사용 -> 그에 맞는 함수를 호출하거나 필요한 동작을 수행
         }
 
-		//회원가입 마지막 전체 체크박스
-		function selectAll(selectAll){
-			const checkboxes = document.getElementsByName('category');
-           
-            checkboxes.forEach((checkbox) => {
-                checkbox.checked = selectAll.checked;
-            })
-		}
+        function checkSelectAll()  {
+        	  // 전체 체크박스
+        	  const checkboxes 
+        	    = document.querySelectorAll('input[name="category"]');
+        	  // 선택된 체크박스
+        	  const checked 
+        	    = document.querySelectorAll('input[name="category"]:checked');
+        	  // select all 체크박스
+        	  const selectAll 
+        	    = document.querySelector('input[name="selectall"]');
+        	  
+        	  if(checkboxes.length === checked.length)  {
+        	    selectAll.checked = true;
+        	  }else {
+        	    selectAll.checked = false;
+        	  }
+
+        }
+        
+        function selectAll(selectAll)  {
+        	  const checkboxes 
+        	     = document.getElementsByName('category');
+        	  
+        	  checkboxes.forEach((checkbox) => {
+        	    checkbox.checked = selectAll.checked
+        	  })
+        }
+		
+		
         
         $(document).ready(function(){
             $('.dropdown-toggle').dropdown();
@@ -727,12 +748,12 @@
                 return false;
             }
 
-            //비밀번호 제약조건
-           // if(memberPwd.value.length < 8){
-               // alert("비밀번호 8자리 이상!");
-                //memberPwd.focus();
-               // return false;
-          //  }
+            	//비밀번호 제약조건
+            if(memberPwd.value.length < 8){
+                alert("비밀번호 8자리 이상!");
+                memberPwd.focus();
+                return false;
+            }
 
         }
         $(document).ready(function(){
@@ -834,7 +855,9 @@
                     var data = JSON.parse(res);
                     if (data.data === "NNNNY") {
                         alert("인증이 완료되었습니다.");
-                        document.getElementById("checkNo").readOnly = true
+                        document.getElementById("checkNo").readOnly = true;
+                        document.getElementById("memPwd1").readOnly = false;
+                        document.getElementById("memPwd2").readOnly = false;
                     }
                 },
                 error: function() {

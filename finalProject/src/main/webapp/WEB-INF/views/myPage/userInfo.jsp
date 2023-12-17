@@ -123,8 +123,7 @@
 								<tr>
 									<td>
 										<div class = "normal-input-box">
-											<input class="email-input" name="memberEmail" value="${loginUser.memberEmail}" readonly="readonly">
-											<button class="btn" onclick="newEmail()" style="font-size: 12px;">인증하기</button>
+											<input class="email-input" name="memberEmail" value="${loginUser.memberEmail}" readonly="readonly" style="width: 100%;">
 										</div>
 									</td>
 								</tr>

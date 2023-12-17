@@ -73,7 +73,7 @@
 			<h3 style="margin: 10px 0 0 20px;">비밀번호 재설정 페이지</h3>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="user-info">
-					<form action="pwdChangeEmail.me" method="post" style="margin-top: 19px;">
+					<form action="pwdChangeEmail.me" method="post" style="margin-top: 19px;" name="emailChangeForm" onsubmit="return rePwdChange();">
 						<div style="display: flex; margin-top: 24px; flex-direction: column; align-items: center;">
 							<img class="lock-img" src="././resources/icon/lock.png" alt="">
 							<span class="cp-text">
@@ -91,7 +91,7 @@
 								<input class="nomal-input-style" name="memberPwd" id="re-changePwd" type="password" placeholder="변경할 비밀번호 입력" required="required">
 							</div>
 							<div>
-								<input class="nomal-input-style" id="re-changePwdCheck" type="password" placeholder="변경할 비밀번호 확인" required="required">
+								<input class="nomal-input-style" name = "memberPwd2" id="re-changePwdCheck" type="password" placeholder="변경할 비밀번호 확인" required="required">
 							</div>
 						</div>
 						<br>
@@ -118,6 +118,66 @@
 				document.querySelector('.updatePwd-btn').setAttribute("disabled", "disabled");
 			}
 		});
+		
+		  function rePwdChange() {
+	            const emailChangeForm = document.emailChangeForm; 
+	            const memberEmail = emailChangeForm.memberEmail;
+
+	            //이메일 아무것도 입력 안 했을 경우
+	            if(memberEmail.value == ""){
+	                alert("아이디를 입력하세요");
+	                memberEmail.focus();
+	                return false;
+	            }
+
+	            // 이메일 조건확인
+	            var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+	            if(exptext.test(memberEmail.value) == false){
+	                alert("Email형식이 올바르지 않습니다.");
+	                memberEmail.focus();
+	                return false;
+	            }
+	        
+	            const memberPwd = emailChangeForm.memberPwd;
+	            const memberPwd2 = emailChangeForm.memberPwd2;
+
+	             //비밀번호 입력 없을 경우
+	            if(memberPwd.value == ""){
+	                alert("비밀번호를 입력하세요");
+	                memberPwd.focus();
+	                return false;
+	            }
+
+	            //비밀번호 제약조건
+	            if(memberPwd.value.length < 8){
+					alert("비밀번호 8자리 이상!");
+					memberPwd.focus();
+					return false;
+	            }
+
+	            //비밀번호 공백 있나 확인
+	            if(memberPwd.value.search(" ") != -1){
+	                alert("비밀번호는 공백을 포함할 수 없습니다.!");
+	                memberPwd.focus();
+	                return false;
+	            }
+
+	            //비밀번호 확인
+	            if(memberPwd2.value == ""){
+	                alert("비밀번호를 확인해주세요");
+	                memberPwd2.focus();
+	                return false;
+	            }
+
+	            //비밀번호 확인이 틀렸을 경우
+	            if(memberPwd.value != memberPwd2.value){
+	                alert("비밀번호를  다시 확인해주세요 일치하지 않습니다.");
+	                memberPwd.focus();
+	                return false;
+	            }
+
+	            return true;        
+	        }
 	</script>
 </body>
 </html>

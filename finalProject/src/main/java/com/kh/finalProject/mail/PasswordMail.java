@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -30,7 +31,7 @@ public class PasswordMail {
 	private MemberService memberService;
 	
 	@RequestMapping(value = "/sendmail.pwd")
-	public String mail(Member m, Model model) throws MessagingException {
+	public String mail(Member m, Model model, HttpSession session) throws MessagingException {
 		
 		Member loginUser = memberService.emailCheck(m);
 		System.out.println(loginUser);
@@ -64,7 +65,7 @@ public class PasswordMail {
 			MimeMessageHelper helper = new MimeMessageHelper(message, false, "UTF-8");
 			
 
-			String[] to = {"dame9735@naver.com"};
+			String[] to = {'"'+ m.getMemberEmail() +'"'};
 			helper.setTo(to);
 			helper.setSubject(loginUser.getMemberName()+"님 안녕하세요 품앗이입니다.");
 			
@@ -75,11 +76,9 @@ public class PasswordMail {
 			
 			helper.setText("<a href = '" + url + "'>비밀번호 재설정 페이지로 이동 </a>", true);
 
-			String[] to = {"dame9735@naver.com"}; 
-			message.setTo(to);
 			
 			sender.send(message);
-			
+			session.setAttribute("alertMsg", "고객님의 메일로 성공적으로 메일을 보냈습니다.");
 			return "redirect:/";
 			
 		}

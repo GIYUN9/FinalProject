@@ -119,6 +119,7 @@ public class MemberController {
 		
 		if(result > 0) {
 			session.removeAttribute("loginUser");
+			session.setAttribute("alertMsg", "지금까지 품앗이를 이용해 주셔서 감사합니다.");
 			return "common/main";
 		} else {
 			return "redirect:/";

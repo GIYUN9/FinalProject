@@ -222,6 +222,11 @@
     #boardType-check{
     }
 
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
 </style>
 
 </head>
@@ -270,17 +275,17 @@
                                     <img class="clip-img" src="././resources/icon/paperclip.png">
                                 </label>
                                 <div class="hu-uploaded">
-                                    <input class="hu-filename" type=text id="fileName" name="upfile">
+                                    <input class="hu-filename" type=text id="fileName" name="reupfile">
+                                    <div class="dd">
+                                        파일첨부
+                                    </div>
+                                    <input id="hu-upfile" class="hu-upfile" type="file" name="reupfile" style="display: none;" onchange="javascript:document.getElementById('fileName').value = this.value">
                                 </div>
-                                <div class="dd">
-                                    파일첨부
-                                </div>
-                                <input id="hu-upfile" class="hu-upfile" type="file" name="upfile" style="display: none;" onchange="javascript:document.getElementById('fileName').value = this.value">
                                 
                             </div>   
                        
                             <div class="aa">
-                                <input class="hu-price" type="number" id="price" name="price" placeholder="최소 1,000" value="${b.price}">
+                                <input class="hu-price" type="number" id="price" name="price" min="1000" max="10000" placeholder="최대 1,000" value="${b.price}">
                                 <p class="price-measure2">원</p>
                                     <div class="ee">
                                         희망가격
@@ -306,17 +311,13 @@
         </div>
     </div>
 <script>
-    const input = document.querySelector('#price');
-    input.addEventListener('keyup', function(e) {
-    let value = e.target.value;
-    value = Number(value.replaceAll(',', ''));
-    if(isNaN(value)) {
-        input.value = 0;
-    }else {
-        const formatValue = value.toLocaleString('ko-KR');
-        input.value = formatValue;
-    }
-    })
+	// $(document).on('keyup','input[inputmode=numeric]',
+	// 	function(event){
+	// 		this.value = this.value.replace(/[^0-9]/g,'');   // 입력값이 숫자가 아니면 공백
+	// 		this.value = this.value.replace(/,/g,'');          // ,값 공백처리
+	// 		this.value = this.value.replace(/\B(?=(\d{3})+(?!\d))/g, ","); // 정규식을 이용해서 3자리 마다 , 추가 	
+	// });
+
 </script>
 
 
