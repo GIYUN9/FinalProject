@@ -302,7 +302,9 @@ input[type=file]::file-selector-button {
 		      <td>
 		      <td>
 		      <td>
-		      <td><img src="${at.changeName}"></td>
+		      <td>
+		      <input type="hidden" value="${at.changeName}">
+		      <img src="${at.changeName}"></td>
 		    </tr>
 		    
 		    <tr>

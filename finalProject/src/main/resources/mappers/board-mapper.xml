@@ -297,6 +297,8 @@
 		WHERE B.BOARD_NO = #{boardNo}
 		AND B.STATUS = 'Y'
 	</select>
+	
+	<!-- 도와줄게요 보드번호 가져오는 중간 쿼리 -->
   	<select id="helpselectOne" resultMap="boardResult">
   		SELECT  BOARD_NO,
   				CATEGORY_NO,

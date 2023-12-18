@@ -202,6 +202,11 @@
         font-size: 14px;
         text-align: center;
     }
+    
+    .pagination{
+		justify-content: center;
+		margin-top: 30px;
+    }
 </style>
 </head>
 <body>
@@ -283,7 +288,37 @@
 	                        <div class = "content-item-price">${b.price}원</div>
 	                     </a> 
                 	</div>
-                </c:forEach>               
+                </c:forEach>
+                
+                <nav aria-label="Page navigation example">
+				  <ul class="pagination">
+				  
+				  	<c:choose>
+				  		<c:when test="${ pi.currentPage eq 1 }">
+				  			<li class="page-item disabled"><a class="page-link">&laquo;</a></li>
+				  		</c:when>
+				  		<c:otherwise>
+                    		<li class="page-item"><a class="page-link" href="helpmeList.bo?cpage=${ pi.currentPage - 1 }">&laquo;</a></li>
+                    	</c:otherwise>
+				  	</c:choose>
+				    
+				    <c:forEach var="h" begin="${pi.startPage}" end="${ pi.endPage }">
+				    	<li class="page-item"><a class="page-link" href="helpmeList.bo?cpage=${ h }">${ h }</a></li>
+				    </c:forEach>
+		
+				    
+				    <c:choose>
+				    	<c:when test="${ pi.currentPage eq pi.maxPage }">
+				    		<li class="page-item disabled"><a class="page-link">&raquo;</a></li>
+				    	</c:when>
+				    </c:choose>
+				    
+				    <c:otherwise>
+				    	<li class="page-item"><a class="page-link" href="list.bo?cpage=${ pi.currentPage + 1 }">&raquo;</a></li>
+				    </c:otherwise>
+				  </ul>
+			   </nav>
+			                  
             </div>
         </div>
     </div>
