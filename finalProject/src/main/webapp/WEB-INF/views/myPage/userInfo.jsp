@@ -92,11 +92,11 @@
 			<a class="myPageSideBar" href="proInfo.me">전문가 정보</a>
 			<a class="myPageSideBar" href="changePwd.me">비밀번호 변경</a>
 			<a class="myPageSideBar" href="deleteForm.me">회원 탈퇴</a>
-			<a class="myPageSideBar" href="schedule.me?toMemberNo=${loginUser.memberNo}">일정 관리</a>
+			<a class="myPageSideBar" href="schedule.me?toMemberNo=${loginUser.memberNo}">요청 관리</a>
 			<a class="myPageSideBar" href="ask.me">문의 내역</a>
 			<c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
                 <a class="myPageSideBar" href="careMem.me">회원 관리</a>
-                <a class="myPageSideBar" href="ask.me">신고 내역</a>
+                <a class="myPageSideBar" href="viewReport.me">신고 내역</a>
             </c:if>            
 		</div>
 		<div class="main-box">
@@ -114,6 +114,7 @@
 					</div>
 					<div class="ui-formOuter">
 						<form action="updateUserInfo.me" method="post">
+							<input type="hidden" name="memberNo" value="${loginUser.memberNo}">
 							<table class="user-info-table">
 								<th>이름</th>
 								<tr>

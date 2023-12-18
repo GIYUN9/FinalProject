@@ -61,6 +61,9 @@ body{
 	cursor: pointer;
 	margin: 7px;
 	text-align: center;
+	align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .hu-cancle-btn{
@@ -72,6 +75,9 @@ body{
 	margin: 7px;
 	cursor: pointer;
 	text-align: center;
+	align-items: center;
+    display: flex;
+    justify-content: center;
 }
     
 .hu-title{
@@ -260,7 +266,7 @@ input[type=file]::file-selector-button {
     <div class="helpu-top-section">
         <img class="hu-close-btn" src="././resources/icon/close.png">
             <div class="hu-top-section">
-                <p style="margin-bottom: 2rem;">도와줄게요 상세보기</p>
+                <p style="margin-bottom: 2rem; font-weight: bold; font-size: 16px;">도와줄게요 상세보기</p>
             </div>
         
         <div class="hu-align">
@@ -335,7 +341,7 @@ input[type=file]::file-selector-button {
 
         <div class="hu-btn-area">
             <a class="hu-cancle-btn" onclick="postBtn(2)">삭제</a>
-            <a class="hu-submit-btn" onclick="postBtn(1)">수정</a>
+            <a class="hu-submit-btn" style="color: white;" onclick="postBtn(1)">수정</a>
         </div>
         
         <form action="" method="post" id="form">

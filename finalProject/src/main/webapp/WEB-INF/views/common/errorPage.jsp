@@ -46,46 +46,39 @@
 </head>
 <body>
 	<jsp:include page = "header.jsp" />
-	
-	<br>
-
-	<div align= "center">
-		<h1 style="margin-top: 150px;
-    font-weight: bold;
-    color: red;
-    margin-bottom: 500px;">${errorMsg }</h1>
-
-	<div class="er-align">
-		<div class="er-area" align= "center">
-			<h1 class="er-msg">${errorMsg }</h1>
-			<div class="er-desc">
-				에러 메세지 ~~ 에러가 발생한 상황을 문의해주세요~
-				max-width: 400px;max-width: 400px;
-				max-width: 400px;
-				max-width: 400px;
-				max-width: 400px;max-width: 400px;
-				max-width: 400px;
-				max-width: 400px;max-width: 400px;
-				max-width: 400px;
-				max-width: 400px;
-				max-width: 400px;max-width: 400px;
-				max-width: 400px;
-				max-width: 400px;
-				max-width: 400px;
-				max-width: 400px;
-				max-width: 400px;
-				max-width: 400px;
-				max-width: 400px;
-
+		<div class="er-align">
+			<div class="er-area" align= "center">
+				<h1 class="er-msg">${errorMsg }</h1>
+				<div class="er-desc">
+					에러 메세지 ~~ 에러가 발생한 상황을 문의해주세요~
+					max-width: 400px;max-width: 400px;
+					max-width: 400px;
+					max-width: 400px;
+					max-width: 400px;max-width: 400px;
+					max-width: 400px;
+					max-width: 400px;max-width: 400px;
+					max-width: 400px;
+					max-width: 400px;
+					max-width: 400px;max-width: 400px;
+					max-width: 400px;
+					max-width: 400px;
+					max-width: 400px;
+					max-width: 400px;
+					max-width: 400px;
+					max-width: 400px;
+					max-width: 400px;
+				</div>
+				<button style="margin-top: 55px;" class="er-btn" onclick="redirectHome()">메인으로</button>
+				<button class="er-btn">문의하기(미정)</button>
 			</div>
-			<button style="margin-top: 55px;" class="er-btn">메인으로</button>
-			<button class="er-btn">문의하기</button>
-
-		</div>
-
-	</div>
-	<br>
-	
+		</div>		
 	<jsp:include page = "footer.jsp" />
+
+	<script>
+		function redirectHome() {  // 클릭 시 리다이렉션을 수행할 URL을 지정합니다.
+		  var redirectUrl = '<%=request.getContextPath()%>/'; 
+		  window.location.href = redirectUrl;
+		}
+	</script>
 </body>
 </html>

@@ -109,11 +109,11 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 			background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">전문가 정보</a>
 			<a class="myPageSideBar" href="changePwd.me">비밀번호 변경</a>
 			<a class="myPageSideBar" href="deleteForm.me">회원 탈퇴</a>
-			<a class="myPageSideBar" href="schedule.me?toMemberNo=${loginUser.memberNo}">일정 관리</a>
+			<a class="myPageSideBar" href="schedule.me?toMemberNo=${loginUser.memberNo}">요청 관리</a>
 			<a class="myPageSideBar" href="ask.me">문의 내역</a>
 			<c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
                 <a class="myPageSideBar" href="careMem.me">회원 관리</a>
-                <a class="myPageSideBar" href="ask.me">신고 내역</a>
+                <a class="myPageSideBar" href="viewReport.me">신고 내역</a>
             </c:if>        
 		</div>
 		<div class="main-box">
@@ -130,7 +130,8 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 						</form>
 					</div>
 					<div class="ui-formOuter">
-						<form action="updateProInfo.me">
+						<form action="updateProInfo.me" method="post">
+						<input type="hidden" name="memberNo" value="${loginUser.memberNo}">
 							<table class="user-info-table">
 								<th>전문가 닉네임</th>
 								<tr>
@@ -148,17 +149,22 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 								<tr>
 									<td>
 										<div class = "normal-input-box">
-											<input type="text" value="${loginUser.location}" id="sample6_address" class="phone-input">
-											<input type="button" class="btn" onclick="sample6_execDaumPostcode()" value="인증" 
-											style="width: 80px;
-											height: 35px;
-											border: 1px solid rgb(147, 147, 150);
-											border-radius: 5px;">
+											<input type="text" value="${loginUser.location}" id="sample6_address" name="location" class="phone-input">
+											<input type="button" class="btn" onclick="sample6_execDaumPostcode()" value="주소검색" 
+											style="
+												padding-left: 0px;
+												padding-right: 0px;
+												width: 80px;
+												height: 35px;
+												border: 1px solid rgb(147, 147, 150);
+												border-radius: 5px;
+											">
 											</input>
 										</div>
 									</td>
 									<td><input type="hidden" id="sample6_postcode" placeholder="우편번호"></td>										
-									<td><input type="hidden" id="sample6_extraAddress" placeholder="참고항목"> 
+									<td><input type="hidden" id="sample6_extraAddress" placeholder="참고항목"> </td>
+									<td><input type="hidden" id="sample6_detailAddress" placeholder="상세주소"></td>
 								</tr>
 								<th>
 									전문분야 및 상세분야 <br>

@@ -138,8 +138,7 @@
 	<!-- 회원정보를 수정하는 쿼리 -->
 	<update id="updateUserInfo">
 		UPDATE MEMBER 
-		SET MEM_EMAIL = #{memberEmail},
-				MEM_NAME = #{memberName},
+		SET MEM_NAME = #{memberName},
 				MEM_CONCERN = #{memberConcern},
 				PHONE = #{phone},
 				POINT = #{point}
@@ -166,7 +165,9 @@
 	<!-- 멤버번호로 구별 / 전문가페이지에서 자기소개 수정하는 쿼리 -->
 	<update id="updateProInfo">
 		UPDATE MEMBER
-		SET INTRO = #{intro}
+				SET INTRO = #{intro},
+				MEM_NAME = #{memberName},
+				LOCATION = #{location}
 		WHERE MEM_NO = #{memberNo}
 	</update>
 	
@@ -256,6 +257,7 @@
 				INTRO,
 				ENROLL_DATE
 		FROM MEMBER
+		WHERE STATUS = 'Y'
 	</select>
 	<select id="searchMem" resultMap="memberResult">
 		SELECT  MEM_NO,

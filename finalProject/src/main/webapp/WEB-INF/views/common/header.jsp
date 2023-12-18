@@ -151,6 +151,7 @@
         font-weight: bold;
         margin-bottom: 10px;
         border-radius: 4px;
+        cursor: pointer;
     }
 
     .login-kakao-btn {
@@ -161,6 +162,7 @@
         height: 40px;
         font-weight: bold;
         border-radius: 4px;
+        cursor: pointer;
     }
     .l-ver-line{
         width: 1px;
@@ -259,6 +261,7 @@
         height: 40px;
         border-radius: 4px;
         margin-top: 30px;
+        cursor: pointer;
     }
     .as-re{
         color: red;
@@ -295,18 +298,32 @@
     }
 
     .dropdown-content{
-        /* display : none;
+        /* /* display : none;
         position : absolute;
         z-index : 1; /*다른 요소들보다 앞에 배치
-        width: max-content; */
-        opacity: 0; /* 초기 상태는 투명 */
+        width: max-content; 
+        opacity: 0; /* 초기 상태는 투명 
         display: block;
         position: absolute;
         z-index: 1;
         width: max-content;
-        transition: opacity 0.3s ease; /* 트랜지션 속성 설정 (시간, 타이밍 함수) */
+        transition: opacity 0.3s ease; /* 트랜지션 속성 설정 (시간, 타이밍 함수) 
         margin-top: 3px;
-        margin-bottom: 3px;
+        margin-bottom: 3px; */
+
+        opacity: 0;
+        display: block;
+        position: absolute;
+        z-index: 1;
+        width: max-content;
+        transition: opacity 0.3s ease;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        line-height: 1.7;
+        background: #00000038;
+        padding: 10px;
+        border-radius: 8px;
+        left: -10px;
     }
 
     .dropdown-content a{
@@ -319,30 +336,41 @@
     }
     /* 이메일버튼 css */
     #em-btn{
+        background-color: white;
     	height: 45px;
     	font-size: 14px;
-    	border: none;
-    	border-radius: 3px;
+        border: 1px solid rgba(231, 229, 229, 0.6);
+    	border-radius: 8px;
     	cursor: pointer;
         width: 74px;
+    }
+    #em-btn:hover{
+        background-color: #f0f0f0;
     }
     
     #em-btn1{
+        background-color: #f0f0f0;
     	height: 45px;
     	font-size: 14px;
-    	border: none;
-    	border-radius: 3px;
+        border: 1px solid rgba(231, 229, 229, 0.6);
+    	border-radius: 8px;
     	cursor: pointer;
         width: 74px;
     }
-    
+    #em-btn1:hover{
+        background-color: white;
+    }
     #em-btn2{
+        background-color: #f0f0f0;
     	height: 45px;
     	font-size: 14px;
-    	border: none;
-    	border-radius: 3px;
+        border: 1px solid rgba(231, 229, 229, 0.6);
+    	border-radius: 8px;
     	cursor: pointer;
         width: 74px;
+    }
+    #em-btn2:hover{
+        background-color: white;
     }
 
     /*password Find*/
@@ -441,9 +469,9 @@
                         </span>
                         <div class="dropdown-content">
                             <a href="userInfo.me" style="color: white;">마이페이지</a>
-                            <a href="list.co" style="color: white;">게시판</a>
-                            <a href="#" style="color: white;">게시판</a>
-                            <a href="#" style="color: white;">게시판</a>
+                            <a href="list.co" style="color: white;">커뮤니티</a>
+                            <a href="ch.at" style="color: white;">채팅</a>
+                            <a href="#" style="color: white;">미정</a>
                         </div>
                     </div> 
                 </div>
@@ -510,10 +538,11 @@
                             </p>
                             <p style="display: flex;">
                                 <input class="en-input3" id="memberEmail" name ="memberEmail" type="text" placeholder="example@poomasi.com" style="margin-right: 5px;">
-                                <button id="em-btn1" type="button" onclick="emailSendNo()">인증 번호 발송</button>
+                                <button id="em-btn1" type="button" onclick="emailSendNo()">인증</button>
                             </p>
                             <p class="number-btn">
-                                <input class="en-input2" id="checkNo" type="number" style="margin-right: 5px;" placeholder="인증번호 6자리를 3분이내 입력해주세요."><button type="button" id="em-btn2" onclick="randomNumberCheck()">인증하기</button>
+                                <input class="en-input2" id="checkNo" type="number" style="margin-right: 5px;" placeholder="인증번호 6자리를 3분이내 입력해주세요.">
+                                <button type="button" id="em-btn2" onclick="randomNumberCheck()">확인</button>
                             </p>
                             <p>
                                 비밀번호
@@ -556,19 +585,19 @@
                             </div>                                 
                             <br>
                             <div class="cb-agree-all">
-                                <input type="checkbox" name="category" value="selectall" onclick='selectAll(this)'>
+                                <input type="checkbox" name="selectall" value="selectall" onclick='selectAll(this)'>
                                 전체 동의
                             </div>
                             <br>
                             <label>
-                                <input type="checkbox" name="category" value="agree"> 
+                                <input type="checkbox" name="category" value="agree" onclick = "checkSelectAll()"> 
                                 (필수) 이용약관 동의
                             </label>
                             <label>
-                                <input type="checkbox" name="category" value="privateAgree"> 
+                                <input type="checkbox" name="category" value="privateAgree" onclick = "checkSelectAll()"> 
                                 (필수) 개인정보 수집 및 이용 동의
                             </label>
-                            <label><input type="checkbox" name="category" value="ageagree">
+                            <label><input type="checkbox" name="category" value="ageagree" onclick = "checkSelectAll()">
                                     (필수) 14세 이상입니다
                             </label>                 
                             <button type="submit" class="sign-up-btn">회원가입</button>
@@ -610,14 +639,35 @@
             // 이메일 인증 API를 사용 -> 그에 맞는 함수를 호출하거나 필요한 동작을 수행
         }
 
-		//회원가입 마지막 전체 체크박스
-		function selectAll(selectAll){
-			const checkboxes = document.getElementsByName('category');
-           
-            checkboxes.forEach((checkbox) => {
-                checkbox.checked = selectAll.checked;
-            })
-		}
+        function checkSelectAll()  {
+        	  // 전체 체크박스
+        	  const checkboxes 
+        	    = document.querySelectorAll('input[name="category"]');
+        	  // 선택된 체크박스
+        	  const checked 
+        	    = document.querySelectorAll('input[name="category"]:checked');
+        	  // select all 체크박스
+        	  const selectAll 
+        	    = document.querySelector('input[name="selectall"]');
+        	  
+        	  if(checkboxes.length === checked.length)  {
+        	    selectAll.checked = true;
+        	  }else {
+        	    selectAll.checked = false;
+        	  }
+
+        }
+        
+        function selectAll(selectAll)  {
+        	  const checkboxes 
+        	     = document.getElementsByName('category');
+        	  
+        	  checkboxes.forEach((checkbox) => {
+        	    checkbox.checked = selectAll.checked
+        	  })
+        }
+		
+		
         
         $(document).ready(function(){
             $('.dropdown-toggle').dropdown();
@@ -727,11 +777,11 @@
                 return false;
             }
 
-            //비밀번호 제약조건
-           // if(memberPwd.value.length < 8){
-               // alert("비밀번호 8자리 이상!");
-                //memberPwd.focus();
-               // return false;
+            	//비밀번호 제약조건
+          //if(memberPwd.value.length < 8){
+        //        alert("비밀번호 8자리 이상!");
+          //      memberPwd.focus();
+           //     return false;
           //  }
 
         }

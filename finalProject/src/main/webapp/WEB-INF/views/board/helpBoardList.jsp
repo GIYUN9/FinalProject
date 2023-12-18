@@ -206,19 +206,34 @@
     .pagination{
 		justify-content: center;
 		margin-top: 30px;
+	}
+    .arrow-img{
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: 98px;
+    }
+    .nav{
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 </style>
 </head>
 <body>
 <%@ include file = "../common/header.jsp"%>
-   <div class = "nav">
-        <div class = "nav-center-items">
-            <div class = "nav-item">
+   <div class="nav">
+        <div class="nav-center-items">
+            <div class="nav-item">
                 <div class="aaa">
                     <a href="#" style="color: white;">전체보기</a>
                 </div>
             </div>
-            <div class = "nav-item"><a href="#">&#60;</a></div>
+            <div class = "nav-item">
+                <a href="#">
+                    <img class="arrow-img" src="./resources/icon/menu-left-arrow.png" alt="">
+                </a>
+            </div>
             <div class = "nav-item">
                 <div class="aaa">
                     <a href="#"  style="color: white;">취미,레슨</a>
@@ -250,7 +265,11 @@
                 </div>
             </div>
            
-            <div class = "nav-item"><a href="#">&#62;</a></div>
+            <div class = "nav-item">
+                <a href="#">
+                    <img class="arrow-img" src="./resources/icon/menu-right-arrow.png" alt="">
+                </a>
+            </div>
         </div>
    </div>
    <div class = "back-ground">

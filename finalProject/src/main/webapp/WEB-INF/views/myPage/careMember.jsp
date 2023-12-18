@@ -53,6 +53,9 @@
         td{
             padding: 10px;
             font-size: 13px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
         .ad-table{
             border: none;
@@ -195,12 +198,12 @@
 			<a class="myPageSideBar" href="proInfo.me">전문가 정보</a>
 			<a class="myPageSideBar" href="changePwd.me">비밀번호 변경</a>
 			<a class="myPageSideBar" href="deleteForm.me">회원 탈퇴</a>
-			<a class="myPageSideBar" href="schedule.me?toMemberNo=${loginUser.memberNo}">일정 관리</a>
+			<a class="myPageSideBar" href="schedule.me?toMemberNo=${loginUser.memberNo}">요청 관리</a>
 			<a class="myPageSideBar" href="ask.me">문의 내역</a>
             <c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
                 <a class="myPageSideBar" href="careMem.me"  style="font-weight: bolder; 
 			    background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">회원 관리</a>
-            <a class="myPageSideBar" href="ask.me">신고 내역</a>
+            <a class="myPageSideBar" href="viewReport.me">신고 내역</a>
             </c:if>            
 		</div>
 		<div class="main-box">
@@ -436,7 +439,7 @@
         $('#memberTable tbody').empty(); // 현재 tbody 내용을 비움
 
         $.each(data, function(index, member) {
-            var newRow = '<tr>' +
+            let newRow = '<tr>' +
                 '<td><input type="checkbox"></td>' +
                 '<td>' + member.memberNo + '</td>' +
                 '<td>' + member.memberEmail + '</td>' +

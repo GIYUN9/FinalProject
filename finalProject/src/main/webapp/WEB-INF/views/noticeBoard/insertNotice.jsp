@@ -10,9 +10,9 @@
 	*,
 	*::before,
 	*::after {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
 	}
 	body{
 		background: url('././resources/image/main.png') no-repeat center center fixed; 
@@ -64,15 +64,19 @@
         margin: 7px;
     }
     .b-title{
-        width: 300px;
-        height: 20px;
+        width: 350px;
+        height: 30px;
+        padding-left: 5px;
+        padding-bottom: 2px;
         border: 1px solid rgba(96, 96, 96, 0.5);
         border-radius: 8px;
         margin-bottom: 15px;
+        resize: none;
+        overflow: hidden;
     }
     .b-content{
-        width: 300px;
-        height: 157px;
+        width: 350px;
+        height: 225px;
         padding: 10px;
         padding-bottom: 130px;
         border: 1px solid rgba(96, 96, 96, 0.5);
@@ -81,19 +85,7 @@
         resize: none;
         overflow: hidden;
     }
-    .hu-upfile{
-        width: 300px;
-        height: 32px;
-        border: 1px solid rgba(96, 96, 96, 0.5);
-        border-radius: 8px;
-        margin-bottom: 0px;
-        display: flex;
-        font-size: 14px;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-    }
-    
+
     .b-input-area{
         display: flex;
         flex-direction: column;
@@ -114,7 +106,6 @@
         display: flex;
     }
     .b-top-section{
-        margin-bottom: 30px;
         font-size: 30px;
         font-weight: bold;
     }
@@ -123,35 +114,26 @@
         flex-direction: row;
         margin-top: 15px;
     }
-
     .b-bb{
         position: absolute;
         left: -71px;
-        
         font-size: 13px;
         font-weight: bolder;
     }
-    
-    
     .b-cc{
         position: absolute;
-        left: -71px;
-        
+        left: -71px;   
         font-size: 13px;
         font-weight: bolder;
     }
-    
-    
     .category-container{
     	display: flex;
-   		 justify-content: flex-end;
+   		justify-content: flex-end;
     }
-    
     #category-label{
     	font-size : 12px;
     	font-weight : bold
     }
-    
     #category{
     	font-size : 12px;
     	width : 80px;
@@ -185,13 +167,13 @@
                         </div>
                             <div class="b-aa">
 	                            <div class="b-bb">
-	                                   	제목
+	                                제목
 	                            </div>
                                 <input class="b-title" name="boardTitle" type="text"/>
                             </div>  
                             <div class="b-aa">
                                 <div class="b-cc">
-                                    	내용
+                                    내용
                                 </div>
                                 <textarea class="b-content" name="boardContent" type="text"></textarea>
                             </div>     

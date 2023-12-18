@@ -15,289 +15,118 @@
 		.pageBox{
 			margin-bottom: 100px;
 		}
+        .a-click {
+            text-decoration-line: none;
+            color: black;
+        }
+        body{
+            line-height: 1.5;
+        }
+        h3{
+            font-size: 1.75rem;
+        }
+        a:hover{
+            color: white;
+            text-decoration: none;
+        }
+        .SideBar-text{
+            color: white;
+        }
+        .SideBar-text:hover{
+            border-bottom: 2px solid white;
+        }
+        .enroll-style{
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
 
-		.profile-btn-area{
-			justify-content: center;
-    		display: flex;
-			align-self: center; 
-			width: 100%;
-		}
-		.user-info-table{
-			width: 80%;	
-			position: relative;
-			margin-bottom: 70px;
-		}
-		.user-info-table td{
-			padding-bottom: 0px;
-		}
-		.user-info-table input{
-			height: 22px;
-			border: 1px solid rgb(147, 147, 150);
-			border-radius: 5px;
-			height: 35px;
-		}
-		.ui-formOuter{
-			width: 100%;
-		}
-		.ui-submit-btn{
-			float: right;
-			position: absolute;
-			right: 70px;
-			bottom: 233px;
-			width: 460px;
-			background: none;
-			border: 1px solid rgb(147, 147, 150);
-			border-radius: 5px;
-			height: 28px;
-		}
-		.email-input{
-			height: 35px
-		}
-		.phone-input{
-			height: 35px
-		}
-		.info-input{
-			width: 100%;
-		}
-
-		.normal-input-box > button {
-			width: 80px;
-			height: 35px;
-			border: 1px solid rgb(147, 147, 150);
-			border-radius: 5px;
-		}
-           .list{
-        list-style: none;
-    }
-
-    .list > .list-btn{
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-    }
-
-    .list-btn {
-        font-size: 17px;
-        color: white;
-        margin: 15px;
-    }
-
-    .list-btn:hover {
-        color: black
-    }
-
-    .community-list {
-        list-style: none;
-        font-size: 25px;
-        font-weight: bold;
-        text-decoration: underline;
-        margin: 18px;
-    }
-
-    .main{
-        background-color: white;
-        width: 700px;
-        height: 62%;
-        position: absolute;
-        left: 50%;
-        margin-left: -322px;
-        top: 50%;
-        margin-top: -260px;
-        border-radius: 10px;
-    }
-
-    .community-ul{
-        width: 170px;
-        height: 500px;
-        margin: 220px 0px 0px 315px;
-        color: white;
-    }
-
-    .time-span{
-        float: right;
-        margin-right: 25px;
-        font-size: 13px;
-    }
-
-    .community-btn{
-        border-radius: 12px;
-        background-color: white;
-        border-width: thin;
-        margin: 3px; 
-        width: 56px;
-        height: 27px;
+        .b-close-btn{
+            width: 10px;
+            right: 0px;
+            position: absolute;
             cursor: pointer;
-    }
-
-    .text1{
-        font-size: 14px;
-    }
-
-    .text2{
-        font-size: 12px;
-    }
-
-    .community-p{
-        font-size: 10px;
-    }
-
-    .main-span1{
-        font-weight: bold;
-        font-size: 14px;
-        margin-left: 15px;
-    }
-
-    .main-span2{
-       font-size: 12px; 
-    }
-
-    .main-list{
-        list-style: none;
-    }
-
-    .main-a{
-        padding: 13px 0px 10px 20px;
-    }
-
-    .main-b{
-        padding: 13px 0px 0px 30px;
-    }
-
-    .a-click {
-        text-decoration-line: none;
-        color: black;
-    }
-
-    .line {
-        width: 96%;
-        margin-left: 11px;
-        margin-top: 10px;
-    }
-
-    .arrow-img{
-        width: 15px;
-        height: 15px;
-        float: right;
-        margin-right: 10px;
-        margin-top: 2px;
-        cursor: pointer;
-    }
-
-    .border-one,  .border-two, .border-three{
-        margin-left: 33px;
-        line-height: 27px;
-    }
-    .container{
-        background-color: white;
-        width: 40%;
-        max-height: 20%;
-        padding: 21px;
-        margin-top: -495px;
-        margin-right: 32%;
-        border-radius: 15px;
-        margin-bottom: 20px;
-    }
-
-    .community-ul{
-        width: 190px;
-        height: 500px;
-        margin: 190px 5px 0px 253px;
-        color: white;
-    }
-
-    .community-list {
-        list-style: none;
-        font-size: 27px;
-        font-weight: bold;
-        text-decoration: underline;
-        margin: 18px;
-    }
-
-    .list{
-        list-style: none;
-    }
-
-    .list > .list-btn{
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-    }
-
-    .list-btn {
-        font-size: 17px;
-        color: white;
-        margin: 15px;
-    }
-
-    .list-btn:hover {
-        color: black
-    }
-
-    .date{
-        float: right;
-    }
-
-    .card-link{
-        color: black;
-        font-weight: bold;
-    }
-
-    .card-list{
-        list-style: none;
-        margin-bottom: 15px;
-    }
-
-    #accordion{
-        margin-left: -26px;
-        padding: 4px;
-        margin-right: 0px;    }
-
-    .container-h2{
-        margin: 0px 8px 20px;
-        font-size: 30px;
-        color: black;
-    }
-
-    .arrow-img{
-        width: 20px;
-        height: 20px;
-        float: right;
-        margin-top: 10px;
-    }
-
-    .poom-span{
-        margin-left: 20px;
-    }
-    
-    .container-com{
-        margin-bottom: 20px;
-    }
-
-    .card{
-      margin-left: 26px;
-    }
-    body{
-      line-height: 1.5;
-    }
-    h3{
-      font-size: 1.75rem;
-    }
-    a:hover{
-      color: white;
-      text-decoration: none;
-    }
-    .SideBar-text{
-      color: white;
-    }
-    .SideBar-text:hover{
-      border-bottom: 2px solid white;
-    }
-    
-    .enroll-style{
-    	display: flex;
-    	flex-direction: column;
-        padding: 20px;
-    }
+            top: -15px;
+        }
+        .b-top-section{
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .b-bb{
+            position: absolute;
+            left: 120px;
+            font-size: 13px;
+            font-weight: bolder;
+        }
+        .b-cc{
+            position: absolute;
+            left: 120px;   
+            font-size: 13px;
+            font-weight: bolder;
+        }
+        .board-top-section{
+            display: flex;
+            padding: 15px;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: relative;
+            margin-top: 15px;
+        }
+        .b-title{
+            width: 350px;
+            height: 30px;
+            padding-left: 5px;
+            padding-bottom: 2px;
+            border: 1px solid rgba(96, 96, 96, 0.5);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            resize: none;
+            overflow: hidden;
+        }
+        .b-content{
+            width: 350px;
+            height: 225px;
+            padding: 10px;
+            padding-bottom: 130px;
+            border: 1px solid rgba(96, 96, 96, 0.5);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            resize: none;
+            overflow: hidden;
+        }
+        .category-container{
+            display: flex;
+            justify-content: flex-end;
+        }
+        #category-label{
+            font-size : 12px;
+            font-weight : bold
+        }
+        #category{
+            font-size : 12px;
+            width : 80px;
+            height : 20px;
+            margin-left: 10px;
+        }
+        .b-submit-btn{
+            background: rgb(218, 76, 60);
+            border: none;
+            border-radius: 4px;
+            width: 100px;
+            height: 30px;
+            color: white;
+            cursor: pointer;
+            margin: 7px;
+        }
+        .b-cancle-btn{
+            background-color: rgba(224, 224, 224, 0.5);
+            border: 1px solid rgba(224, 224, 224, 0.5);
+            border-radius: 4px;
+            width: 100px;
+            height: 30px;
+            margin: 7px;
+        }
 	</style>
 </head>
 <body>
@@ -316,31 +145,46 @@
 		<div class="main-box">
 			<div class="centerTitle">
 				<h3 style="margin: 10px 0 0 20px;">공지사항 글작성</h3>
-				
 			</div>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="community-big">
 					<div>
 						<form class="enroll-style" action="insertNotice.co">
-							<div>
-								카테고리
-								<select name="noticeType">
-									<option value="필독">필독</option>
-									<option value="공지">공지</option>
-								</select>
-							</div>
-							<div>
-								제목
-								<input type="text" name="noticeTitle" required="required">
-							</div>
-							<div>
-								내용
-								<textarea type="text" name="noticeContent" required="required"></textarea>
-							</div>
-							<div>
-								<button type="submit" id="insertBtn">등록하기</button>
-							</div>
-							
+                            <div class="board">
+                                <div class="board-top-section">
+                                    <img class="b-close-btn" src="././resources/icon/close.png">
+                                    <div class="b-top-section">
+                                        <p>공지사항 글쓰기</p>
+                                    </div>
+                                    <div class="b-align">                
+                                        <div class="b-input-area">
+                                        <div class="category-container">
+                                            <label id = "category-label" for ="category" name="noticeType">카테고리</label>
+                                            <select name ="noticeType" id ="category">
+                                                <option value="필독">필독</option>
+                                                <option value="공지">공지</option>
+                                            </select>
+                                        </div>
+                                            <div class="b-aa">
+                                                <div class="b-bb">
+                                                    제목
+                                                </div>
+                                                <input class="b-title" required="required" name="noticeTitle" type="text"/>
+                                            </div>  
+                                            <div class="b-aa">
+                                                <div class="b-cc">
+                                                    내용
+                                                </div>
+                                                <textarea class="b-content" name="noticeContent" type="text" required="required"></textarea>
+                                            </div>     
+                                        </div>
+                                    </div>
+                                    <div class="b-btn-area" style="justify-content: center;">
+                                        <button type="reset" class="b-cancle-btn">취소</button>
+                                        <button type="submit" id="insertBtn" class="b-submit-btn">등록</button>
+                                    </div>
+                                </div>
+                            </div>
 						</form>
 					</div>
 				</div>
