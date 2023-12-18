@@ -300,7 +300,7 @@
                 <c:forEach var="b" items="${list}">
                 	<div class = "content-item">
 	                     <a href ="helpDetailPage.bo?boardNo=${b.boardNo}">
-	                        <img  class = "content-img" src = "${b.filePath}${b.changeName}">
+	                        <img  class = "content-img" src = "${b.changeName}">
 	                        <div class = "content-item-title">${b.boardTitle}</div>
 	                        <div class = "content-item-price">${b.price}원</div>
 	                     </a> 

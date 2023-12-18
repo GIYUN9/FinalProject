@@ -65,7 +65,7 @@ public class BoardController {
 			
 		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
 		ArrayList<Board> list = boardService.helpselectList(pi);
-		
+		System.out.println("list객체 확인용 -> " +list);
 		mv.addObject("pi",pi)
 			.addObject("list",list)
 			.setViewName("board/helpBoardList");
@@ -153,7 +153,7 @@ public class BoardController {
 			}
 			
 			at.setOriginName(reupfile.getOriginalFilename());
-			at.setChangeName("resources/borderImage/" + changeName);
+			at.setChangeName("././resources/borderImage/" + changeName);
 		}
 		
 		int result = boardService.helpUpdateBoard(b);
@@ -478,13 +478,6 @@ public class BoardController {
 		PageInfo pi =  Pagenation.getPageInfo(listCount, currentPage, 5, 8);
 		ArrayList<Board> list = boardService.helpmeselectList(pi);
 		
-		for(Board b : list) {
-			
-			b.getBoardNo(); // 해당 키를 이용해서 첨부파일 가져옴
-			 b.setChangeName("2023121520271040427.jpg");// 가져온 첨부파일 이름 넣어줌
-			b.setFilePath("././resources/borderImage/"); // 가져온 첨부파일 경로 넣어줌
-		}
-		
 		mv.addObject("pi",pi)
 		  .addObject("list",list)
 		  .setViewName("board/requestBoardList");
@@ -509,7 +502,8 @@ public class BoardController {
 			String changeName = saveFile(upfile, session, "resources/borderImage/");
 			
 			at.setOriginName(upfile.getOriginalFilename());
-			at.setChangeName("resources/borderImage/" + changeName);
+
+			at.setChangeName("././resources/borderImage/" + changeName);
 		}
 		
 		result1 = boardService.helpmeInsertBoard(b);
@@ -517,6 +511,7 @@ public class BoardController {
 		at.setBoardNo(b.getBoardNo());
 		result2 = boardService.helpmeAttachment(at);
 		
+		System.out.println("at파일확인 " +at);
 		if(result1 > 0 && result2 > 0) {
 			session.setAttribute("alertMsg", "게시글 작성 성공");
 			return "redirect:/helpmeList.bo";
