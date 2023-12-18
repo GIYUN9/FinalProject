@@ -64,8 +64,8 @@
         margin: 7px;
     }
     .b-title{
-        width: 300px;
-        height: 25px;
+        width: 350px;
+        height: 30px;
         padding-left: 5px;
         padding-bottom: 2px;
         border: 1px solid rgba(96, 96, 96, 0.5);
@@ -75,8 +75,8 @@
         overflow: hidden;
     }
     .b-content{
-        width: 300px;
-        height: 157px;
+        width: 350px;
+        height: 225px;
         padding: 10px;
         padding-bottom: 130px;
         border: 1px solid rgba(96, 96, 96, 0.5);
@@ -84,20 +84,7 @@
         margin-bottom: 15px;
         resize: none;
         overflow: hidden;
-    }
-    .hu-upfile{
-        width: 300px;
-        height: 32px;
-        border: 1px solid rgba(96, 96, 96, 0.5);
-        border-radius: 8px;
-        margin-bottom: 0px;
-        display: flex;
-        font-size: 14px;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-    }
-    
+    }    
     .b-input-area{
         display: flex;
         flex-direction: column;
@@ -118,7 +105,6 @@
         display: flex;
     }
     .b-top-section{
-        margin-bottom: 30px;
         font-size: 30px;
         font-weight: bold;
     }

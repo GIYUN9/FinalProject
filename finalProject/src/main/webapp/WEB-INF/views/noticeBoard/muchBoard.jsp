@@ -212,59 +212,117 @@
 			<button id="board-create" onclick="pageMove()">글쓰기</button>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="community-big">
-                            <div class="main-a">
-                                <span class="main-span1">공지</span>
-                                <span class="main-span2">품앗이 가이드라인</span>
-                                <a href="notice.co"><img src="././resources/borderImage/right-arrow-icon.png" alt="오른쪽 화살표" class="arrow-img" ></a>
-                            </div>                        
-                            <ul>
-                                <c:forEach var="b" items="${list}">
-	                            <li class="main-list">
-	                                <a href="detailcomm.co?boardNo=${b.boardNo }" class="a-click">
-	                                    <div class="border-one">
-	                                        <span class="community-p">${b.boardType == 3 ? '궁금해요' : b.boardType == 4 ? '얼마예요' : '함께해요'}</span>
-	                                        <h4>${b.boardTitle}</h4>
-	                                        <span class="text1">${b.boardContent}</span><br>
-	                                        <span class="text2">${b.location}</span>
-	                                        <div>
-	                                            <a href="" class="a-click">
-                            						<img src="./resources/icon/LIKE.png" class="img" style="margin-bottom: 10px;">
-	                                                <span>0</span>
-	                                            </a>
-	                                            <a href="" class="a-click">
-					                				<img src="./resources/icon/speech-bubble.png" alt="말풍선아이콘" class="img">
-	                                                <span>0</span>
-	                                            </a>
-	                                            <span class="time-span">${b.createDate}</span>
-	                                        </div>
-	                                    </div>
-	                                </a>
-	                            </li>
-	                            <hr class="line">
-	                    	</c:forEach>
-                            </ul>
-                            <ul class="pagination" style="justify-content: center;">
-	                	<c:choose>
-	                		<c:when test="${pi.currentPage eq 1 }">
-								<li class="page-item disabled"><a class="page-link" href="#">Back</a></li>
-	                   		</c:when>
-	                   		<c:otherwise>
-	                   			<li class="page-item"><a class="page-link" href="much.co?cpage=${pi.currentPage - 1}">Back</a></li>
-	                   		</c:otherwise>
-						</c:choose>
-						<c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage }">
-	                   		<li class="page-item"><a class="page-link" href="much.co?cpage=${p}">${p}</a></li>
-	                    </c:forEach>
-	                    
-	                    <c:choose>
-	                    	<c:when test="${pi.currentPage eq pi.maxPage}">
-	                  			<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
-	                		</c:when>
-	                		<c:otherwise>
-	                   			<li class="page-item"><a class="page-link" href="much.co?cpage=${pi.currentPage + 1}">Next</a></li>
-	                   		</c:otherwise>
-	                	</c:choose>
-	                </ul>  
+                    <div class="main-a">
+                        <span class="main-span1">공지</span>
+                        <span class="main-span2">품앗이 가이드라인</span>
+                        <a href="notice.co"><img src="././resources/borderImage/right-arrow-icon.png" alt="오른쪽 화살표" class="arrow-img" ></a>
+                    </div>                        
+                    <ul>
+                        <c:forEach var="b" items="${list}">
+                        <li class="main-list">
+                            <a href="detailcomm.co?boardNo=${b.boardNo }" class="a-click">
+                                <div class="border-one">
+                                    <span class="community-p">${b.boardType == 3 ? '궁금해요' : b.boardType == 4 ? '얼마예요' : '함께해요'}</span>
+                                    <h4>${b.boardTitle}</h4>
+                                    <span class="text1">${b.boardContent}</span><br>
+                                    <span class="text2">${b.location}</span>
+                                    <div>
+                                        <a href="" class="a-click">
+                                            <img src="./resources/icon/LIKE.png" class="img" style="margin-bottom: 10px;">
+                                            <span>0</span>
+                                        </a>
+                                        <a href="" class="a-click">
+                                            <img src="./resources/icon/speech-bubble.png" alt="말풍선아이콘" class="img">
+                                            <span>0</span>
+                                        </a>
+                                        <span class="time-span">${b.createDate}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <hr class="line">
+                    </c:forEach>
+                    <ul class="pagination" style="justify-content: center;">
+                        <c:choose>
+                            <c:when test="${pi.currentPage eq 1 }">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" 
+                                        style="
+                                            color: rgb(147, 147, 150); 
+                                            border: none; 
+                                            cursor: pointer;
+                                            "  
+                                            onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                            onmouseout="this.style.color='black';
+                                        ">
+                                        이전
+                                    </a>
+                                </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li class="page-item">
+                                    <a class="page-link" href="much.co?cpage=${pi.currentPage - 1}" 
+                                    style="
+                                        color: black; 
+                                        border: none; 
+                                        cursor: pointer;
+                                        "  
+                                        onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                        onmouseout="this.style.color='black';
+                                    ">
+                                        이전
+                                    </a>
+                                </li>
+                                </c:otherwise>
+                        </c:choose>
+                        <c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage }">
+                                <li class="page-item">
+                                <a class="page-link" href="much.co?cpage=${p}" 
+                                style="
+                                    color: black; 
+                                    border: none; 
+                                    cursor: pointer;
+                                    "  
+                                    onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                    onmouseout="this.style.color='black';
+                                ">
+                                    ${p}
+                                </a>
+                            </li>
+                        </c:forEach>
+                        <c:choose>
+                            <c:when test="${pi.currentPage eq pi.maxPage}">
+                                    <li class="page-item disabled">
+                                    <a class="page-link" href="#" 
+                                    style="
+                                        color: rgb(147, 147, 150); 
+                                        border: none; 
+                                        cursor: pointer;
+                                        "  
+                                        onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                        onmouseout="this.style.color='black';
+                                    ">
+                                        다음
+                                    </a>
+                                </li>
+                            </c:when>
+                            <c:otherwise>
+                                    <li class="page-item">
+                                    <a class="page-link" href="much.co?cpage=${pi.currentPage + 1}" 
+                                    style="
+                                        color: black; 
+                                        border: none; 
+                                        cursor: pointer;
+                                        "  
+                                        onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                        onmouseout="this.style.color='black';
+                                    ">
+                                        다음
+                                    </a>
+                                </li>
+                            </c:otherwise>
+                        </c:choose>
+                    </ul>
                 </div>
 			</div>		
 		</div>

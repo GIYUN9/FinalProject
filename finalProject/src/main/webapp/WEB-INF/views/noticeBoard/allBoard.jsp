@@ -200,6 +200,10 @@
             cursor: pointer;
             z-index: 1;
         }
+        .page-link:hover{
+            background: black;
+            background-color: black;
+        }
 	</style>
 </head>
 <body>
@@ -260,22 +264,82 @@
                 <ul class="pagination" style="justify-content: center;">
                 	<c:choose>
                 		<c:when test="${pi.currentPage eq 1 }">
-							<li class="page-item disabled"><a class="page-link" href="#">Back</a></li>
+							<li class="page-item disabled">
+                                <a class="page-link" href="#" 
+                                style="
+                                    color: rgb(147, 147, 150); 
+                                    border: none; 
+                                    cursor: pointer;
+                                    "  
+                                    onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                    onmouseout="this.style.color='black';
+                                ">
+                                    이전
+                                </a>
+                            </li>
                    		</c:when>
                    		<c:otherwise>
-                   			<li class="page-item"><a class="page-link" href="list.co?cpage=${pi.currentPage - 1}">Back</a></li>
+                   			<li class="page-item">
+                                <a class="page-link" href="list.co?cpage=${pi.currentPage - 1}" 
+                                style="
+                                    color: black; 
+                                    border: none; 
+                                    cursor: pointer;
+                                    "  
+                                    onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                    onmouseout="this.style.color='black';
+                                ">
+                                    이전
+                                </a>
+                            </li>
                    		</c:otherwise>
 					</c:choose>
 					<c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage }">
-                   		<li class="page-item"><a class="page-link" href="list.co?cpage=${p}">${p}</a></li>
+                   		<li class="page-item">
+                            <a class="page-link" href="list.co?cpage=${p}" 
+                            style="
+                                color: black; 
+                                border: none; 
+                                cursor: pointer;
+                                "  
+                                onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                onmouseout="this.style.color='black';
+                            ">
+                                ${p}
+                            </a>
+                        </li>
                     </c:forEach>
                     
                     <c:choose>
                     	<c:when test="${pi.currentPage eq pi.maxPage}">
-                  			<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+                  			<li class="page-item disabled">
+                                <a class="page-link" href="#" 
+                                style="
+                                    color: rgb(147, 147, 150); 
+                                    border: none; 
+                                    cursor: pointer;
+                                    "  
+                                    onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                    onmouseout="this.style.color='black';
+                                ">
+                                    다음
+                                </a>
+                            </li>
                 		</c:when>
                 		<c:otherwise>
-                   			<li class="page-item"><a class="page-link" href="list.co?cpage=${pi.currentPage + 1}">Next</a></li>
+                   			<li class="page-item">
+                                <a class="page-link" href="list.co?cpage=${pi.currentPage + 1}" 
+                                style="
+                                    color: black; 
+                                    border: none; 
+                                    cursor: pointer;
+                                    "  
+                                    onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                    onmouseout="this.style.color='black';
+                                ">
+                                    다음
+                                </a>
+                            </li>
                    		</c:otherwise>
                 	</c:choose>
                 </ul>
