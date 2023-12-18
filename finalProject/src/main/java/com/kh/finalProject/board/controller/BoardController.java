@@ -60,7 +60,7 @@ public class BoardController {
 	
 	//도와줄게요 리스트
 	@RequestMapping(value="helpList.bo")
-	public ModelAndView helpSelectList(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv, Attachment at) {
+	public ModelAndView helpSelectList(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv, MultipartFile upfile, HttpSession session) {
 		int listCount = boardService.seleteHelpListCount();
 			
 		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
@@ -83,8 +83,9 @@ public class BoardController {
 		
 		if(!upfile.getOriginalFilename().equals("")) {
 			
-			String changeName = saveFile(upfile, session, "././resources/borderImage/");
+			String changeName = saveFile(upfile, session, "resources/borderImage/");
 			
+			b.getBoardNo(); 
 			at.setOriginName(upfile.getOriginalFilename());
 			at.setChangeName("././resources/borderImage/" + changeName);
 		}
@@ -145,7 +146,7 @@ public class BoardController {
 		
 		if(!reupfile.getOriginalFilename().equals("")) {
 			
-			String changeName = saveFile(reupfile, session, "/resources/borderImage/");
+			String changeName = saveFile(reupfile, session, "resources/borderImage/");
 			
 			if(at.getOriginName() != null) {
 				new File(session.getServletContext().getRealPath(at.getChangeName())).delete();
@@ -498,9 +499,10 @@ public class BoardController {
 		
 		if(!upfile.getOriginalFilename().equals("")) {
 			
-			String changeName = saveFile(upfile, session, "/resources/borderImage/");
+			String changeName = saveFile(upfile, session, "resources/borderImage/");
 			
 			at.setOriginName(upfile.getOriginalFilename());
+
 			at.setChangeName("././resources/borderImage/" + changeName);
 		}
 		
