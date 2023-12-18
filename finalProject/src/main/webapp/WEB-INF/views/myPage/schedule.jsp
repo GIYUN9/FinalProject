@@ -233,8 +233,8 @@
 			background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">일정 관리</a>
 			<a class="myPageSideBar" href="ask.me">문의 내역</a>
 			<c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
-                <a class="myPageSideBar" href="">회원 관리</a>
-                <a class="myPageSideBar" href="ask.me">신고 내역</a>                
+                <a class="myPageSideBar" href="careMem.me">회원 관리</a>
+                <a class="myPageSideBar" href="viewReport.me">신고 내역</a>                
             </c:if>        
 		</div>
 		<div class="main-box">
@@ -374,7 +374,7 @@
 						<div style="width: 100%;">
 							<div style="float: left; margin-top: 20px; margin-bottom: 5px;">요청자 메세지</div>
 							<textarea class="modal-textarea" style="width: 100%; height: 150px; text-align: left; padding: 5px;" readonly="readonly">
-${s.scheContent}
+								${s.scheContent}
 							</textarea>
 						</div>
 						<div style="display: flex; flex-direction: row; justify-content: flex-end; width: 100%;" >
