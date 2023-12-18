@@ -130,7 +130,8 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 						</form>
 					</div>
 					<div class="ui-formOuter">
-						<form action="updateProInfo.me">
+						<form action="updateProInfo.me" method="post">
+						<input type="hidden" name="memberNo" value="${loginUser.memberNo}">
 							<table class="user-info-table">
 								<th>전문가 닉네임</th>
 								<tr>

@@ -114,6 +114,7 @@
 					</div>
 					<div class="ui-formOuter">
 						<form action="updateUserInfo.me" method="post">
+							<input type="hidden" name="memberNo" value="${loginUser.memberNo}">
 							<table class="user-info-table">
 								<th>이름</th>
 								<tr>
