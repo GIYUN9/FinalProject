@@ -68,10 +68,17 @@
 					max-width: 400px;
 					max-width: 400px;
 				</div>
-				<button style="margin-top: 55px;" class="er-btn">메인으로</button>
-				<button class="er-btn">문의하기</button>
+				<button style="margin-top: 55px;" class="er-btn" onclick="redirectHome()">메인으로</button>
+				<button class="er-btn">문의하기(미정)</button>
 			</div>
 		</div>		
 	<jsp:include page = "footer.jsp" />
+
+	<script>
+		function redirectHome() {  // 클릭 시 리다이렉션을 수행할 URL을 지정합니다.
+		  var redirectUrl = '<%=request.getContextPath()%>/'; 
+		  window.location.href = redirectUrl;
+		}
+	</script>
 </body>
 </html>
