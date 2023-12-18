@@ -188,7 +188,7 @@
 
                 <div class="com-thum">
                     <div>         
-                        <img style="width: 70px; height: 70px; margin: 15px; border-radius: 15px;" src=${b.filePath }>
+                        <img style="width: 70px; height: 70px; margin: 15px; border-radius: 15px;" src="${b.filePath }">
                     </div>
                     <div>
                         <div style="margin-bottom: 5px;"> ${b.memberName}</div>
