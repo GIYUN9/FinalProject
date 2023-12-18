@@ -24,4 +24,5 @@ public class Reply {
 	private String memberName;
 	
 	private Date createDate;
+	private String filePath;
 }

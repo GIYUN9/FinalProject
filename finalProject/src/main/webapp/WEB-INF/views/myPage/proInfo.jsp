@@ -130,7 +130,8 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 						</form>
 					</div>
 					<div class="ui-formOuter">
-						<form action="updateProInfo.me">
+						<form action="updateProInfo.me" method="post">
+						<input type="hidden" name="memberNo" value="${loginUser.memberNo}">
 							<table class="user-info-table">
 								<th>전문가 닉네임</th>
 								<tr>
@@ -148,8 +149,8 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 								<tr>
 									<td>
 										<div class = "normal-input-box">
-											<input type="text" value="${loginUser.location}" id="sample6_address" class="phone-input">
-											<input type="button" class="btn" onclick="sample6_execDaumPostcode()" value="인증" 
+											<input type="text" value="${loginUser.location}" id="sample6_address" name="location" class="phone-input">
+											<input type="button" class="btn" onclick="sample6_execDaumPostcode()" value="주소검색" 
 											style="width: 80px;
 											height: 35px;
 											border: 1px solid rgb(147, 147, 150);
@@ -158,7 +159,8 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 										</div>
 									</td>
 									<td><input type="hidden" id="sample6_postcode" placeholder="우편번호"></td>										
-									<td><input type="hidden" id="sample6_extraAddress" placeholder="참고항목"> 
+									<td><input type="hidden" id="sample6_extraAddress" placeholder="참고항목"> </td>
+									<td><input type="hidden" id="sample6_detailAddress" placeholder="상세주소"></td>
 								</tr>
 								<th>
 									전문분야 및 상세분야 <br>
