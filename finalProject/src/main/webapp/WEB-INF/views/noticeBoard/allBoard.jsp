@@ -234,17 +234,21 @@
 						        <div class="border-one">
 						            <span class="community-p">${b.boardType == 3 ? '궁금해요' : b.boardType == 4 ? '얼마예요' : '함께해요'}</span>
 						            <h4>${b.boardTitle}</h4>
-						            <p class="text1">${b.boardContent}</p>
-						            <p class="text2">${b.location}</p>
-						          
-                            		<img src="./resources/icon/LIKE.png" class="img" style="margin-bottom: 10px;">
-					                <span>0</span>
-					          
-					      
-					                <img src="./resources/icon/speech-bubble.png" alt="말풍선아이콘" class="img">
-					                <span>0</span>
-						         
-						            <span class="time-span">${b.createDate}</span>
+						            <span class="text1">${b.boardContent}</span>
+                                    <div>
+                                        <span class="text2">${b.location}</span>
+                                    </div>						        
+                                    <div>
+                                        <a href="" class="a-click">
+                                            <img src="./resources/icon/LIKE.png" class="img" style="margin-bottom: 10px;">
+                                            <span>0</span>
+                                        </a>
+                                        <a href="" class="a-click">
+                                            <img src="./resources/icon/speech-bubble.png" alt="말풍선아이콘" class="img">
+                                            <span>0</span>
+                                        </a>
+                                        <span class="time-span">${b.createDate}</span>
+                                    </div>
 						        </div>
 					        </a>
 					    </li>
