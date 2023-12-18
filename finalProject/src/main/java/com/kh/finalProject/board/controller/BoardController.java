@@ -60,21 +60,12 @@ public class BoardController {
 	
 	//도와줄게요 리스트
 	@RequestMapping(value="helpList.bo")
-	public ModelAndView helpSelectList(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv, Attachment at) {
+	public ModelAndView helpSelectList(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv, MultipartFile upfile, HttpSession session) {
 		int listCount = boardService.seleteHelpListCount();
 			
 		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
 		ArrayList<Board> list = boardService.helpselectList(pi);
-			
-		for(Board b : list) {
-			
-			b.getBoardNo(); // 해당 키를 이용해서 첨부파일 가져옴
-			b.setChangeName("2023121312401841908.jpg");// 가져온 첨부파일 이름 넣어줌
-			b.setFilePath("././resources/borderImage/"); // 가져온 첨부파일 경로 넣어줌
-			
-		}
-			
-			
+		
 		mv.addObject("pi",pi)
 			.addObject("list",list)
 			.setViewName("board/helpBoardList");
@@ -92,10 +83,11 @@ public class BoardController {
 		
 		if(!upfile.getOriginalFilename().equals("")) {
 			
-			String changeName = saveFile(upfile, session, "././resources/borderImage/");
+			String changeName = saveFile(upfile, session, "resources/borderImage/");
 			
+			b.getBoardNo(); 
 			at.setOriginName(upfile.getOriginalFilename());
-			at.setChangeName("././resources/borderImage/" + changeName);
+			at.setChangeName("resources/borderImage/" + changeName);
 		}
 		
 		result1 = boardService.helpinsertBoard(b);
@@ -154,14 +146,14 @@ public class BoardController {
 		
 		if(!reupfile.getOriginalFilename().equals("")) {
 			
-			String changeName = saveFile(reupfile, session, "/resources/borderImage/");
+			String changeName = saveFile(reupfile, session, "resources/borderImage/");
 			
 			if(at.getOriginName() != null) {
 				new File(session.getServletContext().getRealPath(at.getChangeName())).delete();
 			}
 			
 			at.setOriginName(reupfile.getOriginalFilename());
-			at.setChangeName("/resources/borderImage/" + changeName);
+			at.setChangeName("resources/borderImage/" + changeName);
 		}
 		
 		int result = boardService.helpUpdateBoard(b);
@@ -514,10 +506,10 @@ public class BoardController {
 		
 		if(!upfile.getOriginalFilename().equals("")) {
 			
-			String changeName = saveFile(upfile, session, "/resources/borderImage/");
+			String changeName = saveFile(upfile, session, "resources/borderImage/");
 			
 			at.setOriginName(upfile.getOriginalFilename());
-			at.setChangeName("/resources/borderImage/" + changeName);
+			at.setChangeName("resources/borderImage/" + changeName);
 		}
 		
 		result1 = boardService.helpmeInsertBoard(b);
