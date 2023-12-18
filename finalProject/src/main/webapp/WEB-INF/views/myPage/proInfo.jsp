@@ -149,7 +149,7 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 								<tr>
 									<td>
 										<div class = "normal-input-box">
-											<input type="text" value="${loginUser.location}" id="sample6_address" class="phone-input">
+											<input type="text" value="${loginUser.location}" id="sample6_address" name="location" class="phone-input">
 											<input type="button" class="btn" onclick="sample6_execDaumPostcode()" value="주소검색" 
 											style="width: 80px;
 											height: 35px;
