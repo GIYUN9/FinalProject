@@ -153,40 +153,36 @@
                             <div class="board">
                                 <div class="board-top-section">
                                     <img class="b-close-btn" src="././resources/icon/close.png">
-                                        <div class="b-top-section">
-                                            <p>공지사항 글쓰기</p>
+                                    <div class="b-top-section">
+                                        <p>공지사항 글쓰기</p>
+                                    </div>
+                                    <div class="b-align">                
+                                        <div class="b-input-area">
+                                        <div class="category-container">
+                                            <label id = "category-label" for ="category" name="noticeType">카테고리</label>
+                                            <select name ="noticeType" id ="category">
+                                                <option value="필독">필독</option>
+                                                <option value="공지">공지</option>
+                                            </select>
                                         </div>
-                                   <form method="post" action="insertBoard.co">
-                                   <input type="hidden" name="memberNo" value="${loginUser.memberNo}">
-                                        <div class="b-align">                
-                                            <div class="b-input-area">
-                                            <div class="category-container">
-                                                <label id = "category-label" for ="category">카테고리</label>
-                                                <select name ="boardType" id ="category">
-                                                    <option value="3">궁금해요</option>
-                                                    <option value="4">얼마예요</option>
-                                                    <option value="5">함께해요</option>
-                                                </select>
-                                            </div>
-                                                <div class="b-aa">
-                                                    <div class="b-bb">
-                                                        제목
-                                                    </div>
-                                                    <input class="b-title" name="boardTitle" type="text"/>
-                                                </div>  
-                                                <div class="b-aa">
-                                                    <div class="b-cc">
-                                                        내용
-                                                    </div>
-                                                    <textarea class="b-content" name="boardContent" type="text"></textarea>
-                                                </div>     
-                                            </div>
+                                            <div class="b-aa">
+                                                <div class="b-bb">
+                                                    제목
+                                                </div>
+                                                <input class="b-title" required="required" name="noticeTitle" type="text"/>
+                                            </div>  
+                                            <div class="b-aa">
+                                                <div class="b-cc">
+                                                    내용
+                                                </div>
+                                                <textarea class="b-content" name="noticeContent" type="text" required="required"></textarea>
+                                            </div>     
                                         </div>
-                                        <div class="b-btn-area" style="justify-content: center;">
-                                            <button type="reset" class="b-cancle-btn">취소</button>
-                                            <button type="submit" class="b-submit-btn">등록</button>
-                                        </div>
-                                    </form>
+                                    </div>
+                                    <div class="b-btn-area" style="justify-content: center;">
+                                        <button type="reset" class="b-cancle-btn">취소</button>
+                                        <button type="submit" id="insertBtn" class="b-submit-btn">등록</button>
+                                    </div>
                                 </div>
                             </div>
 						</form>

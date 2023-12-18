@@ -267,10 +267,15 @@
 	</div>
 	<jsp:include page="../common/footer.jsp" />
 	
-	<script>        
+	<script>  
 	const cateMemberValue = {}
+ 	let checkboxes = document.querySelectorAll('input[type="checkbox"]'); //input type이 checkbox인 모든 요소를 가져옴
+    let userInfo2Div = document.querySelector('.user-info2');
+    let cancelButton = document.querySelector('.ad-can');
+    let tableRows = document.querySelectorAll('.ad-table tbody tr');
+
 	
-	 let globalMemberNoList = [];
+	let globalMemberNoList = [];
     $(document).ready(function() {
     	addCheckBoxEvent();
     	displaySelectedMembers();
@@ -282,11 +287,6 @@
     });	
     
     function addCheckBoxEvent(){
-	 	let checkboxes = document.querySelectorAll('input[type="checkbox"]');
-	    let userInfo2Div = document.querySelector('.user-info2');
-	    let cancelButton = document.querySelector('.ad-can');
-	    let tableRows = document.querySelectorAll('.ad-table tbody tr');
-	
 	    // 각 체크박스에 클릭 이벤트 리스너 추가
 	    checkboxes.forEach(function(checkbox) {
 	        checkbox.onchange = function(){
@@ -304,26 +304,20 @@
     }
 		
     function displaySelectedMembers() {
-    	console.log("??")
+    	console.log("displaySelectedMembers 호출")
         let checkboxes = document.querySelectorAll('input[type="checkbox"]');
         let userInfo2Div = document.querySelector('.user-info2');
         let memberNoList = [];
 
-       
-
         // 체크박스를 통해 선택된 것을 찾기 위해 반복
         checkboxes.forEach(function(checkbox, index) {
-
             if (checkbox.checked) {
                 // 해당하는 <td> 요소 가져오기
                 let tds = checkbox.parentElement.parentElement.getElementsByTagName('td');
-
                 // <td> 요소에서 값 추출
-                let userNo = tds[1].innerText;
-                
+                let userNo = tds[1].innerText;                
                 memberNoList.push(userNo);
                 checkbox.checked = true;
-
                 
                 if (!isUserNoAdded(userNo, userInfo2Div)) {
 
@@ -369,52 +363,24 @@
 	
 	                // user-info2Div에 alignMemDiv 추가
 	                userInfo2Div.appendChild(alignMemDiv);
+	                
+	                let selectUserNoValue = upperTextSpanSelMem2.querySelector('.select-user-no').innerText;
+	                console.log('우측 선택된 유저 넘버:', selectUserNoValue);
                 }
             }
         });
       
         let memberNoListString = memberNoList.toString();
-        console.log('memberNoList 값:', memberNoList);
-        console.log('globalMemberNoList 값:', globalMemberNoList);
-        console.log('memberNoListString 값:', memberNoListString);
+        //console.log('memberNoList 값:', memberNoList);
+        //console.log('globalMemberNoList 값:', globalMemberNoList);
+        //console.log('memberNoListString 값:', memberNoListString);
     }
 
  	// 이미 추가된 정보인지 확인하는 함수
     function isUserNoAdded(userNo, userInfo2Div) {
-        let addedUserNos = Array.from(userInfo2Div.querySelectorAll('.upper-text'))
-            .map(span => span.innerText.replace('No. ', ''));
-        
-        return addedUserNos.includes(userNo);
+        let addedUserNos = Array.from(userInfo2Div.querySelectorAll('.upper-text')).map(span => span.innerText.replace('No. ', ''));
+        return addedUserNos.includes(userNo); 
     }
-
-    document.addEventListener("DOMContentLoaded", function() {
-        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        var userInfo2Div = document.querySelector('.user-info2');
-        var cancelButton = document.querySelector('.ad-can');
-	    var searchInput = document.querySelector('.src-mem');
-        var tableRows = document.querySelectorAll('.ad-table tbody tr');
-
-        // 각 체크박스에 클릭 이벤트 리스너 추가
-        checkboxes.forEach(function(checkbox) {
-            checkbox.addEventListener('change', function() {
-                displaySelectedMembers();
-            });
-        });
-
-        // 취소 버튼 클릭 이벤트 처리
-        cancelButton.addEventListener('click', function() {
-            // 취소 버튼 클릭 시 align-mem의 내용 초기화 및 체크박스의 checked 해제
-            userInfo2Div.innerHTML = '';
-            checkboxes.forEach(function(checkbox) {
-                checkbox.checked = false;
-            });
-        });
-
-        // displaySelectedMembers 함수
-        function displaySelectedMembers() {
-            // ... (이하 생략)
-        }
-    });
     
     function drawMemberList(text){
         // AJAX를 사용하여 서버에 데이터 요청
@@ -450,6 +416,16 @@
             $('#memberTable tbody').append(newRow);
         });
     }
+    
+    $(document).ready(function() {
+        $('.select-user-no').each(function() {
+            if (checkbox.value == '${targetMemberNo}') {
+            	checkbox.checked = true;
+            } else {
+            	checkbox.checked = false;
+            }
+        });
+    });
 
     function a() {
         let memberNos = [];
@@ -477,8 +453,5 @@
         });
     }
 	</script>
-	<!-- aligm-mem에 있는 값과 체크박스 비교해서 같으면 체크? 
-	
-	-->
 </body>
 </html>
