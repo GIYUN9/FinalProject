@@ -10,7 +10,7 @@
 		<style>
         .main-box{
             position: relative;
-        }
+        }	
 		.pageBox{
 			margin-bottom: 100px;
             min-height: 721px;
@@ -188,7 +188,7 @@
 
                 <div class="com-thum">
                     <div>         
-                        <img style="width: 70px; height: 70px; margin: 15px; border-radius: 15px;" src="./resources/icon/profileTest.png">
+                        <img style="width: 70px; height: 70px; margin: 15px; border-radius: 15px;" src="${b.filePath }">
                     </div>
                     <div>
                         <div style="margin-bottom: 5px;"> ${b.memberName}</div>
@@ -278,7 +278,7 @@
                                       
 							                "<div class=\"reply-align\" id=\"reply-align\">" +
 							                "<div class=\"profile-area\">" +
-							                "<img style=\"width: 45px; height: 45px; margin: 5px; border-radius: 15px;\" src=\"./resources/icon/profileTest.png\">" +
+							                "<img style=\"width: 45px; height: 45px; margin: 5px; border-radius: 15px;\" src="+reply.filePath+">" +
 							                "</div>" +
 							                "<div class=\"reply-info\">" +
 							                "<div class=\"reply-top\">" +
