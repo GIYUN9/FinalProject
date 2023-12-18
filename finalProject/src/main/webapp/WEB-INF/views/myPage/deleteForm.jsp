@@ -35,10 +35,10 @@
 			border-radius: 3px;
 			margin-bottom: 5px;
 			cursor: pointer;
-			font-weight: bold;
 			position: absolute;
 			right: 0px;
 			bottom: -12px;
+			font-size: 14px;
 		}
 		
 		.retire:hover {

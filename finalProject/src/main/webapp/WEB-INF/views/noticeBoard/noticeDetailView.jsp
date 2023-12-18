@@ -55,7 +55,7 @@
         .img-area{
             position: absolute;
             bottom: 1px;
-            margin-bottom: 10px;
+            margin-bottom: -35px;
             color: #888888;
             margin-top: 10px;
             display: flex;
@@ -151,7 +151,10 @@
             justify-content: center;
             margin-bottom: 10px;
         }
-       
+       .pfs-align{
+            display: flex;
+            flex-direction: column-reverse;
+       }
 	</style>
 </head>
 <body>
@@ -167,46 +170,64 @@
 			<a class="myPageSideBar" href="notice.co">공지사항</a>
 		</div>
 		<div class="main-box">
-			<h3 style="margin: 10px 0 0 20px;">전체보기</h3>
-			
-			
+			<h3 style="margin: 10px 0 0 20px;">전체보기</h3>					
 			<div class="pageBox" style="display: flex; flex-direction: column; position: relative;">
                 <div class="title-area"> 
-                    <p class="com-service">${b.boardType == 3 ? '궁금해요' : b.boardType == 4 ? '얼마예요' : '함께해요'}</p>
-                    <h4 class="com-title">${b.boardTitle}</h4>                                          
-						
-						<c:choose>
-						    <c:when test="${b.location == null}">
-						        <p class="com-loca">주소 알 수 없음</p>
-						    </c:when>
-						    <c:otherwise>
-						        <p class="com-loca">${b.location}</p>
-						    </c:otherwise>
-						</c:choose>
-                                                                                                          
+                    <p class="com-service">
+                        ${b.boardType == 3 ? '궁금해요' : b.boardType == 4 ? '얼마예요' : '함께해요'}
+                    </p>
+                    <h4 class="com-title">
+                        ${b.boardTitle}
+                    </h4>                                          
+                    <c:choose>
+                        <c:when test="${b.location == null}">
+                            <p class="com-loca">주소 알 수 없음</p>
+                        </c:when>
+                        <c:otherwise>
+                            <p class="com-loca">${b.location}</p>
+                        </c:otherwise>
+                    </c:choose>                                                                         
                 </div>
-
                 <div class="com-thum">
                     <div>         
                         <img style="width: 70px; height: 70px; margin: 15px; border-radius: 15px;" src="${b.filePath }">
                     </div>
                     <div>
-                        <div style="margin-bottom: 5px;"> ${b.memberName}</div>
-                        <div class="board-info"> ${b.createDate } ·조회 101</div>
+                        <div style="margin-bottom: 5px;">
+                            ${b.memberName}
+                        </div>
+                        <div class="board-info">
+                            ${b.createDate } ·조회 101
+                        </div>
                     </div>                    
                 </div>
 
                 <div class="cont-area">
                     ${b.boardContent } 
-                    <br><br><br>
+                    <br>
+                    <br>
+                    <br>
                     <div class="img-area">
                         <div>
                             <img src="./resources/icon/LIKE.png" class="img" style="margin-bottom: 10px;">
                             <span>좋아요 39 ·</span>
                             <span>조회수 104</span>
                         </div>
-                        <div>
-                             ${b.createDate } 
+                        <div class="pfs-align">
+                            <div>
+                                <c:if test="${loginUser.memberName eq b.memberName || loginUser.memberName=='관리자'}">
+                                    <div align="center">
+                                        <a class="" onclick="postFormSubmit(1)" style="font-size: 11px; cursor: pointer;">수정하기</a>
+                                        <a class="" onclick="postFormSubmit(2)" style="font-size: 11px; cursor: pointer;">삭제하기</a>				
+                                    </div> <br><br>
+                                </c:if>
+                                <form action="" method="post" id="postForm">
+                                    <input type="hidden" name="boardNo" value="${b.boardNo}">	      
+                                </form>
+                            </div>
+                            <div style="text-align: end;">
+                                ${b.createDate } 
+                           </div>
                         </div>
                     </div>
                 </div>
@@ -222,185 +243,169 @@
 							</div>
 					    </c:when>
 					    <c:otherwise>
-	                              <input class="reply-input" name="replyContent" type="text" style="width: 80%;" readonly placeholder="로그인 후 댓글작성이 가능합니다.">
+	                        <input class="reply-input" name="replyContent" type="text" style="width: 80%;" readonly placeholder="로그인 후 댓글작성이 가능합니다.">
 					    </c:otherwise>
 					</c:choose>
-               	</div>
-                   
+               	</div>                   
                 <div class="reply-area">
-                	 
-				</div>
-	                <!-- 수정하기 삭제하기는 관리자 혹은 작성자에게만 보이게 조건걸어주기 -->
-                    <c:if test="${loginUser.memberName eq b.memberName || loginUser.memberName=='관리자'}">
-					    <div align="center">
-					        <a class="" onclick="postFormSubmit(1)">수정하기</a>
-					        <a class="" onclick="postFormSubmit(2)">삭제하기</a>				
-					    </div>
-					    <br><br>
-					</c:if>
-					
-					 <form action="" method="post" id="postForm">
-		           		<input type="hidden" name="boardNo" value="${b.boardNo}">	      
-		             </form>
-		            
-					<script>
-						function postFormSubmit(num){
-							if(num === 1){
-		                        $("#postForm").attr('action', 'updatePage.co');
-								// document.querySelector('#postForm').setAttribute('action', 'updateForm.bo');
-							} else{
-		                        $("#postForm").attr('action', 'deletePage.co');
-								// document.querySelector('#postForm').setAttribute('action', 'deleteForm.bo');
-							}
-		                    $("#postForm").submit();
-		                    // document.querySelector('#postForm').submit();
-						}
-						
-						window.onload = function(){
-							//댓글 가져와서 그려주기
-							selectReplyList();
-							
-						}
-						
-					//댓글 리스트 그리기
-						function selectReplyList() {
-						    $.ajax({
-						        url: "list.re",
-						        data: {
-						            boardNo: document.getElementById("reply-boardNo").value
-						        },
-						        success: function(res) {
-						        	
-						            let str = "";
-						            for (let reply of res) {
-						                console.log(reply);
-						                str += 
-                                      
-							                "<div class=\"reply-align\" id=\"reply-align\">" +
-							                "<div class=\"profile-area\">" +
-							                "<img style=\"width: 45px; height: 45px; margin: 5px; border-radius: 15px;\" src="+reply.filePath+">" +
-							                "</div>" +
-							                "<div class=\"reply-info\">" +
-							                "<div class=\"reply-top\">" +
-							                "<div class=\"reply-writer\" id = \"reply-writer\">" +                              
-							                reply.memberName;					                
-							                if("${loginUser.memberName}" == reply.memberName || "${loginUser.memberName}" == "관리자"){
-							                	str += "<button id = 'replydelete' onclick='replydelete("+reply.replyNo+")'>" + 
-									                "삭제하기" + 
-									               "</button>";
-							                }
-		                
-							                str += "</div>" +					               
-							                "<div>" +
-							                "일러스트 디자인+8개서비스 고수" +
-							                "</div>" +
-							                "<button class=\"req-btn\">견적요청</button>" +
-							                "</div>" +
-							                "<div class=\"reply-cont\">" +
-							                reply.replyContent +
-						                "</div>" +
-						                "<div class=\"reply-bot\">" +
-						                "<span>" + reply.createDate + " ·</span>" +
-						                "<img src=\"./resources/icon/LIKE.png\" class=\"img\" style=\"margin-bottom: 10px;\">" +
-						                "<span>좋아요 39 ·</span>" +
-						                "<img src=\"./resources/icon/dislike.png\" class=\"img\" style=\"margin-top: 7px;\">" +
-						                "<span>싫어요 -5</span>" +
-						                "</div>" +
-						                "</div>" +
-                                        "<input name = \"replyNo\" id=\"replyNo\" type=\"hidden\" value=\"${reply.replyNo}\">"+
-						                "</div>";
-						            }
-						            document.querySelector('.reply-area').innerHTML = str;
-						        },
-						        error: function() {
-						            console.log("댓글 목록 조회 실패");
-						        }
-						    });
-						}
-						
-						
-						//댓글 Enter 입력 시 댓글 등록기능
-						//$("#comment-write-btn").click(function() {
-						    //insertReply();
-						//});
-						
-						$("#reply-content").keypress(function(e) {
-						    if (e.key === "Enter") {
-						        insertReply();
-						    }
-						});
-						
-						
-						
-						
-						//댓글 등록 기능
-                        function insertReply(){
-                            const boardNo = document.getElementById("reply-boardNo").value;
-                            const memberNo = document.getElementById("WriterNo").value;
-                            const contents = document.getElementById("reply-content").value;
-                            console.log("보드넘버 : ", boardNo);
-                            console.log("작성자번호: ", memberNo);
-                            console.log("내용 : ", contents);
-                           
 
-                            $.ajax({
-                                type : "post",
-                                url : "insert.re",
-                                data : {
-                                    "memberNo" : memberNo,
-                                    "replyContent" : contents,
-                                    "boardNo" : boardNo
-                                },
-                                success: function(result){                    
-                                    
-                                    if(result >0){ //댓글 작성성공
-                                    	console.log("인설트 성공!! ");
-                                        document.getElementById("reply-content").value = "";
-                                    	selectReplyList();	
-                                    }
-                                },
-                                error:function(){
-                                    console.log("요청 실패");
-                                }
-                            });
-                        }
-                        
-						
-						//댓글 삭제하기 기능
-                        function replydelete(replyNo) {
-                            console.log("삭제를 시작해볼까? :" + replyNo);
-                           	
-                            $.ajax({
-                            	type : "post",
-                            	url :"delete.re",
-                            	data : {
-                            		"replyNo" : replyNo
-                            	},
-                            	success:function(result){
-                            		if(result >0){ //댓글 작성성공
-                                    	console.log("DELETEM 성공!! ");                                   
-                                    	selectReplyList();	
-                                    }
-                            	},
-                            	error:function(){
-                            		console.log("요청 실패");
-                            	}
-                            	});
-                        }
-                        
-                        $("#comment-write-btn").keypress(function(ev) {
-                        	  if (ev.keyCode === 13) {
-                        	    ev.insertReply();
-                        	    // do something
-                        	  }
-                        	});
-                        	
-					</script>
-                </div>
+				</div>
 			</div>		
 		</div>
 	</div>
-	
 	<jsp:include page="../common/footer.jsp" />
+    <script>
+        function postFormSubmit(num){
+            if(num === 1){
+                $("#postForm").attr('action', 'updatePage.co');
+                // document.querySelector('#postForm').setAttribute('action', 'updateForm.bo');
+            } else{
+                $("#postForm").attr('action', 'deletePage.co');
+                // document.querySelector('#postForm').setAttribute('action', 'deleteForm.bo');
+            }
+            $("#postForm").submit();
+            // document.querySelector('#postForm').submit();
+        }
+        
+        window.onload = function(){
+            //댓글 가져와서 그려주기
+            selectReplyList();
+            
+        }
+        
+    //댓글 리스트 그리기
+        function selectReplyList() {
+            $.ajax({
+                url: "list.re",
+                data: {
+                    boardNo: document.getElementById("reply-boardNo").value
+                },
+                success: function(res) {
+                    
+                    let str = "";
+                    for (let reply of res) {
+                        console.log(reply);
+                        str += 
+                      
+                            "<div class=\"reply-align\" id=\"reply-align\">" +
+                            "<div class=\"profile-area\">" +
+                            "<img style=\"width: 45px; height: 45px; margin: 5px; border-radius: 15px;\" src="+reply.filePath+">" +
+                            "</div>" +
+                            "<div class=\"reply-info\">" +
+                            "<div class=\"reply-top\">" +
+                            "<div class=\"reply-writer\" id = \"reply-writer\">" +                              
+                            reply.memberName;					                
+                            if("${loginUser.memberName}" == reply.memberName || "${loginUser.memberName}" == "관리자"){
+                                str += "<button id = 'replydelete' onclick='replydelete("+reply.replyNo+")'>" + 
+                                    "삭제하기" + 
+                                   "</button>";
+                            }
+        
+                            str += "</div>" +					               
+                            "<div>" +
+                            "일러스트 디자인+8개서비스 고수" +
+                            "</div>" +
+                            "<button class=\"req-btn\">견적요청</button>" +
+                            "</div>" +
+                            "<div class=\"reply-cont\">" +
+                            reply.replyContent +
+                        "</div>" +
+                        "<div class=\"reply-bot\">" +
+                        "<span>" + reply.createDate + " ·</span>" +
+                        "<img src=\"./resources/icon/LIKE.png\" class=\"img\" style=\"margin-bottom: 10px;\">" +
+                        "<span>좋아요 39 ·</span>" +
+                        "<img src=\"./resources/icon/dislike.png\" class=\"img\" style=\"margin-top: 7px;\">" +
+                        "<span>싫어요 -5</span>" +
+                        "</div>" +
+                        "</div>" +
+                        "<input name = \"replyNo\" id=\"replyNo\" type=\"hidden\" value=\"${reply.replyNo}\">"+
+                        "</div>";
+                    }
+                    document.querySelector('.reply-area').innerHTML = str;
+                },
+                error: function() {
+                    console.log("댓글 목록 조회 실패");
+                }
+            });
+        }
+        
+        
+        //댓글 Enter 입력 시 댓글 등록기능
+        //$("#comment-write-btn").click(function() {
+            //insertReply();
+        //});
+        
+        $("#reply-content").keypress(function(e) {
+            if (e.key === "Enter") {
+                insertReply();
+            }
+        });
+        
+        
+        
+        
+        //댓글 등록 기능
+        function insertReply(){
+            const boardNo = document.getElementById("reply-boardNo").value;
+            const memberNo = document.getElementById("WriterNo").value;
+            const contents = document.getElementById("reply-content").value;
+            console.log("보드넘버 : ", boardNo);
+            console.log("작성자번호: ", memberNo);
+            console.log("내용 : ", contents);
+           
+
+            $.ajax({
+                type : "post",
+                url : "insert.re",
+                data : {
+                    "memberNo" : memberNo,
+                    "replyContent" : contents,
+                    "boardNo" : boardNo
+                },
+                success: function(result){                    
+                    
+                    if(result >0){ //댓글 작성성공
+                        console.log("인설트 성공!! ");
+                        document.getElementById("reply-content").value = "";
+                        selectReplyList();	
+                    }
+                },
+                error:function(){
+                    console.log("요청 실패");
+                }
+            });
+        }
+        
+        
+        //댓글 삭제하기 기능
+        function replydelete(replyNo) {
+            console.log("삭제를 시작해볼까? :" + replyNo);
+               
+            $.ajax({
+                type : "post",
+                url :"delete.re",
+                data : {
+                    "replyNo" : replyNo
+                },
+                success:function(result){
+                    if(result >0){ //댓글 작성성공
+                        console.log("DELETEM 성공!! ");                                   
+                        selectReplyList();	
+                    }
+                },
+                error:function(){
+                    console.log("요청 실패");
+                }
+                });
+        }
+        
+        $("#comment-write-btn").keypress(function(ev) {
+              if (ev.keyCode === 13) {
+                ev.insertReply();
+                // do something
+              }
+            });
+            
+    </script>
 </body>
 </html>

@@ -151,6 +151,7 @@
         font-weight: bold;
         margin-bottom: 10px;
         border-radius: 4px;
+        cursor: pointer;
     }
 
     .login-kakao-btn {
@@ -161,6 +162,7 @@
         height: 40px;
         font-weight: bold;
         border-radius: 4px;
+        cursor: pointer;
     }
     .l-ver-line{
         width: 1px;
@@ -259,6 +261,7 @@
         height: 40px;
         border-radius: 4px;
         margin-top: 30px;
+        cursor: pointer;
     }
     .as-re{
         color: red;
@@ -333,30 +336,41 @@
     }
     /* 이메일버튼 css */
     #em-btn{
+        background-color: white;
     	height: 45px;
     	font-size: 14px;
-    	border: none;
-    	border-radius: 3px;
+        border: 1px solid rgba(231, 229, 229, 0.6);
+    	border-radius: 8px;
     	cursor: pointer;
         width: 74px;
+    }
+    #em-btn:hover{
+        background-color: #f0f0f0;
     }
     
     #em-btn1{
+        background-color: #f0f0f0;
     	height: 45px;
     	font-size: 14px;
-    	border: none;
-    	border-radius: 3px;
+        border: 1px solid rgba(231, 229, 229, 0.6);
+    	border-radius: 8px;
     	cursor: pointer;
         width: 74px;
     }
-    
+    #em-btn1:hover{
+        background-color: white;
+    }
     #em-btn2{
+        background-color: #f0f0f0;
     	height: 45px;
     	font-size: 14px;
-    	border: none;
-    	border-radius: 3px;
+        border: 1px solid rgba(231, 229, 229, 0.6);
+    	border-radius: 8px;
     	cursor: pointer;
         width: 74px;
+    }
+    #em-btn2:hover{
+        background-color: white;
     }
 
     /*password Find*/
@@ -524,10 +538,11 @@
                             </p>
                             <p style="display: flex;">
                                 <input class="en-input3" id="memberEmail" name ="memberEmail" type="text" placeholder="example@poomasi.com" style="margin-right: 5px;">
-                                <button id="em-btn1" type="button" onclick="emailSendNo()">인증 번호 발송</button>
+                                <button id="em-btn1" type="button" onclick="emailSendNo()">인증</button>
                             </p>
                             <p class="number-btn">
-                                <input class="en-input2" id="checkNo" type="number" style="margin-right: 5px;" placeholder="인증번호 6자리를 3분이내 입력해주세요."><button type="button" id="em-btn2" onclick="randomNumberCheck()">인증하기</button>
+                                <input class="en-input2" id="checkNo" type="number" style="margin-right: 5px;" placeholder="인증번호 6자리를 3분이내 입력해주세요.">
+                                <button type="button" id="em-btn2" onclick="randomNumberCheck()">확인</button>
                             </p>
                             <p>
                                 비밀번호

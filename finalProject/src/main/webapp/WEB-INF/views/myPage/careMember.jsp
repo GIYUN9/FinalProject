@@ -53,6 +53,9 @@
         td{
             padding: 10px;
             font-size: 13px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
         .ad-table{
             border: none;
@@ -436,7 +439,7 @@
         $('#memberTable tbody').empty(); // 현재 tbody 내용을 비움
 
         $.each(data, function(index, member) {
-            var newRow = '<tr>' +
+            let newRow = '<tr>' +
                 '<td><input type="checkbox"></td>' +
                 '<td>' + member.memberNo + '</td>' +
                 '<td>' + member.memberEmail + '</td>' +
