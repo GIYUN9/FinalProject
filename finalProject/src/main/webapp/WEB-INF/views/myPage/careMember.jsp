@@ -268,14 +268,14 @@
 	<jsp:include page="../common/footer.jsp" />
 	
 	<script>  
-	const cateMemberValue = {
-			globalMemberNoList: []
-	}
- 	let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+	const cateMemberValue = {}
+ 	let checkboxes = document.querySelectorAll('input[type="checkbox"]'); //input type이 checkbox인 모든 요소를 가져옴
     let userInfo2Div = document.querySelector('.user-info2');
     let cancelButton = document.querySelector('.ad-can');
     let tableRows = document.querySelectorAll('.ad-table tbody tr');
 
+	
+	let globalMemberNoList = [];
     $(document).ready(function() {
     	addCheckBoxEvent();
     	displaySelectedMembers();
@@ -307,7 +307,7 @@
     	console.log("displaySelectedMembers 호출")
         let checkboxes = document.querySelectorAll('input[type="checkbox"]');
         let userInfo2Div = document.querySelector('.user-info2');
-      
+        let memberNoList = [];
 
         // 체크박스를 통해 선택된 것을 찾기 위해 반복
         checkboxes.forEach(function(checkbox, index) {
@@ -316,7 +316,7 @@
                 let tds = checkbox.parentElement.parentElement.getElementsByTagName('td');
                 // <td> 요소에서 값 추출
                 let userNo = tds[1].innerText;                
-            
+                memberNoList.push(userNo);
                 checkbox.checked = true;
                 
                 if (!isUserNoAdded(userNo, userInfo2Div)) {
