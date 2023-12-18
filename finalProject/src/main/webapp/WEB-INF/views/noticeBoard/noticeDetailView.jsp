@@ -320,9 +320,9 @@
 						
 						
 						//댓글 Enter 입력 시 댓글 등록기능
-						$("#comment-write-btn").click(function() {
-						    insertReply();
-						});
+						//$("#comment-write-btn").click(function() {
+						    //insertReply();
+						//});
 						
 						$("#reply-content").keypress(function(e) {
 						    if (e.key === "Enter") {
