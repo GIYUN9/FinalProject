@@ -278,7 +278,7 @@
                                       
 							                "<div class=\"reply-align\" id=\"reply-align\">" +
 							                "<div class=\"profile-area\">" +
-							                "<img style=\"width: 45px; height: 45px; margin: 5px; border-radius: 15px;\" src=\"./resources/icon/profileTest.png\">" +
+							                "<img style=\"width: 45px; height: 45px; margin: 5px; border-radius: 15px;\" src="+reply.filePath+">" +
 							                "</div>" +
 							                "<div class=\"reply-info\">" +
 							                "<div class=\"reply-top\">" +
