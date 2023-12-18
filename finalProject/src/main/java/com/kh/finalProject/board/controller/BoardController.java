@@ -83,11 +83,11 @@ public class BoardController {
 		
 		if(!upfile.getOriginalFilename().equals("")) {
 			
-			String changeName = saveFile(upfile, session, "resources/borderImage/");
+			String changeName = saveFile(upfile, session, "././resources/borderImage/");
 			
 			b.getBoardNo(); 
 			at.setOriginName(upfile.getOriginalFilename());
-			at.setChangeName("resources/borderImage/" + changeName);
+			at.setChangeName("././resources/borderImage/" + changeName);
 		}
 		
 		result1 = boardService.helpinsertBoard(b);
