@@ -17,6 +17,7 @@
   		<result column="MEM_NAME" property="memberName" />
   		<result column="LOCATION" property="location" />
   		<result column="FILE_PATH" property="filePath" />
+  		<result column="CHANGE_NAME" property="changeName" />
   	</resultMap>
   	
   	<resultMap type="Attachment" id="attachmentResult">
