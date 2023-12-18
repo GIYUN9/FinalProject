@@ -49,7 +49,6 @@ public class MemberController {
 	//멤버 마이페이지 수정하는 컨트롤러
 	@RequestMapping(value = "/updateUserInfo.me")
 	public String updateUserInfo(Member m, HttpSession session) {
-		m = (Member)session.getAttribute("loginUser");
 		int result = memberService.updateUserInfo(m);
 		
 		return "redirect:/userInfo.me";
@@ -71,7 +70,6 @@ public class MemberController {
 	//멤버 전문가페이지에서 수정하고 다시 페이지를 부르는 컨트롤러
 	@RequestMapping(value = "/updateProInfo.me")
 	public String updateProInfo(Member m, Professional p, HttpSession session) {
-		m = (Member)session.getAttribute("loginUser");
 		int result = memberService.updateProInfo(m);
 		
 		// 전문 분야 및 상세 분야 보류 여기에 추가해야함
