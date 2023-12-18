@@ -269,117 +269,123 @@
 	
 	<script>  
 	const cateMemberValue = {}
- 	let checkboxes = document.querySelectorAll('input[type="checkbox"]'); //input type이 checkbox인 모든 요소를 가져옴
-    let userInfo2Div = document.querySelector('.user-info2');
-    let cancelButton = document.querySelector('.ad-can');
-    let tableRows = document.querySelectorAll('.ad-table tbody tr');
+ 	let checkboxes = document.querySelectorAll('input[type="checkbox"]'); //모든 input 중 type 속성이 checkbox인 모든 요소를 선택
+    let userInfo2Div = document.querySelector('.user-info2'); //클래스가 .user-info2인 요소 선택
+    let cancelButton = document.querySelector('.ad-can'); // 클래스가 .ad-can인 요소 선택
+    let tableRows = document.querySelectorAll('.ad-table tbody tr');// 클래스가 .ad-table이면서 tbody안의 tr인 요소를 선택
 
 	
-	let globalMemberNoList = [];
-    $(document).ready(function() {
+	let globalMemberNoList = []; //memberNo를 변수에 배열로 담음 
+    $(document).ready(function() { //.ready 문서의 로딩이 완료되었을떄 그 안의 코드블록을 실행
     	addCheckBoxEvent();
     	displaySelectedMembers();
-        $('#searchInput').on('keyup', function() {  	
-            let searchText = $(this).val().toLowerCase();
-            console.log("온키업 텍스트:", searchText); // 이 줄을 추가하여 searchText 값을 콘솔에 출력
-            drawMemberList(searchText);
+        $('#searchInput').on('keyup', function() {  //id가 #searchInput인 요소에서 keyup될때마다 함수를 실행
+            let searchText = $(this).val().toLowerCase(); //searchText에 this(#searchInput)의 keyup된 값을 가져와서 대소문자 구분 없이 변환해서 담음
+            console.log("온키업 텍스트:", searchText); // searchText 값을 콘솔에 출력
+            drawMemberList(searchText); //drawMemberList()에 searchText를 매개변수로 전달
         });
     });	
     
-    function addCheckBoxEvent(){
-	    // 각 체크박스에 클릭 이벤트 리스너 추가
-	    checkboxes.forEach(function(checkbox) {
-	        checkbox.onchange = function(){
+    function addCheckBoxEvent(){ // 체크박스에 이벤트 리스너 추가	    
+	    checkboxes.forEach(function(checkbox) {//checkboxes안의 checkbox에 대해 반복문을 실행함
+	        checkbox.onchange = function(){ //체크박스의 값이 변경되었을 때 displaySelectedMembers() 실행
 	        	 displaySelectedMembers();
 	        }
 	    });
-	    // 나머지 코드 작성 ...
-	    cancelButton.onclick = function(){
-	    	// 취소 버튼 클릭 시 align-mem의 내용 초기화 및 체크박스의 checked 해제
-	    	userInfo2Div.innerHTML = '';
-	        checkboxes.forEach(function(checkbox) {
-	            checkbox.checked = false;
+	    cancelButton.onclick = function(){ // 취소 버튼 클릭 시
+	    	userInfo2Div.innerHTML = ''; //userInfo2Div의 innerHTML에 있는 내용을 비움
+	        checkboxes.forEach(function(checkbox) { //checkboxes(모든 체크박스)안의 checkbox를 반복
+	            checkbox.checked = false; //checkbox의 checked를 false로 설정
 	        });
 	    }
     }
-		
+	
+ 	// 이미 추가된 정보인지 확인하는 함수
+    function isUserNoAdded(userNo, userInfo2Div) { //userNo와, userInfo2Div를 매개변수로 받음
+        let addedUserNos = Array.from(userInfo2Div.querySelectorAll('.upper-text')).map(span => span.innerText.replace('No. ', ''));
+    	//querySelectorAll('.upper-text')) 클래스가 upper-text인 모든요소 선택 NodeList로 반환 
+    	//.map(span => span.innerText.replace('No. ', '')); 선택된 요소에 대해 innertext로 텍스트를 가져오고 'No. '으로 시작하는 문자열에서 'No. '를 ''로 대체
+		//map함수는 배열의 각 요소에 대해 주어진 함수를 한번씩 호출하고 함수를 호출한 결과를 모아서 새로운 배열을 생성함
+		//Array.from(...): NodeList를 배열로 변환 NodeList가 배열이 아니기 떄문
+    	return addedUserNos.includes(userNo); 
+		//map으로 반환된 새로운 nodeList배열을 Array.from으로 배열로 변경하고  includes된 userNo를 반환
+		//addedUserNos.includes(userNo);은 true또는 false값을 반환하며 true일 경우 표현식이 평가된 값을 반환하게됨
+    }
+    
     function displaySelectedMembers() {
     	console.log("displaySelectedMembers 호출")
-        let checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        let userInfo2Div = document.querySelector('.user-info2');
-        let memberNoList = [];
+        let memberNoList = []; //memberNo를 변수에 배열로 담음
 
-        // 체크박스를 통해 선택된 것을 찾기 위해 반복
-        checkboxes.forEach(function(checkbox, index) {
-            if (checkbox.checked) {
-                // 해당하는 <td> 요소 가져오기
-                let tds = checkbox.parentElement.parentElement.getElementsByTagName('td');
-                // <td> 요소에서 값 추출
-                let userNo = tds[1].innerText;                
-                memberNoList.push(userNo);
-                checkbox.checked = true;
+        checkboxes.forEach(function(checkbox, index) { //checkboxes(모든 체크박스)안의 checkbox를 반복 
+        	//index는 forEach함수의 특성상 배열의 각 요소에 함수를 한번 씩 실행하고
+        	//현재 처리 중인 요소의 값, 인덱스, 배열 전체의 매개변수가 전달
+            if (checkbox.checked) { //체크박스가 체크가 되어있다면 checked=true;
+                let tds = checkbox.parentElement.parentElement.getElementsByTagName('td');  
+                //getElementsByTagName는 유사배열 객체(length 속성을 가짐, 배열처럼 인덱스로 요소에 접근 가능)
+                //tds라는 변수에 <input type="checkbox">의 부모요소(<td>)의 부모요소인 <tr>아래에 있는 td라는 지정된 태그 이름의 요소를 모두 가져옴
+                let userNo = tds[1].innerText;  
+                //let userNo의 tds[1]의 1번째인 (<td>${m.memberNo}</td>)에서 값을 가져옴 
+                //0번쨰는 <td><input type=checkbox></td>                
+                memberNoList.push(userNo); 
+                //memberNoList에 userNo값을 추가함 
+                //.push:배열에 새로운 요소를 추가하는 메서드 
+                checkbox.checked = true; //체크박스의 checked를 true로 설정
                 
-                if (!isUserNoAdded(userNo, userInfo2Div)) {
+                if (!isUserNoAdded(userNo, userInfo2Div)) { 
+                	//!isUserNoAdded== addedUserNos.includes(userNo);가 false라면
 
-	                let userType = tds[4].innerText;
-	                let userName = tds[3].innerText;
-	                let userEmail = tds[2].innerText;
+	                let userType = tds[4].innerText; //tds의 [4] 인덱스에서 값을 가져옴 <c:when test="${m.memberPro == 1}">
+	                let userName = tds[3].innerText; //tds의 [3] 인덱스에서 값을 가져옴  <td>${m.memberName}</td>
+	                let userEmail = tds[2].innerText; //tds의 [2] 인덱스에서 값을 가져옴 <td>${m.memberEmail}</td>
 
 	                // align-mem에 두 개의 div 추가
-	                let alignMemDiv = document.createElement('div');
-	                alignMemDiv.classList.add('align-mem');
+	                let alignMemDiv = document.createElement('div'); //div 생성
+	                alignMemDiv.classList.add('align-mem'); //align-mem 클래스를 추가
 	
 	                // sel-mem 추가
-	                let selMemDiv = document.createElement('div');
-	                selMemDiv.classList.add('sel-mem');
+	                let selMemDiv = document.createElement('div'); //div 생성
+	                selMemDiv.classList.add('sel-mem');	//sel-mem 클래스 추가
 	
-	                let upperTextSpanSelMem = document.createElement('span');
-	                upperTextSpanSelMem.classList.add('upper-text');
-	                upperTextSpanSelMem.innerText = userType;
-	                selMemDiv.appendChild(upperTextSpanSelMem);
+	                let upperTextSpanSelMem = document.createElement('span'); //span 생성
+	                upperTextSpanSelMem.classList.add('upper-text'); //upper-text클래스 추가
+	                upperTextSpanSelMem.innerText = userType; //upperTextSpanSelMem에 let userType를 통해 값을 가져옴
+	                selMemDiv.appendChild(upperTextSpanSelMem); //selMemDiv의 자식으로 upperTextSpanSelMem 추가
 	
-	                let lowerTextSpanSelMem = document.createElement('span');
-	                lowerTextSpanSelMem.classList.add('lower-text');
-	                lowerTextSpanSelMem.innerText = userName;
-	                selMemDiv.appendChild(lowerTextSpanSelMem);
+	                let lowerTextSpanSelMem = document.createElement('span'); //span 생성
+	                lowerTextSpanSelMem.classList.add('lower-text'); //lower-text클래스 추가
+	                lowerTextSpanSelMem.innerText = userName; //let userName에서 값 가져옴
+	                selMemDiv.appendChild(lowerTextSpanSelMem); // selMem에 자식요소로 들어감
 	
-	                alignMemDiv.appendChild(selMemDiv);
+	                alignMemDiv.appendChild(selMemDiv); //align-mem에 selMem이 자식으로 들어감
 	
 	                // sel-mem2 추가
-	                let selMem2Div = document.createElement('div');
-	                selMem2Div.classList.add('sel-mem2');
+	                let selMem2Div = document.createElement('div'); //div 생성
+	                selMem2Div.classList.add('sel-mem2'); //sel-mem2 클래스 추가
 	
-	                let upperTextSpanSelMem2 = document.createElement('span');
-	                upperTextSpanSelMem2.classList.add('upper-text');
-	                upperTextSpanSelMem2.innerHTML = 'No. ' + '<span class="select-user-no">' + userNo + '</span>';
-	                selMem2Div.appendChild(upperTextSpanSelMem2);
+	                let upperTextSpanSelMem2 = document.createElement('span'); //span 생성
+	                upperTextSpanSelMem2.classList.add('upper-text'); //upper-text 클래스 추가
+	                upperTextSpanSelMem2.innerHTML = 'No. ' + '<span class="select-user-no">' + userNo + '</span>'; //해당 span에 innerHTML 태그와 userNo값과 텍스트를 추가
+	                selMem2Div.appendChild(upperTextSpanSelMem2); //selMem2에 자식으로 들어감
 	
-	                let lowerTextSpanSelMem2 = document.createElement('span');
-	                lowerTextSpanSelMem2.classList.add('lower-text');
-	                lowerTextSpanSelMem2.innerText = userEmail;
-	                selMem2Div.appendChild(lowerTextSpanSelMem2);
+	                let lowerTextSpanSelMem2 = document.createElement('span'); //span 생성
+	                lowerTextSpanSelMem2.classList.add('lower-text'); // 클래스 추가
+	                lowerTextSpanSelMem2.innerText = userEmail; //userEmail값 추가
+	                selMem2Div.appendChild(lowerTextSpanSelMem2); //selMem2 자식
 	
-	                alignMemDiv.appendChild(selMem2Div);
-	
-	                // user-info2Div에 alignMemDiv 추가
-	                userInfo2Div.appendChild(alignMemDiv);
+	                alignMemDiv.appendChild(selMem2Div); //align-Mem에 selMem2가 자식으로 들어감
+	                userInfo2Div.appendChild(alignMemDiv); //user-info2Div에 alignMemDiv 자식 추가
 	                
-	                let selectUserNoValue = upperTextSpanSelMem2.querySelector('.select-user-no').innerText;
+	                let selectUserNoValue = upperTextSpanSelMem2.querySelector('.select-user-no').innerText; 
+	                // upperTextSpanSelMem2.innerHTML에 넣은 클래스 이름으로 선택된 요소(class="select-user-no")의 텍스트 내용을 가져와 저장함(userNo를 가져옴)
 	                console.log('우측 선택된 유저 넘버:', selectUserNoValue);
                 }
             }
         });
       
-        let memberNoListString = memberNoList.toString();
+        let memberNoListString = memberNoList.toString(); //memberNoList를 String으로 변환해서 let memberNoListString에 담음
         //console.log('memberNoList 값:', memberNoList);
         //console.log('globalMemberNoList 값:', globalMemberNoList);
         //console.log('memberNoListString 값:', memberNoListString);
-    }
-
- 	// 이미 추가된 정보인지 확인하는 함수
-    function isUserNoAdded(userNo, userInfo2Div) {
-        let addedUserNos = Array.from(userInfo2Div.querySelectorAll('.upper-text')).map(span => span.innerText.replace('No. ', ''));
-        return addedUserNos.includes(userNo); 
     }
     
     function drawMemberList(text){
@@ -390,9 +396,9 @@
             data: { searchText: text }, // 검색 텍스트를 서버에 전달
             success: function(data) {
                 // 서버에서 받은 데이터를 사용하여 회원 목록을 다시 그림
-                updateMemberTable(data);
-                addCheckBoxEvent();
-                displaySelectedMembers();         
+                updateMemberTable(data); //서버에서 받은 데이터로 회원 목록을 다시 그리는 함수 
+                addCheckBoxEvent(); //갱신된 회원 목록에(Ajax로 새로 그려진?) 있는 체크박스들에 이벤트 리스너를 추가
+                displaySelectedMembers();//선택된 회원들을 userInfo2Div에 그려줌         
             },
             error: function(error) {
                 console.error('멤버 데이터를 가져오지 못함 :', error);
@@ -401,8 +407,8 @@
     }
     
     function updateMemberTable(data) {
-        // 받은 데이터를 순회하면서 각 행을 업데이트
-        $('#memberTable tbody').empty(); // 현재 tbody 내용을 비움
+        // 서버에서 받은 데이터를 .each로 순회하면서 각 행을 업데이트
+        $('#memberTable tbody').empty(); // 현재 tbody 내용을 비움 .empty(): 선택한 요소의 모든 자식요소 제거 (tbody 내부 모두 제거)
 
         $.each(data, function(index, member) {
             let newRow = '<tr>' +
@@ -414,12 +420,13 @@
                 '<td>' + member.enrollDate + '</td>' +
                 '</tr>';
             $('#memberTable tbody').append(newRow);
+            //tbody에 새로운 행(newRow)을 추가함 
         });
     }
     
     $(document).ready(function() {
-        $('.select-user-no').each(function() {
-            if (checkbox.value == '${targetMemberNo}') {
+        $('.select-user-no').each(function() { //돌면서 checkbox의 값이 ${}와 같다면 checked true 아니면 false설정
+            if (checkbox.value == '${}') {
             	checkbox.checked = true;
             } else {
             	checkbox.checked = false;
@@ -428,24 +435,28 @@
     });
 
     function a() {
-        let memberNos = [];
+        let memberNos = []; //빈 배열 memberNos 생성
 
         $(".select-user-no").each(function(index, element) {
-            // 각 요소에서 내용을 가져와서 사용할 수 있습니다.
-            let memberNo = $(element).text();
-            memberNos.push(memberNo);
+            // 클래스가 .select-user-no인 요소에 대해 반복 
+            //index는 현재 반복의 인덱스 element는 현재 요소
+            let memberNo = $(element).text();//각 현재 요소의 텍스트 내용을 가져와서 memberNo에 담음
+            //text()는 jQuery에서 제공되며 선택한 요소의 텍스트 내용을 가져옴, 인자를 전달시 텍스트 내용을 변경할 수 도 있음. ex) text('example')시 text로 example이 담김
+            memberNos.push(memberNo); //memberNos에 memberNo를 담음
+            //push()는 배열의 끝에 하나 이상의 요소를 추가, 이 메서드는 변경된 배열의 길이를 반환.
             console.log("memberNo:", memberNo);
             console.log("memberNos:", memberNos);
         });
         
-        let memberNosString = memberNos.toString();
-        console.log("memberNosString:", memberNosString);
-
+        let memberNosString = memberNos.toString(); 
+        //memberNos 배열의 각 요소를 쉼표로 구분된 문자열로 변환 > 서버에서 문자열을 파싱해서 다시 배열로 사용
+        //String[] memberNoArray = memberNos.split(",");
+        console.log("memberNosString:", memberNosString); 
     	
         $.ajax({
-            type: 'GET', 
-            url: 'adDelete.me',  
-            data: { memberNos: memberNosString },  
+            type: 'GET', //Get 타입 요청 메서드
+            url: 'adDelete.me',  //서버 엔드 포인트
+            data: { memberNos: memberNosString }, //  memberNos 서버에서 사용될 매개변수의 이름(key) memberNosString가 생성된 문자열 값(value)
             success: function(response) {
             },
             error: function(error) {
