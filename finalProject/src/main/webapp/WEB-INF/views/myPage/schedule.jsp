@@ -230,7 +230,7 @@
 			<a class="myPageSideBar" href="changePwd.me">비밀번호 변경</a>
 			<a class="myPageSideBar" href="deleteForm.me">회원 탈퇴</a>
 			<a class="myPageSideBar" href="schedule.me?toMemberNo=${loginUser.memberNo}" style="font-weight: bolder;
-			background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">일정 관리</a>
+			background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">요청 관리</a>
 			<a class="myPageSideBar" href="ask.me">문의 내역</a>
 			<c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
                 <a class="myPageSideBar" href="careMem.me">회원 관리</a>
@@ -281,7 +281,7 @@
 									</p>
 								</div>
 								<div style="width: 15%; display: flex; flex-direction: column;">
-									<button class="schedule-btn" style="background-color: rgb(0, 199, 174)" id="btn-open-schedule-modal" onclick="tmp(${s.scheNo})">일정 모달 열기</button>
+									<button class="schedule-btn" style="background-color: rgb(0, 199, 174)" id="btn-open-schedule-modal" onclick="tmp(${s.scheNo})">상세보기</button>
 									<button class="schedule-btn" style="background-color: rgb(218, 76, 60)" onclick="refuse()">거절</button>
 								</div>
 							</div>
@@ -340,7 +340,7 @@
 			<div class="modal_body" style="padding-top: 10px;">
 				<img onclick="tmp2(${s.scheNo})" id="x-btnImg" src="././resources/icon/close.png" alt="" style="width: 14px; height: 14px; float: right; margin-right: 10px;">
 				<div style="margin-top: 10px;">
-					요청 상세 보기
+					요청 상세보기
 				</div>
 				<form action="" style="margin-top: 10px;">
 					<div class="alarm-section" style="display: flex; flex-direction: column; align-items: baseline; height: auto; width: 95%; margin: 19px; padding: 12px;">

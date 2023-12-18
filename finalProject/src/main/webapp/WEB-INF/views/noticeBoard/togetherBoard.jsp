@@ -135,6 +135,7 @@
 	
 	    .community-p{
 	        font-size: 10px;
+			margin-left: 35px;
 	    }
 	
 	    .main-span1{
@@ -224,9 +225,9 @@
                     <ul>
                         <c:forEach var="b" items="${list}">
 	                            <li class="main-list">
+									<span class="community-p">${b.boardType == 3 ? '궁금해요' : b.boardType == 4 ? '얼마예요' : '함께해요'}</span>
 	                                <a href="detailcomm.co?boardNo=${b.boardNo }" class="a-click">
 	                                    <div class="border-one">
-	                                        <span class="community-p">${b.boardType == 3 ? '궁금해요' : b.boardType == 4 ? '얼마예요' : '함께해요'}</span>
 	                                        <h4>${b.boardTitle}</h4>
 	                                        <span class="text1">${b.boardContent}</span><br>
 	                                        <span class="text2">${b.location}</span>
