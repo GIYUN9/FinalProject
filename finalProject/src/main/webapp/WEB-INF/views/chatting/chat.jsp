@@ -295,7 +295,7 @@
 <body>
    <header>
         <div class="cr-left">
-            <img class="prev-menu" src="./resources/icon/left-arrow.png" >
+            <img class="prev-menu" src="./resources/icon/left-arrow.png" onclick="prevAction()" >
             <span class="ct-name">&nbsp;&nbsp;JF보컬코치</span> 
             <div class="ct-info">
                 <span> &nbsp;평균&nbsp;</span>
@@ -396,12 +396,17 @@
     <br><br><br><br><br>
     <br><br><br><br><br>
     <br><br><br><br><br>
-
-
+    
     <footer class="cr-ft">
         <button class="send-btn2"></button>
         <input class="text-area" type="text">
         <button class="send-btn">전송</button>
     </footer>
+    <script>
+        function prevAction(){
+            history.go(-1);
+        }
+        
+    </script>
 </body> 
 </html>

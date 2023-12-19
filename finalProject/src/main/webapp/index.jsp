@@ -14,6 +14,7 @@
 		김경보
 		<jsp:forward page="WEB-INF/views/common/main.jsp"/> 메인페이지 
 		<jsp:forward page="WEB-INF/views/chatting/chat.jsp"/> 채팅 페이지
+		<jsp:forward page="WEB-INF/views/chatting/chattingRoom.jsp"/> 채팅 페이지
 		<jsp:forward page="WEB-INF/views/myPage/ask.jsp"/>
 		<jsp:forward page="WEB-INF/views/myPage/ask1.jsp"/>
 		<jsp:forward page="WEB-INF/views/myPage/ask2.jsp"/>
