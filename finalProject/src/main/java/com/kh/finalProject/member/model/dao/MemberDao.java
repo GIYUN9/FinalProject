@@ -102,7 +102,15 @@ public class MemberDao {
 	
 	public EmailCheck checkCreateDate(SqlSessionTemplate sqlSession, EmailCheck e) {
 		return sqlSession.selectOne("memberMapper.checkCreateDate", e);
-	}	
+	}
+	
+	public Member naverIdcheck(SqlSessionTemplate sqlSession, String memberEmail) {
+		return sqlSession.selectOne("memberMapper.naverIdcheck", memberEmail);
+	}
+	
+	public int naverEnrollInsert(SqlSessionTemplate sqlSession, Member m) {
+		return sqlSession.insert("memberMapper.naverEnrollInsert", m);
+	}
 	
 }
 

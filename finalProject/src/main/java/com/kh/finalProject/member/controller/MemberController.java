@@ -1,13 +1,17 @@
 package com.kh.finalProject.member.controller;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -21,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.kh.finalProject.common.vo.Schedule;
 import com.kh.finalProject.member.model.service.MemberService;
 import com.kh.finalProject.member.model.vo.Member;
@@ -324,6 +330,112 @@ public class MemberController {
 			 memberService.updateUserPwd(m);
 			 return "redirect:/";
 		}
+	}
+	
+	//로그인이후 토큰을 얻기 위한 페이지로 이동하는 컨트롤러 네이버
+	@RequestMapping(value = "callback")
+	public String loginNaver(HttpSession session) {
+		return "common/callback";
+	}
+	
+    private static String get(String apiUrl, Map<String, String> requestHeaders){
+        HttpURLConnection con = connect(apiUrl);
+        try {
+            con.setRequestMethod("GET");
+            for(Map.Entry<String, String> header :requestHeaders.entrySet()) {
+                con.setRequestProperty(header.getKey(), header.getValue());
+            }
+
+
+            int responseCode = con.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) { // 정상 호출
+                return readBody(con.getInputStream());
+            } else { // 에러 발생
+                return readBody(con.getErrorStream());
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("API 요청과 응답 실패", e);
+        } finally {
+            con.disconnect();
+        }
+    }
+    
+    private static HttpURLConnection connect(String apiUrl){
+        try {
+            URL url = new URL(apiUrl);
+            return (HttpURLConnection)url.openConnection();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException("API URL이 잘못되었습니다. : " + apiUrl, e);
+        } catch (IOException e) {
+            throw new RuntimeException("연결이 실패했습니다. : " + apiUrl, e);
+        }
+    }
+
+
+    private static String readBody(InputStream body){
+        InputStreamReader streamReader = new InputStreamReader(body);
+
+
+        try (BufferedReader lineReader = new BufferedReader(streamReader)) {
+            StringBuilder responseBody = new StringBuilder();
+
+
+            String line;
+            while ((line = lineReader.readLine()) != null) {
+                responseBody.append(line);
+            }
+
+
+            return responseBody.toString();
+        } catch (IOException e) {
+            throw new RuntimeException("API 응답을 읽는데 실패했습니다.", e);
+        }
+    }
+
+	
+	//네이버로그인 처리하는 컨트롤러
+	@RequestMapping(value = "naverLogin")
+	public String naverLogin(HttpSession session, Model model) {
+		String result = (String)session.getAttribute("res");
+		JsonObject totalObj = JsonParser.parseString(result).getAsJsonObject();
+		
+		// 회원 정보 받기
+	      
+	      String token = totalObj.get("access_token").getAsString(); // 액세스토큰
+	      String header = "Bearer "+token;
+	      
+	      String apiURL = "https://openapi.naver.com/v1/nid/me";
+	      
+	      Map<String, String> requestHeaders = new HashMap<String, String>();
+	      requestHeaders.put("Authorization", header);
+	      
+	      String responseBody = get(apiURL,requestHeaders);
+	      
+	      JsonObject memberInfo =  JsonParser.parseString(responseBody).getAsJsonObject();
+	      JsonObject resObj = memberInfo.getAsJsonObject("response");
+	      
+	      Member isMember = memberService.naverIdcheck(resObj.get("email").getAsString());
+	      
+	      if(isMember != null) {	         
+	         session.setAttribute("loginUser", isMember);
+	         return "common/main";
+	      } else {
+	    	  
+	    	  Member m = new Member();
+	    	  m.setMemberEmail(resObj.get("email").getAsString());
+	    	  m.setMemberName(resObj.get("name").getAsString());
+	    	  m.setPhone(resObj.get("mobile").getAsString());
+	    	  session.setAttribute("naverId", m);
+		      return "common/naverEnrollFrom";
+	      }
+	}
+	
+	//네이버 정보 + 품앗이 필요 정보 포함한 회원가입 insert컨트롤러
+	@RequestMapping(value = "naverEnroll.me")
+	public String naverEnrollInsert(Member m, HttpSession session) {
+		int result = memberService.naverEnrollInsert(m);
+		
+		return "common/main";
 	}
 	
 }

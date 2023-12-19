@@ -60,7 +60,8 @@
 			MEM_PWD,
 			MEM_NAME,
 			PHONE,
-			MEM_GEN
+			MEM_GEN,
+			MEM_CONCERN
 		)
 		VALUES(
 			SEQ_MNO.NEXTVAL,
@@ -68,7 +69,8 @@
 			#{memberPwd},
 			#{memberName},
 			#{phone},
-			#{memberGender}	
+			#{memberGender},
+			#{memberConcern}
 		)
 	</insert>
 	<!-- 아이디 중복체크 -->
@@ -333,4 +335,48 @@
 		AND AUTH_EMAIL = #{authEmail}
 		AND AUTH_RANDOM = #{checkNo}
 	</select>
+	
+	<!-- 네이버아이디 회원가입여부 -->
+	<select id="naverIdcheck" resultMap="memberResult">
+		SELECT MEM_NO,
+			MEM_EMAIL,
+			MEM_PWD,
+			MEM_NAME,
+			MEM_CONCERN,
+			MEM_PRO,
+			PHONE,
+			LOCATION,
+			STATUS,
+			MEM_GEN,
+			POINT,
+			FILE_PATH,
+			ACCOUNT,
+			INTRO
+		FROM MEMBER
+		WHERE MEM_EMAIL = #{memberEmail}
+		AND STATUS = 'Y'
+	</select>
+	
+	<!-- 네이버아이디회원가입 -->
+	<insert id="naverEnrollInsert">
+		INSERT INTO MEMBER(
+			MEM_NO,
+			MEM_EMAIL,
+			MEM_PWD,
+			MEM_NAME,
+			PHONE,
+			MEM_GEN,
+			MEM_CONCERN
+		)
+		VALUES(
+			SEQ_MNO.NEXTVAL,
+			#{memberEmail},
+			#{memberPwd},
+			#{memberName},
+			#{phone},
+			#{memberGender},
+			#{memberConcern}
+		)
+		
+	</insert>
 </mapper>
