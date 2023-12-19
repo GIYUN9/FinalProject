@@ -71,4 +71,10 @@ public interface MemberService {
 	
 	//
 	EmailCheck checkCreateDate(EmailCheck e);
+	
+	//네이버 아이디 체크
+	Member naverIdcheck(String memberEmail);
+	
+	//네이버로 회원가입
+	int naverEnrollInsert(Member m);
 }

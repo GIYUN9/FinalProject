@@ -4,7 +4,9 @@
 <%
 	String contextPath = request.getContextPath();
 %>
-
+<%@ page import="java.net.URLEncoder" %>
+<%@ page import="java.security.SecureRandom" %>
+<%@ page import="java.math.BigInteger" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -481,7 +483,7 @@
     <!-- 첫번째 모달 -->
     <div class="modal" id="myModal" >
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content" style="height: 100%;">
                 <div class="modal-body" >
                     <form action="login.me" name = "loginForm" method="post" onsubmit="return loginCheck();">
                         <button style="border: none; background-color: transparent;">
@@ -506,11 +508,21 @@
                             <button type="submit" class="login-email-btn" style="width: 100%;"> 
                                 이메일 로그인
                             </button>
-                            <button type="submit" class="login-kakao-btn" style="width: 100%;" onclick="kakaoLogin()" >
-                                카카오 로그인
-                            </button>
                         </div>
                     </form>
+                    <hr>
+             <%
+			    String clientId = "iU8vhFIDgKoTvZNQ5yiC";//애플리케이션 클라이언트 아이디값";
+			    String redirectURI = URLEncoder.encode("http://localhost:5555/finalProject/callback", "UTF-8");
+			    SecureRandom random = new SecureRandom();
+			    String state = new BigInteger(130, random).toString();
+			    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+			    apiURL += "&client_id=" + clientId;
+			    apiURL += "&redirect_uri=" + redirectURI;
+			    apiURL += "&state=" + state;
+			    session.setAttribute("state", state);
+			 %>
+  <a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
                 </div>
             </div>
         </div>
@@ -810,11 +822,6 @@
                 $('#myModal').css('display', 'block');
             });
         });
-
-        function kakaoLogin() {
-          // 여기에 카카오 로그인을 처리하는 코드 작성 필요
-          // 카카오 API를 사용 -> 그에 맞는 함수를 호출하거나 필요한 동작을 수행
-        }
         
         function aa() {
             $('#modal').modal('hide');
@@ -895,7 +902,7 @@
                 }
             });
         }
-	
+        
         
 	</script>
 </body>
