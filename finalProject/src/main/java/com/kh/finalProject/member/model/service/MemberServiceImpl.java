@@ -136,4 +136,14 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.adminDeleteMem(sqlSession, memberNo);
 	}
 
+	@Override
+	public Member naverIdcheck(String memberEmail) {
+		return memberDao.naverIdcheck(sqlSession, memberEmail);
+	}
+
+	@Override
+	public int naverEnrollInsert(Member m) {
+		return memberDao.naverEnrollInsert(sqlSession, m);
+	}
+
 }
