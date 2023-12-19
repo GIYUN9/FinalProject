@@ -5,7 +5,7 @@
 <html>
 <head>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="/fi/resources/js/careMember.js"></script>
+<script src="/finalProject/resources/js/careMember.js"></script>
 <meta charset="UTF-8">
     <title>Insert title here</title>
     <link rel="stylesheet" href="././resources/css/myPgae.css">
