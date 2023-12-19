@@ -202,12 +202,13 @@
         font-size: 14px;
         text-align: center;
     }
-<<<<<<< HEAD
+
     
     .pagination{
 		justify-content: center;
 		margin-top: 30px;
-=======
+	}
+
     .arrow-img{
         position: absolute;
         width: 20px;
@@ -218,7 +219,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
->>>>>>> e77bcd07d8461fcca38defff2b5f1348b092f0a7
     }
 </style>
 </head>
@@ -302,7 +302,7 @@
                 <c:forEach var="b" items="${list}">
                 	<div class = "content-item">
 	                     <a href ="helpmeDetail.bo?boardNo=${b.boardNo}">
-	                        <img  class = "content-img" src = "${b.filePath}${b.changeName}">
+	                        <img  class = "content-img" src = "${b.changeName}">
 	                        <div class = "content-item-title">
 	                        	${b.boardTitle}
 	                        </div>

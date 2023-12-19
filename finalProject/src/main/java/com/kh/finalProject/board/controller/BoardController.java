@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +18,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.JsonIOException;
 import com.kh.finalProject.board.model.service.BoardService;
 import com.kh.finalProject.board.model.vo.Board;
 import com.kh.finalProject.common.Pagenation;
 import com.kh.finalProject.common.vo.Attachment;
 import com.kh.finalProject.common.vo.Notice;
 import com.kh.finalProject.common.vo.PageInfo;
-import com.kh.finalProject.member.model.vo.Member;
 
 @Controller
 public class BoardController {
@@ -591,6 +592,17 @@ public class BoardController {
 			model.addAttribute("errorMsg", "게시글 삭제 실패");
 			return "common/errorPage";
 		}
+	}
+	
+	//도와주세요 날짜순 게시글 ajax
+	@RequestMapping(value="dateCheck.bo")
+	public void helpDateAjax(Board b ,HttpServletResponse response, int currentPage) throws JsonIOException, IOException {
+		int listCount = boardService.seleteHelpListCount();
+		
+		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
+		ArrayList<Board> list = boardService.helpselectList(pi);
+		
+		System.out.println("ajax 날짜순" + list);
 	}
 	
 	

@@ -288,21 +288,20 @@
 			
                         <form class="write-area">
                         	<a class="write-btn" href="helpuForm.bo">글쓰기</a>
-                            <select name="" id="category-item">
-                                <option class = "category-item-list" value="date" selected>날짜순</option>
-                                <option class = "category-item-list" value="interest">인기순</option>
-                                <option class = "category-item-list" value="check">조회순</option>
+                            <select name="categoryPick" id="category-item">
+                                <option class = "category-item-list" value="date" id="date" selected onchange="categorylistDate()">날짜순</option>
+                                <option class = "category-item-list" value="check" id="check" onchange="categorylistCount()">조회순</option>
                             </select>
                         </form>
                    </div>
                 </div>
                 
                 <c:forEach var="b" items="${list}">
-                	<div class = "content-item">
-	                     <a href ="helpDetailPage.bo?boardNo=${b.boardNo}">
-	                        <img  class = "content-img" src = "${b.changeName}">
-	                        <div class = "content-item-title">${b.boardTitle}</div>
-	                        <div class = "content-item-price">${b.price}원</div>
+                	<div class = "content-item" id="contentList">
+	                     <a href ="helpDetailPage.bo?boardNo=${b.boardNo}" id="bno">
+	                        <img  class = "content-img" src = "${b.changeName}" id="image">
+	                        <div class = "content-item-title" id="btitle">${b.boardTitle}</div>
+	                        <div class = "content-item-price" id="price">${b.price}원</div>
 	                     </a> 
                 	</div>
                 </c:forEach> 
@@ -344,14 +343,74 @@
     </div>
 
    
-<%@ include file = "../common/footer.jsp"%>            
-</body>
-
-<!-- <script>
+<%@ include file = "../common/footer.jsp"%>     
+   
+   <!-- <script>
     $(document).ready(function(){
         $('#category-item').on('change', function(){
             alert(this) // 여기에 원하는 액션값 입력
         })
     })
 </script> -->
+
+<script>
+	
+    $(document).ready(function() {
+    // select 요소가 변경될 때의 이벤트 처리
+    $("select[name=categoryPick]").change(function() {
+        // 선택된 값 가져오기
+        var selectedValue = $(this).val();
+
+        // 선택된 값이 'date'인 경우
+        if (selectedValue === 'date') {
+            $.ajax({
+                url: "dateCheck.bo",
+                type: "POST",
+                data: {
+                    boardNo: document.querySelector('#bno').value,
+                    image: document.querySelector('#image').value,
+                    boardTitle: document.querySelector('#btitle').value,
+                    price: document.querySelector('#price').value
+                },
+                success: function(result) {
+                    let Arr = [];
+
+                    for(let date of result) {
+                        console.log(date);
+                    }
+                }
+            })
+        }
+        // 선택된 값이 'check'인 경우
+        else if (selectedValue === 'check') {
+           
+        }
+    });
+});
+
+    
+
+        // $.ajax({
+        //     url: "helpList.bo",
+        //     type: "POST",
+        //     data: {
+        //         boardNo: document.querySelector('#bno').value,
+        //         image: document.querySelector('#image').value,
+        //         boardTitle: document.querySelector('#btitle').value,
+        //         price: document.querySelector('#price').value
+        //     },
+        //     success: function(result) {
+        //         console.log('성공!!')
+        //         const date = document.querySelector('#date');
+                
+        //     },
+        //     error: function() {
+        //         console.log("카테고리 선택 실패");
+        //     }
+        // });
+    
+</script>
+       
+</body>
 </html>
+
