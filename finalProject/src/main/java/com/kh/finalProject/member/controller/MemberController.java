@@ -435,6 +435,7 @@ public class MemberController {
 	public String naverEnrollInsert(Member m, HttpSession session) {
 		int result = memberService.naverEnrollInsert(m);
 		
+		session.setAttribute("alertMsg", "네이버 아이디로 회원가입이 완료되었습니다. \n 로그인을 다시 진행해 주세요.");
 		return "common/main";
 	}
 	
