@@ -257,7 +257,6 @@
 				INTRO,
 				ENROLL_DATE
 		FROM MEMBER
-		WHERE STATUS = 'Y'
 	</select>
 	<select id="searchMem" resultMap="memberResult">
 		SELECT  MEM_NO,
