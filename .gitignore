@@ -13,9 +13,10 @@ local.properties
 .settings/
 .loadpath
 .recommenders
+finalProject/src/main
 
 # External tool builders
-.externalToolBuilders/
+.externalToolBuilders/java/security
 
 # Locally stored "Eclipse launch configurations"
 *.launch
