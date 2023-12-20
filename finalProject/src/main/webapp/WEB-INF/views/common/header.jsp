@@ -476,7 +476,7 @@
                         <div class="dropdown-content">
                             <a href="userInfo.me" style="color: white;">마이페이지</a>
                             <a href="list.co" style="color: white;">커뮤니티</a>
-                            <a href="ch.at" style="color: white;">채팅</a>
+                            <a href="chatRoom.ch" style="color: white;">채팅</a>
                             <a href="#" style="color: white;">미정</a>
                         </div>
                     </div> 
@@ -682,16 +682,12 @@
         }
         
         function selectAll(selectAll)  {
-        	  const checkboxes 
-        	     = document.getElementsByName('category');
-        	  
+        	  const checkboxes = document.getElementsByName('category');
         	  checkboxes.forEach((checkbox) => {
         	    checkbox.checked = selectAll.checked
         	  })
         }
 		
-		
-        
         $(document).ready(function(){
             $('.dropdown-toggle').dropdown();
         });
@@ -950,7 +946,6 @@
                 alert("인증번호가 올바르지 않습니다.");
             }
         }
-        
 	</script>
 </body>
 </html>
