@@ -29,4 +29,7 @@ public class Board {
 	private String memberName;
 	private String changeName;
 	private String filePath;
+	
+	private int likeyCount;
+	private int replyCount;
 }

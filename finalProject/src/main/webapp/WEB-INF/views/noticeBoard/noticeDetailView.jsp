@@ -155,6 +155,10 @@
             display: flex;
             flex-direction: column-reverse;
        }
+       
+       .likeyBtn:hover{
+       		opacity: 0.5;
+       }
 	</style>
 </head>
 <body>
@@ -209,8 +213,11 @@
                     <br>
                     <div class="img-area">
                         <div>
+                        <button class = "likeyBtn" onclick ="insertLikey()">
                             <img src="./resources/icon/LIKE.png" class="img" style="margin-bottom: 10px;">
-                            <span>좋아요 39 ·</span>
+                            <span>좋아요 $숫자</span>
+                       	</button>
+                       	<span>·</span>
                             <span>조회수 104</span>
                         </div>
                         <div class="pfs-align">
@@ -341,7 +348,51 @@
             }
         });
         
+        function insertLikey(){
+        	const boardNo = document.getElementById("reply-boardNo").value;
+        	const memberNo = document.getElementById("WriterNo").value;
+        	console.log(boardNo + "    " + memberNo);
+        	
+        	$.ajax({
+        		type : "post",
+        		url : "insert.li",
+        		data : {
+        			 "memberNo" : memberNo,
+        			 "boardNo" : boardNo
+        		},
+        		success : function(result){			
+        			if(result > 0){//좋아요 insert 성공
+        				console.log("좋아요 인설트 성공");
+        				increaseLikey();	
+        			}
+        		},
+        		error: function(){
+                    console.log("요청 실패");
+                }
+        	});
+        }
         
+        function increaseLikey(){
+        	const boardNo = document.getElementById("reply-boardNo").value;
+        	const memberNo = document.getElementById("WriterNo").value;
+        	$.ajax({
+        		type : "post",
+                url : "increase.li",
+                data : {
+                	 "memberNo" : memberNo,
+        			 "boardNo" : boardNo
+                },
+                success: function(result){            	
+                	if(result > 0){
+                		console.log("+1증가 성공!! ");
+                		result.data
+                	}
+                },
+                error:function(){
+                    console.log("요청 실패");
+                }
+            });
+        }
         
         
         //댓글 등록 기능
@@ -349,6 +400,7 @@
             const boardNo = document.getElementById("reply-boardNo").value;
             const memberNo = document.getElementById("WriterNo").value;
             const contents = document.getElementById("reply-content").value;
+            console.log("댓글등록을 시작해보자! : ");
             console.log("보드넘버 : ", boardNo);
             console.log("작성자번호: ", memberNo);
             console.log("내용 : ", contents);

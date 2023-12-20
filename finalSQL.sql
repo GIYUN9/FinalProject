@@ -102,7 +102,8 @@ CREATE TABLE BOARD(
   CREATEDATE DATE DEFAULT SYSDATE NOT NULL,
   STATUS VARCHAR2(3) DEFAULT 'Y',
   MEM_NO NUMBER REFERENCES MEMBER(MEM_NO),
-  CATEGORY_NO NUMBER REFERENCES CATEGORY(CATEGORY_NO)
+  CATEGORY_NO NUMBER REFERENCES CATEGORY(CATEGORY_NO),
+  LIKEY_COUNT NUMBER DEFAULT 0
 );
 
 --BOARD 시퀀스
@@ -199,6 +200,40 @@ INCREMENT BY 1
 MAXVALUE 1050000
 NOCYCLE
 NOCACHE;
+
+
+-- 좋아요 likey 테이블
+CREATE TABLE LIKEY(
+    LIKEY_NO NUMBER PRIMARY KEY,
+    BOARD_NO NUMBER NOT NULL,
+    MEM_NO NUMBER NOT NULL,
+    STATUS VARCHAR2(2) DEFAULT 'N' 
+);
+
+-- 좋아요 시퀀스
+CREATE SEQUENCE SEQ_LNO
+START WITH 300000
+INCREMENT BY 1
+MAXVALUE 400000
+NOCYCLE
+NOCACHE;
+
+
+
+INSERT INTO
+		    LIKEY
+		    (
+		        LIKEY_NO,
+		        BOARD_NO,
+		        MEM_NO
+		    )
+		VALUES
+		    (
+		        SEQ_LNO.NEXTVAL,
+		       1003,
+		        3
+		    );
+    
 ---------------------더미데이터-----------------------
 -- 멤버
 INSERT INTO MEMBER VALUES(1, 'admin@naver.com', '$2a$10$Oa0Xd4NXm4.5/lgBkeBbBu2Y3gHAkhdOT9zgvilBHgO0dBYu1dNCm' ,'관리자', '음악', 1,
@@ -240,19 +275,20 @@ INSERT INTO CATEGORY VALUES(SEQ_CNO.NEXTVAL, '요리');
 INSERT INTO PROFESSIONAL VALUES(SEQ_PNO.NEXTVAL, '피아니스트', 200, 2);
 
 --게시판(보드)
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-01-01', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-02-01', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-03-01', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-04-01', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '도와주세요', '피아노 알려주세요', 50000, 2, '2020-01-30', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '운동도와주세요', '테니스 알려주세요', 50000, 2, '2020-02-20', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '커뮤니티용 음악레슨합니다1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 50000, 3, '2020-01-02', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '얼마예요1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 4, '2020-01-03', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '함께해요1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 5, '2020-01-04', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '궁금해요2', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 3, '2020-01-05', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '얼마예요2', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 4, '2020-01-06', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '함께2', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 5, '2020-01-07', 'Y', 2, 200);
-INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '커뮤니티용 페이징처리', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 3, '2020-01-08', 'Y', 2, 200);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-01-01', 'Y', 2, 200 , 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-02-01', 'Y', 2, 200, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-03-01', 'Y', 2, 200, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '음악레슨합니다', '음악 정말 즐겁게 알려드려요', 50000, 1, '2020-04-01', 'Y', 2, 200, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '도와주세요', '피아노 알려주세요', 50000, 2, '2020-01-30', 'Y', 2, 200, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '운동도와주세요', '테니스 알려주세요', 50000, 2, '2020-02-20', 'Y', 2, 200, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '커뮤니티용 음악레슨합니다1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 50000, 3, '2020-01-02', 'Y', 2, 200, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '얼마예요1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 4, '2020-01-03', 'Y', 2, 200, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '함께해요1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 5, '2020-01-04', 'Y', 2, 200, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '궁금해요2', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 3, '2020-01-05', 'Y', 2, 200, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '얼마예요2', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 4, '2020-01-06', 'Y', 2, 200, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '함께2', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 5, '2020-01-07', 'Y', 2, 200, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '커뮤니티용 페이징처리', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 3, '2020-01-08', 'Y', 2, 200, 0);
+
 -- ATTACHEMT 사진
 INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, '22', '33', '4' , 'Y' ,1000);
 INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, '22', '33', '4' , 'Y' ,1001);
@@ -306,6 +342,34 @@ INSERT INTO REPLY (
 		WHERE R.STATUS = 'Y'
 			AND BOARD_NO = 1013
 		ORDER BY REPLY_NO DESC;
+
+
         
----트랜잭션
+        ---트랜잭션
 commit;
+  
+  
+--CREATE OR REPLACE TRIGGER LIKEY_STATUS_TRIGGER
+--AFTER UPDATE OF STATUS ON LIKEY
+--FOR EACH ROW
+--WHEN (OLD.STATUS <> NEW.STATUS)
+--DECLARE
+--    v_increment_value NUMBER := 1;
+--BEGIN
+--    IF :NEW.STATUS = 'Y' THEN
+--        v_increment_value := 1;
+--    ELSIF :NEW.STATUS = 'N' THEN
+--        v_increment_value := -1;
+--    END IF;
+--
+--    IF v_increment_value = 1 THEN
+--        UPDATE BOARD
+--        SET LIKEY_COUNT = LIKEY_COUNT + 1
+--        WHERE BOARD_NO = :NEW.BOARD_NO;
+--    ELSIF v_increment_value = -1 THEN
+--        UPDATE BOARD
+--        SET LIKEY_COUNT = LIKEY_COUNT - 1
+--        WHERE BOARD_NO = :NEW.BOARD_NO;
+--    END IF;
+--END;
+
