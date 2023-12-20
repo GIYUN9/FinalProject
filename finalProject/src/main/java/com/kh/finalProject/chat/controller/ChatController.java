@@ -26,10 +26,15 @@ public class ChatController {
 		return "chat";
 	}
 	
-	@RequestMapping(value = "ch.at")
+	@RequestMapping(value = "chat.ch")
 	public String chat() {
 		//채팅 화면
 		return "chatting/chat";
 	}
 	
+	@RequestMapping(value="chatRoom.ch")
+	public String chattingRoom() {
+		// 도와주세요 화면
+		return "chatting/chattingRoom";
+	}
 }
