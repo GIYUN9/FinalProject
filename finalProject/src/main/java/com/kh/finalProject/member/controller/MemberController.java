@@ -13,15 +13,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,6 +34,10 @@ import com.kh.finalProject.common.vo.Schedule;
 import com.kh.finalProject.member.model.service.MemberService;
 import com.kh.finalProject.member.model.vo.Member;
 import com.kh.finalProject.member.model.vo.Professional;
+
+import net.nurigo.java_sdk.api.Message;
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
+import security.Key;
 
 @Controller
 public class MemberController {
@@ -435,9 +442,50 @@ public class MemberController {
 	public String naverEnrollInsert(Member m, HttpSession session) {
 		int result = memberService.naverEnrollInsert(m);
 		
+		session.setAttribute("alertMsg", "네이버 아이디로 회원가입이 완료되었습니다. \n 로그인을 다시 진행해 주세요.");
 		return "common/main";
 	}
 	
+	@RequestMapping(value = "phoneCheck.me")
+	@ResponseBody
+    public String sendSMS(String phone) {
+
+		//6자리 랜덤 난수 int형으로 만들어 String으로 변환
+		int random = (int)(Math.random()*899999+100000);
+		String randomNo = Integer.toString(random);
+		
+		//"-"포함한 문자열로들어온 전화번호 -제외하고 넘겨주기
+		phone = phone.replaceAll("[^0-9]", "");
+		
+        System.out.println("수신자 번호 : " + phone);
+        System.out.println("인증번호 : " + randomNo);
+        certifiedPhoneNumber(phone,randomNo);
+        return randomNo;
+    }
+	
+	 public void certifiedPhoneNumber(String phoneNumber, String cerNum) {
+
+	        String api_key = Key.API_KEY;
+	        String api_secret = Key.API_SECRET;
+	        Message coolsms = new Message(api_key, api_secret);
+
+	        // 4 params(to, from, type, text) are mandatory. must be filled
+	        HashMap<String, String> params = new HashMap<String, String>();
+	        params.put("to", phoneNumber);    // 수신전화번호
+	        params.put("from", phoneNumber);    // 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
+	        params.put("type", "SMS");
+	        params.put("text", "품앗이 : 인증번호는" + "["+cerNum+"]" + "입니다.");
+	        params.put("app_version", "test app 1.2"); // application name and version
+
+	        try {
+	            JSONObject obj = (JSONObject) coolsms.send(params);
+	            System.out.println(obj.toString());
+	        } catch (CoolsmsException e) {
+	            System.out.println(e.getMessage());
+	            System.out.println(e.getCode());
+	        }
+
+	    }
 }
 
 /*

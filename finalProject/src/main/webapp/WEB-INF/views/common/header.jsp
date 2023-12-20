@@ -424,6 +424,10 @@
     .en-input2::-webkit-inner-spin-button {
     -webkit-appearance: none;
     }
+
+    .view-check{
+        display: none;
+    }
 </style>
 </head>
 <body>
@@ -587,8 +591,15 @@
                                 <p>
                                     휴대폰번호
                                     <span class="as-re">*</span>
-                                </p>                                   	                           
-                                <input type="tel" class="form-control" id="phone" placeholder="010-0000-0000" name="phone"> <br>              
+	                            </p>                            	                           
+                                <p>
+                                    <input type="tel" class="form-control" id="phone" placeholder="010-0000-0000" name="phone"> <br>
+                                	<button type="button" id="sendBtn" onclick="phoneCheck()">인증 번호 발송</button>
+                                </p>             
+                                <p class="view-check">
+                                	<input type="number" class="form-control" id="numCheck" placeholder="6자리 인증번호를 입력해주세요" name="numCheck"> <br>
+                                	<button type="button" id="checkBtn" onclick="numberCheck()">인증하기</button>
+                                </p>
                                 <label for=""> &nbsp; 성별 : </label> &nbsp;&nbsp;
                                 <input type="radio" id="Male" value="M" name="memberGender" checked>
                                 <label for="Male">남자</label> &nbsp;&nbsp;
@@ -612,7 +623,7 @@
                             <label><input type="checkbox" name="category" value="ageagree" onclick = "checkSelectAll()">
                                     (필수) 14세 이상입니다
                             </label>                 
-                            <button type="submit" class="sign-up-btn">회원가입</button>
+                            <button type="submit" id="submitBtn" class="sign-up-btn" disabled="disabled">회원가입</button>
                         </div>                 
                     </form>
                 </div>
@@ -897,7 +908,43 @@
                 }
             });
         }
+        let nnn;
+        function phoneCheck() {
+			const phone = document.querySelector('#phone').value
+            document.querySelector('#phone').readOnly = true;
+            document.querySelector('#sendBtn').disabled = true;
+            const view = document.querySelector('.view-check')
+            view.style.display = "flex";
+            console.log('눌림')
+			$.ajax({
+                type: "POST",
+                url: "phoneCheck.me",
+                data: {
+                    "phone" : phone
+                },
+                success: function(res){
+                    alert('입력하신 전화번호로 인증번호가 발송되었습니다.')
+                    nnn = res;
+                    console.log(res)
+                },
+                error: function(){
+                    console.log("ERROR");
+                }
+            })
+		}
         
+        function numberCheck(){
+            const number = document.querySelector('#numCheck').value
+            if(number === nnn){
+                alert("인증이 완료되었습니다.");
+                document.querySelector('#numCheck').readOnly = true;
+                document.querySelector('#checkBtn').disabled = true;
+                document.querySelector('#submitBtn').disabled = false;
+                submitBtn
+            } else{
+                alert("인증번호가 올바르지 않습니다.");
+            }
+        }
 	</script>
 </body>
 </html>
