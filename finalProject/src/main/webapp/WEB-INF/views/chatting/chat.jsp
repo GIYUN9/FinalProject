@@ -94,8 +94,6 @@
         display: flex;
         z-index: 1;
         border-top: 1px solid  rgba(96, 96, 96, 0.2);
-        ;
-        
     }
     .chat-header{
         position: relative;
@@ -289,7 +287,6 @@
         width: max-content;
         color: rgb(155, 89, 182);
     }
-
     </style>
 </head>
 <body>
@@ -406,7 +403,6 @@
         function prevAction(){
             history.go(-1);
         }
-        
     </script>
 </body> 
 </html>

@@ -289,45 +289,44 @@
 					</div>
 
 				</div>
-					<div id="view2" class="user-info"
-						style="flex-direction: column; margin-left: 5px; margin-right: 5px; display: none;">
-						<div style="width: 100%; margin: 10px 0px 10px 8px;">
-							<h6 style="float: left; font-weight: bold;">보낸요청 (<span style="color: red;">${fn:length(sList2)}</span>건)</h6>
+				<div id="view2" class="user-info"
+					style="flex-direction: column; margin-left: 5px; margin-right: 5px; display: none;">
+					<div style="width: 100%; margin: 10px 0px 10px 8px;">
+						<h6 style="float: left; font-weight: bold;">보낸요청 (<span style="color: red;">${fn:length(sList2)}</span>건)</h6>
+					</div>
+					<div style="width: 98%;">
+					<c:if test="${empty sList2}">
+						<div class="empty-align">
+							<p class="empty-title">보낸 요청이 없습니다.</p>
+							<p class="empty-text">전문가에게 요청 보내러 가기</p>
+							<button class="empty-btn" onclick="helpU()">도와줄게요 게시판</button>
+							<br><br><br><br>
 						</div>
-						<div style="width: 98%;">
-						<c:if test="${empty sList2}">
-							<div class="empty-align">
-								<p class="empty-title">보낸 요청이 없습니다.</p>
-								<p class="empty-text">전문가에게 요청 보내러 가기</p>
-								<button class="empty-btn" onclick="helpU()">도와줄게요 게시판</button>
-								<br><br><br><br>
-							</div>
-						</c:if>
-							<c:forEach var="s2" items="${sList2}">
-								<div class="alarm-section">
-									<div style="width: 14%;">
-										이미지 자리
-									</div>
-									<div style="width: 31%;">
-										<h5 class="user-nickname">${s2.memberName}</h5>
-										<p>희망지역 : ${s2.location}</p>
-										<p>카테고리 : ${s2.categoryName}</p>
-									</div>
-									<div style="width: 40%;">
-										<p class="textarea-maxSize">
-											${s2.scheContent}
-										</p>
-									</div>
-									<div style="width: 15%; display: flex; flex-direction: column;">
-										<button class="schedule-btn" style="background-color: rgb(0, 199, 174)">확인 중</button>
-										<form action="requestCancel.bo" method="post">
-											<input type="hidden" name="scheNo" value="${s2.scheNo}">
-											<button type="submit" class="schedule-btn" style="background-color: rgba(224, 224, 224, 0.5); color: black; border: 1px solid rgba(224, 224, 224, 0.5);">요청 취소</button>
-										</form>
-									</div>
+					</c:if>
+						<c:forEach var="s2" items="${sList2}">
+							<div class="alarm-section">
+								<div style="width: 14%;">
+									이미지 자리
 								</div>
-							</c:forEach>
-						</div>
+								<div style="width: 31%;">
+									<h5 class="user-nickname">${s2.memberName}</h5>
+									<p>희망지역 : ${s2.location}</p>
+									<p>카테고리 : ${s2.categoryName}</p>
+								</div>
+								<div style="width: 40%;">
+									<p class="textarea-maxSize">
+										${s2.scheContent}
+									</p>
+								</div>
+								<div style="width: 15%; display: flex; flex-direction: column;">
+									<button class="schedule-btn" style="background-color: rgb(0, 199, 174)">확인 중</button>
+									<form action="requestCancel.bo" method="post">
+										<input type="hidden" name="scheNo" value="${s2.scheNo}">
+										<button type="submit" class="schedule-btn" style="background-color: rgba(224, 224, 224, 0.5); color: black; border: 1px solid rgba(224, 224, 224, 0.5);">요청 취소</button>
+									</form>
+								</div>
+							</div>
+						</c:forEach>
 					</div>
 				</div>
 			</div>
