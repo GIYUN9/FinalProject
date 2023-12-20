@@ -205,4 +205,8 @@ public class BoardDao {
 	public int deleteReply(SqlSessionTemplate sqlSession, int replyNo) {
 		return sqlSession.update("boardMapper.deleteReply", replyNo);
 	}
+	
+	public ArrayList<Board> helpDateCheck(SqlSessionTemplate sqlSession, Board b) {
+		return (ArrayList)sqlSession.selectList("boardMapper.helpDateCheck", b);
+	}
 }

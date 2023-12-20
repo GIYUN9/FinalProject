@@ -15,12 +15,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 import com.kh.finalProject.board.model.service.BoardService;
 import com.kh.finalProject.board.model.vo.Board;
+import com.kh.finalProject.board.model.vo.Reply;
 import com.kh.finalProject.common.Pagenation;
 import com.kh.finalProject.common.vo.Attachment;
 import com.kh.finalProject.common.vo.Notice;
@@ -60,17 +63,26 @@ public class BoardController {
 	}
 	
 	//도와줄게요 리스트
-	@RequestMapping(value="helpList.bo")
-	public ModelAndView helpSelectList(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv, MultipartFile upfile, HttpSession session) {
-		int listCount = boardService.seleteHelpListCount();
-			
-		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
-		ArrayList<Board> list = boardService.helpselectList(pi);
-		System.out.println("list객체 확인용 -> " +list);
-		mv.addObject("pi",pi)
-			.addObject("list",list)
-			.setViewName("board/helpBoardList");
-			
+	@RequestMapping(value= {"helpList.bo", "helpList.bo/dateCheck"})
+	public ModelAndView helpSelectList(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv, MultipartFile upfile, HttpSession session,
+										@RequestParam(value = "sortByDate", defaultValue = "false") boolean sortByDate) {
+
+		ArrayList<Board> list;
+		int listCount;
+		
+		if(sortByDate) {
+			list = boardService.helpDateCheck(new Board());
+			listCount = list.size();
+		} else {
+			listCount = boardService.seleteHelpListCount();
+			PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
+			list = boardService.helpselectList(pi);
+		}
+		
+		mv.addObject("pi", Pagenation.getPageInfo(listCount, currentPage, 5, 8))
+		.addObject("list", list)
+        .setViewName("board/helpBoardList");
+		
 		return mv;
 	}
 
@@ -592,17 +604,6 @@ public class BoardController {
 			model.addAttribute("errorMsg", "게시글 삭제 실패");
 			return "common/errorPage";
 		}
-	}
-	
-	//도와주세요 날짜순 게시글 ajax
-	@RequestMapping(value="dateCheck.bo")
-	public void helpDateAjax(Board b ,HttpServletResponse response, int currentPage) throws JsonIOException, IOException {
-		int listCount = boardService.seleteHelpListCount();
-		
-		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
-		ArrayList<Board> list = boardService.helpselectList(pi);
-		
-		System.out.println("ajax 날짜순" + list);
 	}
 	
 	

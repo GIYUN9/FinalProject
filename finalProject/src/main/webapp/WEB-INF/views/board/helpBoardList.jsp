@@ -306,6 +306,9 @@
                 	</div>
                 </c:forEach> 
                 
+                 <div class="helpDatecatalog">
+               </div>
+                
                <nav aria-label="Page navigation example">
 				  <ul class="pagination">
 				  
@@ -335,6 +338,7 @@
 				   
 				  </ul>
 			   </nav>
+
                             
             </div>
         </div>
@@ -364,7 +368,7 @@
         // 선택된 값이 'date'인 경우
         if (selectedValue === 'date') {
             $.ajax({
-                url: "dateCheck.bo",
+                url: "helpList.bo/dateCheck",
                 type: "POST",
                 data: {
                     boardNo: document.querySelector('#bno').value,
@@ -373,11 +377,23 @@
                     price: document.querySelector('#price').value
                 },
                 success: function(result) {
-                    let Arr = [];
+                   	console.log(result);
+                   	let str = "";
+                   	for(let date of result) {
+                   		str +=  (
+                                "<div>" +
+                                    "<a href='detailPage.bo?boardNo=" + date.boardNo + "'>" +
+                                    "<img src= '" + date.changeName + "'>" +
+                                    "<div>" + date.boardTitle + "</div>" +
+                                    "<div>" + date.price + "</div>" +
+                                    "<div>" + date.createDate + "</div>" +
+                                    "</a>" +
+                                "</div>"
+                                )
+                   	}
 
-                    for(let date of result) {
-                        console.log(date);
-                    }
+                    $('.helpDatecatalog').html(str);
+                   	
                 }
             })
         }
@@ -387,30 +403,8 @@
         }
     });
 });
-
-    
-
-        // $.ajax({
-        //     url: "helpList.bo",
-        //     type: "POST",
-        //     data: {
-        //         boardNo: document.querySelector('#bno').value,
-        //         image: document.querySelector('#image').value,
-        //         boardTitle: document.querySelector('#btitle').value,
-        //         price: document.querySelector('#price').value
-        //     },
-        //     success: function(result) {
-        //         console.log('성공!!')
-        //         const date = document.querySelector('#date');
-                
-        //     },
-        //     error: function() {
-        //         console.log("카테고리 선택 실패");
-        //     }
-        // });
     
 </script>
        
 </body>
 </html>
-
