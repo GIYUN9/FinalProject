@@ -16,7 +16,7 @@ local.properties
 finalProject/src/main/java/security
 
 # External tool builders
-.externalToolBuilders/java/security
+.externalToolBuilders/
 
 # Locally stored "Eclipse launch configurations"
 *.launch
