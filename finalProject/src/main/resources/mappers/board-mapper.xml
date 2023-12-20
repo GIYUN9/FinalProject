@@ -18,6 +18,8 @@
   		<result column="LOCATION" property="location" />
   		<result column="FILE_PATH" property="filePath" />
   		<result column="CHANGE_NAME" property="changeName" />
+  		<result column="LIKEY_COUNT" property="likeyCount" />
+  		<result column="LISTATUS" property="liStatus" />
   	</resultMap>
   	
   	<resultMap type="Attachment" id="attachmentResult">
@@ -47,11 +49,12 @@
   		<result column="BOARD_NO" property="boardNo" />
   		<result column="FILE_PATH" property="filePath" />
   	</resultMap>
+  	
   	<resultMap type="Likey" id="likeyResult">
   		<result column="LIKEY_NO" property="likeyNo" />
   		<result column="BOARD_NO" property="boardNo" />
   		<result column="MEM_NO" property="memberNo" />
-  		<result column="STATUS" property="status" />		
+  		<result column="LISTATUS" property="liStatus" />		
   	</resultMap>
   	
  	
@@ -290,7 +293,7 @@
   		WHERE NOTICE_NO = #{noticeNo}
   	</update>
   	
-  	<select id="selectCommBoard" resultMap="boardResult">
+  <select id="selectCommBoard" resultMap="boardResult">
   		SELECT  B.BOARD_NO,
 				B.BOARD_TITLE,
 				B.BOARD_CONTENT,
@@ -303,9 +306,11 @@
                 M.LOCATION,
                 M.FILE_PATH,
 				B.CATEGORY_NO,
-				B.LIKEY_COUNT
+				B.LIKEY_COUNT,
+				L.LISTATUS
 				FROM BOARD B
         JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
+         LEFT JOIN LIKEY L ON (B.BOARD_NO = L.BOARD_NO)
 		WHERE B.BOARD_NO = #{boardNo}
 		AND B.STATUS = 'Y'
 	</select>
@@ -666,7 +671,7 @@
 	</insert>
 	<update id="updateYLikey">
 		UPDATE LIKEY
-			SET STATUS = 'Y'
+			SET LISTATUS = 'Y'
 		WHERE BOARD_NO = #{boardNo}
 		 AND MEM_NO = #{memberNo}
 	</update>
@@ -679,6 +684,23 @@
 		SELECT COUNT(*)
 			FROM LIKEY
 		WHERE BOARD_NO = #{boardNo}
-		AND STATUS = 'Y'
+		AND LISTATUS = 'Y'
 	</select>
+	<select id="selectNLikeyCount" resultType="_int">
+		SELECT COUNT(*)
+			FROM LIKEY
+		WHERE BOARD_NO = #{boardNo}
+		AND LISTATUS = 'N'
+	</select>
+	<update id="updateNLikey">
+		UPDATE LIKEY
+			SET LISTATUS = 'N'
+		WHERE BOARD_NO = #{boardNo}
+		 AND MEM_NO = #{memberNo}
+	</update>
+	<update id="decreaseLikey">
+		UPDATE BOARD
+			SET LIKEY_COUNT = LIKEY_COUNT-1
+		WHERE BOARD_NO = #{boardNo}
+	</update>
   </mapper>

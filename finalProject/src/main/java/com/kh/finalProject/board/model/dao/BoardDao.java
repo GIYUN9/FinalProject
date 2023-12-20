@@ -223,4 +223,16 @@ public class BoardDao {
 	public int selectLikeyCount(SqlSessionTemplate sqlSession, Likey l) {
 		return sqlSession.selectOne("boardMapper.selectLikeyCount", l);
 	}
+	
+	public int updateNLikey(SqlSessionTemplate sqlSession, Likey l) {
+		return sqlSession.update("boardMapper.updateNLikey", l);
+	}
+	
+	public int decreaseLikey(SqlSessionTemplate sqlSession, Likey l) {
+		return sqlSession.update("boardMapper.decreaseLikey", l);
+	}
+	
+	public int selectNLikeyCount(SqlSessionTemplate sqlSession, Likey l) {
+		return sqlSession.selectOne("boardMapper.selectNLikeyCount", l);
+	}
 }

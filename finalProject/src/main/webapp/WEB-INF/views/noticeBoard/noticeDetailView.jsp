@@ -156,7 +156,10 @@
             flex-direction: column-reverse;
        }
        
-       .likeyBtn:hover{
+       .likeyYBtn:hover{
+       		opacity: 0.5;
+       }
+        .likeyNBtn:hover{
        		opacity: 0.5;
        }
 	</style>
@@ -213,11 +216,26 @@
                     <br>
                     <div class="img-area">
                         <div>
-                        <button class = "likeyBtn" onclick ="insertLikey()">
-                            <img src="./resources/icon/LIKE.png" class="img" style="margin-bottom: 10px;">
-                            <span>좋아요 $숫자</span>
-                       	</button>
+                        <c:choose>
+						    <c:when test="${b.liStatus eq 'N'}">
+	                            <button class = "likeyYBtn" onclick ="insertLikey()">
+	                                <img src="./resources/icon/LIKE.png" class="img" style="margin-bottom: 10px;">
+	                                <span class = "likeyNum">${b.likeyCount}</span>
+	                               </button>
+						    </c:when>
+						    
+						    <c:otherwise>
+		                        <button class = "likeyNBtn" onclick ="decreaseLikey()">
+	                                <img src="./resources/icon/손모양클릭.png" class="img" style="margin-bottom: 10px;">
+	                                <span class = "likeyNum">감소감소</span>
+	                               </button>
+						    </c:otherwise>
+						</c:choose>
+                       
+                       	
                        	<span>·</span>
+                       	
+                       	
                             <span>조회수 104</span>
                         </div>
                         <div class="pfs-align">
@@ -262,6 +280,9 @@
 	</div>
 	<jsp:include page="../common/footer.jsp" />
     <script>
+    
+    	
+    	
         function postFormSubmit(num){
             if(num === 1){
                 $("#postForm").attr('action', 'updatePage.co');
@@ -371,7 +392,35 @@
                 }
         	});
         }
+  
+        function decreaseLikey(){
+        	const boardNo = document.getElementById("reply-boardNo").value;
+        	const memberNo = document.getElementById("WriterNo").value;
+        	$.ajax({
+        		type : "post",
+                url : "decrease.li",
+                data : {
+                	 "memberNo" : memberNo,
+        			 "boardNo" : boardNo
+                },
+                success: function(result){ 
+                	var data = JSON.parse(result);
+                	if(data.likeyCount > 0){
+                		console.log("-1감소 성공!! ");	
+                		console.log("과연 값이 올까요?"+ data.likeyCount);
+                		
+                		document.querySelector('.likeyNum').innerHTML = data.likeyCount;
+                	}
+                },
+                error:function(){
+                    consolte.log("요청 실패");
+                }
+            });
+        }
         
+        
+
+
         function increaseLikey(){
         	const boardNo = document.getElementById("reply-boardNo").value;
         	const memberNo = document.getElementById("WriterNo").value;
@@ -382,10 +431,13 @@
                 	 "memberNo" : memberNo,
         			 "boardNo" : boardNo
                 },
-                success: function(result){            	
-                	if(result > 0){
-                		console.log("+1증가 성공!! ");
-                		result.data
+                success: function(result){ 
+                	var data = JSON.parse(result);
+                	if(data.likeyCount > 0){
+                		console.log("+1증가 성공!! ");	
+                		console.log("과연 값이 올까요?"+ data.likeyCount);
+                		
+                		document.querySelector('.likeyNum').innerHTML = data.likeyCount;
                 	}
                 },
                 error:function(){

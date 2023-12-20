@@ -132,5 +132,10 @@ public interface BoardService {
 	
 	int selectLikeyCount(Likey l);
 	
+	int updateNLikey(Likey l);
+	
+	int decreaseLikey(Likey l);
+	
+	int selectNLikeyCount(Likey l);
 
 }

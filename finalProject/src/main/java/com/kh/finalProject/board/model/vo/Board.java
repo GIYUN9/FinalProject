@@ -31,5 +31,5 @@ public class Board {
 	private String filePath;
 	
 	private int likeyCount;
-	private int replyCount;
+	private String liStatus;
 }

@@ -292,6 +292,21 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	
+	@Override
+	public int updateNLikey(Likey l) {
+		return boardDao.updateNLikey(sqlSession, l);
+	}
+
+	@Override
+	public int decreaseLikey(Likey l) {
+		return boardDao.decreaseLikey(sqlSession, l);
+	}
+	
+	@Override
+	public int selectNLikeyCount(Likey l) {
+		return boardDao.selectNLikeyCount(sqlSession, l);
+	}
+	
 	
 	
 }

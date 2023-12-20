@@ -207,7 +207,7 @@ CREATE TABLE LIKEY(
     LIKEY_NO NUMBER PRIMARY KEY,
     BOARD_NO NUMBER NOT NULL,
     MEM_NO NUMBER NOT NULL,
-    STATUS VARCHAR2(2) DEFAULT 'N' 
+    LISTATUS VARCHAR2(2) DEFAULT 'N' 
 );
 
 -- 좋아요 시퀀스
@@ -230,8 +230,8 @@ INSERT INTO
 		VALUES
 		    (
 		        SEQ_LNO.NEXTVAL,
-		       1003,
-		        3
+		       1012,
+		        1
 		    );
     
 ---------------------더미데이터-----------------------

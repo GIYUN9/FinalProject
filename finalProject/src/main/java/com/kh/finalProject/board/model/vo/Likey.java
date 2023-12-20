@@ -21,6 +21,6 @@ public class Likey {
 	
 	private int memberNo;
 	
-	private String status; 
+	private String liStatus; 
 
 }
