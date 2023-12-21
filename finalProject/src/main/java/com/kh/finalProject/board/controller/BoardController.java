@@ -6,24 +6,20 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonIOException;
 import com.kh.finalProject.board.model.service.BoardService;
 import com.kh.finalProject.board.model.vo.Board;
-import com.kh.finalProject.board.model.vo.Reply;
 import com.kh.finalProject.common.Pagenation;
 import com.kh.finalProject.common.vo.Attachment;
 import com.kh.finalProject.common.vo.Notice;
@@ -63,26 +59,29 @@ public class BoardController {
 	}
 	
 	//도와줄게요 리스트
-	@RequestMapping(value= {"helpList.bo", "helpList.bo/dateCheck"})
-	public ModelAndView helpSelectList(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv, MultipartFile upfile, HttpSession session,
-										@RequestParam(value = "sortByDate", defaultValue = "false") boolean sortByDate) {
+	@RequestMapping(value="helpList.bo")
+		public ModelAndView helpSelectList(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv, MultipartFile upfile, HttpSession session) {		
 
-		ArrayList<Board> list;
-		int listCount;
-		
-		if(sortByDate) {
-			list = boardService.helpDateCheck(new Board());
-			listCount = list.size();
-		} else {
-			listCount = boardService.seleteHelpListCount();
+			int listCount = boardService.seleteHelpListCount();
+
 			PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
-			list = boardService.helpselectList(pi);
+			ArrayList<Board> list = boardService.helpselectList(pi);
+//			System.out.println("list객체 확인용 -> " +list);
+			mv.addObject("pi",pi)
+				.addObject("list",list)
+				.setViewName("board/helpBoardList");
+				
+			return mv;
 		}
+	
+	//도와줄게요 날짜순으로 가져오는 ajax
+	@RequestMapping(value="helpDateCheck.bo", method = RequestMethod.POST)
+	public ModelAndView helpDateList(@ModelAttribute Board b, ModelAndView mv) {
+		ArrayList<Board> dateList = boardService.helpDateCheck(b);
+		System.out.println(dateList);
 		
-		mv.addObject("pi", Pagenation.getPageInfo(listCount, currentPage, 5, 8))
-		.addObject("list", list)
-        .setViewName("board/helpBoardList");
-		
+		mv.addObject("dateList", dateList)
+		.setViewName("board/helpBoardList");
 		return mv;
 	}
 

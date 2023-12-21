@@ -285,7 +285,6 @@
                    <div id = "head-count">총 1063개의 서비스</div>
                    <div id = "head-category">
 					
-			
                         <form class="write-area">
                         	<a class="write-btn" href="helpuForm.bo">글쓰기</a>
                             <select name="categoryPick" id="category-item">
@@ -293,8 +292,11 @@
                                 <option class = "category-item-list" value="check" id="check" onchange="categorylistCount()">조회순</option>
                             </select>
                         </form>
+                        
                    </div>
                 </div>
+                
+                <div class="helpDatecatalog">
                 
                 <c:forEach var="b" items="${list}">
                 	<div class = "content-item" id="contentList">
@@ -305,9 +307,8 @@
 	                     </a> 
                 	</div>
                 </c:forEach> 
-                
-                 <div class="helpDatecatalog">
-               </div>
+
+                 </div>
                 
                <nav aria-label="Page navigation example">
 				  <ul class="pagination">
@@ -358,8 +359,8 @@
 </script> -->
 
 <script>
-	
-    $(document).ready(function() {
+
+$(document).ready(function() {
     // select 요소가 변경될 때의 이벤트 처리
     $("select[name=categoryPick]").change(function() {
         // 선택된 값 가져오기
@@ -368,7 +369,7 @@
         // 선택된 값이 'date'인 경우
         if (selectedValue === 'date') {
             $.ajax({
-                url: "helpList.bo/dateCheck",
+                url: "helpDateCheck.bo",
                 type: "POST",
                 data: {
                     boardNo: document.querySelector('#bno').value,
@@ -403,7 +404,7 @@
         }
     });
 });
-    
+	
 </script>
        
 </body>
