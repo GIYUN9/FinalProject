@@ -142,7 +142,7 @@
 									<td>
 										<div class="normal-input-box">
 											<input class="info-input" value="${loginUser.account}" readonly="readonly">
-											<button class="btn" onclick="payAdd()" style="font-size: 12px;">충전하기</button>
+											<button type="button" class="btn" onclick="payAdd()" style="font-size: 12px;">충전하기</button>
 										</div>
 									</td>
 								</tr>
@@ -197,9 +197,10 @@
 		    $(".pr-btn").css("font-weight", "bold");
 		    $(".pr-btn").css("color", "white");
 		    $(".pr-btn").css("cursor", "pointer");
-		  });
-		  
-		  
+		  });  
+	}
+	function payAdd() {
+		location.href = "amountChargePage.me"
 	}
 	</script>
 </body>
