@@ -1,13 +1,12 @@
 package com.kh.finalProject.member.model.service;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import com.kh.finalProject.common.vo.Schedule;
 import com.kh.finalProject.mail.EmailCheck;
 import com.kh.finalProject.member.model.vo.Member;
 import com.kh.finalProject.member.model.vo.Professional;
+import com.kh.finalProject.pay.model.vo.Pay;
 
 public interface MemberService {
 	
@@ -77,4 +76,11 @@ public interface MemberService {
 	
 	//네이버로 회원가입
 	int naverEnrollInsert(Member m);
+	
+	//결제 성공시 기록을 Pay테이블에 인서트 
+	int insertPay(Pay pay);
+	
+	//결제 성공후 pay테이블에 인서트가 된다면 ACCOUNT올리기
+	
+	int insertAmount(Pay pay);
 }
