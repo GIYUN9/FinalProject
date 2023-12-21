@@ -32,6 +32,8 @@
 		<jsp:forward page="WEB-INF/views/myPage/careMember.jsp"/> 회원관리
 		<jsp:forward page="WEB-INF/views/board/comboard.jsp"/> 커뮤니티 게시판 상세
 		<jsp:forward page="WEB-INF/views/board/adminReport.jsp"/>
+		<jsp:forward page="WEB-INF/views/myPage/amountChargePage.jsp"/> 카카오페이
+		
 		
 		나기윤
 		<jsp:forward page="WEB-INF/views/myPage/deleteForm.jsp"/> 회원탈퇴
