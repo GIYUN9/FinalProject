@@ -3,10 +3,12 @@ package com.kh.finalProject.board.model.dao;
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.RowBounds;
+import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.finalProject.board.model.vo.Board;
+import com.kh.finalProject.board.model.vo.Likey;
 import com.kh.finalProject.board.model.vo.Reply;
 import com.kh.finalProject.common.vo.Attachment;
 import com.kh.finalProject.common.vo.Notice;
@@ -204,5 +206,29 @@ public class BoardDao {
 	
 	public int deleteReply(SqlSessionTemplate sqlSession, int replyNo) {
 		return sqlSession.update("boardMapper.deleteReply", replyNo);
+	}
+	
+	public int insertLikey(SqlSessionTemplate sqlSession, Likey l) {
+		return sqlSession.insert("boardMapper.insertLikey", l);
+	}
+	
+	
+	public int updateYLikey(SqlSessionTemplate sqlSession, Likey l) {
+		return sqlSession.update("boardMapper.updateYLikey", l);
+	}
+	
+	public Board selectLikeyCount(SqlSessionTemplate sqlSession, Likey l) {
+		return sqlSession.selectOne("boardMapper.selectLikeyCount", l);
+	}
+	
+	public int updateNLikey(SqlSessionTemplate sqlSession, Likey l) {
+		return sqlSession.update("boardMapper.updateNLikey", l);
+	}
+	
+	public Likey selectLikey(SqlSessionTemplate sqlSession, Likey l) {
+		return sqlSession.selectOne("boardMapper.selectLikey", l);
+	}
+	public int updateViewCount(SqlSessionTemplate sqlSession, int boardNo) {
+		return sqlSession.update("boardMapper.updateViewCount", boardNo);
 	}
 }
