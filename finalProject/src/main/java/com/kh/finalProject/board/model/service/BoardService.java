@@ -1,6 +1,7 @@
 package com.kh.finalProject.board.model.service;
 
 import java.util.ArrayList;
+
 import com.kh.finalProject.board.model.vo.Board;
 import com.kh.finalProject.board.model.vo.Likey;
 import com.kh.finalProject.board.model.vo.Reply;
@@ -126,16 +127,14 @@ public interface BoardService {
 	
 	int insertLikey(Likey l);
 	
-	int increaseLikey(Likey l);
-	
 	int updateYLikey(Likey l);
 	
-	int selectLikeyCount(Likey l);
+	Board selectLikeyCount(Likey l);
 	
 	int updateNLikey(Likey l);
 	
-	int decreaseLikey(Likey l);
+	Likey selectLikey(Likey l);
 	
-	int selectNLikeyCount(Likey l);
+	int updateViewCount(int boardNo);
 
 }

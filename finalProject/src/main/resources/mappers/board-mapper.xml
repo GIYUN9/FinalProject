@@ -20,6 +20,7 @@
   		<result column="CHANGE_NAME" property="changeName" />
   		<result column="LIKEY_COUNT" property="likeyCount" />
   		<result column="LISTATUS" property="liStatus" />
+  		<result column="VIEW_COUNT" property="viewCount" />
   	</resultMap>
   	
   	<resultMap type="Attachment" id="attachmentResult">
@@ -307,10 +308,9 @@
                 M.FILE_PATH,
 				B.CATEGORY_NO,
 				B.LIKEY_COUNT,
-				L.LISTATUS
+				B.VIEW_COUNT
 				FROM BOARD B
         JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
-         LEFT JOIN LIKEY L ON (B.BOARD_NO = L.BOARD_NO)
 		WHERE B.BOARD_NO = #{boardNo}
 		AND B.STATUS = 'Y'
 	</select>
@@ -650,57 +650,49 @@
 	</select>
   	<update id="deleteReply">
 		UPDATE REPLY
+		
 			SET STATUS = 'N'
 		WHERE REPLY_NO = #{replyNo}
-	</update>
-
-	<insert id="insertLikey">
-		INSERT INTO
-		    LIKEY
-		    (
-		        LIKEY_NO,
-		        BOARD_NO,
-		        MEM_NO
-		    )
-		VALUES
-		    (
-		        SEQ_LNO.NEXTVAL,
-		        #{boardNo},
-		        #{memberNo}
-		    )
-	</insert>
+	</update>	
+	<select id="selectLikeyCount" resultMap="boardResult">
+		SELECT LIKEY_COUNT
+			FROM BOARD
+		WHERE BOARD_NO =#{boardNo}
+	</select>
 	<update id="updateYLikey">
 		UPDATE LIKEY
 			SET LISTATUS = 'Y'
 		WHERE BOARD_NO = #{boardNo}
-		 AND MEM_NO = #{memberNo}
+		 AND MEM_NO = #{memberNo}	 
 	</update>
-	<update id="increaseLikey">
-		UPDATE BOARD
-			SET LIKEY_COUNT = LIKEY_COUNT+1
-		WHERE BOARD_NO = #{boardNo}
-	</update>
-	<select id="selectLikeyCount" resultType="_int">
-		SELECT COUNT(*)
-			FROM LIKEY
-		WHERE BOARD_NO = #{boardNo}
-		AND LISTATUS = 'Y'
-	</select>
-	<select id="selectNLikeyCount" resultType="_int">
-		SELECT COUNT(*)
-			FROM LIKEY
-		WHERE BOARD_NO = #{boardNo}
-		AND LISTATUS = 'N'
-	</select>
 	<update id="updateNLikey">
 		UPDATE LIKEY
 			SET LISTATUS = 'N'
 		WHERE BOARD_NO = #{boardNo}
 		 AND MEM_NO = #{memberNo}
+		 AND ROWNUM &lt;= 1
 	</update>
-	<update id="decreaseLikey">
+	<insert id="insertLikey">
+		INSERT INTO LIKEY (LIKEY_NO, BOARD_NO, MEM_NO)
+    	SELECT SEQ_LNO.NEXTVAL, #{boardNo}, #{memberNo}
+   		FROM DUAL
+    	WHERE NOT EXISTS (
+      	SELECT 1 FROM LIKEY WHERE BOARD_NO = #{boardNo} 
+      							AND MEM_NO = #{memberNo}					
+    )
+	</insert>
+	<select id ="selectLikey" resultMap="likeyResult">
+		SELECT LIKEY_NO,
+			BOARD_NO,
+			MEM_NO,
+			LISTATUS
+		FROM LIKEY
+		WHERE BOARD_NO= #{boardNo}
+		 	AND MEM_NO = #{memberNo}
+	</select>
+	<update id="updateViewCount">	
 		UPDATE BOARD
-			SET LIKEY_COUNT = LIKEY_COUNT-1
+			SET VIEW_COUNT = VIEW_COUNT + 1
 		WHERE BOARD_NO = #{boardNo}
 	</update>
   </mapper>

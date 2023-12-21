@@ -32,4 +32,6 @@ public class Board {
 	
 	private int likeyCount;
 	private String liStatus;
+	
+	private int viewCount;
 }

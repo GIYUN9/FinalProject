@@ -212,15 +212,12 @@ public class BoardDao {
 		return sqlSession.insert("boardMapper.insertLikey", l);
 	}
 	
-	public int increaseLikey(SqlSessionTemplate sqlSession, Likey l) {
-		return sqlSession.update("boardMapper.increaseLikey", l);
-	}
 	
 	public int updateYLikey(SqlSessionTemplate sqlSession, Likey l) {
 		return sqlSession.update("boardMapper.updateYLikey", l);
 	}
 	
-	public int selectLikeyCount(SqlSessionTemplate sqlSession, Likey l) {
+	public Board selectLikeyCount(SqlSessionTemplate sqlSession, Likey l) {
 		return sqlSession.selectOne("boardMapper.selectLikeyCount", l);
 	}
 	
@@ -228,11 +225,10 @@ public class BoardDao {
 		return sqlSession.update("boardMapper.updateNLikey", l);
 	}
 	
-	public int decreaseLikey(SqlSessionTemplate sqlSession, Likey l) {
-		return sqlSession.update("boardMapper.decreaseLikey", l);
+	public Likey selectLikey(SqlSessionTemplate sqlSession, Likey l) {
+		return sqlSession.selectOne("boardMapper.selectLikey", l);
 	}
-	
-	public int selectNLikeyCount(SqlSessionTemplate sqlSession, Likey l) {
-		return sqlSession.selectOne("boardMapper.selectNLikeyCount", l);
+	public int updateViewCount(SqlSessionTemplate sqlSession, int boardNo) {
+		return sqlSession.update("boardMapper.updateViewCount", boardNo);
 	}
 }

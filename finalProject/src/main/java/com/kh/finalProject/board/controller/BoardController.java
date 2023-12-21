@@ -425,6 +425,7 @@ public class BoardController {
 	@RequestMapping("detailcomm.co")
 	public String detailCommBoard(int boardNo, HttpSession session, Model model) {
 		// 클릭시 상세페이지 이동 (하나밖에 없음)
+		int count = boardService.updateViewCount(boardNo);
 		
 		Board b = boardService.selectCommBoard(boardNo);
 		System.out.println(b);

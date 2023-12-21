@@ -278,16 +278,11 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public int increaseLikey(Likey l) {
-		return boardDao.increaseLikey(sqlSession, l);
-	}
-	
-	@Override
 	public int updateYLikey(Likey l) {
 		return boardDao.updateYLikey(sqlSession, l);
 	}
 	@Override
-	public int selectLikeyCount(Likey l) {
+	public Board selectLikeyCount(Likey l) {
 		return boardDao.selectLikeyCount(sqlSession, l);
 	}
 	
@@ -296,17 +291,14 @@ public class BoardServiceImpl implements BoardService {
 	public int updateNLikey(Likey l) {
 		return boardDao.updateNLikey(sqlSession, l);
 	}
-
+	
 	@Override
-	public int decreaseLikey(Likey l) {
-		return boardDao.decreaseLikey(sqlSession, l);
+	public Likey selectLikey(Likey l) {
+		return boardDao.selectLikey(sqlSession, l);
 	}
 	
 	@Override
-	public int selectNLikeyCount(Likey l) {
-		return boardDao.selectNLikeyCount(sqlSession, l);
+	public int updateViewCount(int boardNo) {
+		return boardDao.updateViewCount(sqlSession, boardNo);
 	}
-	
-	
-	
 }
