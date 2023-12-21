@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.finalProject.board.model.dao.BoardDao;
 import com.kh.finalProject.board.model.vo.Board;
+import com.kh.finalProject.board.model.vo.Likey;
 import com.kh.finalProject.board.model.vo.Reply;
 
 import com.kh.finalProject.common.vo.Attachment;
@@ -271,4 +272,33 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.deleteReply(sqlSession, replyNo);
 	}
 	
+	@Override
+	public int insertLikey(Likey l) {
+		return boardDao.insertLikey(sqlSession, l);
+	}
+	
+	@Override
+	public int updateYLikey(Likey l) {
+		return boardDao.updateYLikey(sqlSession, l);
+	}
+	@Override
+	public Board selectLikeyCount(Likey l) {
+		return boardDao.selectLikeyCount(sqlSession, l);
+	}
+	
+	
+	@Override
+	public int updateNLikey(Likey l) {
+		return boardDao.updateNLikey(sqlSession, l);
+	}
+	
+	@Override
+	public Likey selectLikey(Likey l) {
+		return boardDao.selectLikey(sqlSession, l);
+	}
+	
+	@Override
+	public int updateViewCount(int boardNo) {
+		return boardDao.updateViewCount(sqlSession, boardNo);
+	}
 }
