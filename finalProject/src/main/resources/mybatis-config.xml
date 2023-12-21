@@ -23,6 +23,7 @@
 	    <typeAlias type="com.kh.finalProject.mail.EmailCheck" alias="EmailCheck" />	
      	<typeAlias type="com.kh.finalProject.chat.model.vo.Message" alias="Chat" />
      	<typeAlias type="com.kh.finalProject.chat.model.vo.ChattingRoom" alias="ChatRoom" />
+	    <typeAlias type="com.kh.finalProject.pay.model.vo.Pay" alias="Pay" />
   	</typeAliases>
   	<mappers>
   		<mapper resource="/mappers/board-mapper.xml" />

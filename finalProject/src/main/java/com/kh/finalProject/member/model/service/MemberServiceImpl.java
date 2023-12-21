@@ -12,6 +12,7 @@ import com.kh.finalProject.mail.EmailCheck;
 import com.kh.finalProject.member.model.dao.MemberDao;
 import com.kh.finalProject.member.model.vo.Member;
 import com.kh.finalProject.member.model.vo.Professional;
+import com.kh.finalProject.pay.model.vo.Pay;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -144,6 +145,16 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int naverEnrollInsert(Member m) {
 		return memberDao.naverEnrollInsert(sqlSession, m);
+	}
+
+	@Override
+	public int insertPay(Pay pay) {
+		return memberDao.insertPay(sqlSession, pay);
+	}
+
+	@Override
+	public int insertAmount(Pay pay) {
+		return memberDao.insertAmount(sqlSession, pay);
 	}
 
 }
