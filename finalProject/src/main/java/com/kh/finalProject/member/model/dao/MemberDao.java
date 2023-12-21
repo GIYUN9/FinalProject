@@ -11,6 +11,7 @@ import com.kh.finalProject.common.vo.Schedule;
 import com.kh.finalProject.mail.EmailCheck;
 import com.kh.finalProject.member.model.vo.Member;
 import com.kh.finalProject.member.model.vo.Professional;
+import com.kh.finalProject.pay.model.vo.Pay;
 
 @Repository
 public class MemberDao {
@@ -112,5 +113,12 @@ public class MemberDao {
 		return sqlSession.insert("memberMapper.naverEnrollInsert", m);
 	}
 	
+	public int insertPay(SqlSessionTemplate sqlSession, Pay pay) {
+		return sqlSession.insert("memberMapper.insertPay", pay);
+	}
+	
+	public int insertAmount(SqlSessionTemplate sqlSession, Pay pay) {
+		return sqlSession.update("memberMapper.insertAmount", pay);
+	}
 }
 

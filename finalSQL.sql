@@ -238,12 +238,28 @@ CREATE TABLE CHATROOMJOIN(
     MEM_NO NUMBER REFERENCES MEMBER(MEM_NO),
     CHAT_ROOM_NO NUMBER REFERENCES CHATROOM(CHAT_ROOM_NO)
 );
+
+--PAY테이블생성
+CREATE TABLE PAY (
+    PAY_NO NUMBER PRIMARY KEY,
+    PRICE NUMBER NOT NULL,
+    CREATE_DATE DATE DEFAULT SYSDATE,
+    MEM_NO NUMBER REFERENCES MEMBER(MEM_NO)
+);
+
+--PAY 시퀀스
+CREATE SEQUENCE SEQ_PAY_NO
+START WITH 700000
+INCREMENT BY 1
+MAXVALUE 710000
+NOCYCLE
+NOCACHE;
 ---------------------더미데이터-----------------------
 -- 멤버
 INSERT INTO MEMBER VALUES(1, 'admin@naver.com', '$2a$10$Oa0Xd4NXm4.5/lgBkeBbBu2Y3gHAkhdOT9zgvilBHgO0dBYu1dNCm' ,'관리자', '음악', 1,
-        '010-1111-0000', '서울시 강남구', 'Y', 'M', '4', 'resources/memberProfileImg/userDefaultProFile.png', NULL, NULL, SYSDATE);
+        '010-1111-0000', '서울시 강남구', 'Y', 'M', '4', 'resources/memberProfileImg/userDefaultProFile.png', 0, NULL, SYSDATE);
 INSERT INTO MEMBER VALUES(SEQ_MNO.NEXTVAL, 'user01@naver.com','$2a$10$Oa0Xd4NXm4.5/lgBkeBbBu2Y3gHAkhdOT9zgvilBHgO0dBYu1dNCm' ,'홍길동', '음악', 1, 
-        '010-1111-1111', '서울시 송파구', 'Y', 'M', '4', 'resources/memberProfileImg/userDefaultProFile.png', NULL, NULL, SYSDATE);
+        '010-1111-1111', '서울시 송파구', 'Y', 'M', '4', 'resources/memberProfileImg/userDefaultProFile.png', 0, NULL, SYSDATE);
 
 INSERT INTO MEMBER(
             MEM_NO,
@@ -347,14 +363,14 @@ INSERT INTO REPLY (
 		ORDER BY REPLY_NO DESC;
         
         
-
+--채팅방 더미
+INSERT INTO CHATROOM VALUES(5555, '제목TEST Y', 'Y', 2);
+INSERT INTO CHATROOM VALUES(5556, '제목TEST N', 'N', 2);
 --메시지 더미
 INSERT INTO CHATMSG VALUES(5555, '메시지TEST', SYSTIMESTAMP, 5555, 2);
 --채팅룸x멤버 복합키 더미
 INSERT INTO CHATROOMJOIN VALUES(2, 5555);
---채팅방 더미
-INSERT INTO CHATROOM VALUES(5555, '제목TEST Y', 'Y', 2);
-INSERT INTO CHATROOM VALUES(5556, '제목TEST N', 'N', 2);
+
 
 
 

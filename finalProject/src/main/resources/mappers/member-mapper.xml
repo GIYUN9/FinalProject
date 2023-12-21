@@ -51,6 +51,15 @@
 		<result column="AUTH_RANDOM" property="authRandom"/>
 		<result column="CREATEDATE" property="createDate"/>
 	</resultMap>
+	
+	<resultMap type="Pay" id="payResult">
+		<result column="PAY_NO" property="payNo"/>
+		<result column="TID" property="tid"/>
+		<result column="PRICE" property="price"/>
+		<result column="CREATE_DATE" property="createDate"/>
+		<result column="MEM_NO" property="memberNo"/>
+
+	</resultMap>
 
 	<!-- 회원가입 -->
 	<insert id = "insertMember">
@@ -379,4 +388,26 @@
 		)
 		
 	</insert>
+	
+	<insert id="insertPay">
+		INSERT INTO PAY 
+					(
+					PAY_NO,
+					PRICE,
+					CREATE_DATE,
+					MEM_NO
+					)
+        VALUES(		
+        			SEQ_PAY_NO.NEXTVAL,
+					#{price},
+					SYSDATE,
+					#{memberNo}
+        )
+	</insert>
+	
+	<update id="insertAmount">
+		UPDATE MEMBER 
+		SET ACCOUNT = ACCOUNT + #{price}
+		WHERE MEM_NO = #{memberNo}
+	</update>
 </mapper>
