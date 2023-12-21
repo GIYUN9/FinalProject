@@ -1,10 +1,12 @@
 package com.kh.finalProject.member.controller;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -13,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
@@ -34,6 +35,7 @@ import com.kh.finalProject.common.vo.Schedule;
 import com.kh.finalProject.member.model.service.MemberService;
 import com.kh.finalProject.member.model.vo.Member;
 import com.kh.finalProject.member.model.vo.Professional;
+import com.kh.finalProject.pay.model.vo.Pay;
 
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
@@ -446,6 +448,8 @@ public class MemberController {
 		return "common/main";
 	}
 	
+	
+	//휴대폰 인증 컨트롤러 -> ajax를 통해 사용자의 핸드폰번호가 문자열로 들어온다 "-"기호 빼주고 난수 생성하여 문자 보내는 객체호출 하고 난수 리턴
 	@RequestMapping(value = "phoneCheck.me")
 	@ResponseBody
     public String sendSMS(String phone) {
@@ -462,61 +466,81 @@ public class MemberController {
         certifiedPhoneNumber(phone,randomNo);
         return randomNo;
     }
+	public void certifiedPhoneNumber(String phoneNumber, String cerNum) {
 	
-	 public void certifiedPhoneNumber(String phoneNumber, String cerNum) {
+        String api_key = Key.API_KEY;
+        String api_secret = Key.API_SECRET;
+        Message coolsms = new Message(api_key, api_secret);
 
-	        String api_key = Key.API_KEY;
-	        String api_secret = Key.API_SECRET;
-	        Message coolsms = new Message(api_key, api_secret);
-
-	        // 4 params(to, from, type, text) are mandatory. must be filled
-	        HashMap<String, String> params = new HashMap<String, String>();
-	        params.put("to", phoneNumber);    // 수신전화번호
-	        params.put("from", Key.API_ADMIN_PHONE_NUMBER);    // 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
-	        params.put("type", "SMS");
-	        params.put("text", "품앗이 : 인증번호는" + "["+cerNum+"]" + "입니다.");
-	        params.put("app_version", "test app 1.2"); // application name and version
-
-	        try {
-	            JSONObject obj = (JSONObject) coolsms.send(params);
-	            System.out.println(obj.toString());
-	        } catch (CoolsmsException e) {
-	            System.out.println(e.getMessage());
-	            System.out.println(e.getCode());
-	        }
-
-	    }
-}
-
-/*
- * spring_work 실습에 사용했던 파일이름저장 정책 참고용
- * public String saveFile(MultipartFile upfile, HttpSession session, String path) {
-		//파일명 수정 후 서버 업로드 시키기("음악스트리밍.png" => 20231109102712345.png)
-		//년월일시분초 + 랜덤숫자 5개 + 확장자
+        // 4 params(to, from, type, text) are mandatory. must be filled
+		HashMap<String, String> params = new HashMap<String, String>();
+		params.put("to", phoneNumber);    // 수신전화번호
+		params.put("from", Key.API_ADMIN_PHONE_NUMBER);    // 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
+		params.put("type", "SMS");
+		params.put("text", "품앗이 : 인증번호는" + "["+cerNum+"]" + "입니다.");
+		params.put("app_version", "test app 1.2"); // application name and version
 		
-		//원래 파일명
-		String originName = upfile.getOriginalFilename();
-		
-		//시간정보(년월일시분초)
-		String currentTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-		
-		//랜덤숫자 5자리
-		int ranNum = (int)((Math.random() * 90000) + 10000);
-		
-		//확장자
-		String ext = originName.substring(originName.lastIndexOf("."));
-		
-		String changeName = currentTime + ranNum + ext;
-		
-		//첨부파일 저장할 폴더의 물리적인 경우
-		String savePath = session.getServletContext().getRealPath(path);
-		
+        try {
+            JSONObject obj = (JSONObject) coolsms.send(params);
+            System.out.println(obj.toString());
+        } catch (CoolsmsException e) {
+            System.out.println(e.getMessage());
+            System.out.println(e.getCode());
+        }
+	
+	}
+	
+	//카카오페이 결제페이지로 이동
+	@RequestMapping(value = "amountChargePage.me")
+	public String amountChargePage() {
+		return "myPage/amountChargePage";
+	}
+	
+	@RequestMapping(value = "kakaopay.me")
+	@ResponseBody
+	public String kakaopay(Pay pay, HttpSession session) {
 		try {
-			upfile.transferTo(new File(savePath + changeName));
-		} catch (IllegalStateException | IOException e) {
+			URL url = new URL("https://kapi.kakao.com/v1/payment/ready");
+			HttpURLConnection httpUrlConnection = (HttpURLConnection)url.openConnection();
+			httpUrlConnection.setRequestMethod("POST");
+			httpUrlConnection.setRequestProperty("Authorization", "KakaoAK "+Key.KAKAO_ADMIN_KEY);
+			httpUrlConnection.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+			httpUrlConnection.setDoOutput(true); //doinput은 기본값 트루상태
+			String param ="cid=TC0ONETIME&partner_order_id=partner_order_id&partner_user_id=partner_user_id&item_name=Poom At yee Point&quantity=1&total_amount="+pay.getPrice()+"&tax_free_amount=0&approval_url=http://localhost:5555/finalProject/userInfo.me&fail_url=http://localhost:5555/finalProject/common/payFail.me&cancel_url=http://localhost:5555/finalProject/common/payCancel.me";
+			OutputStream ops = httpUrlConnection.getOutputStream();
+			DataOutputStream dops = new DataOutputStream(ops);
+			dops.writeBytes(param);
+			dops.close(); // 닫기 => dops.flush(); //비우기-> 보내기
+			
+			int result1 = httpUrlConnection.getResponseCode();
+			
+			InputStream ips;
+			
+			if(result1 == 200) {
+				ips = httpUrlConnection.getInputStream();
+			}else {
+				ips = httpUrlConnection.getErrorStream();
+			}
+			InputStreamReader readIps = new InputStreamReader(ips);
+			BufferedReader bufferedReader = new BufferedReader(readIps);
+			int result = memberService.insertPay(pay);
+			
+			if(result > 0) {
+				memberService.insertAmount(pay);
+				session.setAttribute("alertMsg", "결제하신 point : "+pay.getPrice()+" 가 정상적으로 충전되었습니다. ");
+			}
+			
+			return bufferedReader.readLine();
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		return changeName;
+		return "{\"result\":\"NO\"}";
 	}
- */
+	
+	@RequestMapping(value = "payApproval.me")
+	public String payApproval(String pg_token, Pay pay) {
+		return "common/payApproval";
+	}
+}
