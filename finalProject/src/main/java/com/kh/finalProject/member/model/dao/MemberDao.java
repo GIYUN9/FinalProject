@@ -83,7 +83,6 @@ public class MemberDao {
 		Map<String, String> parameters = new HashMap<>();
         parameters.put("searchText", searchText);
         return (ArrayList)sqlSession.selectList("memberMapper.searchMem", parameters);
-
 	}
 	public int updateUserPwd(SqlSessionTemplate sqlSession, Member user) {
 		return sqlSession.update("memberMapper.updateUserPwd", user);

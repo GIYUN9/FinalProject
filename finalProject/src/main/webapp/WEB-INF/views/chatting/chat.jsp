@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <style>
     *,
     *::before,
@@ -203,6 +205,7 @@
         display: flex;
         align-items: flex-end;
         flex-direction: column;
+        width: 100%;
     }
     .prev-menu{
         cursor: pointer;
@@ -363,17 +366,6 @@
     </div>
 
     <div class="cr-time">2024년 1월 04일 목요일</div>
-
-    <div class="box">
-        <div class="chatbox">
-            <span class="text-output">ㅇㅇ</span>
-        </div>
-    </div>
-    <div class="box">
-        <div class="chatbox">
-            <span class="text-output">ㅇ</span>
-        </div>
-    </div>
     <div class="box">
         <div class="chatbox">
             <span class="text-output">ㅇ</span>
@@ -381,11 +373,9 @@
             <div class="chat-count">안읽음</div>
         </div>
     </div>
-
-    <div class="box2">
+    <div class="box2" id="msg-container">
         <div class="chatbox-right">
-            ㅇ
-            <div class="chat-time-right">오후 2:09</div>
+            <div class="chat-time-right">Timestamp</div>
             <div class="chat-count-right">안읽음</div>
         </div>
     </div>
@@ -396,13 +386,79 @@
     
     <footer class="cr-ft">
         <button class="send-btn2"></button>
-        <input class="text-area" type="text">
-        <button class="send-btn">전송</button>
+        <input class="text-area" id="type-text" type="text" name="msg">
+        <button class="send-btn" id="msg-btn" onclick="sendMsg();">전송</button>
     </footer>
     <script>
         function prevAction(){
             history.go(-1);
         }
+        //socket연결 요청
+        const socket = new WebSocket("ws://localhost:5555/finalProject/chat");
+
+        //socket연결 성공 시
+        socket.onopen = function(){
+            console.log("웹소켓 연결 ok...");
+        }
+
+        //socket연결 끊어졌을 시 
+        socket.onclose = function(){
+            console.log("웹소켓 끊어짐...");
+        }
+
+        //socket연결 실패했을 시 
+        socket.onerror = function(){
+            console.log("웹소켓 연결 실패...");
+            alert("웹 소켓 연결 실패");
+        }
+
+
+        //socket연결로 부터 데이터가 도착했을때
+        //서버로부터 데이터가 도착했을 때
+        socket.onmessage = function(ev){
+            console.log(ev.data);
+            const msgContainer = document.querySelector("#msg-container");
+            msgContainer.innerHTML += (ev.data + "<br>");
+        }
+	
+        function sendMsg(){
+        	const msgInput = document.querySelector("input[name=msg]"); //텍스트 입력칸 msgInput에 대입
+        	const str = msgInput.value; //str에 텍스트 담기
+        	//연결된 socket session에 데이터 전송
+
+            const messageBox2 = document.createElement("div");
+            messageBox2.className = "box2";
+
+            const chatboxRight = document.createElement("div");
+            chatboxRight.className = "chatbox-right";
+            chatboxRight.textContent = str;
+
+            const chatTimeRight = document.createElement("div");
+            chatTimeRight.className = "chat-time-right";
+            const timestamp = new Date().toLocaleDateString();
+            chatTimeRight.textContent = timestamp;
+
+            const chatCountRight = document.createElement("div");
+            chatCountRight.className = "chat-count-right";
+            chatCountRight.textContent = "안읽음";
+
+            messageBox2.appendChild(chatboxRight);
+            messageBox2.appendChild(chatTimeRight);
+            messageBox2.appendChild(chatCountRight);
+
+        	socket.send(str); //소켓에 str 텍스트 보내기
+
+            const msgContainer = document.getElementById("msg-container");
+            msgContainer.appendChild(messageBox2);
+        	
+        	msgInput.value = ""; //텍스트 입력칸 비우기
+        }
+
+        $("#type-text").on("keypress", function(ev) {
+            if (ev.keyCode === 13) {
+                sendMsg();
+            }
+        });
     </script>
 </body> 
 </html>
