@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -286,90 +288,36 @@
                 <p class="p-btn1" id="groupChat" onclick="groupChat()">단체 채팅</p>
             </div>
             <div>
-                <div class="chatRoom-detail-align">
-                    <div class="chatRoom-group">  
-                        <div class="chatRoom-img-background">
-                            <img class="chatRoom-img" src="././resources/image/축구.jpg" alt="">
-                        </div>
-                        <div class="chatRoom-section">
-                            <div class="chatRoom-info">
-                                <div class="chatRoom-detail-title">
-                                    KH 파이널 
-                                    <div class="chatRoom-MemberCount">
-                                        4
+                <c:forEach var="cr" items="${crList}">
+                    <div class="chatRoom-detail-align">
+                        <div class="chatRoom-group">  
+                            <div class="chatRoom-img-background">
+                                <img class="chatRoom-img" src="././resources/image/축구.jpg" alt="">
+                            </div>
+                            <div class="chatRoom-section">
+                                <div class="chatRoom-info">
+                                    <div class="chatRoom-detail-title">
+										${cr.title}
+                                        <div class="chatRoom-MemberCount">
+											반복
+                                        </div>
+                                    </div>
+                                    <div class="last-chat">
+										asdsd
                                     </div>
                                 </div>
-                                <div class="last-chat">
-                                    최근 대화 내용1111111111111111111111111111111111111111111111111111udhxdflkuhj
-                                </div>
-                            </div>
-                            <div class="chatRoom-lastChat-info">
-                                <div class="last-chatTime">
-                                    6:12
-                                </div>
-                                <div class="last-chatCount">
-                                    2
+                                <div class="chatRoom-lastChat-info">
+                                    <div class="last-chatTime">
+										반복문 마지막
+                                    </div>
+                                    <div class="last-chatCount">
+										반복문 채팅 수
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="chatRoom-detail-align">
-                    <div class="chatRoom-group">  
-                        <div class="chatRoom-img-background">
-                            <img class="chatRoom-img" src="././resources/image/축구.jpg" alt="">
-                        </div>
-                        <div class="chatRoom-section">
-                            <div class="chatRoom-info">
-                                <div class="chatRoom-detail-title">
-                                    KH 파이널 
-                                    <div class="chatRoom-MemberCount">
-                                        4
-                                    </div>
-                                </div>
-                                <div class="last-chat">
-                                    최근 대화 내용1111111111111111111111111111111111111111111111111111udhxdflkuhj
-                                </div>
-                            </div>
-                            <div class="chatRoom-lastChat-info">
-                                <div class="last-chatTime">
-                                    6:12
-                                </div>
-                                <div class="last-chatCount">
-                                    2
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="chatRoom-detail-align">
-                    <div class="chatRoom-group">  
-                        <div class="chatRoom-img-background">
-                            <img class="chatRoom-img" src="././resources/image/축구.jpg" alt="">
-                        </div>
-                        <div class="chatRoom-section">
-                            <div class="chatRoom-info">
-                                <div class="chatRoom-detail-title">
-                                    KH 파이널 
-                                    <div class="chatRoom-MemberCount">
-                                        4
-                                    </div>
-                                </div>
-                                <div class="last-chat">
-                                    최근 대화 내용1111111111111111111111111111111111111111111111111111udhxdflkuhj
-                                </div>
-                            </div>
-                            <div class="chatRoom-lastChat-info">
-                                <div class="last-chatTime">
-                                    6:12
-                                </div>
-                                <div class="last-chatCount">
-                                    2
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </c:forEach>
             </div>
         </div>
     </div>
@@ -380,6 +328,7 @@
     </div>
 
     <script>
+
         function prevAction(){
             history.go(-1);
         }
