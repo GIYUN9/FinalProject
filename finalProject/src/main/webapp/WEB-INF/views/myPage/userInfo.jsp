@@ -156,7 +156,6 @@
 								</tr>
 								<button class="ui-submit-btn" type="submit" class="btn" style="float: right;">수정하기</button>
 							</table>
-
 						</form>
 					</div>
 				</div>

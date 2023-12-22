@@ -188,7 +188,7 @@
         position: absolute;
         right: 12px;
         font-size: 13px;
-        top: 284px;
+        top: 286px;
         font-weight: bold;
     }
     .hu-filename{
