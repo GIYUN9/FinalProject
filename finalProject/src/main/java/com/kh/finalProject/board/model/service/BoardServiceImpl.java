@@ -273,8 +273,16 @@ public class BoardServiceImpl implements BoardService {
 
 	//도와줄게요 날짜순 ajax
 	@Override
-	public ArrayList<Board> helpDateCheck(Board b) {
-		return boardDao.helpDateCheck(sqlSession, b);
+	public ArrayList<Board> helpDateCheck(Board b, PageInfo pi) {
+		return boardDao.helpDateCheck(sqlSession, b, pi);
 	}
+
+	//도와줄게요 날짜순 ajax count(*)
+	@Override
+	public int helpDateCheckCount() {
+		return boardDao.helpDateCheckCount(sqlSession);
+	}
+
+	
 	
 }

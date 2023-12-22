@@ -152,7 +152,7 @@
 
    
 
-    #head-count{
+    .head-count{
         text-align: right;
         color: white;
         font-size: 13px;
@@ -282,7 +282,7 @@
             </div>
             <div class = "content">
                 <div class = "content-head">
-                   <div id = "head-count">총 1063개의 서비스</div>
+                   <div class = "head-count">총 1063개의 서비스</div>
                    <div id = "head-category">
 					
                         <form class="write-area">
@@ -297,7 +297,7 @@
                 </div>
                 
                 <div class="helpDatecatalog">
-                
+                	
                 <c:forEach var="b" items="${list}">
                 	<div class = "content-item" id="contentList">
 	                     <a href ="helpDetailPage.bo?boardNo=${b.boardNo}" id="bno">
@@ -307,7 +307,7 @@
 	                     </a> 
                 	</div>
                 </c:forEach> 
-
+					
                  </div>
                 
                <nav aria-label="Page navigation example">
@@ -371,36 +371,61 @@ $(document).ready(function() {
             $.ajax({
                 url: "helpDateCheck.bo",
                 type: "POST",
+                contentType: "application/json",
                 data: {
                     boardNo: document.querySelector('#bno').value,
                     image: document.querySelector('#image').value,
                     boardTitle: document.querySelector('#btitle').value,
                     price: document.querySelector('#price').value
                 },
-                success: function(result) {
-                   	console.log(result);
-                   	let str = "";
-                   	for(let date of result) {
-                   		str +=  (
-                                "<div>" +
-                                    "<a href='detailPage.bo?boardNo=" + date.boardNo + "'>" +
-                                    "<img src= '" + date.changeName + "'>" +
-                                    "<div>" + date.boardTitle + "</div>" +
-                                    "<div>" + date.price + "</div>" +
-                                    "<div>" + date.createDate + "</div>" +
-                                    "</a>" +
-                                "</div>"
-                                )
-                   	}
+                success: function(data) {
+                    console.log(data);
+                    let str = "<div class='helpDatecatalog'>";  // 리스트를 감싸는 부모 요소
+                    
+                        for (let board of data) {
+                        str += (
+                            "<div class='content-item'>" +
+                                "<a href='detailPage.bo?boardNo=" + board.boardNo + "'>" +
+                                "<img src='" + board.changeName + "' style='width:50px; height:50px;'>" +
+                                "<div class='content-item-title'>" + board.boardTitle + "</div>" +
+                                "<div class='content-item-price'>" + board.price + "</div>" +
+                                "<div class='content-item-date'>" + board.createDate + "</div>" +
+                                "</a>" +
+                            "</div>"
+                        );
+                    }
+
+                    str += "</div>";  // 리스트를 감싸는 부모 요소 닫기
 
                     $('.helpDatecatalog').html(str);
-                   	
+                },   
+                    
+                   	// console.log(data);
+                   	// let str = "";
+                   	// for(let board of data) {
+                   	// 	str +=  (
+                    //             "<div>" +
+                    //                 "<a href='detailPage.bo?boardNo=" + board.boardNo + "'>" +
+                    //                 "<img src='" + board.changeName + "' style='width:50px; height:50px;'>" +
+                    //                 "<div>" + board.boardTitle + "</div>" +
+                    //                 "<div>" + board.price + "</div>" +
+                    //                 "<div>" + board.createDate + "</div>" +
+                    //                 "</a>" +
+                    //             "</div>"
+                    //             )
+                   	// }
+
+                    // $('.helpDatecatalog').html(str);
+                // },
+                error: function() {
+                	console.log("통신 실패");
                 }
             })
         }
+        
         // 선택된 값이 'check'인 경우
         else if (selectedValue === 'check') {
-           
+        	
         }
     });
 });

@@ -206,7 +206,15 @@ public class BoardDao {
 		return sqlSession.update("boardMapper.deleteReply", replyNo);
 	}
 	
-	public ArrayList<Board> helpDateCheck(SqlSessionTemplate sqlSession, Board b) {
-		return (ArrayList)sqlSession.selectList("boardMapper.helpDateCheck", b);
+	public ArrayList<Board> helpDateCheck(SqlSessionTemplate sqlSession, Board b, PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		return (ArrayList)sqlSession.selectList("boardMapper.helpDateCheck",null, rowBounds);
+	}
+	
+	public int helpDateCheckCount(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("boardMapper.helpDateCheckCount");
 	}
 }

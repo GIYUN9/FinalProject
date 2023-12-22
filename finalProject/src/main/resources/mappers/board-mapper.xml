@@ -71,19 +71,6 @@
          AND B.STATUS = 'Y'
  	</select>
  	
- 	<select id="helpDateCheck" resultMap="boardResult">
- 		SELECT  B.BOARD_NO,
- 			  	B.BOARD_TITLE,
- 			   	B.PRICE,
-               	A.CHANGE_NAME,
-               	B.CREATEDATE
- 		FROM BOARD B
-        JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
- 		 WHERE B.BOARD_TYPE = 1
-         AND B.STATUS = 'Y'
-        ORDER BY CREATEDATE DESC
- 	</select>
- 	
  	<!-- 도와줄게요 게시글 상세조회 관련 쿼리문 -->
 	<select id="helpSelectBoard" resultMap="boardResult">
 		SELECT B.BOARD_NO,
