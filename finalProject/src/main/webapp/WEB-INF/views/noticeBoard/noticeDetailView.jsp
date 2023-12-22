@@ -176,11 +176,6 @@
 .likeyYBtn:hover {
 	opacity: 0.5;
 }
-
-.likeyNBtn:hover {
-	opacity: 0.5;
-}
-
 .likeyYBtn{
 	border : 0px;
 	background-color: white; 
@@ -189,7 +184,10 @@
 .likeyYBtn:focus{
 	scale: 1.1;
 	outline: none;
+}
 
+.reply-likey-btn:hover{
+	opacity : 0.5;
 }
 
 </style>
@@ -233,7 +231,7 @@
 					</div>
 					<div>
 						<div style="margin-bottom: 5px;">${b.memberName}</div>
-						<div class="board-info">${b.createDate }·조회 101</div>
+						<div class="board-info">${b.createDate }·조회수  ${b.viewCount}</div>
 					</div>
 				</div>
 
@@ -368,9 +366,12 @@
                             reply.replyContent +
                         "</div>" +
                         "<div class=\"reply-bot\">" +
-                        "<span>" + reply.createDate + " ·</span>" +
+                        "<span>" + reply.createDate + " </span>" +
+                        "<button class= \"reply-likey-btn\" onclick= \"insertReplyLikey("+reply.replyNo+")\">"+
                         "<img src=\"./resources/icon/LIKE.png\" class=\"img\" style=\"margin-bottom: 10px;\">" +
-                        "<span>좋아요 39 ·</span>" +
+                        "<span>좋아요 39 </span>" +
+                        "</button>"+      
+                        "<span>·</span>"+
                         "<img src=\"./resources/icon/dislike.png\" class=\"img\" style=\"margin-top: 7px;\">" +
                         "<span>싫어요 -5</span>" +
                         "</div>" +
@@ -398,17 +399,96 @@
             }
         });
         
+        function insertReplyLikey(replyNo){
+        	const boardNo = document.getElementById("reply-boardNo").value;
+        	const memberNo = document.getElementById("WriterNo").value;      	
+			
+        	console.log("댓글 좋아요 => 보드넘버 : "  + boardNo + "멤버 넘버 : " +  memberNo + "댓글 넘버 : "+ replyNo);
+        	
+        	$.ajax({
+        		type : "post",
+        		url : "insertReply.li",
+        		data : {
+        			 "memberNo" : memberNo,
+        			 "boardNo" : boardNo,
+        			 "replyNo" : replyNo
+        		},
+        		success : function(result){	
+        			var data = JSON.parse(result);
+        			if(data.result1 > 0){//좋아요 insert 성공
+        				console.log("좋아요 인설트 성공");
+        				increaseReplyLikey(replyNo);	
+        				
+        				document.getElementById("likeyNum").innerHTML = data.likeyCount;
+        			}else if (data.result2 > 0){
+        				console.log("좋아요에 NNNNN값이 있네?");
+        				document.getElementById("likeyNum").innerHTML = data.likeyCount;
+        				
+        			}else{
+        				console.log("좋아요가 있네?");	
+        				document.getElementById("likeyNum").innerHTML = data.likeyCount;
+        			}
+        			
+        		},
+        		error: function(){
+                    console.log("요청 실패");
+                }	
+        	});
+        }
+
+     
+        
+        function increaseReplyLikey(replyNo){
+        	const boardNo = document.getElementById("reply-boardNo").value;
+        	const memberNo = document.getElementById("WriterNo").value;
+       		console.log("asdfsadfsdfsadf  replyNo : " + replyNo);
+        	
+        	$.ajax({
+        		type : "post",
+                url : "increaseReply.li",
+               
+                data : {
+                	 "memberNo" : memberNo,
+        			 "boardNo" : boardNo,
+        			 "replyNo" : replyNo
+                },
+                success: function(result){ 
+                	var data = JSON.parse(result);
+               
+          
+               		console.log("+1증가 성공!! ");	
+               		console.log("과연 값이 올까요?"+ data.likeyCount);		
+               		document.getElementById("likeyNum").innerHTML = data.likeyCount;
+                
+                },
+                error:function(){
+                    console.log("요청 실패");
+                }
+            });
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         function insertLikey(){
         	const boardNo = document.getElementById("reply-boardNo").value;
         	const memberNo = document.getElementById("WriterNo").value;
         	console.log(boardNo + "    " + memberNo);
-        	// 여기에 값을 그려줄 요소의 ID를 지정해주세요
-        	const likeyNumElement = document.getElementById("likeyNum");
-
-	       	  // 현재 값 가져오기
-	       	  let currentCount = parseInt(likeyNumElement.innerText);
-	       	  // 값을 그려주기
-	       	  likeyNumElement.innerText = currentCount;
+        	
         	$.ajax({
         		type : "post",
         		url : "insert.li",
@@ -472,11 +552,6 @@
             const boardNo = document.getElementById("reply-boardNo").value;
             const memberNo = document.getElementById("WriterNo").value;
             const contents = document.getElementById("reply-content").value;
-            console.log("댓글등록을 시작해보자! : ");
-            console.log("보드넘버 : ", boardNo);
-            console.log("작성자번호: ", memberNo);
-            console.log("내용 : ", contents);
-           
 
             $.ajax({
                 type : "post",

@@ -3,12 +3,12 @@ package com.kh.finalProject.board.model.dao;
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.RowBounds;
-import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.finalProject.board.model.vo.Board;
 import com.kh.finalProject.board.model.vo.Likey;
+import com.kh.finalProject.board.model.vo.ReLikey;
 import com.kh.finalProject.board.model.vo.Reply;
 import com.kh.finalProject.common.vo.Attachment;
 import com.kh.finalProject.common.vo.Notice;
@@ -230,5 +230,22 @@ public class BoardDao {
 	}
 	public int updateViewCount(SqlSessionTemplate sqlSession, int boardNo) {
 		return sqlSession.update("boardMapper.updateViewCount", boardNo);
+	}
+	public int insertReplyLikey(SqlSessionTemplate sqlSession, ReLikey r) {
+		return sqlSession.insert("boardMapper.insertReplyLikey", r);
+	}
+	public ReLikey selectReplyLikey(SqlSessionTemplate sqlSession, ReLikey r) {
+		return sqlSession.selectOne("boardMapper.selectReplyLikey", r);
+	}
+	
+	public int updateYReplyLikey(SqlSessionTemplate sqlSession, ReLikey r) {
+		return sqlSession.update("boardMapper.updateYReplyLikey", r);
+	}
+	
+	public Reply selectReplyLikeyCount(SqlSessionTemplate sqlSession, ReLikey r) {
+		return sqlSession.selectOne("boardMapper.selectReplyLikeyCount", r);
+	}
+	public int updateNReplyLikey(SqlSessionTemplate sqlSession, ReLikey r) {
+		return sqlSession.update("boardMapper.updateNReplyLikey", r);
 	}
 }

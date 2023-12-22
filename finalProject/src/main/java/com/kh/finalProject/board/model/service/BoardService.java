@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.kh.finalProject.board.model.vo.Board;
 import com.kh.finalProject.board.model.vo.Likey;
+import com.kh.finalProject.board.model.vo.ReLikey;
 import com.kh.finalProject.board.model.vo.Reply;
 import com.kh.finalProject.common.vo.Attachment;
 import com.kh.finalProject.common.vo.Notice;
@@ -136,5 +137,15 @@ public interface BoardService {
 	Likey selectLikey(Likey l);
 	
 	int updateViewCount(int boardNo);
-
+	
+	int insertReplyLikey(ReLikey r);
+	
+	ReLikey selectReplyLikey(ReLikey r);
+	
+	int updateYReplyLikey(ReLikey r);
+	
+	Reply selectReplyLikeyCount(ReLikey r);
+	
+	int updateNReplyLikey(ReLikey r);
+	
 }
