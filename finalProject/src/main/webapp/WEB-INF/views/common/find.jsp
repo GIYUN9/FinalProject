@@ -13,19 +13,29 @@
 		.findBox{
 			display: flex;
 			width: 90%;
-			justify-content: space-between;
+			justify-content: space-evenly;
 		}
 		
 		.findBox-1{
-			border: 1px solid white;
-			width: 42%;
+			border: none;
+			background-color: white;
+			border-radius: 8px;
+			color: #323232;
+			width: 20%;
 			height: 100%;
+			min-width: 479px;
+			min-height: 239px;
 		}
 		
 		.findBox-2{
-			border: 1px solid white;
+			border: none;
+			background-color: white;
+			border-radius: 8px;
+			color: #323232;
 			width: 30%;
 			height: 100%;
+			min-width: 479px;
+			min-height: 239px;
 		}
 		
 		.carousel-item .your-div-class {
@@ -36,7 +46,7 @@
 		}
 		
 		#demo{
-			width: 90%;
+			width: 80%;
 		}
 		
 		.no-add{
@@ -60,13 +70,101 @@
 			text-overflow: ellipsis;  	
 			white-space: nowrap;
 		}
+		.div-divide{
+			width: 90%;
+			border: none;
+			height: 0.5px;
+			background: white;
+		}
+		.category-board{
+			background: rgb(0, 199, 174);
+			border-radius: 8px 8px 0px 0px;
+			color: white;
+			padding: 10px;
+			border-bottom: 1px solid rgba(60, 59, 59, 0.27);
+			font-size: 20px;
+			font-weight: 600;
+			position: relative;
+			cursor: pointer;
+		}
+		.post{
+			border-bottom: 1px solid rgba(60, 59, 59, 0.27);
+			padding: 10px;
+			cursor: pointer;
+			position: relative;
+			height: 100px;
+		}
+		.title{
+			font-size: 16px;
+			font-weight: bold;
+			margin-bottom: 5px;
+		}
+		.content{
+			font-size: 13px;
+			height: 35px;
+    		text-overflow: ellipsis;
+			color: #737373;
+		}
+		.shortcut-img{
+			width: 15px;
+			height: 15px;
+			position: absolute;
+			right: 14px;
+			top: 18px;
+			cursor: pointer;
+		}
+		.view-count-img, .comment-img, .like-img {
+			width: 20px;
+			height: 20px;
+		}
+
+		.view-count-img{
+			position: absolute;
+	    	right: 30px;
+		}
+		.comment-img{
+			position: absolute;
+			right: 80px;
+			top: 75px;
+		}
+		.like-img{
+			position: absolute;
+			right: 33px;
+			top: 71px;
+		}
+		.view-count{
+			color: rgb(147, 147, 150);
+			width: max-content;
+			font-size: 10px;
+			position: absolute;
+			right: 10px;
+			top: 12px;
+		}
+		.comment-count{
+			color: rgb(147, 147, 150);
+			width: max-content;
+			font-size: 10px;
+			position: absolute;
+			right: 60px;
+			top: 77px;
+			font-weight: bold;
+		}
+		.like-count{
+			color: rgb(147, 147, 150);
+			width: max-content;
+			font-size: 10px;
+			position: absolute;
+			right: 11px;
+			top: 77px;
+			font-weight: bold;
+		}
 	</style>
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
 	<div class="box" style="margin-top: 100px; display: flex; flex-direction: column;">
 		<div class="main-box" style="margin-left: 190px;">
-				<div style="width: 100%; height: 100%;">
+				<div style="width: 100%; height: 100%; align-items: center; justify-content: center; display: flex;">
 					<div id="demo" class="carousel slide" data-bs-ride="carousel">
 					  <!-- Indicators/dots -->
 					  <div class="carousel-indicators" style="display: none;">
@@ -76,7 +174,7 @@
 					  </div>
 					  
 					  <!-- The slideshow/carousel -->
-					  <div class="carousel-inner" >
+					  <div class="carousel-inner" style="padding: 50px;">
 					    <div class="carousel-item active">
 					    	<div class="your-div-class">
 						    	<div class="no-add">
@@ -113,16 +211,35 @@
 				<div class="findBox-1">
 					<c:choose>
 						<c:when test="${not empty list1}">
-							<c:forEach var="f" items="${list1}">
-								<h3>도와줄게요</h3>
-								<div>
-									<h5>${f.boardTitle}</h5>
-									<div>
-										${f.boardContent}
-									</div>
-									<hr class="board-sep-line">
+							<div>
+								<div class="category-board"> 
+									도와줄게요
+									<img class="shortcut-img" src="./resources/icon/menu-right-arrow.png" alt="">
 								</div>
-							</c:forEach>
+								<c:forEach var="hu" items="${list1}">
+									<div class="post">
+										<div class="title">
+											${hu.boardTitle}
+											<img class="view-count-img" src="./resources/icon/eye.png" alt="">
+											<div class="view-count">
+												100
+											</div>
+										</div>
+										<div class="content">
+											${hu.boardContent}
+											<img class="like-img" src="./resources/icon/LIKE.png" alt="">
+											<div class="like-count">
+												12
+											</div>
+											<img class="comment-img" src="./resources/icon/speech-bubble.png" alt="">
+											<div class="comment-count">
+												8
+											</div>
+										</div>
+										<hr class="board-sep-line">
+									</div>
+								</c:forEach>
+							</div>
 						</c:when>
 						<c:otherwise>
 							<h3>도와줄게요 게시판에 아직 게시글이 없습니다</h3>
@@ -133,16 +250,35 @@
 				<div class="findBox-1">
 					<c:choose>
 						<c:when test="${not empty list2}">
-							<c:forEach var="s" items="${list2}">
-								<h3>도와주세요</h3>
-								<div>
-									<h5>${s.boardTitle}</h5>
-									<div>
-										${s.boardContent}
-									</div>
-									<hr class="board-sep-line">
+							<div>
+								<div class="category-board"> 
+									도와주세요
+									<img class="shortcut-img" src="./resources/icon/menu-right-arrow.png" alt="">
 								</div>
-							</c:forEach>
+								<c:forEach var="hm" items="${list2}">
+									<div class="post">
+										<div class="title">
+											${hm.boardTitle}
+											<img class="view-count-img" src="./resources/icon/eye.png" alt="">
+											<div class="view-count">
+												10K
+											</div>
+										</div>
+										<div class="content">
+											${hm.boardContent}
+											<img class="like-img" src="./resources/icon/LIKE.png" alt="">
+											<div class="like-count">
+												120
+											</div>
+											<img class="comment-img" src="./resources/icon/speech-bubble.png" alt="">
+											<div class="comment-count">
+												80
+											</div>
+										</div>
+										<hr class="board-sep-line">
+									</div>
+								</c:forEach>
+							</div>
 						</c:when>
 						<c:otherwise>
 							<h3>도와주세요 게시판에 아직 게시글이 없습니다.</h3>
@@ -152,22 +288,41 @@
 				</div>
 			</div>
 			<br>
-			<hr style="width: 90%; color: white; border: solid;">
+			<hr class="div-divide">
 			<br>
 			<div class="findBox">
 				<div class="findBox-2">
 					<c:choose>
 						<c:when test="${not empty list3}">
-							<c:forEach var="t" items="${list3}">
-								<h3>궁금해요</h3>
-								<div>
-									<h5>${t.boardTitle}</h5>
-									<div>
-										${t.boardContent}
-									</div>
-									<hr class="board-sep-line">
+							<div>
+								<div class="category-board"> 
+									궁금해요
+									<img class="shortcut-img" src="./resources/icon/menu-right-arrow.png" alt="">
 								</div>
-							</c:forEach>
+								<c:forEach var="q" items="${list3}">
+									<div class="post">
+										<div class="title">
+											${q.boardTitle}
+											<img class="view-count-img" src="./resources/icon/eye.png" alt="">
+											<div class="view-count">
+												100
+											</div>
+										</div>
+										<div class="content">
+											${q.boardContent}
+											<img class="like-img" src="./resources/icon/LIKE.png" alt="">
+											<div class="like-count">
+												12
+											</div>
+											<img class="comment-img" src="./resources/icon/speech-bubble.png" alt="">
+											<div class="comment-count">
+												8
+											</div>
+										</div>
+										<hr class="board-sep-line">
+									</div>
+								</c:forEach>
+							</div>
 						</c:when>
 						<c:otherwise>
 							<h3>궁금해요 커뮤니티에 아직 게시글이 없습니다.</h3>
@@ -178,16 +333,35 @@
 				<div class="findBox-2">
 					<c:choose>
 						<c:when test="${not empty list4}">
-							<c:forEach var="f" items="${list4}">
-								<h3>얼마예요</h3>
-								<div>
-									<h5>${f.boardTitle}</h5>
-									<div>
-										${f.boardContent}
-									</div>
-									<hr class="board-sep-line">
+							<div>
+								<div class="category-board"> 
+									얼마예요
+									<img class="shortcut-img" src="./resources/icon/menu-right-arrow.png" alt="">
 								</div>
-							</c:forEach>
+								<c:forEach var="p" items="${list4}">
+									<div class="post">
+										<div class="title">
+											${p.boardTitle}
+											<img class="view-count-img" src="./resources/icon/eye.png" alt="">
+											<div class="view-count">
+												100
+											</div>
+										</div>
+										<div class="content">
+											${p.boardContent}
+											<img class="like-img" src="./resources/icon/LIKE.png" alt="">
+											<div class="like-count">
+												12
+											</div>
+											<img class="comment-img" src="./resources/icon/speech-bubble.png" alt="">
+											<div class="comment-count">
+												8
+											</div>
+										</div>
+										<hr class="board-sep-line">
+									</div>
+								</c:forEach>
+							</div>
 						</c:when>
 						<c:otherwise>
 							<h3>얼마예요 커뮤니티에 아직 게시글이 없습니다.</h3>
@@ -198,16 +372,35 @@
 				<div class="findBox-2">
 					<c:choose>
 						<c:when test="${not empty list5}">
-							<c:forEach var="fi" items="${list5}">
-								<h3>함께해요</h3>
-								<div>
-									<h5>${fi.boardTitle}</h5>
-									<div>
-										${fi.boardContent}
-									</div>
-									<hr class="board-sep-line">
+							<div>
+								<div class="category-board"> 
+									함께해요
+									<img class="shortcut-img" src="./resources/icon/menu-right-arrow.png" alt="">
 								</div>
-							</c:forEach>
+								<c:forEach var="to" items="${list5}">
+									<div class="post">
+										<div class="title">
+											${to.boardTitle}
+											<img class="view-count-img" src="./resources/icon/eye.png" alt="">
+											<div class="view-count">
+												100
+											</div>
+										</div>
+										<div class="content">
+											${to.boardContent}
+											<img class="like-img" src="./resources/icon/LIKE.png" alt="">
+											<div class="like-count">
+												12
+											</div>
+											<img class="comment-img" src="./resources/icon/speech-bubble.png" alt="">
+											<div class="comment-count">
+												8
+											</div>
+										</div>
+										<hr class="board-sep-line">
+									</div>
+								</c:forEach>
+							</div>
 						</c:when>
 						<c:otherwise>
 							<h3>함께해요 커뮤니티에 아직 게시글이 없습니다.</h3>

@@ -3,12 +3,12 @@ package com.kh.finalProject.board.model.dao;
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.RowBounds;
-import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.finalProject.board.model.vo.Board;
 import com.kh.finalProject.board.model.vo.Likey;
+import com.kh.finalProject.board.model.vo.ReLikey;
 import com.kh.finalProject.board.model.vo.Reply;
 import com.kh.finalProject.common.vo.Attachment;
 import com.kh.finalProject.common.vo.Notice;
@@ -208,6 +208,18 @@ public class BoardDao {
 		return sqlSession.update("boardMapper.deleteReply", replyNo);
 	}
 	
+
+	public ArrayList<Board> helpDateCheck(SqlSessionTemplate sqlSession, Board b, PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		return (ArrayList)sqlSession.selectList("boardMapper.helpDateCheck",null, rowBounds);
+	}
+	
+	public int helpDateCheckCount(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("boardMapper.helpDateCheckCount");
+	}
 	public int insertLikey(SqlSessionTemplate sqlSession, Likey l) {
 		return sqlSession.insert("boardMapper.insertLikey", l);
 	}
@@ -230,5 +242,22 @@ public class BoardDao {
 	}
 	public int updateViewCount(SqlSessionTemplate sqlSession, int boardNo) {
 		return sqlSession.update("boardMapper.updateViewCount", boardNo);
+	}
+	public int insertReplyLikey(SqlSessionTemplate sqlSession, ReLikey r) {
+		return sqlSession.insert("boardMapper.insertReplyLikey", r);
+	}
+	public ReLikey selectReplyLikey(SqlSessionTemplate sqlSession, ReLikey r) {
+		return sqlSession.selectOne("boardMapper.selectReplyLikey", r);
+	}
+	
+	public int updateYReplyLikey(SqlSessionTemplate sqlSession, ReLikey r) {
+		return sqlSession.update("boardMapper.updateYReplyLikey", r);
+	}
+	
+	public Reply selectReplyLikeyCount(SqlSessionTemplate sqlSession, ReLikey r) {
+		return sqlSession.selectOne("boardMapper.selectReplyLikeyCount", r);
+	}
+	public int updateNReplyLikey(SqlSessionTemplate sqlSession, ReLikey r) {
+		return sqlSession.update("boardMapper.updateNReplyLikey", r);
 	}
 }
