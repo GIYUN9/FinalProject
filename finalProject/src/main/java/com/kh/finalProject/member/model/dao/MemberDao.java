@@ -7,6 +7,7 @@ import java.util.Map;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.finalProject.common.vo.Reason;
 import com.kh.finalProject.common.vo.Schedule;
 import com.kh.finalProject.mail.EmailCheck;
 import com.kh.finalProject.member.model.vo.Member;
@@ -118,6 +119,10 @@ public class MemberDao {
 	
 	public int insertAmount(SqlSessionTemplate sqlSession, Pay pay) {
 		return sqlSession.update("memberMapper.insertAmount", pay);
+	}
+	
+	public int insertReason(SqlSessionTemplate sqlSession, Reason r) {
+		return sqlSession.insert("memberMapper.insertReason", r);
 	}
 }
 
