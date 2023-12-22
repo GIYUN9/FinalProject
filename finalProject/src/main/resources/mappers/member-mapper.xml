@@ -389,6 +389,7 @@
 		
 	</insert>
 	
+	<!-- 결제기록테이블 인서트 -->
 	<insert id="insertPay">
 		INSERT INTO PAY 
 					(
@@ -405,9 +406,25 @@
         )
 	</insert>
 	
+	<!-- 멤버 컬럼에 잔액추가 -->
 	<update id="insertAmount">
 		UPDATE MEMBER 
 		SET ACCOUNT = ACCOUNT + #{price}
 		WHERE MEM_NO = #{memberNo}
 	</update>
+	
+	<!-- 탈퇴사유기록테이블 insert -->
+	<insert id="insertReason">
+		INSERT INTO REASON
+				(
+				MEM_NO,
+				REA_CONTENT,
+				RETIRE_DATE
+				)
+		VALUES(
+				#{memberNo},
+				#{reaContent},
+				SYSDATE
+				)
+	</insert>
 </mapper>

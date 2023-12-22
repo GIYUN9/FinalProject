@@ -879,6 +879,7 @@
                     const memberEmailInput = document.querySelector(".en-input3");
                     // input 태그를 리드온리로 설정
                     memberEmailInput.readOnly = true;
+                    
                 },
                 error: function() {
                     console.log("이메일 인증번호 발송 실패");

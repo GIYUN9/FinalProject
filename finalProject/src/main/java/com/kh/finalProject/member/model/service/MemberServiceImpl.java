@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.finalProject.common.vo.Reason;
 import com.kh.finalProject.common.vo.Schedule;
 import com.kh.finalProject.mail.EmailCheck;
 import com.kh.finalProject.member.model.dao.MemberDao;
@@ -155,6 +156,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int insertAmount(Pay pay) {
 		return memberDao.insertAmount(sqlSession, pay);
+	}
+
+	@Override
+	public int insertReason(Reason r) {
+		return memberDao.insertReason(sqlSession, r);
 	}
 
 }

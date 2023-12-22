@@ -98,7 +98,7 @@
                 <tr>
                     <td>영상</td>
                     <td>공지사항</td>
-                    <td><a href="chatRoom.ch">챗봇</a></td>
+                    <td><a href="chat.ch">챗봇</a></td>
                     <td>로그인</td>
                 </tr>
                 <tr>

@@ -22,6 +22,12 @@ public interface BoardService {
 	//게시글 상세조회 
 	Board selectBoard(int boardNo);
 	
+	//도와줄게요 날짜순 ajax
+	ArrayList<Board> helpDateCheck(Board b, PageInfo pi);
+	
+	//도와줄게요 날짜순 ajax count(*)
+	int helpDateCheckCount();
+	
 	//도와줄게요 리스트조회
 	ArrayList<Board> helpselectList(PageInfo pi);
 		
