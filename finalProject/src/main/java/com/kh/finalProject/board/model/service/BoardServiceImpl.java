@@ -272,13 +272,13 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.deleteReply(sqlSession, replyNo);
 	}
 
-	//도와줄게요 날짜순 ajax
+	//도와줄게요 날짜순
 	@Override
 	public ArrayList<Board> helpDateCheck(Board b, PageInfo pi) {
 		return boardDao.helpDateCheck(sqlSession, b, pi);
 	}
 
-	//도와줄게요 날짜순 ajax count(*)
+	//도와줄게요 날짜순 count(*)
 	@Override
 	public int helpDateCheckCount() {
 		return boardDao.helpDateCheckCount(sqlSession);
