@@ -48,7 +48,8 @@
   		<result column="MEM_NO" property="memberNo" />
   		<result column="MEM_NAME" property="memberName" />
   		<result column="BOARD_NO" property="boardNo" />
-  		<result column="FILE_PATH" property="filePath" />
+  		<result column="STATUS" property="status" />
+  		<result column="RELIKEY_COUNT" property="reLikeyCount" />
   	</resultMap>
   	
   	<resultMap type="Likey" id="likeyResult">
@@ -57,10 +58,14 @@
   		<result column="MEM_NO" property="memberNo" />
   		<result column="LISTATUS" property="liStatus" />		
   	</resultMap>
+  	<resultMap type="ReLikey" id="ReLikeyResult">
+  		<result column="RELIKEY_NO" property="relikeyNo" />
+  		<result column="BOARD_NO" property="boardNo" />
+  		<result column="MEM_NO" property="memberNo" />
+  		<result column="REPLY_NO" property="replyNo" />
+  		<result column="RE_LISTATUS" property="reliStatus" />		
+  	</resultMap>
   	
- 	
- 	
- 	
  	<!-- 도와줄게요 게시글 총 갯수 조회 -->
  	<select id="seleteHelpListCount" resultType="_int">
  		SELECT COUNT(*)
@@ -716,5 +721,48 @@
 		UPDATE BOARD
 			SET VIEW_COUNT = VIEW_COUNT + 1
 		WHERE BOARD_NO = #{boardNo}
+	</update>
+	
+	
+	
+	
+	
+	
+	<insert id="insertReplyLikey">
+		INSERT INTO REPLY_LIKEY (RELIKEY_NO, REPLY_NO, BOARD_NO, MEM_NO)
+	   	SELECT SEQ_RLNO.NEXTVAL, #{replyNo}, #{boardNo}, #{memberNo}
+	  		FROM DUAL
+	   	WHERE NOT EXISTS (
+	     	SELECT 1 FROM REPLY_LIKEY WHERE REPLY_NO = #{replyNo} 
+	     							AND MEM_NO = #{memberNo}					
+   	 )
+   	 </insert> 
+   	 <select id ="selectReplyLikey" resultMap="ReLikeyResult">
+		SELECT RELIKEY_NO,
+			REPLY_NO,
+			BOARD_NO,
+			MEM_NO,
+			RE_LISTATUS
+		FROM REPLY_LIKEY
+		WHERE REPLY_NO= #{replyNo}
+		 	AND MEM_NO = #{memberNo}
+	</select>
+	<update id="updateYReplyLikey">
+		UPDATE REPLY_LIKEY
+			SET RE_LISTATUS = 'Y'
+		WHERE REPLY_NO = #{replyNo}
+		 AND MEM_NO = #{memberNo}	 
+	</update>
+	<select id="selectReplyLikeyCount" resultMap="replyResult">
+		SELECT RELIKEY_COUNT
+			FROM REPLY
+		WHERE REPLY_NO =#{replyNo}
+	</select>
+	<update id="updateNReplyLikey">
+		UPDATE REPLY_LIKEY
+			SET RE_LISTATUS = 'N'
+		WHERE REPLY_NO = #{replyNo}
+		 AND MEM_NO = #{memberNo}
+		 AND ROWNUM &lt;= 1
 	</update>
   </mapper>
