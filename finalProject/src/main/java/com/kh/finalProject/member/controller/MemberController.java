@@ -31,6 +31,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.kh.finalProject.common.vo.Reason;
 import com.kh.finalProject.common.vo.Schedule;
 import com.kh.finalProject.member.model.service.MemberService;
 import com.kh.finalProject.member.model.vo.Member;
@@ -135,11 +136,15 @@ public class MemberController {
 	
 	//회원탈퇴 컨트롤러 (업데이트)
 	@RequestMapping(value = "/delete.me")
-	public String deleteMember(Member m, HttpSession session) {
+	public String deleteMember(Member m, String reason, HttpSession session) {
 		m = (Member)session.getAttribute("loginUser");
 		int result = memberService.deleteMember(m);
 		
 		if(result > 0) {
+			Reason r = new Reason();
+			r.setMemberNo(m.getMemberNo());
+			r.setReaContent(reason);
+			memberService.insertReason(r);
 			session.removeAttribute("loginUser");
 			session.setAttribute("alertMsg", "지금까지 품앗이를 이용해 주셔서 감사합니다.");
 			return "common/main";

@@ -25,6 +25,7 @@
      	<typeAlias type="com.kh.finalProject.chat.model.vo.ChattingRoom" alias="ChatRoom" />
 	    <typeAlias type="com.kh.finalProject.board.model.vo.Likey" alias="Likey" />
 	    <typeAlias type="com.kh.finalProject.pay.model.vo.Pay" alias="Pay" />
+	    <typeAlias type="com.kh.finalProject.common.vo.Reason" alias="Reason" /> 
   	</typeAliases>
   	<mappers>
   		<mapper resource="/mappers/board-mapper.xml" />
