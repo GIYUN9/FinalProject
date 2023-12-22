@@ -1,7 +1,5 @@
 package com.kh.finalProject.board.model.vo;
 
-
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,15 +11,17 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Likey {
-	
-	private int likeyNo;
+public class ReLikey {
+
+	private int relikeyNo;
 	
 	private int boardNo;
 	
 	private int memberNo;
 	
-	private String liStatus; 
+	private String reliStatus; 
 	
-
+	private int replyNo;
+	
+	
 }

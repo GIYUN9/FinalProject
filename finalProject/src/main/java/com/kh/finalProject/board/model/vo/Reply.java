@@ -25,4 +25,6 @@ public class Reply {
 	
 	private Date createDate;
 	private String filePath;
+	
+	private int reLikeyCount;
 }
