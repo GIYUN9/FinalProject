@@ -14,16 +14,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.kh.finalProject.board.model.service.BoardService;
 import com.kh.finalProject.board.model.vo.Board;
 import com.kh.finalProject.common.Pagenation;
 import com.kh.finalProject.common.vo.Attachment;
 import com.kh.finalProject.common.vo.Notice;
 import com.kh.finalProject.common.vo.PageInfo;
-import com.kh.finalProject.member.model.vo.Member;
 
 @Controller
 public class BoardController {
@@ -60,18 +61,39 @@ public class BoardController {
 	
 	//도와줄게요 리스트
 	@RequestMapping(value="helpList.bo")
-	public ModelAndView helpSelectList(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv, MultipartFile upfile, HttpSession session) {
-		int listCount = boardService.seleteHelpListCount();
-			
+		public ModelAndView helpSelectList(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv, MultipartFile upfile, HttpSession session) {		
+
+			int listCount = boardService.seleteHelpListCount();
+
+			PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
+			ArrayList<Board> list = boardService.helpselectList(pi);
+//			System.out.println("list객체 확인용 -> " +list);
+			mv.addObject("pi",pi)
+				.addObject("list",list)
+				.setViewName("board/helpBoardList");
+				
+			return mv;
+		}
+	
+	//도와줄게요 날짜순으로 가져오는 ajax
+	@ResponseBody
+	@RequestMapping(value="helpDateCheck.bo", produces="application/json; charset=UTF-8")
+	public String helpDateList(@RequestParam(value="cpage", defaultValue="1") int currentPage, Board b) {
+		
+		int listCount = boardService.helpDateCheckCount();
+
 		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
-		ArrayList<Board> list = boardService.helpselectList(pi);
-		System.out.println("list객체 확인용 -> " +list);
-		mv.addObject("pi",pi)
-			.addObject("list",list)
-			.setViewName("board/helpBoardList");
-			
-		return mv;
+		
+		ArrayList<Board> dateList = boardService.helpDateCheck(b, pi);
+		System.out.println(dateList); 
+		
+		Gson gson = new Gson();
+	    String json = gson.toJson(dateList);
+	    return json;
+		
+//		return new Gson().toJson(dateList);
 	}
+	
 
 	//도와줄게요 게시글 등록 페이지
 	@RequestMapping(value="helpInsert.bo", method = RequestMethod.POST)
@@ -83,7 +105,7 @@ public class BoardController {
 		
 		if(!upfile.getOriginalFilename().equals("")) {
 			
-			String changeName = saveFile(upfile, session, "resources/borderImage/");
+			String changeName = saveFile(upfile, session, "././resources/borderImage/");
 			
 			b.getBoardNo(); 
 			at.setOriginName(upfile.getOriginalFilename());

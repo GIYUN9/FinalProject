@@ -179,6 +179,10 @@
 		justify-content: center;
 		margin-top: 30px;
     }
+    .pagination{
+		justify-content: center;
+		margin-top: 30px;
+	}
     .arrow-img{
         position: absolute;
         width: 20px;
@@ -275,7 +279,7 @@
                 <c:forEach var="b" items="${list}">
                 	<div class = "content-item">
 	                     <a href ="helpmeDetail.bo?boardNo=${b.boardNo}">
-	                        <img  class = "content-img" src = "${b.filePath}${b.changeName}">
+	                        <img  class = "content-img" src = "${b.changeName}">
 	                        <div class = "content-item-title">
 	                        	${b.boardTitle}
 	                        </div>

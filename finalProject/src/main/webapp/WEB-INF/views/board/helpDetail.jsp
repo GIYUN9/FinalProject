@@ -256,6 +256,11 @@ input[type=file]::file-selector-button {
     resize:none; 
     width:100%;
 }
+
+.img{
+	width:50px;
+	height: 50px;
+}
 </style>
 
 </head>
@@ -309,8 +314,8 @@ input[type=file]::file-selector-button {
 		      <td>
 		      <td>
 		      <td>
-		      <input type="hidden" value="${at.changeName}">
-		      <img src="${at.changeName}"></td>
+		      <input type="hidden" value="${b.changeName}">
+		      <img class="img" src="${b.changeName}"></td>
 		    </tr>
 		    
 		    <tr>
