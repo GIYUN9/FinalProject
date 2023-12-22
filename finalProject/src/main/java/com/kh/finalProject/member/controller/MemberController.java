@@ -31,6 +31,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.kh.finalProject.common.vo.Reason;
 import com.kh.finalProject.common.vo.Schedule;
 import com.kh.finalProject.member.model.service.MemberService;
 import com.kh.finalProject.member.model.vo.Member;
@@ -54,7 +55,16 @@ public class MemberController {
 	
 	//멤버 마이페이지 불러오는 컨트롤러
 	@RequestMapping(value = "/userInfo.me")
-	public ModelAndView userInfo(Member m, ModelAndView mv, HttpSession session){
+	public ModelAndView userInfo(Member m, ModelAndView mv, String pg_token, HttpSession session){
+		if(pg_token != null) {
+			Pay pay = (Pay)session.getAttribute("pay");
+			int result = memberService.insertPay(pay);
+			
+			if(result > 0) {
+				memberService.insertAmount(pay);
+				session.setAttribute("alertMsg", "결제하신 point : "+pay.getPrice()+" 가 정상적으로 충전되었습니다.");
+			}
+		}
 		m = (Member)session.getAttribute("loginUser");
 		Member loginUser = memberService.userInfo(m);
 		session.setAttribute("loginUser", loginUser);
@@ -126,11 +136,15 @@ public class MemberController {
 	
 	//회원탈퇴 컨트롤러 (업데이트)
 	@RequestMapping(value = "/delete.me")
-	public String deleteMember(Member m, HttpSession session) {
+	public String deleteMember(Member m, String reason, HttpSession session) {
 		m = (Member)session.getAttribute("loginUser");
 		int result = memberService.deleteMember(m);
 		
 		if(result > 0) {
+			Reason r = new Reason();
+			r.setMemberNo(m.getMemberNo());
+			r.setReaContent(reason);
+			memberService.insertReason(r);
 			session.removeAttribute("loginUser");
 			session.setAttribute("alertMsg", "지금까지 품앗이를 이용해 주셔서 감사합니다.");
 			return "common/main";
@@ -506,7 +520,7 @@ public class MemberController {
 			httpUrlConnection.setRequestProperty("Authorization", "KakaoAK "+Key.KAKAO_ADMIN_KEY);
 			httpUrlConnection.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 			httpUrlConnection.setDoOutput(true); //doinput은 기본값 트루상태
-			String param ="cid=TC0ONETIME&partner_order_id=partner_order_id&partner_user_id=partner_user_id&item_name=Poom At yee Point&quantity=1&total_amount="+pay.getPrice()+"&tax_free_amount=0&approval_url=http://localhost:5555/finalProject/userInfo.me&fail_url=http://localhost:5555/finalProject/common/payFail.me&cancel_url=http://localhost:5555/finalProject/common/payCancel.me";
+			String param ="cid=TC0ONETIME&partner_order_id=partner_order_id&partner_user_id=partner_user_id&item_name=Poom At yee Point&quantity=1&total_amount="+pay.getPrice()+"&tax_free_amount=0&approval_url=http://localhost:5555/finalProject/userInfo.me&fail_url=http://localhost:5555/finalProject/userInfo.me&cancel_url=http://localhost:5555/finalProject/userInfo.me";
 			OutputStream ops = httpUrlConnection.getOutputStream();
 			DataOutputStream dops = new DataOutputStream(ops);
 			dops.writeBytes(param);
@@ -523,13 +537,8 @@ public class MemberController {
 			}
 			InputStreamReader readIps = new InputStreamReader(ips);
 			BufferedReader bufferedReader = new BufferedReader(readIps);
-			int result = memberService.insertPay(pay);
 			
-			if(result > 0) {
-				memberService.insertAmount(pay);
-				session.setAttribute("alertMsg", "결제하신 point : "+pay.getPrice()+" 가 정상적으로 충전되었습니다. ");
-			}
-			
+			session.setAttribute("pay", pay);
 			return bufferedReader.readLine();
 		} catch (MalformedURLException e) {
 			e.printStackTrace();

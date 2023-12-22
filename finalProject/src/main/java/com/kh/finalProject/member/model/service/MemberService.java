@@ -2,6 +2,7 @@ package com.kh.finalProject.member.model.service;
 
 import java.util.ArrayList;
 
+import com.kh.finalProject.common.vo.Reason;
 import com.kh.finalProject.common.vo.Schedule;
 import com.kh.finalProject.mail.EmailCheck;
 import com.kh.finalProject.member.model.vo.Member;
@@ -83,4 +84,6 @@ public interface MemberService {
 	//결제 성공후 pay테이블에 인서트가 된다면 ACCOUNT올리기
 	
 	int insertAmount(Pay pay);
+	
+	int insertReason(Reason r);
 }

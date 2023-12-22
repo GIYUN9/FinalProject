@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="chatMapper">
+  	<resultMap type="Chat" id="chatResult">
+  		<result column="MSG_NO" property="msgNo" />
+  		<result column="MSG" property="msg" />
+  		<result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+  		<result column="CHAT_ROOM_NO" property="chatRoomNo" />
+ 		<result column="MEM_NO" property="memberNo" />
+  	</resultMap>
+  	
+  	<resultMap type="ChatRoom" id="chatRoomResult">
+  		<result column="CHAT_ROOM_NO" property="chatRoomNo" />
+  		<result column="TITLE" property="title" />
+  		<result column="STATUS" property="status" />
+  		<result column="MEM_NO" property="memberNo" />
+  	</resultMap>
+ 	
+ 	<select id="chattingRoomList" resultMap="chatRoomResult">
+ 		 SELECT CHAT_ROOM_NO,
+			    MEM_NO,
+			    STATUS,
+			    TITLE
+		   FROM CHATROOM
+		  WHERE STATUS = 'Y'
+	</select>
+	 	<!-- 
+		SELECT *
+		  FROM (
+		    SELECT C.CHAT_ROOM_NO, C.TITLE, C.STATUS, C.MEM_NO, M.MEM_NAME, MSG, CREATE_DATE
+		    FROM CHATROOM C
+		    JOIN MEMBER M ON (M.MEM_NO = C.MEM_NO)
+		    JOIN CHATMSG CM ON (C.MEM_NO = CM.MEM_NO AND CM.CHAT_ROOM_NO = C.CHAT_ROOM_NO)
+		    WHERE C.MEM_NO = #{memberNo}
+		    AND C.STATUS = 'Y'
+		    ORDER BY MSG_NO DESC
+		)
+		WHERE ROWNUM = 1
+	-->
+  </mapper>

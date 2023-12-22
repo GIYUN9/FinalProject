@@ -104,12 +104,12 @@
 					<form action="delete.me" class="df-form">
 						<h5 style="margin-bottom: 5px;">떠나시는 이유를 알려주세요.</h5>
 						<div class="reason-box">
-							<label class="label-css"><input type="radio" name="reason" value="1" checked="checked"> 이용하고 싶은 서비스가 없어요</label>
-							<label class="label-css"><input type="radio" name="reason" value="2"> 서비스 퀄리티가 낮아요</label>
-							<label class="label-css"><input type="radio" name="reason" value="3"> 비매너 회원을 만났어요</label>
-							<label class="label-css"><input type="radio" name="reason" value="4"> 잦은 오류가 발생해요</label>
-							<label class="label-css"><input type="radio" name="reason" value="5"> 대체할만한 서비스를 찾았어요</label>
-							<label class="label-css"><input type="radio" name="reason" value="6"> 쿠폰 &middot; 적립금등 혜택이 적어요</label>
+							<label class="label-css"><input type="radio" id="reason" name="reason" value="이용하고 싶은 서비스가 없어요" checked="checked"> 이용하고 싶은 서비스가 없어요</label>
+							<label class="label-css"><input type="radio" id="reason" name="reason" value="서비스 퀄리티가 낮아요"> 서비스 퀄리티가 낮아요</label>
+							<label class="label-css"><input type="radio" id="reason" name="reason" value="비매너 회원을 만났어요"> 비매너 회원을 만났어요</label>
+							<label class="label-css"><input type="radio" id="reason" name="reason" value="잦은 오류가 발생해요"> 잦은 오류가 발생해요</label>
+							<label class="label-css"><input type="radio" id="reason" name="reason" value="대체할만한 서비스를 찾았어요"> 대체할만한 서비스를 찾았어요</label>
+							<label class="label-css"><input type="radio" id="reason" name="reason" value="쿠폰  · 적립금등 혜택이 적어요"> 쿠폰 &middot; 적립금등 혜택이 적어요</label>
 						</div>
 						<h5 style="margin-bottom: 5px; margin-top: 15px;">이메일 확인</h5>
 						<input class="emailInput" name="memberEmail" placeholder="가입하신 이메일을 입력해주세요.">

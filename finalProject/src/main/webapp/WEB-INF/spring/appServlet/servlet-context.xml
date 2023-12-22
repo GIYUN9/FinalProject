@@ -27,7 +27,7 @@
 	
 	<!--  HttpSessionHandshakeInterceptor를 사용하지 않으면 세션(웹소켓세션)활용이 어려워지고 세션을 기반으로하는 작업을 할 수 없게 된다. -->
 	<websocket:handlers>
-		<websocket:mapping handler="chatServer" path="server"/>
+		<websocket:mapping handler="chatServer" path="chat"/>
 		<websocket:handshake-interceptors>
         	<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"></beans:bean>
      	</websocket:handshake-interceptors>

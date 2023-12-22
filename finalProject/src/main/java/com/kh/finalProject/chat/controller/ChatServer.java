@@ -1,6 +1,5 @@
 package com.kh.finalProject.chat.controller;
 
-import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,8 +9,7 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-import com.google.gson.Gson;
-import com.kh.finalProject.chat.model.vo.Message;
+import com.kh.finalProject.member.model.vo.Member;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,15 +20,17 @@ public class ChatServer extends TextWebSocketHandler{
 
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-		String nick = (String)session.getAttributes().get("nick");
-		log.info("{} 연결됨", nick);
+	    Member loginUser = (Member) session.getAttributes().get("loginUser");
+	    String memberName = loginUser.getMemberName();
+		log.info("{} 연결됨", memberName);
 		sessionSet.add(session);
 	}
 
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-		String nick = (String)session.getAttributes().get("nick");
-		log.info("{} 연결끊김", nick);
+	    Member loginUser = (Member) session.getAttributes().get("loginUser");
+	    String memberName = loginUser.getMemberName();		
+	    log.info("{} 연결끊김", memberName);
 		sessionSet.remove(session); 
 	}	
 
@@ -38,14 +38,14 @@ public class ChatServer extends TextWebSocketHandler{
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 
 		//수신된 메세지 모든 세션에 전달
-		String sender = (String)session.getAttributes().get("nick");
+	    Member loginUser = (Member) session.getAttributes().get("loginUser");
+	    String sender = loginUser.getMemberName();		
 		String msg = message.getPayload();
 		
-		TextMessage textMsg = new TextMessage(sender + " : " + msg);
+//		TextMessage textMsg = new TextMessage(sender + " : " + msg);
 		
-		for (WebSocketSession s : sessionSet) {
-			s.sendMessage(textMsg);
-			
-		}
+//		for (WebSocketSession s : sessionSet) {
+//			s.sendMessage(textMsg);
+//		}
 	}
 }

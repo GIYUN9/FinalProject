@@ -443,13 +443,14 @@ public class BoardController {
 		}
 	}
 	
-	//게시글 수정
+	//커뮤니티 디테일뷰
 	@RequestMapping("detailcomm.co")
 	public String detailCommBoard(int boardNo, HttpSession session, Model model) {
 		// 클릭시 상세페이지 이동 (하나밖에 없음)
+		int count = boardService.updateViewCount(boardNo);
 		
 		Board b = boardService.selectCommBoard(boardNo);
-		
+		System.out.println(b);
 		if(b != null) { //성공
 			session.setAttribute("b", b);
 			return "noticeBoard/noticeDetailView";
