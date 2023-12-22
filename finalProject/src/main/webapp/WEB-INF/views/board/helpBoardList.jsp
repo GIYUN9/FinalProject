@@ -152,7 +152,7 @@
 
    
 
-    #head-count{
+    .head-count{
         text-align: right;
         color: white;
         font-size: 13px;
@@ -282,30 +282,33 @@
             </div>
             <div class = "content">
                 <div class = "content-head">
-                   <div id = "head-count">총 1063개의 서비스</div>
+                   <div class = "head-count">총 1063개의 서비스</div>
                    <div id = "head-category">
 					
-			
                         <form class="write-area">
                         	<a class="write-btn" href="helpuForm.bo">글쓰기</a>
-                            <select name="" id="category-item">
-                                <option class = "category-item-list" value="date" selected>날짜순</option>
-                                <option class = "category-item-list" value="interest">인기순</option>
-                                <option class = "category-item-list" value="check">조회순</option>
+                            <select name="categoryPick" id="category-item">
+                                <option class = "category-item-list" value="date" id="date" selected onchange="categorylistDate()">날짜순</option>
+                                <option class = "category-item-list" value="check" id="check" onchange="categorylistCount()">조회순</option>
                             </select>
                         </form>
+                        
                    </div>
                 </div>
                 
+                <div class="helpDatecatalog">
+                	
                 <c:forEach var="b" items="${list}">
-                	<div class = "content-item">
-	                     <a href ="helpDetailPage.bo?boardNo=${b.boardNo}">
-	                        <img  class = "content-img" src = "${b.changeName}">
-	                        <div class = "content-item-title">${b.boardTitle}</div>
-	                        <div class = "content-item-price">${b.price}원</div>
+                	<div class = "content-item" id="contentList">
+	                     <a href ="helpDetailPage.bo?boardNo=${b.boardNo}" id="bno">
+	                        <img  class = "content-img" src = "${b.changeName}" id="image">
+	                        <div class = "content-item-title" id="btitle">${b.boardTitle}</div>
+	                        <div class = "content-item-price" id="price">${b.price}원</div>
 	                     </a> 
                 	</div>
                 </c:forEach> 
+					
+                 </div>
                 
                <nav aria-label="Page navigation example">
 				  <ul class="pagination">
@@ -336,6 +339,7 @@
 				   
 				  </ul>
 			   </nav>
+
                             
             </div>
         </div>
@@ -344,14 +348,89 @@
     </div>
 
    
-<%@ include file = "../common/footer.jsp"%>            
-</body>
-
-<!-- <script>
+<%@ include file = "../common/footer.jsp"%>     
+   
+   <!-- <script>
     $(document).ready(function(){
         $('#category-item').on('change', function(){
             alert(this) // 여기에 원하는 액션값 입력
         })
     })
 </script> -->
+
+<script>
+
+$(document).ready(function() {
+    // select 요소가 변경될 때의 이벤트 처리
+    $("select[name=categoryPick]").change(function() {
+        // 선택된 값 가져오기
+        var selectedValue = $(this).val();
+
+        // 선택된 값이 'date'인 경우
+        if (selectedValue === 'date') {
+            $.ajax({
+                url: "helpDateCheck.bo",
+                type: "POST",
+                contentType: "application/json",
+                data: {
+                    boardNo: document.querySelector('#bno').value,
+                    image: document.querySelector('#image').value,
+                    boardTitle: document.querySelector('#btitle').value,
+                    price: document.querySelector('#price').value
+                },
+                success: function(data) {
+                    console.log(data);
+                    let str = "<div class='helpDatecatalog'>";  // 리스트를 감싸는 부모 요소
+                    
+                        for (let board of data) {
+                        str += (
+                            "<div class='content-item'>" +
+                                "<a href='detailPage.bo?boardNo=" + board.boardNo + "'>" +
+                                "<img src='" + board.changeName + "' style='width:50px; height:50px;'>" +
+                                "<div class='content-item-title'>" + board.boardTitle + "</div>" +
+                                "<div class='content-item-price'>" + board.price + "</div>" +
+                                "<div class='content-item-date'>" + board.createDate + "</div>" +
+                                "</a>" +
+                            "</div>"
+                        );
+                    }
+
+                    str += "</div>";  // 리스트를 감싸는 부모 요소 닫기
+
+                    $('.helpDatecatalog').html(str);
+                },   
+                    
+                   	// console.log(data);
+                   	// let str = "";
+                   	// for(let board of data) {
+                   	// 	str +=  (
+                    //             "<div>" +
+                    //                 "<a href='detailPage.bo?boardNo=" + board.boardNo + "'>" +
+                    //                 "<img src='" + board.changeName + "' style='width:50px; height:50px;'>" +
+                    //                 "<div>" + board.boardTitle + "</div>" +
+                    //                 "<div>" + board.price + "</div>" +
+                    //                 "<div>" + board.createDate + "</div>" +
+                    //                 "</a>" +
+                    //             "</div>"
+                    //             )
+                   	// }
+
+                    // $('.helpDatecatalog').html(str);
+                // },
+                error: function() {
+                	console.log("통신 실패");
+                }
+            })
+        }
+        
+        // 선택된 값이 'check'인 경우
+        else if (selectedValue === 'check') {
+        	
+        }
+    });
+});
+	
+</script>
+       
+</body>
 </html>
