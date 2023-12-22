@@ -76,8 +76,7 @@
 			opacity: 0.5;
 			cursor: pointer;
 		}
-		
-		
+
 	</style>
 </head>
 <body>

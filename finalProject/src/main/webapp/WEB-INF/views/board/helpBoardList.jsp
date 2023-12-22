@@ -218,6 +218,14 @@
         align-items: center;
         justify-content: center;
     }
+    .page-link{
+        background-color: transparent;
+        background: transparent ;
+    }
+    .page-item{
+        background-color: transparent;
+        background: transparent;
+    }
 </style>
 </head>
 <body>
@@ -308,39 +316,96 @@
                 </c:forEach> 
                 
                <nav aria-label="Page navigation example">
-				  <ul class="pagination">
-				  
-				  	<c:choose>
-				  		
-				  		<c:when test="${ pi.currentPage eq 1 }">
-				  			<li class="page-item disabled"><a class="page-link">&laquo;</a></li>
-				  		</c:when>
-				  		<c:otherwise>
-                    		<li class="page-item"><a class="page-link" href="helpList.bo?cpage=${ pi.currentPage - 1 }">&laquo;</a></li>
-                    	</c:otherwise>
-				  	</c:choose>
-				    
-				    <c:forEach var="h" begin="${pi.startPage}" end="${ pi.endPage }">
-				    	<li class="page-item"><a class="page-link" href="helpList.bo?cpage=${ h }">${ h }</a></li>
-				    </c:forEach>
-		
-				    
-				    <c:choose>
-				    	<c:when test="${ pi.currentPage eq pi.maxPage }">
-				    		<li class="page-item disabled"><a class="page-link">&raquo;</a></li>
-				    	</c:when>
-				    	<c:otherwise>
-				    		<li class="page-item"><a class="page-link" href="helpList.bo?cpage=${ pi.currentPage + 1 }">&raquo;</a></li>
-				    	</c:otherwise>
-				    </c:choose>
-				   
-				  </ul>
-			   </nav>
-                            
+                <ul class="pagination" style="justify-content: center;">
+                	<c:choose>
+                		<c:when test="${pi.currentPage eq 1 }">
+							<li class="page-item disabled">
+                                <a class="page-link" href="#" 
+                                style="
+                                    background: transparent;
+                                    color: rgb(147, 147, 150); 
+                                    border: none; 
+                                    cursor: pointer;
+                                    "  
+                                    onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                    onmouseout="this.style.color='black';
+                                ">
+                                    이전
+                                </a>
+                            </li>
+                   		</c:when>
+                   		<c:otherwise>
+                   			<li class="page-item">
+                                <a class="page-link" href="helpList.bo?cpage=${pi.currentPage - 1}" 
+                                style="
+                                    background: transparent;
+                                    color: black; 
+                                    border: none; 
+                                    cursor: pointer;
+                                    "  
+                                    onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                    onmouseout="this.style.color='black';
+                                ">
+                                    이전
+                                </a>
+                            </li>
+                   		</c:otherwise>
+					</c:choose>
+					<c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage }">
+                   		<li class="page-item">
+                            <a class="page-link" href="helpList.bo?cpage=${p}" 
+                            style="
+                                background: transparent;
+                                color: black; 
+                                border: none; 
+                                cursor: pointer;
+                                "  
+                                onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                onmouseout="this.style.color='black';
+                            ">
+                                ${p}
+                            </a>
+                        </li>
+                    </c:forEach>
+                    
+                    <c:choose>
+                    	<c:when test="${pi.currentPage eq pi.maxPage}">
+                  			<li class="page-item disabled">
+                                <a class="page-link" href="#" 
+                                style="
+                                    background: transparent;
+                                    color: rgb(147, 147, 150); 
+                                    border: none; 
+                                    cursor: pointer;
+                                    "  
+                                    onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                    onmouseout="this.style.color='black';
+                                ">
+                                    다음
+                                </a>
+                            </li>
+                		</c:when>
+                		<c:otherwise>
+                   			<li class="page-item">
+                                <a class="page-link" href="helpList.bo?cpage=${pi.currentPage + 1}" 
+                                style="
+                                    background: transparent;
+                                    color: black; 
+                                    border: none; 
+                                    cursor: pointer;
+                                    "  
+                                    onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                    onmouseout="this.style.color='black';
+                                ">
+                                    다음
+                                </a>
+                            </li>
+                   		</c:otherwise>
+                	</c:choose>
+                </ul>
+			   </nav>      
             </div>
         </div>
-        
-        
     </div>
 
    
