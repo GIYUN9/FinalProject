@@ -312,12 +312,12 @@
                                     <a class="page-link" href="helpmeList.bo?cpage=${pi.currentPage - 1}" 
                                     style="
                                         background: transparent;
-                                        color: black; 
+                                        color: white; 
                                         border: none; 
                                         cursor: pointer;
                                         "  
                                         onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
-                                        onmouseout="this.style.color='black';
+                                        onmouseout="this.style.color='white';
                                     ">
                                         이전
                                     </a>
@@ -329,12 +329,12 @@
                                 <a class="page-link" href="helpmeList.bo?cpage=${p}" 
                                 style="
                                     background: transparent;
-                                    color: black; 
+                                    color: white; 
                                     border: none; 
                                     cursor: pointer;
                                     "  
                                     onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
-                                    onmouseout="this.style.color='black';
+                                    onmouseout="this.style.color='white';
                                 ">
                                     ${p}
                                 </a>
@@ -352,7 +352,7 @@
                                         cursor: pointer;
                                         "  
                                         onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
-                                        onmouseout="this.style.color='black';
+                                        onmouseout="this.style.color='white';
                                     ">
                                         다음
                                     </a>
@@ -363,12 +363,12 @@
                                     <a class="page-link" href="helpmeList.bo?cpage=${pi.currentPage + 1}" 
                                     style="
                                         background: transparent;
-                                        color: black; 
+                                        color: white; 
                                         border: none; 
                                         cursor: pointer;
                                         "  
                                         onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
-                                        onmouseout="this.style.color='black';
+                                        onmouseout="this.style.color='white';
                                     ">
                                         다음
                                     </a>

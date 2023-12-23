@@ -304,7 +304,7 @@
 			if(isClick){
 				likeyImg.src = "./resources/icon/LIKE.png";
 			}else{
-				likeyImg.src = "./resources/icon/lock.png";
+				likeyImg.src = "./resources/icon/likelocked.png";
 			}
 		})
 

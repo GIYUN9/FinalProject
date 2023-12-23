@@ -205,6 +205,12 @@ public class MemberController {
 		return "myPage/ask2";
 	}
 	
+	@RequestMapping(value = "/ask3.me")
+	public String ask3(){
+		//화면 전환용 임시 데이터는 없는상태
+		return "myPage/ask3";
+	}
+	
 	@RequestMapping(value = "/careMem.me")
 	public String careMem(Member m, Model model) {
 	    ArrayList<Member> mList = memberService.memberList(m);

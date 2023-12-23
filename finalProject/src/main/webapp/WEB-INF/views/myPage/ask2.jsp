@@ -169,7 +169,7 @@
 					<div class="req-outer">
 						<div class="req-align">
 							<div class="req-text">
-								<h3 class="req-title">결제 관련 문의</h3>
+								<h6 class="req-title">결제 관련 문의</h6>
 								<div class="req-desc">
 									결제가 안됩니다. 카카오측에서는 문제가 없다고합니다<br>
 									확인해주세요
@@ -189,7 +189,7 @@
 					<div class="req-outer">
 						<div class="req-align">
 							<div class="req-text">
-								<h3 class="req-title">이거 오류가 있는 것 같습니다!!!</h3>
+								<h6 class="req-title">이거 오류가 있는 것 같습니다!!!</h6>
 								<div class="req-desc">
 									버튼이 안눌려요 버튼이
 								</div>
@@ -207,7 +207,7 @@
 					<div class="req-outer">
 						<div class="req-align">
 							<div class="req-text">
-								<h3 class="req-title">똑바로 안하냐?</h3>
+								<h6 class="req-title">똑바로 안하냐?</h6>
 								<div class="req-desc">
 									아니 !@#! 결제가 안된다고 돈벌기 싫어?
 								</div>
