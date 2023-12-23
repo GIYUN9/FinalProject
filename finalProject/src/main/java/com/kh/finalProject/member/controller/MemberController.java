@@ -24,6 +24,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -171,7 +172,7 @@ public class MemberController {
 	}
 	
 	//스케줄 컨트롤러(로그인한 유저의 정보를 포함하여)
-	@RequestMapping(value = "/schedule.me")
+	@RequestMapping(value = "/schedule.me", method = RequestMethod.POST)
 	public String schedule(Schedule s, Model model) {
 	    ArrayList<Schedule> sList = memberService.scheduleList(s);
 	    model.addAttribute("sList", sList);

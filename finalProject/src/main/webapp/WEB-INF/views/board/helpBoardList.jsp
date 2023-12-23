@@ -1,6 +1,7 @@
  <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -183,14 +184,6 @@
         align-items: center;
         justify-content: center;
     }
-    .page-link{
-        background-color: transparent;
-        background: transparent ;
-    }
-    .page-item{
-        background-color: transparent;
-        background: transparent;
-    }
 </style>
 </head>
 <body>
@@ -255,35 +248,44 @@
             </div>
             <div class = "content">
                 <div class = "content-head">
-                    <div class = "head-count">총 1063개의 서비스</div>
-                    <div id = "head-category">
-                            <form class="write-area">
-                                <a class="write-btn" href="helpuForm.bo">글쓰기</a>
-                                <select name="categoryPick" id="category-item">
-                                    <option class = "category-item-list" value="date" id="date" selected onchange="categorylistDate()">날짜순</option>
-                                    <option class = "category-item-list" value="check" id="check" onchange="categorylistCount()">조회순</option>
-                                </select>
-                            </form>
-                    </div>
+                   <div class = "head-count">
+                        총 ${fn:length(list)}개의 서비스
+                   </div>
+                   <div id = "head-category">                     
+                        <form class="write-area">
+                        	<a class="write-btn" href="helpuForm.bo">
+                                글쓰기
+                            </a>
+                            <select name="listPick" id="category-item">
+                            	<c:if test="${lType eq 'helpDateList'}">
+	                               <option class = "category-item-list" value="date" id="date" selected >날짜순</option>
+	                               <option class = "category-item-list" value="check" id="count">조회순</option>
+                                </c:if>
+                                <c:if test="${lType eq 'helpList.bo'}">
+	                               <option class = "category-item-list" value="date" id="date" selected >날짜순</option>
+	                               <option class = "category-item-list" value="check" id="count">조회순</option>
+                                </c:if>
+                                <c:if test="${lType eq '조회순'}">
+	                               <option class = "category-item-list" value="date" id="date">날짜순</option>
+	                               <option class = "category-item-list" value="check" id="count" selected>조회순</option>
+                                </c:if>
+                            </select>
+                        </form>
+                   </div>
                 </div>
-                <div class="helpDatecatalog">
-                    <c:forEach var="b" items="${list}">
-                        <div class = "content-item" id="contentList">
-                            <a href ="helpDetailPage.bo?boardNo=${b.boardNo}" id="bno">
-                                <img  class = "content-img" src = "${b.changeName}" id="image">
-                                <div class = "content-item-title" id="btitle">
-                                    ${b.boardTitle}
-                                </div>
-                                <div class = "content-item-price" id="price">
-                                    ${b.price}원
-                                </div>
-                            </a> 
-                        </div>
-                    </c:forEach> 
-                </div>
+                <c:forEach var="b" items="${list}">
+                	<div class = "content-item" id="contentList">
+	                     <a href ="helpDetailPage.bo?boardNo=${b.boardNo}" id="bno">
+	                        <img  class = "content-img" src = "${b.changeName}" id="image">
+	                        <div class = "content-item-title" id="btitle">${b.boardTitle}</div>
+	                        <div class = "content-item-price" id="price">${b.price}원</div>
+	                     </a> 
+                	</div>
+                </c:forEach>
+    
                 <nav aria-label="Page navigation example">
                     <ul class="pagination" style="justify-content: center;">
-                        <c:choose>
+                	    <c:choose>
                             <c:when test="${pi.currentPage eq 1 }">
                                 <li class="page-item disabled">
                                     <a class="page-link" href="#" 
@@ -293,7 +295,8 @@
                                         border: none; 
                                         cursor: pointer;
                                         "  
-                                        onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                        onmouseover="this.style.color='rgb(0, 199, 174)'; 
+                                        this.style.backgroundColor='transparent';" 
                                         onmouseout="this.style.color='white';
                                     ">
                                         이전
@@ -309,7 +312,8 @@
                                         border: none; 
                                         cursor: pointer;
                                         "  
-                                        onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                        onmouseover="this.style.color='rgb(0, 199, 174)'; 
+                                        this.style.backgroundColor='transparent';" 
                                         onmouseout="this.style.color='white';
                                     ">
                                         이전
@@ -317,7 +321,6 @@
                                 </li>
                             </c:otherwise>
                         </c:choose>
-
                         <c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage }">
                             <li class="page-item">
                                 <a class="page-link" href="helpList.bo?cpage=${p}" 
@@ -327,14 +330,14 @@
                                     border: none; 
                                     cursor: pointer;
                                     "  
-                                    onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                    onmouseover="this.style.color='rgb(0, 199, 174)'; 
+                                    this.style.backgroundColor='transparent';" 
                                     onmouseout="this.style.color='white';
                                 ">
                                     ${p}
                                 </a>
                             </li>
                         </c:forEach>
-                        
                         <c:choose>
                             <c:when test="${pi.currentPage eq pi.maxPage}">
                                 <li class="page-item disabled">
@@ -345,7 +348,8 @@
                                         border: none; 
                                         cursor: pointer;
                                         "  
-                                        onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                        onmouseover="this.style.color='rgb(0, 199, 174)'; 
+                                        this.style.backgroundColor='transparent';" 
                                         onmouseout="this.style.color='white';
                                     ">
                                         다음
@@ -361,7 +365,8 @@
                                         border: none; 
                                         cursor: pointer;
                                         "  
-                                        onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                        onmouseover="this.style.color='rgb(0, 199, 174)'; 
+                                        this.style.backgroundColor='transparent';" 
                                         onmouseout="this.style.color='white';
                                     ">
                                         다음
@@ -373,8 +378,9 @@
 			    </nav>      
             </div>
         </div>
+        
+        
     </div>
-
    
 <%@ include file = "../common/footer.jsp"%>     
    
@@ -385,79 +391,17 @@
         })
     })
 </script> -->
-
 <script>
+const select = document.querySelector('#category-item');
+select.addEventListener('change', () => {
+    if(select.value == 'date'){
+    	location.href = "helpDateList";
+    } else{
 
-$(document).ready(function() {
-    // select 요소가 변경될 때의 이벤트 처리
-    $("select[name=categoryPick]").change(function() {
-        // 선택된 값 가져오기
-        var selectedValue = $(this).val();
-
-        // 선택된 값이 'date'인 경우
-        if (selectedValue === 'date') {
-            $.ajax({
-                url: "helpDateCheck.bo",
-                type: "POST",
-                contentType: "application/json",
-                data: {
-                    boardNo: document.querySelector('#bno').value,
-                    image: document.querySelector('#image').value,
-                    boardTitle: document.querySelector('#btitle').value,
-                    price: document.querySelector('#price').value
-                },
-                success: function(data) {
-                    console.log(data);
-                    let str = "<div class='helpDatecatalog'>";  // 리스트를 감싸는 부모 요소
-                    
-                        for (let board of data) {
-                        str += (
-                            "<div class='content-item'>" +
-                                "<a href='detailPage.bo?boardNo=" + board.boardNo + "'>" +
-                                "<img src='" + board.changeName + "' style='width:50px; height:50px;'>" +
-                                "<div class='content-item-title'>" + board.boardTitle + "</div>" +
-                                "<div class='content-item-price'>" + board.price + "</div>" +
-                                "<div class='content-item-date'>" + board.createDate + "</div>" +
-                                "</a>" +
-                            "</div>"
-                        );
-                    }
-
-                    str += "</div>";  // 리스트를 감싸는 부모 요소 닫기
-
-                    $('.helpDatecatalog').html(str);
-                },   
-                    
-                   	// console.log(data);
-                   	// let str = "";
-                   	// for(let board of data) {
-                   	// 	str +=  (
-                    //             "<div>" +
-                    //                 "<a href='detailPage.bo?boardNo=" + board.boardNo + "'>" +
-                    //                 "<img src='" + board.changeName + "' style='width:50px; height:50px;'>" +
-                    //                 "<div>" + board.boardTitle + "</div>" +
-                    //                 "<div>" + board.price + "</div>" +
-                    //                 "<div>" + board.createDate + "</div>" +
-                    //                 "</a>" +
-                    //             "</div>"
-                    //             )
-                   	// }
-
-                    // $('.helpDatecatalog').html(str);
-                // },
-                error: function() {
-                	console.log("통신 실패");
-                }
-            })
-        }
-        
-        // 선택된 값이 'check'인 경우
-        else if (selectedValue === 'check') {
-        	
-        }
-    });
+    	console.log('count = check')
+    	//location.href = "카운트";
+    }
 });
-	
 </script>
        
 </body>
