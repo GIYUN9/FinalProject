@@ -146,7 +146,7 @@
 
     .login-email-btn {
         color: white;
-        background-color: rgb(3, 199, 90);
+        background-color: rgb(0, 199, 174);
         border: none;
         width: 300px;
         height: 40px;
@@ -409,6 +409,7 @@
     }
     .modal-body{
         border-radius: 13px;
+    }
     .en-input2{
         border: 1px solid rgba(96, 96, 96, 0.5);;
         border-radius: 8px;
@@ -424,7 +425,11 @@
     .en-input2::-webkit-inner-spin-button {
     -webkit-appearance: none;
     }
-
+    .naver-btn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     .view-check{
         display: none;
     }
@@ -526,7 +531,9 @@
 			    apiURL += "&state=" + state;
 			    session.setAttribute("state", state);
 			 %>
-  <a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
+                <div class="naver-btn">
+                    <a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
+                </div>
                 </div>
             </div>
         </div>
