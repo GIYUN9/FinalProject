@@ -24,6 +24,15 @@
     .nav-center-items{
         display: flex;
         margin: auto;
+        width: 100%;
+    }
+    .scroll-area{
+    display: flex;
+        margin: auto;
+        max-width: 100%;
+        overflow: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
     }
     .nav-item{
         font-size: 18px;
@@ -200,37 +209,15 @@
                     <img class="arrow-img" src="./resources/icon/menu-left-arrow.png" alt="">
                 </a>
             </div>
-            <div class = "nav-item">
-                <div class="aaa">
-                    <a href="#"  style="color: white;">취미,레슨</a>
-                </div>
+            <div class="scroll-area">
+	            <c:forEach var="c" items="${cList}">
+	            	<div class = "nav-item">
+		                <div class="aaa">
+		                    <a href="#"  style="color: white;">${c.categoryName}</a>
+		                </div>
+	            	</div>
+	            </c:forEach>
             </div>
-            <div class = "nav-item">
-                <div class="aaa">
-                    <a href="#" style="color: white;">디자인</a>
-                </div>
-            </div>
-            <div class = "nav-item">
-                <div class="aaa">
-                    <a href="#" style="color: white;">마케팅</a>
-                </div>
-            </div>
-            <div class = "nav-item">
-                <div class="aaa">
-                    <a href="#" style="color: white;">운동</a>
-                </div>
-            </div>
-            <div class = "nav-item">
-                <div class="aaa">
-                    <a href="#" style="color: white;">게임</a>
-                </div>
-            </div>
-            <div class = "nav-item">
-                <div class="aaa">
-                    <a href="#" style="color: white;">미술</a>
-                </div>
-            </div>
-           
             <div class = "nav-item">
                 <a href="#">
                     <img class="arrow-img" src="./resources/icon/menu-right-arrow.png" alt="">

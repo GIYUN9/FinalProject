@@ -7,6 +7,7 @@ import com.kh.finalProject.board.model.vo.Likey;
 import com.kh.finalProject.board.model.vo.ReLikey;
 import com.kh.finalProject.board.model.vo.Reply;
 import com.kh.finalProject.common.vo.Attachment;
+import com.kh.finalProject.common.vo.Category;
 import com.kh.finalProject.common.vo.Notice;
 import com.kh.finalProject.common.vo.PageInfo;
 
@@ -153,5 +154,7 @@ public interface BoardService {
 	Reply selectReplyLikeyCount(ReLikey r);
 	
 	int updateNReplyLikey(ReLikey r);
+	
+	ArrayList<Category> selectCategoryList();
 	
 }

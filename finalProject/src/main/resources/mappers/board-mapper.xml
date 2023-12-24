@@ -65,6 +65,10 @@
   		<result column="REPLY_NO" property="replyNo" />
   		<result column="RE_LISTATUS" property="reliStatus" />		
   	</resultMap>
+  	<resultMap type="Category" id="categoryResult">
+		<result column="CATEGORY_NO" property="categoryNo" />
+		<result column="CATEGORY_Name" property="categoryName" />
+  	</resultMap>
   	
  	<!-- 도와줄게요 게시글 총 갯수 조회 -->
  	<select id="seleteHelpListCount" resultType="_int">
@@ -765,4 +769,10 @@
 		 AND MEM_NO = #{memberNo}
 		 AND ROWNUM &lt;= 1
 	</update>
+	
+	<select id="selectCategoryList" resultMap="categoryResult">
+		SELECT  CATEGORY_NO,
+				CATEGORY_NAME
+		FROM CATEGORY
+	</select>
   </mapper>
