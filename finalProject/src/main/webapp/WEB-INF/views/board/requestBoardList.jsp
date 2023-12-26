@@ -75,10 +75,9 @@
                 <div class = "content-head">
                    <div id = "head-count">총 ${fn:length(list)}개의 서비스</div>
                    <div id = "head-category">
-					
-			
                         <form class="write-area">
                         	<a class="write-btn" href="helpmeForm.bo">글쓰기</a>
+
                             <select name="listPick" id="category-item">
                             
                             	<c:if test="${mType eq 'helpmeDateList'}">
@@ -95,12 +94,12 @@
 	                            	<option class = "category-item-list" value="date" id="date">날짜순</option>
 	                                <option class = "category-item-list" value="check" id="count" selected>조회순</option>
                             	</c:if>
-                               
-                            </select>
+                             </select>
+                      
                         </form>
                    </div>
                 </div>
-                
+
                 <c:forEach var="b" items="${list}">
                 	<div class = "content-item">
 	                     <a href ="helpmeDetail.bo?boardNo=${b.boardNo}" id="bno">
@@ -112,10 +111,10 @@
 	                     </a> 
                 	</div>
                 </c:forEach>
-                
+
                 <nav aria-label="Page navigation example">
                     <ul class="pagination" style="justify-content: center;">
-                    <c:if test="${mType eq 'helpmeList.bo'}">
+						<c:if test="${mType eq 'helpmeList.bo'}">
                         <c:choose>
                             <c:when test="${pi.currentPage eq 1 }">
                                 <li class="page-item disabled">
@@ -126,41 +125,45 @@
                                         border: none; 
                                         cursor: pointer;
                                         "  
-                                        onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                        onmouseover="this.style.color='rgb(0, 199, 174)'; 
+                                        this.style.backgroundColor='transparent';" 
                                         onmouseout="this.style.color='black';
                                     ">
                                         이전
                                     </a>
+                    
                                 </li>
-                               </c:when>
-                               <c:otherwise>
-                                   <li class="page-item">
+                            </c:when>
+                            <c:otherwise>
+                                <li class="page-item">
                                     <a class="page-link" href="helpmeList.bo?cpage=${pi.currentPage - 1}" 
                                     style="
                                         background: transparent;
-                                        color: black; 
+                                        color: white; 
                                         border: none; 
                                         cursor: pointer;
                                         "  
-                                        onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
-                                        onmouseout="this.style.color='black';
+                                        onmouseover="this.style.color='rgb(0, 199, 174)'; 
+                                        this.style.backgroundColor='transparent';" 
+                                        onmouseout="this.style.color='white';
                                     ">
                                         이전
                                     </a>
                                 </li>
-                               </c:otherwise>
+                            </c:otherwise>
                         </c:choose>
                         <c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage }">
                                <li class="page-item">
                                 <a class="page-link" href="helpmeList.bo?cpage=${p}" 
                                 style="
                                     background: transparent;
-                                    color: black; 
+                                    color: white; 
                                     border: none; 
                                     cursor: pointer;
                                     "  
-                                    onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
-                                    onmouseout="this.style.color='black';
+                                    onmouseover="this.style.color='rgb(0, 199, 174)'; 
+                                    this.style.backgroundColor='transparent';" 
+                                    onmouseout="this.style.color='white';
                                 ">
                                     ${p}
                                 </a>
@@ -177,8 +180,9 @@
                                         border: none; 
                                         cursor: pointer;
                                         "  
-                                        onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
-                                        onmouseout="this.style.color='black';
+                                        onmouseover="this.style.color='rgb(0, 199, 174)'; 
+                                        this.style.backgroundColor='transparent';" 
+                                        onmouseout="this.style.color='white';
                                     ">
                                         다음
                                     </a>
@@ -186,26 +190,29 @@
                             </c:when>
                             
                             <c:otherwise>
-                                   <li class="page-item">
+                                <li class="page-item">
                                     <a class="page-link" href="helpmeList.bo?cpage=${pi.currentPage + 1}" 
                                     style="
                                         background: transparent;
-                                        color: black; 
+                                        color: white; 
                                         border: none; 
                                         cursor: pointer;
                                         "  
                                         onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
-                                        onmouseout="this.style.color='black';
+                                        onmouseout="this.style.color='white';
                                     ">
                                         다음
                                     </a>
                                 </li>
                                </c:otherwise>
-                               
                         </c:choose>
                         </c:if>
+                        </ul>
+                        </nav>
                        
-                        <c:if test="${mType eq 'helpmeDateList'}">
+                       <nav aria-label="Page navigation example">
+                    	<ul class="pagination" style="justify-content: center;">
+                        	<c:if test="${mType eq 'helpmeDateList'}">
                         <c:choose>
                             <c:when test="${pi.currentPage eq 1 }">
                                 <li class="page-item disabled">
@@ -232,7 +239,8 @@
                                         border: none; 
                                         cursor: pointer;
                                         "  
-                                        onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                        onmouseover="this.style.color='rgb(0, 199, 174)'; 
+                                        this.style.backgroundColor='transparent';" 
                                         onmouseout="this.style.color='black';
                                     ">
                                         이전
@@ -249,7 +257,8 @@
                                     border: none; 
                                     cursor: pointer;
                                     "  
-                                    onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                    onmouseover="this.style.color='rgb(0, 199, 174)'; 
+                                    this.style.backgroundColor='transparent';" 
                                     onmouseout="this.style.color='black';
                                 ">
                                     ${p}
@@ -267,7 +276,8 @@
                                         border: none; 
                                         cursor: pointer;
                                         "  
-                                        onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                        onmouseover="this.style.color='rgb(0, 199, 174)'; 
+                                        this.style.backgroundColor='transparent';" 
                                         onmouseout="this.style.color='black';
                                     ">
                                         다음
@@ -284,7 +294,8 @@
                                         border: none; 
                                         cursor: pointer;
                                         "  
-                                        onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                        onmouseover="this.style.color='rgb(0, 199, 174)'; 
+                                        this.style.backgroundColor='transparent';" 
                                         onmouseout="this.style.color='black';
                                     ">
                                         다음
@@ -293,9 +304,14 @@
                                </c:otherwise>
                                
                         </c:choose>
-                        </c:if>
+                       	</c:if>
+                        </ul>
+                        </nav>
                         
-                        <c:if test="${mType eq 'helpmeReferenceList'}">
+                        
+                      <nav aria-label="Page navigation example">
+                    	<ul class="pagination" style="justify-content: center;">
+                        	<c:if test="${mType eq 'helpmeReferenceList'}">
                         <c:choose>
                             <c:when test="${pi.currentPage eq 1 }">
                                 <li class="page-item disabled">
@@ -306,7 +322,8 @@
                                         border: none; 
                                         cursor: pointer;
                                         "  
-                                        onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                        onmouseover="this.style.color='rgb(0, 199, 174)';
+                                        this.style.backgroundColor='transparent';" 
                                         onmouseout="this.style.color='black';
                                     ">
                                         이전
@@ -322,7 +339,8 @@
                                         border: none; 
                                         cursor: pointer;
                                         "  
-                                        onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                        onmouseover="this.style.color='rgb(0, 199, 174)'; 
+                                        this.style.backgroundColor='transparent';" 
                                         onmouseout="this.style.color='black';
                                     ">
                                         이전
@@ -339,7 +357,8 @@
                                     border: none; 
                                     cursor: pointer;
                                     "  
-                                    onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                    onmouseover="this.style.color='rgb(0, 199, 174)'; 
+                                    this.style.backgroundColor='transparent';" 
                                     onmouseout="this.style.color='black';
                                 ">
                                     ${p}
@@ -357,7 +376,8 @@
                                         border: none; 
                                         cursor: pointer;
                                         "  
-                                        onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                        onmouseover="this.style.color='rgb(0, 199, 174)'; 
+                                        this.style.backgroundColor='transparent';" 
                                         onmouseout="this.style.color='black';
                                     ">
                                         다음
@@ -374,7 +394,8 @@
                                         border: none; 
                                         cursor: pointer;
                                         "  
-                                        onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                        onmouseover="this.style.color='rgb(0, 199, 174)'; 
+                                        this.style.backgroundColor='transparent';" 
                                         onmouseout="this.style.color='black';
                                     ">
                                         다음

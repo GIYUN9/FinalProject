@@ -172,7 +172,7 @@ public class MemberController {
 	}
 	
 	//스케줄 컨트롤러(로그인한 유저의 정보를 포함하여)
-	@RequestMapping(value = "/schedule.me", method = RequestMethod.POST)
+	@RequestMapping(value = "/schedule.me", method = RequestMethod.GET)
 	public String schedule(Schedule s, Model model) {
 	    ArrayList<Schedule> sList = memberService.scheduleList(s);
 	    model.addAttribute("sList", sList);
@@ -203,6 +203,12 @@ public class MemberController {
 	public String ask2(){
 		//화면 전환용 임시 데이터는 없는상태
 		return "myPage/ask2";
+	}
+	
+	@RequestMapping(value = "/ask3.me")
+	public String ask3(){
+		//화면 전환용 임시 데이터는 없는상태
+		return "myPage/ask3";
 	}
 	
 	@RequestMapping(value = "/careMem.me")

@@ -23,6 +23,7 @@ import com.kh.finalProject.board.model.service.BoardService;
 import com.kh.finalProject.board.model.vo.Board;
 import com.kh.finalProject.common.Pagenation;
 import com.kh.finalProject.common.vo.Attachment;
+import com.kh.finalProject.common.vo.Category;
 import com.kh.finalProject.common.vo.Notice;
 import com.kh.finalProject.common.vo.PageInfo;
 
@@ -67,10 +68,14 @@ public class BoardController {
 
 			PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
 			ArrayList<Board> list = boardService.helpselectList(pi);
+			
+			//카테고리 불러오기
+			ArrayList<Category> cList = boardService.selectCategoryList();
 //			System.out.println("list객체 확인용 -> " +list);
 			mv.addObject("pi",pi)
 				.addObject("list",list)
 				.addObject("lType", "helpList.bo")
+				.addObject("cList", cList)
 				.setViewName("board/helpBoardList");
 				
 			return mv;

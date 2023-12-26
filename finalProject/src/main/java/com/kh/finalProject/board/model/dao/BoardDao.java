@@ -11,6 +11,7 @@ import com.kh.finalProject.board.model.vo.Likey;
 import com.kh.finalProject.board.model.vo.ReLikey;
 import com.kh.finalProject.board.model.vo.Reply;
 import com.kh.finalProject.common.vo.Attachment;
+import com.kh.finalProject.common.vo.Category;
 import com.kh.finalProject.common.vo.Notice;
 import com.kh.finalProject.common.vo.PageInfo;
 
@@ -300,4 +301,9 @@ public class BoardDao {
 	public int helpmeReferenceCount(SqlSessionTemplate sqlSeesion) {
 		return sqlSeesion.selectOne("boardMapper.helpmeReferenceCount");
 	}
+
+	public ArrayList<Category> selectCategoryList(SqlSessionTemplate sqlSession){
+		return (ArrayList)sqlSession.selectList("boardMapper.selectCategoryList");
+	}
+
 }
