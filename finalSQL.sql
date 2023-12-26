@@ -415,6 +415,7 @@ INSERT INTO CHATROOMJOIN VALUES(2, 5555);
 ---트랜잭션
 commit;
 
+
 --게시판 좋아요 트리거
 CREATE OR REPLACE TRIGGER likey_status_trigger
 AFTER UPDATE ON LIKEY
@@ -433,6 +434,7 @@ BEGIN
     SET LIKEY_COUNT = LIKEY_COUNT + likey_increment
     WHERE BOARD_NO = :NEW.BOARD_NO;
 END;
+/
 
 
 --게시판 댓글 좋아요 트리거
@@ -450,6 +452,7 @@ BEGIN
     END IF;
 
     UPDATE REPLY
-    SET RELIKEY_COUNT = RELIKEY_COUNT + likey_increment
+    SET RELIKEY_COUNT = RELIKEY_COUNT + relikey_increment
     WHERE REPLY_NO = :NEW.REPLY_NO;
 END;
+/
