@@ -86,4 +86,6 @@ public interface MemberService {
 	int insertAmount(Pay pay);
 	
 	int insertReason(Reason r);
+	
+	int updatePhone(Member m);
 }

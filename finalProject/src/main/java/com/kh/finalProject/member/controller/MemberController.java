@@ -559,4 +559,23 @@ public class MemberController {
 	public String payApproval(String pg_token, Pay pay) {
 		return "common/payApproval";
 	}
+	
+	//전화번호 추가(재인증)화면 전환 컨트롤러
+	@RequestMapping(value = "newPhoneEnroll.me")
+	public String newPhoneEnroll() {
+		System.out.println("일하고있니?스프링아");
+		return "myPage/newPhoneEnroll";
+	}
+	
+	@RequestMapping(value = "updatePhone.me")
+	public String updatePhone(Member m, HttpSession session) {
+		int result = memberService.updatePhone(m);
+		
+		if(result > 0) {
+			session.setAttribute("alertMsg", "전화번호가 성공적으로 변경되었습니다.");
+		} else {
+			session.setAttribute("alertMsg", "전화번호 변경 실패.");
+		}
+		return "redirect:/userInfo.me";
+	}
 }

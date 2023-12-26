@@ -124,5 +124,9 @@ public class MemberDao {
 	public int insertReason(SqlSessionTemplate sqlSession, Reason r) {
 		return sqlSession.insert("memberMapper.insertReason", r);
 	}
+	
+	public int updatePhone(SqlSessionTemplate sqlSession, Member m) {
+		return sqlSession.update("memberMapper.updatePhone", m);
+	}
 }
 

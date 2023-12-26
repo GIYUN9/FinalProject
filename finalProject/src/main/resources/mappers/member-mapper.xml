@@ -151,7 +151,6 @@
 		UPDATE MEMBER 
 		SET MEM_NAME = #{memberName},
 				MEM_CONCERN = #{memberConcern},
-				PHONE = #{phone},
 				POINT = #{point}
 		WHERE MEM_NO = #{memberNo}
 	</update>
@@ -427,4 +426,10 @@
 				SYSDATE
 				)
 	</insert>
+	
+	<update id="updatePhone">
+		UPDATE MEMBER
+		SET PHONE = #{phone}
+		WHERE MEM_NO = #{memberNo}
+	</update>
 </mapper>

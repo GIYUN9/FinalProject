@@ -132,7 +132,7 @@
 									<td>
 										<div class = "normal-input-box">
 											<input class="phone-input" name="phone" value="${loginUser.phone}" readonly="readonly">
-											<button class="btn" onclick="newPhone()" style="font-size: 12px;">재인증</button>
+											<button class="btn" type="button" onclick="newPhone()" style="font-size: 12px;">변경하기</button>
 										</div>
 									</td>
 								</tr>
@@ -199,6 +199,10 @@
 	}
 	function payAdd() {
 		location.href = "amountChargePage.me"
+	}
+	
+	function newPhone() {
+		location.href = "newPhoneEnroll.me"
 	}
 	</script>
 </body>

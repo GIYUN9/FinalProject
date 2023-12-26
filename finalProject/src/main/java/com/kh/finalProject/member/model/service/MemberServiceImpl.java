@@ -163,4 +163,9 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.insertReason(sqlSession, r);
 	}
 
+	@Override
+	public int updatePhone(Member m) {
+		return memberDao.updatePhone(sqlSession, m);
+	}
+
 }
