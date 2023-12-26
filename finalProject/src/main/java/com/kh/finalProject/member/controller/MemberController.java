@@ -172,7 +172,7 @@ public class MemberController {
 	}
 	
 	//스케줄 컨트롤러(로그인한 유저의 정보를 포함하여)
-	@RequestMapping(value = "/schedule.me", method = RequestMethod.POST)
+	@RequestMapping(value = "/schedule.me", method = RequestMethod.GET)
 	public String schedule(Schedule s, Model model) {
 	    ArrayList<Schedule> sList = memberService.scheduleList(s);
 	    model.addAttribute("sList", sList);

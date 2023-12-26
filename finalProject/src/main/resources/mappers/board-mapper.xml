@@ -50,6 +50,8 @@
   		<result column="BOARD_NO" property="boardNo" />
   		<result column="STATUS" property="status" />
   		<result column="RELIKEY_COUNT" property="reLikeyCount" />
+  		<result column="FILE_PATH" property="filePath" />
+  		
   	</resultMap>
   	
   	<resultMap type="Likey" id="likeyResult">

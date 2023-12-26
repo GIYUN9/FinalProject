@@ -43,11 +43,11 @@
 						</div>
 					</div>
 					<div class="setprice-btn-area">
-						<button class="setprice-btn" value="1000">+1,000원</button>
-						<button class="setprice-btn" value="5000">+5,000원</button>
-						<button class="setprice-btn" value="10000">+10,000원</button>
-						<button class="setprice-btn" value="50000">+50,000원</button>
-						<button class="setprice-btn" value="100000">+100,000원</button>
+						<button class="setprice-btn" value="1000">1,000원</button>
+						<button class="setprice-btn" value="5000">5,000원</button>
+						<button class="setprice-btn" value="10000">10,000원</button>
+						<button class="setprice-btn" value="50000">50,000원</button>
+						<button class="setprice-btn" value="100000">100,000원</button>
 					</div>
 				</div>
 				<button class="kakao-pay-btn" onclick="kakaopay()" value="">결제하기</button>

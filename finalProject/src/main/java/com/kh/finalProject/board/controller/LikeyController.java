@@ -57,24 +57,27 @@ public class LikeyController {
 				}
 			return new Gson().toJson(map);
 		}
+	
+	@RequestMapping(value="increase.li")
+	@ResponseBody
+	public String likeyIncrease(Likey l, HttpServletResponse response) throws IOException {
+		int result1 = 0;
+		result1 = boardService.updateYLikey(l);
+		System.out.println("increase result1 : " + result1);
+		Board likeyCount = boardService.selectLikeyCount(l);
+		System.out.println("increase likeyCount : " + likeyCount);
+		
+		if((result1) > 0) {
+			return new Gson().toJson(likeyCount);				
+		} else {
+			Map<String, Object> map = new HashMap<>();
+			map.put("likeyCount", 0);
+			return new Gson().toJson(map);				
+		}	
 
-		@RequestMapping(value="increase.li")
-		@ResponseBody
-		public String likeyIncrease(Likey l, HttpServletResponse response) throws IOException {
-			int result1 = 0;
-			result1 = boardService.updateYLikey(l);
-			Board likeyCount = boardService.selectLikeyCount(l);
-			
-			
-			if((result1) > 0) {
-				return new Gson().toJson(likeyCount);				
-			} else {
-				Map<String, Object> map = new HashMap<>();
-				map.put("likeyCount", 0);
-				return new Gson().toJson(map);				
-			}	
+	}
 
-		}
+	
 		
 		//REPLY좋아요 insert
 		@ResponseBody
@@ -85,11 +88,11 @@ public class LikeyController {
 			int result1 = boardService.insertReplyLikey(r);
 				int result2 = 0;
 				int result3 = 0;
-				
+				System.out.println("result1 : " + result1);
 				Map<String, Object> map = new HashMap<>();
 				r = boardService.selectReplyLikey(r);
 				if(r == null) {
-					System.out.println("null이다 씨발");
+					System.out.println("null이다");
 				}
 				
 				if(result1 > 0) {
@@ -119,8 +122,9 @@ public class LikeyController {
 		public String replyLikeyIncrease(ReLikey r, HttpServletResponse response) throws IOException {
 			int result1 = 0;
 			result1 = boardService.updateYReplyLikey(r);
+			System.out.println("increaseReply result1 : " + result1);
 			Reply likeyCount = boardService.selectReplyLikeyCount(r);
-
+			System.out.println("increaseReply likeyCount : " + likeyCount);
 			if((result1) > 0) {
 				return new Gson().toJson(likeyCount);				
 			} else {
@@ -129,4 +133,5 @@ public class LikeyController {
 				return new Gson().toJson(map);				
 			}	
 		}
+		
 }
