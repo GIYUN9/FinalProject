@@ -23,6 +23,7 @@ import com.kh.finalProject.board.model.service.BoardService;
 import com.kh.finalProject.board.model.vo.Board;
 import com.kh.finalProject.common.Pagenation;
 import com.kh.finalProject.common.vo.Attachment;
+import com.kh.finalProject.common.vo.Category;
 import com.kh.finalProject.common.vo.Notice;
 import com.kh.finalProject.common.vo.PageInfo;
 
@@ -67,32 +68,35 @@ public class BoardController {
 
 			PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
 			ArrayList<Board> list = boardService.helpselectList(pi);
+			
+			//카테고리 불러오기
+			ArrayList<Category> cList = boardService.selectCategoryList();
 //			System.out.println("list객체 확인용 -> " +list);
 			mv.addObject("pi",pi)
 				.addObject("list",list)
+				.addObject("lType", "helpList.bo")
+				.addObject("cList", cList)
 				.setViewName("board/helpBoardList");
 				
 			return mv;
-		}
-	
-	//도와줄게요 날짜순으로 가져오는 ajax
-	@ResponseBody
-	@RequestMapping(value="helpDateCheck.bo", produces="application/json; charset=UTF-8")
-	public String helpDateList(@RequestParam(value="cpage", defaultValue="1") int currentPage, Board b) {
-		
-		int listCount = boardService.helpDateCheckCount();
-
-		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
-		
-		ArrayList<Board> dateList = boardService.helpDateCheck(b, pi);
-		System.out.println(dateList); 
-		
-		Gson gson = new Gson();
-	    String json = gson.toJson(dateList);
-	    return json;
-		
-//		return new Gson().toJson(dateList);
 	}
+	
+	//도와줄게요 날짜순으로 보이게 하는 리스트
+	 @RequestMapping(value = "helpDateList")
+	 public ModelAndView helpDateList(@RequestParam(value="cpage", defaultValue="1") int currentPage, Board b, ModelAndView mv) {
+	        int listCount = boardService.helpDateCheckCount();
+
+	        PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
+
+	        ArrayList<Board> dateList = boardService.helpDateCheck(b, pi);
+	        
+	        mv.addObject("list", dateList);
+	        mv.addObject("pi", pi);
+	        mv.addObject("lType", "helpDateList");
+	        mv.setViewName("board/helpBoardList");
+
+	        return mv;
+	    }
 	
 
 	//도와줄게요 게시글 등록 페이지
@@ -139,6 +143,8 @@ public class BoardController {
 		int result = boardService.seleteHelpListCount();
 		
 		if(result > 0) {
+			//게시글 boardNo에 VIEW_COUNT + 1
+			boardService.addViewCountBoard(boardNo);
 			Board b = boardService.helpSelectBoard(boardNo);
 			model.addAttribute("b",b);
 			return "board/helpDetail";

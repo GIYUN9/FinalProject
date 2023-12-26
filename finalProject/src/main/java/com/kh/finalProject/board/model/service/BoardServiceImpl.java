@@ -13,6 +13,7 @@ import com.kh.finalProject.board.model.vo.ReLikey;
 import com.kh.finalProject.board.model.vo.Reply;
 
 import com.kh.finalProject.common.vo.Attachment;
+import com.kh.finalProject.common.vo.Category;
 import com.kh.finalProject.common.vo.Notice;
 import com.kh.finalProject.common.vo.PageInfo;
 
@@ -273,13 +274,13 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.deleteReply(sqlSession, replyNo);
 	}
 
-	//도와줄게요 날짜순 ajax
+	//도와줄게요 날짜순
 	@Override
 	public ArrayList<Board> helpDateCheck(Board b, PageInfo pi) {
 		return boardDao.helpDateCheck(sqlSession, b, pi);
 	}
 
-	//도와줄게요 날짜순 ajax count(*)
+	//도와줄게요 날짜순 count(*)
 	@Override
 	public int helpDateCheckCount() {
 		return boardDao.helpDateCheckCount(sqlSession);
@@ -339,5 +340,10 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int updateNReplyLikey(ReLikey r) {
 		return boardDao.updateNReplyLikey(sqlSession, r);
+	}
+
+	@Override
+	public ArrayList<Category> selectCategoryList() {
+		return boardDao.selectCategoryList(sqlSession);
 	}
 }

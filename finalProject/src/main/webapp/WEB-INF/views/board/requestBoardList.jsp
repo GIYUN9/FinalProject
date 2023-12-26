@@ -263,19 +263,16 @@
                 <div class = "content-head">
                    <div id = "head-count">총 1063개의 서비스</div>
                    <div id = "head-category">
-					
-			
                         <form class="write-area">
                         	<a class="write-btn" href="helpmeForm.bo">글쓰기</a>
                             <select name="" id="category-item">
                                 <option class = "category-item-list" value="date" selected>날짜순</option>
-                                <option class = "category-item-list" value="interest">인기순</option>
                                 <option class = "category-item-list" value="check">조회순</option>
                             </select>
                         </form>
                    </div>
                 </div>
-                
+
                 <c:forEach var="b" items="${list}">
                 	<div class = "content-item">
 	                     <a href ="helpmeDetail.bo?boardNo=${b.boardNo}">
@@ -287,7 +284,7 @@
 	                     </a> 
                 	</div>
                 </c:forEach>
-                
+
                 <nav aria-label="Page navigation example">
                     <ul class="pagination" style="justify-content: center;">
                         <c:choose>
@@ -300,41 +297,44 @@
                                         border: none; 
                                         cursor: pointer;
                                         "  
-                                        onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
+                                        onmouseover="this.style.color='rgb(0, 199, 174)'; 
+                                        this.style.backgroundColor='transparent';" 
                                         onmouseout="this.style.color='black';
                                     ">
                                         이전
                                     </a>
                                 </li>
-                               </c:when>
-                               <c:otherwise>
-                                   <li class="page-item">
+                            </c:when>
+                            <c:otherwise>
+                                <li class="page-item">
                                     <a class="page-link" href="helpmeList.bo?cpage=${pi.currentPage - 1}" 
                                     style="
                                         background: transparent;
-                                        color: black; 
+                                        color: white; 
                                         border: none; 
                                         cursor: pointer;
                                         "  
-                                        onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
-                                        onmouseout="this.style.color='black';
+                                        onmouseover="this.style.color='rgb(0, 199, 174)'; 
+                                        this.style.backgroundColor='transparent';" 
+                                        onmouseout="this.style.color='white';
                                     ">
                                         이전
                                     </a>
                                 </li>
-                               </c:otherwise>
+                            </c:otherwise>
                         </c:choose>
                         <c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage }">
                                <li class="page-item">
                                 <a class="page-link" href="helpmeList.bo?cpage=${p}" 
                                 style="
                                     background: transparent;
-                                    color: black; 
+                                    color: white; 
                                     border: none; 
                                     cursor: pointer;
                                     "  
-                                    onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
-                                    onmouseout="this.style.color='black';
+                                    onmouseover="this.style.color='rgb(0, 199, 174)'; 
+                                    this.style.backgroundColor='transparent';" 
+                                    onmouseout="this.style.color='white';
                                 ">
                                     ${p}
                                 </a>
@@ -351,29 +351,30 @@
                                         border: none; 
                                         cursor: pointer;
                                         "  
-                                        onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
-                                        onmouseout="this.style.color='black';
+                                        onmouseover="this.style.color='rgb(0, 199, 174)'; 
+                                        this.style.backgroundColor='transparent';" 
+                                        onmouseout="this.style.color='white';
                                     ">
                                         다음
                                     </a>
                                 </li>
                             </c:when>
                             <c:otherwise>
-                                   <li class="page-item">
+                                <li class="page-item">
                                     <a class="page-link" href="helpmeList.bo?cpage=${pi.currentPage + 1}" 
                                     style="
                                         background: transparent;
-                                        color: black; 
+                                        color: white; 
                                         border: none; 
                                         cursor: pointer;
                                         "  
                                         onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
-                                        onmouseout="this.style.color='black';
+                                        onmouseout="this.style.color='white';
                                     ">
                                         다음
                                     </a>
                                 </li>
-                               </c:otherwise>
+                            </c:otherwise>
                         </c:choose>
                     </ul>
 			   </nav>

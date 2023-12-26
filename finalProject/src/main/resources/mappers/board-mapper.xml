@@ -67,6 +67,10 @@
   		<result column="REPLY_NO" property="replyNo" />
   		<result column="RE_LISTATUS" property="reliStatus" />		
   	</resultMap>
+  	<resultMap type="Category" id="categoryResult">
+		<result column="CATEGORY_NO" property="categoryNo" />
+		<result column="CATEGORY_Name" property="categoryName" />
+  	</resultMap>
   	
  	<!-- 도와줄게요 게시글 총 갯수 조회 -->
  	<select id="seleteHelpListCount" resultType="_int">
@@ -103,6 +107,28 @@
 		JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
 		  WHERE B.STATUS = 'Y'
 		AND B.BOARD_NO = #{boardNo}
+	</select>
+	
+	<!-- 도와줄게요 날짜순 리스트 쿼리문 -->
+	<select id="helpDateCheck" resultMap="boardResult">
+  		SELECT  B.BOARD_NO,
+ 			  	B.BOARD_TITLE,
+ 			   	B.PRICE,
+ 			   	B.CREATEDATE,
+               	A.CHANGE_NAME
+ 		FROM BOARD B
+        JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
+ 		 WHERE BOARD_TYPE = 1 
+ 		 AND B.STATUS = 'Y'
+        ORDER BY CREATEDATE DESC
+    </select>
+	
+	<!-- 도와줄게요 날짜순 쿼리문 -->
+	<select id="helpDateCheckCount" resultType="_int">
+		SELECT COUNT(*)
+ 		  FROM BOARD
+ 		 WHERE BOARD_TYPE = 1
+ 		AND STATUS = 'Y'
 	</select>
  	
   	<!-- 도와줄게요 게시글 등록 쿼리문 -->
@@ -745,4 +771,10 @@
 		 AND MEM_NO = #{memberNo}
 		 AND ROWNUM &lt;= 1
 	</update>
+	
+	<select id="selectCategoryList" resultMap="categoryResult">
+		SELECT  CATEGORY_NO,
+				CATEGORY_NAME
+		FROM CATEGORY
+	</select>
   </mapper>
