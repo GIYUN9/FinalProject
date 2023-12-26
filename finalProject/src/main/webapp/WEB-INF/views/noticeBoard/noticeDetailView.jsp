@@ -189,6 +189,16 @@
 .reply-likey-btn:hover{
 	opacity : 0.5;
 }
+.reply-likey-btn{
+	border : 0px;
+	background-color: white; 
+	outline: none;
+}
+.reply-likey-btn:focus{
+	scale: 1.1;
+	outline: none;
+}
+
 
 </style>
 </head>
@@ -328,64 +338,7 @@
             
         }
         
-    //댓글 리스트 그리기
-        function selectReplyList() {
-            $.ajax({
-                url: "list.re",
-                data: {
-                    boardNo: document.getElementById("reply-boardNo").value
-                },
-                success: function(res) {
-                    
-                    let str = "";
-                    for (let reply of res) {
-                        console.log(reply);
-                        str += 
-                      
-                            "<div class=\"reply-align\" id=\"reply-align\">" +
-                            "<div class=\"profile-area\">" +
-                            "<img style=\"width: 45px; height: 45px; margin: 5px; border-radius: 15px;\" src="+reply.filePath+">" +
-                            "</div>" +
-                            "<div class=\"reply-info\">" +
-                            "<div class=\"reply-top\">" +
-                            "<div class=\"reply-writer\" id = \"reply-writer\">" +                              
-                            reply.memberName;					                
-                            if("${loginUser.memberName}" == reply.memberName || "${loginUser.memberName}" == "관리자"){
-                                str += "<button id = 'replydelete' onclick='replydelete("+reply.replyNo+")'>" + 
-                                    "삭제하기" + 
-                                   "</button>";
-                            }
-        
-                            str += "</div>" +					               
-                            "<div>" +
-                            "일러스트 디자인+8개서비스 고수" +
-                            "</div>" +
-                            "<button class=\"req-btn\">견적요청</button>" +
-                            "</div>" +
-                            "<div class=\"reply-cont\">" +
-                            reply.replyContent +
-                        "</div>" +
-                        "<div class=\"reply-bot\">" +
-                        "<span>" + reply.createDate + " </span>" +
-                        "<button class= \"reply-likey-btn\" onclick= \"insertReplyLikey("+reply.replyNo+")\">"+
-                        "<img src=\"./resources/icon/LIKE.png\" class=\"img\" style=\"margin-bottom: 10px;\">" +
-                        "<span>좋아요 39 </span>" +
-                        "</button>"+      
-                        "<span>·</span>"+
-                        "<img src=\"./resources/icon/dislike.png\" class=\"img\" style=\"margin-top: 7px;\">" +
-                        "<span>싫어요 -5</span>" +
-                        "</div>" +
-                        "</div>" +
-                        "<input name = \"replyNo\" id=\"replyNo\" type=\"hidden\" value=\"${reply.replyNo}\">"+
-                        "</div>";
-                    }
-                    document.querySelector('.reply-area').innerHTML = str;
-                },
-                error: function() {
-                    console.log("댓글 목록 조회 실패");
-                }
-            });
-        }
+    
         
         
         //댓글 Enter 입력 시 댓글 등록기능
@@ -416,17 +369,17 @@
         		success : function(result){	
         			var data = JSON.parse(result);
         			if(data.result1 > 0){//좋아요 insert 성공
-        				console.log("좋아요 인설트 성공");
+        				console.log("댓글에 좋아요 인설트 성공");
         				increaseReplyLikey(replyNo);	
         				
-        				document.getElementById("likeyNum").innerHTML = data.likeyCount;
+        				document.getElementById("relikeyNum").innerHTML = data.likeyCount;
         			}else if (data.result2 > 0){
-        				console.log("좋아요에 NNNNN값이 있네?");
-        				document.getElementById("likeyNum").innerHTML = data.likeyCount;
+        				console.log("댓글에 좋아요에 NNNNN값이 있네?");
+        				document.getElementById("relikeyNum").innerHTML = data.likeyCount;
         				
         			}else{
-        				console.log("좋아요가 있네?");	
-        				document.getElementById("likeyNum").innerHTML = data.likeyCount;
+        				console.log("댓글에 좋아요가 있네?");	
+        				document.getElementById("relikeyNum").innerHTML = data.likeyCount;
         			}
         			
         		},
@@ -454,8 +407,7 @@
                 },
                 success: function(result){ 
                 	var data = JSON.parse(result);
-               
-          
+
                		console.log("+1증가 성공!! ");	
                		console.log("과연 값이 올까요?"+ data.likeyCount);		
                		document.getElementById("likeyNum").innerHTML = data.likeyCount;
@@ -575,6 +527,64 @@
             });
         }
         
+      //댓글 리스트 그리기
+        function selectReplyList() {
+            $.ajax({
+                url: "list.re",
+                data: {
+                    boardNo: document.getElementById("reply-boardNo").value
+                },
+                success: function(res) {
+                    
+                    let str = "";
+                    for (let reply of res) {
+                        console.log(reply);
+                        str += 
+                      
+                            "<div class=\"reply-align\" id=\"reply-align\">" +
+                            "<div class=\"profile-area\">" +
+                            "<img style=\"width: 45px; height: 45px; margin: 5px; border-radius: 15px;\" src="+ reply.filePath +">" +
+                            "</div>" +
+                            "<div class=\"reply-info\">" +
+                            "<div class=\"reply-top\">" +
+                            "<div class=\"reply-writer\" id = \"reply-writer\">" +                              
+                            reply.memberName;					                
+                            if("${loginUser.memberName}" == reply.memberName || "${loginUser.memberName}" == "관리자"){
+                                str += "<button id = 'replydelete' onclick='replydelete("+reply.replyNo+")'>" + 
+                                    "삭제하기" + 
+                                   "</button>";
+                            }
+        
+                            str += "</div>" +					               
+                            "<div>" +
+                            "일러스트 디자인+8개서비스 고수" +
+                            "</div>" +
+                            "<button class=\"req-btn\">견적요청</button>" +
+                            "</div>" +
+                            "<div class=\"reply-cont\">" +
+                            reply.replyContent +
+                        "</div>" +
+                        "<div class=\"reply-bot\">" +
+                        "<span>" + reply.createDate + " </span>" +
+                        "<button class= \"reply-likey-btn\" onclick= \"insertReplyLikey("+reply.replyNo+")\">"+
+                        "<img src=\"./resources/icon/LIKE.png\" class=\"img\" style=\"margin-bottom: 10px;\">" +
+                        "<span id=\"relikeyNum\" class=\"relikeyNum\">"+reply.reLikeyCount + "</span>" +
+                        "</button>"+      
+                        "<span>·</span>"+
+                        "<img src=\"./resources/icon/dislike.png\" class=\"img\" style=\"margin-top: 7px;\">" +
+                        "<span>싫어요 -5</span>" +
+                        "</div>" +
+                        "</div>" +
+                        "<input name = \"replyNo\" id=\"replyNo\" type=\"hidden\" value=\"${reply.replyNo}\">"+
+                        "</div>";
+                    }
+                    document.querySelector('.reply-area').innerHTML = str;
+                },
+                error: function() {
+                    console.log("댓글 목록 조회 실패");
+                }
+            });
+        }
         
         //댓글 삭제하기 기능
         function replydelete(replyNo) {

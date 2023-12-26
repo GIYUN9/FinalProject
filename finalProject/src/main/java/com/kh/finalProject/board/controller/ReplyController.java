@@ -26,10 +26,9 @@ public class ReplyController {
 	@RequestMapping(value = "insert.re", method = RequestMethod.POST)
 	public void insertReply(Reply r, HttpServletResponse response) throws IOException {
 		
-		System.out.println(r);
-		
+
 		int result = boardService.insertReply(r);
-		
+	
 		if(result > 0) {
 			response.getWriter().print(result);
 		} else {
@@ -41,7 +40,7 @@ public class ReplyController {
 	@RequestMapping(value="list.re")
 	public void replyList(Board b, HttpServletResponse response) throws JsonIOException, IOException {		
 		ArrayList<Reply> list = boardService.selectReplyList(b);
-		
+		System.out.println("replyList list : "+list);
 		response.setContentType("application/json; charset=utf-8");
 		new Gson().toJson(list, response.getWriter());
 	}
