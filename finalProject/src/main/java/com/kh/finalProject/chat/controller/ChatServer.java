@@ -39,13 +39,23 @@ public class ChatServer extends TextWebSocketHandler{
 
 		//수신된 메세지 모든 세션에 전달
 	    Member loginUser = (Member) session.getAttributes().get("loginUser");
+	    int senderMemNo = loginUser.getMemberNo();
 	    String sender = loginUser.getMemberName();		
 		String msg = message.getPayload();
 		
-//		TextMessage textMsg = new TextMessage(sender + " : " + msg);
+		session.getAttributes().put("sender", sender);
 		
-//		for (WebSocketSession s : sessionSet) {
-//			s.sendMessage(textMsg);
-//		}
+		TextMessage textMsg = new TextMessage(sender + " : " + msg);
+		
+		for (WebSocketSession s : sessionSet) {
+			Member targetUser = (Member) s.getAttributes().get("loginUser");
+			if (targetUser != null) {
+				int targetMemNo = targetUser.getMemberNo();
+				
+				if (senderMemNo != targetMemNo) {
+					s.sendMessage(textMsg);
+				}
+			}
+		}
 	}
 }

@@ -17,15 +17,25 @@
   		<result column="TITLE" property="title" />
   		<result column="STATUS" property="status" />
   		<result column="MEM_NO" property="memberNo" />
+  		<result column="MEM_NO" property="memberCount" />
+  		<result column="MEM_NO" property="lastMsgNo" />
+  		<result column="MEM_NO" property="lastChatTime" />
+  		<result column="MEM_NO" property="chatCount" />
+  		<result column="MEM_NO" property="memberName" />
   	</resultMap>
  	
  	<select id="chattingRoomList" resultMap="chatRoomResult">
- 		 SELECT CHAT_ROOM_NO,
-			    MEM_NO,
-			    STATUS,
-			    TITLE
-		   FROM CHATROOM
-		  WHERE STATUS = 'Y'
+ 		 SELECT CR.CHAT_ROOM_NO,
+ 		 		CR.MEM_NO,
+			    CRJ.MEM_NO,
+			    CR.STATUS,
+			    CR.TITLE,
+			    M.MEM_NAME
+		   FROM CHATROOM CR
+		   JOIN CHATROOMJOIN CRJ ON (CR.CHAT_ROOM_NO = CRJ.CHAT_ROOM_NO)
+		   JOIN MEMBER M ON (CRJ.MEM_NO = M.MEM_NO)
+		  WHERE CR.STATUS = 'Y'
+		  AND CRJ.MEM_NO != #{memberNo}
 	</select>
 	 	<!-- 
 		SELECT *
