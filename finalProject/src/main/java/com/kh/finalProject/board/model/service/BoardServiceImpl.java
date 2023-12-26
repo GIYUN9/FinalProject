@@ -66,6 +66,54 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.helpAttachment(sqlSession, at);
 	}
 	
+	//도와줄게요 게시판 리스트 count(*)조회
+	@Override
+	public int seleteHelpListCount() {
+		return boardDao.seleteHelpListCount(sqlSession);
+	}
+	
+	//도와줄게요 보드번호 가져오는 중간 쿼리
+	@Override
+	public Board helpselectOne(Board b) {
+		return boardDao.helpselectOne(sqlSession ,b);
+	}
+	
+	//도와줄게요 게시글 상세조회
+	@Override
+	public Board helpSelectBoard(int boardNo) {
+		return boardDao.helpSelectBoard(sqlSession, boardNo);
+	}
+	
+	//도와줄게요 날짜순
+	@Override
+	public ArrayList<Board> helpDateCheck(Board b, PageInfo pi) {
+		return boardDao.helpDateCheck(sqlSession, b, pi);
+	}
+
+	//도와줄게요 날짜순 count(*)
+	@Override
+	public int helpDateCheckCount() {
+		return boardDao.helpDateCheckCount(sqlSession);
+	}
+	
+	//도와줄게요 조회순 리스트
+	@Override
+	public ArrayList<Board> helpReference(Board b, PageInfo pi) {
+		return boardDao.helpReference(sqlSession, b, pi);
+	}
+	
+	//도와줄게요 조회순 증가 update
+	@Override
+	public int helpincreaseCount(int boardNo) {
+		return boardDao.helpincreaseCount(sqlSession, boardNo);
+	}
+
+	//도와줄게요 조회순 count(*)
+	@Override
+	public int helpReferenceCount() {
+		return boardDao.helpReferenceCount(sqlSession);
+	}
+	
 	//게시글 총 페이지
 	@Override
 	public int helpselect() {
@@ -96,12 +144,6 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.insertNotice(sqlSession, n);
 	}
 
-	//도와줄게요 게시판 리스트 count(*)조회
-	@Override
-	public int seleteHelpListCount() {
-		return boardDao.seleteHelpListCount(sqlSession);
-	}
-
 	//공지사항 삭제
 	@Override
 	public int deleteNotice(Notice n) {
@@ -130,12 +172,6 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public ArrayList<Board> selectMuchList(PageInfo pi) {
 		return boardDao.selectMuchList(sqlSession, pi);
-	}
-	
-	//도와줄게요 보드번호 가져오는 중간 쿼리
-	@Override
-	public Board helpselectOne(Board b) {
-		return boardDao.helpselectOne(sqlSession ,b);
 	}
 	
 	//게시글 함께해요 count(*)조회
@@ -228,18 +264,38 @@ public class BoardServiceImpl implements BoardService {
 	public Board helpmeselectOne(Board b) {
 		return boardDao.helpmeselectOne(sqlSession ,b);
 	}
-
-	//도와줄게요 게시글 상세조회
-	@Override
-	public Board helpSelectBoard(int boardNo) {
-		return boardDao.helpSelectBoard(sqlSession, boardNo);
-	}
 	
 	//도와주세요 게시글 상세조회
 	@Override
 	public Board helpmeSelectBoard(int boardNo) {
 		return boardDao.helpmeSelectBoard(sqlSession, boardNo);
 	}
+	
+	//도와주세요 날짜순 리스트
+	@Override
+	public ArrayList<Board> helpmeDateCheck(Board b, PageInfo pi) {
+		return boardDao.helpmeDateCheck(sqlSession, b, pi);
+	}
+
+	//도와주세요 날짜순 count(*)
+	@Override
+	public int helpmeDateCheckCount() {
+		return boardDao.helpmeDateCheckCount(sqlSession);
+	}
+
+	//도와주세요 조회순 리스트
+	@Override
+	public ArrayList<Board> helpmeReference(Board b, PageInfo pi) {
+		return boardDao.helpmeReference(sqlSession, b, pi);
+	}
+
+	//도와주세요 조회순 count(*)
+	@Override
+	public int helpmeReferenceCount() {
+		return boardDao.helpmeReferenceCount(sqlSession);
+	}
+	
+	
 	
 	//얼마예요 궁금해요 등 게시글 상세조회
 	@Override
@@ -273,20 +329,8 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.deleteReply(sqlSession, replyNo);
 	}
 
-	//도와줄게요 날짜순
-	@Override
-	public ArrayList<Board> helpDateCheck(Board b, PageInfo pi) {
-		return boardDao.helpDateCheck(sqlSession, b, pi);
-	}
 
-	//도와줄게요 날짜순 count(*)
-	@Override
-	public int helpDateCheckCount() {
-		return boardDao.helpDateCheckCount(sqlSession);
-	}
 
-	
-	
 	@Override
 	public int insertLikey(Likey l) {
 		return boardDao.insertLikey(sqlSession, l);
@@ -340,4 +384,5 @@ public class BoardServiceImpl implements BoardService {
 	public int updateNReplyLikey(ReLikey r) {
 		return boardDao.updateNReplyLikey(sqlSession, r);
 	}
+
 }
