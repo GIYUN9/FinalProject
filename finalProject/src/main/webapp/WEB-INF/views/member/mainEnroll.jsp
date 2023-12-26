@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
     <style>
         .modal-content{
             margin: 80px 0px 0px 0px;
@@ -84,16 +83,8 @@
 	        </div>
 	    </div>
 	</div>
-	
-	
-
-	
-
 </body>
-
-
-
-	<jsp:include page="../common/footer.jsp"></jsp:include>
+<jsp:include page="../common/footer.jsp"></jsp:include>
 </html>
 
 
