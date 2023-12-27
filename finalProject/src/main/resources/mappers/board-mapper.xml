@@ -102,6 +102,7 @@
 			   A.CHANGE_NAME,
 			   B.BOARD_TITLE,
 			   B.PRICE,
+			   B.VIEW_COUNT,
 			   B.BOARD_TYPE
 		FROM BOARD B
 		JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
@@ -130,7 +131,36 @@
  		 WHERE BOARD_TYPE = 1
  		AND STATUS = 'Y'
 	</select>
- 	
+	
+	<!-- 도와줄게요 조회수 리스트 -->
+	<select id="helpReference" resultMap="boardResult"> 
+		SELECT  B.BOARD_NO,
+ 			  	B.BOARD_TITLE,
+ 			   	B.PRICE,
+ 			   	B.CREATEDATE,
+               	A.CHANGE_NAME
+ 		FROM BOARD B
+        JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
+ 		 WHERE BOARD_TYPE = 1 
+ 		 AND B.STATUS = 'Y'
+        ORDER BY VIEW_COUNT DESC
+	</select>
+	
+	<!-- 도와줄게요 조회순 쿼리문 -->
+	<select id="helpReferenceCount" resultType="_int">
+		SELECT COUNT(*)
+ 		  FROM BOARD
+ 		 WHERE BOARD_TYPE = 1
+ 		AND STATUS = 'Y'
+	</select>
+	
+	<!-- 도와줄게요 조회수 증가 쿼리문 -->
+	<update id="helpincreaseCount">
+		UPDATE BOARD
+			SET VIEW_COUNT = VIEW_COUNT + 1
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+	
   	<!-- 도와줄게요 게시글 등록 쿼리문 -->
   	<insert id="helpinsertBoard">
   		INSERT INTO
@@ -614,6 +644,7 @@
 			   A.CHANGE_NAME,
 			   B.BOARD_TITLE,
 			   B.PRICE,
+			   B.VIEW_COUNT,
 			   B.BOARD_TYPE
 		FROM BOARD B
 		JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
@@ -637,6 +668,52 @@
   			SET STATUS = 'N'
   		WHERE BOARD_NO = #{boardNo}
 	</update>
+	
+	<!-- 도와주세요 날짜순 리스트 쿼리문 -->
+	<select id="helpmeDateCheck" resultMap="boardResult">
+  		SELECT  B.BOARD_NO,
+ 			  	B.BOARD_TITLE,
+ 			   	B.PRICE,
+ 			   	B.CREATEDATE,
+               	A.CHANGE_NAME
+ 		FROM BOARD B
+        JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
+ 		 WHERE BOARD_TYPE = 2
+ 		 AND B.STATUS = 'Y'
+        ORDER BY CREATEDATE DESC
+    </select>
+	
+	<!-- 도와주세요 날짜순 쿼리문 -->
+	<select id="helpmeDateCheckCount" resultType="_int">
+		SELECT COUNT(*)
+ 		  FROM BOARD
+ 		 WHERE BOARD_TYPE = 2
+ 		AND STATUS = 'Y'
+	</select>
+	
+	<!--도와주세요 조회수 리스트 -->
+	<select id="helpmeReference" resultMap="boardResult"> 
+		SELECT  B.BOARD_NO,
+ 			  	B.BOARD_TITLE,
+ 			   	B.PRICE,
+ 			   	B.CREATEDATE,
+               	A.CHANGE_NAME
+ 		FROM BOARD B
+        JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
+ 		 WHERE BOARD_TYPE = 2 
+ 		 AND B.STATUS = 'Y'
+        ORDER BY VIEW_COUNT DESC
+	</select>
+	
+	<!-- 도와주세요 조회순 쿼리문 -->
+	<select id="helpmeReferenceCount" resultType="_int">
+		SELECT COUNT(*)
+ 		  FROM BOARD
+ 		 WHERE BOARD_TYPE = 2
+ 		AND STATUS = 'Y'
+	</select>
+	
+	
 	
 	<update id ="updateCommBoard">
 		UPDATE BOARD

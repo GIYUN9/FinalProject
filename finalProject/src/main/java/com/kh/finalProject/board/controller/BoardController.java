@@ -82,7 +82,7 @@ public class BoardController {
 	}
 	
 	//도와줄게요 날짜순으로 보이게 하는 리스트
-	 @RequestMapping(value = "helpDateList")
+	 @RequestMapping(value = "helpDateList", method = RequestMethod.GET)
 	 public ModelAndView helpDateList(@RequestParam(value="cpage", defaultValue="1") int currentPage, Board b, ModelAndView mv) {
 	        int listCount = boardService.helpDateCheckCount();
 
@@ -97,8 +97,24 @@ public class BoardController {
 
 	        return mv;
 	    }
-	
+	 
+	 //도와줄게요 조회순 리스트 컨트롤러
+	 @RequestMapping(value = "helpReferenceList", method = RequestMethod.GET)
+	 public ModelAndView helpReferenceList(@RequestParam(value="cpage", defaultValue="1") int currentPage, Board b, ModelAndView mv) {
+		 int listCount = boardService.helpReferenceCount();
+		 
+		 PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
 
+	     ArrayList<Board> referenceList = boardService.helpReference(b, pi);
+	     
+	     mv.addObject("list", referenceList);
+	     mv.addObject("pi", pi);
+	     mv.addObject("lType", "helpReferenceList");
+	     mv.setViewName("board/helpBoardList");
+
+	     return mv;
+	 }
+	 
 	//도와줄게요 게시글 등록 페이지
 	@RequestMapping(value="helpInsert.bo", method = RequestMethod.POST)
 	public String helpInsertBoard(Board b, MultipartFile upfile, Attachment at ,HttpSession session, Model model) { // , Atta~~ a
@@ -138,15 +154,16 @@ public class BoardController {
 	
 	//도와줄게요 디테일 페이지 이동
 	@RequestMapping(value="helpDetailPage.bo")
-	public String helpDetailBoard(int boardNo, Model model)  {
+	public String helpDetailBoard(int boardNo, Model model, HttpSession session)  {
 		
-		int result = boardService.seleteHelpListCount();
+		int increaseCount = boardService.helpincreaseCount(boardNo);
+		System.out.println("조회수 증가 " + increaseCount);
 		
-		if(result > 0) {
-			//게시글 boardNo에 VIEW_COUNT + 1
-			boardService.addViewCountBoard(boardNo);
+		
+		if(increaseCount > 0) {
 			Board b = boardService.helpSelectBoard(boardNo);
-			model.addAttribute("b",b);
+			System.out.println("board 확인" + b);
+			session.setAttribute("b", b);
 			return "board/helpDetail";
 		} else {
 			model.addAttribute("errorMsg", "게시글 조회 실패");
@@ -509,6 +526,7 @@ public class BoardController {
 		
 		mv.addObject("pi",pi)
 		  .addObject("list",list)
+		  .addObject("mType","helpmeList.bo")
 		  .setViewName("board/requestBoardList");
 			
 		return mv;
@@ -540,7 +558,6 @@ public class BoardController {
 		at.setBoardNo(b.getBoardNo());
 		result2 = boardService.helpmeAttachment(at);
 		
-		System.out.println("at파일확인 " +at);
 		if(result1 > 0 && result2 > 0) {
 			session.setAttribute("alertMsg", "게시글 작성 성공");
 			return "redirect:/helpmeList.bo";
@@ -552,12 +569,15 @@ public class BoardController {
 	
 	//도와주세요 디테일 페이지 이동
 	@RequestMapping(value="helpmeDetail.bo")
-	public String helpmeDetailBoard(int boardNo, Model model) {
-		int result = boardService.seleteHelpmeListCount();
+	public String helpmeDetailBoard(int boardNo, Model model, HttpSession session) {
 		
-		if(result > 0) {
+		int increaseCount = boardService.helpincreaseCount(boardNo);
+		System.out.println("조회수 증가 " + increaseCount);
+		
+		if(increaseCount > 0) {
 			Board b = boardService.helpmeSelectBoard(boardNo);
-			model.addAttribute("b",b);
+			System.out.println(b);
+			session.setAttribute("b", b);
 			return "board/requestHelpmeDetail";
 		} else {
 			model.addAttribute("errorMsg", "게시글 조회 실패");
@@ -621,6 +641,41 @@ public class BoardController {
 			return "common/errorPage";
 		}
 	}
+	
+	//도와주세요 날짜순으로 보이게 하는 리스트
+	@RequestMapping(value = "helpmeDateList", method = RequestMethod.GET)
+	public ModelAndView helpmeDateList(@RequestParam(value="cpage", defaultValue="1") int currentPage, Board b, ModelAndView mv) {
+		int listCount = boardService.helpmeDateCheckCount();
+
+		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
+
+		ArrayList<Board> dateList = boardService.helpmeDateCheck(b, pi);
+	        
+		mv.addObject("list", dateList);
+		mv.addObject("pi", pi);
+		mv.addObject("mType", "helpmeDateList");
+		mv.setViewName("board/requestBoardList");
+		
+		return mv;
+	}
+	
+	 //도와주세요 조회순 리스트 컨트롤러
+	 @RequestMapping(value = "helpmeReferenceList", method = RequestMethod.GET)
+	 public ModelAndView helpmeReferenceList(@RequestParam(value="cpage", defaultValue="1") int currentPage, Board b, ModelAndView mv) {
+		 int listCount = boardService.helpmeReferenceCount();
+		 
+		 PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
+
+	     ArrayList<Board> referenceList = boardService.helpmeReference(b, pi);
+	     System.out.println("조회순 리스트" +referenceList);
+	     
+	     mv.addObject("list", referenceList);
+	     mv.addObject("pi", pi);
+	     mv.addObject("mType", "helpmeReferenceList");
+	     mv.setViewName("board/requestBoardList");
+
+	     return mv;
+	 }
 	
 	
 //	스크립트 기능 후 가진 정보 보내주는 기능 

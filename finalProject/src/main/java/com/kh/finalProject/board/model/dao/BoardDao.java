@@ -262,7 +262,48 @@ public class BoardDao {
 		return sqlSession.update("boardMapper.updateNReplyLikey", r);
 	}
 	
+	public ArrayList<Board> helpReference(SqlSessionTemplate sqlSession, Board b, PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		return (ArrayList)sqlSession.selectList("boardMapper.helpReference",null, rowBounds);
+	}
+	
+	public int helpReferenceCount(SqlSessionTemplate sqlSeesion) {
+		return sqlSeesion.selectOne("boardMapper.helpReferenceCount");
+	}
+	
+	public ArrayList<Board> helpmeDateCheck(SqlSessionTemplate sqlSession, Board b, PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		return (ArrayList)sqlSession.selectList("boardMapper.helpmeDateCheck",null, rowBounds);
+	}
+	
+	public int helpmeDateCheckCount(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("boardMapper.helpmeDateCheckCount");
+	}
+	
+	public int helpincreaseCount(SqlSessionTemplate sqlSession, int boardNo) {
+		return sqlSession.update("boardMapper.helpincreaseCount", boardNo);
+	}
+	
+	public ArrayList<Board> helpmeReference(SqlSessionTemplate sqlSession, Board b, PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		return (ArrayList)sqlSession.selectList("boardMapper.helpmeReference",null, rowBounds);
+	}
+	
+	public int helpmeReferenceCount(SqlSessionTemplate sqlSeesion) {
+		return sqlSeesion.selectOne("boardMapper.helpmeReferenceCount");
+	}
+
 	public ArrayList<Category> selectCategoryList(SqlSessionTemplate sqlSession){
 		return (ArrayList)sqlSession.selectList("boardMapper.selectCategoryList");
 	}
+
 }

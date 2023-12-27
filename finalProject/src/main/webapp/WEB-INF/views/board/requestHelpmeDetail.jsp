@@ -256,15 +256,20 @@ input[type=file]::file-selector-button {
     resize:none; 
     width:100%;
 }
-</style>
 
+.img{
+	width:50px;
+	height: 50px;
+}
+</style>
+<script src="${pageContext.request.contextPath}/resources/js/helpmeboder.js"></script>
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
 
 <div class="helpme-board">
     <div class="helpu-top-section">
-        <img class="hu-close-btn" src="././resources/icon/close.png">
+        <img class="hu-close-btn" src="././resources/icon/close.png" onclick="resetList()">
             <div class="hu-top-section">
                 <p style="margin-bottom: 2rem; font-weight: bold; font-size: 16px;">도와주세요 상세보기</p>
             </div>
@@ -308,7 +313,10 @@ input[type=file]::file-selector-button {
 		      <td>
 		      <td>
 		      <td>
-		      <td><img src="${at.changeName}"></td>
+		      <td>
+		      <input type="hidden" value="${b.changeName}">
+		      <img class="img" src="${b.changeName}">
+		      </td>
 		    </tr>
 		    
 		    <tr>
@@ -327,6 +335,15 @@ input[type=file]::file-selector-button {
 		      <td>
 		      <td>
 		      <td>${b.boardType}</td>
+		    </tr>
+		    
+		    <tr>
+		    	<th scope="row">조회 수</th>
+		    	<td>
+		        <td>
+		        <td>
+		        <td>
+		    	<td><span>${b.viewCount}</span></td>
 		    </tr>
 		    
 		  </tbody>
@@ -348,16 +365,20 @@ input[type=file]::file-selector-button {
         </form>
         
         
-        <script>
+        <!-- <script>
         	function postBtn(num) {
                 if(num === 1) {
-                    $("#form").attr('action', 'helpUpdateForm.bo');
+                    $("#form").attr('action', 'helpmeUpdateForm.bo');
                 } else {
-                    $("#form").attr('action', 'helpDelete.bo');
+                    $("#form").attr('action', 'helpmeDelete.bo');
                 }
                 $("#form").submit();
             } 	
-        </script>
+        	
+        	function resetList() {
+        		location.href = "helpmeList.bo";
+        	}
+        </script> -->
 
     </div>
 
