@@ -25,7 +25,6 @@ public class Member {
 	private String memberPwd;
 	private String memberName;
 	private String memberConcern;
-	private int memberPro;
 	private String phone;
 	private String location;
 	private String status;
@@ -35,4 +34,7 @@ public class Member {
 	private int account;
 	private String intro;
 	private Date enrollDate;
+	private int skillNo;
+	
+	private String skillName;
 }

@@ -1,7 +1,6 @@
 package com.kh.finalProject.member.model.service;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,7 @@ import com.kh.finalProject.common.vo.Schedule;
 import com.kh.finalProject.mail.EmailCheck;
 import com.kh.finalProject.member.model.dao.MemberDao;
 import com.kh.finalProject.member.model.vo.Member;
-import com.kh.finalProject.member.model.vo.Professional;
+import com.kh.finalProject.member.model.vo.Skill;
 import com.kh.finalProject.pay.model.vo.Pay;
 
 @Service
@@ -45,8 +44,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public Professional proInfo(Member m) {
-		return memberDao.proInfo(sqlSession, m);
+	public ArrayList<Skill> skillInfo() {
+		return memberDao.skillInfo(sqlSession);
 	}
 
 	@Override
@@ -167,5 +166,4 @@ public class MemberServiceImpl implements MemberService {
 	public int updatePhone(Member m) {
 		return memberDao.updatePhone(sqlSession, m);
 	}
-
 }

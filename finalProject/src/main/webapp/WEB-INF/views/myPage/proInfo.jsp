@@ -178,8 +178,8 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 								<tr>
 									<td>
 										<div class="normal-input-box">
-											<input class="info-input" value="자격증정보 api? / 데이터베이스 직접?" readonly="readonly">
-											<button class="btn" style="display: flex; font-size: 12px;" onclick="payAdd()">저장하기</button>
+											<input class="info-input" value="${loginUser.skillName}" readonly="readonly">
+											<button class="btn" type="button" style="display: flex; font-size: 12px;" onclick="skillAdd()">선택하기</button>
 										</div>
 									</td>
 								</tr>
@@ -283,6 +283,10 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 			  });
 			  
 			  
+		}
+		
+		function skillAdd() {
+			console.log('눌림ㅋ');
 		}
 	</script>	   
 </body>

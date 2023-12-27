@@ -11,7 +11,7 @@ import com.kh.finalProject.common.vo.Reason;
 import com.kh.finalProject.common.vo.Schedule;
 import com.kh.finalProject.mail.EmailCheck;
 import com.kh.finalProject.member.model.vo.Member;
-import com.kh.finalProject.member.model.vo.Professional;
+import com.kh.finalProject.member.model.vo.Skill;
 import com.kh.finalProject.pay.model.vo.Pay;
 
 @Repository
@@ -43,8 +43,8 @@ public class MemberDao {
 		return sqlSession.update("memberMapper.updateUserInfo", m);
 	}
 	
-	public Professional proInfo(SqlSessionTemplate sqlSession, Member m) {
-		return sqlSession.selectOne("memberMapper.proInfo", m);
+	public ArrayList<Skill> skillInfo(SqlSessionTemplate sqlSession) {
+		return (ArrayList)sqlSession.selectList("memberMapper.skillInfo");
 	}
 	
 	public int updateProInfo(SqlSessionTemplate sqlSession, Member m) {

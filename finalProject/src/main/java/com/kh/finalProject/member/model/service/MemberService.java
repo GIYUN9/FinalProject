@@ -6,7 +6,7 @@ import com.kh.finalProject.common.vo.Reason;
 import com.kh.finalProject.common.vo.Schedule;
 import com.kh.finalProject.mail.EmailCheck;
 import com.kh.finalProject.member.model.vo.Member;
-import com.kh.finalProject.member.model.vo.Professional;
+import com.kh.finalProject.member.model.vo.Skill;
 import com.kh.finalProject.pay.model.vo.Pay;
 
 public interface MemberService {
@@ -32,7 +32,7 @@ public interface MemberService {
 	Member loginMember(Member m);
 	
 	// 회원정보들고 프로페셔널 테이블 조회 서비스(select)
-	Professional proInfo(Member m);
+	ArrayList<Skill> skillInfo();
 	
 	// 회원정보 + 자기소개INTRO컬럼 들고 수정 서비스
 	// 전문 분야 및 상세 분야 추가해야함(보류상태)
