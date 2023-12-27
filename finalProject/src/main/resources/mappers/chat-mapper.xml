@@ -17,11 +17,11 @@
   		<result column="TITLE" property="title" />
   		<result column="STATUS" property="status" />
   		<result column="MEM_NO" property="memberNo" />
-  		<result column="MEM_NO" property="memberCount" />
-  		<result column="MEM_NO" property="lastMsgNo" />
-  		<result column="MEM_NO" property="lastChatTime" />
-  		<result column="MEM_NO" property="chatCount" />
-  		<result column="MEM_NO" property="memberName" />
+  		<result column="MEM_COUNT" property="memberCount" />
+  		<result column="LAST_MSG_NO" property="lastMsgNo" />
+  		<result column="LAST_CHAT_TIME" property="lastChatTime" />
+  		<result column=" CHAT_COUNT" property="chatCount" />
+  		<result column="MEM_NAME" property="memberName" />
   	</resultMap>
  	
  	<select id="chattingRoomList" resultMap="chatRoomResult">
@@ -35,7 +35,7 @@
 		   JOIN CHATROOMJOIN CRJ ON (CR.CHAT_ROOM_NO = CRJ.CHAT_ROOM_NO)
 		   JOIN MEMBER M ON (CRJ.MEM_NO = M.MEM_NO)
 		  WHERE CR.STATUS = 'Y'
-		  AND CRJ.MEM_NO != #{memberNo}
+		  AND CRJ.MEM_NO = #{memberNo}
 	</select>
 	 	<!-- 
 		SELECT *

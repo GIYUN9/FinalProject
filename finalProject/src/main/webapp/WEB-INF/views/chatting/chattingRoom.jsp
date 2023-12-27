@@ -127,9 +127,9 @@
                             <div class="chatRoom-section">
                                 <div class="chatRoom-info">
                                     <div class="chatRoom-detail-title">
-										${cr.title}
+										${cr.title}-${cr.memberName }
                                         <div class="chatRoom-MemberCount">
-											${memberCount }
+											${cr.memberCount }
                                         </div>
                                     </div>
                                     <div class="last-chat">
@@ -138,10 +138,10 @@
                                 </div>
                                 <div class="chatRoom-lastChat-info">
                                     <div class="last-chatTime">
-										반복문 마지막
+										${cr.lastChatTime}
                                     </div>
                                     <div class="last-chatCount">
-										반복문 채팅 수
+										${cr.chatCount}
                                     </div>
                                 </div>
                             </div>
