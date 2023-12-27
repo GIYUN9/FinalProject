@@ -19,5 +19,7 @@ public class Attachment {
 	private String changeName;
 	private String filePath;
 	private String status;
+	private int fileLevel;
+	
 	private int boardNo;
 }

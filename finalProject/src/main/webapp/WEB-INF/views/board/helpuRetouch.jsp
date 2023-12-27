@@ -276,10 +276,11 @@
                                 </label>
                                 <div class="hu-uploaded">
                                     <input class="hu-filename" type=text id="fileName" name="reupfile">
+        
                                     <div class="dd">
                                         파일첨부
                                     </div>
-                                    <input id="hu-upfile" class="hu-upfile" type="file" name="reupfile" style="display: none;" onchange="javascript:document.getElementById('fileName').value = this.value">
+                                    <input id="hu-upfile" class="hu-upfile" type="file" name="reupfile" style="display: none;" onchange="javascript:document.getElementById('fileName').value = this.value" >
                                 </div>
                                 
                             </div>   

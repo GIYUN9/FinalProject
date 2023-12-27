@@ -21,6 +21,8 @@
   		<result column="LIKEY_COUNT" property="likeyCount" />
   		<result column="LISTATUS" property="liStatus" />
   		<result column="VIEW_COUNT" property="viewCount" />
+  		<result column="ORIGIN_NAME" property="originName" />
+  		<result column="CHANGE_NAME" property="changeName" />
   	</resultMap>
   	
   	<resultMap type="Attachment" id="attachmentResult">
@@ -283,7 +285,9 @@
 				B.STATUS,
 				B.MEM_NO,
                 M.LOCATION,
-				B.CATEGORY_NO
+				B.CATEGORY_NO,
+				B.LIKEY_COUNT,
+				B.VIEW_COUNT
 				FROM BOARD B
         JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
 		WHERE B.BOARD_TYPE <![CDATA[>]]>= 3
@@ -658,7 +662,8 @@
 					MEM_NO,
 					BOARD_NO,
 					CREATEDATE,
-					STATUS		
+					STATUS,
+					RELIKEY_COUNT		
             		)
 		VALUES(
 		        SEQ_RNO.NEXTVAL,
@@ -666,7 +671,8 @@
 		        #{memberNo},
 		        #{boardNo},
 		        SYSDATE,
-		        'Y'
+		        'Y',
+		        0
 		        )
   	</insert>
   	<select id="selectReplyList" resultMap="replyResult">
@@ -674,7 +680,8 @@
 				R.REPLY_CONTENT,
 				M.MEM_NAME,
 				R.CREATEDATE,
-				M.FILE_PATH    		        
+				M.FILE_PATH,
+				R.RELIKEY_COUNT    		        
 		FROM	REPLY R	
 		JOIN MEMBER M ON (R.MEM_NO = M.MEM_NO) 
 		WHERE R.STATUS = 'Y'
