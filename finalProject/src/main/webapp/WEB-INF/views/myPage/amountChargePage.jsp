@@ -8,131 +8,7 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-	.box{
-		background-color: rgba(60, 59, 59, 0.27);
-		display: flex;
-		padding-left: 20px;
-	}
-	
-	.kakao-pay-btn{
-		border: none;
-		background: rgb(58, 29, 0);
-    	color: white;	
-		border-radius: 8px;
-		padding: 13px;
-		font-weight: bold;
-		margin-top: 30px;
-	}
-	.pay-box{
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		background: rgb(255,235,0);
-    	border-radius: 8px;
-		padding: 30px;
-		margin-top: 100px;
-		margin-bottom: 500px;
-		width: 750px;
-		height: max-content;
-		position: relative;
-	}
-	#price{
-		border-radius: 8px;
-		border: 1px solid rgba(96, 96, 96, 0.5);
-		text-align: end;
-		height: 40px;
-		width: 400px;
-		margin-top: 10px;
-		margin-bottom: 10px;
-		padding-right: 45px;
-	}
-	.charging-Fee{
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		margin-top: 50px;
-		font-weight: 600;
-	}
-	.pay-page{
-		display: flex;
-		width: 100%;
-		align-items: center;
-		justify-content: center;
-	}
-	.point{
-		font-weight: bold;
-		border-radius: 8px;
-		height: 35px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-size: 35px;
-	}
-	.owned-point{
-		text-align: center;
-		font-weight: bold;
-		display: flex;
-		justify-content: center;
-		flex-direction: row;
-		align-items: center;
-	}
-	.kakao-logo{
-		height: 150px;
-		width: 160px;
-		margin: 15px;
-		margin-top: -10px;
-	}
-	.text-kakaopay{
-		align-items: center;
-		text-align: center;
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-	}
-	.text-kakao{
-		font-weight: 600;
-		margin-right: 5px;
-	}
-	.text-pay{
-		font-weight: bold;
-	}
-	.pay-close-btn{
-		width: 12px;
-		height: 12px;
-		position: absolute;
-		top: 12px;
-		right: 12px;
-		cursor: pointer;
-	}
-	.setprice-btn-area{
-		display: flex;
-		justify-content: space-between;
-		width: 100%;
-	}
-	.setprice-btn{
-		border: none;
-		background: none;
-		font-weight: 500;
-		cursor: pointer;
-		font-size: 14px;
-	}
-	.setprice-btn:focus{
-		outline: none;
-	}
-	.price-measure{
-		position: absolute;
-		top: 19px;
-		right: 26px;	
-	}
-	#price::-webkit-inner-spin-button {
-		appearance: none;
-		-moz-appearance: none;
-		-webkit-appearance: none;
-	}
-</style>
+<link rel="stylesheet" href="././resources/css/amountChargePage.css">
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
@@ -148,10 +24,10 @@
 					<img class="kakao-logo" src="./resources/icon/kakaochatbox.png" alt="">
 				</div>
 				<div>
-						<div class="owned-point">
-							<div style="font-size: 18px;">${loginUser.memberName}</div>
-							<div>님이 보유중인 포인트 </div>
-						</div>
+					<div class="owned-point">
+						<div style="font-size: 18px;">${loginUser.memberName}</div>
+						<div>님이 보유중인 포인트 </div>
+					</div>
 					<div class="point">
 						${loginUser.account}P
 					</div>
@@ -167,11 +43,11 @@
 						</div>
 					</div>
 					<div class="setprice-btn-area">
-						<button class="setprice-btn" value="1000">+1,000원</button>
-						<button class="setprice-btn" value="5000">+5,000원</button>
-						<button class="setprice-btn" value="10000">+10,000원</button>
-						<button class="setprice-btn" value="50000">+50,000원</button>
-						<button class="setprice-btn" value="100000">+100,000원</button>
+						<button class="setprice-btn" value="1000">1,000원</button>
+						<button class="setprice-btn" value="5000">5,000원</button>
+						<button class="setprice-btn" value="10000">10,000원</button>
+						<button class="setprice-btn" value="50000">50,000원</button>
+						<button class="setprice-btn" value="100000">100,000원</button>
 					</div>
 				</div>
 				<button class="kakao-pay-btn" onclick="kakaopay()" value="">결제하기</button>
@@ -179,9 +55,8 @@
 		</div>
 	</div>
 	<jsp:include page="../common/footer.jsp" />
-</body>
-<script>
-	const loginUserAccount = "${loginUser.account}";
+<script src="/finalProject/resources/js/amountChargePage.js">
+		const loginUserAccount = "${loginUser.account}";
 	$(document).ready(function() {
 		// loginUser.account 값을 가져와서 포맷
 		const formattedAccount = PriceComma(loginUserAccount);
@@ -190,44 +65,6 @@
 		$('.point').text(formattedAccount + 'P');
 	});
 
-
-	function kakaopay() {
-		let priceValue = document.querySelector("#price").value.replace(/,/g, '');
-		console.log( "payvalue = " + priceValue);
-		
-		$.ajax({
-			url : 'kakaopay.me',
-			dataType: 'json',
-			data:{
-				price : priceValue,
-				memberNo : document.querySelector("#memberNo").value
-			},
-			success:function(data){
-				var box = data.next_redirect_pc_url;
-				location.href = box;
-			},
-			error:function(error){
-				alert('결제시도 에러');
-			}
-		})
-	}
-
-	function prevAction(){
-            history.go(-1);
-    }
-
-	$('.setprice-btn').on('click', (e) => {
-		console.log(e.target.value);
-		const setPriceValue = e.target.value;
-		const commaPrice = PriceComma(setPriceValue);
-		$('#price')[0].value = commaPrice;
-		setButtonText();
-	});
-	function PriceComma(number) {
-		return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	}
-	function setButtonText() {
-        $('.kakao-pay-btn').text($('#price').val() + '원 결제하기');
-    }
 </script>
+</body>
 </html>

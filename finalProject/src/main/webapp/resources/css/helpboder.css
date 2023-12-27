@@ -1,0 +1,438 @@
+/* 도와줄게요 전체 게시판 css(helpBoardList.jsp) */
+* {
+    list-style: none; 
+    text-decoration: none;
+    border-collapse: collapse;
+    margin: 0px;
+    padding: 0px;
+}
+
+.nav{
+    height: 70px;
+    display: flex;
+    align-items: center;
+    margin-top: 70px;
+}
+
+.nav-center-items{
+    display: flex;
+    margin: auto;
+}
+
+.nav-item{
+    font-size: 18px;
+    height: 40px;
+    
+    padding-left: 70px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+.content-item:hover{
+    background-color: rgba(255, 255, 255, 0.22);
+}
+
+
+/* a::after{
+    display:block;
+    content: '';
+    border-bottom: solid 3px #ffffff;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+}
+
+.nav:hover::after{
+    transform: scaleX(1);
+} */
+
+a:after {
+    display:block;
+    content: '';
+    border-bottom: solid 2px #ffffff;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+ }
+a:hover:after { transform: scaleX(1); }
+
+.nav-item > a{
+    color: white;
+}
+
+.category{
+    width: 70px; 
+    text-align: center;  
+}
+
+.category-item {
+    margin-top: 20px;   
+}
+
+.category-item > a{
+    margin-top: 150px;
+    font-weight: bold; 
+    color: white;
+    font-size: 14px;
+}
+
+.main{
+    display: flex;    
+    width: 1300px;  
+    height: 700px;
+    border: 1px;
+    margin: 0 auto;
+}
+
+.content{
+    width: 1100px;
+    height: auto;
+    border: 1px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.content-item{
+    display: inline-block;
+    width: 240px;
+    height: 270px;
+    border: 1px ;     
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-right: 15px;
+    background-color: rgba(83, 82, 82, 0.65)
+}
+
+.content-img{
+    height: 150px;
+    padding-top: 15px;
+    width: 200px;
+    text-align: center;
+    
+}
+
+.content-item-title{
+    padding-top: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+}
+
+.content-item-price{
+    font-size: 14px;
+    font-weight: bold;
+    text-align: right;
+    padding-top: 40px;
+    padding-right: 15px;
+    color: white;
+}
+
+.content-head{
+    display: flex;
+    justify-content: space-between;
+}
+
+.head-count{
+    text-align: right;
+    color: white;
+    font-size: 13px;
+    padding-left: 40px;
+    font-weight: bold;
+}
+
+.back-ground{
+    width : 100%;
+    background-color:rgba(60, 59, 59, 0.27);
+}
+  
+#head-category{
+    padding-right: 50px;
+}
+
+#category-item {
+    color: white;
+    font-size: 14px;
+    border: none;
+    background-color: transparent; 
+}
+
+.aaa{
+    width: 95px;
+    padding: 9px;
+    border-radius: 8px;
+    color: white;
+}
+
+#category-item > option{
+    background-color: rgba(83, 82, 82, 0.65);
+}
+.write-btn{
+    color: white;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.write-area{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    text-align: center;
+}
+
+.pagination{
+    justify-content: center;
+    margin-top: 30px;
+}
+.arrow-img{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 98px;
+}
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+page-item disable {
+    background: transparent;    
+}
+
+/* 도와줄게요 게시글 작성 css(helpu.jsp) */
+*,
+*::before,
+*::after {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body{
+	background: url('././resources/image/main.png') no-repeat center center fixed; 
+  	background-size: cover;		
+}
+.helpme-board{
+    background-color: white;
+    width: 700px;
+    height: 100%;
+    margin-left: 30%;
+    margin-top: 7%;
+    margin-bottom: 10%;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+    .helpu-top-section{
+        display: flex;
+        padding: 10px;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        margin-top: 15px;
+    }
+    .hu-close-btn{
+        width: 10px;
+        right: 20px;
+        position: absolute;
+        cursor: pointer;
+        top: 0px;
+	}
+    .hu-submit-btn{
+        background: rgb(218, 76, 60);
+        border: none;
+        border-radius: 4px;
+        width: 100px;
+        height: 30px;
+        color: white;
+        cursor: pointer;
+        margin: 7px;
+    }
+    .hu-cancle-btn{
+        background-color: rgba(224, 224, 224, 0.5);
+        border: 1px solid rgba(224, 224, 224, 0.5);
+        border-radius: 4px;
+        width: 100px;
+        height: 30px;
+        margin: 7px;
+        cursor: pointer;
+    }
+    .hu-title{
+        width: 300px;
+        height: 20px;
+        border: 1px solid rgba(96, 96, 96, 0.5);
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+    .hu-content{
+        width: 300px;
+        height: 157px;
+        padding: 10px;
+        padding-bottom: 130px;
+        border: 1px solid rgba(96, 96, 96, 0.5);
+        border-radius: 8px;
+        margin-bottom: 15px;
+        resize: none;
+        overflow: hidden;
+    }
+    .hu-upfile{
+        width: 300px;
+        height: 32px;
+        border: 1px solid rgba(96, 96, 96, 0.5);
+        border-radius: 8px;
+        margin-bottom: 0px;
+        display: flex;
+        font-size: 14px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    input[type=file]::file-selector-button {
+        width: 150px;
+        height: 30px;
+        background: #fff;
+        border: 0px solid rgb(77,77,77);
+        margin-left: 70px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 12px;
+    }
+    .hu-price{
+        width: 300px;
+        height: 27px;
+        border: 1px solid rgba(96, 96, 96, 0.5);
+        border-radius: 8px;
+        margin-bottom: 15px;
+        text-align: end;
+        padding-right: 26px;    
+    }
+    .hu-input-area{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+    .hu-align{
+        display: flex;
+        flex-direction: row;
+    }
+    .hu-text{
+        position: relative;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        left: -202px;
+        font-weight: bold;
+        display: flex;
+    }
+    .hu-top-section{
+        margin-bottom: 30px;
+    }
+    .hu-btn-area{
+        display: flex;
+        flex-direction: row;
+        margin-top: 15px;
+        margin-left: 30px;
+    }
+    /* .aa{
+
+    } */
+    .bb{
+        position: absolute;
+        left: -71px;
+        top: 1px;
+        font-size: 13px;
+        font-weight: bolder;
+    }
+    .cc{
+        position: absolute;
+        left: -71px;
+        top: 37px;
+        font-size: 13px;
+        font-weight: bolder;
+    }
+    .dd{
+        position: absolute;
+        left: -86px;
+        font-size: 13px;
+        font-weight: bolder;
+        top: 219px;
+    }
+    .ee{
+        position: absolute;
+        left: -86px;
+        top: 287px;
+        font-size: 13px;
+        font-weight: bolder;
+    }
+    .clip-img{
+        width: 30px;
+        position: absolute;
+        left: 96px;
+    height: 30px;
+    bottom: 100px;
+    }
+    .upfile-text{
+        width: 100%;
+    }
+    .hu-uploaded{
+        margin-bottom: 18px;
+        font-size: 12px;
+    }
+    .price-measure2{
+        position: absolute;
+        right: 12px;
+        font-size: 13px;
+        top: 286px;
+        font-weight: bold;
+    }
+    .hu-filename{
+        border: none;
+    }
+    
+    .cate-no{
+    	position: absolute;
+	    top: -35px;
+	    left: -100px;
+	    font-weight: bold;
+	    font-size: 13px;
+    }
+    
+    .hu-category{
+   		width: 300px;
+	    height: 20px;
+	    border: 1px solid rgba(96, 96, 96, 0.5);
+	    border-radius: 8px;
+	    position: absolute;
+	    top: -36px;
+    }
+    #category-check{
+    	width: 100%;
+	    position: absolute;
+        left: -1px;
+	    top: -36px;
+	    border-radius: 8px;
+	    height: 21px;
+    }
+    
+    /* #boardType-check{
+    } */
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    /* 도와줄게요 게시글 수정 css(helpuRetouch.jsp) */
+    
+    .price-measure3{
+        position: absolute;
+        right: 12px;
+        font-size: 13px;
+        top: 284px;
+        font-weight: bold;
+    }

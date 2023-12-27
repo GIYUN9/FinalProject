@@ -541,7 +541,17 @@
     
 
 </style>
+.helpr-text{
+    resize:none; 
+    width:100%;
+}
 
+.img{
+	width:50px;
+	height: 50px;
+}
+</style>
+<script src="${pageContext.request.contextPath}/resources/js/helpmeboder.js"></script>
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
@@ -661,6 +671,88 @@
                     
                 </div>
                 <button id = "content-btn">구매하기</button>
+
+<div class="helpme-board">
+    <div class="helpu-top-section">
+        <img class="hu-close-btn" src="././resources/icon/close.png" onclick="resetList()">
+            <div class="hu-top-section">
+                <p style="margin-bottom: 2rem; font-weight: bold; font-size: 16px;">도와주세요 상세보기</p>
+            </div>
+        
+        <div class="hu-align">
+            <div class="hu-input-area">
+            
+      <table class="table">
+		  <tbody>
+		  
+		    <tr>
+		      <th scope="row">카테고리 번호</th>
+		      <td>
+		      <td>
+		      <td>
+		      <td>
+		      <td>${b.categoryNo}</td>
+		    </tr>
+		    
+		    <tr>
+		      <th scope="row">제목</th>
+		      <td>
+		      <td>
+		      <td>
+		      <td>
+		      <td>${b.boardTitle}</td>
+		    </tr>
+		    
+		    <tr>
+		      <th scope="row">내용</th>
+		      <td>
+		      <td>
+		      <td>
+		      <td>
+		      <td>${b.boardContent}</td>
+		    </tr>
+		    
+		    <tr>
+		      <th scope="row">파일첨부</th>
+		      <td>
+		      <td>
+		      <td>
+		      <td>
+		      <td>
+		      <input type="hidden" value="${b.changeName}">
+		      <img class="img" src="${b.changeName}">
+		      </td>
+		    </tr>
+		    
+		    <tr>
+		      <th scope="row">희망가격</th>
+		      <td>
+		      <td>
+		      <td>
+		      <td>
+		      <td>${b.price}</td>
+		    </tr>
+		    
+		    <tr>
+		      <th scope="row">게시판 번호</th>
+		      <td>
+		      <td>
+		      <td>
+		      <td>
+		      <td>${b.boardType}</td>
+		    </tr>
+		    
+		    <tr>
+		    	<th scope="row">조회 수</th>
+		    	<td>
+		        <td>
+		        <td>
+		        <td>
+		    	<td><span>${b.viewCount}</span></td>
+		    </tr>
+		    
+		  </tbody>
+	 </table>
             </div>
         </div>
    </div>
@@ -679,16 +771,20 @@
         </form>
         
         
-        <script>
+        <!-- <script>
         	function postBtn(num) {
                 if(num === 1) {
-                    $("#form").attr('action', 'helpUpdateForm.bo');
+                    $("#form").attr('action', 'helpmeUpdateForm.bo');
                 } else {
-                    $("#form").attr('action', 'helpDelete.bo');
+                    $("#form").attr('action', 'helpmeDelete.bo');
                 }
                 $("#form").submit();
             } 	
-        </script>
+        	
+        	function resetList() {
+        		location.href = "helpmeList.bo";
+        	}
+        </script> -->
 
     </div>
 
