@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>도와줄게요 게시글 작성</title>
 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/helpboder.css">
+<link rel="stylesheet" type="text/css" href="././resources/css/helpboder.css">
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>

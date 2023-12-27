@@ -1,5 +1,6 @@
 //helpBoardList.jsp의 날짜순, 조회순 클릭시 실행되는 스크립트
-const select = document.querySelector('#category-item');
+
+ const select = document.querySelector('#category-item');
 select.addEventListener('change', () => {
     if(select.value == 'date'){
     	console.log('date 날짜순')

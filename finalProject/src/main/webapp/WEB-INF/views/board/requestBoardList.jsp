@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>도와주세요 전체 게시판</title>
 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/helpmeboder.css">
+<link rel="stylesheet" type="text/css" href="././resources/css/helpmeboder.css">
 
 </head>
 <body>

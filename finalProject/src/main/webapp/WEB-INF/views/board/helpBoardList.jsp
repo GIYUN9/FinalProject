@@ -9,9 +9,9 @@
 <title>도와줄게요 전체 게시판</title>
 
 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/helpboder.css">
+<link rel="stylesheet" type="text/css" href="././resources/css/helpboder.css">
 
-<!-- <script src="${pageContext.request.contextPath}/resources/js/helpboder.js"></script> -->
+<!--  <script type="text/javascript" src="././resources/js/helpboder.js"></script> -->
 
 </head>
 <body>

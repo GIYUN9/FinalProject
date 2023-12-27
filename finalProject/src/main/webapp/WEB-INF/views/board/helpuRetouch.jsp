@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>도와줄게요 게시글 수정</title>
 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/helpboder.css">
+<link rel="stylesheet" type="text/css" href="././resources/css/helpboder.css">
 
 </head>
 <body>
