@@ -1,5 +1,7 @@
 package com.kh.finalProject.member.model.vo;
 
+import java.sql.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,9 +13,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Professional {
-	private int proNo;
-	private String proJob;
-	private int categoryNo;
-	private int memberNo;
+public class Skill {
+	private int skillNo;
+	private String skillName;
 }
