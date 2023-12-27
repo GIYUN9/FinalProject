@@ -97,7 +97,6 @@ public class MemberController {
 	@RequestMapping(value = "/updateProInfo.me")
 	public String updateProInfo(Member m, Skill s, HttpSession session) {
 		int result = memberService.updateProInfo(m);
-		session.setAttribute("m", m);
 		// 전문 분야 및 상세 분야 보류 여기에 추가해야함
 		// int result = memberService.updateUserInfo(m, p); ~~~
 		return "redirect:/proInfo.me";
