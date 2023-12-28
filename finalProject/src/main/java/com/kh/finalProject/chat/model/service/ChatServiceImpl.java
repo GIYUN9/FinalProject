@@ -20,15 +20,21 @@ public class ChatServiceImpl implements ChatService{
 	private ChatDao chatDao;
 
 	@Override
-	public Message messageLoad(Message m) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ArrayList<ChattingRoom> chattingRoomList(ChattingRoom cr) {
 		ArrayList<ChattingRoom> chattingRoomList = chatDao.chattingRoomList(sqlSession, cr);
 		return chattingRoomList;
+	}
+
+	@Override
+	public ArrayList<ChattingRoom> senderInfo(int chatRoomNo, int memberNo) {
+		ArrayList<ChattingRoom> senderInfo = chatDao.senderInfo(sqlSession, chatRoomNo, memberNo);
+		return senderInfo;
+	}
+
+	@Override
+	public ArrayList<Message> msgList(Message msg) {
+		ArrayList<Message> msgList = chatDao.msgList(sqlSession, msg);
+		return msgList;
 	}
 	
 	
