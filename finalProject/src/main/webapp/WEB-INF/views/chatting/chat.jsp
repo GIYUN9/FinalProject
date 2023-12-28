@@ -26,6 +26,48 @@
         </div>
     </header>
     <div class="chat-area">
+		<c:forEach var="msg" items="${msgList}">
+			<c:choose>
+				<c:when test="${msg.senderNo eq loginUser.memberNo}">
+					<div class="box2">
+			        	<div class="chatbox-right">
+							${msg.msg} ${msg.memberName}
+			                <div class="chat-time-right-load">
+					             <script>
+				                    var timestamp = new Date('${msg.createDate}');
+				                    var formattedTime = new Intl.DateTimeFormat('ko-KR', {
+				                        hour: 'numeric',
+				                        minute: 'numeric',
+				                        hour12: true  // 12시간 형식 사용
+				                    }).format(timestamp);
+				                    document.write(formattedTime);
+				                </script>
+			                </div>
+			                <div class="chat-count-right-load">안읽음</div>
+			            </div>
+					</div>	
+				</c:when>
+				<c:otherwise>
+					<div class="box">
+			        	<div class="chatbox">
+							${msg.msg}
+			                <div class="chat-time">
+					             <script>
+				                    var timestamp = new Date('${msg.createDate}');
+				                    var formattedTime = new Intl.DateTimeFormat('ko-KR', {
+				                        hour: 'numeric',
+				                        minute: 'numeric',
+				                        hour12: true  // 12시간 형식 사용
+				                    }).format(timestamp);
+				                    document.write(formattedTime);
+				                </script>
+			                </div>
+			                <div class="chat-count">안읽음</div>
+			            </div>
+					</div>	
+				</c:otherwise>				
+			</c:choose>
+		</c:forEach>
         <!-- <div class="cr-time">2023년 11월 27일 월요일</div>
         <div class="box">
             <div class="chatbot-chatbox">
