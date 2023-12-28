@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,6 +96,23 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 			opacity: 0.5;
 			cursor: pointer;
 		}
+
+		#skillBtn{
+			width: 100%;
+			height: 40px;
+			margin-top: 8px;
+			margin-bottom: 8px;
+			border: none;
+			border-radius: 3px;
+		}
+		#skillBtn:hover{
+			opacity: 0.7;
+			cursor: pointer;
+		}
+
+		.chooseSkilArea::-webkit-scrollbar {
+			display: none;
+		}
 	</style>
 </head>
 <body>
@@ -167,31 +185,31 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 									<td><input type="hidden" id="sample6_detailAddress" placeholder="상세주소"></td>
 								</tr>
 								<th>
-									전문분야 및 상세분야 <br>
+									국가자격증 <br>
 									<span style="font-size: x-small;">
-										최대 3개를 선택해주세요.
-									</span>
-									<span style="font-size: x-small; color: red;">
-										필수
+										품앗이 회원님이 가장 자신있는 자격증 1개만 선택해주세요.
 									</span>
 								</th>
 								<tr>
 									<td>
 										<div class="normal-input-box">
-											<input class="info-input" value="${loginUser.skillName}" readonly="readonly">
+											<input class="info-input" id="showSkillName" value="${loginUser.skillName}" readonly="readonly">
+											<input type="hidden" id="skillNo" name="skillNo" value="${loginUser.skillNo}">
 											<button class="btn" type="button" style="display: flex; font-size: 12px;" onclick="skillAdd()">선택하기</button>
-											<div class="chooseSkilArea" style="display: none; height: 500px; overflow: auto;">
+											<div class="chooseSkilArea" style="display: none; height: 500px; overflow: auto; text-align: -webkit-center;">
 												<br>
-												<table>
+												한국산업인력공단 국가자격증(총 <span style="color: red;">${fn:length(s)}</span>개)
+												<h6 style="font-size: smaller; margin-top: 5px;">자격증 선택 후 아래 수정하기 버튼을 눌러주세요</h6>
+												<hr>
+												<table style="width: 100%;">
 													<thead>
-														<th>자격증이름</th>
-														<th>선택</th>
+														<th style="text-align: -webkit-center;"><input id="findSkill" type="text" style="width: 100%;" placeholder="예) 정보처리기사"></th>
 													</thead>
 													<tbody>
 														<c:forEach var="s" items="${s}">
-															<tr>
-																<td>
-																	${s.skillName}
+															<tr style="display: flex; width: 100%;">
+																<td style="width: 100%;">
+																	<button id="skillBtn" type="button" onclick="inputSkill(`${s.skillNo}`, `${s.skillName}`)" style="width: 100%;">${s.skillName}</button>
 																</td>
 															</tr>
 														</c:forEach>
@@ -304,6 +322,36 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 			const chooseSkilArea = document.getElementsByClassName('chooseSkilArea');
 			chooseSkilArea[0].style.display = 'block';
 		}
+		
+		function inputSkill(no, name) {
+			const inputSkill = document.querySelector('#showSkillName');
+			inputSkill.value = name;
+			const skillNo = document.querySelector('#skillNo');
+			skillNo.value = no;
+		}
+
+		//자격증검색 
+		// findSkill 인풋창에 keyup 이벤트 리스너 등록
+		document.querySelector('#findSkill').addEventListener('keyup', function() {
+			// findSkill 인풋창의 value 가져오기
+			const searchText = this.value.toLowerCase();
+
+			// skillBtn 버튼들 가져오기
+			const skillBtns = document.querySelectorAll('#skillBtn');
+
+			// 각 skillBtn 버튼에 대해 반복
+			skillBtns.forEach(function(skillBtn) {
+				// skillBtn 버튼의 value 가져오기
+				const skillName = skillBtn.textContent.toLowerCase();
+
+				// searchText가 skillName에 포함되는지 확인
+				const isMatch = skillName.includes(searchText);
+
+				// 일치하면 버튼 보이기, 일치하지 않으면 숨기기
+				skillBtn.style.display = isMatch ? 'block' : 'none';
+			});
+		});
+
 	</script>	   
 </body>
 </html>

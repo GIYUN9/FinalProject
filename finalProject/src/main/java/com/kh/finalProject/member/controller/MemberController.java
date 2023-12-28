@@ -95,7 +95,8 @@ public class MemberController {
 	
 	//멤버 전문가페이지에서 수정하고 다시 페이지를 부르는 컨트롤러
 	@RequestMapping(value = "/updateProInfo.me")
-	public String updateProInfo(Member m, Skill s, HttpSession session) {
+	public String updateProInfo(Member m, HttpSession session) {
+		System.out.println(m);
 		int result = memberService.updateProInfo(m);
 		// 전문 분야 및 상세 분야 보류 여기에 추가해야함
 		// int result = memberService.updateUserInfo(m, p); ~~~
