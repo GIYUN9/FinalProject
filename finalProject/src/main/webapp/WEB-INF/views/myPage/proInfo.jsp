@@ -180,6 +180,25 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 										<div class="normal-input-box">
 											<input class="info-input" value="${loginUser.skillName}" readonly="readonly">
 											<button class="btn" type="button" style="display: flex; font-size: 12px;" onclick="skillAdd()">선택하기</button>
+											<div class="chooseSkilArea" style="display: none; height: 500px; overflow: auto;">
+												<br>
+												<table>
+													<thead>
+														<th>자격증이름</th>
+														<th>선택</th>
+													</thead>
+													<tbody>
+														<c:forEach var="s" items="${s}">
+															<tr>
+																<td>
+																	${s.skillName}
+																</td>
+															</tr>
+														</c:forEach>
+														
+													</tbody>
+												</table>
+											</div>
 										</div>
 									</td>
 								</tr>
@@ -282,7 +301,8 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 		}
 		
 		function skillAdd() {
-			console.log('눌림ㅋ');
+			const chooseSkilArea = document.getElementsByClassName('chooseSkilArea');
+			chooseSkilArea[0].style.display = 'block';
 		}
 	</script>	   
 </body>
