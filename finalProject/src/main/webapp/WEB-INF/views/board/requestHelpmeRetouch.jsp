@@ -47,7 +47,7 @@
                                 <div class="cc">
                                     내용
                                 </div>
-                                <textarea class="hu-content" type="text" name="boardContent">${b.boardContent}</textarea>
+                                <textarea class="hu-content" type="text" name="boardContent"></textarea>
                             </div>  
                       		<div class="aa">
                                 <label class="hu-upfile" for="hu-upfile">
@@ -60,6 +60,7 @@
                                     파일첨부
                                 </div>
                                 <input id="hu-upfile" class="hu-upfile" type="file" name="reupfile" style="display: none;" onchange="javascript:document.getElementById('fileName').value = this.value">
+                                
                             </div>  
                        
                        </div>
