@@ -23,11 +23,23 @@ public interface BoardService {
 	//게시글 상세조회 
 	Board selectBoard(int boardNo);
 	
-	//도와줄게요 날짜순
+	//도와줄게요 보드번호 가져오는 중간 쿼리
+	Board helpselectOne(Board b);
+	
+	//도와줄게요 날짜순 리스트
 	ArrayList<Board> helpDateCheck(Board b, PageInfo pi);
 	
 	//도와줄게요 날짜순 count(*)
 	int helpDateCheckCount();
+	
+	//도와줄게요 조회순 리스트
+	ArrayList<Board> helpReference(Board b, PageInfo pi);
+	
+	//도와줄게요 조회순 count(*)
+	int helpReferenceCount();
+	
+	//도와줄게요 조회순 증가 update
+	int helpincreaseCount(int boardNo);
 	
 	//도와줄게요 리스트조회
 	ArrayList<Board> helpselectList(PageInfo pi);
@@ -79,9 +91,6 @@ public interface BoardService {
 	
 	//얼마예요 리스트 (조회)
 	ArrayList<Board> selectMuchList(PageInfo pi);
-
-	//도와줄게요 보드번호 가져오는 중간 쿼리
-	Board helpselectOne(Board b);
 	
 	//함께해요 게시글 수 (조회)
 	int selectTogetherListCount();
@@ -107,6 +116,18 @@ public interface BoardService {
 	
 	//도와주세요 게시판 리스트 count(*)조회
 	int seleteHelpmeListCount();
+	
+	//도와주세요 날짜순 리스트
+	ArrayList<Board> helpmeDateCheck(Board b, PageInfo pi);
+		
+	//도와주세요 날짜순 count(*)
+	int helpmeDateCheckCount();
+	
+	//도와주세요 조회순 리스트
+	ArrayList<Board> helpmeReference(Board b, PageInfo pi);
+		
+	//도와주세요 조회순 count(*)
+	int helpmeReferenceCount();
 	
 	//도와주세요 게시글 등록
 	int helpmeInsertBoard(Board b);

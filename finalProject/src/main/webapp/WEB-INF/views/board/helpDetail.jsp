@@ -261,15 +261,16 @@ input[type=file]::file-selector-button {
 	width:50px;
 	height: 50px;
 }
-</style>
 
+</style>
+<script src="${pageContext.request.contextPath}/resources/js/helpboder.js"></script>
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
 
 <div class="helpme-board">
     <div class="helpu-top-section">
-        <img class="hu-close-btn" src="././resources/icon/close.png">
+        <img class="hu-close-btn" src="././resources/icon/close.png" onclick="resetList()">
             <div class="hu-top-section">
                 <p style="margin-bottom: 2rem; font-weight: bold; font-size: 16px;">도와줄게요 상세보기</p>
             </div>
@@ -336,6 +337,15 @@ input[type=file]::file-selector-button {
 		      <td>${b.boardType}</td>
 		    </tr>
 		    
+		    <tr>
+		    	<th scope="row">조회 수</th>
+		    	<td>
+		        <td>
+		        <td>
+		        <td>
+		    	<td><span>${b.viewCount}</span></td>
+		    </tr>
+		    
 		  </tbody>
 	 </table>
             </div>
@@ -355,7 +365,7 @@ input[type=file]::file-selector-button {
         </form>
         
         
-        <script>
+        <!-- <script>
         	function postBtn(num) {
                 if(num === 1) {
                     $("#form").attr('action', 'helpUpdateForm.bo');
@@ -364,13 +374,18 @@ input[type=file]::file-selector-button {
                 }
                 $("#form").submit();
             } 	
-        </script>
+        	
+        	function resetList() {
+        		location.href = "helpList.bo";
+        	}
+        </script> -->
 
     </div>
 
 </div>
 
 <%@ include file="../common/footer.jsp" %>
+
 
 
 </body>
