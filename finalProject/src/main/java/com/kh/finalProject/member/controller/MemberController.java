@@ -36,7 +36,7 @@ import com.kh.finalProject.common.vo.Reason;
 import com.kh.finalProject.common.vo.Schedule;
 import com.kh.finalProject.member.model.service.MemberService;
 import com.kh.finalProject.member.model.vo.Member;
-import com.kh.finalProject.member.model.vo.Professional;
+import com.kh.finalProject.member.model.vo.Skill;
 import com.kh.finalProject.pay.model.vo.Pay;
 
 import net.nurigo.java_sdk.api.Message;
@@ -87,17 +87,16 @@ public class MemberController {
 		Member loginUser = memberService.userInfo(m);
 		session.setAttribute("loginUser", loginUser);
 		
-		Professional p = memberService.proInfo(m);
-		session.setAttribute("p", p);
+		ArrayList<Skill> s = memberService.skillInfo();
+		session.setAttribute("s", s);
 		
 		return "myPage/proInfo";
 	}
 	
 	//멤버 전문가페이지에서 수정하고 다시 페이지를 부르는 컨트롤러
 	@RequestMapping(value = "/updateProInfo.me")
-	public String updateProInfo(Member m, Professional p, HttpSession session) {
+	public String updateProInfo(Member m, Skill s, HttpSession session) {
 		int result = memberService.updateProInfo(m);
-		
 		// 전문 분야 및 상세 분야 보류 여기에 추가해야함
 		// int result = memberService.updateUserInfo(m, p); ~~~
 		return "redirect:/proInfo.me";
@@ -558,5 +557,24 @@ public class MemberController {
 	@RequestMapping(value = "payApproval.me")
 	public String payApproval(String pg_token, Pay pay) {
 		return "common/payApproval";
+	}
+	
+	//전화번호 추가(재인증)화면 전환 컨트롤러
+	@RequestMapping(value = "newPhoneEnroll.me")
+	public String newPhoneEnroll() {
+		System.out.println("일하고있니?스프링아");
+		return "myPage/newPhoneEnroll";
+	}
+	
+	@RequestMapping(value = "updatePhone.me")
+	public String updatePhone(Member m, HttpSession session) {
+		int result = memberService.updatePhone(m);
+		
+		if(result > 0) {
+			session.setAttribute("alertMsg", "전화번호가 성공적으로 변경되었습니다.");
+		} else {
+			session.setAttribute("alertMsg", "전화번호 변경 실패.");
+		}
+		return "redirect:/userInfo.me";
 	}
 }

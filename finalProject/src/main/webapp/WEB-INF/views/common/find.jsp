@@ -9,6 +9,19 @@
 	<link rel="stylesheet" href="././resources/css/myPgae.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    	function goToBoardDetail(num) {
+			location.href = "helpDetailPage.bo?boardNo=" + num
+		}
+    	
+    	function goToCommDetail(num) {
+			location.href = "detailcomm.co?boardNo=" + num
+		}
+    	
+    	function goToComm(path) {
+    		location.href = path
+		}
+    </script>
 	<style>
 		.findBox{
 			display: flex;
@@ -212,12 +225,12 @@
 					<c:choose>
 						<c:when test="${not empty list1}">
 							<div>
-								<div class="category-board"> 
+								<div class="category-board" onclick="helpU()"> 
 									도와줄게요
 									<img class="shortcut-img" src="./resources/icon/menu-right-arrow.png" alt="">
 								</div>
-								<c:forEach var="hu" items="${list1}">
-									<div class="post">
+								<c:forEach var="hu" items="${list1}">		
+									<div class="post" onclick="goToBoardDetail(${hu.boardNo})">
 										<div class="title">
 											${hu.boardTitle}
 											<img class="view-count-img" src="./resources/icon/eye.png" alt="">
@@ -242,8 +255,18 @@
 							</div>
 						</c:when>
 						<c:otherwise>
-							<h3>도와줄게요 게시판에 아직 게시글이 없습니다</h3>
-							<h4>첫번째 게시글을 작성해보세요!</h4>
+							<div class="category-board" onclick="helpU()"> 
+									도와줄게요
+									<img class="shortcut-img" src="./resources/icon/menu-right-arrow.png" alt="">
+							</div>
+							<div style="text-align-last: center;">
+								<br>
+								<div style="display:flex; justify-content: center;">
+									<h5>게시판에 아직 게시글이 없습니다</h5><img alt="오른쪽대각선화살표" src="./resources/icon/right-diagonal-arrow.png" style="width: 20px; height: 20px; margin-left: 10px;">
+								</div>	
+								<br>
+								<h6>첫번째 게시글을 작성해보세요!</h6>
+							</div>
 						</c:otherwise>
 					</c:choose>	
 				</div>
@@ -251,12 +274,12 @@
 					<c:choose>
 						<c:when test="${not empty list2}">
 							<div>
-								<div class="category-board"> 
+								<div class="category-board" onclick="needHelp()"> 
 									도와주세요
 									<img class="shortcut-img" src="./resources/icon/menu-right-arrow.png" alt="">
 								</div>
 								<c:forEach var="hm" items="${list2}">
-									<div class="post">
+									<div class="post" onclick="goToBoardDetail(${hm.boardNo})">
 										<div class="title">
 											${hm.boardTitle}
 											<img class="view-count-img" src="./resources/icon/eye.png" alt="">
@@ -281,8 +304,18 @@
 							</div>
 						</c:when>
 						<c:otherwise>
-							<h3>도와주세요 게시판에 아직 게시글이 없습니다.</h3>
-							<h4>첫번째 게시글을 작성해보세요!</h4>
+							<div class="category-board" onclick="needHelp()"> 
+								도와주세요
+								<img class="shortcut-img" src="./resources/icon/menu-right-arrow.png" alt="">
+							</div>
+							<div style="text-align-last: center;">
+								<br>
+								<div style="display:flex; justify-content: center;">
+									<h5>게시판에 아직 게시글이 없습니다</h5><img alt="오른쪽대각선화살표" src="./resources/icon/right-diagonal-arrow.png" style="width: 20px; height: 20px; margin-left: 10px;">
+								</div>	
+								<br>
+								<h6>첫번째 게시글을 작성해보세요!</h6>
+							</div>
 						</c:otherwise>
 					</c:choose>	
 				</div>
@@ -295,12 +328,12 @@
 					<c:choose>
 						<c:when test="${not empty list3}">
 							<div>
-								<div class="category-board"> 
+								<div class="category-board" onclick="goToComm('curious.co')"> 
 									궁금해요
 									<img class="shortcut-img" src="./resources/icon/menu-right-arrow.png" alt="">
 								</div>
 								<c:forEach var="q" items="${list3}">
-									<div class="post">
+									<div class="post" onclick="goToCommDetail(${q.boardNo})">
 										<div class="title">
 											${q.boardTitle}
 											<img class="view-count-img" src="./resources/icon/eye.png" alt="">
@@ -325,8 +358,18 @@
 							</div>
 						</c:when>
 						<c:otherwise>
-							<h3>궁금해요 커뮤니티에 아직 게시글이 없습니다.</h3>
-							<h4>첫번째 게시글을 작성해보세요!</h4>
+							<div class="category-board" onclick="goToComm('curious.co')"> 
+								궁금해요
+								<img class="shortcut-img" src="./resources/icon/menu-right-arrow.png" alt="">
+							</div>
+							<div style="text-align-last: center;">
+								<br>
+								<div style="display:flex; justify-content: center;">
+									<h5>게시판에 아직 게시글이 없습니다</h5><img alt="오른쪽대각선화살표" src="./resources/icon/right-diagonal-arrow.png" style="width: 20px; height: 20px; margin-left: 10px;">
+								</div>	
+								<br>
+								<h6>첫번째 게시글을 작성해보세요!</h6>
+							</div>
 						</c:otherwise>
 					</c:choose>
 				</div>
@@ -334,12 +377,12 @@
 					<c:choose>
 						<c:when test="${not empty list4}">
 							<div>
-								<div class="category-board"> 
+								<div class="category-board" onclick="goToComm('much.co')"> 
 									얼마예요
 									<img class="shortcut-img" src="./resources/icon/menu-right-arrow.png" alt="">
 								</div>
 								<c:forEach var="p" items="${list4}">
-									<div class="post">
+									<div class="post" onclick="goToCommDetail(${p.boardNo})">
 										<div class="title">
 											${p.boardTitle}
 											<img class="view-count-img" src="./resources/icon/eye.png" alt="">
@@ -364,8 +407,18 @@
 							</div>
 						</c:when>
 						<c:otherwise>
-							<h3>얼마예요 커뮤니티에 아직 게시글이 없습니다.</h3>
-							<h4>첫번째 게시글을 작성해보세요!</h4>
+							<div class="category-board" onclick="goToComm('much.co')"> 
+								얼마예요
+								<img class="shortcut-img" src="./resources/icon/menu-right-arrow.png" alt="">
+							</div>
+							<div style="text-align-last: center;">
+								<br>
+								<div style="display:flex; justify-content: center;">
+									<h5>게시판에 아직 게시글이 없습니다</h5><img alt="오른쪽대각선화살표" src="./resources/icon/right-diagonal-arrow.png" style="width: 20px; height: 20px; margin-left: 10px;">
+								</div>	
+								<br>
+								<h6>첫번째 게시글을 작성해보세요!</h6>
+							</div>
 						</c:otherwise>
 					</c:choose>
 				</div>
@@ -373,12 +426,12 @@
 					<c:choose>
 						<c:when test="${not empty list5}">
 							<div>
-								<div class="category-board"> 
+								<div class="category-board" onclick="goToComm('together.co')"> 
 									함께해요
 									<img class="shortcut-img" src="./resources/icon/menu-right-arrow.png" alt="">
 								</div>
 								<c:forEach var="to" items="${list5}">
-									<div class="post">
+									<div class="post" onclick="goToCommDetail(${to.boardNo})">
 										<div class="title">
 											${to.boardTitle}
 											<img class="view-count-img" src="./resources/icon/eye.png" alt="">
@@ -403,8 +456,18 @@
 							</div>
 						</c:when>
 						<c:otherwise>
-							<h3>함께해요 커뮤니티에 아직 게시글이 없습니다.</h3>
-							<h4>첫번째 게시글을 작성해보세요!</h4>
+							<div class="category-board" onclick="goToComm('together.co')"> 
+								함께해요
+								<img class="shortcut-img" src="./resources/icon/menu-right-arrow.png" alt="">
+							</div>
+							<div style="text-align-last: center;">
+								<br>
+								<div style="display:flex; justify-content: center;">
+									<h5>게시판에 아직 게시글이 없습니다</h5><img alt="오른쪽대각선화살표" src="./resources/icon/right-diagonal-arrow.png" style="width: 20px; height: 20px; margin-left: 10px;">
+								</div>	
+								<br>
+								<h6>첫번째 게시글을 작성해보세요!</h6>
+							</div>
 						</c:otherwise>
 					</c:choose>
 				</div>

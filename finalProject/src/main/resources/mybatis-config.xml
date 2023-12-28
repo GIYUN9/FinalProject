@@ -14,7 +14,6 @@
   	<typeAliases>
   		<typeAlias type="com.kh.finalProject.board.model.vo.Board" alias="Board" />
   		<typeAlias type="com.kh.finalProject.member.model.vo.Member" alias="Member" />
-  		<typeAlias type="com.kh.finalProject.member.model.vo.Professional" alias="Professional" />
   		<typeAlias type="com.kh.finalProject.common.vo.Attachment" alias="Attachment" />
   		<typeAlias type="com.kh.finalProject.common.vo.Notice" alias="Notice" />
   		<typeAlias type="com.kh.finalProject.common.vo.Category" alias="Category" />
@@ -27,6 +26,7 @@
 	    <typeAlias type="com.kh.finalProject.pay.model.vo.Pay" alias="Pay" />
 	    <typeAlias type="com.kh.finalProject.board.model.vo.ReLikey" alias="ReLikey" />
 	    <typeAlias type="com.kh.finalProject.common.vo.Reason" alias="Reason" /> 
+	    <typeAlias type="com.kh.finalProject.member.model.vo.Skill" alias="Skill" />
   	</typeAliases>
   	<mappers>
   		<mapper resource="/mappers/board-mapper.xml" />

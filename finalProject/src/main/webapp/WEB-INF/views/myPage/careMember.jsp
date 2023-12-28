@@ -58,11 +58,11 @@
 	                                    <td>${m.memberName}</td>
 	                                    <td>
 											<c:choose>
-												<c:when test="${m.memberPro == 1}">
+												<c:when test="${m.status == 'Y'}">
 													일반회원
 												</c:when>
-												<c:when test="${m.memberPro == 2}">
-													전문가
+												<c:when test="${m.status == 'N'}">
+													탈퇴회원
 												</c:when>
 											</c:choose>
 	                                    </td>
