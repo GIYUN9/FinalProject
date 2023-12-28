@@ -132,7 +132,7 @@
 									<td>
 										<div class = "normal-input-box">
 											<input class="phone-input" name="phone" value="${loginUser.phone}" readonly="readonly">
-											<button class="btn" onclick="newPhone()" style="font-size: 12px;">재인증</button>
+											<button class="btn" type="button" onclick="newPhone()" style="font-size: 12px;">변경하기</button>
 										</div>
 									</td>
 								</tr>
@@ -145,13 +145,9 @@
 										</div>
 									</td>
 								</tr>
-								<th>사용 보류 (삭제할수도있음)</th>
-								<tr>
-									<td><input class="info-input" placeholder="사용 보류 (삭제할수도있음)"></td>
-								</tr>
 								<th>관심사</th>
 								<tr>
-									<td><input class="info-input" name="memberConcern" value="${loginUser.memberConcern}"></td>
+									<td><input class="info-input" name="memberConcern" value="${loginUser.memberConcern}" placeholder="본인의 관심사를 직접 입력해보세요. ex) 코딩 / 음악"></td>
 								</tr>
 								<button class="ui-submit-btn" type="submit" class="btn" style="float: right;">수정하기</button>
 							</table>
@@ -199,6 +195,10 @@
 	}
 	function payAdd() {
 		location.href = "amountChargePage.me"
+	}
+	
+	function newPhone() {
+		location.href = "newPhoneEnroll.me"
 	}
 	</script>
 </body>
