@@ -16,6 +16,7 @@ import com.kh.finalProject.common.vo.Attachment;
 import com.kh.finalProject.common.vo.Category;
 import com.kh.finalProject.common.vo.Notice;
 import com.kh.finalProject.common.vo.PageInfo;
+import com.kh.finalProject.common.vo.Report;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -391,5 +392,11 @@ public class BoardServiceImpl implements BoardService {
 	public ArrayList<Category> selectCategoryList() {
 		return boardDao.selectCategoryList(sqlSession);
 	}
+
+	@Override
+	public ArrayList<Report> selectReport() {
+		return boardDao.selectReport(sqlSession);
+	}
+
 
 }

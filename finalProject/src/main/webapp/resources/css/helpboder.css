@@ -436,3 +436,30 @@ body{
         top: 284px;
         font-weight: bold;
     }
+    
+    #page-one{
+    	background: transparent;
+		color: rgb(147, 147, 150); 
+		border: none; 
+		cursor: pointer;
+    }
+    
+    #page-two{
+	    background: transparent;
+		color: white; 
+		border: none; 
+		cursor: pointer;
+    }
+    
+    #page-one:hover, #page-two:hover, #page-three:hover {
+    	color: rgb(0,199,174);
+    	background-color: transparent;
+    }
+    
+    #page-three{
+    	background: transparent;
+		color: white; 
+		border: none; 
+		cursor: pointer;
+    }
+    

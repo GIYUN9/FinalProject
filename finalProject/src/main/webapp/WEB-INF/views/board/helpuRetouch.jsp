@@ -55,15 +55,18 @@
                                     <img class="clip-img" src="././resources/icon/paperclip.png">
                                 </label>
                                 <div class="hu-uploaded">
-                                    <input class="hu-filename" type=text id="fileName" name="reupfile">
+                                    
+                                    <input class="hu-filename" type=text id="fileName1" name="reupfile">
+                                    <input class="hu-filename" type="text" id="fileName2" name="reupfile">
+        							
                                     <div class="dd">
                                         파일첨부
                                     </div>
-                                    <input id="hu-upfile" class="hu-upfile" type="file" name="reupfile" style="display: none;" onchange="javascript:document.getElementById('fileName').value = this.value">
+                                    <input id="hu-upfile" class="hu-upfile" type="file" name="reupfile" style="display: none;" onchange="javascript:document.getElementById('fileName1').value = this.value" >
                                 </div>
                                 
                             </div>   
-                       
+                            
                             <div class="aa">
                                 <input class="hu-price" type="number" id="price" name="price" min="1000" max="10000" placeholder="최대 1,000" value="${b.price}">
                                 <p class="price-measure2">원</p>

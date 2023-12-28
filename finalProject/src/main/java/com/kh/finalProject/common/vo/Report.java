@@ -13,13 +13,11 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Attachment {
-	private int attNo;
-	private String originName;
-	private String changeName;
-	private String filePath;
+public class Report {
+	private int reportNo;
+	private String reportTitle;
+	private String reportContent;
+	private Date createDate;
+	private int memberNo;
 	private String status;
-	private int fileLevel;
-	
-	private int boardNo;
 }

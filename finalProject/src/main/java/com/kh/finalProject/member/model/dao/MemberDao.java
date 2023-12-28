@@ -19,7 +19,6 @@ public class MemberDao {
 	
 	public int insertMember(SqlSessionTemplate sqlSession, Member m) {
 		return sqlSession.insert("memberMapper.insertMember", m);
-		
 	}
 	
 	public Member loginMember(SqlSessionTemplate sqlSession, Member m) {
@@ -34,7 +33,6 @@ public class MemberDao {
 		return sqlSession.selectOne("memberMapper.emailPhoneCheck", m);
 	}
 	
-
 	public Member userInfo(SqlSessionTemplate sqlSession, Member m) {
 		return sqlSession.selectOne("memberMapper.userInfo", m);
 	}
@@ -70,7 +68,6 @@ public class MemberDao {
 		return sqlSession.update("memberMapper.updateUserImg", tmp);
 	}
 	
-
 	public ArrayList<Schedule> scheduleSendList(SqlSessionTemplate sqlSession, Schedule s){
 		return (ArrayList)sqlSession.selectList("memberMapper.scheduleSendList", s);
 	}

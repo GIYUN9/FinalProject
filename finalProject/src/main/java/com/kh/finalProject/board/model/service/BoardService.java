@@ -10,6 +10,7 @@ import com.kh.finalProject.common.vo.Attachment;
 import com.kh.finalProject.common.vo.Category;
 import com.kh.finalProject.common.vo.Notice;
 import com.kh.finalProject.common.vo.PageInfo;
+import com.kh.finalProject.common.vo.Report;
 
 
 public interface BoardService {
@@ -178,4 +179,7 @@ public interface BoardService {
 	
 	ArrayList<Category> selectCategoryList();
 	
+	//신고하기 신고내용 가져오기
+	ArrayList<Report> selectReport();
+
 }

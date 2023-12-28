@@ -422,3 +422,29 @@ page-item disable {
     top: 284px;
     font-weight: bold;
 }
+
+   #page-hone{
+    	background: transparent;
+		color: rgb(147, 147, 150); 
+		border: none; 
+		cursor: pointer;
+    }
+    
+    #page-htwo{
+	    background: transparent;
+		color: white; 
+		border: none; 
+		cursor: pointer;
+    }
+    
+    #page-hone:hover, #page-htwo:hover, #page-hthree:hover {
+    	color: rgb(0,199,174);
+    	background-color: transparent;
+    }
+    
+    #page-hthree{
+    	background: transparent;
+		color: white; 
+		border: none; 
+		cursor: pointer;
+    }
