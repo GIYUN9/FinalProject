@@ -273,7 +273,6 @@
 		SELECT  MEM_NO,
 				MEM_EMAIL,
 				MEM_NAME,
-				MEM_PRO,
 				PHONE,
 				LOCATION,
 				STATUS,
@@ -287,7 +286,6 @@
     	WHERE MEM_NAME LIKE '%' || #{searchText} || '%'
 		OR MEM_EMAIL LIKE '%' || #{searchText} || '%'
 		OR MEM_NO LIKE '%' || #{searchText} || '%'
-		OR MEM_PRO LIKE '%' || #{searchText} || '%'
 		OR ENROLL_DATE LIKE '%' || #{searchText} || '%'
 	</select>
 	<update id="adminDeleteMem">	   
