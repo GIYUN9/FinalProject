@@ -25,7 +25,46 @@
                 <p class="p-btn1" onclick="groupChat()">단체 채팅</p>
             </div>
             <div>
-                <div class="chatRoom-detail-align">
+                <c:forEach var="cr" items="${crList}">
+                    <div class="chatRoom-detail-align" onclick="chat()">
+                        <div class="chatRoom-group">  
+                            <div class="chatRoom-img-background">
+                                <img class="chatRoom-img" src="././resources/image/축구.jpg" alt="">
+                            </div>
+                            <div class="chatRoom-section">
+                                <div class="chatRoom-info">
+                                    <div class="chatRoom-detail-title">
+										  ${fn:substringAfter(fn:substringBefore(memName, ']'), '[')}
+                                        <div class="chatRoom-MemberCount">
+											${fn:length(memName)}
+                                        </div>
+                                    </div>
+                                    <div class="last-chat">
+										asdsd
+                                    </div>
+                                </div>
+                                <div class="chatRoom-lastChat-info">
+                                    <div class="last-chatTime">
+										${cr.lastChatTime}
+                                    </div>
+                                    <div class="last-chatCount">
+										${cr.chatCount}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
+        </div>
+    
+        <div id="groupChat" style="display: none;">
+            <div class="chatting-type"> 
+                <p class="p-btn" id="personalChat" onclick="personalChat()">개인 채팅</p>
+                <p class="p-btn1" id="groupChat" onclick="groupChat()">단체 채팅</p>
+            </div>
+            <div>
+            	                <div class="chatRoom-detail-align">
                     <div class="chatRoom-group">  
                         <div class="chatRoom-img-background">
                             <img class="chatRoom-img" src="././resources/image/축구.jpg" alt="">
@@ -39,7 +78,7 @@
                                     </div>
                                 </div>
                                 <div class="last-chat">
-                                    최근 대화 내용1111111111111111111111111111111111111111111111111111udhxdflkuhj
+                                    최근 대화 내용
                                 </div>
                             </div>
                             <div class="chatRoom-lastChat-info">
@@ -109,45 +148,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    
-        <div id="groupChat" style="display: none;">
-            <div class="chatting-type"> 
-                <p class="p-btn" id="personalChat" onclick="personalChat()">개인 채팅</p>
-                <p class="p-btn1" id="groupChat" onclick="groupChat()">단체 채팅</p>
-            </div>
-            <div>
-                <c:forEach var="cr" items="${crList}">
-                    <div class="chatRoom-detail-align" onclick="chat()">
-                        <div class="chatRoom-group">  
-                            <div class="chatRoom-img-background">
-                                <img class="chatRoom-img" src="././resources/image/축구.jpg" alt="">
-                            </div>
-                            <div class="chatRoom-section">
-                                <div class="chatRoom-info">
-                                    <div class="chatRoom-detail-title">
-										${cr.title}-${cr.memberName }
-                                        <div class="chatRoom-MemberCount">
-											${cr.memberCount }
-                                        </div>
-                                    </div>
-                                    <div class="last-chat">
-										asdsd
-                                    </div>
-                                </div>
-                                <div class="chatRoom-lastChat-info">
-                                    <div class="last-chatTime">
-										${cr.lastChatTime}
-                                    </div>
-                                    <div class="last-chatCount">
-										${cr.chatCount}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
             </div>
         </div>
     </div>
