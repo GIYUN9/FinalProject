@@ -14,11 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.google.gson.Gson;
 import com.kh.finalProject.board.model.service.BoardService;
 import com.kh.finalProject.board.model.vo.Board;
 import com.kh.finalProject.common.Pagenation;
@@ -26,6 +24,7 @@ import com.kh.finalProject.common.vo.Attachment;
 import com.kh.finalProject.common.vo.Category;
 import com.kh.finalProject.common.vo.Notice;
 import com.kh.finalProject.common.vo.PageInfo;
+import com.kh.finalProject.common.vo.Report;
 
 @Controller
 public class BoardController {
@@ -677,6 +676,16 @@ public class BoardController {
 
 	     return mv;
 	 }
+	 
+	//신고하기 리스트
+	@RequestMapping(value="reportList.rp")
+		public String reportList(HttpSession session) {		
+
+		ArrayList<Report> list = boardService.selectReport();
+		System.out.println("신고하기 글 "+list);
+		session.setAttribute("list", list);	
+		return "myPage/viewReport";
+		}
 	
 	
 //	스크립트 기능 후 가진 정보 보내주는 기능 
