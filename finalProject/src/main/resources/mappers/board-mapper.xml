@@ -854,4 +854,9 @@
 				CATEGORY_NAME
 		FROM CATEGORY
 	</select>
+	
+	<select id="selectCategoryNo" resultType="_int">
+		SELECT CATEGORY_NO
+			FROM CATEGORY
+	</select>
   </mapper>

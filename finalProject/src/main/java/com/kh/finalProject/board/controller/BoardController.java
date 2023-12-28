@@ -71,6 +71,7 @@ public class BoardController {
 			
 			//카테고리 불러오기
 			ArrayList<Category> cList = boardService.selectCategoryList();
+			
 //			System.out.println("list객체 확인용 -> " +list);
 			mv.addObject("pi",pi)
 				.addObject("list",list)

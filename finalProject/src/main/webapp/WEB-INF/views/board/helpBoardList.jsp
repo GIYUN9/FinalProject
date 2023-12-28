@@ -11,7 +11,12 @@
 
 <link rel="stylesheet" type="text/css" href="././resources/css/helpboder.css">
 
-<!--  <script type="text/javascript" src="././resources/js/helpboder.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+<script src="././resources/js/helpboder.js"></script>
+
+
+
 
 </head>
 <body>
@@ -32,11 +37,13 @@
 	            <c:forEach var="c" items="${cList}">
 	            	<div class = "nav-item">
 		                <div class="aaa">
-		                    <a href="#"  style="color: white;">${c.categoryName}</a>
+		                    <a href="#" style="color: white;" class="catelist" id="clickedElement"  onclick="categoryList(this)">${c.categoryName}</a>
 		                </div>
 	            	</div>
 	            </c:forEach>
             </div>
+            
+            
             <div class = "nav-item">
                 <a href="#">
                     <img class="arrow-img" src="./resources/icon/menu-right-arrow.png" alt="">
@@ -62,7 +69,7 @@
                         	<a class="write-btn" href="helpuForm.bo">
                                 글쓰기
                             </a>
-                            <select name="listPick" id="category-item">
+                            <select name="listPick" id="category-item"  onchange="handleSelectionChange()">
                             	<c:if test="${lType eq 'helpDateList'}">
 	                               <option class = "category-item-list" value="date" id="date" selected >날짜순</option>
 	                               <option class = "category-item-list" value="check" id="count">조회순</option>
@@ -88,6 +95,8 @@
 	                     </a> 
                 	</div>
                 </c:forEach>
+                
+            
 
 	<nav aria-label="Page navigation example">
 		<ul class="pagination" style="justify-content: center;">
@@ -95,18 +104,7 @@
 				<c:choose>
 					<c:when test="${pi.currentPage eq 1 }">
 						<li class="page-item disabled">
-						<a class="page-link" href="#" 
-							style="
-							background: transparent;
-							color: rgb(147, 147, 150); 
-							border: none; 
-							cursor: pointer;
-                            "  
-
-							onmouseover="this.style.color='rgb(0, 199, 174)'; 
-							this.style.backgroundColor='transparent';" 
-							onmouseout="this.style.color='black';
-                            ">
+						<a class="page-link" id="page-one" href="#">
                                          이전
 						</a>
 						</li>
@@ -114,17 +112,7 @@
 					
 					<c:otherwise>
 						<li class="Page-item">
-						<a class="page-link" href="helpmeList.bo?cpage=${pi.currentPage - 1}" 
-							style="
-							background: transparent;
-							color: white; 
-							border: none; 
-							cursor: pointer;
-							"  
-							onmouseover="this.style.color='rgb(0, 199, 174)'; 
-							this.style.backgroundColor='transparent';" 
-							onmouseout="this.style.color='white';
-							">
+						<a class="page-link" id="page-two" href="helpmeList.bo?cpage=${pi.currentPage - 1}">
                                         이전
 						</a>
 						</li>
@@ -133,17 +121,7 @@
 				
 				<c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage }">
 					<li class="page-item">
-					<a class="page-link" href="helpList.bo?cpage=${p}" 
-							style="
-							background: transparent;
-							color: white; 
-							border: none; 
-							cursor: pointer;
-							"  
-							onmouseover="this.style.color='rgb(0, 199, 174)'; 
-							this.style.backgroundColor='transparent';" 
-							onmouseout="this.style.color='white';
-							">
+					<a class="page-link" id="page-three" href="helpList.bo?cpage=${p}">
 					${p}
 					</a>
                     </li>
@@ -152,17 +130,7 @@
 			<c:choose>
 				<c:when test="${pi.currentPage eq pi.maxPage}">
 					<li class="page-item disabled">
-					<a class="page-link" href="#" 
-							style="
-							background: transparent;
-							color: rgb(147, 147, 150); 
-							border: none; 
-							cursor: pointer;
-							"  
-							onmouseover="this.style.color='rgb(0, 199, 174)'; 
-							this.style.backgroundColor='transparent';" 
-							onmouseout="this.style.color='white';
-							">
+					<a class="page-link" id="page-one" href="#">
                                         다음
 					</a>
 					</li>
@@ -170,16 +138,7 @@
 
 				<c:otherwise>
 						<li class="page-item">
-						<a class="page-link" href="helpList.bo?cpage=${pi.currentPage + 1}" 
-								style="
-								background: transparent;
-								color: white; 
-								border: none; 
-								cursor: pointer;
-								"  
-								onmouseover="this.style.color='rgb(0, 199, 174)'; this.style.backgroundColor='transparent';" 
-								onmouseout="this.style.color='white';
-								">
+						<a class="page-link" id="page-two" href="helpList.bo?cpage=${pi.currentPage + 1}">
 	                                        다음
 						</a>
 						</li>
@@ -195,18 +154,7 @@
 				<c:choose>
 					<c:when test="${pi.currentPage eq 1 }">
 					<li class="page-item disabled">
-					<a class="page-link" href="#" 
-						style="
-						background: transparent;
-						color: rgb(147, 147, 150); 
-						border: none; 
-						cursor: pointer;
-						"  
-						
-						onmouseover="this.style.color='rgb(0, 199, 174)'; 
-						this.style.backgroundColor='transparent';" 
-						onmouseout="this.style.color='black';
-						">
+					<a class="page-link" id="page-one" href="#">
                                          이전
 					</a>
 					</li>
@@ -214,17 +162,7 @@
 					
 			<c:otherwise>
 				<li class="Page-item">
-				<a class="page-link" href="helpList.bo?cpage=${pi.currentPage - 1}" 
-						style="
-						background: transparent;
-						color: white; 
-						border: none; 
-						cursor: pointer;
-						"  
-						onmouseover="this.style.color='rgb(0, 199, 174)'; 
-						this.style.backgroundColor='transparent';" 
-						onmouseout="this.style.color='white';
-						">
+				<a class="page-link" id="page-two" href="helpList.bo?cpage=${pi.currentPage - 1}">
                                         이전
 				</a>
 				</li>
@@ -233,17 +171,7 @@
 				
 			<c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage }">
 				<li class="page-item">
-				<a class="page-link" href="helpList.bo?cpage=${p}" 
-						style="
-						background: transparent;
-						color: white; 
-						border: none; 
-						cursor: pointer;
-							"  
-                                    onmouseover="this.style.color='rgb(0, 199, 174)'; 
-                                    this.style.backgroundColor='transparent';" 
-                                    onmouseout="this.style.color='white';
-                                ">
+				<a class="page-link" id="page-three" href="helpList.bo?cpage=${p}">
                                     ${p}
                                 </a>
                             </li>
@@ -252,17 +180,7 @@
                          <c:choose>
                             <c:when test="${pi.currentPage eq pi.maxPage}">
                                   <li class="page-item disabled">
-                                    <a class="page-link" href="#" 
-                                    style="
-                                        background: transparent;
-                                        color: rgb(147, 147, 150); 
-                                        border: none; 
-                                        cursor: pointer;
-                                        "  
-                                        onmouseover="this.style.color='rgb(0, 199, 174)'; 
-                                        this.style.backgroundColor='transparent';" 
-                                        onmouseout="this.style.color='white';
-                                    ">
+                                    <a class="page-link" id="page-one" href="#">
                                         다음
                                     </a>
                                 </li>
@@ -270,17 +188,7 @@
                             
                             <c:otherwise>
                                 <li class="page-item">
-                                    <a class="page-link" href="helpList.bo?cpage=${pi.currentPage + 1}" 
-                                    style="
-                                        background: transparent;
-                                        color: white; 
-                                        border: none; 
-                                        cursor: pointer;
-                                        "  
-                                        onmouseover="this.style.color='rgb(0, 199, 174)'; 
-                                        this.style.backgroundColor='transparent';" 
-                                        onmouseout="this.style.color='white';
-                                    ">
+                                    <a class="page-link" id="page-two" href="helpList.bo?cpage=${pi.currentPage + 1}">
                                         다음
                                     </a>
                                 </li>
@@ -297,54 +205,23 @@
 
                             <c:when test="${pi.currentPage eq 1 }">
                                 <li class="page-item disabled">
-                                    <a class="page-link" href="#" 
-                                    style="
-                                        background: transparent;
-                                        color: rgb(147, 147, 150); 
-                                        border: none; 
-                                        cursor: pointer;
-                                        "  
-
-                                        onmouseover="this.style.color='rgb(0, 199, 174)'; 
-                                        this.style.backgroundColor='transparent';" 
-                                        onmouseout="this.style.color='black';
-                                        ">
+                                    <a class="page-link" id="page-one" href="#">
                                          이전
-                                         </a>
-                                         </li>
+                                    </a>
+                                </li>
                                          
                              </c:when>
                              <c:otherwise>
                              	<li class="Page-item">
-                             	 <a class="page-link" href="helpList.bo?cpage=${pi.currentPage - 1}" 
-                                    style="
-                                        background: transparent;
-                                        color: white; 
-                                        border: none; 
-                                        cursor: pointer;
-                                        "  
-                                        onmouseover="this.style.color='rgb(0, 199, 174)'; 
-                                        this.style.backgroundColor='transparent';" 
-                                        onmouseout="this.style.color='white';
-                                    ">
+                             	 <a class="page-link" id="page-two" href="helpList.bo?cpage=${pi.currentPage - 1}">
                                         이전
-                                    </a>
-                                    </li>
+                                 </a>
+                                </li>
                             </c:otherwise>
                             </c:choose>
                              <c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage }">
                                <li class="page-item">
-                                <a class="page-link" href="helpList.bo?cpage=${p}" 
-                                style="
-                                    background: transparent;
-                                    color: white; 
-                                    border: none; 
-                                    cursor: pointer;
-                                    "  
-                                    onmouseover="this.style.color='rgb(0, 199, 174)'; 
-                                    this.style.backgroundColor='transparent';" 
-                                    onmouseout="this.style.color='white';
-                                ">
+                                <a class="page-link" id="page-three" href="helpList.bo?cpage=${p}">
                                     ${p}
                                 </a>
                             </li>
@@ -353,17 +230,7 @@
                          <c:choose>
                             <c:when test="${pi.currentPage eq pi.maxPage}">
                                   <li class="page-item disabled">
-                                    <a class="page-link" href="#" 
-                                    style="
-                                        background: transparent;
-                                        color: rgb(147, 147, 150); 
-                                        border: none; 
-                                        cursor: pointer;
-                                        "  
-                                        onmouseover="this.style.color='rgb(0, 199, 174)'; 
-                                        this.style.backgroundColor='transparent';" 
-                                        onmouseout="this.style.color='white';
-                                    ">
+                                    <a class="page-link" id="page-one" href="#">
                                         다음
                                     </a>
                                 </li>
@@ -371,17 +238,7 @@
                             
                                  <c:otherwise>
                                 <li class="page-item">
-                                    <a class="page-link" href="helpList.bo?cpage=${pi.currentPage + 1}" 
-                                    style="
-                                        background: transparent;
-                                        color: white; 
-                                        border: none; 
-                                        cursor: pointer;
-                                        "  
-                                        onmouseover="this.style.color='rgb(0, 199, 174)'; 
-                                        this.style.backgroundColor='transparent';" 
-                                        onmouseout="this.style.color='white';
-                                    ">
+                                    <a class="page-link" id="page-two" href="helpList.bo?cpage=${pi.currentPage + 1}">
                                         다음
                                     </a>
                                 </li>
@@ -404,7 +261,8 @@
         })
     })
 </script> -->
-<script>
+ <!-- 
+ <script>
 const select = document.querySelector('#category-item');
 select.addEventListener('change', () => {
     if(select.value == 'date'){
@@ -416,7 +274,11 @@ select.addEventListener('change', () => {
     	location.href = "helpReferenceList";
     }
 });
-</script>
+</script> 
+  -->
+ 
+   
+
        
 </body>
 </html>
