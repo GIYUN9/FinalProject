@@ -168,7 +168,8 @@
 		UPDATE MEMBER
 				SET INTRO = #{intro},
 				MEM_NAME = #{memberName},
-				LOCATION = #{location}
+				LOCATION = #{location},
+				SKILL_NO = #{skillNo}
 		WHERE MEM_NO = #{memberNo}
 	</update>
 	
