@@ -21,8 +21,8 @@ public class ChatDao {
 		return sqlSession.update("chatMapper.deleteChat", m);
 	}
 	
-	public ArrayList<Message> messageList(SqlSessionTemplate sqlSession, Message m) {
-		return (ArrayList)sqlSession.selectList("chatMapper.messageList", m);	
+	public ArrayList<Message> msgList(SqlSessionTemplate sqlSession, Message m) {
+		return (ArrayList)sqlSession.selectList("chatMapper.msgList", m);	
 	}
 	
 	public ArrayList<Message> searchMessage(SqlSessionTemplate sqlSession, String searchText) {
@@ -34,4 +34,11 @@ public class ChatDao {
 	public ArrayList<ChattingRoom> chattingRoomList (SqlSessionTemplate sqlSession, ChattingRoom cr){
 		return (ArrayList)sqlSession.selectList("chatMapper.chattingRoomList", cr);
 	}
+	
+	public ArrayList<ChattingRoom> senderInfo(SqlSessionTemplate sqlSession, int chatRoomNo, int memberNo) {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("chatRoomNo", chatRoomNo);
+		paramMap.put("memberNo", memberNo);
+		return (ArrayList)sqlSession.selectList("chatMapper.senderInfo", paramMap);
+	}	
 }

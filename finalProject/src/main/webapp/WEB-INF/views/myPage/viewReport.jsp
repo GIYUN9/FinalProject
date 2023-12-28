@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -150,7 +151,7 @@
 			<a class="myPageSideBar" href="ask.me">문의 내역</a>
 			<c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
 				<a class="myPageSideBar" href="careMem.me">회원 관리</a>
-                <a class="myPageSideBar" href="ask.me" style="font-weight: bolder;
+                <a class="myPageSideBar" href="reportList.rp" style="font-weight: bolder;
 				background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">신고 내역</a>
 			</c:if>        
 		</div>
@@ -170,25 +171,28 @@
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<img class="close-btn" src="././resources/icon/close.png">
 				<div class="user-info">
+				<c:forEach var="r" items="${list}">
 					<div class="req-outer">
 						<div class="req-align">
+						
 							<div class="req-text">
-								<h6 class="req-title">결제 관련 문의</h6>
+								<h6 class="req-title">${r.reportTitle}</h6>
 								<div class="req-desc">
-									결제가 안됩니다. 카카오측에서는 문제가 없다고합니다<br>
-									확인해주세요
+									${r.reportContent}
 								</div>
 							</div>
 							<div class="req-info">
-								<div class="req-no">신고번호 N.008410</div>
-								<div class="req-id">홍길동</div>
+								<div class="req-no">${r.reportNo}</div>
+								<div class="req-no">${r.createDate}</div>
+								<div class="req-id">${r.memberNo}</div>
 							</div>
 						</div>
 						<div class="req-btn-area">
-							<button class="req-answer-btn">답변</button>
-							<button class="req-detail-btn">상세보기</button>
+							<button class="req-detail-btn" type="button" onclick="showDetail(1)">상세보기</button>
 						</div>
 					</div>
+				</c:forEach>
+						
 
 					<div class="req-outer">
 						<div class="req-align">
@@ -228,8 +232,29 @@
 
 					</div>
 				</div>
+				<div class="qqq" style="display: none;">
+					<div class="1" style="display: none;">
+						1
+					</div>
+					<div class="2" style="display: none;">
+						2
+					</div>
+					<div class="3" style="display: none;">
+						3
+					</div>
+				</div>
 			</div>		
 		</div>
 	</div>	<jsp:include page="../common/footer.jsp" />
+	<script>
+		function showDetail(num){
+			const userInfo = document.getElementsByClassName('user-info');
+			userInfo[0].style.display = 'none';
+			const qqq = document.getElementsByClassName('qqq');
+			qqq[0].style.display = 'block';
+			const number = document.getElementsByClassName(num);
+			number[0].style.display = 'block';
+		}
+	</script>
 </body>
 </html>

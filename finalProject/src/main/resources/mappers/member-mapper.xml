@@ -10,7 +10,6 @@
 		<result column="MEM_PWD" property="memberPwd"/>
 		<result column="MEM_NAME" property="memberName"/>
 		<result column="MEM_CONCERN" property="memberConcern"/>
-		<result column="MEM_PRO" property="memberPro"/>
 		<result column="PHONE" property="phone"/>
 		<result column="LOCATION" property="location"/>
 		<result column="STATUS" property="status"/>
@@ -20,13 +19,13 @@
 		<result column="ACCOUNT" property="account"/>
 		<result column="INTRO" property="intro"/>
 		<result column="ENROLL_DATE" property="enrollDate"/>
+		<result column="SKILL_NO" property="skillNo"/>
+		<result column="SKILL_NAME" property="skillName"/>
 	</resultMap>
 	
-	<resultMap type="Professional" id="professionalResult">
-		<result column="PRO_NO" property="proNo"/>
-		<result column="PRO_JOB" property="proJob"/>
-		<result column="CATEGORY_NO" property="categoryNo"/>
-		<result column="MEM_NO" property="memberNo"/>
+	<resultMap type="Skill" id="skillResult">
+		<result column="SKILL_NO" property="skillNo"/>
+		<result column="SKILL_NAME" property="skillName"/>
 	</resultMap>
 	
 	<resultMap type="Schedule" id="scheduleResult">
@@ -105,43 +104,45 @@
 	
 	<!-- 로그인 -->
 	<select id="loginMember" resultMap="memberResult">
-		SELECT MEM_NO,
-			MEM_EMAIL,
-			MEM_PWD,
-			MEM_NAME,
-			MEM_CONCERN,
-			MEM_PRO,
-			PHONE,
-			LOCATION,
-			STATUS,
-			MEM_GEN,
-			POINT,
-			FILE_PATH,
-			ACCOUNT,
-			INTRO
-		FROM MEMBER
+		SELECT M.MEM_NO,
+			M.MEM_EMAIL,
+			M.MEM_PWD,
+			M.MEM_NAME,
+			M.MEM_CONCERN,
+			M.PHONE,
+			M.LOCATION,
+			M.STATUS,
+			M.MEM_GEN,
+			M.POINT,
+			M.FILE_PATH,
+			M.ACCOUNT,
+			M.INTRO,
+			S.SKILL_NAME
+		FROM MEMBER M
+		JOIN SKILL S ON (M.SKILL_NO = S.SKILL_NO)
 		WHERE MEM_EMAIL = #{memberEmail}
 		AND STATUS = 'Y'
 	</select>
 	
 	<!-- 회원정보 불러오는 쿼리 -->
 	<select id="userInfo" resultMap="memberResult">
-		SELECT  MEM_NO,
-				MEM_EMAIL,
-				MEM_PWD,
-				MEM_NAME,
-				MEM_CONCERN,
-				MEM_PRO,
-				PHONE,
-				LOCATION,
-				STATUS,
-				MEM_GEN,
-				POINT,
-				FILE_PATH,
-				ACCOUNT,
-				INTRO,
-				ENROLL_DATE
-		FROM MEMBER
+		SELECT  M.MEM_NO,
+				M.MEM_EMAIL,
+				M.MEM_PWD,
+				M.MEM_NAME,
+				M.MEM_CONCERN,
+				M.PHONE,
+				M.LOCATION,
+				M.STATUS,
+				M.MEM_GEN,
+				M.POINT,
+				M.FILE_PATH,
+				M.ACCOUNT,
+				M.INTRO,
+				M.ENROLL_DATE,
+				S.SKILL_NAME
+		FROM MEMBER M
+		JOIN SKILL S ON (M.SKILL_NO = S.SKILL_NO)
 		WHERE MEM_NO = #{memberNo}
 		AND STATUS = 'Y'
 	</select>
@@ -151,7 +152,6 @@
 		UPDATE MEMBER 
 		SET MEM_NAME = #{memberName},
 				MEM_CONCERN = #{memberConcern},
-				PHONE = #{phone},
 				POINT = #{point}
 		WHERE MEM_NO = #{memberNo}
 	</update>
@@ -162,16 +162,6 @@
 		SET MEM_PWD = #{memberPwd}
 		WHERE MEM_EMAIL = #{memberEmail}
 	</update>
-	
-	<!-- 멤버번호로 프로페셔널테이블 불러오는 쿼리 -->
-	<select id="proInfo" resultMap="professionalResult">
-		SELECT  PRO_NO,
-				PRO_JOB,
-				CATEGORY_NO,
-				MEM_NO
-				FROM PROFESSIONAL
-				WHERE MEM_NO = #{memberNo}
-	</select>
 	
 	<!-- 멤버번호로 구별 / 전문가페이지에서 자기소개 수정하는 쿼리 -->
 	<update id="updateProInfo">
@@ -257,7 +247,6 @@
 				MEM_PWD,
 				MEM_NAME,
 				MEM_CONCERN,
-				MEM_PRO,
 				PHONE,
 				LOCATION,
 				STATUS,
@@ -273,7 +262,6 @@
 		SELECT  MEM_NO,
 				MEM_EMAIL,
 				MEM_NAME,
-				MEM_PRO,
 				PHONE,
 				LOCATION,
 				STATUS,
@@ -287,7 +275,6 @@
     	WHERE MEM_NAME LIKE '%' || #{searchText} || '%'
 		OR MEM_EMAIL LIKE '%' || #{searchText} || '%'
 		OR MEM_NO LIKE '%' || #{searchText} || '%'
-		OR MEM_PRO LIKE '%' || #{searchText} || '%'
 		OR ENROLL_DATE LIKE '%' || #{searchText} || '%'
 	</select>
 	<update id="adminDeleteMem">	   
@@ -352,7 +339,6 @@
 			MEM_PWD,
 			MEM_NAME,
 			MEM_CONCERN,
-			MEM_PRO,
 			PHONE,
 			LOCATION,
 			STATUS,
@@ -427,4 +413,16 @@
 				SYSDATE
 				)
 	</insert>
+	
+	<update id="updatePhone">
+		UPDATE MEMBER
+		SET PHONE = #{phone}
+		WHERE MEM_NO = #{memberNo}
+	</update>
+	
+	<select id="skillInfo" resultMap="skillResult">
+		SELECT  SKILL_NO,
+				SKILL_NAME
+		FROM SKILL
+	</select>
 </mapper>

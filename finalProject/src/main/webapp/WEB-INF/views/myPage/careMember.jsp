@@ -26,7 +26,7 @@
             <c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
                 <a class="myPageSideBar" href="careMem.me"  style="font-weight: bolder; 
 			    background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">회원 관리</a>
-            <a class="myPageSideBar" href="viewReport.me">신고 내역</a>
+            <a class="myPageSideBar" href="reportList.rp">신고 내역</a>
             </c:if>            
 		</div>
 		<div class="main-box">
@@ -58,11 +58,11 @@
 	                                    <td>${m.memberName}</td>
 	                                    <td>
 											<c:choose>
-												<c:when test="${m.memberPro == 1}">
+												<c:when test="${m.status == 'Y'}">
 													일반회원
 												</c:when>
-												<c:when test="${m.memberPro == 2}">
-													전문가
+												<c:when test="${m.status == 'N'}">
+													탈퇴회원
 												</c:when>
 											</c:choose>
 	                                    </td>

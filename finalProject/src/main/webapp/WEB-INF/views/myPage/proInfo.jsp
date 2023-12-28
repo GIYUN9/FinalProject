@@ -113,7 +113,7 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 			<a class="myPageSideBar" href="ask3.me">문의 내역</a>
 			<c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
                 <a class="myPageSideBar" href="careMem.me">회원 관리</a>
-                <a class="myPageSideBar" href="viewReport.me">신고 내역</a>
+                <a class="myPageSideBar" href="reportList.rp">신고 내역</a>
             </c:if>        
 		</div>
 		<div class="main-box">
@@ -178,14 +178,29 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 								<tr>
 									<td>
 										<div class="normal-input-box">
-											<input class="info-input" value="자격증정보 api? / 데이터베이스 직접?" readonly="readonly">
-											<button class="btn" style="display: flex; font-size: 12px;" onclick="payAdd()">저장하기</button>
+											<input class="info-input" value="${loginUser.skillName}" readonly="readonly">
+											<button class="btn" type="button" style="display: flex; font-size: 12px;" onclick="skillAdd()">선택하기</button>
+											<div class="chooseSkilArea" style="display: none; height: 500px; overflow: auto;">
+												<br>
+												<table>
+													<thead>
+														<th>자격증이름</th>
+														<th>선택</th>
+													</thead>
+													<tbody>
+														<c:forEach var="s" items="${s}">
+															<tr>
+																<td>
+																	${s.skillName}
+																</td>
+															</tr>
+														</c:forEach>
+														
+													</tbody>
+												</table>
+											</div>
 										</div>
 									</td>
-								</tr>
-								<th>보유기술<br><span style="font-size: x-small;">최대 20개를 선택해주세요.</span><span style="font-size: x-small; color: red;">필수</span></th>
-								<tr>
-									<td><input class="info-input" placeholder="기술검색 드롭다운?"></td>
 								</tr>
 								<button class="ui-submit-btn" type="submit" class="btn" style="float: right;">수정하기</button>
 							</table>
@@ -283,6 +298,11 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 			  });
 			  
 			  
+		}
+		
+		function skillAdd() {
+			const chooseSkilArea = document.getElementsByClassName('chooseSkilArea');
+			chooseSkilArea[0].style.display = 'block';
 		}
 	</script>	   
 </body>

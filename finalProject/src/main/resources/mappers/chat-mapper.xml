@@ -7,9 +7,11 @@
   	<resultMap type="Chat" id="chatResult">
   		<result column="MSG_NO" property="msgNo" />
   		<result column="MSG" property="msg" />
-  		<result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+  		<result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP"/>
   		<result column="CHAT_ROOM_NO" property="chatRoomNo" />
- 		<result column="MEM_NO" property="memberNo" />
+ 		<result column="SENDER_NO" property="senderNo" />
+ 		<result column="RECEIVER_NO" property="receiverNo" />
+ 		<result column="MEM_NAME" property="memberName" />
   	</resultMap>
   	
   	<resultMap type="ChatRoom" id="chatRoomResult">
@@ -17,16 +19,55 @@
   		<result column="TITLE" property="title" />
   		<result column="STATUS" property="status" />
   		<result column="MEM_NO" property="memberNo" />
+  		<result column="MEM_COUNT" property="memberCount" />
+  		<result column="LAST_MSG_NO" property="lastMsgNo" />
+  		<result column="LAST_CHAT_TIME" property="lastChatTime" />
+  		<result column=" CHAT_COUNT" property="chatCount" />
+  		<result column="MEM_NAME" property="memberName" />
+  	</resultMap>
+  	
+  	<resultMap type="String" id="senderInfoResult">
+  		<result column="MEM_NAME" property="memberName" />
   	</resultMap>
  	
  	<select id="chattingRoomList" resultMap="chatRoomResult">
- 		 SELECT CHAT_ROOM_NO,
-			    MEM_NO,
-			    STATUS,
-			    TITLE
-		   FROM CHATROOM
-		  WHERE STATUS = 'Y'
+ 		 SELECT CR.CHAT_ROOM_NO,
+ 		 		CR.MEM_NO,
+			    CRJ.MEM_NO,
+			    CR.STATUS,
+			    CR.TITLE,
+			    M.MEM_NAME
+		   FROM CHATROOM CR
+		   JOIN CHATROOMJOIN CRJ ON (CR.CHAT_ROOM_NO = CRJ.CHAT_ROOM_NO)
+		   JOIN MEMBER M ON (CRJ.MEM_NO = M.MEM_NO)
+		  WHERE CR.STATUS = 'Y'
+		  AND CRJ.MEM_NO = #{memberNo}
 	</select>
+	
+	<select id="senderInfo" resultMap="senderInfoResult">
+		SELECT M.MEM_NAME
+		FROM CHATROOMJOIN  CRJ
+		JOIN MEMBER M ON (CRJ.MEM_NO = M.MEM_NO)
+		WHERE CRJ.CHAT_ROOM_NO = #{chatRoomNo}
+		AND M.MEM_NO != #{memberNo}
+	</select>
+	
+	<select id="msgList" resultMap="chatResult">
+		SELECT MSG.MSG_NO, 
+	           MSG.MSG, 
+	           MSG.CREATE_DATE, 
+	           MSG.CHAT_ROOM_NO, 
+	           MSG.RECEIVER_NO,
+	           MSG.SENDER_NO,
+	           M.MEM_NAME
+	      FROM CHATMSG MSG
+	      JOIN CHATROOM CR ON (MSG.CHAT_ROOM_NO = CR.CHAT_ROOM_NO)
+	      JOIN MEMBER M ON (M.MEM_NO = MSG.RECEIVER_NO)
+		 WHERE MSG.SENDER_NO = #{senderNo}
+		 OR MSG.RECEIVER_NO = #{senderNo}
+	  ORDER BY MSG_NO ASC
+	</select>	
+	
 	 	<!-- 
 		SELECT *
 		  FROM (

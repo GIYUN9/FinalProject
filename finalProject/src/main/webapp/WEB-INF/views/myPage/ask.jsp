@@ -159,7 +159,7 @@
 			background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">문의 내역</a>
 			<c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
 				<a class="myPageSideBar" href="careMem.me">회원 관리</a>
-                <a class="myPageSideBar" href="viewReport.me">신고 내역</a>
+                <a class="myPageSideBar" href="reportList.rp">신고 내역</a>
 			</c:if>        
 		</div>
 		<div class="main-box">

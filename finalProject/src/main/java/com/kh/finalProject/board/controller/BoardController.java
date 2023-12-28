@@ -25,6 +25,7 @@ import com.kh.finalProject.common.vo.Attachment;
 import com.kh.finalProject.common.vo.Category;
 import com.kh.finalProject.common.vo.Notice;
 import com.kh.finalProject.common.vo.PageInfo;
+import com.kh.finalProject.common.vo.Report;
 
 @Controller
 public class BoardController {
@@ -70,6 +71,7 @@ public class BoardController {
 			
 			//카테고리 불러오기
 			ArrayList<Category> cList = boardService.selectCategoryList();
+			
 //			System.out.println("list객체 확인용 -> " +list);
 			mv.addObject("pi",pi)
 				.addObject("list",list)
@@ -754,6 +756,16 @@ public class BoardController {
 
 	     return mv;
 	 }
+	 
+	//신고하기 리스트
+	@RequestMapping(value="reportList.rp")
+		public String reportList(HttpSession session) {		
+
+		ArrayList<Report> list = boardService.selectReport();
+		System.out.println("신고하기 글 "+list);
+		session.setAttribute("list", list);	
+		return "myPage/viewReport";
+		}
 	
 	
 //	스크립트 기능 후 가진 정보 보내주는 기능 

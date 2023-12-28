@@ -94,7 +94,7 @@
 			<a class="myPageSideBar" href="ask3.me">문의 내역</a>
 			<c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
                 <a class="myPageSideBar" href="careMem.me">회원 관리</a>
-           		<a class="myPageSideBar" href="viewReport.me">신고 내역</a>
+           		<a class="myPageSideBar" href="reportList.rp">신고 내역</a>
             </c:if>        
 		</div>
 		<div class="main-box">
@@ -115,13 +115,20 @@
 						<input class="emailInput" name="memberEmail" placeholder="가입하신 이메일을 입력해주세요.">
 						<h5 style="margin-bottom: 5px; margin-top: 15px;">주의 사항</h5>
 						<textarea class="df-text-box" rows="15" cols="96%" readonly="readonly">
-1. 현재 사용 중인 계정 정보는~~~
-2. 진행 중인 거래 건이 있거나~~
-3. 탈퇴 후 ~~
-4. 현재 보유 중인~~
-5. 구매후기~~
+- 회원탈퇴 시 개인정보 및 품앗이(Poom At yee)에서 만들어진 모든 데이터는 삭제 됩니다.
+(단. 아래 표시된 항목들은 일정 기간 혹은 서비스 종료 시점까지 영구 보존됩니다.)
+	1. 도와줄게요 및 도와주세요 게시판 및 해당 게시물 좋아요
+	2. 커뮤니티 게시판 및 댓글 좋아요
+	3. 회원간 채팅 내역
+	4. 요청 내역 및 신고 내역
+	5. 사용자가 등록한 사진파일(게시판 / 프로필 사진)
+	
 
-110. 충전캐시~~
+
+
+
+
+(탈퇴 후 중복되지 않는 이메일이면 재가입이 가능하지만 정보는 복구가 불가능합니다.)
 						</textarea><br>
 						<div class="df-bottom">
 							<label class="label-css"><input id="cT" type="checkbox"> 주의사항을 모두 확인하였습니다.</label>

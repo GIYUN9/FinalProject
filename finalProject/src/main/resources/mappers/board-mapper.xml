@@ -75,6 +75,16 @@
 		<result column="CATEGORY_Name" property="categoryName" />
   	</resultMap>
   	
+  	<resultMap type="Report" id="reportResult">
+  		<result column="REPORT_NO" property="reportNo" />
+  		<result column="REPORT_TITLE" property="reportTitle" />
+  		<result column="REPORT_CONTENT" property="reportContent" />
+  		<result column="CREATEDATE" property="createDate" />
+  		<result column="MEM_NO" property="memberNo" />
+  		<result column="ADMIN_COMENT" property="adminComent" />
+  		<result column="STATUS" property="status" />
+  	</resultMap>
+  	
  	<!-- 도와줄게요 게시글 총 갯수 조회 -->
  	<select id="seleteHelpListCount" resultType="_int">
  		SELECT COUNT(*)
@@ -860,5 +870,25 @@
 		SELECT  CATEGORY_NO,
 				CATEGORY_NAME
 		FROM CATEGORY
+	</select>
+	
+	<select id="selectCategoryNo" resultType="_int">
+		SELECT CATEGORY_NO
+			FROM CATEGORY
+	</select>
+	
+	<!-- 신고하기 목록 불러오는 쿼리문 -->
+	<select id="selectReport" resultMap="reportResult">
+		SELECT REPORT_NO,
+			   REPORT_TITLE,
+			   REPORT_CONTENT,
+			   CREATEDATE,
+			   MEM_NO
+		FROM REPORT
+	</select>
+	
+	<select id="seletReportCount" resultType="_int">
+		SELECT COUNT(*)
+ 		  FROM REPORT
 	</select>
   </mapper>

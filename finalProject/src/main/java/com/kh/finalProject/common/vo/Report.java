@@ -1,4 +1,6 @@
-package com.kh.finalProject.member.model.vo;
+package com.kh.finalProject.common.vo;
+
+import java.sql.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,9 +13,11 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Professional {
-	private int proNo;
-	private String proJob;
-	private int categoryNo;
+public class Report {
+	private int reportNo;
+	private String reportTitle;
+	private String reportContent;
+	private Date createDate;
 	private int memberNo;
+	private String status;
 }
