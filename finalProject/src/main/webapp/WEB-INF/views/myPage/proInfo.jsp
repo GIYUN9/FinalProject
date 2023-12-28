@@ -183,10 +183,6 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 										</div>
 									</td>
 								</tr>
-								<th>보유기술<br><span style="font-size: x-small;">최대 20개를 선택해주세요.</span><span style="font-size: x-small; color: red;">필수</span></th>
-								<tr>
-									<td><input class="info-input" placeholder="기술검색 드롭다운?"></td>
-								</tr>
 								<button class="ui-submit-btn" type="submit" class="btn" style="float: right;">수정하기</button>
 							</table>
 
