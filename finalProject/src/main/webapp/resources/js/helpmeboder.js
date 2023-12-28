@@ -1,15 +1,14 @@
 //requestBoardList.jsp 날짜순, 조회순 스크립트
-const select = document.querySelector('#category-item');
-	
-	select.addEventListener('change', () => {
-		if(select.value == 'date') {
-			console.log('날짜순')
-			location.href = "helpmeDateList";
-		} else {
-			console.log('조회순')
-			location.href = "helpmeReferenceList";
-		}
-	});
+
+function handleSelectionChange() {
+  const selectedValue = document.getElementById("category-item").value;
+
+  if (selectedValue === "date") {
+    location.href = "helpDateList"; // 날짜순을 선택한 경우
+  } else if (selectedValue === "check") {
+    location.href = "helpReferenceList"; // 조회순을 선택한 경우
+  }
+}
 
 //requestHelpmeDetail.jsp 수정,삭제 버튼 스크립트
 function postBtn(num) {

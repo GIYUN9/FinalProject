@@ -14,6 +14,7 @@ import com.kh.finalProject.common.vo.Attachment;
 import com.kh.finalProject.common.vo.Category;
 import com.kh.finalProject.common.vo.Notice;
 import com.kh.finalProject.common.vo.PageInfo;
+import com.kh.finalProject.common.vo.Report;
 
 @Repository
 public class BoardDao {
@@ -305,5 +306,12 @@ public class BoardDao {
 	public ArrayList<Category> selectCategoryList(SqlSessionTemplate sqlSession){
 		return (ArrayList)sqlSession.selectList("boardMapper.selectCategoryList");
 	}
+	
+	public ArrayList<Report> selectReport(SqlSessionTemplate sqlSession) {
+		return (ArrayList)sqlSession.selectList("boardMapper.selectReport");
+	}
 
+	public int seletReportCount(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("boardMapper.seletReportCount");
+	}
 }

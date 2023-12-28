@@ -27,6 +27,7 @@
 	    <typeAlias type="com.kh.finalProject.board.model.vo.ReLikey" alias="ReLikey" />
 	    <typeAlias type="com.kh.finalProject.common.vo.Reason" alias="Reason" /> 
 	    <typeAlias type="com.kh.finalProject.member.model.vo.Skill" alias="Skill" />
+	    <typeAlias type="com.kh.finalProject.common.vo.Report" alias="Report" />
   	</typeAliases>
   	<mappers>
   		<mapper resource="/mappers/board-mapper.xml" />
