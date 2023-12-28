@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="dd">
                                     파일첨부
-                                </div>
+                                </div> 
                                 <input id="hu-upfile" class="hu-upfile" type="file" name="upfile" style="display: none;" onchange="javascript:document.getElementById('fileName').value = this.value">
                             </div>  
                        

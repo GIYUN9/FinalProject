@@ -612,6 +612,10 @@
                         <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
                         <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
                         <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
+                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
+                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
+                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
+                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
                     </div>
                     <button id ="prev-slide" class="slide-button material-symbols-rounded">&#60;</button>
                 </div>
@@ -670,128 +674,19 @@
                    ${b.boardContent }
                     
                 </div>
-                <button id = "content-btn">구매하기</button>
-
-<div class="helpme-board">
-    <div class="helpu-top-section">
-        <img class="hu-close-btn" src="././resources/icon/close.png" onclick="resetList()">
-            <div class="hu-top-section">
-                <p style="margin-bottom: 2rem; font-weight: bold; font-size: 16px;">도와주세요 상세보기</p>
-            </div>
-        
-        <div class="hu-align">
-            <div class="hu-input-area">
-            
-      <table class="table">
-		  <tbody>
-		  
-		    <tr>
-		      <th scope="row">카테고리 번호</th>
-		      <td>
-		      <td>
-		      <td>
-		      <td>
-		      <td>${b.categoryNo}</td>
-		    </tr>
-		    
-		    <tr>
-		      <th scope="row">제목</th>
-		      <td>
-		      <td>
-		      <td>
-		      <td>
-		      <td>${b.boardTitle}</td>
-		    </tr>
-		    
-		    <tr>
-		      <th scope="row">내용</th>
-		      <td>
-		      <td>
-		      <td>
-		      <td>
-		      <td>${b.boardContent}</td>
-		    </tr>
-		    
-		    <tr>
-		      <th scope="row">파일첨부</th>
-		      <td>
-		      <td>
-		      <td>
-		      <td>
-		      <td>
-		      <input type="hidden" value="${b.changeName}">
-		      <img class="img" src="${b.changeName}">
-		      </td>
-		    </tr>
-		    
-		    <tr>
-		      <th scope="row">희망가격</th>
-		      <td>
-		      <td>
-		      <td>
-		      <td>
-		      <td>${b.price}</td>
-		    </tr>
-		    
-		    <tr>
-		      <th scope="row">게시판 번호</th>
-		      <td>
-		      <td>
-		      <td>
-		      <td>
-		      <td>${b.boardType}</td>
-		    </tr>
-		    
-		    <tr>
-		    	<th scope="row">조회 수</th>
-		    	<td>
-		        <td>
-		        <td>
-		        <td>
-		    	<td><span>${b.viewCount}</span></td>
-		    </tr>
-		    
-		  </tbody>
-	 </table>
-            </div>
-        </div>
-   </div>
-
-    
-        <br>
+                <button id = "content-btn">구매하기zz</button>
+                  <form action="" method="post" id="form">
+        	<input type="hidden" name="boardNo" value="${b.boardNo}">
+        	<input type="hidden" name="filePath" value="${b.changeName}">
+        </form>
 
         <div class="hu-btn-area">
             <a class="hu-cancle-btn" onclick="postBtn(2)">삭제</a>
             <a class="hu-submit-btn" style="color: white;" onclick="postBtn(1)">수정</a>
         </div>
-        
-        <form action="" method="post" id="form">
-        	<input type="hidden" name="boardNo" value="${b.boardNo}">
-        	<input type="hidden" name="filePath" value="${b.changeName}">
-        </form>
-        
-        
-        <!-- <script>
-        	function postBtn(num) {
-                if(num === 1) {
-                    $("#form").attr('action', 'helpmeUpdateForm.bo');
-                } else {
-                    $("#form").attr('action', 'helpmeDelete.bo');
-                }
-                $("#form").submit();
-            } 	
-        	
-        	function resetList() {
-        		location.href = "helpmeList.bo";
-        	}
-        </script> -->
-
-    </div>
-
 </div>
 
 <%@ include file="../common/footer.jsp" %>
-
 
 </body>
 </html>

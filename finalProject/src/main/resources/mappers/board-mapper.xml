@@ -32,6 +32,7 @@
   		<result column="FILE_PATH" property="filePath" />
   		<result column="STATUS" property="status" />
   		<result column="BOARD_NO" property="boardNo" />
+  		<result column="FILE_LEVEL" property="fileLevel" />
   	</resultMap>
   	
   	<resultMap type="Notice" id="noticeResult">
@@ -567,6 +568,7 @@
         JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
  		 WHERE B.BOARD_TYPE = 2
          AND B.STATUS = 'Y'	
+         AND A.FILE_LEVEL = 1
 	</select>
 	
 	<!-- 도와주세요 총 갯수 조회 -->
@@ -603,22 +605,19 @@
 	
 	<!-- 도와주세요 게시글 사진 첨부 -->
 	<insert id="helpmeAttachment">
-		INSERT INTO
-  			ATTACHMENT
-  					  (
-  					  ATT_NO,
-  					  ORIGIN_NAME,
-  					  CHANGE_NAME,
-  					  BOARD_NO
-  					  )
-  			
-  			VALUES
-  				  (
-  				  SEQ_ANO.NEXTVAL,
-  				  #{originName},
-  				  #{changeName},
-  				  #{boardNo}			
-  				  )
+		INSERT INTO ATTACHMENT (
+		    ATT_NO,
+		    ORIGIN_NAME,
+		    CHANGE_NAME,
+		    BOARD_NO,
+		    FILE_LEVEL
+		) VALUES (
+		    SEQ_ANO.NEXTVAL,
+		    #{originName},
+		    #{changeName},
+		    #{boardNo},
+		    #{fileLevel}
+		)
 	</insert>
 	
 	<!-- 도와주세요 보드번호 중간 쿼리문 -->
@@ -654,6 +653,7 @@
 		JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
 		  WHERE B.STATUS = 'Y'
 		AND B.BOARD_NO = #{boardNo}
+		AND A.FILE_LEVEL = 1
   	</select>
 	
 	<!-- 도와주세요 게시글 수정 쿼리문 -->

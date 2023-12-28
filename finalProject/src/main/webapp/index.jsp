@@ -8,7 +8,7 @@
 </head>
 <body>	
 
-		<jsp:forward page="WEB-INF/views/board/boardDetailView.jsp"/>
+		<jsp:forward page="WEB-INF/views/board/aaa.jsp"/>
 	
 	<%--
 		김경보
