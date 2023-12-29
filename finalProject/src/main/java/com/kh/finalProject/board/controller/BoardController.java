@@ -763,10 +763,25 @@ public class BoardController {
 
 		ArrayList<Report> list = boardService.selectReport();
 		System.out.println("신고하기 글 "+list);
-		session.setAttribute("list", list);	
+		session.setAttribute("list", list);
+		
+		ArrayList<Report> endlist = boardService.selectEndReport();
+		System.out.println(endlist);
+		session.setAttribute("endlist", endlist);
 		return "myPage/viewReport";
 		}
 	
+	//신고하기
+	@RequestMapping(value="reportComment.rp")
+	public String reportComment(HttpSession session, Report rt) {
+		
+		int result = boardService.reportUpdate(rt);
+		System.out.println(result);
+		if(result > 0) {
+			session.setAttribute("alertMsg", "답변완료");
+		}
+		return "redirect:/reportList.rp";
+	}
 	
 //	스크립트 기능 후 가진 정보 보내주는 기능 
 //	나중에 작성!
