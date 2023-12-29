@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -122,6 +123,9 @@ public class BoardController {
 		
 		int result1 = 0;
 		int result2 = 0;
+		
+
+		
 		
 		if(!upfile.getOriginalFilename().equals("")) {
 			
@@ -535,37 +539,113 @@ public class BoardController {
 	//도와주세요 게시글 작성 페이지
 	@RequestMapping(value = "helpmeForm.bo")
 	public String helpmeForm() {
-		return "board/requestHelpme";
+		return "board/bbb";
 	}
 	
-	//도와주세요 게시글 등록
-	@RequestMapping(value = "helpmeInsert.bo", method = RequestMethod.POST)
-	public String helpmeInsertBoard(Board b, Attachment at, MultipartFile upfile, HttpSession session, Model model) {
+	//도와주세요 게시글 등록 // 지혜님 거
+//	@RequestMapping(value = "helpmeInsert.bo", method = RequestMethod.POST)
+//	public String helpmeInsertBoard(Board b, Attachment at, MultipartFile upfile, HttpSession session, Model model) {
+//		int result1 = 0;
+//		int result2 = 0;
+//	
+//		
+//
+//		if(!upfile.getOriginalFilename().equals("")) {
+//			
+//			String changeName = saveFile(upfile, session, "resources/borderImage/");
+//			
+//			at.setOriginName(upfile.getOriginalFilename());
+//
+//			at.setChangeName("././resources/borderImage/" + changeName);
+//		}
+//		
+//		result1 = boardService.helpmeInsertBoard(b);
+//		b = boardService.helpmeselectOne(b);
+//		at.setBoardNo(b.getBoardNo());
+//		result2 = boardService.helpmeAttachment(at);
+//		
+//		if(result1 > 0 && result2 > 0) {
+//			session.setAttribute("alertMsg", "게시글 작성 성공");
+//			return "redirect:/helpmeList.bo";
+//		} else {
+//			model.addAttribute("errorMsg", "게시글 작성 실패");
+//			return "common/errorPage";
+//		}
+//	}
+	
+	//최창영 
+	@RequestMapping(value ="helpmeInsert.bo", method = RequestMethod.POST)
+	public String helpmeInsertBoard(Board b, @RequestParam("upfile") MultipartFile[] upfiles,
+	        HttpSession session, Model model) {
+		
+		ArrayList<Attachment> list = new ArrayList<>();
+		
 		int result1 = 0;
 		int result2 = 0;
-		
-		if(!upfile.getOriginalFilename().equals("")) {
-			
-			String changeName = saveFile(upfile, session, "resources/borderImage/");
-			
-			at.setOriginName(upfile.getOriginalFilename());
-
-			at.setChangeName("././resources/borderImage/" + changeName);
-		}
-		
 		result1 = boardService.helpmeInsertBoard(b);
 		b = boardService.helpmeselectOne(b);
-		at.setBoardNo(b.getBoardNo());
-		result2 = boardService.helpmeAttachment(at);
-		
-		if(result1 > 0 && result2 > 0) {
+		System.out.println("borad b = " + b);
+	    System.out.println("이야야야야양야야야");
+	    // 업로드할 파일들을 반복문을 통해 처리합니다.
+	    for (MultipartFile upfile : upfiles) {
+	        if (!upfile.isEmpty()) {
+	        	
+	        	Attachment at = new Attachment();
+	        	
+	            String changeName = saveFile(upfile, session, "resources/borderImage/");
+	            
+	            at.setOriginName(upfile.getOriginalFilename());	   
+	            at.setFilePath("././resources/borderImage/");
+	            at.setChangeName(changeName);
+	            at.setBoardNo(b.getBoardNo());
+	                    
+	            String fileName = upfile.getOriginalFilename();
+	            if( upfile == upfiles[0]) {
+	            	at.setFileLevel(1);
+	            } else {
+	            	at.setFileLevel(2);
+	            }
+	             
+	            System.out.println("filePath : " + at.getFilePath());          
+	            System.out.println("originName : " +at.getOriginName()); 	       
+	            System.out.println("changeName : " + at.getChangeName());
+	            System.out.println("fileLevel : " + at.getFileLevel()); 
+	            System.out.println("at = " +at);
+	            
+	            list.add(at);
+	        }
+	    }
+	    Attachment at = new Attachment();
+	    for (Attachment attachment : list) {
+	    	
+	        at = attachment;
+	        System.out.println("atat : " + at);
+	        boardService.helpmeAttachment(at);
+	    }
+	
+		if(result1 > 0 ) {
 			session.setAttribute("alertMsg", "게시글 작성 성공");
 			return "redirect:/helpmeList.bo";
 		} else {
 			model.addAttribute("errorMsg", "게시글 작성 실패");
 			return "common/errorPage";
 		}
-	}
+	}  
+//		result1 = boardService.helpmeInsertBoard(b);
+//		b = boardService.helpmeselectOne(b);
+//		at.setBoardNo(b.getBoardNo());
+//		result2 = boardService.helpmeAttachment(at);
+//		
+//		if(result1 > 0 && result2 > 0) {
+//			session.setAttribute("alertMsg", "게시글 작성 성공");
+//			return "redirect:/helpmeList.bo";
+//		} else {
+//			model.addAttribute("errorMsg", "게시글 작성 실패");
+//			return "common/errorPage";
+//		}
+	
+	    
+	 
 	
 	//도와주세요 디테일 페이지 이동
 	@RequestMapping(value="helpmeDetail.bo")
@@ -585,14 +665,14 @@ public class BoardController {
 		}
 	}
 	
-	//도와주세요 게시글 수정페이지 이동
+	//도와주세요 게시글 수정페이지 이동 aaa수정버튼 눌렀을 시
 	@RequestMapping(value="helpmeUpdateForm.bo")
 	public String helpmeUpdateForm(int boardNo, Model model) {
 		
 		Board b = boardService.helpmeSelectBoard(boardNo);
 		model.addAttribute("b",b);
 		
-		return "board/requestHelpmeRetouch";
+		return "board/aaa";
 	}
 	
 	//도와주세요 게시글 수정

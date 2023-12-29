@@ -83,8 +83,7 @@ public class LikeyController {
 		@ResponseBody
 		@RequestMapping(value="insertReply.li")
 			public String likeyInsertBoard(ReLikey r,  HttpServletResponse response ) throws IOException {
-				
-			System.out.println("여기까지는 왔나?");
+					
 			int result1 = boardService.insertReplyLikey(r);
 				int result2 = 0;
 				int result3 = 0;

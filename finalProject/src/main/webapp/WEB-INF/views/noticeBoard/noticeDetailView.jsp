@@ -353,6 +353,7 @@
         });
         
         function insertReplyLikey(replyNo){
+        	console.log(replyNo)
         	const boardNo = document.getElementById("reply-boardNo").value;
         	const memberNo = document.getElementById("WriterNo").value;      	
 			
@@ -372,14 +373,14 @@
         				console.log("댓글에 좋아요 인설트 성공");
         				increaseReplyLikey(replyNo);	
         				
-        				document.getElementById("relikeyNum").innerHTML = data.likeyCount;
+        				document.getElementById("relikeyNum" + replyNo).innerHTML = data.likeyCount;
         			}else if (data.result2 > 0){
         				console.log("댓글에 좋아요에 NNNNN값이 있네?");
-        				document.getElementById("relikeyNum").innerHTML = data.likeyCount;
+        				document.getElementById("relikeyNum" + replyNo).innerHTML = data.likeyCount;
         				
         			}else{
         				console.log("댓글에 좋아요가 있네?");	
-        				document.getElementById("relikeyNum").innerHTML = data.likeyCount;
+        				document.getElementById("relikeyNum" + replyNo).innerHTML = data.likeyCount;
         			}
         			
         		},
@@ -408,9 +409,9 @@
                 success: function(result){ 
                 	var data = JSON.parse(result);
 
-               		console.log("+1증가 성공!! ");	
-               		console.log("과연 값이 올까요?"+ data.likeyCount);		
-               		document.getElementById("likeyNum").innerHTML = data.likeyCount;
+               		console.log("increaseReplyLikey +1증가 성공!! ");	
+               		console.log("increaseReplyLikey 과연 값이 올까요?"+ data.reLikeyCount);		
+               		document.getElementById("relikeyNum" + replyNo).innerHTML = data.reLikeyCount;
                 
                 },
                 error:function(){
@@ -568,7 +569,7 @@
                         "<span>" + reply.createDate + " </span>" +
                         "<button class= \"reply-likey-btn\" onclick= \"insertReplyLikey("+reply.replyNo+")\">"+
                         "<img src=\"./resources/icon/LIKE.png\" class=\"img\" style=\"margin-bottom: 10px;\">" +
-                        "<span id=\"relikeyNum\" class=\"relikeyNum\">"+reply.reLikeyCount + "</span>" +
+                        "<span id=\"relikeyNum"+reply.replyNo+"\" class=\"relikeyNum\">"+ reply.reLikeyCount + "</span>" +
                         "</button>"+      
                         "<span>·</span>"+
                         "<img src=\"./resources/icon/dislike.png\" class=\"img\" style=\"margin-top: 7px;\">" +
