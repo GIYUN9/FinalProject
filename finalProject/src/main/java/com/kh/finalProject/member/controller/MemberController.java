@@ -212,6 +212,9 @@ public class MemberController {
 		Member m = (Member)session.getAttribute("loginUser");
 		ArrayList<Report> rlist = memberService.myReportList(m);
 		session.setAttribute("rlist", rlist);
+		
+		ArrayList<Report> endrlist = memberService.endMyReportList(m);
+		session.setAttribute("endrlist", endrlist);
 		return "myPage/ask3";
 	}
 	
@@ -574,5 +577,26 @@ public class MemberController {
 			session.setAttribute("alertMsg", "전화번호 변경 실패.");
 		}
 		return "redirect:/userInfo.me";
+	}
+	
+	//신고하기(문의)등록 페이지
+	@RequestMapping(value = "reportEnrollFrom.me")
+	public String reportEnrollFrom() {
+		return "myPage/reportEnrollFrom";
+	}
+	
+	//신고하기 글 등록
+	@RequestMapping(value = "insertReport.me")
+	public String insertReport(Report r, HttpSession session) {
+		System.out.println("dddd : "+r);
+		int result = memberService.insertReport(r);
+		
+		if(result > 0) {
+			session.setAttribute("alertMsg", "신고(문의)가 성공적으로 등록되었습니다.");
+		}else {
+			session.setAttribute("alertMsg", "등록 실패");
+		}
+		
+		return "redirect:/ask3.me";
 	}
 }
