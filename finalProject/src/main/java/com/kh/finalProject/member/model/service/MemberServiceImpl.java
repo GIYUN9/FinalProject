@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.finalProject.common.vo.Reason;
+import com.kh.finalProject.common.vo.Report;
 import com.kh.finalProject.common.vo.Schedule;
 import com.kh.finalProject.mail.EmailCheck;
 import com.kh.finalProject.member.model.dao.MemberDao;
@@ -165,5 +166,10 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int updatePhone(Member m) {
 		return memberDao.updatePhone(sqlSession, m);
+	}
+
+	@Override
+	public ArrayList<Report> myReportList(Member m) {
+		return memberDao.myReportList(sqlSession, m);
 	}
 }
