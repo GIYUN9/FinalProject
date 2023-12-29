@@ -171,89 +171,55 @@
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<img class="close-btn" src="././resources/icon/close.png">
 				<div class="user-info">
-				<c:forEach var="r" items="${list}">
-					<div class="req-outer">
-						<div class="req-align">
-						
-							<div class="req-text">
-								<h6 class="req-title">${r.reportTitle}</h6>
-								<div class="req-desc">
-									${r.reportContent}
+					<c:forEach var="r" items="${list}">
+						<div class="req-outer">
+							<div class="req-align">
+							
+								<div class="req-text">
+									<h6 class="req-title">${r.reportTitle}</h6>
+									<div class="req-desc">
+										${r.reportContent}
+									</div>
+								</div>
+								<div class="req-info">
+									<div class="req-no">${r.reportNo}</div>
+									<div class="req-no">${r.createDate}</div>
+									<div class="req-id">${r.memberNo}</div>
 								</div>
 							</div>
-							<div class="req-info">
-								<div class="req-no">${r.reportNo}</div>
-								<div class="req-no">${r.createDate}</div>
-								<div class="req-id">${r.memberNo}</div>
+							<div class="req-btn-area">
+								<button class="req-detail-btn" type="button" onclick="reportDetail(${r.reportNo})">상세보기</button>
 							</div>
 						</div>
-						<div class="req-btn-area">
-							<button class="req-detail-btn" type="button" onclick="showDetail(1)">상세보기</button>
+					</c:forEach>	
+				
+				</div>
+
+				<c:forEach var="r" items="${list}">
+					<div class="view${r.reportNo}" style="display: none;">
+						<div>
+							ddd
 						</div>
 					</div>
 				</c:forEach>
-						
 
-					<div class="req-outer">
-						<div class="req-align">
-							<div class="req-text">
-								<h6 class="req-title">이거 오류가 있는 것 같습니다!!!</h6>
-								<div class="req-desc">
-									버튼이 안눌려요 버튼이
-								</div>
-							</div>
-							<div class="req-info">
-								<div class="req-no">신고번호 N.007777</div>
-								<div class="req-id">홍홍홍</div>
-							</div>
-						</div>
-						<div class="req-btn-area">
-							<button class="req-answer-btn">답변</button>
-							<button class="req-detail-btn">상세보기</button>
-						</div>
-					</div>
-					<div class="req-outer">
-						<div class="req-align">
-							<div class="req-text">
-								<h6 class="req-title">똑바로 안하냐?</h6>
-								<div class="req-desc">
-									아니 !@#! 결제가 안된다고 돈벌기 싫어?
-								</div>
-							</div>
-							<div class="req-info">
-								<div class="req-no">신고번호 N.012120</div>
-								<div class="req-id">아무개</div>
-							</div>
-						</div>
-						<div class="req-btn-area">
-							<button class="req-answer-btn">답변</button>
-							<button class="req-detail-btn">상세보기</button>
-						</div>
-
-					</div>
-				</div>
-				<div class="qqq" style="display: none;">
-					<div class="1" style="display: none;">
-						1
-					</div>
-					<div class="2" style="display: none;">
-						2
-					</div>
-					<div class="3" style="display: none;">
-						3
-					</div>
-				</div>
+			</div>	 
 			</div>		
 		</div>
-	</div>	<jsp:include page="../common/footer.jsp" />
+
+	
+	<jsp:include page="../common/footer.jsp" />
+
 	<script>
-		function showDetail(num){
-			const userInfo = document.getElementsByClassName('user-info');
-			userInfo[0].style.display = 'none';
-			const qqq = document.getElementsByClassName('qqq');
-			qqq[0].style.display = 'block';
-			const number = document.getElementsByClassName(num);
-			number[0].style.display = 'block';
+		
+		function reportDetail(res){
+			console.log(res)
+			const reportInfo = document.querySelector('.user-info');
+			reportInfo.style.display = "none";
+
+			const reportNum = document.querySelector('.view'+res);
+			console.log(reportNum)
+			reportNum.style.display = "flex";
 		}
 	</script>
 </body>
