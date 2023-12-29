@@ -32,6 +32,10 @@
                         <option value="203">203</option>
                         <option value="204">204</option>
                         <option value="205">205</option>
+                        <!-- 
+                        	포이치 여기들어오는 컨트롤러에서 카테고리 전체 조회해서 세션에 담아서 페이지리턴 
+                        	<option value="${c.categoryNo}">${c.categoryName}</option>
+                        -->
                     </select>
                 </td>
             </tr>
