@@ -189,4 +189,8 @@ public interface BoardService {
 	//신고하기 adminComent
 	int reportUpdate(Report rp);
 
+	//신고하기 adminComent Update
+	int reportUpdate(Report rt);
+	
+	ArrayList<Report> selectEndReport();
 }

@@ -311,8 +311,12 @@ public class BoardDao {
 		return (ArrayList)sqlSession.selectList("boardMapper.selectReport");
 	}
 	
-	public int reportUpdate(SqlSessionTemplate sqlSession, Report rp) {
-		return sqlSession.update("boardMapper.reportUpdate");
+	public int reportUpdate(SqlSessionTemplate sqlSession, Report rt) {
+		return sqlSession.update("boardMapper.reportUpdate", rt);
+	}
+	
+	public ArrayList<Report> selectEndReport(SqlSessionTemplate sqlSession){
+		return (ArrayList)sqlSession.selectList("boardMapper.selectEndReport");
 	}
 	
 	
