@@ -401,9 +401,16 @@ public class BoardServiceImpl implements BoardService {
 
 	//신고하기 adminComent
 	@Override
-	public int reportUpdate(Report rp) {
-		return boardDao.reportUpdate(sqlSession, rp);
+	public int reportUpdate(Report rt) {
+		return boardDao.reportUpdate(sqlSession, rt);
 	}
+
+	@Override
+	public ArrayList<Report> selectEndReport() {
+		return boardDao.selectEndReport(sqlSession);
+	}
+
+	
 
 
 }
