@@ -123,10 +123,7 @@ public class BoardController {
 		
 		int result1 = 0;
 		int result2 = 0;
-		
-
-		
-		
+	
 		if(!upfile.getOriginalFilename().equals("")) {
 			
 			String changeName = saveFile(upfile, session, "././resources/borderImage/");
@@ -159,15 +156,19 @@ public class BoardController {
 	//도와줄게요 디테일 페이지 이동
 	@RequestMapping(value="helpDetailPage.bo")
 	public String helpDetailBoard(int boardNo, Model model, HttpSession session)  {
+			
 		
 		int increaseCount = boardService.helpincreaseCount(boardNo);
 		System.out.println("조회수 증가 " + increaseCount);
 		
-		
 		if(increaseCount > 0) {
-			Board b = boardService.helpSelectBoard(boardNo);
-			System.out.println("board 확인" + b);
+			Board b = boardService.helpmeSelectBoard(boardNo);
+			ArrayList<Attachment> atlist = boardService.helpmeAttachmentList(boardNo);
+			System.out.println(b);
+			System.out.println("atlist : " + atlist);
 			session.setAttribute("b", b);
+			session.setAttribute("atlist", atlist);
+			
 			return "board/helpDetail";
 		} else {
 			model.addAttribute("errorMsg", "게시글 조회 실패");
@@ -539,7 +540,7 @@ public class BoardController {
 	//도와주세요 게시글 작성 페이지
 	@RequestMapping(value = "helpmeForm.bo")
 	public String helpmeForm() {
-		return "board/bbb";
+		return "board/helpme";
 	}
 	
 	//도와주세요 게시글 등록 // 지혜님 거
@@ -593,10 +594,10 @@ public class BoardController {
 	        	Attachment at = new Attachment();
 	        	
 	            String changeName = saveFile(upfile, session, "resources/borderImage/");
-	            
+	            at.setChangeName("././resources/borderImage/" + changeName);
 	            at.setOriginName(upfile.getOriginalFilename());	   
 	            at.setFilePath("././resources/borderImage/");
-	            at.setChangeName(changeName);
+	            
 	            at.setBoardNo(b.getBoardNo());
 	                    
 	            String fileName = upfile.getOriginalFilename();
@@ -615,6 +616,8 @@ public class BoardController {
 	            list.add(at);
 	        }
 	    }
+	    
+	    System.out.println(list);
 	    Attachment at = new Attachment();
 	    for (Attachment attachment : list) {
 	    	
@@ -624,13 +627,21 @@ public class BoardController {
 	    }
 	
 		if(result1 > 0 ) {
-			session.setAttribute("alertMsg", "게시글 작성 성공");
-			return "redirect:/helpmeList.bo";
+			if(b.getBoardType() == 2) {
+				session.setAttribute("alertMsg", "게시글 작성 성공");
+				return "redirect:/helpmeList.bo";
+			}else {
+				session.setAttribute("alertMsg", "게시글 작성 성공");
+				return "redirect:/helpList.bo";
+			}
+			
 		} else {
 			model.addAttribute("errorMsg", "게시글 작성 실패");
 			return "common/errorPage";
 		}
 	}  
+	
+	
 //		result1 = boardService.helpmeInsertBoard(b);
 //		b = boardService.helpmeselectOne(b);
 //		at.setBoardNo(b.getBoardNo());
@@ -656,8 +667,12 @@ public class BoardController {
 		
 		if(increaseCount > 0) {
 			Board b = boardService.helpmeSelectBoard(boardNo);
+			ArrayList<Attachment> atlist = boardService.helpmeAttachmentList(boardNo);
 			System.out.println(b);
+			System.out.println("atlist : " + atlist);
 			session.setAttribute("b", b);
+			session.setAttribute("atlist", atlist);
+			
 			return "board/requestHelpmeDetail";
 		} else {
 			model.addAttribute("errorMsg", "게시글 조회 실패");

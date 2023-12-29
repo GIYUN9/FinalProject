@@ -314,4 +314,9 @@ public class BoardDao {
 	public int seletReportCount(SqlSessionTemplate sqlSession) {
 		return sqlSession.selectOne("boardMapper.seletReportCount");
 	}
+	
+	
+	public ArrayList<Attachment> helpmeAttachmentList(SqlSessionTemplate sqlSession, int boardNo) {
+		return (ArrayList)sqlSession.selectList("boardMapper.helpmeAttachmentList", boardNo);
+	}
 }

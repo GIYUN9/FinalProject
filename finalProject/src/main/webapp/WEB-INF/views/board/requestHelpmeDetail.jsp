@@ -445,35 +445,25 @@
     .logo{
         display: block;
     }
-    /* .content-title > .logo{
-        display: inline-block;
-    } */
-
-    /* .a{
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        align-items: end;
-        bottom: -85px;
-        left: -22px;
-    } */
+  
     .content-title{
             align-items: center;
-    	/* justify-content: center; */
-    	display: flex;
+    	 justify-content: center; 
+    
     }
 
     .content-detail{
         width: 400px;
         height: 400px;
-        padding-top: 50px;
-        
+        padding-top: 100px;
+        padding-left: 100px;
     	justify-content: center;
     	display: flex;
     }
 
     .a{
-        padding-left: 90px;
+            float: right;
+            padding-right: 20px;
     }
 
     .share-icon{border: none;
@@ -538,18 +528,31 @@
     .nav-item-content{
     	color : white;
     }
-    
+    .helpr-text{
+	    resize:none; 
+	    width:100%;
+	}
 
-</style>
-.helpr-text{
-    resize:none; 
-    width:100%;
-}
+	.img{
+		width:50px;
+		height: 50px;
+	}
+	
+	.chat-btn:hover{
+		cursor: pointer;
+        opacity: 0.5;
+	}
+	
+	.hu-cancle-btn:hover{
+		cursor: pointer;
+        opacity: 0.5;
+	}
+	
+	.hu-submit-btn{
+		cursor: pointer;
+        opacity: 0.5;
+	}
 
-.img{
-	width:50px;
-	height: 50px;
-}
 </style>
 <script src="${pageContext.request.contextPath}/resources/js/helpmeboder.js"></script>
 </head>
@@ -606,16 +609,11 @@
                 <div class = "slider-wrapper">
                     <button id ="next-slide" class="slide-button material-symbols-rounded">&#62;</button>
                     <div class = "image-list">
-                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
-                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
-                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
-                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
-                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
-                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
-                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
-                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
-                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
-                        <img class ="image-item" src="././resources/image/일러스트.jpg" alt="일러스트">
+
+                        <c:forEach var="at" items="${atlist}">
+                            <img class ="image-item" src="${at.changeName}" alt="일러스트">
+                        </c:forEach>
+            
                     </div>
                     <button id ="prev-slide" class="slide-button material-symbols-rounded">&#60;</button>
                 </div>
@@ -628,44 +626,24 @@
         </div>
         <div class = "content">
             <div class= "sub-content">
-                <div class = "icon">
-                    <div class = "share">
-                        <button class="share-icon"><img src = "././resources/image/share.jpg" alt=""></button>
-                    </div>
-                    <div class = "heart">
-                        <button class="heart-icon"><img src = "././resources/image/heart.jpg" alt="하트 이미지"></button>
-                        <div class="heart-text"><h4>1,063</h4></div>
-                    </div>
-                </div>
                 <div class = "content-title">
                     <div class = "content-title-text">
                        <text><h2>${b.boardTitle }</h2></text> 
                     </div>
-                   
-
                     <div class = "modal actice">
                         <div class = "modal-content">
                             <a href="#none" class = "btn-close">x</a>
                             <div class = "modal-body">
 
                             </div>
-
                         </div>
-                    </div>
-                    
-                    <div class = "a">
-                        <div class="report">
-                            <img src="././resources/image/경고.jpg" alt="" class="report-icon">
-                            <button class = "report-btn">신고하기</button>
-                        </div>
-                        <div class="logo">
-                            <div class="star">
-                                <img src="././resources/image/stars.jpg" alt="" class="star-icon">
-                                <div class = "star-text">5.0/5</div>
-                            </div>
+                    </div>     
+                    <div class = "a">               
+                        <div class="logo">          
                             <div class = "data">
-                                <div class="data-mem"></div>
-                                <div class="count"></div>
+                                <div class="data-mem">유저이름</div>
+                                <div class="count">조회수정도</div>
+                                <button class="chat-btn">채팅하기</button>
                             </div>
                         </div>
                     </div>
@@ -674,7 +652,7 @@
                    ${b.boardContent }
                     
                 </div>
-                <button id = "content-btn">구매하기zz</button>
+                <button id = "content-btn">구매하기</button>
                   <form action="" method="post" id="form">
         	<input type="hidden" name="boardNo" value="${b.boardNo}">
         	<input type="hidden" name="filePath" value="${b.changeName}">
@@ -682,7 +660,7 @@
 
         <div class="hu-btn-area">
             <a class="hu-cancle-btn" onclick="postBtn(2)">삭제</a>
-            <a class="hu-submit-btn" style="color: white;" onclick="postBtn(1)">수정</a>
+            <a class="hu-submit-btn" onclick="postBtn(1)">수정</a>
         </div>
 </div>
 

@@ -397,6 +397,11 @@ public class BoardServiceImpl implements BoardService {
 	public ArrayList<Report> selectReport() {
 		return boardDao.selectReport(sqlSession);
 	}
+	
+	@Override
+	public ArrayList<Attachment> helpmeAttachmentList(int boardNo) {
+		return boardDao.helpmeAttachmentList(sqlSession, boardNo);
+	}
 
 
 }

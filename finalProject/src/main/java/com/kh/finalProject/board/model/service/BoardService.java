@@ -181,5 +181,7 @@ public interface BoardService {
 	
 	//신고하기 신고내용 가져오기
 	ArrayList<Report> selectReport();
+	
+	ArrayList<Attachment> helpmeAttachmentList(int boardNo);
 
 }
