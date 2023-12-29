@@ -173,85 +173,33 @@
 			</c:if>        
 		</div>
 		<div class="main-box">
-			<h3 style="margin: 10px 0 0 20px;">문의 내역</h3>
+			<h3 style="margin: 10px 0 0 20px;">신고(문의) 등록</h3>
 			<br>
 			<div class="top-center"
 				style="display: flex; justify-content: space-around; margin-left: 20px; margin-right: 20px">
-				<!-- 호버되면 밑줄 만들어주세요 ㅋㅋ -->
-				<div>
-					<p class="p-btn" id="from" onclick="from()">등록한 문의</p>
-				</div>
-				<div>
-					<p class="p-btn1" id="send" onclick="send()">처리된 문의</p>
-				</div>
 			</div>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="user-info">
-					<button type="button" onclick="reportEnrollFrom()">문의하기</button>
-					<c:forEach var="r" items="${rlist}">
-						<div class="req-outer">
-							<div class="req-align">
-								<div class="req-text">
-									<h6 class="req-title">${r.reportTitle}</h6>
-									<div class="req-desc">
-										${r.reportContent}
-									</div>
-								</div>
-								<div class="req-info">
-									<div class="req-no">신고번호 N.${r.reportNo}</div>
-									<div class="req-id">${r.createDate}</div>
-								</div>
-							</div>
-							<div class="req-btn-area">
-								<button class="req-answer-btn">답변 대기 중</button>
-							</div>
-						</div>
-					</c:forEach>
-					
-					<c:forEach var="e" items="${endrlist}">
-						<div class="req-outer1" style="display: none;">
-							<div class="req-align">
-								<div class="req-text">
-									<h6 class="req-title">${e.reportTitle}</h6>
-									<div class="req-desc">
-										${e.reportContent}
-									</div>
-									
-								</div>
-								<div class="req-info">
-									<div class="req-no">신고번호 N.${e.reportNo}</div>
-									<div class="req-id">${e.createDate}</div>
-								</div>
-							</div>
-							<div class="req-btn-area">
-								<button class="req-answer-btn">처리완료</button>
-							</div>
-							<span style="color: red; margin-top: 10px;">관리자님의 답변</span>
-							<textarea class="answer" style="width: 90%; height: 100px;" readonly="readonly"></textarea>
-						</div>
-					</c:forEach>
-					
+					<form action="insertReport.me">
+					<div>
+						작성자
+						<input type="text" value="${loginUser.memberEmail} / ${loginUser.memberName}님" readonly="readonly" style="width: 100%;">
+						<input type="hidden" name="memberNo" value="${loginUser.memberNo}">
+					</div>
+					<div>
+						제목
+						<input type="text" name="reportTitle">
+					</div>
+					<div>
+						내용
+						<input type="text" name="reportContent">
+					</div>
+					<button type="submit">등록하기</button>
+					</form>
 				</div>
 			</div>		
 		</div>
 	</div>
 	<jsp:include page="../common/footer.jsp" />
-<script>
-	function from() {
-		location.href = "ask3.me";
-	}
-
-	function send() {
-			const reqAreas = document.querySelectorAll('.req-outer');
-			reqAreas.forEach(reqArea => reqArea.style.display = "none");
-			
-			const reqAreas1 = document.querySelectorAll('.req-outer1');
-			reqAreas1.forEach(reqArea1 => reqArea1.style.display = "flex");
-	}
-	
-	function reportEnrollFrom() {
-		location.href = "reportEnrollFrom.me";
-	}
-</script>
 </body>
 </html>

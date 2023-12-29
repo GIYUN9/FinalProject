@@ -91,4 +91,9 @@ public interface MemberService {
 	int updatePhone(Member m);
 	
 	ArrayList<Report> myReportList(Member m);
+	
+	ArrayList<Report> endMyReportList(Member m);
+	
+	int insertReport(Report r);
+	
 }

@@ -1700,7 +1700,7 @@ VALUES(
     SYSDATE,
     '2',
     NULL,
-    'Y'
+    'N'
 );
 
 
