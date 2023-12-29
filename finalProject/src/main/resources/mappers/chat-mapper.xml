@@ -35,7 +35,8 @@
 		SELECT CR.SENDER_NAME,
 			   CR.SENDER_NO, 
 	           CR.RECEIVER_NO, 
-	           CR.RECEIVER_NAME
+	           CR.RECEIVER_NAME,
+	           CR.MEM_COUNT
 		  FROM CHATROOM CR
 		  JOIN MEMBER M ON (CR.SENDER_NO = M.MEM_NO)
          WHERE CR.SENDER_NO = #{senderNo}
