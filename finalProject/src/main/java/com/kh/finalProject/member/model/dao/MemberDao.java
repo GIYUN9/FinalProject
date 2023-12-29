@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.finalProject.common.vo.Reason;
+import com.kh.finalProject.common.vo.Report;
 import com.kh.finalProject.common.vo.Schedule;
 import com.kh.finalProject.mail.EmailCheck;
 import com.kh.finalProject.member.model.vo.Member;
@@ -124,6 +125,10 @@ public class MemberDao {
 	
 	public int updatePhone(SqlSessionTemplate sqlSession, Member m) {
 		return sqlSession.update("memberMapper.updatePhone", m);
+	}
+	
+	public ArrayList<Report> myReportList(SqlSessionTemplate sqlSession, Member m){
+		return (ArrayList)sqlSession.selectList("memberMapper.myReportList", m);
 	}
 }
 

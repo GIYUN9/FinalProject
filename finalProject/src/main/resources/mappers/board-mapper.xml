@@ -81,7 +81,7 @@
   		<result column="REPORT_CONTENT" property="reportContent" />
   		<result column="CREATEDATE" property="createDate" />
   		<result column="MEM_NO" property="memberNo" />
-  		<result column="ADMIN_COMENT" property="adminComent" />
+  		<result column="ADMIN_COMENT" property="adminComent" />		
   		<result column="STATUS" property="status" />
   	</resultMap>
   	
@@ -901,4 +901,12 @@
 		WHERE BOARD_NO = #{boardNo}
 			 AND FILE_LEVEL = 2
 	</select>
+	<!-- 신고하기 adminComent -->
+	<update id="reportUpdate">
+		UPDATE REPORT
+		 SET ADMIN_COMENT = #{adminComent},
+		 	STATUS = 'N'
+		 WHERE REPORT_NO = #{reportNo}
+	</update>
+	
   </mapper>

@@ -183,5 +183,7 @@ public interface BoardService {
 	ArrayList<Report> selectReport();
 	
 	ArrayList<Attachment> helpmeAttachmentList(int boardNo);
+	//신고하기 adminComent
+	int reportUpdate(Report rp);
 
 }

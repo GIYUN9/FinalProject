@@ -310,9 +310,9 @@ public class BoardDao {
 	public ArrayList<Report> selectReport(SqlSessionTemplate sqlSession) {
 		return (ArrayList)sqlSession.selectList("boardMapper.selectReport");
 	}
-
-	public int seletReportCount(SqlSessionTemplate sqlSession) {
-		return sqlSession.selectOne("boardMapper.seletReportCount");
+	
+	public int reportUpdate(SqlSessionTemplate sqlSession, Report rp) {
+		return sqlSession.update("boardMapper.reportUpdate");
 	}
 	
 	

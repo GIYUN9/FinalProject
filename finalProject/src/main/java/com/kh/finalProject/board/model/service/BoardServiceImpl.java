@@ -393,6 +393,7 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.selectCategoryList(sqlSession);
 	}
 
+	//신고하기 신고내용 가져오기
 	@Override
 	public ArrayList<Report> selectReport() {
 		return boardDao.selectReport(sqlSession);
@@ -401,6 +402,12 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public ArrayList<Attachment> helpmeAttachmentList(int boardNo) {
 		return boardDao.helpmeAttachmentList(sqlSession, boardNo);
+	}
+
+	//신고하기 adminComent
+	@Override
+	public int reportUpdate(Report rp) {
+		return boardDao.reportUpdate(sqlSession, rp);
 	}
 
 
