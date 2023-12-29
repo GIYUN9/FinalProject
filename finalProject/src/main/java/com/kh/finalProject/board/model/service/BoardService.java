@@ -112,6 +112,9 @@ public interface BoardService {
 	//도와주세요 보드번호 가져오는 중간 쿼리
 	Board helpmeselectOne(Board b);
 	
+	//도와주세요 보드번호 가져오는 중간 쿼리
+	Board helpmeselectOne2(int boardNo);
+	
 	//도와주세요 리스트 조회
 	ArrayList<Board> helpmeselectList(PageInfo pi);
 	

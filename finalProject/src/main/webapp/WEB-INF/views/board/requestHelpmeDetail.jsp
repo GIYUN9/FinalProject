@@ -641,7 +641,7 @@
                     <div class = "a">               
                         <div class="logo">          
                             <div class = "data">
-                                <div class="data-mem">유저이름</div>
+                                <div class="data-mem">${b.memberNo }</div>
                                 <div class="count">조회수정도</div>
                                 <button class="chat-btn">채팅하기</button>
                             </div>

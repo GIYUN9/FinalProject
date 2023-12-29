@@ -34,4 +34,10 @@ public class Board {
 		private String liStatus;
 		
 		private int viewCount;
+		
+		
+		private String intro;
+		private int skillNo;
+		private String phone;
+	
 	}

@@ -137,7 +137,9 @@ public class BoardController {
 		b = boardService.helpselectOne(b);
 		at.setBoardNo(b.getBoardNo());
 		result2 = boardService.helpAttachment(at);
+		System.out.println("글쓴이 정보 되나? : " + b);
 		if(result1 > 0 && result2 > 0) {
+			session.setAttribute("b", b);
 			session.setAttribute("alertMsg", "게시글 작성 완료");
 			return "redirect:/helpList.bo";
 		} else {
@@ -574,20 +576,26 @@ public class BoardController {
 //		}
 //	}
 	
-	//최창영 
+	//최창영 도와주세요 인설트
 	@RequestMapping(value ="helpmeInsert.bo", method = RequestMethod.POST)
 	public String helpmeInsertBoard(Board b, @RequestParam("upfile") MultipartFile[] upfiles,
 	        HttpSession session, Model model) {
 		
 		ArrayList<Attachment> list = new ArrayList<>();
-		
+		System.out.println("처음값 : " +b);
 		int result1 = 0;
 		int result2 = 0;
 		result1 = boardService.helpmeInsertBoard(b);
+		
+		
 		b = boardService.helpmeselectOne(b);
 		System.out.println("borad b = " + b);
-	    System.out.println("이야야야야양야야야");
-	    // 업로드할 파일들을 반복문을 통해 처리합니다.
+		System.out.println("보드넘버 : " + b.getBoardNo());
+		
+		b = boardService.helpmeselectOne2(b.getBoardNo());
+	
+		System.out.println("최후의 보드 = " + b);
+				
 	    for (MultipartFile upfile : upfiles) {
 	        if (!upfile.isEmpty()) {
 	        	
@@ -627,11 +635,13 @@ public class BoardController {
 	    }
 	
 		if(result1 > 0 ) {
-			if(b.getBoardType() == 2) {
+			if(b.getBoardType() == 2) {		
 				session.setAttribute("alertMsg", "게시글 작성 성공");
+				session.setAttribute("b", b);
 				return "redirect:/helpmeList.bo";
 			}else {
 				session.setAttribute("alertMsg", "게시글 작성 성공");
+				session.setAttribute("b", b);
 				return "redirect:/helpList.bo";
 			}
 			
