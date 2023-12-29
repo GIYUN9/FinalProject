@@ -267,6 +267,7 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.helpmeselectOne(sqlSession ,b);
 	}
 	
+	
 	//도와주세요 게시글 상세조회
 	@Override
 	public Board helpmeSelectBoard(int boardNo) {
@@ -398,12 +399,28 @@ public class BoardServiceImpl implements BoardService {
 	public ArrayList<Report> selectReport() {
 		return boardDao.selectReport(sqlSession);
 	}
+	
+	@Override
+	public ArrayList<Attachment> helpmeAttachmentList(int boardNo) {
+		return boardDao.helpmeAttachmentList(sqlSession, boardNo);
+	}
 
 	//신고하기 adminComent
 	@Override
-	public int reportUpdate(Report rp) {
-		return boardDao.reportUpdate(sqlSession, rp);
+	public int reportUpdate(Report rt) {
+		return boardDao.reportUpdate(sqlSession, rt);
 	}
+
+	@Override
+	public Board helpmeselectOne2(int boardNo) {
+		return boardDao.helpmeselectOne2(sqlSession, boardNo);
+	}
+
+	public ArrayList<Report> selectEndReport() {
+		return boardDao.selectEndReport(sqlSession);
+	}
+
+	
 
 
 }

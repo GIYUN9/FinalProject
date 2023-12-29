@@ -123,10 +123,7 @@ public class BoardController {
 		
 		int result1 = 0;
 		int result2 = 0;
-		
-
-		
-		
+	
 		if(!upfile.getOriginalFilename().equals("")) {
 			
 			String changeName = saveFile(upfile, session, "././resources/borderImage/");
@@ -140,7 +137,9 @@ public class BoardController {
 		b = boardService.helpselectOne(b);
 		at.setBoardNo(b.getBoardNo());
 		result2 = boardService.helpAttachment(at);
+		System.out.println("글쓴이 정보 되나? : " + b);
 		if(result1 > 0 && result2 > 0) {
+			session.setAttribute("b", b);
 			session.setAttribute("alertMsg", "게시글 작성 완료");
 			return "redirect:/helpList.bo";
 		} else {
@@ -159,15 +158,19 @@ public class BoardController {
 	//도와줄게요 디테일 페이지 이동
 	@RequestMapping(value="helpDetailPage.bo")
 	public String helpDetailBoard(int boardNo, Model model, HttpSession session)  {
+			
 		
 		int increaseCount = boardService.helpincreaseCount(boardNo);
 		System.out.println("조회수 증가 " + increaseCount);
 		
-		
 		if(increaseCount > 0) {
-			Board b = boardService.helpSelectBoard(boardNo);
-			System.out.println("board 확인" + b);
+			Board b = boardService.helpmeSelectBoard(boardNo);
+			ArrayList<Attachment> atlist = boardService.helpmeAttachmentList(boardNo);
+			System.out.println(b);
+			System.out.println("atlist : " + atlist);
 			session.setAttribute("b", b);
+			session.setAttribute("atlist", atlist);
+			
 			return "board/helpDetail";
 		} else {
 			model.addAttribute("errorMsg", "게시글 조회 실패");
@@ -539,7 +542,7 @@ public class BoardController {
 	//도와주세요 게시글 작성 페이지
 	@RequestMapping(value = "helpmeForm.bo")
 	public String helpmeForm() {
-		return "board/bbb";
+		return "board/helpme";
 	}
 	
 	//도와주세요 게시글 등록 // 지혜님 거
@@ -573,30 +576,36 @@ public class BoardController {
 //		}
 //	}
 	
-	//최창영 
+	//최창영 도와주세요 인설트
 	@RequestMapping(value ="helpmeInsert.bo", method = RequestMethod.POST)
 	public String helpmeInsertBoard(Board b, @RequestParam("upfile") MultipartFile[] upfiles,
 	        HttpSession session, Model model) {
 		
 		ArrayList<Attachment> list = new ArrayList<>();
-		
+		System.out.println("처음값 : " +b);
 		int result1 = 0;
 		int result2 = 0;
 		result1 = boardService.helpmeInsertBoard(b);
+		
+		
 		b = boardService.helpmeselectOne(b);
 		System.out.println("borad b = " + b);
-	    System.out.println("이야야야야양야야야");
-	    // 업로드할 파일들을 반복문을 통해 처리합니다.
+		System.out.println("보드넘버 : " + b.getBoardNo());
+		
+		b = boardService.helpmeselectOne2(b.getBoardNo());
+	
+		System.out.println("최후의 보드 = " + b);
+				
 	    for (MultipartFile upfile : upfiles) {
 	        if (!upfile.isEmpty()) {
 	        	
 	        	Attachment at = new Attachment();
 	        	
 	            String changeName = saveFile(upfile, session, "resources/borderImage/");
-	            
+	            at.setChangeName("././resources/borderImage/" + changeName);
 	            at.setOriginName(upfile.getOriginalFilename());	   
 	            at.setFilePath("././resources/borderImage/");
-	            at.setChangeName(changeName);
+	            
 	            at.setBoardNo(b.getBoardNo());
 	                    
 	            String fileName = upfile.getOriginalFilename();
@@ -615,6 +624,8 @@ public class BoardController {
 	            list.add(at);
 	        }
 	    }
+	    
+	    System.out.println(list);
 	    Attachment at = new Attachment();
 	    for (Attachment attachment : list) {
 	    	
@@ -624,13 +635,23 @@ public class BoardController {
 	    }
 	
 		if(result1 > 0 ) {
-			session.setAttribute("alertMsg", "게시글 작성 성공");
-			return "redirect:/helpmeList.bo";
+			if(b.getBoardType() == 2) {		
+				session.setAttribute("alertMsg", "게시글 작성 성공");
+				session.setAttribute("b", b);
+				return "redirect:/helpmeList.bo";
+			}else {
+				session.setAttribute("alertMsg", "게시글 작성 성공");
+				session.setAttribute("b", b);
+				return "redirect:/helpList.bo";
+			}
+			
 		} else {
 			model.addAttribute("errorMsg", "게시글 작성 실패");
 			return "common/errorPage";
 		}
 	}  
+	
+	
 //		result1 = boardService.helpmeInsertBoard(b);
 //		b = boardService.helpmeselectOne(b);
 //		at.setBoardNo(b.getBoardNo());
@@ -656,8 +677,12 @@ public class BoardController {
 		
 		if(increaseCount > 0) {
 			Board b = boardService.helpmeSelectBoard(boardNo);
+			ArrayList<Attachment> atlist = boardService.helpmeAttachmentList(boardNo);
 			System.out.println(b);
+			System.out.println("atlist : " + atlist);
 			session.setAttribute("b", b);
+			session.setAttribute("atlist", atlist);
+			
 			return "board/requestHelpmeDetail";
 		} else {
 			model.addAttribute("errorMsg", "게시글 조회 실패");
@@ -763,10 +788,25 @@ public class BoardController {
 
 		ArrayList<Report> list = boardService.selectReport();
 		System.out.println("신고하기 글 "+list);
-		session.setAttribute("list", list);	
+		session.setAttribute("list", list);
+		
+		ArrayList<Report> endlist = boardService.selectEndReport();
+		System.out.println(endlist);
+		session.setAttribute("endlist", endlist);
 		return "myPage/viewReport";
 		}
 	
+	//신고하기
+	@RequestMapping(value="reportComment.rp")
+	public String reportComment(HttpSession session, Report rt) {
+		
+		int result = boardService.reportUpdate(rt);
+		System.out.println(result);
+		if(result > 0) {
+			session.setAttribute("alertMsg", "답변완료");
+		}
+		return "redirect:/reportList.rp";
+	}
 	
 //	스크립트 기능 후 가진 정보 보내주는 기능 
 //	나중에 작성!

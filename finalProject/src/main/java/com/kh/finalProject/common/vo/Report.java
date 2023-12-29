@@ -19,5 +19,7 @@ public class Report {
 	private String reportContent;
 	private Date createDate;
 	private int memberNo;
+	private String memberName;
+	private String adminComent;
 	private String status;
 }

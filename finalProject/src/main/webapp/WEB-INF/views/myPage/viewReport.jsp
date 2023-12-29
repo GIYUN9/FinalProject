@@ -134,6 +134,26 @@
 	.req-title{
 		font-weight: bold;
 	}
+
+	#reportBtn{
+		background: rgb(0, 199, 174);
+		border: none;
+		width: 100px;
+		height: 30px;
+		border-radius: 4px;
+		color: white;
+		cursor: pointer;
+		font-size: 13px;
+		margin-left: 84%;
+    	padding-block: 5px;
+	}
+	
+	.reqListOuter{
+		border: 1px solid rgba(96, 96, 96, 0.5);
+		border-radius: 10px;
+		width: 96%;
+		height: 150px;
+	}
 </style>
 </head>
 <body>
@@ -165,11 +185,10 @@
 					<p class="p-btn" id="from" onclick="from()">등록된 신고</p>
 				</div>
 				<div>
-					<p class="p-btn1" id="send" onclick="send()">처리된 신고</p>
+					<p class="p-btn1" id="send" onclick="send2()">처리된 신고</p>
 				</div>
 			</div>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
-				<img class="close-btn" src="././resources/icon/close.png">
 				<div class="user-info">
 					<c:forEach var="r" items="${list}">
 						<div class="req-outer">
@@ -184,7 +203,7 @@
 								<div class="req-info">
 									<div class="req-no">${r.reportNo}</div>
 									<div class="req-no">${r.createDate}</div>
-									<div class="req-id">${r.memberNo}</div>
+									<div class="req-id">${r.memberName}</div>
 								</div>
 							</div>
 							<div class="req-btn-area">
@@ -194,14 +213,49 @@
 					</c:forEach>	
 				
 				</div>
-
 				<c:forEach var="r" items="${list}">
-					<div class="view${r.reportNo}" style="display: none;">
-						<div>
-							ddd
+					<form method="post" action="reportComment.rp">
+					
+						<div class="view${r.reportNo}" style="display: none;">
+							<div class="reqListOuter">
+								<div><h6>${r.reportTitle}</h6></div>
+								<div>${r.reportContent}</div>
+								<div>${r.createDate}</div>
+								<div>${r.memberName}</div>
+								<div>${r.reportNo}</div>
+								<div>${r.memberNo}</div>
+								<input type="hidden" name="reportNo" value="${r.reportNo}">
+								<input type="text" name="adminComent" style="width: 60%;">
+								<button type="submit" id="reportBtn">답변하기</button>
+							</div>
+							
 						</div>
-					</div>
+					</form>
 				</c:forEach>
+				<div class="tee" style="display: none;">
+				<c:forEach var="er" items="${endlist}">
+						<div class="req-outerA">
+							<div class="req-alignA">
+							
+								<div class="req-textA">
+									<h6 class="req-titleA">${er.reportTitle}</h6>
+									<div class="req-descA">
+										${er.reportContent}
+									</div>
+								</div>
+								<div class="req-infoA">
+									<div class="req-noA">${er.reportNo}</div>
+									<div class="req-noA">${er.createDate}</div>
+									<div class="req-idA">${er.memberName}</div>
+								</div>
+							</div>
+							<div>
+								제출한 답변
+								<input type="text" value="${er.adminComent}" readonly>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
 
 			</div>	 
 			</div>		
@@ -220,6 +274,21 @@
 			const reportNum = document.querySelector('.view'+res);
 			console.log(reportNum)
 			reportNum.style.display = "flex";
+		}
+		
+		function reportPostBtn(num) {
+			if(num === 1) {
+				$("#form").attr('action','reportComment.rp');
+			}
+			$("#form").submit();
+		}
+
+		function send2(){
+			const reportInfo = document.querySelector('.user-info');
+			reportInfo.style.display = "none";
+
+			const tee = document.querySelector('.tee');
+			tee.style.display = "flex";
 		}
 	</script>
 </body>
