@@ -453,4 +453,41 @@
 		AND R.STATUS = 'Y'
 		ORDER BY R.CREATEDATE DESC
 	</select>
+	
+	<select id="endMyReportList" resultMap="reportResult">
+				SELECT  R.REPORT_NO,
+		        R.REPORT_TITLE,
+		        R.REPORT_CONTENT,
+		        R.CREATEDATE,
+		        R.MEM_NO,
+		        M.MEM_NAME,
+		        R.ADMIN_COMENT,
+		        R.STATUS
+		FROM REPORT R
+		JOIN MEMBER M ON(R.MEM_NO = M.MEM_NO)
+		WHERE R.MEM_NO = #{memberNo}
+		AND R.STATUS = 'N'
+		ORDER BY R.CREATEDATE DESC
+	</select>
+	
+	<insert id="insertReport">
+		INSERT INTO REPORT(
+		    REPORT_NO,
+		    REPORT_TITLE,
+		    REPORT_CONTENT,
+		    CREATEDATE,
+		    MEM_NO,
+		    ADMIN_COMENT,
+		    STATUS  
+		)
+		VALUES(
+		    SEQ_RPNO.NEXTVAL,
+		    #{reportTitle},
+		    #{reportContent},
+		    SYSDATE,
+		    #{memberNo},
+		    NULL,
+		    'Y'
+		)
+	</insert>
 </mapper>

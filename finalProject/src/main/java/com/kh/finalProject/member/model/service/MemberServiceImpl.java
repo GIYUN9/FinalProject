@@ -172,4 +172,14 @@ public class MemberServiceImpl implements MemberService {
 	public ArrayList<Report> myReportList(Member m) {
 		return memberDao.myReportList(sqlSession, m);
 	}
+
+	@Override
+	public ArrayList<Report> endMyReportList(Member m) {
+		return memberDao.endMyReportList(sqlSession, m);
+	}
+
+	@Override
+	public int insertReport(Report r) {
+		return memberDao.insertReport(sqlSession, r);
+	}
 }

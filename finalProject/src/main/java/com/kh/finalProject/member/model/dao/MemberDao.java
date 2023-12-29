@@ -130,5 +130,13 @@ public class MemberDao {
 	public ArrayList<Report> myReportList(SqlSessionTemplate sqlSession, Member m){
 		return (ArrayList)sqlSession.selectList("memberMapper.myReportList", m);
 	}
+	
+	public ArrayList<Report> endMyReportList(SqlSessionTemplate sqlSession, Member m){
+		return (ArrayList)sqlSession.selectList("memberMapper.endMyReportList", m);
+	}
+	
+	public int insertReport(SqlSessionTemplate sqlSession, Report r) {
+		return sqlSession.insert("memberMapper.insertReport", r);
+	}
 }
 
