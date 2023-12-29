@@ -187,11 +187,6 @@ header{
     border-bottom: 11px solid transparent;
     z-index: -1;
 }
-
-.text-output{
-    padding: 10px;
-}
-
 .box{
     display: flex;
     align-items: flex-start;

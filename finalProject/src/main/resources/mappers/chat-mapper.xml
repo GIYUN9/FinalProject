@@ -15,37 +15,35 @@
   	</resultMap>
   	
   	<resultMap type="ChatRoom" id="chatRoomResult">
-  		<result column="CHAT_ROOM_NO" property="chatRoomNo" />
-  		<result column="TITLE" property="title" />
+  		<result column="RECEIVER_NO" property="receiverNo" />
+  		<result column="RECEIVER_NAME" property="receiverName" />
   		<result column="STATUS" property="status" />
-  		<result column="MEM_NO" property="memberNo" />
+  		<result column="SENDER_NO" property="senderNo" />
+  		<result column="SENDER_NAME" property="senderName" />
   		<result column="MEM_COUNT" property="memberCount" />
   		<result column="LAST_MSG_NO" property="lastMsgNo" />
   		<result column="LAST_CHAT_TIME" property="lastChatTime" />
-  		<result column=" CHAT_COUNT" property="chatCount" />
-  		<result column="MEM_NAME" property="memberName" />
+  		<result column="CHAT_COUNT" property="chatCount" />
   	</resultMap>
   	
   	<resultMap type="String" id="senderInfoResult">
   		<result column="MEM_NAME" property="memberName" />
+		<result column="MEM_NO" property="memberNo" />
   	</resultMap>
  	
  	<select id="chattingRoomList" resultMap="chatRoomResult">
- 		 SELECT CR.CHAT_ROOM_NO,
- 		 		CR.MEM_NO,
-			    CRJ.MEM_NO,
-			    CR.STATUS,
-			    CR.TITLE,
-			    M.MEM_NAME
-		   FROM CHATROOM CR
-		   JOIN CHATROOMJOIN CRJ ON (CR.CHAT_ROOM_NO = CRJ.CHAT_ROOM_NO)
-		   JOIN MEMBER M ON (CRJ.MEM_NO = M.MEM_NO)
-		  WHERE CR.STATUS = 'Y'
-		  AND CRJ.MEM_NO = #{memberNo}
+		SELECT CR.SENDER_NAME,
+			   CR.SENDER_NO, 
+	           CR.RECEIVER_NO, 
+	           CR.RECEIVER_NAME
+		  FROM CHATROOM CR
+		  JOIN MEMBER M ON (CR.SENDER_NO = M.MEM_NO)
+         WHERE CR.SENDER_NO = #{senderNo}
+            OR CR.RECEIVER_NO = #{senderNo}
 	</select>
 	
 	<select id="senderInfo" resultMap="senderInfoResult">
-		SELECT M.MEM_NAME
+		SELECT M.MEM_NAME, M.MEM_NO
 		FROM CHATROOMJOIN  CRJ
 		JOIN MEMBER M ON (CRJ.MEM_NO = M.MEM_NO)
 		WHERE CRJ.CHAT_ROOM_NO = #{chatRoomNo}

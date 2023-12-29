@@ -26,7 +26,7 @@
             </div>
             <div>
                 <c:forEach var="cr" items="${crList}">
-                    <div class="chatRoom-detail-align" onclick="chat()">
+                    <div class="chatRoom-detail-align" data-memname="${cr.receiverName}" data-number="${cr.receiverNo}" onclick="chat(this)">
                         <div class="chatRoom-group">  
                             <div class="chatRoom-img-background">
                                 <img class="chatRoom-img" src="././resources/image/축구.jpg" alt="">
@@ -34,9 +34,9 @@
                             <div class="chatRoom-section">
                                 <div class="chatRoom-info">
                                     <div class="chatRoom-detail-title">
-										  ${fn:substringAfter(fn:substringBefore(memName, ']'), '[')}
+										  ${cr.receiverName}
                                         <div class="chatRoom-MemberCount">
-											${fn:length(memName)}
+											${fn:length(receiverName)}
                                         </div>
                                     </div>
                                     <div class="last-chat">
@@ -64,7 +64,7 @@
                 <p class="p-btn1" id="groupChat" onclick="groupChat()">단체 채팅</p>
             </div>
             <div>
-            	                <div class="chatRoom-detail-align">
+				<div class="chatRoom-detail-align">
                     <div class="chatRoom-group">  
                         <div class="chatRoom-img-background">
                             <img class="chatRoom-img" src="././resources/image/축구.jpg" alt="">
@@ -215,8 +215,11 @@
 		  var redirectUrl = '<%=request.getContextPath()%>/'; 
 		  window.location.href = redirectUrl;
 		}
-		function chat() {
-			location.href = "chat.ch"
+		function chat(element) {
+		    let memName = element.getAttribute('data-memname');
+		    let encmemName = encodeURIComponent(memName);
+		    let memNo = element.getAttribute('data-number');
+		    location.href = "chat.ch?memName="+ encmemName+"&memNo=" + memNo;
 		}
     </script>
 </body>
