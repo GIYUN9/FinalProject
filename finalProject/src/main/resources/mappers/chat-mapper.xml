@@ -8,10 +8,8 @@
   		<result column="MSG_NO" property="msgNo" />
   		<result column="MSG" property="msg" />
   		<result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP"/>
-  		<result column="CHAT_ROOM_NO" property="chatRoomNo" />
  		<result column="SENDER_NO" property="senderNo" />
  		<result column="RECEIVER_NO" property="receiverNo" />
- 		<result column="MEM_NAME" property="memberName" />
   	</resultMap>
   	
   	<resultMap type="ChatRoom" id="chatRoomResult">
@@ -65,6 +63,13 @@
 		 WHERE MSG.SENDER_NO = #{senderNo}
 		 OR MSG.RECEIVER_NO = #{senderNo}
 	  ORDER BY MSG_NO ASC
+	  
+	          SELECT *
+        FROM CHATMSG MSG
+        JOIN CHATROOM CR ON (MSG.SENDER_NO = CR.SENDER_NO)
+        AND (MSG.RECEIVER_NO = CR.RECEIVER_NO)
+        WHERE MSG.SENDER_NO = 2
+        ORDER BY MSG_NO
 	</select>	
 	
 	 	<!-- 

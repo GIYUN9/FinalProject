@@ -8,8 +8,6 @@ public class Message {
     private int msgNo;
 	private String msg;
 	private Timestamp createDate;
-	private int chatRoomNo;
 	private int senderNo;
 	private int receiverNo;
-	private String memberName;
 }
