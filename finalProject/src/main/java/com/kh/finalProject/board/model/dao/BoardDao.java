@@ -318,4 +318,13 @@ public class BoardDao {
 	public ArrayList<Report> selectEndReport(SqlSessionTemplate sqlSession){
 		return (ArrayList)sqlSession.selectList("boardMapper.selectEndReport");
 	}
+	
+	
+	public ArrayList<Attachment> helpmeAttachmentList(SqlSessionTemplate sqlSession, int boardNo) {
+		return (ArrayList)sqlSession.selectList("boardMapper.helpmeAttachmentList", boardNo);
+	}
+	
+	public Board helpmeselectOne2(SqlSessionTemplate sqlSession, int boardNo) {
+		return sqlSession.selectOne("boardMapper.helpmeselectOne2", boardNo);
+	}
 }
