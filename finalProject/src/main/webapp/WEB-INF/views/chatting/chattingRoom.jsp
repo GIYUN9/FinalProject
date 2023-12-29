@@ -34,7 +34,7 @@
                             <div class="chatRoom-section">
                                 <div class="chatRoom-info">
                                     <div class="chatRoom-detail-title">
-										  ${cr.receiverName}
+										  ${cr.senderName}
                                         <div class="chatRoom-MemberCount">
 											${fn:length(receiverName)}
                                         </div>
