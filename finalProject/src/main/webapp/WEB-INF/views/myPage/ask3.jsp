@@ -72,6 +72,23 @@
     		flex-direction: column;
     		justify-content: space-between;
 		}
+		.req-outer1{
+			border: 1px solid rgba(96, 96, 96, 0.5);
+			border-radius: 10px;
+			width: 96%;
+			margin-top: 10px;
+			height: 100%;
+			padding-left: 15px;
+			padding-top: 10px;
+			display: flex;
+    		flex-direction: column;
+    		justify-content: space-between;
+		}
+		.answer {
+		    width: 100%;
+		    height: 6.25em;
+		    resize: none;
+		  }
 		.req-desc{
 			font-size: 12px;
 			margin-top: 20px;
@@ -148,7 +165,7 @@
 			<a class="myPageSideBar" href="changePwd.me">비밀번호 변경</a>
 			<a class="myPageSideBar" href="deleteForm.me">회원 탈퇴</a>
 			<a class="myPageSideBar" href="schedule.me?toMemberNo=${loginUser.memberNo}">요청 관리</a>
-			<a class="myPageSideBar" href="ask.me" style="font-weight: bolder;
+			<a class="myPageSideBar" href="ask3.me" style="font-weight: bolder;
 			background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">문의 내역</a>
 			<c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
 				<a class="myPageSideBar" href="careMem.me">회원 관리</a>
@@ -162,72 +179,58 @@
 				style="display: flex; justify-content: space-around; margin-left: 20px; margin-right: 20px">
 				<!-- 호버되면 밑줄 만들어주세요 ㅋㅋ -->
 				<div>
-					<p class="p-btn" id="from" onclick="from()">등록된 문의</p>
+					<p class="p-btn" id="from" onclick="from()">등록한 문의</p>
 				</div>
 				<div>
 					<p class="p-btn1" id="send" onclick="send()">처리된 문의</p>
 				</div>
 			</div>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
-				<img class="close-btn" src="././resources/icon/close.png">
 				<div class="user-info">
-					<div class="req-outer">
-						<div class="req-align">
-							<div class="req-text">
-								<h6 class="req-title">결제 관련 문의</h6>
-								<div class="req-desc">
-									결제가 안됩니다. 카카오측에서는 문제가 없다고합니다<br>
-									확인해주세요
+					<button type="button" onclick="reportEnrollFrom()">문의하기</button>
+					<c:forEach var="r" items="${rlist}">
+						<div class="req-outer">
+							<div class="req-align">
+								<div class="req-text">
+									<h6 class="req-title">${r.reportTitle}</h6>
+									<div class="req-desc">
+										${r.reportContent}
+									</div>
+								</div>
+								<div class="req-info">
+									<div class="req-no">신고번호 N.${r.reportNo}</div>
+									<div class="req-id">${r.createDate}</div>
 								</div>
 							</div>
-							<div class="req-info">
-								<div class="req-no">신고번호 N.008410</div>
-								<div class="req-id">홍길동</div>
+							<div class="req-btn-area">
+								<button class="req-answer-btn">답변 대기 중</button>
 							</div>
 						</div>
-						<div class="req-btn-area">
-							<button class="req-answer-btn">답변</button>
-							<button class="req-detail-btn">상세보기</button>
-						</div>
-					</div>
-
-					<div class="req-outer">
-						<div class="req-align">
-							<div class="req-text">
-								<h6 class="req-title">이거 오류가 있는 것 같습니다!!!</h6>
-								<div class="req-desc">
-									버튼이 안눌려요 버튼이
+					</c:forEach>
+					
+					<c:forEach var="e" items="${endrlist}">
+						<div class="req-outer1" style="display: none;">
+							<div class="req-align">
+								<div class="req-text">
+									<h6 class="req-title">${e.reportTitle}</h6>
+									<div class="req-desc">
+										${e.reportContent}
+									</div>
+									
+								</div>
+								<div class="req-info">
+									<div class="req-no">신고번호 N.${e.reportNo}</div>
+									<div class="req-id">${e.createDate}</div>
 								</div>
 							</div>
-							<div class="req-info">
-								<div class="req-no">신고번호 N.007777</div>
-								<div class="req-id">홍홍홍</div>
+							<div class="req-btn-area">
+								<button class="req-answer-btn">처리완료</button>
 							</div>
+							<span style="color: red; margin-top: 10px;">관리자님의 답변</span>
+							<textarea class="answer" style="width: 90%; height: 100px;" readonly="readonly"></textarea>
 						</div>
-						<div class="req-btn-area">
-							<button class="req-answer-btn">답변</button>
-							<button class="req-detail-btn">상세보기</button>
-						</div>
-					</div>
-					<div class="req-outer">
-						<div class="req-align">
-							<div class="req-text">
-								<h6 class="req-title">똑바로 안하냐?</h6>
-								<div class="req-desc">
-									아니 !@#! 결제가 안된다고 돈벌기 싫어?
-								</div>
-							</div>
-							<div class="req-info">
-								<div class="req-no">신고번호 N.012120</div>
-								<div class="req-id">아무개</div>
-							</div>
-						</div>
-						<div class="req-btn-area">
-							<button class="req-answer-btn">답변</button>
-							<button class="req-detail-btn">상세보기</button>
-						</div>
-
-					</div>
+					</c:forEach>
+					
 				</div>
 			</div>		
 		</div>
@@ -239,7 +242,15 @@
 	}
 
 	function send() {
-		location.href = "ask2.me";
+			const reqAreas = document.querySelectorAll('.req-outer');
+			reqAreas.forEach(reqArea => reqArea.style.display = "none");
+			
+			const reqAreas1 = document.querySelectorAll('.req-outer1');
+			reqAreas1.forEach(reqArea1 => reqArea1.style.display = "flex");
+	}
+	
+	function reportEnrollFrom() {
+		location.href = "reportEnrollFrom.me";
 	}
 </script>
 </body>

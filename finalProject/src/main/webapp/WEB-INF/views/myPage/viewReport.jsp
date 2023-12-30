@@ -134,6 +134,26 @@
 	.req-title{
 		font-weight: bold;
 	}
+
+	#reportBtn{
+		background: rgb(0, 199, 174);
+		border: none;
+		width: 100px;
+		height: 30px;
+		border-radius: 4px;
+		color: white;
+		cursor: pointer;
+		font-size: 13px;
+		margin-left: 84%;
+    	padding-block: 5px;
+	}
+	
+	.reqListOuter{
+		border: 1px solid rgba(96, 96, 96, 0.5);
+		border-radius: 10px;
+		width: 96%;
+		height: 150px;
+	}
 </style>
 </head>
 <body>
@@ -165,95 +185,110 @@
 					<p class="p-btn" id="from" onclick="from()">등록된 신고</p>
 				</div>
 				<div>
-					<p class="p-btn1" id="send" onclick="send()">처리된 신고</p>
+					<p class="p-btn1" id="send" onclick="send2()">처리된 신고</p>
 				</div>
 			</div>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
-				<img class="close-btn" src="././resources/icon/close.png">
 				<div class="user-info">
+					<c:forEach var="r" items="${list}">
+						<div class="req-outer">
+							<div class="req-align">
+							
+								<div class="req-text">
+									<h6 class="req-title">${r.reportTitle}</h6>
+									<div class="req-desc">
+										${r.reportContent}
+									</div>
+								</div>
+								<div class="req-info">
+									<div class="req-no">${r.reportNo}</div>
+									<div class="req-no">${r.createDate}</div>
+									<div class="req-id">${r.memberName}</div>
+								</div>
+							</div>
+							<div class="req-btn-area">
+								<button class="req-detail-btn" type="button" onclick="reportDetail(${r.reportNo})">상세보기</button>
+							</div>
+						</div>
+					</c:forEach>	
+				
+				</div>
 				<c:forEach var="r" items="${list}">
-					<div class="req-outer">
-						<div class="req-align">
-						
-							<div class="req-text">
-								<h6 class="req-title">${r.reportTitle}</h6>
-								<div class="req-desc">
-									${r.reportContent}
-								</div>
+					<form method="post" action="reportComment.rp">
+					
+						<div class="view${r.reportNo}" style="display: none;">
+							<div class="reqListOuter">
+								<div><h6>${r.reportTitle}</h6></div>
+								<div>${r.reportContent}</div>
+								<div>${r.createDate}</div>
+								<div>${r.memberName}</div>
+								<div>${r.reportNo}</div>
+								<div>${r.memberNo}</div>
+								<input type="hidden" name="reportNo" value="${r.reportNo}">
+								<input type="text" name="adminComent" style="width: 60%;">
+								<button type="submit" id="reportBtn">답변하기</button>
 							</div>
-							<div class="req-info">
-								<div class="req-no">${r.reportNo}</div>
-								<div class="req-no">${r.createDate}</div>
-								<div class="req-id">${r.memberNo}</div>
-							</div>
+							
 						</div>
-						<div class="req-btn-area">
-							<button class="req-detail-btn" type="button" onclick="showDetail(1)">상세보기</button>
-						</div>
-					</div>
+					</form>
 				</c:forEach>
-						
-
-					<div class="req-outer">
-						<div class="req-align">
-							<div class="req-text">
-								<h6 class="req-title">이거 오류가 있는 것 같습니다!!!</h6>
-								<div class="req-desc">
-									버튼이 안눌려요 버튼이
+				<div class="tee" style="display: none;">
+				<c:forEach var="er" items="${endlist}">
+						<div class="req-outerA">
+							<div class="req-alignA">
+							
+								<div class="req-textA">
+									<h6 class="req-titleA">${er.reportTitle}</h6>
+									<div class="req-descA">
+										${er.reportContent}
+									</div>
+								</div>
+								<div class="req-infoA">
+									<div class="req-noA">${er.reportNo}</div>
+									<div class="req-noA">${er.createDate}</div>
+									<div class="req-idA">${er.memberName}</div>
 								</div>
 							</div>
-							<div class="req-info">
-								<div class="req-no">신고번호 N.007777</div>
-								<div class="req-id">홍홍홍</div>
+							<div>
+								제출한 답변
+								<input type="text" value="${er.adminComent}" readonly>
 							</div>
 						</div>
-						<div class="req-btn-area">
-							<button class="req-answer-btn">답변</button>
-							<button class="req-detail-btn">상세보기</button>
-						</div>
-					</div>
-					<div class="req-outer">
-						<div class="req-align">
-							<div class="req-text">
-								<h6 class="req-title">똑바로 안하냐?</h6>
-								<div class="req-desc">
-									아니 !@#! 결제가 안된다고 돈벌기 싫어?
-								</div>
-							</div>
-							<div class="req-info">
-								<div class="req-no">신고번호 N.012120</div>
-								<div class="req-id">아무개</div>
-							</div>
-						</div>
-						<div class="req-btn-area">
-							<button class="req-answer-btn">답변</button>
-							<button class="req-detail-btn">상세보기</button>
-						</div>
+					</c:forEach>
+				</div>
 
-					</div>
-				</div>
-				<div class="qqq" style="display: none;">
-					<div class="1" style="display: none;">
-						1
-					</div>
-					<div class="2" style="display: none;">
-						2
-					</div>
-					<div class="3" style="display: none;">
-						3
-					</div>
-				</div>
+			</div>	 
 			</div>		
 		</div>
-	</div>	<jsp:include page="../common/footer.jsp" />
+
+	
+	<jsp:include page="../common/footer.jsp" />
+
 	<script>
-		function showDetail(num){
-			const userInfo = document.getElementsByClassName('user-info');
-			userInfo[0].style.display = 'none';
-			const qqq = document.getElementsByClassName('qqq');
-			qqq[0].style.display = 'block';
-			const number = document.getElementsByClassName(num);
-			number[0].style.display = 'block';
+		
+		function reportDetail(res){
+			console.log(res)
+			const reportInfo = document.querySelector('.user-info');
+			reportInfo.style.display = "none";
+
+			const reportNum = document.querySelector('.view'+res);
+			console.log(reportNum)
+			reportNum.style.display = "flex";
+		}
+		
+		function reportPostBtn(num) {
+			if(num === 1) {
+				$("#form").attr('action','reportComment.rp');
+			}
+			$("#form").submit();
+		}
+
+		function send2(){
+			const reportInfo = document.querySelector('.user-info');
+			reportInfo.style.display = "none";
+
+			const tee = document.querySelector('.tee');
+			tee.style.display = "flex";
 		}
 	</script>
 </body>

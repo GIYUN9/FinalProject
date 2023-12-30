@@ -72,6 +72,23 @@
     		flex-direction: column;
     		justify-content: space-between;
 		}
+		.req-outer1{
+			border: 1px solid rgba(96, 96, 96, 0.5);
+			border-radius: 10px;
+			width: 96%;
+			margin-top: 10px;
+			height: 100%;
+			padding-left: 15px;
+			padding-top: 10px;
+			display: flex;
+    		flex-direction: column;
+    		justify-content: space-between;
+		}
+		.answer {
+		    width: 100%;
+		    height: 6.25em;
+		    resize: none;
+		  }
 		.req-desc{
 			font-size: 12px;
 			margin-top: 20px;
@@ -106,6 +123,7 @@
 			color: white;
 			margin-right: 5px;
 			cursor: pointer;
+			font-size: 13px;
 		}
 		.req-detail-btn{
 			background: rgb(0, 199, 174);
@@ -115,6 +133,7 @@
 			border-radius: 4px;
 			color: white;
 			cursor: pointer;
+			font-size: 13px;
 		}
 		.req-btn-area{
 			display: flex;
@@ -128,6 +147,9 @@
     		right: 12px;
     		top: 11px;
 			cursor: pointer;
+		}
+		.req-title{
+			font-weight: bold;
 		}
 	</style>
 </head>
@@ -143,7 +165,7 @@
 			<a class="myPageSideBar" href="changePwd.me">비밀번호 변경</a>
 			<a class="myPageSideBar" href="deleteForm.me">회원 탈퇴</a>
 			<a class="myPageSideBar" href="schedule.me?toMemberNo=${loginUser.memberNo}">요청 관리</a>
-			<a class="myPageSideBar" href="ask.me" style="font-weight: bolder;
+			<a class="myPageSideBar" href="ask3.me" style="font-weight: bolder;
 			background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">문의 내역</a>
 			<c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
 				<a class="myPageSideBar" href="careMem.me">회원 관리</a>
@@ -151,78 +173,29 @@
 			</c:if>        
 		</div>
 		<div class="main-box">
-			<h3 style="margin: 10px 0 0 20px;">문의 내역</h3>
+			<h3 style="margin: 10px 0 0 20px;">신고(문의) 등록</h3>
 			<br>
 			<div class="top-center"
 				style="display: flex; justify-content: space-around; margin-left: 20px; margin-right: 20px">
-				<!-- 호버되면 밑줄 만들어주세요 ㅋㅋ -->
-				<div>
-					<p class="p-btn" id="from" onclick="from()">등록된 문의</p>
-				</div>
-				<div>
-					<p class="p-btn1" id="send" onclick="send()">처리된 문의</p>
-				</div>
 			</div>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
-				<img class="close-btn" src="././resources/icon/close.png">
 				<div class="user-info">
-					<div class="req-outer">
-						<div class="req-align">
-							<div class="req-text">
-								<h6 class="req-title">결제 관련 문의</h6>
-								<div class="req-desc">
-									결제가 안됩니다. 카카오측에서는 문제가 없다고합니다<br>
-									확인해주세요
-								</div>
-							</div>
-							<div class="req-info">
-								<div class="req-no">신고번호 N.008410</div>
-								<div class="req-id">홍길동</div>
-							</div>
-						</div>
-						<div class="req-btn-area">
-							<button class="req-answer-btn">답변</button>
-							<button class="req-detail-btn">상세보기</button>
-						</div>
+					<form action="insertReport.me">
+					<div>
+						작성자
+						<input type="text" value="${loginUser.memberEmail} / ${loginUser.memberName}님" readonly="readonly" style="width: 100%;">
+						<input type="hidden" name="memberNo" value="${loginUser.memberNo}">
 					</div>
-
-					<div class="req-outer">
-						<div class="req-align">
-							<div class="req-text">
-								<h6 class="req-title">이거 오류가 있는 것 같습니다!!!</h6>
-								<div class="req-desc">
-									버튼이 안눌려요 버튼이
-								</div>
-							</div>
-							<div class="req-info">
-								<div class="req-no">신고번호 N.007777</div>
-								<div class="req-id">홍홍홍</div>
-							</div>
-						</div>
-						<div class="req-btn-area">
-							<button class="req-answer-btn">답변</button>
-							<button class="req-detail-btn">상세보기</button>
-						</div>
+					<div>
+						제목
+						<input type="text" name="reportTitle">
 					</div>
-					<div class="req-outer">
-						<div class="req-align">
-							<div class="req-text">
-								<h6 class="req-title">똑바로 안하냐?</h6>
-								<div class="req-desc">
-									아니 !@#! 결제가 안된다고 돈벌기 싫어?
-								</div>
-							</div>
-							<div class="req-info">
-								<div class="req-no">신고번호 N.012120</div>
-								<div class="req-id">아무개</div>
-							</div>
-						</div>
-						<div class="req-btn-area">
-							<button class="req-answer-btn">답변</button>
-							<button class="req-detail-btn">상세보기</button>
-						</div>
-
+					<div>
+						내용
+						<input type="text" name="reportContent">
 					</div>
+					<button type="submit">등록하기</button>
+					</form>
 				</div>
 			</div>		
 		</div>

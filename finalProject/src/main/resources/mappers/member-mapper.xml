@@ -57,8 +57,17 @@
 		<result column="PRICE" property="price"/>
 		<result column="CREATE_DATE" property="createDate"/>
 		<result column="MEM_NO" property="memberNo"/>
-
 	</resultMap>
+	
+	<resultMap type="Report" id="reportResult">
+  		<result column="REPORT_NO" property="reportNo" />
+  		<result column="REPORT_TITLE" property="reportTitle" />
+  		<result column="REPORT_CONTENT" property="reportContent" />
+  		<result column="CREATEDATE" property="createDate" />
+  		<result column="MEM_NO" property="memberNo" />
+  		<result column="ADMIN_COMENT" property="adminComent" />		
+  		<result column="STATUS" property="status" />
+  	</resultMap>
 
 	<!-- 회원가입 -->
 	<insert id = "insertMember">
@@ -117,6 +126,7 @@
 			M.FILE_PATH,
 			M.ACCOUNT,
 			M.INTRO,
+			S.SKILL_NO,
 			S.SKILL_NAME
 		FROM MEMBER M
 		JOIN SKILL S ON (M.SKILL_NO = S.SKILL_NO)
@@ -140,6 +150,7 @@
 				M.ACCOUNT,
 				M.INTRO,
 				M.ENROLL_DATE,
+				M.SKILL_NO,
 				S.SKILL_NAME
 		FROM MEMBER M
 		JOIN SKILL S ON (M.SKILL_NO = S.SKILL_NO)
@@ -165,8 +176,8 @@
 	
 	<!-- 멤버번호로 구별 / 전문가페이지에서 자기소개 수정하는 쿼리 -->
 	<update id="updateProInfo">
-		UPDATE MEMBER
-				SET INTRO = #{intro},
+		UPDATE MEMBER SET 
+				INTRO = #{intro},
 				MEM_NAME = #{memberName},
 				LOCATION = #{location},
 				SKILL_NO = #{skillNo}
@@ -426,4 +437,57 @@
 				SKILL_NAME
 		FROM SKILL
 	</select>
+	
+	<select id="myReportList" resultMap="reportResult">
+		SELECT  R.REPORT_NO,
+		        R.REPORT_TITLE,
+		        R.REPORT_CONTENT,
+		        R.CREATEDATE,
+		        R.MEM_NO,
+		        M.MEM_NAME,
+		        R.ADMIN_COMENT,
+		        R.STATUS
+		FROM REPORT R
+		JOIN MEMBER M ON(R.MEM_NO = M.MEM_NO)
+		WHERE R.MEM_NO = #{memberNo}
+		AND R.STATUS = 'Y'
+		ORDER BY R.CREATEDATE DESC
+	</select>
+	
+	<select id="endMyReportList" resultMap="reportResult">
+				SELECT  R.REPORT_NO,
+		        R.REPORT_TITLE,
+		        R.REPORT_CONTENT,
+		        R.CREATEDATE,
+		        R.MEM_NO,
+		        M.MEM_NAME,
+		        R.ADMIN_COMENT,
+		        R.STATUS
+		FROM REPORT R
+		JOIN MEMBER M ON(R.MEM_NO = M.MEM_NO)
+		WHERE R.MEM_NO = #{memberNo}
+		AND R.STATUS = 'N'
+		ORDER BY R.CREATEDATE DESC
+	</select>
+	
+	<insert id="insertReport">
+		INSERT INTO REPORT(
+		    REPORT_NO,
+		    REPORT_TITLE,
+		    REPORT_CONTENT,
+		    CREATEDATE,
+		    MEM_NO,
+		    ADMIN_COMENT,
+		    STATUS  
+		)
+		VALUES(
+		    SEQ_RPNO.NEXTVAL,
+		    #{reportTitle},
+		    #{reportContent},
+		    SYSDATE,
+		    #{memberNo},
+		    NULL,
+		    'Y'
+		)
+	</insert>
 </mapper>

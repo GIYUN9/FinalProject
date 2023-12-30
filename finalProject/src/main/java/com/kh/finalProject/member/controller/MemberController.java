@@ -33,6 +33,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.kh.finalProject.common.vo.Reason;
+import com.kh.finalProject.common.vo.Report;
 import com.kh.finalProject.common.vo.Schedule;
 import com.kh.finalProject.member.model.service.MemberService;
 import com.kh.finalProject.member.model.vo.Member;
@@ -205,9 +206,15 @@ public class MemberController {
 		return "myPage/ask2";
 	}
 	
+	//사용자가 문의내역버튼 클릭시 자신이 보낸 문의 내역 불러오기
 	@RequestMapping(value = "/ask3.me")
-	public String ask3(){
-		//화면 전환용 임시 데이터는 없는상태
+	public String ask3(HttpSession session){
+		Member m = (Member)session.getAttribute("loginUser");
+		ArrayList<Report> rlist = memberService.myReportList(m);
+		session.setAttribute("rlist", rlist);
+		
+		ArrayList<Report> endrlist = memberService.endMyReportList(m);
+		session.setAttribute("endrlist", endrlist);
 		return "myPage/ask3";
 	}
 	
@@ -570,5 +577,26 @@ public class MemberController {
 			session.setAttribute("alertMsg", "전화번호 변경 실패.");
 		}
 		return "redirect:/userInfo.me";
+	}
+	
+	//신고하기(문의)등록 페이지
+	@RequestMapping(value = "reportEnrollFrom.me")
+	public String reportEnrollFrom() {
+		return "myPage/reportEnrollFrom";
+	}
+	
+	//신고하기 글 등록
+	@RequestMapping(value = "insertReport.me")
+	public String insertReport(Report r, HttpSession session) {
+		System.out.println("dddd : "+r);
+		int result = memberService.insertReport(r);
+		
+		if(result > 0) {
+			session.setAttribute("alertMsg", "신고(문의)가 성공적으로 등록되었습니다.");
+		}else {
+			session.setAttribute("alertMsg", "등록 실패");
+		}
+		
+		return "redirect:/ask3.me";
 	}
 }

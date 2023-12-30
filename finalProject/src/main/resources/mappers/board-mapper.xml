@@ -23,6 +23,9 @@
   		<result column="VIEW_COUNT" property="viewCount" />
   		<result column="ORIGIN_NAME" property="originName" />
   		<result column="CHANGE_NAME" property="changeName" />
+  		<result column="INTRO" property="intro" />
+  		<result column="SKILL_NO" property="skillNo" />
+  		<result column="PHONE" property="phone" />
   	</resultMap>
   	
   	<resultMap type="Attachment" id="attachmentResult">
@@ -81,7 +84,8 @@
   		<result column="REPORT_CONTENT" property="reportContent" />
   		<result column="CREATEDATE" property="createDate" />
   		<result column="MEM_NO" property="memberNo" />
-  		<result column="ADMIN_COMENT" property="adminComent" />
+  		<result column="MEM_NAME" property="memberName" />
+  		<result column="ADMIN_COMENT" property="adminComent" />		
   		<result column="STATUS" property="status" />
   	</resultMap>
   	
@@ -104,6 +108,7 @@
         JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
  		 WHERE B.BOARD_TYPE = 1
          AND B.STATUS = 'Y'
+         AND A.FILE_LEVEL =1
  	</select>
  	
  	<!-- 도와줄게요 게시글 상세조회 관련 쿼리문 -->
@@ -395,20 +400,27 @@
 	
 	<!-- 도와줄게요 보드번호 가져오는 중간 쿼리 -->
   	<select id="helpselectOne" resultMap="boardResult">
-  		SELECT  BOARD_NO,
-  				CATEGORY_NO,
-  				BOARD_TITLE,
-  				BOARD_CONTENT,
-  				PRICE,
-  				BOARD_TYPE,
-  				MEM_NO
-  		FROM BOARD
-  		WHERE CATEGORY_NO = #{categoryNo}
-  		AND		BOARD_TITLE = #{boardTitle}
-  		AND		BOARD_CONTENT = #{boardContent}
-		AND		PRICE = #{price}
-		AND		BOARD_TYPE = #{boardType}
-		AND		MEM_NO = #{memberNo}
+  		SELECT B.BOARD_NO,
+		       B.CATEGORY_NO,
+		       B.BOARD_CONTENT,
+		       A.ORIGIN_NAME,
+		       A.CHANGE_NAME,
+		       B.BOARD_TITLE,
+		       B.PRICE,
+		       B.VIEW_COUNT,
+		       B.BOARD_TYPE,
+		       M.MEM_NAME,
+		       M.INTRO,
+		       M.FILE_PATH,
+		       M.SKILL_NO,
+		       M.PHONE,
+               B.LIKEY_COUNT
+		FROM BOARD B
+		INNER JOIN ATTACHMENT A ON B.BOARD_NO = A.BOARD_NO
+		INNER JOIN MEMBER M ON B.MEM_NO = M.MEM_NO
+		WHERE B.STATUS = 'Y'
+		  AND B.BOARD_NO =#{boardNo}
+		  AND A.FILE_LEVEL = 1;
   	</select>
   		
 	<insert id = "insertCommboard">
@@ -647,23 +659,52 @@
 		AND		BOARD_TYPE = #{boardType}
 		AND		MEM_NO = #{memberNo}
   	</select>
+  	<select id="helpmeselectOne2" resultMap="boardResult">
+  		      SELECT B.BOARD_NO,
+		       B.CATEGORY_NO,
+		       B.BOARD_CONTENT,
+		       B.BOARD_TITLE,
+		       B.PRICE,
+		       B.VIEW_COUNT,
+		       B.BOARD_TYPE,
+		       B.CREATEDATE,	       
+		       M.MEM_NO,
+		       M.MEM_NAME,
+		       M.LOCATION,
+		       M.INTRO,
+		       M.FILE_PATH,
+		       M.SKILL_NO,
+		       M.PHONE,
+               B.LIKEY_COUNT
+		FROM BOARD B
+		JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
+		WHERE B.STATUS = 'Y'
+		  AND B.BOARD_NO = #{boardNo}
+  	</select>
   	
   	<!--도와주세요 상세조회 관련 쿼리문 -->
   	<select id="helpmeSelectBoard" resultMap="boardResult">
   		SELECT B.BOARD_NO,
-			   B.CATEGORY_NO,
-			   B.BOARD_CONTENT,
-			   A.ORIGIN_NAME,
-			   A.CHANGE_NAME,
-			   B.BOARD_TITLE,
-			   B.PRICE,
-			   B.VIEW_COUNT,
-			   B.BOARD_TYPE
+		       B.CATEGORY_NO,
+		       B.BOARD_CONTENT,
+		       A.ORIGIN_NAME,
+		       A.CHANGE_NAME,
+		       B.BOARD_TITLE,
+		       B.PRICE,
+		       B.VIEW_COUNT,
+		       B.BOARD_TYPE,
+		       M.MEM_NAME,
+		       M.INTRO,
+		       M.FILE_PATH,
+		       M.SKILL_NO,
+		       M.PHONE,
+		       B.LIKEY_COUNT
 		FROM BOARD B
-		JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
-		  WHERE B.STATUS = 'Y'
-		AND B.BOARD_NO = #{boardNo}
-		AND A.FILE_LEVEL = 1
+		INNER JOIN ATTACHMENT A ON B.BOARD_NO = A.BOARD_NO
+		INNER JOIN MEMBER M ON B.MEM_NO = M.MEM_NO
+		WHERE B.STATUS = 'Y'
+		  AND B.BOARD_NO = #{boardNo}
+		  AND A.FILE_LEVEL = 1
   	</select>
 	
 	<!-- 도와주세요 게시글 수정 쿼리문 -->
@@ -879,16 +920,53 @@
 	
 	<!-- 신고하기 목록 불러오는 쿼리문 -->
 	<select id="selectReport" resultMap="reportResult">
-		SELECT REPORT_NO,
-			   REPORT_TITLE,
-			   REPORT_CONTENT,
-			   CREATEDATE,
-			   MEM_NO
-		FROM REPORT
+		SELECT R.REPORT_NO,
+			   R.REPORT_TITLE,
+			   R.REPORT_CONTENT,
+			   R.CREATEDATE,
+			   R.MEM_NO,
+			   M.MEM_NAME,
+			   R.ADMIN_COMENT,
+        	   R.STATUS 
+		FROM REPORT R
+		 JOIN MEMBER M ON (R.MEM_NO = M.MEM_NO)
+		 WHERE R.STATUS = 'Y'
 	</select>
 	
 	<select id="seletReportCount" resultType="_int">
 		SELECT COUNT(*)
  		  FROM REPORT
 	</select>
+	<select id="helpmeAttachmentList" resultMap="attachmentResult">
+		SELECT ATT_NO,
+		        ORIGIN_NAME,
+		        CHANGE_NAME,
+		        BOARD_NO
+		FROM ATTACHMENT
+		WHERE BOARD_NO = #{boardNo}
+			 AND FILE_LEVEL = 2
+	</select>
+	<!-- 신고하기 adminComent -->
+	<update id="reportUpdate">
+		UPDATE REPORT
+		 SET ADMIN_COMENT = #{adminComent},
+		 	STATUS = 'N'
+		 WHERE REPORT_NO = #{reportNo}
+		 AND STATUS = 'Y'
+	</update>
+	
+	<select id="selectEndReport" resultMap="reportResult">
+		SELECT R.REPORT_NO,
+			   R.REPORT_TITLE,
+			   R.REPORT_CONTENT,
+			   R.CREATEDATE,
+			   R.MEM_NO,
+			   M.MEM_NAME,
+			   R.ADMIN_COMENT,
+        	   R.STATUS 
+		FROM REPORT R
+		 JOIN MEMBER M ON (R.MEM_NO = M.MEM_NO)
+		 WHERE R.STATUS = 'N'		
+	</select>
+	
   </mapper>

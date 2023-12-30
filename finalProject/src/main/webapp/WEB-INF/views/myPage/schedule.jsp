@@ -231,7 +231,7 @@
 			<a class="myPageSideBar" href="deleteForm.me">회원 탈퇴</a>
 			<a class="myPageSideBar" href="schedule.me?toMemberNo=${loginUser.memberNo}" style="font-weight: bolder;
 			background-color: rgba(255, 255, 255, 0.22); border-radius: 8px; width: max-content; padding: 10px;">요청 관리</a>
-			<a class="myPageSideBar" href="ask.me">문의 내역</a>
+			<a class="myPageSideBar" href="ask3.me">문의 내역</a>
 			<c:if test="${loginUser != null && loginUser.memberName == '관리자'}">
                 <a class="myPageSideBar" href="careMem.me">회원 관리</a>
                 <a class="myPageSideBar" href="reportList.rp">신고 내역</a>                

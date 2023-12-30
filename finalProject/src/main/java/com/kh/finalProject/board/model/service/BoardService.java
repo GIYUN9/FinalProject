@@ -112,6 +112,9 @@ public interface BoardService {
 	//도와주세요 보드번호 가져오는 중간 쿼리
 	Board helpmeselectOne(Board b);
 	
+	//도와주세요 보드번호 가져오는 중간 쿼리
+	Board helpmeselectOne2(int boardNo);
+	
 	//도와주세요 리스트 조회
 	ArrayList<Board> helpmeselectList(PageInfo pi);
 	
@@ -181,5 +184,13 @@ public interface BoardService {
 	
 	//신고하기 신고내용 가져오기
 	ArrayList<Report> selectReport();
+	
+	ArrayList<Attachment> helpmeAttachmentList(int boardNo);
+	//신고하기 adminComent
+	int reportUpdate(Report rp);
 
+	//신고하기 adminComent Update
+	int reportUpdate(Report rt);
+	
+	ArrayList<Report> selectEndReport();
 }

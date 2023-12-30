@@ -3,6 +3,7 @@ package com.kh.finalProject.member.model.service;
 import java.util.ArrayList;
 
 import com.kh.finalProject.common.vo.Reason;
+import com.kh.finalProject.common.vo.Report;
 import com.kh.finalProject.common.vo.Schedule;
 import com.kh.finalProject.mail.EmailCheck;
 import com.kh.finalProject.member.model.vo.Member;
@@ -88,4 +89,11 @@ public interface MemberService {
 	int insertReason(Reason r);
 	
 	int updatePhone(Member m);
+	
+	ArrayList<Report> myReportList(Member m);
+	
+	ArrayList<Report> endMyReportList(Member m);
+	
+	int insertReport(Report r);
+	
 }

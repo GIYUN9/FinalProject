@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>도와주세요 게시글 등록bb</title>
+<title>도와주세요 게시글 등록</title>
 
 <link rel="stylesheet" type="text/css" href="././resources/css/helpmeboder.css">
 

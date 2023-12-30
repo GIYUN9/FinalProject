@@ -27,11 +27,17 @@ public class Board {
 	private String originName;
 	
 	private String memberName;
-	private String changeName;
-	private String filePath;
+		private String changeName;
+		private String filePath;
+		
+		private int likeyCount;
+		private String liStatus;
+		
+		private int viewCount;
+		
+		
+		private String intro;
+		private int skillNo;
+		private String phone;
 	
-	private int likeyCount;
-	private String liStatus;
-	
-	private int viewCount;
-}
+	}
