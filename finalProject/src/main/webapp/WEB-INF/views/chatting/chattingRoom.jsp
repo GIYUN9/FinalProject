@@ -26,7 +26,7 @@
             </div>
             <div>
                 <c:forEach var="cr" items="${crList}">
-                    <div class="chatRoom-detail-align" data-memname="${cr.receiverName}" data-number="${cr.receiverNo}" onclick="chat(this)">
+                    <div class="chatRoom-detail-align" data-memname="${cr.receiverName}" data-number="${cr.receiverNo}" data-opnumber="${cr.senderNo}" data-loginMemNumber="${loginUser.memberNo}" onclick="chat(this)">
                         <div class="chatRoom-group">  
                             <div class="chatRoom-img-background">
                                 <img class="chatRoom-img" src="././resources/image/축구.jpg" alt="">
@@ -34,7 +34,7 @@
                             <div class="chatRoom-section">
                                 <div class="chatRoom-info">
                                     <div class="chatRoom-detail-title">
-										  ${cr.senderName}
+										  ${cr.senderName} ${cr.receiverNo} ${cr.senderNo} ${loginUser.memberNo}
                                         <div class="chatRoom-MemberCount">
 											${cr.memberCount}
                                         </div>
@@ -158,7 +158,8 @@
     </div>
 
     <script>
-
+    
+    	
         function prevAction(){
             history.go(-1);
         }
@@ -219,7 +220,17 @@
 		    let memName = element.getAttribute('data-memname');
 		    let encmemName = encodeURIComponent(memName);
 		    let memNo = element.getAttribute('data-number');
-		    location.href = "chat.ch?memName="+ encmemName+"&memNo=" + memNo;
+		    let opmemNo = element.getAttribute('data-opnumber');
+		    let loginUserMemberNo = element.getAttribute('data-loginMemNumber');
+		  
+		    
+		    // memNo와 loginUserMemberNo 비교 후에 조건에 따라 opmemNo 또는 memNo 설정
+		    if (memNo === loginUserMemberNo) {
+		        location.href = "chat.ch?memName=" + encmemName + "&memNo=" + opmemNo;
+		    } else {
+		        location.href = "chat.ch?memName=" + encmemName + "&memNo=" + memNo;
+		    }
+		    //location.href = "chat.ch?memName="+ encmemName+"&memNo=" + memNo + "&opmemNo=" + opmemNo;
 		}
     </script>
 </body>

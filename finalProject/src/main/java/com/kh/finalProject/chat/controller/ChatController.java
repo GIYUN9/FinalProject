@@ -27,8 +27,7 @@ public class ChatController {
 		Member loginUser = (Member) session.getAttribute("loginUser");
 		msg.setSenderNo(loginUser.getMemberNo());
 		msg.setReceiverNo(Integer.parseInt(memNo));
-		msg.setMemberName(memName);
-		System.out.println("chatController chat reciever No : " + msg.getReceiverNo() + msg.getMemberName());
+		System.out.println("chatController chat reciever No : " + msg.getReceiverNo());
 		
 		session.setAttribute("target", msg.getReceiverNo());
 		ArrayList<Message> msgList = chatService.msgList(msg);

@@ -52,24 +52,17 @@
 	<select id="msgList" resultMap="chatResult">
 		SELECT MSG.MSG_NO, 
 	           MSG.MSG, 
-	           MSG.CREATE_DATE, 
-	           MSG.CHAT_ROOM_NO, 
+     	       MSG.SENDER_NO,
+     	       CR.SENDER_NAME,  
 	           MSG.RECEIVER_NO,
-	           MSG.SENDER_NO,
-	           M.MEM_NAME
+	           CR.RECEIVER_NAME, 
+	           MSG.CREATE_DATE
 	      FROM CHATMSG MSG
-	      JOIN CHATROOM CR ON (MSG.CHAT_ROOM_NO = CR.CHAT_ROOM_NO)
-	      JOIN MEMBER M ON (M.MEM_NO = MSG.RECEIVER_NO)
-		 WHERE MSG.SENDER_NO = #{senderNo}
-		 OR MSG.RECEIVER_NO = #{senderNo}
+	      JOIN CHATROOM CR ON (MSG.SENDER_NO = CR.SENDER_NO)
+		   AND (MSG.RECEIVER_NO = CR.RECEIVER_NO)
+		 WHERE (MSG.SENDER_NO = #{senderNo} OR MSG.RECEIVER_NO = #{senderNo})
+		   AND (MSG.SENDER_NO = #{receiverNo} OR MSG.RECEIVER_NO = #{receiverNo})
 	  ORDER BY MSG_NO ASC
-	  
-	          SELECT *
-        FROM CHATMSG MSG
-        JOIN CHATROOM CR ON (MSG.SENDER_NO = CR.SENDER_NO)
-        AND (MSG.RECEIVER_NO = CR.RECEIVER_NO)
-        WHERE MSG.SENDER_NO = 2
-        ORDER BY MSG_NO
 	</select>	
 	
 	 	<!-- 

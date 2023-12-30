@@ -32,7 +32,7 @@
 				<c:when test="${msg.senderNo eq loginUser.memberNo}">
 					<div class="box2">
 			        	<div class="chatbox-right">
-							${msg.msg} ${msg.memberName}
+							${msg.msg}
 			                <div class="chat-time-right-load">
 					             <script>
 				                    var timestamp = new Date('${msg.createDate}');
