@@ -6,7 +6,7 @@
   <mapper namespace="chatMapper">
   	<resultMap type="Chat" id="chatResult">
   		<result column="MSG_NO" property="msgNo" />
-  		<result column="MSG" property="msg" />
+  		<result column="MSG" property="msgCo" />
   		<result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP"/>
  		<result column="SENDER_NO" property="senderNo" />
  		<result column="RECEIVER_NO" property="receiverNo" />
@@ -28,6 +28,23 @@
   		<result column="MEM_NAME" property="memberName" />
 		<result column="MEM_NO" property="memberNo" />
   	</resultMap>
+ 	
+	<insert id = "insertMsg">
+		INSERT INTO CHATMSG(
+			MSG_NO,
+			MSG,
+			CREATE_DATE,
+			SENDER_NO,
+			RECEIVER_NO
+		)
+		VALUES(
+			SEQ_MSGNO.NEXTVAL,
+			#{msgCo},
+			SYSTIMESTAMP,
+			#{senderNo},
+			#{receiverNo}
+		)
+	</insert>
  	
  	<select id="chattingRoomList" resultMap="chatRoomResult">
 		SELECT CR.SENDER_NAME,
@@ -53,13 +70,9 @@
 		SELECT MSG.MSG_NO, 
 	           MSG.MSG, 
      	       MSG.SENDER_NO,
-     	       CR.SENDER_NAME,  
 	           MSG.RECEIVER_NO,
-	           CR.RECEIVER_NAME, 
 	           MSG.CREATE_DATE
 	      FROM CHATMSG MSG
-	      JOIN CHATROOM CR ON (MSG.SENDER_NO = CR.SENDER_NO)
-		   AND (MSG.RECEIVER_NO = CR.RECEIVER_NO)
 		 WHERE (MSG.SENDER_NO = #{senderNo} OR MSG.RECEIVER_NO = #{senderNo})
 		   AND (MSG.SENDER_NO = #{receiverNo} OR MSG.RECEIVER_NO = #{receiverNo})
 	  ORDER BY MSG_NO ASC
@@ -77,5 +90,19 @@
 		    ORDER BY MSG_NO DESC
 		)
 		WHERE ROWNUM = 1
+		
+		SELECT MSG.MSG_NO, 
+	           MSG.MSG, 
+     	       MSG.SENDER_NO,
+     	       CR.SENDER_NAME,  
+	           MSG.RECEIVER_NO,
+	           CR.RECEIVER_NAME, 
+	           MSG.CREATE_DATE
+	      FROM CHATMSG MSG
+	      JOIN CHATROOM CR ON (MSG.SENDER_NO = CR.SENDER_NO)
+		   AND (MSG.RECEIVER_NO = CR.RECEIVER_NO)
+		 WHERE (MSG.SENDER_NO = #{senderNo} OR MSG.RECEIVER_NO = #{senderNo})
+		   AND (MSG.SENDER_NO = #{receiverNo} OR MSG.RECEIVER_NO = #{receiverNo})
+	  ORDER BY MSG_NO ASC
 	-->
   </mapper>

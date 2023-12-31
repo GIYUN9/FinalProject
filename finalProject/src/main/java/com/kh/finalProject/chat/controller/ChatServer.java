@@ -54,27 +54,26 @@ public class ChatServer extends TextWebSocketHandler{
 		log.info("{}", obj);
 		
 		Message vo = new Message();
-		vo.setMsg(obj.get("message").getAsString());
+		vo.setMsgCo(obj.get("message").getAsString());
 	    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		vo.setCreateDate(timestamp);
-		System.out.println("msg 내용 : " + vo.getMsg() + " 시간 : " + timestamp);
+		System.out.println("msg 내용 : " + vo.getMsgCo() + " 시간 : " + timestamp + "이름" + memberName);
 
-		sendMessageToUser(session, receiverNo, vo);
+		sendMessageToUser(session, receiverNo, vo, memberName);
 	}
 	
-	private void sendMessageToUser(WebSocketSession session, String receiverNo, Message msgVo) {
+	private void sendMessageToUser(WebSocketSession session, String receiverNo, Message msgVo, String memberName) {
 	    Member loginUser = (Member) session.getAttributes().get("loginUser");
 		msgVo.setSenderNo(loginUser.getMemberNo());
-		System.out.println( "memNo : " + loginUser.getMemberNo() + "/ senderNo : " + msgVo.getSenderNo());
-		
-		
+		System.out.println( "memNo : " + loginUser.getMemberNo() + "/ senderNo : " + msgVo.getSenderNo()+ "/ memberName : " + memberName);
 		
 		WebSocketSession targetSession = userSessions.get(receiverNo);
 		System.out.println("msgvo syso receiverNo : " + receiverNo);
 
 		WebSocketSession mySession = userSessions.get(String.valueOf(loginUser.getMemberNo()));
 		System.out.println("msgvo syso sender" + msgVo.getSenderNo() + " / login User No : " + loginUser.getMemberNo());
-
+		
+		
 		
 		if(targetSession != null && targetSession.isOpen()) {
 			String str = new Gson().toJson(msgVo);

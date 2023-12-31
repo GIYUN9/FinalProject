@@ -14,7 +14,7 @@
    <header>
         <div class="cr-left">
             <img class="prev-menu" src="./resources/icon/left-arrow.png" onclick="prevAction()" >
-            <span class="ct-name">&nbsp;&nbsp;${fn:substringAfter(fn:substringBefore(memName, ']'), '[')}</span> 
+            <span class="ct-name">&nbsp;&nbsp;${memName}</span> 
             <div class="ct-info">
                 <span> &nbsp;평균&nbsp;</span>
                 <span class="ct-time">6시간&nbsp;</span>
@@ -32,7 +32,7 @@
 				<c:when test="${msg.senderNo eq loginUser.memberNo}">
 					<div class="box2">
 			        	<div class="chatbox-right">
-							${msg.msg}
+							${msg.msgCo}
 			                <div class="chat-time-right-load">
 					             <script>
 				                    var timestamp = new Date('${msg.createDate}');
@@ -51,7 +51,7 @@
 				<c:otherwise>
 					<div class="box">
 			        	<div class="chatbox">
-							${msg.msg}
+							${msg.msgCo}
 			                <div class="chat-time">
 					             <script>
 				                    var timestamp = new Date('${msg.createDate}');
@@ -77,12 +77,15 @@
     <br><br><br><br><br>
     <br><br><br><br><br>
     
-    <footer class="cr-ft">
-        <button class="send-btn2"></button>
-        <input class="text-area" id="type-text" type="text" name="msg">
-        <button class="send-btn" id="msg-btn" onclick="sendMsg();">전송</button>
-        <input type="text" name="target">
-    </footer>
+    <form action="insert.ch">  
+	    <footer class="cr-ft">
+	        <button class="send-btn2"></button>
+	        <input class="text-area" id="type-text" type="text" name="msgCo">
+	        <button type="submit" class="send-btn" id="msg-btn" onclick="sendMsg();">전송</button>
+	        <input type="text" name="target" style="display:none">
+	    </footer>
+    </form>
+    
     <script>
         function prevAction(){
             history.go(-1);
@@ -111,8 +114,8 @@
         //서버로부터 데이터가 도착했을 때
         socket.onmessage = function(ev){
         	const receive = JSON.parse(ev.data);
-
-            console.log(ev.data);
+			
+            console.log("chat.jsp" + ev.data);
             //msgContainer.innerHTML += (ev.data + "<br>");
                      
             // 새로운 메시지를 담을 div 엘리먼트 생성
@@ -127,8 +130,19 @@
             // 시간을 나타낼 div 엘리먼트 생성
             const chatTimeDiv = document.createElement('div');
             chatTimeDiv.className = 'chat-time';
-            const timestamp = new Date().toLocaleDateString();
-            chatTimeDiv.textContent = receive.createDate;
+            //const timestamp = new Date().toLocaleDateString();
+            const receiveCreateDate = receive.createDate;
+            const dateObject = new Date(receiveCreateDate);
+
+            const options = {
+            		  hour: 'numeric',
+            		  minute: 'numeric',
+            		  hour12: true
+            		};
+            		const formattedTimestamp = new Intl.DateTimeFormat('ko-KR', options).format(dateObject);
+
+            chatTimeDiv.textContent = formattedTimestamp;
+            
 
             // '안읽음'을 나타낼 div 엘리먼트 생성
             const chatCountDiv = document.createElement('div');
@@ -161,15 +175,23 @@
             const chatTimeRight = document.createElement("div");
             chatTimeRight.className = "chat-time-right";
             const timestamp = new Date().toLocaleDateString();
-            chatTimeRight.textContent = timestamp;
+            
+            const options = {
+            		  hour: 'numeric',
+            		  minute: 'numeric',
+            		  hour12: true
+            		};
+            		const formattedTimestamp = new Intl.DateTimeFormat('ko-KR', options).format(new Date());
+            		
+            chatTimeRight.textContent = formattedTimestamp;
 
             const chatCountRight = document.createElement("div");
             chatCountRight.className = "chat-count-right";
             chatCountRight.textContent = "안읽음";
 
             messageBox2.appendChild(chatboxRight);
-            messageBox2.appendChild(chatTimeRight);
-            messageBox2.appendChild(chatCountRight);
+            chatboxRight.appendChild(chatTimeRight);
+            chatboxRight.appendChild(chatCountRight);
 
         	socket.send(JSON.stringify(msgData)); //소켓에 str 텍스트 보내기
             

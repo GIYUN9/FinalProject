@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 public class Message {
 	
     private int msgNo;
-	private String msg;
+	private String msgCo;
 	private Timestamp createDate;
 	private int senderNo;
 	private int receiverNo;

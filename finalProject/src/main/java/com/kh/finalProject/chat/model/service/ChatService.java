@@ -14,4 +14,6 @@ public interface ChatService {
 	ArrayList<ChattingRoom> chattingRoomList (ChattingRoom cr);
 	
 	ArrayList<ChattingRoom> senderInfo (int chatRoomNo, int memberNo);
+	
+	int insertMsg(Message msg);
 }

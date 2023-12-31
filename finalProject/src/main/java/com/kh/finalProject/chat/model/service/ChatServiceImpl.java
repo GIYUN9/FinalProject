@@ -36,6 +36,11 @@ public class ChatServiceImpl implements ChatService{
 		ArrayList<Message> msgList = chatDao.msgList(sqlSession, msg);
 		return msgList;
 	}
+
+	@Override
+	public int insertMsg(Message msg) {
+		return chatDao.insertMsg(sqlSession, msg);
+	}
 	
 	
 	
