@@ -26,7 +26,7 @@
             </div>
             <div>
                 <c:forEach var="cr" items="${crList}">
-                    <div class="chatRoom-detail-align" onclick="chat()">
+                    <div class="chatRoom-detail-align" data-memname="${cr.receiverName}" data-opmemname="${cr.senderName}" data-number="${cr.receiverNo}" data-opnumber="${cr.senderNo}" data-loginMemNumber="${loginUser.memberNo}" onclick="chat(this)">
                         <div class="chatRoom-group">  
                             <div class="chatRoom-img-background">
                                 <img class="chatRoom-img" src="././resources/image/축구.jpg" alt="">
@@ -34,9 +34,9 @@
                             <div class="chatRoom-section">
                                 <div class="chatRoom-info">
                                     <div class="chatRoom-detail-title">
-										  ${fn:substringAfter(fn:substringBefore(memName, ']'), '[')}
+										  ${cr.senderName} ${cr.receiverNo} ${cr.senderNo} ${loginUser.memberNo}
                                         <div class="chatRoom-MemberCount">
-											${fn:length(memName)}
+											${cr.memberCount}
                                         </div>
                                     </div>
                                     <div class="last-chat">
@@ -64,7 +64,7 @@
                 <p class="p-btn1" id="groupChat" onclick="groupChat()">단체 채팅</p>
             </div>
             <div>
-            	                <div class="chatRoom-detail-align">
+				<div class="chatRoom-detail-align">
                     <div class="chatRoom-group">  
                         <div class="chatRoom-img-background">
                             <img class="chatRoom-img" src="././resources/image/축구.jpg" alt="">
@@ -158,7 +158,8 @@
     </div>
 
     <script>
-
+    
+    	
         function prevAction(){
             history.go(-1);
         }
@@ -215,8 +216,21 @@
 		  var redirectUrl = '<%=request.getContextPath()%>/'; 
 		  window.location.href = redirectUrl;
 		}
-		function chat() {
-			location.href = "chat.ch"
+		function chat(element) {
+		    let memName = element.getAttribute('data-memname');
+		    let encmemName = encodeURIComponent(memName);
+		    let opmemName = element.getAttribute('data-opmemname');
+		    let encopmemName = encodeURIComponent(opmemName);
+		    let memNo = element.getAttribute('data-number');
+		    let opmemNo = element.getAttribute('data-opnumber');
+		    let loginUserMemberNo = element.getAttribute('data-loginMemNumber');
+		  
+		    // memNo와 loginUserMemberNo 비교 후에 조건에 따라 opmemNo 또는 memNo 설정
+		    if (memNo === loginUserMemberNo) {
+		        location.href = "chat.ch?memName=" + encopmemName + "&memNo=" + opmemNo;
+		    } else {
+		        location.href = "chat.ch?memName=" + encmemName + "&memNo=" + memNo;
+		    }
 		}
     </script>
 </body>

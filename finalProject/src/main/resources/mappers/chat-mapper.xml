@@ -6,46 +6,60 @@
   <mapper namespace="chatMapper">
   	<resultMap type="Chat" id="chatResult">
   		<result column="MSG_NO" property="msgNo" />
-  		<result column="MSG" property="msg" />
+  		<result column="MSG" property="msgCo" />
   		<result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP"/>
-  		<result column="CHAT_ROOM_NO" property="chatRoomNo" />
  		<result column="SENDER_NO" property="senderNo" />
  		<result column="RECEIVER_NO" property="receiverNo" />
- 		<result column="MEM_NAME" property="memberName" />
   	</resultMap>
   	
   	<resultMap type="ChatRoom" id="chatRoomResult">
-  		<result column="CHAT_ROOM_NO" property="chatRoomNo" />
-  		<result column="TITLE" property="title" />
+  		<result column="RECEIVER_NO" property="receiverNo" />
+  		<result column="RECEIVER_NAME" property="receiverName" />
   		<result column="STATUS" property="status" />
-  		<result column="MEM_NO" property="memberNo" />
+  		<result column="SENDER_NO" property="senderNo" />
+  		<result column="SENDER_NAME" property="senderName" />
   		<result column="MEM_COUNT" property="memberCount" />
   		<result column="LAST_MSG_NO" property="lastMsgNo" />
   		<result column="LAST_CHAT_TIME" property="lastChatTime" />
-  		<result column=" CHAT_COUNT" property="chatCount" />
-  		<result column="MEM_NAME" property="memberName" />
+  		<result column="CHAT_COUNT" property="chatCount" />
   	</resultMap>
   	
   	<resultMap type="String" id="senderInfoResult">
   		<result column="MEM_NAME" property="memberName" />
+		<result column="MEM_NO" property="memberNo" />
   	</resultMap>
  	
+	<insert id = "insertMsg">
+		INSERT INTO CHATMSG(
+			MSG_NO,
+			MSG,
+			CREATE_DATE,
+			SENDER_NO,
+			RECEIVER_NO
+		)
+		VALUES(
+			SEQ_MSGNO.NEXTVAL,
+			#{msgCo},
+			SYSTIMESTAMP,
+			#{senderNo},
+			#{receiverNo}
+		)
+	</insert>
+ 	
  	<select id="chattingRoomList" resultMap="chatRoomResult">
- 		 SELECT CR.CHAT_ROOM_NO,
- 		 		CR.MEM_NO,
-			    CRJ.MEM_NO,
-			    CR.STATUS,
-			    CR.TITLE,
-			    M.MEM_NAME
-		   FROM CHATROOM CR
-		   JOIN CHATROOMJOIN CRJ ON (CR.CHAT_ROOM_NO = CRJ.CHAT_ROOM_NO)
-		   JOIN MEMBER M ON (CRJ.MEM_NO = M.MEM_NO)
-		  WHERE CR.STATUS = 'Y'
-		  AND CRJ.MEM_NO = #{memberNo}
+		SELECT CR.SENDER_NAME,
+			   CR.SENDER_NO, 
+	           CR.RECEIVER_NO, 
+	           CR.RECEIVER_NAME,
+	           CR.MEM_COUNT
+		  FROM CHATROOM CR
+		  JOIN MEMBER M ON (CR.SENDER_NO = M.MEM_NO)
+         WHERE CR.SENDER_NO = #{senderNo}
+            OR CR.RECEIVER_NO = #{senderNo}
 	</select>
 	
 	<select id="senderInfo" resultMap="senderInfoResult">
-		SELECT M.MEM_NAME
+		SELECT M.MEM_NAME, M.MEM_NO
 		FROM CHATROOMJOIN  CRJ
 		JOIN MEMBER M ON (CRJ.MEM_NO = M.MEM_NO)
 		WHERE CRJ.CHAT_ROOM_NO = #{chatRoomNo}
@@ -55,16 +69,12 @@
 	<select id="msgList" resultMap="chatResult">
 		SELECT MSG.MSG_NO, 
 	           MSG.MSG, 
-	           MSG.CREATE_DATE, 
-	           MSG.CHAT_ROOM_NO, 
+     	       MSG.SENDER_NO,
 	           MSG.RECEIVER_NO,
-	           MSG.SENDER_NO,
-	           M.MEM_NAME
+	           MSG.CREATE_DATE
 	      FROM CHATMSG MSG
-	      JOIN CHATROOM CR ON (MSG.CHAT_ROOM_NO = CR.CHAT_ROOM_NO)
-	      JOIN MEMBER M ON (M.MEM_NO = MSG.RECEIVER_NO)
-		 WHERE MSG.SENDER_NO = #{senderNo}
-		 OR MSG.RECEIVER_NO = #{senderNo}
+		 WHERE (MSG.SENDER_NO = #{senderNo} OR MSG.RECEIVER_NO = #{senderNo})
+		   AND (MSG.SENDER_NO = #{receiverNo} OR MSG.RECEIVER_NO = #{receiverNo})
 	  ORDER BY MSG_NO ASC
 	</select>	
 	
@@ -80,5 +90,19 @@
 		    ORDER BY MSG_NO DESC
 		)
 		WHERE ROWNUM = 1
+		
+		SELECT MSG.MSG_NO, 
+	           MSG.MSG, 
+     	       MSG.SENDER_NO,
+     	       CR.SENDER_NAME,  
+	           MSG.RECEIVER_NO,
+	           CR.RECEIVER_NAME, 
+	           MSG.CREATE_DATE
+	      FROM CHATMSG MSG
+	      JOIN CHATROOM CR ON (MSG.SENDER_NO = CR.SENDER_NO)
+		   AND (MSG.RECEIVER_NO = CR.RECEIVER_NO)
+		 WHERE (MSG.SENDER_NO = #{senderNo} OR MSG.RECEIVER_NO = #{senderNo})
+		   AND (MSG.SENDER_NO = #{receiverNo} OR MSG.RECEIVER_NO = #{receiverNo})
+	  ORDER BY MSG_NO ASC
 	-->
   </mapper>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,7 @@
    <header>
         <div class="cr-left">
             <img class="prev-menu" src="./resources/icon/left-arrow.png" onclick="prevAction()" >
-            <span class="ct-name">&nbsp;&nbsp;sender</span> 
+            <span class="ct-name">&nbsp;&nbsp;${memName}</span> 
             <div class="ct-info">
                 <span> &nbsp;평균&nbsp;</span>
                 <span class="ct-time">6시간&nbsp;</span>
@@ -31,7 +32,7 @@
 				<c:when test="${msg.senderNo eq loginUser.memberNo}">
 					<div class="box2">
 			        	<div class="chatbox-right">
-							${msg.msg} ${msg.memberName}
+							${msg.msgCo}
 			                <div class="chat-time-right-load">
 					             <script>
 				                    var timestamp = new Date('${msg.createDate}');
@@ -50,7 +51,7 @@
 				<c:otherwise>
 					<div class="box">
 			        	<div class="chatbox">
-							${msg.msg}
+							${msg.msgCo}
 			                <div class="chat-time">
 					             <script>
 				                    var timestamp = new Date('${msg.createDate}');
@@ -68,78 +69,7 @@
 				</c:otherwise>				
 			</c:choose>
 		</c:forEach>
-        <!-- <div class="cr-time">2023년 11월 27일 월요일</div>
-        <div class="box">
-            <div class="chatbot-chatbox">
-                <span class="text-output">
-                    안녕하세요! 품앗이 상담 챗봇입니다. <br>
-                    원하시는 서비스를 선택해주시면 됩니다.
-                </span>
-            </div>
-        </div>
-        <div class="box">
-            <div class="chatbox">
-                <div class="chat-header"><h3>서비스 목록</h3></div>
-                <br>
-                <button class="option-btn">가격 안내를 받고 싶습니다.</button>
-                <button class="option-btn">전화 상담 안내를 받습니다.</button>
-                <button class="option-btn">예약을 하고 싶습니다.</button>
-                <br>
-                <div class="chat-time">오후 2:06</div>
-            </div>
-        </div>  -->
-    
-        <!-- <div class="box2">
-            <div class="chatbox-right">
-                가격 안내를 받고 싶습니다.
-                <div class="chat-time-right">오후 2:06</div>
-                <div class="chat-count-right">안읽음</div>
-            </div>
-        </div> -->
-        <!-- <div class="box">
-            <div class="chatbot-chatbox">
-                <span class="text-output">
-                    주 1회 1시간씩 한 달 총 15만원 <br>
-                    주 2회 40분씩 한 달 총 20만원입니다<br>
-                    카드 결제도 됩니다^^
-                </span>
-            </div>
-        </div>
-    
-        <div class="box">
-            <div class="chatbox">
-                <div class="chat-header"><h3>제약 없이 마음놓고</h3></div>
-                <br>
-                <button class="option-btn">가격 안내를 받고 싶습니다.</button>
-                <button class="option-btn">전화 상담 안내를 받습니다.</button>
-                <button class="option-btn">예약을 하고 싶습니다.</button>
-                <br>
-                <div class="chat-time">오후 2:08</div>
-            </div>
-        </div>
-    
-        <div class="box2">
-            <div class="chatbox-right">
-                읽으시면 채팅 주세요
-                <div class="chat-time-right">오후 2:09</div>
-            </div>
-        </div> -->
-    
         <div class="cr-time">2024년 1월 04일 목요일</div>
-        <!-- <div class="box" id="chat-container">
-            <div class="chatbox">
-                <span class="text-output">ㅇ</span>
-                <div class="chat-time">오후 5:08</div>
-                <div class="chat-count">안읽음</div>
-            </div>
-        </div>
-        <div class="box2" id="msg-container">
-            <div class="chatbox-right">
-                <div class="chat-time-right">Timestamp</div>
-                <div class="chat-count-right">안읽음</div>
-            </div>
-        </div> -->
-    
     </div>
 
     <br><br><br><br><br>
@@ -147,11 +77,15 @@
     <br><br><br><br><br>
     <br><br><br><br><br>
     
-    <footer class="cr-ft">
-        <button class="send-btn2"></button>
-        <input class="text-area" id="type-text" type="text" name="msg">
-        <button class="send-btn" id="msg-btn" onclick="sendMsg();">전송</button>
-    </footer>
+    <form action="insert.ch">  
+	    <footer class="cr-ft">
+	        <button class="send-btn2"></button>
+	        <input class="text-area" id="type-text" type="text" name="msgCo">
+	        <button type="submit" class="send-btn" id="msg-btn" onclick="sendMsg();">전송</button>
+	        <input type="text" name="target" style="display:none">
+	    </footer>
+    </form>
+    
     <script>
         function prevAction(){
             history.go(-1);
@@ -179,7 +113,9 @@
         //socket연결로 부터 데이터가 도착했을때
         //서버로부터 데이터가 도착했을 때
         socket.onmessage = function(ev){
-            console.log(ev.data);
+        	const receive = JSON.parse(ev.data);
+			
+            console.log("chat.jsp" + ev.data);
             //msgContainer.innerHTML += (ev.data + "<br>");
                      
             // 새로운 메시지를 담을 div 엘리먼트 생성
@@ -189,13 +125,24 @@
             // 텍스트 내용을 담을 span 엘리먼트 생성
             const textOutputSpan = document.createElement('span');
             textOutputSpan.className = 'text-output';
-            textOutputSpan.textContent = ev.data;
+            textOutputSpan.textContent = receive.msg;
 
             // 시간을 나타낼 div 엘리먼트 생성
             const chatTimeDiv = document.createElement('div');
             chatTimeDiv.className = 'chat-time';
-            const timestamp = new Date().toLocaleDateString();
-            chatTimeDiv.textContent = timestamp;
+            //const timestamp = new Date().toLocaleDateString();
+            const receiveCreateDate = receive.createDate;
+            const dateObject = new Date(receiveCreateDate);
+
+            const options = {
+            		  hour: 'numeric',
+            		  minute: 'numeric',
+            		  hour12: true
+            		};
+            		const formattedTimestamp = new Intl.DateTimeFormat('ko-KR', options).format(dateObject);
+
+            chatTimeDiv.textContent = formattedTimestamp;
+            
 
             // '안읽음'을 나타낼 div 엘리먼트 생성
             const chatCountDiv = document.createElement('div');
@@ -213,39 +160,45 @@
         }
 	
         function sendMsg(){
-        	const msgInput = document.querySelector("input[name=msg]"); //텍스트 입력칸 msgInput에 대입
-        	const str = msgInput.value; //str에 텍스트 담기
-        	//연결된 socket session에 데이터 전송
+        	const msgData = {
+        			message : document.querySelector("input[name=msg]").value,
+        			target : document.querySelector("input[name=target]").value
+        	}
 
             const messageBox2 = document.createElement("div");
             messageBox2.className = "box2";
 
             const chatboxRight = document.createElement("div");
             chatboxRight.className = "chatbox-right";
-            chatboxRight.textContent = str;
+            chatboxRight.textContent = document.querySelector("input[name=msg]").value;
 
             const chatTimeRight = document.createElement("div");
             chatTimeRight.className = "chat-time-right";
             const timestamp = new Date().toLocaleDateString();
-            chatTimeRight.textContent = timestamp;
+            
+            const options = {
+            		  hour: 'numeric',
+            		  minute: 'numeric',
+            		  hour12: true
+            		};
+            		const formattedTimestamp = new Intl.DateTimeFormat('ko-KR', options).format(new Date());
+            		
+            chatTimeRight.textContent = formattedTimestamp;
 
             const chatCountRight = document.createElement("div");
             chatCountRight.className = "chat-count-right";
             chatCountRight.textContent = "안읽음";
 
             messageBox2.appendChild(chatboxRight);
-            messageBox2.appendChild(chatTimeRight);
-            messageBox2.appendChild(chatCountRight);
+            chatboxRight.appendChild(chatTimeRight);
+            chatboxRight.appendChild(chatCountRight);
 
-        	socket.send(str); //소켓에 str 텍스트 보내기
-
-            //const msgContainer = document.getElementById("msg-container");
-            //msgContainer.appendChild(messageBox2);
+        	socket.send(JSON.stringify(msgData)); //소켓에 str 텍스트 보내기
             
             const chatArea = document.querySelector(".chat-area");
             chatArea.appendChild(messageBox2);
         	
-        	msgInput.value = ""; //텍스트 입력칸 비우기
+            document.querySelector("input[name=msg]").value = ""; //텍스트 입력칸 비우기
         }
 
         $("#type-text").on("keypress", function(ev) {
