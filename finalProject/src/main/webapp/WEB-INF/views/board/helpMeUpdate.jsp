@@ -19,7 +19,6 @@
 
     <form method="post" action="helpmeUpdate.bo" enctype="multipart/form-data">
         <input type="hidden" value="${b.boardNo}" name="boardNo">
-        <input type="hidden" name="userNo" value="">
       
         <table align="center">
           

@@ -702,30 +702,99 @@ public class BoardController {
 	
 	//도와주세요 게시글 수정
 	@RequestMapping(value="helpmeUpdate.bo")
-	public String helpmeUpdateBoard(Board b, Attachment at, MultipartFile reupfile, Model model, HttpSession session) {
+	public String helpmeUpdateBoard(Board b, @RequestParam("upfile") MultipartFile[] upfiles,
+	        HttpSession session, Model model) {
 		
+		ArrayList<Attachment> list = new ArrayList<>();
 		
+		int result1 = 0;
+		int result2 = 0;
 		
-		if(!reupfile.getOriginalFilename().equals("")) {
-			String changeName = saveFile(reupfile, session, "/resources/borderImage/");
-			
-			if(at.getOriginName() != null) {
-				new File(session.getServletContext().getRealPath(at.getChangeName())).delete();
+		result1 = boardService.helpmeUpdateBoard(b);
+		
+		b = boardService.helpmeselectOne(b);
+		System.out.println("borad b = " + b);
+		System.out.println("보드넘버 : " + b.getBoardNo());
+		
+		b = boardService.helpmeselectOne2(b.getBoardNo());
+	
+		System.out.println("최후의 보드 = " + b);
+				
+	    for (MultipartFile upfile : upfiles) {
+	        if (!upfile.isEmpty()) {
+	        	
+	        	Attachment at = new Attachment();
+	        	
+	            String changeName = saveFile(upfile, session, "resources/borderImage/");
+	            at.setChangeName("././resources/borderImage/" + changeName);
+	            at.setOriginName(upfile.getOriginalFilename());	   
+	            at.setFilePath("././resources/borderImage/");
+	            
+	            at.setBoardNo(b.getBoardNo());
+	                    
+	            String fileName = upfile.getOriginalFilename();
+	            if( upfile == upfiles[0]) {
+	            	at.setFileLevel(1);
+	            } else {
+	            	at.setFileLevel(2);
+	            }
+	             
+	            System.out.println("filePath : " + at.getFilePath());          
+	            System.out.println("originName : " +at.getOriginName()); 	       
+	            System.out.println("changeName : " + at.getChangeName());
+	            System.out.println("fileLevel : " + at.getFileLevel()); 
+	            System.out.println("at = " +at);
+	            
+	            list.add(at);
+	        }
+	    }
+	    
+	    System.out.println(list);
+	    Attachment at = new Attachment();
+	    for (Attachment attachment : list) {
+	    	
+	        at = attachment;
+	        System.out.println("atat : " + at);
+	        boardService.helpmeAttachment(at);
+	    }
+	
+		if(result1 > 0 ) {
+			if(b.getBoardType() == 2) {		
+				session.setAttribute("alertMsg", "게시글 작성 성공");
+				session.setAttribute("b", b);
+				return "redirect:/helpmeList.bo";
+			}else {
+				session.setAttribute("alertMsg", "게시글 작성 성공");
+				session.setAttribute("b", b);
+				return "redirect:/helpList.bo";
 			}
 			
-			at.setOriginName(reupfile.getOriginalFilename());
-			at.setChangeName("/resources/borderImage/" + changeName);
-		}
-		
-		int result = boardService.helpmeUpdateBoard(b);
-		
-		if(result > 0) {
-			session.setAttribute("alertMsg", "게시글 수정 성공");
-			return "redirect:/helpmeDetail.bo?boardNo=" + b.getBoardNo();
 		} else {
-			model.addAttribute("errorMsg", "게시글 수정 실패");
+			model.addAttribute("errorMsg", "게시글 작성 실패");
 			return "common/errorPage";
 		}
+	}  
+		
+//		if(!reupfile.getOriginalFilename().equals("")) {
+//			String changeName = saveFile(reupfile, session, "/resources/borderImage/");
+//			
+//			if(at.getOriginName() != null) {
+//				new File(session.getServletContext().getRealPath(at.getChangeName())).delete();
+//			}
+//			
+//			at.setOriginName(reupfile.getOriginalFilename());
+//			at.setChangeName("././resources/borderImage/" + changeName);
+//		}
+//		
+//		int result = boardService.helpmeUpdateBoard(b);
+//		
+//		if(result > 0) {
+//			session.setAttribute("alertMsg", "게시글 수정 성공");
+//			return "redirect:/helpmeDetail.bo?boardNo=" + b.getBoardNo();
+//		} else {
+//			model.addAttribute("errorMsg", "게시글 수정 실패");
+//			return "common/errorPage";
+//		}
 	}
 	
 	//도와주세요 게시글 삭제
