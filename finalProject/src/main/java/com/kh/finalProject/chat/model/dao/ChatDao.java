@@ -13,16 +13,16 @@ import com.kh.finalProject.chat.model.vo.Message;
 @Repository
 public class ChatDao {
 
-	public int insertChat(SqlSessionTemplate sqlSession, Message m) {
-		return sqlSession.insert("chatMapper.insertChat", m);
+	public int insertMsg(SqlSessionTemplate sqlSession, Message msg) {
+		return sqlSession.insert("chatMapper.insertMsg", msg);
 	}
 	
-	public int deleteChat(SqlSessionTemplate sqlSession, Message m) {
-		return sqlSession.update("chatMapper.deleteChat", m);
+	public int deleteChat(SqlSessionTemplate sqlSession, Message msg) {
+		return sqlSession.update("chatMapper.deleteChat", msg);
 	}
 	
-	public ArrayList<Message> msgList(SqlSessionTemplate sqlSession, Message m) {
-		return (ArrayList)sqlSession.selectList("chatMapper.msgList", m);	
+	public ArrayList<Message> msgList(SqlSessionTemplate sqlSession, Message msg) {
+		return (ArrayList)sqlSession.selectList("chatMapper.msgList", msg);	
 	}
 	
 	public ArrayList<Message> searchMessage(SqlSessionTemplate sqlSession, String searchText) {

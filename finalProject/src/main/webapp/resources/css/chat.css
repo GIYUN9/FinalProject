@@ -187,11 +187,6 @@ header{
     border-bottom: 11px solid transparent;
     z-index: -1;
 }
-
-.text-output{
-    padding: 10px;
-}
-
 .box{
     display: flex;
     align-items: flex-start;
@@ -267,9 +262,9 @@ header{
     color: black;
 }
 .chat-time-right{
-    position: relative;
-    left: -42px;
-    bottom: 38px;
+    position: absolute;
+    left: 2px;
+    bottom: -20px;
     width: max-content;
     color: black;
     font-size: 14px;
@@ -286,9 +281,9 @@ header{
 .chat-count-right{
     font-size: 12px;
     font-weight: bold;
-    position: relative;
-    left: -126px;
-    bottom: 55px;
+    position: absolute;
+    left: -40px;
+    bottom: -19px;
     width: max-content;
     color: rgb(155, 89, 182);
 }
