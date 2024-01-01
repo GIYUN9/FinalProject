@@ -72,6 +72,18 @@
 		flex-direction: column;
 		justify-content: space-between;
 	}
+	.req-outer1{
+			border: 1px solid rgba(96, 96, 96, 0.5);
+			border-radius: 10px;
+			width: 96%;
+			margin-top: 10px;
+			height: 100%;
+			padding-left: 15px;
+			padding-top: 10px;
+			display: flex;
+    		flex-direction: column;
+    		justify-content: space-between;
+		}
 	.req-desc{
 		font-size: 12px;
 		margin-top: 20px;
@@ -162,7 +174,6 @@
 		<div class="sideBar">
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">계정 설정</h3>
 			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 180px;">
-		
 			<a class="myPageSideBar" href="userInfo.me">나의 정보</a>
 			<a class="myPageSideBar" href="proInfo.me">전문가 정보</a>
 			<a class="myPageSideBar" href="changePwd.me">비밀번호 변경</a>
@@ -185,7 +196,7 @@
 					<p class="p-btn" id="from" onclick="from()">등록된 신고</p>
 				</div>
 				<div>
-					<p class="p-btn1" id="send" onclick="send2()">처리된 신고</p>
+					<p class="p-btn1" id="send" onclick="send()">처리된 신고</p>
 				</div>
 			</div>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
@@ -193,7 +204,6 @@
 					<c:forEach var="r" items="${list}">
 						<div class="req-outer">
 							<div class="req-align">
-							
 								<div class="req-text">
 									<h6 class="req-title">${r.reportTitle}</h6>
 									<div class="req-desc">
@@ -211,11 +221,9 @@
 							</div>
 						</div>
 					</c:forEach>	
-				
 				</div>
 				<c:forEach var="r" items="${list}">
 					<form method="post" action="reportComment.rp">
-					
 						<div class="view${r.reportNo}" style="display: none;">
 							<div class="reqListOuter">
 								<div><h6>${r.reportTitle}</h6></div>
@@ -228,25 +236,24 @@
 								<input type="text" name="adminComent" style="width: 60%;">
 								<button type="submit" id="reportBtn">답변하기</button>
 							</div>
-							
 						</div>
 					</form>
 				</c:forEach>
-				<div class="tee" style="display: none;">
+				<!-- <div class="tee" style="display: none;"> -->
 				<c:forEach var="er" items="${endlist}">
-						<div class="req-outerA">
-							<div class="req-alignA">
-							
-								<div class="req-textA">
-									<h6 class="req-titleA">${er.reportTitle}</h6>
-									<div class="req-descA">
+					<div style="display: flex; align-items: center; justify-content: center;">
+						<div class="req-outer1" style="display: none;">
+							<div class="req-align">
+								<div class="req-text">
+									<h6 class="req-title">${er.reportTitle}</h6>
+									<div class="req-desc">
 										${er.reportContent}
 									</div>
 								</div>
-								<div class="req-infoA">
-									<div class="req-noA">${er.reportNo}</div>
-									<div class="req-noA">${er.createDate}</div>
-									<div class="req-idA">${er.memberName}</div>
+								<div class="req-info">
+									<div class="req-no">${er.reportNo}</div>
+									<div class="req-no">${er.createDate}</div>
+									<div class="req-id">${er.memberName}</div>
 								</div>
 							</div>
 							<div>
@@ -254,18 +261,54 @@
 								<input type="text" value="${er.adminComent}" readonly>
 							</div>
 						</div>
-					</c:forEach>
+					</div>
+				</c:forEach>
 				</div>
-
 			</div>	 
-			</div>		
-		</div>
+		</div>		
+	</div>
 
 	
 	<jsp:include page="../common/footer.jsp" />
 
 	<script>
+			function from() {
+		location.href = "reportList.rp";
+		const reqAreas = document.querySelectorAll('.req-outer1');
+		reqAreas.forEach(reqArea => reqArea.style.display = "none");
 		
+		const reqAreas1 = document.querySelectorAll('.req-outer');
+		reqAreas1.forEach(reqArea1 => reqArea1.style.display = "flex");
+
+		const pBtn = document.querySelectorAll('.p-btn');
+			pBtn.forEach(element => {
+				element.style.background = 'transparent';
+			});
+
+		const pBtn1 = document.querySelectorAll('.p-btn1');
+			pBtn1.forEach(element => {
+				element.style.background = 'rgba(255, 255, 255, 0.22)';
+			});
+	}
+
+	function send() {
+			const reqAreas = document.querySelectorAll('.req-outer');
+			reqAreas.forEach(reqArea => reqArea.style.display = "none");
+			
+			const reqAreas1 = document.querySelectorAll('.req-outer1');
+			reqAreas1.forEach(reqArea1 => reqArea1.style.display = "flex");
+
+			const pBtn = document.querySelectorAll('.p-btn');
+			pBtn.forEach(element => {
+				element.style.background = 'transparent';
+			});
+
+			const pBtn1 = document.querySelectorAll('.p-btn1');
+			pBtn1.forEach(element => {
+				element.style.background = 'rgba(255, 255, 255, 0.22)';
+			});
+	}
+
 		function reportDetail(res){
 			console.log(res)
 			const reportInfo = document.querySelector('.user-info');
@@ -281,14 +324,6 @@
 				$("#form").attr('action','reportComment.rp');
 			}
 			$("#form").submit();
-		}
-
-		function send2(){
-			const reportInfo = document.querySelector('.user-info');
-			reportInfo.style.display = "none";
-
-			const tee = document.querySelector('.tee');
-			tee.style.display = "flex";
 		}
 	</script>
 </body>
