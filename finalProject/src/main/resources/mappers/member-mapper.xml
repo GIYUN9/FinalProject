@@ -78,7 +78,8 @@
 			MEM_NAME,
 			PHONE,
 			MEM_GEN,
-			MEM_CONCERN
+			MEM_CONCERN,
+			SKILL_NO
 		)
 		VALUES(
 			SEQ_MNO.NEXTVAL,
@@ -87,7 +88,8 @@
 			#{memberName},
 			#{phone},
 			#{memberGender},
-			#{memberConcern}
+			#{memberConcern},
+			333300
 		)
 	</insert>
 	<!-- 아이디 중복체크 -->
