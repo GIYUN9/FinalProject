@@ -182,7 +182,7 @@ public class BoardController {
 	@RequestMapping(value="helpUpdateForm.bo")
 	public String helpUpdateForm(int boardNo, Model model) {
 		
-		Board b = boardService.helpSelectBoard(boardNo);
+		Board b = boardService.helpmeSelectBoard(boardNo);
 		model.addAttribute("b",b);
 		
 		return "board/helpuRetouch";
@@ -697,15 +697,14 @@ public class BoardController {
 		Board b = boardService.helpmeSelectBoard(boardNo);
 		model.addAttribute("b",b);
 		
-		return "board/aaa";
+		return "board/helpMeUpdate";
 	}
 	
 	//도와주세요 게시글 수정
 	@RequestMapping(value="helpmeUpdate.bo")
 	public String helpmeUpdateBoard(Board b, Attachment at, MultipartFile reupfile, Model model, HttpSession session) {
 		
-		System.out.println(b);
-		System.out.println(reupfile);
+		
 		
 		if(!reupfile.getOriginalFilename().equals("")) {
 			String changeName = saveFile(reupfile, session, "/resources/borderImage/");

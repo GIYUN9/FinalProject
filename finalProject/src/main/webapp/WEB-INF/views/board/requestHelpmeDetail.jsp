@@ -641,8 +641,9 @@
                     <div class = "a">               
                         <div class="logo">          
                             <div class = "data">
-                                <div class="data-mem">${b.memberNo }</div>
-                                <div class="count">조회수정도</div>
+                                
+                                <div class="count">조회수 :  &nbsp;${b.viewCount }</div>
+                                <div class="data-mem">작성자 :  &nbsp;${b.memberName }</div>
                                 <button class="chat-btn">채팅하기</button>
                             </div>
                         </div>
