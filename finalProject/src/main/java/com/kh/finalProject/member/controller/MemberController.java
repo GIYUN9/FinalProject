@@ -228,7 +228,6 @@ public class MemberController {
 	
 	@RequestMapping(value = "/insert.me")
 	public String insertMember(Member m, HttpSession session, Model model) {
-		// bcryptPasswordEncoder 사용? => 일단 보류
 
 		//암호화 작업
 		String encPwd = bcryptPasswordEncoder.encode(m.getMemberPwd());

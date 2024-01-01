@@ -323,6 +323,8 @@ NOCACHE;
 
 ---------------------더미데이터-----------------------
 --SKILL
+--행 0
+INSERT INTO SKILL (SKILL_NO, SKILL_NAME) VALUES (SEQ_SKILL_NO.NEXTVAL,'선택 없음');
 --행 1
 INSERT INTO SKILL (SKILL_NO, SKILL_NAME) VALUES (SEQ_SKILL_NO.NEXTVAL,'세무사');
 --행 2
