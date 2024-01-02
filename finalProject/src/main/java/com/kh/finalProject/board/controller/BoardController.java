@@ -157,7 +157,8 @@ public class BoardController {
 	//도와줄게요 디테일 페이지 이동
 	@RequestMapping(value="helpDetailPage.bo")
 	public String helpDetailBoard(int boardNo, Model model, HttpSession session)  {
-			
+		
+		
 		
 		int increaseCount = boardService.helpincreaseCount(boardNo);
 		System.out.println("조회수 증가 " + increaseCount);
@@ -671,6 +672,7 @@ public class BoardController {
 	@RequestMapping(value="helpmeDetail.bo")
 	public String helpmeDetailBoard(int boardNo, Model model, HttpSession session) {
 		
+		session.removeAttribute("atlist");
 		int increaseCount = boardService.helpincreaseCount(boardNo);
 		System.out.println("조회수 증가 " + increaseCount);
 		
@@ -703,19 +705,16 @@ public class BoardController {
 	@RequestMapping(value="helpmeUpdate.bo")
 	public String helpmeUpdateBoard(Board b, @RequestParam("upfile") MultipartFile[] upfiles,
 	        HttpSession session, Model model) {
-		
+		session.removeAttribute("atlist");
 		ArrayList<Attachment> list = new ArrayList<>();
 	
 		int result1 = 0;
 		int result2 = 0;
-		System.out.println("b.getBoardNo()1 : " +b.getBoardNo());
+		
 		result1 = boardService.helpmeUpdateBoard(b);
-		
-//		b = boardService.helpmeselectOne(b);
-//		System.out.println("b.getBoardNo()2 : " +b.getBoardNo());
-		
+	
 		b = boardService.helpmeselectOne2(b.getBoardNo());
-		System.out.println("b.getBoardNo()3 : " +b.getBoardNo());
+
 	
 				
 	    for (MultipartFile upfile : upfiles) {
@@ -747,7 +746,6 @@ public class BoardController {
 	    for (Attachment attachment : list) {
 	    	
 	        at = attachment;
-	        System.out.println("atat : " + at);
 	        boardService.helpmeAttachment(at);
 	    }
 	

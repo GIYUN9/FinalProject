@@ -958,6 +958,7 @@
 		FROM ATTACHMENT
 		WHERE BOARD_NO = #{boardNo}
 			 AND FILE_LEVEL = 2
+			 AND STATUS = 'Y'
 	</select>
 	<!-- 신고하기 adminComent -->
 	<update id="reportUpdate">

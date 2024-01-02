@@ -598,23 +598,6 @@
                     <div class = "modal-content">
                         <a href="#none" class = "btn-close">x</a>
                     </div>
-<<<<<<< HEAD
-                    <div class = "modal actice">
-                        <div class = "modal-content">
-                            <a href="#none" class = "btn-close">x</a>
-                            <div class = "modal-body">
-
-                            </div>
-                        </div>
-                    </div>     
-                    <div class = "a">               
-                        <div class="logo">          
-                            <div class = "data">
-                                
-                                <div class="count">조회수 :  &nbsp;${b.viewCount }</div>
-                                <div class="data-mem">작성자 :  &nbsp;${b.memberName }</div>
-                                <button class="chat-btn">채팅하기</button>
-=======
                 </div>     
                 <div class = "a">               
                     <div class="logo">          
@@ -626,7 +609,6 @@
                             <div class="count">
                                 <img src="././resources/icon/eye.png" style="width: 20px; height: 20px; margin-right: 10px;" alt="">
                                  ${b.memberNo }
->>>>>>> 654f9ffc9a411add1bb2aff9d8d08621cb917364
                             </div>
                         </div>
                     </div>
