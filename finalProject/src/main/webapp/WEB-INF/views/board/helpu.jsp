@@ -65,7 +65,7 @@
             <tr>
                 <th>희망가격</th>
                 <td colspan="2">
-                    <input class="hu-price" type="number" id="price" name="price" min="1000"  max="10000" placeholder="최대 1,000" value="">
+                    <input class="hu-price" type="number" id="price" name="price" placeholder="최소 1,000" value="price">
                 </td>
                 <td>원</td>
             </tr>
@@ -144,6 +144,34 @@
                 document.forms[0].submit(); // 양식 제출
                 return false; // 기본 제출 동작 막기
             }
+            
+            const input = document.querySelector('input');
+
+            input.addEventListener('input', function() {
+              const value = input.value;
+
+              if (input < 1000) {
+                input.setInvalid(true);
+              } else if (input > 10000) {
+                input.setInvalid(true);
+              } else {
+                input.setInvalid(false);
+              }
+            });
+            
+            var input = document.querySelector('input');
+
+            input.addEventListener('input', function() {
+              var value = input.value;
+
+              if (value < 1000) {
+                input.setInvalid(true);
+              } else if (value > 10000) {
+                input.setInvalid(true);
+              } else {
+                input.setInvalid(false);
+              }
+            });
         </script>
 
         <br>
