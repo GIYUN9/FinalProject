@@ -602,44 +602,26 @@
         </div>
         <div class = "content">
             <div class= "sub-content">
-                <div class = "icon">
-                    <div class = "share">
-                        <button class="share-icon"><img src = "././resources/image/share.jpg" alt=""></button>
-                    </div>
-                    <div class = "heart">
-                        <button class="heart-icon"><img src = "././resources/image/heart.jpg" alt="하트 이미지"></button>
-                        <div class="heart-text"><h4>1,063</h4></div>
-                    </div>
-                </div>
-                <div class = "content-title">
+               
+                 <div class = "content-title">
                     <div class = "content-title-text">
                        <text><h2>${b.boardTitle }</h2></text> 
                     </div>
-                   
-
                     <div class = "modal actice">
                         <div class = "modal-content">
                             <a href="#none" class = "btn-close">x</a>
                             <div class = "modal-body">
 
                             </div>
-
                         </div>
-                    </div>
-                    
-                    <div class = "a">
-                        <div class="report">
-                            <img src="././resources/image/경고.jpg" alt="" class="report-icon">
-                            <button class = "report-btn">신고하기</button>
-                        </div>
-                        <div class="logo">
-                            <div class="star">
-                                <img src="././resources/image/stars.jpg" alt="" class="star-icon">
-                                <div class = "star-text">5.0/5</div>
-                            </div>
+                    </div>     
+                    <div class = "a">               
+                        <div class="logo">          
                             <div class = "data">
-                                <div class="data-mem"></div>
-                                <div class="count"></div>
+                                
+                                <div class="count">조회수 :  &nbsp;${b.viewCount }</div>
+                                <div class="data-mem">작성자 :  &nbsp;${b.memberName }</div>
+                                <button class="chat-btn">채팅하기</button>
                             </div>
                         </div>
                     </div>
@@ -648,7 +630,7 @@
                    ${b.boardContent }
                     
                 </div>
-                <button id = "content-btn">구매하기zz</button>
+                <button id = "content-btn">구매하기</button>
                   <form action="" method="post" id="form">
         	<input type="hidden" name="boardNo" value="${b.boardNo}">
         	<input type="hidden" name="filePath" value="${b.changeName}">
@@ -656,7 +638,7 @@
 
         <div class="hu-btn-area">
             <a class="hu-cancle-btn" onclick="postBtn(2)">삭제</a>
-            <a class="hu-submit-btn" style="color: white;" onclick="postBtn(1)">수정</a>
+            <a class="hu-submit-btn" onclick="postBtn(1)">수정</a>
         </div>
     </div>
 <%@ include file="../common/footer.jsp" %>

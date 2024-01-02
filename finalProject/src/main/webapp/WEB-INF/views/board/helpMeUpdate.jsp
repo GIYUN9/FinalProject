@@ -19,8 +19,7 @@
 
     <form method="post" action="helpmeUpdate.bo" enctype="multipart/form-data">
         <input type="hidden" value="${b.boardNo}" name="boardNo">
-        <input type="hidden" name="userNo" value="">
-      
+      	 <input type="hidden" value="${b.memberNo}" name="memberNo">
         <table align="center">
           
             <tr colspan="3">
@@ -74,8 +73,8 @@
                 <th>게시판</th>
                 <td>
                     <select name="boardType" id="boardType">
-                        <option value="1">도와주세요</option>
-                        <option value="2">도와줄게요</option>                
+                        <option value="2">도와주세요</option>
+                        <option value="1">도와줄게요</option>                
                     </select>
                 </td>  
             </tr>
@@ -83,13 +82,13 @@
         </table>
 
         <div style="display: none;">
-            <input type="file" name="file1" id="file1" required onchange="loadImg(this,1)">
-            <input type="file" name="file2" id="file2" onchange="loadImg(this,2)">
-            <input type="file" name="file3" id="file3" onchange="loadImg(this,3)">
-            <input type="file" name="file4" id="file4" onchange="loadImg(this,4)">
-            <input type="file" name="file5" id="file5" onchange="loadImg(this,5)">
-            <input type="file" name="file6" id="file6" onchange="loadImg(this,6)">
-            <input type="file" name="file7" id="file7" onchange="loadImg(this,7)">
+            <input type="file" name="upfile" id="file1" required onchange="loadImg(this,1)">
+            <input type="file" name="upfile" id="file2" onchange="loadImg(this,2)">
+            <input type="file" name="upfile" id="file3" onchange="loadImg(this,3)">
+            <input type="file" name="upfile" id="file4" onchange="loadImg(this,4)">
+            <input type="file" name="upfile" id="file5" onchange="loadImg(this,5)">
+            <input type="file" name="upfile" id="file6" onchange="loadImg(this,6)">
+            <input type="file" name="upfile" id="file7" onchange="loadImg(this,7)">
         </div>
 
         <script>
