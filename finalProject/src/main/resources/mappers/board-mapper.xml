@@ -698,6 +698,7 @@
 		       M.FILE_PATH,
 		       M.SKILL_NO,
 		       M.PHONE,
+		       M.MEM_NO,
 		       B.LIKEY_COUNT
 		FROM BOARD B
 		INNER JOIN ATTACHMENT A ON B.BOARD_NO = A.BOARD_NO

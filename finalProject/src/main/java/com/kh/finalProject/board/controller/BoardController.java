@@ -706,26 +706,31 @@ public class BoardController {
 	        HttpSession session, Model model) {
 		
 		ArrayList<Attachment> list = new ArrayList<>();
-		
+		System.out.println("helpmeUpdate 처음 board b = " + b);
 		int result1 = 0;
 		int result2 = 0;
 		
 		result1 = boardService.helpmeUpdateBoard(b);
 		
 		b = boardService.helpmeselectOne(b);
-		System.out.println("borad b = " + b);
-		System.out.println("보드넘버 : " + b.getBoardNo());
+		System.out.println("helpmeUpdate borad b = " + b);
+		System.out.println("helpmeUpdate 보드넘버 : " + b.getBoardNo());
 		
 		b = boardService.helpmeselectOne2(b.getBoardNo());
 	
-		System.out.println("최후의 보드 = " + b);
+		System.out.println("helpmeUpdate 최후의 보드 = " + b);
 				
 	    for (MultipartFile upfile : upfiles) {
 	        if (!upfile.isEmpty()) {
-	        	
+      	
 	        	Attachment at = new Attachment();
-	        	
 	            String changeName = saveFile(upfile, session, "resources/borderImage/");
+	        	if(at.getOriginName() != null) {
+					at.setChangeName("");
+					at.setOriginName("");
+					at.setFilePath("");
+				}
+	      
 	            at.setChangeName("././resources/borderImage/" + changeName);
 	            at.setOriginName(upfile.getOriginalFilename());	   
 	            at.setFilePath("././resources/borderImage/");
@@ -795,7 +800,7 @@ public class BoardController {
 //			model.addAttribute("errorMsg", "게시글 수정 실패");
 //			return "common/errorPage";
 //		}
-	}
+	
 	
 	//도와주세요 게시글 삭제
 	@RequestMapping(value="helpmeDelete.bo")
