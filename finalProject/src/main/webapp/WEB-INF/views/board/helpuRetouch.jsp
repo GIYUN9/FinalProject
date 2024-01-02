@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>도와주세요 게시글 수정</title>
+<title>도와줄게요 게시글 수정</title>
 
 <link rel="stylesheet" type="text/css" href="././resources/css/helpmeboder.css">
 
@@ -83,13 +83,13 @@
         </table>
 
         <div style="display: none;">
-            <input type="file" name="file1" id="file1" required onchange="loadImg(this,1)">
-            <input type="file" name="file2" id="file2" onchange="loadImg(this,2)">
-            <input type="file" name="file3" id="file3" onchange="loadImg(this,3)">
-            <input type="file" name="file4" id="file4" onchange="loadImg(this,4)">
-            <input type="file" name="file5" id="file5" onchange="loadImg(this,5)">
-            <input type="file" name="file6" id="file6" onchange="loadImg(this,6)">
-            <input type="file" name="file7" id="file7" onchange="loadImg(this,7)">
+            <input type="file" name="upfile" id="file1" required onchange="loadImg(this,1)">
+            <input type="file" name="upfile" id="file2" onchange="loadImg(this,2)">
+            <input type="file" name="upfile" id="file3" onchange="loadImg(this,3)">
+            <input type="file" name="upfile" id="file4" onchange="loadImg(this,4)">
+            <input type="file" name="upfile" id="file5" onchange="loadImg(this,5)">
+            <input type="file" name="upfile" id="file6" onchange="loadImg(this,6)">
+            <input type="file" name="upfile" id="file7" onchange="loadImg(this,7)">
         </div>
 
         <script>

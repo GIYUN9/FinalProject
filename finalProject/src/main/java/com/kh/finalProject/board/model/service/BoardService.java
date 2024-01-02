@@ -195,4 +195,6 @@ public interface BoardService {
 	int reportUpdate(Report rt);
 	
 	ArrayList<Report> selectEndReport();
+	
+	int deleteAttachment(int boardNo);
 }

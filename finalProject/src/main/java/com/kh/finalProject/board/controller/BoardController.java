@@ -61,9 +61,8 @@ public class BoardController {
 	}
 	
 	//도와줄게요 리스트
-	@RequestMapping(value="helpList.bo")
-		public ModelAndView helpSelectList(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv, MultipartFile upfile, HttpSession session) {		
-
+	@RequestMapping(value="helpList.bo")	
+		public ModelAndView helpSelectList(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv) {
 			int listCount = boardService.seleteHelpListCount();
 
 			PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
@@ -72,7 +71,7 @@ public class BoardController {
 			//카테고리 불러오기
 			ArrayList<Category> cList = boardService.selectCategoryList();
 			
-//			System.out.println("list객체 확인용 -> " +list);
+
 			mv.addObject("pi",pi)
 				.addObject("list",list)
 				.addObject("lType", "helpList.bo")
@@ -192,9 +191,7 @@ public class BoardController {
 	@RequestMapping(value="helpUpdate.bo")
 	public String helpupdateBoard(Board b, Attachment at, MultipartFile reupfile, HttpSession session, Model model) {
 		
-		System.out.println(reupfile);
-		System.out.println(at);
-		System.out.println(b);
+		
 		
 		if(!reupfile.getOriginalFilename().equals("")) {
 			
@@ -529,7 +526,9 @@ public class BoardController {
 		
 		
 		PageInfo pi =  Pagenation.getPageInfo(listCount, currentPage, 5, 8);
+		System.out.println(pi);
 		ArrayList<Board> list = boardService.helpmeselectList(pi);
+		System.out.println(list);
 		
 		mv.addObject("pi",pi)
 		  .addObject("list",list)
@@ -706,53 +705,42 @@ public class BoardController {
 	        HttpSession session, Model model) {
 		
 		ArrayList<Attachment> list = new ArrayList<>();
-		System.out.println("helpmeUpdate 처음 board b = " + b);
+	
 		int result1 = 0;
 		int result2 = 0;
-		
+		System.out.println("b.getBoardNo()1 : " +b.getBoardNo());
 		result1 = boardService.helpmeUpdateBoard(b);
 		
-		b = boardService.helpmeselectOne(b);
-		System.out.println("helpmeUpdate borad b = " + b);
-		System.out.println("helpmeUpdate 보드넘버 : " + b.getBoardNo());
+//		b = boardService.helpmeselectOne(b);
+//		System.out.println("b.getBoardNo()2 : " +b.getBoardNo());
 		
 		b = boardService.helpmeselectOne2(b.getBoardNo());
+		System.out.println("b.getBoardNo()3 : " +b.getBoardNo());
 	
-		System.out.println("helpmeUpdate 최후의 보드 = " + b);
 				
 	    for (MultipartFile upfile : upfiles) {
-	        if (!upfile.isEmpty()) {
-      	
-	        	Attachment at = new Attachment();
-	            String changeName = saveFile(upfile, session, "resources/borderImage/");
-	        	if(at.getOriginName() != null) {
-					at.setChangeName("");
-					at.setOriginName("");
-					at.setFilePath("");
-				}
-	      
-	            at.setChangeName("././resources/borderImage/" + changeName);
-	            at.setOriginName(upfile.getOriginalFilename());	   
-	            at.setFilePath("././resources/borderImage/");
-	            
+			if(!upfile.getOriginalFilename().equals("")) {
+				String changeName = saveFile(upfile, session, "/resources/borderImage/");
+				Attachment at = new Attachment();
+				
+				boardService.deleteAttachment(b.getBoardNo());
+				
+
+				at.setOriginName(upfile.getOriginalFilename());
+				at.setChangeName("././resources/borderImage/" + changeName);
+				at.setFilePath("././resources/borderImage/");
 	            at.setBoardNo(b.getBoardNo());
-	                    
+	            
 	            String fileName = upfile.getOriginalFilename();
 	            if( upfile == upfiles[0]) {
 	            	at.setFileLevel(1);
 	            } else {
 	            	at.setFileLevel(2);
 	            }
-	             
-	            System.out.println("filePath : " + at.getFilePath());          
-	            System.out.println("originName : " +at.getOriginName()); 	       
-	            System.out.println("changeName : " + at.getChangeName());
-	            System.out.println("fileLevel : " + at.getFileLevel()); 
-	            System.out.println("at = " +at);
 	            
 	            list.add(at);
-	        }
-	    }
+				}
+		}
 	    
 	    System.out.println(list);
 	    Attachment at = new Attachment();
@@ -765,20 +753,56 @@ public class BoardController {
 	
 		if(result1 > 0 ) {
 			if(b.getBoardType() == 2) {		
-				session.setAttribute("alertMsg", "게시글 작성 성공");
+				session.setAttribute("alertMsg", "게시글 수정 성공");
 				session.setAttribute("b", b);
 				return "redirect:/helpmeList.bo";
 			}else {
-				session.setAttribute("alertMsg", "게시글 작성 성공");
+				session.setAttribute("alertMsg", "게시글 수정 성공");
 				session.setAttribute("b", b);
 				return "redirect:/helpList.bo";
 			}
 			
 		} else {
-			model.addAttribute("errorMsg", "게시글 작성 실패");
+			model.addAttribute("errorMsg", "게시글 수정 실패");
 			return "common/errorPage";
 		}
-	}  
+	    }
+         
+	    	
+	    	
+//	        if (!upfile.isEmpty()) {
+//      	
+//	        	Attachment at = new Attachment();
+//	            String changeName = saveFile(upfile, session, "resources/borderImage/");
+//	            if(at.getOriginName() != null) {
+//					new File(session.getServletContext().getRealPath(at.getChangeName())).delete();
+//				}
+//	      
+//	            at.setChangeName("././resources/borderImage/" + changeName);
+//	            at.setOriginName(upfile.getOriginalFilename());	   
+//	            at.setFilePath("././resources/borderImage/");
+//	            
+//	            at.setBoardNo(b.getBoardNo());
+//	                    
+//	            String fileName = upfile.getOriginalFilename();
+//	            if( upfile == upfiles[0]) {
+//	            	at.setFileLevel(1);
+//	            } else {
+//	            	at.setFileLevel(2);
+//	            }
+//	             
+//	            System.out.println("aaa filePath : " + at.getFilePath());          
+//	            System.out.println("aaa originName : " +at.getOriginName()); 	       
+//	            System.out.println("aaa changeName : " + at.getChangeName());
+//	            System.out.println("aaa fileLevel : " + at.getFileLevel()); 
+//	            System.out.println("aaa at = " +at);
+//	            
+//	            list.add(at);
+//	        }
+//	    }
+	    
+
+	  
 		
 //		if(!reupfile.getOriginalFilename().equals("")) {
 //			String changeName = saveFile(reupfile, session, "/resources/borderImage/");
