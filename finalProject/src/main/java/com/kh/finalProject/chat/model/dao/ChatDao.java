@@ -25,6 +25,10 @@ public class ChatDao {
 		return (ArrayList)sqlSession.selectList("chatMapper.msgList", msg);	
 	}
 	
+	public ArrayList<Message> lastMsg(SqlSessionTemplate sqlSession, Message msg) {
+		return (ArrayList)sqlSession.selectList("chatMapper.lastMsg", msg);	
+	}
+	
 	public ArrayList<Message> searchMessage(SqlSessionTemplate sqlSession, String searchText) {
 		Map<String, String> parameters = new HashMap<>();
         parameters.put("searchText", searchText);

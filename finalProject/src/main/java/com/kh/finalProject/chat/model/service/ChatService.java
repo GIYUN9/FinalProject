@@ -9,7 +9,8 @@ public interface ChatService {
 
 	//메시지 불러오기 (select)
 	ArrayList<Message> msgList(Message msg);
-	
+	ArrayList<Message> lastMsg(Message msg);
+
 	//채팅방룸 리스트
 	ArrayList<ChattingRoom> chattingRoomList (ChattingRoom cr);
 	

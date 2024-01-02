@@ -78,31 +78,20 @@
 	  ORDER BY MSG_NO ASC
 	</select>	
 	
-	 	<!-- 
-		SELECT *
-		  FROM (
-		    SELECT C.CHAT_ROOM_NO, C.TITLE, C.STATUS, C.MEM_NO, M.MEM_NAME, MSG, CREATE_DATE
-		    FROM CHATROOM C
-		    JOIN MEMBER M ON (M.MEM_NO = C.MEM_NO)
-		    JOIN CHATMSG CM ON (C.MEM_NO = CM.MEM_NO AND CM.CHAT_ROOM_NO = C.CHAT_ROOM_NO)
-		    WHERE C.MEM_NO = #{memberNo}
-		    AND C.STATUS = 'Y'
-		    ORDER BY MSG_NO DESC
-		)
+	
+	<select id="lastMsg" resultMap="chatResult">
+		SELECT ROWNUM, A.*
+        FROM ( SELECT MSG.MSG_NO, 
+                      MSG.MSG, 
+                      MSG.SENDER_NO,
+                      MSG.RECEIVER_NO,
+                      MSG.CREATE_DATE
+            FROM CHATMSG MSG
+          WHERE (MSG.SENDER_NO = #{senderNo} OR MSG.RECEIVER_NO = #{senderNo})
+              AND (MSG.SENDER_NO = #{receiverNo} OR MSG.RECEIVER_NO = #{receiverNo})
+          ORDER BY MSG_NO DESC
+        ) A
 		WHERE ROWNUM = 1
-		
-		SELECT MSG.MSG_NO, 
-	           MSG.MSG, 
-     	       MSG.SENDER_NO,
-     	       CR.SENDER_NAME,  
-	           MSG.RECEIVER_NO,
-	           CR.RECEIVER_NAME, 
-	           MSG.CREATE_DATE
-	      FROM CHATMSG MSG
-	      JOIN CHATROOM CR ON (MSG.SENDER_NO = CR.SENDER_NO)
-		   AND (MSG.RECEIVER_NO = CR.RECEIVER_NO)
-		 WHERE (MSG.SENDER_NO = #{senderNo} OR MSG.RECEIVER_NO = #{senderNo})
-		   AND (MSG.SENDER_NO = #{receiverNo} OR MSG.RECEIVER_NO = #{receiverNo})
-	  ORDER BY MSG_NO ASC
-	-->
+	</select>	
+
   </mapper>

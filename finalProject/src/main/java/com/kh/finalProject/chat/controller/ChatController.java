@@ -51,6 +51,10 @@ public class ChatController {
 		ArrayList<Message> msgList = chatService.msgList(msg);
 		session.setAttribute("msgList", msgList);
 		System.out.println("msgList" + msgList);
+		
+		ArrayList<Message> lastMsg = chatService.lastMsg(msg);
+		session.setAttribute("lastMsg", lastMsg);
+		System.out.println("lastMsg" + lastMsg);
 		if (loginUser == null) {
 			return "redirect:/";
 		}  
@@ -67,22 +71,13 @@ public class ChatController {
 		int memberNo = loginUser.getMemberNo();
 		session.setAttribute("memberNo", memberNo);
 
-//		for (ChattingRoom chatRoom : crList) {
-//			//int chatRoomNo = chatRoom.getChatRoomNo();
-//			//session.setAttribute("chatRoomNo", chatRoomNo);
-//			ArrayList<ChattingRoom> senderInfoList  = chatService.senderInfo(chatRoomNo, memberNo);
-//			System.out.println("memberNo aasaaaasddsfdsfdsfsdfds : " + memberNo);
-//			session.setAttribute("memName", senderInfoList);		
-//		}
 		System.out.println("dddd" + crList);
 		
+	    ArrayList<Message> lastMsg = (ArrayList<Message>) session.getAttribute("lastMsg");
+	    System.out.println(lastMsg);
+	    
 		session.setAttribute("crList", crList);
 		return "chatting/chattingRoom";
 	}
-//    System.out.println("chatRoomNo(채팅방 번호): " + chatRoomNo);
-//    System.out.println("senderInfoList(상대방): " + senderInfoList);
-//    Object mem = session.getAttribute("memName");
-//    System.out.println("mem:"+mem);
-//    ArrayList<Chatter> memNameList = (ArrayList<Chatter>) session.getAttribute("memName");	
-	
+
 }

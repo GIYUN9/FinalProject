@@ -82,7 +82,7 @@
                    <div id = "head-count">총 ${fn:length(list)}개의 서비스</div>
                    <div id = "head-category">
                         <form class="write-area">
-                        	<a class="write-btn" href="helpmeForm.bo">글쓰기</a>
+                        	<a class="write-btn"  href="helpuForm.bo">글쓰기</a>
 
                             <select name="listPick" id="category-item" onchange="handleSelectionChange()">
                             
