@@ -159,7 +159,7 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 								<tr>
 									<td>
 										<div class = "normal-input-box">
-                                            <input class="pro-pr" id="intro" name="intro" value="${loginUser.intro}"></input>
+                                            <textarea class="pro-pr" id="intro" name="intro">${loginUser.intro}</textarea>
 										</div>
 									</td>
 								</tr>
