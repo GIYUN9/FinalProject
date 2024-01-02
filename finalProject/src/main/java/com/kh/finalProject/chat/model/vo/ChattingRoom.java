@@ -5,15 +5,14 @@ import java.sql.Date;
 import lombok.Data;
 
 @Data
-public class ChattingRoom {
-	
-    private int chatRoomNo;
-    private String title;
+public class ChattingRoom {    
+    private int receiverNo;
+    private String receiverName;
     private String status;
-    private int memberNo;
+    private int senderNo;
+    private String senderName;
     private int memberCount;
     private int lastMsgNo;
     private Date lastChatTime;
     private int chatCount;
-    private String memberName;
 }

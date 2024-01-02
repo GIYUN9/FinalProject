@@ -11,6 +11,7 @@
 	<style>
 		.pageBox{
 			margin-top: 5px;
+			padding: 15px;
 		}
 		.reason-box {
 			display: flex;
