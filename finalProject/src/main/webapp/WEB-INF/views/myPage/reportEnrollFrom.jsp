@@ -7,40 +7,7 @@
 <meta charset="UTF-8">
 <title>품앗이-마이페이지</title>
 	<link rel="stylesheet" href="././resources/css/myPgae.css">
-	
 	<style>
-		.p-btn {
-			display: inline-block;
-			margin: 0 auto;
-			padding: 10px 11px;
-			font-size: 14px;
-			background: rgba(255, 255, 255, 0.22);
-			border-radius: 8px;
-			cursor: pointer;
-			letter-spacing: -2px;
-			font-weight: bolder;
-		}
-		.p-btn1 {
-			display: inline-block;
-			margin: 0 auto;
-			padding: 10px 11px;
-			font-size: 14px;
-			background: rgba(255, 255, 255, 0);
-			border-radius: 8px;
-			cursor: pointer;
-			letter-spacing: -2px;
-			font-weight: bolder;
-		}
-		p::after{
-			display:block;
-			content: '';
-			border-bottom: solid 2px #ffffff;  
-			transform: scaleX(0);  
-			transition: transform 250ms ease-in-out;
-		}
-		p:hover::after{
-			transform: scaleX(1);
-		}
 		.user-info{
 			display: flex;
 			align-items: center;
@@ -53,7 +20,7 @@
 		.pageBox{
 			border-radius: 13px;
 			border: 1px solid rgba(226, 226, 226, 0.4);
-			padding: 15px;
+			padding: 25px;
 			margin-bottom: 100px;
 			position: relative;
 		}
@@ -151,6 +118,44 @@
 		.req-title{
 			font-weight: bold;
 		}
+		.report-form{
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		.inner-form{
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			margin-bottom: 10px;
+			margin-top: 5px;
+		}
+		.inner-form-align{
+			margin-bottom: 8px;
+			font-weight: bold;
+    		font-size: 14px;
+		}
+		.form-btn{
+			border: none;
+			border-radius: 4px;
+			height: 38px;
+			background-color: rgb(218, 76, 60);
+			font-size: 15px;
+			font-weight: 600;
+			color: white;
+			margin-top: 30px;
+			margin-bottom: -30px;
+		}
+		.form-input{
+			border: 1px solid rgba(96, 96, 96, 0.5);
+			border-radius: 4px;
+			height: 35px;
+			padding-left: 10px;
+		}
+		.form-input::-webkit-scrollbar {
+		    width: 0px; 
+		}
 	</style>
 </head>
 <body>
@@ -180,21 +185,27 @@
 			</div>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="user-info">
-					<form action="insertReport.me">
-					<div>
-						작성자
-						<input type="text" value="${loginUser.memberEmail} / ${loginUser.memberName}님" readonly="readonly" style="width: 100%;">
-						<input type="hidden" name="memberNo" value="${loginUser.memberNo}">
-					</div>
-					<div>
-						제목
-						<input type="text" name="reportTitle">
-					</div>
-					<div>
-						내용
-						<input type="text" name="reportContent">
-					</div>
-					<button type="submit">등록하기</button>
+					<form class="report-form" action="insertReport.me">
+						<div class="inner-form">
+							<div class="inner-form-align">
+								작성자
+							</div>
+							<input class="form-input" type="text" value="${loginUser.memberEmail} / ${loginUser.memberName}님" readonly="readonly" style="width: 100%;">
+							<input type="hidden" name="memberNo" value="${loginUser.memberNo}">
+						</div>
+						<div class="inner-form">
+							<div class="inner-form-align">
+								제목
+							</div>
+							<input class="form-input" type="text" name="reportTitle">
+						</div>
+						<div class="inner-form">
+							<div class="inner-form-align">
+								내용	
+							</div>
+							<textarea class="form-input" style="height: 200px; resize: none; padding: 10px;" type="text" name="reportContent" id="" cols="30" rows="10"></textarea>
+						</div>
+						<button class="form-btn" type="submit">등록하기</button>
 					</form>
 				</div>
 			</div>		

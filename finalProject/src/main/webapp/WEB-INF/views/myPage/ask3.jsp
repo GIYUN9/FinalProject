@@ -51,7 +51,7 @@
 			margin-left: 0px;
 		}
 		.pageBox{
-			border-radius: 13px;
+			border-radius: 8px;
 			border: 1px solid rgba(226, 226, 226, 0.4);
 			padding: 15px;
 			margin-bottom: 100px;
@@ -151,6 +151,55 @@
 		.req-title{
 			font-weight: bold;
 		}
+		.ask-report-btn{
+			border: none;
+			color: white;
+			font-weight: white;
+			background-color: rgb(0, 199, 174);
+			width: 300px;
+			height: 35px;
+			border-radius: 4px;
+			padding: 5px;
+			margin-top: 20px;
+			cursor: pointer;
+		}
+		.report-title{
+			font-size: 35px;
+			text-align: center;
+			font-weight: bold;
+			margin-top: 45px;
+		}
+		.report-text{
+			text-align: center;
+			font-weight: bold;
+		}
+		.report-align{
+			align-items: center;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			margin-bottom: 70px;
+		}
+		.admin-reply{
+			color: rgb(218, 76, 60);
+			display: flex;
+			align-items: center;
+			margin-left: 22px;
+			margin-top: 10px;
+			margin-bottom: -15px;
+			font-size: 14px;
+			font-weight: 600;
+		}
+		.answer{
+			width: 93%;
+			margin: 20px;
+			height: 100px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 8px;
+			border: 1px solid rgba(96, 96, 96, 0.5);
+		}
 	</style>
 </head>
 <body>
@@ -187,7 +236,20 @@
 			</div>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="user-info">
-					<button type="button" onclick="reportEnrollFrom()">문의하기</button>
+					<c:if test="${not empty rlist}">
+						<button type="button" onclick="reportEnrollFrom()">문의하기</button>
+					</c:if>
+					<div style="width: 100%; margin: 10px 0px 10px 8px;">
+						<h6 style="float: left; font-weight: bold;">문의 현황 (<span style="color: red;">0</span>건)</h6>
+					</div>
+					<c:if test="${ empty rlist}">
+						<div class="report-align">
+							<p class="report-title">등록한 문의 내용이 없습니다.</p>
+							<p class="report-text">문의 또는 상담사 연결을 신청하고자 한다면 아래 버튼을 눌러주세요.</p>
+							<button class="ask-report-btn" type="button" onclick="reportEnrollFrom()">문의하기</button>
+							<button class="ask-report-btn" type="button" onclick="reportEnrollFrom()">상담 예약</button>
+						</div>
+					</c:if>
 					<c:forEach var="r" items="${rlist}">
 						<div class="req-outer">
 							<div class="req-align">
@@ -226,8 +288,8 @@
 							<div class="req-btn-area">
 								<button class="req-answer-btn">처리완료</button>
 							</div>
-							<span style="color: red; margin-top: 10px;">관리자님의 답변</span>
-							<textarea class="answer" style="width: 90%; height: 100px;" readonly="readonly"></textarea>
+							<span class="admin-reply">답변</span>
+							<textarea class="answer" readonly="readonly"></textarea>
 						</div>
 					</c:forEach>
 					
@@ -239,6 +301,21 @@
 <script>
 	function from() {
 		location.href = "ask3.me";
+		const reqAreas = document.querySelectorAll('.req-outer1');
+		reqAreas.forEach(reqArea => reqArea.style.display = "none");
+		
+		const reqAreas1 = document.querySelectorAll('.req-outer');
+		reqAreas1.forEach(reqArea1 => reqArea1.style.display = "flex");
+
+		const pBtn = document.querySelectorAll('.p-btn');
+			pBtn.forEach(element => {
+				element.style.background = 'transparent';
+			});
+
+		const pBtn1 = document.querySelectorAll('.p-btn1');
+			pBtn1.forEach(element => {
+				element.style.background = 'rgba(255, 255, 255, 0.22)';
+			});
 	}
 
 	function send() {
@@ -247,6 +324,16 @@
 			
 			const reqAreas1 = document.querySelectorAll('.req-outer1');
 			reqAreas1.forEach(reqArea1 => reqArea1.style.display = "flex");
+
+			const pBtn = document.querySelectorAll('.p-btn');
+			pBtn.forEach(element => {
+				element.style.background = 'transparent';
+			});
+
+			const pBtn1 = document.querySelectorAll('.p-btn1');
+			pBtn1.forEach(element => {
+				element.style.background = 'rgba(255, 255, 255, 0.22)';
+			});
 	}
 	
 	function reportEnrollFrom() {

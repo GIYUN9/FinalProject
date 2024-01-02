@@ -43,6 +43,9 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 		}
 		.ui-formOuter{
 			width: 100%;
+			position: relative;
+			padding: 15px;
+			margin-bottom: 30px;
 		}
 		.ui-submit-btn{
 			float: right;
@@ -75,9 +78,6 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 			height: 35px;
 			border: 1px solid rgb(147, 147, 150);
 			border-radius: 5px;
-		}
-		.ui-formOuter{
-			position: relative;
 		}
         .pro-pr{
             resize: none; 
@@ -159,7 +159,7 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
 								<tr>
 									<td>
 										<div class = "normal-input-box">
-                                            <input class="pro-pr" id="intro" name="intro" value="${loginUser.intro}"></input>
+                                            <textarea class="pro-pr" id="intro" name="intro">${loginUser.intro}</textarea>
 										</div>
 									</td>
 								</tr>
