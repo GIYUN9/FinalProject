@@ -24,7 +24,7 @@
         <table align="center">
           
             <tr colspan="3">
-                <th>카테고리 번호</th>
+                <th>카테고리</th>
                 <td>                  
                     <select name="categoryNo" id="categoryNo">
                         <option value="200">200</option>

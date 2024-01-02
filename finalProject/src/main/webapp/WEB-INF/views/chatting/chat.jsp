@@ -77,14 +77,12 @@
     <br><br><br><br><br>
     <br><br><br><br><br>
     
-    <form action="insert.ch">  
 	    <footer class="cr-ft">
 	        <button class="send-btn2"></button>
 	        <input class="text-area" id="type-text" type="text" name="msgCo">
 	        <button type="submit" class="send-btn" id="msg-btn" onclick="sendMsg();">전송</button>
 	        <input type="text" name="target" style="display:none">
 	    </footer>
-    </form>
     
     <script>
         function prevAction(){
@@ -125,7 +123,7 @@
             // 텍스트 내용을 담을 span 엘리먼트 생성
             const textOutputSpan = document.createElement('span');
             textOutputSpan.className = 'text-output';
-            textOutputSpan.textContent = receive.msg;
+            textOutputSpan.textContent = receive.msgCo;
 
             // 시간을 나타낼 div 엘리먼트 생성
             const chatTimeDiv = document.createElement('div');
@@ -161,7 +159,7 @@
 	
         function sendMsg(){
         	const msgData = {
-        			message : document.querySelector("input[name=msg]").value,
+        			message : document.querySelector("input[name=msgCo]").value,
         			target : document.querySelector("input[name=target]").value
         	}
 
@@ -170,7 +168,7 @@
 
             const chatboxRight = document.createElement("div");
             chatboxRight.className = "chatbox-right";
-            chatboxRight.textContent = document.querySelector("input[name=msg]").value;
+            chatboxRight.textContent = document.querySelector("input[name=msgCo]").value;
 
             const chatTimeRight = document.createElement("div");
             chatTimeRight.className = "chat-time-right";
@@ -198,7 +196,7 @@
             const chatArea = document.querySelector(".chat-area");
             chatArea.appendChild(messageBox2);
         	
-            document.querySelector("input[name=msg]").value = ""; //텍스트 입력칸 비우기
+            document.querySelector("input[name=msgCo]").value = ""; //텍스트 입력칸 비우기
         }
 
         $("#type-text").on("keypress", function(ev) {

@@ -32,6 +32,10 @@
     background-color: rgba(255, 255, 255, 0.22);
 }
 
+.scroll-area{
+    display: flex;
+    flex-direction: row;
+}
 
 /* a::after{
     display:block;
