@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="last-chat">
     									<c:if test="${not empty lastMsg and lastMsg.get(0).receiverNo eq cr.senderNo}">
-									        ${lastMsg.get.msgCo}
+									        ${lastMsg.get(0).msgCo}
 									    </c:if>										
                                     </div>
                                 </div>

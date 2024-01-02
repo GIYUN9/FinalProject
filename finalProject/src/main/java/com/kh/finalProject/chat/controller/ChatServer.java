@@ -79,7 +79,7 @@ public class ChatServer extends TextWebSocketHandler{
 			String str = new Gson().toJson(msgVo);
 			TextMessage msg = new TextMessage(str);
 			try {
-				mySession.sendMessage(msg);
+//				mySession.sendMessage(msg);
 				targetSession.sendMessage(msg);
 			} catch (IOException e) {
 				e.printStackTrace();
