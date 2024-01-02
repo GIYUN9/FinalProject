@@ -1,5 +1,6 @@
 package com.kh.finalProject.chat.controller;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
@@ -9,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.socket.WebSocketSession;
 
 import com.kh.finalProject.chat.model.service.ChatService;
 import com.kh.finalProject.chat.model.vo.ChattingRoom;
@@ -70,14 +70,20 @@ public class ChatController {
 		System.out.println("crList : " + crList);
 		int memberNo = loginUser.getMemberNo();
 		session.setAttribute("memberNo", memberNo);
-
-//		for (ChattingRoom chatRoom : crList) {
-//			//int chatRoomNo = chatRoom.getChatRoomNo();
-//			//session.setAttribute("chatRoomNo", chatRoomNo);
-//			ArrayList<ChattingRoom> senderInfoList  = chatService.senderInfo(chatRoomNo, memberNo);
-//			System.out.println("memberNo aasaaaasddsfdsfdsfsdfds : " + memberNo);
-//			session.setAttribute("memName", senderInfoList);		
-//		}
+		
+		for (ChattingRoom chatRoom : crList) {
+			String lastMsg = chatRoom.getLastMsg();
+			Date lastChatTime = chatRoom.getLastChatTime();
+			chatRoom.setLastMsg(lastMsg);
+			chatRoom.setLastChatTime(lastChatTime);
+			session.setAttribute("lastMsg", lastMsg);
+			session.setAttribute("lastChatTime", lastChatTime);
+			
+			
+			System.out.println("lastMsg : " + lastMsg);
+//			session.setAttribute("memName", senderInfoList);
+			cr.setLastMsg(lastMsg);
+		}
 		System.out.println("dddd" + crList);
 		
 		session.setAttribute("crList", crList);

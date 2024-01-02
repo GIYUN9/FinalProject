@@ -12,7 +12,7 @@ public class ChattingRoom {
     private int senderNo;
     private String senderName;
     private int memberCount;
-    private int lastMsgNo;
+    private String lastMsg;
     private Date lastChatTime;
     private int chatCount;
 }
