@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="././resources/css/myPgae.css">
-	
+
 <style>
 	.p-btn {
 		display: inline-block;
@@ -50,7 +50,7 @@
 		justify-content: space-evenly;
 		margin-left: 0px;
 	}
-	.pageBox{
+	.req-pageBox{
 		border-radius: 13px;
 		border: 1px solid rgba(226, 226, 226, 0.4);
 		padding: 15px;
@@ -206,13 +206,14 @@
 	
 	
 </style>
+
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
-	<div class="box" style="margin-top: 120px">
+	<div class="req-box">
 		<div class="sideBar">
-			<h3 style="margin: 10px 0 0 0; font-weight: bold;">계정 설정</h3>
-			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 180px;">
+			<h3 class="req-h3font">계정 설정</h3>
+			<hr class="req-Line">
 			<a class="myPageSideBar" href="userInfo.me">나의 정보</a>
 			<a class="myPageSideBar" href="proInfo.me">전문가 정보</a>
 			<a class="myPageSideBar" href="changePwd.me">비밀번호 변경</a>
@@ -226,10 +227,9 @@
 			</c:if>        
 		</div>
 		<div class="main-box">
-			<h3 style="margin: 10px 0 0 20px;">문의 내역</h3>
+			<h3 class="req-h3fontOne">문의 내역</h3>
 			<br>
-			<div class="top-center"
-				style="display: flex; justify-content: space-around; margin-left: 20px; margin-right: 20px">
+			<div class="top-center">
 				<!-- 호버되면 밑줄 만들어주세요 ㅋㅋ -->
 				<div>
 					<p class="p-btn" id="from" onclick="from()">등록된 신고</p>
@@ -238,7 +238,7 @@
 					<p class="p-btn1" id="send" onclick="send()">처리된 신고</p>
 				</div>
 			</div>
-			<div class="pageBox" style="display: flex; flex-direction: column;">
+			<div class="req-pageBox">
 				<div class="req-user-info">
 					<c:forEach var="r" items="${list}">
 						<div class="req-outer">
@@ -280,8 +280,8 @@
 				</c:forEach>
 				 <div class="tee" style="display: none;">
 				<c:forEach var="er" items="${endlist}">
-					<div style="display: flex; align-items: center; justify-content: center;">
-						<div class="req-outer1" style="display: none;">
+					<div class="req-endList">
+						<div class="req-outer1">
 							<div class="req-align">
 								<div class="req-text">
 									<h6 class="req-title">${er.reportTitle}</h6>
@@ -310,7 +310,7 @@
 	
 	<jsp:include page="../common/footer.jsp" />
 
-	<script>
+		<script>
 			function from() {
 		location.href = "reportList.rp";
 		const reqAreas = document.querySelectorAll('.req-outer1');
@@ -375,5 +375,7 @@
 		}
 
 	</script>
+	
+	
 </body>
 </html>
