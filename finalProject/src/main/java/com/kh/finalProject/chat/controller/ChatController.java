@@ -1,5 +1,6 @@
 package com.kh.finalProject.chat.controller;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
@@ -9,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.socket.WebSocketSession;
 
 import com.kh.finalProject.chat.model.service.ChatService;
 import com.kh.finalProject.chat.model.vo.ChattingRoom;
@@ -28,12 +28,12 @@ public class ChatController {
 		Member loginUser = (Member) session.getAttribute("loginUser");
 		msg.setSenderNo(loginUser.getMemberNo());
 		msg.setReceiverNo(Integer.parseInt(session.getAttribute("memNo").toString()));
-		int result = chatService.insertMsg(msg); // 아이디로만 멤버객체 가져오기
+		int result = chatService.insertMsg(msg); 
 		
 		if(result > 0) {
 			return "chatting/chat";
 		} else {
-			model.addAttribute("errorMsg", "회원가입 실패");
+			model.addAttribute("errorMsg", "");
 			return "common/errorPage";
 		}
 	}
@@ -52,9 +52,9 @@ public class ChatController {
 		session.setAttribute("msgList", msgList);
 		System.out.println("msgList" + msgList);
 		
-		ArrayList<Message> lastMsg = chatService.lastMsg(msg);
-		session.setAttribute("lastMsg", lastMsg);
-		System.out.println("lastMsg" + lastMsg);
+//		ArrayList<Message> lastMsg = chatService.lastMsg(msg);
+//		session.setAttribute("lastMsg", lastMsg);
+//		System.out.println("lastMsg" + lastMsg);
 		if (loginUser == null) {
 			return "redirect:/";
 		}  
@@ -70,14 +70,29 @@ public class ChatController {
 		System.out.println("crList : " + crList);
 		int memberNo = loginUser.getMemberNo();
 		session.setAttribute("memberNo", memberNo);
-
+		
+		for (ChattingRoom chatRoom : crList) {
+			String lastMsg = chatRoom.getLastMsg();
+			Date lastChatTime = chatRoom.getLastChatTime();
+			chatRoom.setLastMsg(lastMsg);
+			chatRoom.setLastChatTime(lastChatTime);
+			session.setAttribute("lastMsg", lastMsg);
+			session.setAttribute("lastChatTime", lastChatTime);
+			
+			
+			System.out.println("lastMsg : " + lastMsg);
+//			session.setAttribute("memName", senderInfoList);
+			cr.setLastMsg(lastMsg);
+		}
 		System.out.println("dddd" + crList);
 		
-	    ArrayList<Message> lastMsg = (ArrayList<Message>) session.getAttribute("lastMsg");
-	    System.out.println(lastMsg);
-	    
 		session.setAttribute("crList", crList);
 		return "chatting/chattingRoom";
 	}
-
+//    System.out.println("chatRoomNo(채팅방 번호): " + chatRoomNo);
+//    System.out.println("senderInfoList(상대방): " + senderInfoList);
+//    Object mem = session.getAttribute("memName");
+//    System.out.println("mem:"+mem);
+//    ArrayList<Chatter> memNameList = (ArrayList<Chatter>) session.getAttribute("memName");	
+	
 }
