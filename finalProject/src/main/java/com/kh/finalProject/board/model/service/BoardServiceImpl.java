@@ -419,6 +419,10 @@ public class BoardServiceImpl implements BoardService {
 	public ArrayList<Report> selectEndReport() {
 		return boardDao.selectEndReport(sqlSession);
 	}
+	
+	public int deleteAttachment(int boardNo) {
+		return boardDao.deleteAttachment(sqlSession, boardNo);
+	}
 
 	
 

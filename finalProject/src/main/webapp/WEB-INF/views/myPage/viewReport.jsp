@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="././resources/css/myPgae.css">
-	
+
 <style>
 	.p-btn {
 		display: inline-block;
@@ -41,7 +41,7 @@
 	p:hover::after{
 		transform: scaleX(1);
 	}
-	.user-info{
+	.req-user-info{
 		display: flex;
 		align-items: center;
 		margin-bottom: 40px;
@@ -50,7 +50,7 @@
 		justify-content: space-evenly;
 		margin-left: 0px;
 	}
-	.pageBox{
+	.req-pageBox{
 		border-radius: 13px;
 		border: 1px solid rgba(226, 226, 226, 0.4);
 		padding: 15px;
@@ -158,6 +158,8 @@
 		font-size: 13px;
 		margin-left: 84%;
     	padding-block: 5px;
+    	position: relative;
+   		bottom: 48%;
 	}
 	
 	.reqListOuter{
@@ -166,11 +168,49 @@
 		width: 96%;
 		height: 150px;
 	}
+	
+	.req-date {
+		position: relative;
+	    left: 85%;
+	    bottom: 18%;
+	    font-size: 12px;
+	}
+	
+	.req-name{
+		position: relative;
+	    left: 85%;
+	    bottom: 15%;
+	    font-size: 14px;
+	}
+	
+	.req-number-one{
+	    position: relative;
+	    left: 85%;
+	    bottom: 62%;
+	    font-size: 12px;
+	}
+	
+	.req-number-two{
+		position: relative;
+	    left: 85%;
+	    bottom: 91%;
+	    font-size: 12px;
+	}
+	
+	.req-coment{
+		width: 60%; 
+		position: relative;
+	    bottom: 26%;
+	    right: 1%;
+	}
+	
+	
 </style>
+
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
-	<div class="box" style="margin-top: 120px">
+	<div class="req-box" style="margin-top: 120px">
 		<div class="sideBar">
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">계정 설정</h3>
 			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 180px;">
@@ -189,8 +229,7 @@
 		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">문의 내역</h3>
 			<br>
-			<div class="top-center"
-				style="display: flex; justify-content: space-around; margin-left: 20px; margin-right: 20px">
+			<div class="top-center" style="display: flex; justify-content: space-around; margin-left: 20px; margin-right: 20px">
 				<!-- 호버되면 밑줄 만들어주세요 ㅋㅋ -->
 				<div>
 					<p class="p-btn" id="from" onclick="from()">등록된 신고</p>
@@ -199,8 +238,8 @@
 					<p class="p-btn1" id="send" onclick="send()">처리된 신고</p>
 				</div>
 			</div>
-			<div class="pageBox" style="display: flex; flex-direction: column;">
-				<div class="user-info">
+			<div class="req-pageBox" style="display: flex; flex-direction: column;">
+				<div class="req-user-info">
 					<c:forEach var="r" items="${list}">
 						<div class="req-outer">
 							<div class="req-align">
@@ -225,21 +264,21 @@
 				<c:forEach var="r" items="${list}">
 					<form method="post" action="reportComment.rp">
 						<div class="view${r.reportNo}" style="display: none;">
-							<div class="reqListOuter">
-								<div><h6>${r.reportTitle}</h6></div>
-								<div>${r.reportContent}</div>
-								<div>${r.createDate}</div>
-								<div>${r.memberName}</div>
-								<div>${r.reportNo}</div>
-								<div>${r.memberNo}</div>
+							<div class="req-outer">
+								<div class="req-text"><h6 class="req-title">${r.reportTitle}</h6></div>
+								<div class="req-desc">${r.reportContent}</div>
+								<div class="req-date">${r.createDate}</div>
+								<div class="req-name">${r.memberName}</div>
+								<div class="req-number-one">${r.reportNo}</div>
+								<div class="req-number-two">${r.memberNo}</div>
 								<input type="hidden" name="reportNo" value="${r.reportNo}">
-								<input type="text" name="adminComent" style="width: 60%;">
+								<input type="text" name="adminComent" class="req-coment">
 								<button type="submit" id="reportBtn">답변하기</button>
 							</div>
 						</div>
 					</form>
 				</c:forEach>
-				<!-- <div class="tee" style="display: none;"> -->
+				 <div class="tee" style="display: none;">
 				<c:forEach var="er" items="${endlist}">
 					<div style="display: flex; align-items: center; justify-content: center;">
 						<div class="req-outer1" style="display: none;">
@@ -311,7 +350,7 @@
 
 		function reportDetail(res){
 			console.log(res)
-			const reportInfo = document.querySelector('.user-info');
+			const reportInfo = document.querySelector('.req-user-info');
 			reportInfo.style.display = "none";
 
 			const reportNum = document.querySelector('.view'+res);
@@ -325,6 +364,16 @@
 			}
 			$("#form").submit();
 		}
+
+
+		function send2(){
+			const reportInfo = document.querySelector('.req-user-info');
+			reportInfo.style.display = "none";
+
+			const tee = document.querySelector('.tee');
+			tee.style.display = "flex";
+		}
+
 	</script>
 </body>
 </html>

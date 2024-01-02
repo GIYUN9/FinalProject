@@ -109,6 +109,7 @@
  		 WHERE B.BOARD_TYPE = 1
          AND B.STATUS = 'Y'
          AND A.FILE_LEVEL =1
+         AND A.STATUS = 'Y'
  	</select>
  	
  	<!-- 도와줄게요 게시글 상세조회 관련 쿼리문 -->
@@ -591,6 +592,7 @@
  		 WHERE B.BOARD_TYPE = 2
          AND B.STATUS = 'Y'	
          AND A.FILE_LEVEL = 1
+         AND A.STATUS = 'Y'
 	</select>
 	
 	<!-- 도와주세요 총 갯수 조회 -->
@@ -698,6 +700,7 @@
 		       M.FILE_PATH,
 		       M.SKILL_NO,
 		       M.PHONE,
+		       M.MEM_NO,
 		       B.LIKEY_COUNT
 		FROM BOARD B
 		INNER JOIN ATTACHMENT A ON B.BOARD_NO = A.BOARD_NO
@@ -705,6 +708,7 @@
 		WHERE B.STATUS = 'Y'
 		  AND B.BOARD_NO = #{boardNo}
 		  AND A.FILE_LEVEL = 1
+		  AND A.STATUS = 'Y'
   	</select>
 	
 	<!-- 도와주세요 게시글 수정 쿼리문 -->
@@ -822,6 +826,15 @@
 			SET STATUS = 'N'
 		WHERE REPLY_NO = #{replyNo}
 	</update>	
+	
+	
+	<update id="deleteAttachment">
+		UPDATE ATTACHMENT
+			SET STATUS = 'N'
+		WHERE BOARD_NO = #{boardNo}
+	</update>	
+	
+	
 	<select id="selectLikeyCount" resultMap="boardResult">
 		SELECT LIKEY_COUNT
 			FROM BOARD
@@ -945,6 +958,7 @@
 		FROM ATTACHMENT
 		WHERE BOARD_NO = #{boardNo}
 			 AND FILE_LEVEL = 2
+			 AND STATUS = 'Y'
 	</select>
 	<!-- 신고하기 adminComent -->
 	<update id="reportUpdate">
