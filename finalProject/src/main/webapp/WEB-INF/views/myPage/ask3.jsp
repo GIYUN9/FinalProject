@@ -236,10 +236,13 @@
 			</div>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
 				<div class="user-info">
+					<c:if test="${not empty rlist}">
+						<button type="button" onclick="reportEnrollFrom()">문의하기</button>
+					</c:if>
 					<div style="width: 100%; margin: 10px 0px 10px 8px;">
 						<h6 style="float: left; font-weight: bold;">문의 현황 (<span style="color: red;">0</span>건)</h6>
 					</div>
-					<c:if test="${empty rlist}">
+					<c:if test="${ empty rlist}">
 						<div class="report-align">
 							<p class="report-title">등록한 문의 내용이 없습니다.</p>
 							<p class="report-text">문의 또는 상담사 연결을 신청하고자 한다면 아래 버튼을 눌러주세요.</p>

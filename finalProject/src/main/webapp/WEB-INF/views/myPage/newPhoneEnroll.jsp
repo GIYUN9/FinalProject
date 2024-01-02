@@ -115,7 +115,30 @@
 			opacity: 0.5;
 			cursor: pointer;
 		}
-
+		
+		.view-check2 > button{
+			width: 80px;
+			height: 35px;
+			border-radius: 5px;
+			font-size: 15px;
+		}
+		
+		.view-check2 > input{
+			width: calc(100% - 85px);
+	    height: 28px;
+	    box-sizing: border-box;
+	    border: 1px solid rgb(147, 147, 150);
+		border-radius: 5px;
+		}
+		.form-control{
+			height: 35px;
+			padding-left: 5px;
+		}
+		
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button {
+		  -webkit-appearance: none;
+		}
 	</style>
 </head>
 <body>
@@ -147,7 +170,7 @@
 								<tr>
 									<td>
 										<div class = "normal-input-box">
-											<input class="phone-input" name="origin-phone" value="${loginUser.phone}" readonly="readonly">		
+											<input class="phone-input" name="origin-phone" value="${loginUser.phone}" readonly="readonly" style="width: 100%;">		
 										</div>
 									</td>
 								</tr>
@@ -160,12 +183,12 @@
 										<td>
 											<div class = "normal-input-box">
 												<input class="phone-input" id="phone2" name="phone" placeholder="새로운 번호 입력 010-0000-0000">	
-												<button type="button" id="sendBtn2" onclick="phoneCheck2()">인증 번호 발송</button>	
+												<button type="button" id="sendBtn2" onclick="phoneCheck2()" style="font-size: 11px; background: rgb(0, 199, 174); color: white;">인증 번호 발송</button>	
 											</div>
-											<p class="view-check2" style="display: none;">
-			                                	<input type="number" class="form-control" id="numCheck2" placeholder="6자리 인증번호를 입력해주세요" name="numCheck"> <br>
+											<div class="view-check2" style="display: none; margin-top: 10px;">
+			                                	<input type="number" class="form-control" id="numCheck2" placeholder="6자리 인증번호를 입력해주세요" name="numCheck" style="height: 35px; margin-right: 5px;">
 			                                	<button type="button" id="checkBtn2" onclick="numberCheck2()">인증하기</button>
-		                                	</p>
+		                                	</div>
 										</td>
 									</tr>
 								<button class="ui-submit-btn" type="submit" id="submitBtn2" class="btn" disabled="disabled">변경하기</button>
