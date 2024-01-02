@@ -186,6 +186,8 @@ public interface BoardService {
 	ArrayList<Report> selectReport();
 	
 	ArrayList<Attachment> helpmeAttachmentList(int boardNo);
+	//신고하기 adminComent
+	//int reportUpdate(Report rp);
 //	//신고하기 adminComent
 //	int reportUpdate(Report rp);
 
@@ -193,4 +195,6 @@ public interface BoardService {
 	int reportUpdate(Report rt);
 	
 	ArrayList<Report> selectEndReport();
+	
+	int deleteAttachment(int boardNo);
 }

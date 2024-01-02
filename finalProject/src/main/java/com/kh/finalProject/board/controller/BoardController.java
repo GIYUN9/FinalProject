@@ -61,9 +61,8 @@ public class BoardController {
 	}
 	
 	//도와줄게요 리스트
-	@RequestMapping(value="helpList.bo")
-		public ModelAndView helpSelectList(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv, MultipartFile upfile, HttpSession session) {		
-
+	@RequestMapping(value="helpList.bo")	
+		public ModelAndView helpSelectList(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv) {
 			int listCount = boardService.seleteHelpListCount();
 
 			PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
@@ -72,6 +71,7 @@ public class BoardController {
 			//카테고리 불러오기
 			ArrayList<Category> cList = boardService.selectCategoryList();
 			
+
 			mv.addObject("pi",pi)
 				.addObject("list",list)
 				.addObject("lType", "helpList.bo")
@@ -150,7 +150,8 @@ public class BoardController {
 	//도와줄게요 디테일 페이지 이동
 	@RequestMapping(value="helpDetailPage.bo")
 	public String helpDetailBoard(int boardNo, Model model, HttpSession session)  {
-			
+		
+		
 		
 		int increaseCount = boardService.helpincreaseCount(boardNo);
 		System.out.println("조회수 증가 " + increaseCount);
@@ -174,7 +175,7 @@ public class BoardController {
 	@RequestMapping(value="helpUpdateForm.bo")
 	public String helpUpdateForm(int boardNo, Model model) {
 		
-		Board b = boardService.helpSelectBoard(boardNo);
+		Board b = boardService.helpmeSelectBoard(boardNo);
 		model.addAttribute("b",b);
 		
 		return "board/helpuRetouch";
@@ -183,6 +184,8 @@ public class BoardController {
 	// 도와줄게요 게시글 수정
 	@RequestMapping(value="helpUpdate.bo")
 	public String helpupdateBoard(Board b, Attachment at, MultipartFile reupfile, HttpSession session, Model model) {
+		
+		
 		
 		if(!reupfile.getOriginalFilename().equals("")) {
 			
@@ -517,7 +520,9 @@ public class BoardController {
 		
 		
 		PageInfo pi =  Pagenation.getPageInfo(listCount, currentPage, 5, 8);
+		System.out.println(pi);
 		ArrayList<Board> list = boardService.helpmeselectList(pi);
+		System.out.println(list);
 		
 		mv.addObject("pi",pi)
 		  .addObject("list",list)
@@ -660,6 +665,7 @@ public class BoardController {
 	@RequestMapping(value="helpmeDetail.bo")
 	public String helpmeDetailBoard(int boardNo, Model model, HttpSession session) {
 		
+		session.removeAttribute("atlist");
 		int increaseCount = boardService.helpincreaseCount(boardNo);
 		System.out.println("조회수 증가 " + increaseCount);
 		
@@ -685,35 +691,132 @@ public class BoardController {
 		Board b = boardService.helpmeSelectBoard(boardNo);
 		model.addAttribute("b",b);
 		
-		return "board/aaa";
+		return "board/helpMeUpdate";
 	}
 	
 	//도와주세요 게시글 수정
 	@RequestMapping(value="helpmeUpdate.bo")
-	public String helpmeUpdateBoard(Board b, Attachment at, MultipartFile reupfile, Model model, HttpSession session) {
+	public String helpmeUpdateBoard(Board b, @RequestParam("upfile") MultipartFile[] upfiles,
+	        HttpSession session, Model model) {
+		session.removeAttribute("atlist");
+		ArrayList<Attachment> list = new ArrayList<>();
+	
+		int result1 = 0;
+		int result2 = 0;
 		
-		
-		if(!reupfile.getOriginalFilename().equals("")) {
-			String changeName = saveFile(reupfile, session, "/resources/borderImage/");
-			
-			if(at.getOriginName() != null) {
-				new File(session.getServletContext().getRealPath(at.getChangeName())).delete();
+		result1 = boardService.helpmeUpdateBoard(b);
+	
+		b = boardService.helpmeselectOne2(b.getBoardNo());
+
+	
+				
+	    for (MultipartFile upfile : upfiles) {
+			if(!upfile.getOriginalFilename().equals("")) {
+				String changeName = saveFile(upfile, session, "/resources/borderImage/");
+				Attachment at = new Attachment();
+				
+				boardService.deleteAttachment(b.getBoardNo());
+				
+
+				at.setOriginName(upfile.getOriginalFilename());
+				at.setChangeName("././resources/borderImage/" + changeName);
+				at.setFilePath("././resources/borderImage/");
+	            at.setBoardNo(b.getBoardNo());
+	            
+	            String fileName = upfile.getOriginalFilename();
+	            if( upfile == upfiles[0]) {
+	            	at.setFileLevel(1);
+	            } else {
+	            	at.setFileLevel(2);
+	            }
+	            
+	            list.add(at);
+				}
+		}
+	    
+	    System.out.println(list);
+	    Attachment at = new Attachment();
+	    for (Attachment attachment : list) {
+	    	
+	        at = attachment;
+	        boardService.helpmeAttachment(at);
+	    }
+	
+		if(result1 > 0 ) {
+			if(b.getBoardType() == 2) {		
+				session.setAttribute("alertMsg", "게시글 수정 성공");
+				session.setAttribute("b", b);
+				return "redirect:/helpmeList.bo";
+			}else {
+				session.setAttribute("alertMsg", "게시글 수정 성공");
+				session.setAttribute("b", b);
+				return "redirect:/helpList.bo";
+
 			}
 			
-			at.setOriginName(reupfile.getOriginalFilename());
-			at.setChangeName("/resources/borderImage/" + changeName);
-		}
-		
-		int result = boardService.helpmeUpdateBoard(b);
-		
-		if(result > 0) {
-			session.setAttribute("alertMsg", "게시글 수정 성공");
-			return "redirect:/helpmeDetail.bo?boardNo=" + b.getBoardNo();
 		} else {
 			model.addAttribute("errorMsg", "게시글 수정 실패");
 			return "common/errorPage";
 		}
-	}
+	    }
+         
+	    	
+	    	
+//	        if (!upfile.isEmpty()) {
+//      	
+//	        	Attachment at = new Attachment();
+//	            String changeName = saveFile(upfile, session, "resources/borderImage/");
+//	            if(at.getOriginName() != null) {
+//					new File(session.getServletContext().getRealPath(at.getChangeName())).delete();
+//				}
+//	      
+//	            at.setChangeName("././resources/borderImage/" + changeName);
+//	            at.setOriginName(upfile.getOriginalFilename());	   
+//	            at.setFilePath("././resources/borderImage/");
+//	            
+//	            at.setBoardNo(b.getBoardNo());
+//	                    
+//	            String fileName = upfile.getOriginalFilename();
+//	            if( upfile == upfiles[0]) {
+//	            	at.setFileLevel(1);
+//	            } else {
+//	            	at.setFileLevel(2);
+//	            }
+//	             
+//	            System.out.println("aaa filePath : " + at.getFilePath());          
+//	            System.out.println("aaa originName : " +at.getOriginName()); 	       
+//	            System.out.println("aaa changeName : " + at.getChangeName());
+//	            System.out.println("aaa fileLevel : " + at.getFileLevel()); 
+//	            System.out.println("aaa at = " +at);
+//	            
+//	            list.add(at);
+//	        }
+//	    }
+	    
+
+	  
+		
+//		if(!reupfile.getOriginalFilename().equals("")) {
+//			String changeName = saveFile(reupfile, session, "/resources/borderImage/");
+//			
+//			if(at.getOriginName() != null) {
+//				new File(session.getServletContext().getRealPath(at.getChangeName())).delete();
+//			}
+//			
+//			at.setOriginName(reupfile.getOriginalFilename());
+//			at.setChangeName("././resources/borderImage/" + changeName);
+//		}
+//		
+//		int result = boardService.helpmeUpdateBoard(b);
+//		
+//		if(result > 0) {
+//			session.setAttribute("alertMsg", "게시글 수정 성공");
+//			return "redirect:/helpmeDetail.bo?boardNo=" + b.getBoardNo();
+//		} else {
+//			model.addAttribute("errorMsg", "게시글 수정 실패");
+//			return "common/errorPage";
+//		}
+	
 	
 	//도와주세요 게시글 삭제
 	@RequestMapping(value="helpmeDelete.bo")

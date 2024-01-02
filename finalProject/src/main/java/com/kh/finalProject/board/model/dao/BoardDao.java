@@ -327,4 +327,8 @@ public class BoardDao {
 	public Board helpmeselectOne2(SqlSessionTemplate sqlSession, int boardNo) {
 		return sqlSession.selectOne("boardMapper.helpmeselectOne2", boardNo);
 	}
+	
+	public int deleteAttachment(SqlSessionTemplate sqlSession, int boardNo) {
+		return sqlSession.update("boardMapper.deleteAttachment", boardNo);
+	}
 }
