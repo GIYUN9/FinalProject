@@ -91,17 +91,6 @@
         color: white;
         font-size: 14px;
     }
-
-    
-    
-    .main{
-        display: flex;    
-        width: 1300px;  
-        height: 700px;
-        border: 1px;
-        margin: 0 auto;
-    }
-
    
     .content{
         width: 1100px;
@@ -545,8 +534,7 @@
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
-
-<div class = "nav">
+    <div class = "nav">
         <div class = "nav-center-items">
             <div class = "nav-item">
                 <div class="nav-item-content" >
@@ -584,11 +572,11 @@
                     <a href="#" style = "color : white;">미술</a>
                 </div>
             </div>
-           
+            
             <div class = "nav-item"><a href="#">&#62;</a></div>
         </div>
-   </div>
- <div class = "main">
+    </div>
+    <div>
     	<div class = "photo">
             <div class = "main-photo">
                 <img class = "big-photo" src ="${b.changeName}" alt="메인사진">
@@ -652,7 +640,7 @@
             <a class="hu-cancle-btn" onclick="postBtn(2)">삭제</a>
             <a class="hu-submit-btn" onclick="postBtn(1)">수정</a>
         </div>
-</div>
+    </div>
 <%@ include file="../common/footer.jsp" %>
 
 

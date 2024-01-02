@@ -41,6 +41,12 @@ public class ChatServiceImpl implements ChatService{
 	public int insertMsg(Message msg) {
 		return chatDao.insertMsg(sqlSession, msg);
 	}
+
+	@Override
+	public ArrayList<Message> lastMsg(Message msg) {
+		ArrayList<Message> lastMsg = chatDao.lastMsg(sqlSession, msg);
+		return lastMsg;
+	}
 	
 	
 	
