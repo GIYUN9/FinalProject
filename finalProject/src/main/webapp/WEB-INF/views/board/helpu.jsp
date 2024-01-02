@@ -169,6 +169,21 @@
     function prevAction(){
             history.go(-1);
         }
+    
+    var input = document.querySelector('input');
+
+    input.addEventListener('input', function() {
+      var value = input.value;
+
+      if (value < 1000) {
+        input.setInvalid(true);
+      } else if (value > 10000) {
+        input.setInvalid(true);
+      } else {
+        input.setInvalid(false);
+      }
+    });
+    
 </script>
 </body>
 </html>

@@ -117,8 +117,7 @@ public class BoardController {
 	 
 	//도와줄게요 게시글 등록 페이지
 	@RequestMapping(value="helpInsert.bo", method = RequestMethod.POST)
-	public String helpInsertBoard(Board b, MultipartFile upfile, Attachment at ,HttpSession session, Model model) { // , Atta~~ a
-		System.out.println(upfile);
+	public String helpInsertBoard(Board b, MultipartFile upfile, Attachment at ,HttpSession session, Model model) {
 		
 		int result1 = 0;
 		int result2 = 0;
@@ -145,12 +144,6 @@ public class BoardController {
 			model.addAttribute("errorMsg", "게시글 작성 실패");
 			return "common/errorPage";
 		}	
-		
-		// result1 > 1 => 인서트가 정상적으로 완료 
-		// int result2 = board~~~~.insertAttc(a);
-		// result2 > 0 => attc파일 첨부 정상적으로 종료
-			
-//		if((result1 * result 2) > 0) {return "정상적으로 종료시 보내줄페이지"} else{에러났을때(글작성 실패시) return ""}
 			
 		}
 	
@@ -758,6 +751,7 @@ public class BoardController {
 				session.setAttribute("alertMsg", "게시글 수정 성공");
 				session.setAttribute("b", b);
 				return "redirect:/helpList.bo";
+
 			}
 			
 		} else {
@@ -867,7 +861,6 @@ public class BoardController {
 		 PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
 
 	     ArrayList<Board> referenceList = boardService.helpmeReference(b, pi);
-	     System.out.println("조회순 리스트" +referenceList);
 	     
 	     mv.addObject("list", referenceList);
 	     mv.addObject("pi", pi);
@@ -882,11 +875,11 @@ public class BoardController {
 		public String reportList(HttpSession session) {		
 
 		ArrayList<Report> list = boardService.selectReport();
-		System.out.println("신고하기 글 "+list);
+
 		session.setAttribute("list", list);
 		
 		ArrayList<Report> endlist = boardService.selectEndReport();
-		System.out.println(endlist);
+
 		session.setAttribute("endlist", endlist);
 		return "myPage/viewReport";
 		}
@@ -896,7 +889,7 @@ public class BoardController {
 	public String reportComment(HttpSession session, Report rt) {
 		
 		int result = boardService.reportUpdate(rt);
-		System.out.println(result);
+
 		if(result > 0) {
 			session.setAttribute("alertMsg", "답변완료");
 		}
