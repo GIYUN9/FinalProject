@@ -41,7 +41,7 @@
 	p:hover::after{
 		transform: scaleX(1);
 	}
-	.user-info{
+	.req-user-info{
 		display: flex;
 		align-items: center;
 		margin-bottom: 40px;
@@ -146,6 +146,8 @@
 		font-size: 13px;
 		margin-left: 84%;
     	padding-block: 5px;
+    	position: relative;
+   		bottom: 48%;
 	}
 	
 	.reqListOuter{
@@ -154,6 +156,43 @@
 		width: 96%;
 		height: 150px;
 	}
+	
+	.req-date {
+		position: relative;
+	    left: 85%;
+	    bottom: 18%;
+	    font-size: 12px;
+	}
+	
+	.req-name{
+		position: relative;
+	    left: 85%;
+	    bottom: 15%;
+	    font-size: 14px;
+	}
+	
+	.req-number-one{
+	    position: relative;
+	    left: 85%;
+	    bottom: 62%;
+	    font-size: 12px;
+	}
+	
+	.req-number-two{
+		position: relative;
+	    left: 85%;
+	    bottom: 91%;
+	    font-size: 12px;
+	}
+	
+	.req-coment{
+		width: 60%; 
+		position: relative;
+	    bottom: 26%;
+	    right: 1%;
+	}
+	
+	
 </style>
 </head>
 <body>
@@ -189,7 +228,7 @@
 				</div>
 			</div>
 			<div class="pageBox" style="display: flex; flex-direction: column;">
-				<div class="user-info">
+				<div class="req-user-info">
 					<c:forEach var="r" items="${list}">
 						<div class="req-outer">
 							<div class="req-align">
@@ -217,15 +256,15 @@
 					<form method="post" action="reportComment.rp">
 					
 						<div class="view${r.reportNo}" style="display: none;">
-							<div class="reqListOuter">
-								<div><h6>${r.reportTitle}</h6></div>
-								<div>${r.reportContent}</div>
-								<div>${r.createDate}</div>
-								<div>${r.memberName}</div>
-								<div>${r.reportNo}</div>
-								<div>${r.memberNo}</div>
+							<div class="req-outer">
+								<div class="req-text"><h6 class="req-title">${r.reportTitle}</h6></div>
+								<div class="req-desc">${r.reportContent}</div>
+								<div class="req-date">${r.createDate}</div>
+								<div class="req-name">${r.memberName}</div>
+								<div class="req-number-one">${r.reportNo}</div>
+								<div class="req-number-two">${r.memberNo}</div>
 								<input type="hidden" name="reportNo" value="${r.reportNo}">
-								<input type="text" name="adminComent" style="width: 60%;">
+								<input type="text" name="adminComent" class="req-coment">
 								<button type="submit" id="reportBtn">답변하기</button>
 							</div>
 							
@@ -268,7 +307,7 @@
 		
 		function reportDetail(res){
 			console.log(res)
-			const reportInfo = document.querySelector('.user-info');
+			const reportInfo = document.querySelector('.req-user-info');
 			reportInfo.style.display = "none";
 
 			const reportNum = document.querySelector('.view'+res);
@@ -284,7 +323,7 @@
 		}
 
 		function send2(){
-			const reportInfo = document.querySelector('.user-info');
+			const reportInfo = document.querySelector('.req-user-info');
 			reportInfo.style.display = "none";
 
 			const tee = document.querySelector('.tee');
