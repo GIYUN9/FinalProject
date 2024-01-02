@@ -26,21 +26,29 @@
             </div>
             <div>
                 <c:forEach var="cr" items="${crList}">
-                    <div class="chatRoom-detail-align" data-memname="${cr.receiverName}" data-opmemname="${cr.senderName}" data-number="${cr.receiverNo}" data-opnumber="${cr.senderNo}" data-loginMemNumber="${loginUser.memberNo}" onclick="chat(this)">
-                        <div class="chatRoom-group">  
+                    <div class="chatRoom-detail-align">
+                        <div class="chatRoom-group"  data-memname="${cr.receiverName}" data-opmemname="${cr.senderName}" data-number="${cr.receiverNo}" data-opnumber="${cr.senderNo}" data-loginMemNumber="${loginUser.memberNo}" onclick="chat(this)">  
                             <div class="chatRoom-img-background">
                                 <img class="chatRoom-img" src="././resources/image/축구.jpg" alt="">
                             </div>
                             <div class="chatRoom-section">
                                 <div class="chatRoom-info">
                                     <div class="chatRoom-detail-title">
-										  ${cr.senderName} ${cr.receiverNo} ${cr.senderNo} ${loginUser.memberNo}
+										<c:choose>
+										    <c:when test="${cr.senderName eq loginUser.memberName}">
+										        ${cr.receiverName}
+										    </c:when>
+										    <c:when test="${cr.receiverName eq loginUser.memberName}">
+										        ${cr.senderName}
+										    </c:when>
+										</c:choose>
                                         <div class="chatRoom-MemberCount">
-											${cr.memberCount}
                                         </div>
                                     </div>
                                     <div class="last-chat">
-										asdsd
+    									<c:if test="${not empty lastMsg and lastMsg.get(0).receiverNo eq cr.senderNo}">
+									        ${lastMsg.get.msgCo}
+									    </c:if>										
                                     </div>
                                 </div>
                                 <div class="chatRoom-lastChat-info">

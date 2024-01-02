@@ -448,3 +448,40 @@ page-item disable {
 		border: none; 
 		cursor: pointer;
     }
+    .outer{
+        margin: 100px;
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        width: max-content;
+        padding: 50px;
+        position: relative;
+    }
+    .hu-title-input{
+        width: 650px;
+        height: 30px;
+        border-radius: 8px;
+        border: 1px solid rgba(96, 96, 96, 0.5);
+    }
+    .hu-textarea{
+        resize: none;
+        width: 650px;
+        border-radius: 8px;
+        height: 250px;
+        border: 1px solid rgba(96, 96, 96, 0.5);
+    }
+    #title-img{
+        width: 250px;
+        height: 250px;
+    }
+    .hu-enroll-info{
+        width: 100px;
+    }
+    .hu-close-btn2{
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+    }
