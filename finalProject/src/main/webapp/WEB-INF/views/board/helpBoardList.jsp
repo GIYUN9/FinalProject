@@ -90,7 +90,7 @@
                 	<div class = "content-item" id="contentList">
 	                     <a href ="helpDetailPage.bo?boardNo=${b.boardNo}" id="bno">
 	                        <img  class = "content-img" src = "${b.changeName}" id="image">
-	                        <div class = "content-item-title" id="btitle">${b.boardTitle}</div>
+	                        <div class = "content-item-title" id="btitle" style="height: 55px;">${b.boardTitle}</div>
 	                        <div class = "content-item-price" id="price">${b.price}원</div>
 	                     </a> 
                 	</div>

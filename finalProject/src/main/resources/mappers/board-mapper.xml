@@ -108,8 +108,9 @@
         JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
  		 WHERE B.BOARD_TYPE = 1
          AND B.STATUS = 'Y'
-         AND A.FILE_LEVEL =1
+         AND A.FILE_LEVEL = 1
          AND A.STATUS = 'Y'
+         ORDER BY CREATEDATE DESC
  	</select>
  	
  	<!-- 도와줄게요 게시글 상세조회 관련 쿼리문 -->
