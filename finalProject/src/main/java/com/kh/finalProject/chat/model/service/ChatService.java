@@ -13,6 +13,8 @@ public interface ChatService {
 
 	//채팅방룸 리스트
 	ArrayList<ChattingRoom> chattingRoomList (ChattingRoom cr);
+	int chattingRoomInfo (String lastMsg, int senderNo, int receiverNo);
+
 	
 	ArrayList<ChattingRoom> senderInfo (int chatRoomNo, int memberNo);
 		

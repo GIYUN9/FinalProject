@@ -46,9 +46,7 @@
                                         </div>
                                     </div>
                                     <div class="last-chat">
-    									<c:if test="${not empty lastMsg and lastMsg.get(0).receiverNo eq cr.senderNo}">
-									        ${lastMsg.get(0).msgCo}
-									    </c:if>										
+									     ${cr.lastMsg}
                                     </div>
                                 </div>
                                 <div class="chatRoom-lastChat-info">
@@ -169,7 +167,7 @@
     
     	
         function prevAction(){
-            history.go(-1);
+            history.go(-3);
         }
 
         function personalChat() {
@@ -240,6 +238,8 @@
 		        location.href = "chat.ch?memName=" + encmemName + "&memNo=" + memNo;
 		    }
 		}
+		
+
     </script>
 </body>
 </html>

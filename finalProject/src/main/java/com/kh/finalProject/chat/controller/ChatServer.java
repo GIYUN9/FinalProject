@@ -2,6 +2,7 @@ package com.kh.finalProject.chat.controller;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -94,6 +95,13 @@ public class ChatServer extends TextWebSocketHandler{
 		chatService.insertMsg(msgVo);
 		//웹소켓에서 직접 서비스를 호출해서 값을 넣어줌
 		
+		String str = new Gson().toJson(msgVo);
+		JsonObject jsonObject = JsonParser.parseString(str).getAsJsonObject();
+		String lastMsg = jsonObject.get("msgCo").getAsString();
+		int senderNo = loginUser.getMemberNo();
+		System.out.println("str : "+ lastMsg + " senderNo : "+ senderNo + " receiverNo : "+ Integer.parseInt(receiverNo));
+		chatService.chattingRoomInfo(lastMsg, senderNo, Integer.parseInt(receiverNo));
+		//트리거 나중에 전환
 		
 	}
 	
