@@ -314,7 +314,25 @@ a:hover{
 #em-btn2:hover{
     background-color: white;
 }
-
+/*phone*/
+#sendBtn{
+    background-color: #f0f0f0;
+    height: 45px;
+    font-size: 14px;
+    border: 1px solid rgba(231, 229, 229, 0.6);
+    border-radius: 8px;
+    cursor: pointer;
+    width: 74px;
+}
+#checkBtn{
+    background-color: #f0f0f0;
+    height: 45px;
+    font-size: 14px;
+    border: 1px solid rgba(231, 229, 229, 0.6);
+    border-radius: 8px;
+    cursor: pointer;
+    width: 74px;
+}
 /*password Find*/
 .input-email{
     width: 360px;

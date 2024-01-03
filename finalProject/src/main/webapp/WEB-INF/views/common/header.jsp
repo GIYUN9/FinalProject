@@ -184,13 +184,29 @@
                                     휴대폰번호
                                     <span class="as-re">*</span>
 	                            </p>                            	                           
-                                <p>
-                                    <input type="tel" class="form-control" id="phone" placeholder="010-0000-0000" name="phone"> <br>
-                                	<button type="button" id="sendBtn" onclick="phoneCheck()">인증 번호 발송</button>
+                                <p style="display: flex;">
+                                    <input type="tel" class="form-control" id="phone" placeholder="010-0000-0000" name="phone"
+                                    style="
+                                        border: 1px solid rgba(96, 96, 96, 0.5);
+                                        border-radius: 8px;
+                                        height: 45px;
+                                        width: 400px;
+                                        margin-right: 5px; 
+                                    "
+                                    > <br>
+                                	<button type="button" id="sendBtn" onclick="phoneCheck()">인증</button>
                                 </p>             
-                                <p class="view-check">
-                                	<input type="number" class="form-control" id="numCheck" placeholder="6자리 인증번호를 입력해주세요" name="numCheck"> <br>
-                                	<button type="button" id="checkBtn" onclick="numberCheck()">인증하기</button>
+                                <p class="view-check" style="display: flex;">
+                                	<input type="number" class="form-control" id="numCheck" placeholder="6자리 인증번호를 입력해주세요" name="numCheck"
+                                    style="
+                                        border: 1px solid rgba(96, 96, 96, 0.5);
+                                        border-radius: 8px;
+                                        height: 45px;
+                                        width: 400px;
+                                        margin-right: 5px;
+                                    "       
+                                    > <br>
+                                	<button type="button" id="checkBtn" onclick="numberCheck()">확인</button>
                                 </p>
                                 <label for=""> &nbsp; 성별 : </label> &nbsp;&nbsp;
                                 <input type="radio" id="Male" value="M" name="memberGender" checked>
