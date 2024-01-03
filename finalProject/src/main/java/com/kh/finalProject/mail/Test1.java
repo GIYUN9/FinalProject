@@ -5,6 +5,8 @@ import java.util.Properties;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
+import security.Key;
+
 public class Test1 {
 public static void main(String[] args) {
 		
@@ -13,8 +15,8 @@ public static void main(String[] args) {
 		JavaMailSenderImpl sender = new JavaMailSenderImpl();
 		sender.setHost("smtp.gmail.com");
 		sender.setPort(587);
-		sender.setUsername("choechangyeong1@gmail.com");
-		sender.setPassword("luzx laqb omon tsvs");
+		sender.setUsername(Key.EMAIL_ADDRESS);
+		sender.setPassword(Key.EMAIL_PWD);
 		
 		//	옵션 설정
 		Properties prop = new Properties();
@@ -28,10 +30,10 @@ public static void main(String[] args) {
 		message.setSubject("이메일 전송 테스트");
 		message.setText("이메일 전송 테스트 첫 번째 입니다.");
 		
-		String[] to = {"choechangyeong1@gmail.com"};
+		String[] to = {Key.EMAIL_ADDRESS};
 		message.setTo(to);
 		
-		String[] cc = {"choechangyeong1@gmail.com"};
+		String[] cc = {Key.EMAIL_ADDRESS};
 		message.setCc(cc);
 		
 		sender.send(message);

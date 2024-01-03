@@ -238,11 +238,11 @@
 	                                        <div>
 	                                            <a href="" class="a-click">
                             						<img src="./resources/icon/LIKE.png" class="img" style="margin-bottom: 10px;">
-	                                                <span>0</span>
+	                                                <span>${b.likeyCount }</span>
 	                                            </a>
 	                                            <a href="" class="a-click">
 					                				<img src="./resources/icon/speech-bubble.png" alt="말풍선아이콘" class="img">
-	                                                <span>0</span>
+	                                                <span>${b.viewCount }</span>
 	                                            </a>
 	                                            <span class="time-span">${b.createDate}</span>
 	                                        </div>

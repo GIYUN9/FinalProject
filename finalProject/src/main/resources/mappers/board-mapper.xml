@@ -135,11 +135,14 @@
  			  	B.BOARD_TITLE,
  			   	B.PRICE,
  			   	B.CREATEDATE,
-               	A.CHANGE_NAME
+               	A.CHANGE_NAME,
+		A.FILE_PATH
  		FROM BOARD B
         JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
- 		 WHERE BOARD_TYPE = 1 
+ 		 WHERE BOARD_TYPE = 1
  		 AND B.STATUS = 'Y'
+		AND A.FILE_LEVEL = 1
+		AND A.STATUS = 'Y'
         ORDER BY CREATEDATE DESC
     </select>
 	
@@ -152,16 +155,19 @@
 	</select>
 	
 	<!-- 도와줄게요 조회수 리스트 -->
-	<select id="helpReference" resultMap="boardResult"> 
+<select id="helpReference" resultMap="boardResult"> 
 		SELECT  B.BOARD_NO,
  			  	B.BOARD_TITLE,
  			   	B.PRICE,
  			   	B.CREATEDATE,
-               	A.CHANGE_NAME
+               	A.CHANGE_NAME,
+		A.FILE_PATH
  		FROM BOARD B
         JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
- 		 WHERE BOARD_TYPE = 1 
+ 		 WHERE BOARD_TYPE = 1
  		 AND B.STATUS = 'Y'
+		AND A.FILE_LEVEL = 1
+		AND A.STATUS = 'Y'
         ORDER BY VIEW_COUNT DESC
 	</select>
 	
@@ -169,7 +175,7 @@
 	<select id="helpReferenceCount" resultType="_int">
 		SELECT COUNT(*)
  		  FROM BOARD
- 		 WHERE BOARD_TYPE = 1
+ 		 WHERE BOARD_TYPE = 2
  		AND STATUS = 'Y'
 	</select>
 	
@@ -281,7 +287,9 @@
 				B.STATUS,
 				B.MEM_NO,
                 M.LOCATION,
-				B.CATEGORY_NO
+				B.CATEGORY_NO,
+				B.LIKEY_COUNT,
+				B.VIEW_COUNT
 				FROM BOARD B
         JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
 		WHERE B.BOARD_TYPE = 5
@@ -298,7 +306,9 @@
 				B.STATUS,
 				B.MEM_NO,
                 M.LOCATION,
-				B.CATEGORY_NO
+				B.CATEGORY_NO,
+				B.LIKEY_COUNT,
+				B.VIEW_COUNT
 				FROM BOARD B
         JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
 		WHERE B.BOARD_TYPE = 4
@@ -315,7 +325,9 @@
 				B.STATUS,
 				B.MEM_NO,
                 M.LOCATION,
-				B.CATEGORY_NO
+				B.CATEGORY_NO,
+				B.LIKEY_COUNT,
+				B.VIEW_COUNT
 				FROM BOARD B
         JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
 		WHERE B.BOARD_TYPE = 3
@@ -734,11 +746,14 @@
  			  	B.BOARD_TITLE,
  			   	B.PRICE,
  			   	B.CREATEDATE,
-               	A.CHANGE_NAME
+               	A.CHANGE_NAME,
+		A.FILE_PATH
  		FROM BOARD B
         JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
  		 WHERE BOARD_TYPE = 2
  		 AND B.STATUS = 'Y'
+		AND A.FILE_LEVEL = 1
+		AND A.STATUS = 'Y'
         ORDER BY CREATEDATE DESC
     </select>
 	
@@ -756,11 +771,14 @@
  			  	B.BOARD_TITLE,
  			   	B.PRICE,
  			   	B.CREATEDATE,
-               	A.CHANGE_NAME
+               	A.CHANGE_NAME,
+		A.FILE_PATH
  		FROM BOARD B
         JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
- 		 WHERE BOARD_TYPE = 2 
+ 		 WHERE BOARD_TYPE = 2
  		 AND B.STATUS = 'Y'
+		AND A.FILE_LEVEL = 1
+		AND A.STATUS = 'Y'
         ORDER BY VIEW_COUNT DESC
 	</select>
 	

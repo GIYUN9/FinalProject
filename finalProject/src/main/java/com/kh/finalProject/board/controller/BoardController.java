@@ -98,7 +98,7 @@ public class BoardController {
 	        return mv;
 	    }
 	 
-	 //도와줄게요 조회순 리스트 컨트롤러
+	 //도와주세요 조회수 리스트 컨트롤러
 	 @RequestMapping(value = "helpReferenceList", method = RequestMethod.GET)
 	 public ModelAndView helpReferenceList(@RequestParam(value="cpage", defaultValue="1") int currentPage, Board b, ModelAndView mv) {
 		 int listCount = boardService.helpReferenceCount();
