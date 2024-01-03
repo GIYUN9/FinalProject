@@ -2,6 +2,7 @@ package com.kh.finalProject.chat.controller;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -93,7 +94,12 @@ public class ChatServer extends TextWebSocketHandler{
 		System.out.println(msgVo);
 		chatService.insertMsg(msgVo);
 		//웹소켓에서 직접 서비스를 호출해서 값을 넣어줌
+		chatService.lastMsg(msgVo);
 		
+		ArrayList<Message> lastMsg = chatService.lastMsg(msgVo);
+		System.out.println("lastMsg SERVER" + lastMsg);
+		session.getAttributes().put("lastMsg", lastMsg);
+
 		
 	}
 	
