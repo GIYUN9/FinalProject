@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="././resources/css/myPgae.css">
-
+	
 <style>
 	.p-btn {
 		display: inline-block;
@@ -41,7 +41,7 @@
 	p:hover::after{
 		transform: scaleX(1);
 	}
-	.req-user-info{
+	.user-info{
 		display: flex;
 		align-items: center;
 		margin-bottom: 40px;
@@ -50,7 +50,7 @@
 		justify-content: space-evenly;
 		margin-left: 0px;
 	}
-	.req-pageBox{
+	.pageBox{
 		border-radius: 13px;
 		border: 1px solid rgba(226, 226, 226, 0.4);
 		padding: 15px;
@@ -72,21 +72,10 @@
 		flex-direction: column;
 		justify-content: space-between;
 	}
-	.req-outer1{
-			border: 1px solid rgba(96, 96, 96, 0.5);
-			border-radius: 10px;
-			width: 96%;
-			margin-top: 10px;
-			height: 100%;
-			padding-left: 15px;
-			padding-top: 10px;
-			display: flex;
-    		flex-direction: column;
-    		justify-content: space-between;
-		}
 	.req-desc{
 		font-size: 12px;
 		margin-top: 20px;
+		max-width: 585px;
 	}
 	.req-text{
 		display: flex;
@@ -97,6 +86,7 @@
 		align-items: flex-end;
 		flex-direction: column;
 		margin-right: 10px;
+		text-align: end;
 	}
 	.req-align{
 		display: flex;
@@ -107,7 +97,7 @@
 		font-size: 12px;
 	}
 	.req-id{
-		font-size: 14px;
+		font-size: 13px;
 	}
 	.req-answer-btn{
 		background: rgb(218, 76, 60);
@@ -129,6 +119,8 @@
 		color: white;
 		cursor: pointer;
 		font-size: 13px;
+		position: absolute;
+		bottom: 66px;
 	}
 	.req-btn-area{
 		display: flex;
@@ -156,61 +148,93 @@
 		color: white;
 		cursor: pointer;
 		font-size: 13px;
-		margin-left: 84%;
-    	padding-block: 5px;
-    	position: relative;
-   		bottom: 48%;
+		margin-left: 81%;
+		padding-block: 5px;
+		margin-bottom: 15px;
+		margin-top: -10px;
 	}
 	
-	.reqListOuter{
+	#req-outer{
 		border: 1px solid rgba(96, 96, 96, 0.5);
 		border-radius: 10px;
 		width: 96%;
-		height: 150px;
+		margin-top: 10px;
+		height: max-content;
+		padding-left: 15px;
+		padding-top: 10px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 	}
-	
-	.req-date {
-		position: relative;
-	    left: 85%;
-	    bottom: 18%;
-	    font-size: 12px;
+	.req-outer1{
+		border: 1px solid rgba(96, 96, 96, 0.5);
+		border-radius: 10px;
+		width: 96%;
+		margin-top: 10px;
+		height: 100%;
+		padding-left: 15px;
+		padding-top: 10px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 	}
-	
-	.req-name{
-		position: relative;
-	    left: 85%;
-	    bottom: 15%;
-	    font-size: 14px;
+	.req-align{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
 	}
-	
-	.req-number-one{
-	    position: relative;
-	    left: 85%;
-	    bottom: 62%;
-	    font-size: 12px;
+	.req-text{
+		display: flex;
+		flex-direction: column;
 	}
-	
-	.req-number-two{
-		position: relative;
-	    left: 85%;
-	    bottom: 91%;
-	    font-size: 12px;
+	.req-title{
+		font-weight: bold;
 	}
-	
-	.req-coment{
-		width: 60%; 
-		position: relative;
-	    bottom: 26%;
-	    right: 1%;
+	.req-info{
+		display: flex;
+		align-items: flex-end;
+		flex-direction: column;
+		margin-right: 10px;
 	}
-	
-	
+	.req-no{
+		font-size: 12px;
+		width: 102px;
+	}
+	.req-id{
+		font-size: 14px;
+	}
+	.answer{
+		width: 93%;
+		margin: 20px;
+		height: 100px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 8px;
+		border: 1px solid rgba(96, 96, 96, 0.5);
+		resize: none;
+	}
+	.admin-reply{
+		color: rgb(218, 76, 60);
+		font-weight: 600;
+		position: absolute;
+		left: 66px;
+	}
+	.admin-reply2{
+			color: rgb(218, 76, 60);
+			display: flex;
+			align-items: center;
+			margin-left: 22px;
+			margin-top: 10px;
+			margin-bottom: -15px;
+			font-size: 14px;
+			font-weight: 600;
+	}
 </style>
-
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
-	<div class="req-box" style="margin-top: 120px">
+	<div class="box" style="margin-top: 120px">
 		<div class="sideBar">
 			<h3 style="margin: 10px 0 0 0; font-weight: bold;">계정 설정</h3>
 			<hr style="color: white; border: 0px; height: 3px; background: white; max-width: 180px;">
@@ -229,7 +253,8 @@
 		<div class="main-box">
 			<h3 style="margin: 10px 0 0 20px;">문의 내역</h3>
 			<br>
-			<div class="top-center" style="display: flex; justify-content: space-around; margin-left: 20px; margin-right: 20px">
+			<div class="top-center"
+				style="display: flex; justify-content: space-around; margin-left: 20px; margin-right: 20px">
 				<!-- 호버되면 밑줄 만들어주세요 ㅋㅋ -->
 				<div>
 					<p class="p-btn" id="from" onclick="from()">등록된 신고</p>
@@ -238,8 +263,11 @@
 					<p class="p-btn1" id="send" onclick="send()">처리된 신고</p>
 				</div>
 			</div>
-			<div class="req-pageBox" style="display: flex; flex-direction: column;">
-				<div class="req-user-info">
+			<div class="pageBox" style="display: flex; flex-direction: column;">
+				<div class="user-info">
+					<div style="width: 100%; margin: 10px 0px 10px 8px;">
+						<h6 style="float: left; font-weight: bold;">신고 현황 (<span style="color: red;">0</span>건)</h6>
+					</div>
 					<c:forEach var="r" items="${list}">
 						<div class="req-outer">
 							<div class="req-align">
@@ -250,9 +278,9 @@
 									</div>
 								</div>
 								<div class="req-info">
-									<div class="req-no">${r.reportNo}</div>
+									<div class="req-no">신고번호 N.${r.reportNo}</div>
 									<div class="req-no">${r.createDate}</div>
-									<div class="req-id">${r.memberName}</div>
+									<div class="req-id" style="display: flex;">${r.memberName} &nbsp; <div style="color: rgb(0, 199, 174);">#${r.memberNo}</div></div>
 								</div>
 							</div>
 							<div class="req-btn-area">
@@ -260,27 +288,58 @@
 							</div>
 						</div>
 					</c:forEach>	
-				</div>
-				<c:forEach var="r" items="${list}">
-					<form method="post" action="reportComment.rp">
-						<div class="view${r.reportNo}" style="display: none;">
-							<div class="req-outer">
-								<div class="req-text"><h6 class="req-title">${r.reportTitle}</h6></div>
-								<div class="req-desc">${r.reportContent}</div>
-								<div class="req-date">${r.createDate}</div>
-								<div class="req-name">${r.memberName}</div>
-								<div class="req-number-one">${r.reportNo}</div>
-								<div class="req-number-two">${r.memberNo}</div>
-								<input type="hidden" name="reportNo" value="${r.reportNo}">
-								<input type="text" name="adminComent" class="req-coment">
-								<button type="submit" id="reportBtn">답변하기</button>
+							
+					<c:forEach var="r" items="${list}">
+						<form method="post" action="reportComment.rp">
+							<div class="view${r.reportNo}" id="req-outer" style="display: none;">
+								<div class="req-align">
+									<div class="req-text">
+										<h6 class="req-title">${r.reportTitle}</h6>
+										<div class="req-desc" style="margin-left: 32px;">
+											${r.reportContent}
+										</div>
+										
+									</div>
+									<div class="req-info">
+										<div class="req-no">신고번호 N.${r.reportNo}</div>
+										<div class="req-id">${r.createDate}</div>
+										<div class="req-id" style="display: flex;">${r.memberName} &nbsp; <div style="color: rgb(0, 199, 174);">#${r.memberNo}</div></div>
+									</div>
+								</div>
+								<div class="req-outer1" style="border: none;">
+									<span class="admin-reply">답변</span>
+									<textarea class="answer" name="adminComent" style="margin-top: 30px;"></textarea>
+									<input type="hidden" name="reportNo" value="${r.reportNo}">
+									<button type="submit" id="reportBtn">답변하기</button>
+								</div>
+							</div>
+						</form>
+					</c:forEach>
+				<!-- <div class="tee" style="display: none;"> -->
+					<!-- <c:forEach var="er" items="${endlist}">
+						<div style="display: flex; align-items: center; justify-content: center; width: 100%;">
+							<div class="req-outer1" style="display: none;">
+								<div class="req-align">
+									<div class="req-text">
+										<h6 class="req-title">${er.reportTitle}</h6>
+										<div class="req-desc">
+											${er.reportContent}
+										</div>
+									</div>
+									<div class="req-info">
+										<div class="req-no">신고번호 N.${er.reportNo}</div>
+										<div class="req-no">${er.createDate}</div>
+										<div class="req-id" style="display: flex;">${er.memberName} &nbsp; <div style="color: rgb(0, 199, 174);">#${er.memberNo}</div></div>
+									</div>
+								</div>
+								<div>
+									제출한 답변
+									<input type="text" value="${er.adminComent}" readonly>
+								</div>
 							</div>
 						</div>
-					</form>
-				</c:forEach>
-				 <div class="tee" style="display: none;">
-				<c:forEach var="er" items="${endlist}">
-					<div style="display: flex; align-items: center; justify-content: center;">
+					</c:forEach> -->
+					<c:forEach var="er" items="${endlist}">
 						<div class="req-outer1" style="display: none;">
 							<div class="req-align">
 								<div class="req-text">
@@ -288,20 +347,23 @@
 									<div class="req-desc">
 										${er.reportContent}
 									</div>
+									
 								</div>
 								<div class="req-info">
-									<div class="req-no">${er.reportNo}</div>
-									<div class="req-no">${er.createDate}</div>
-									<div class="req-id">${er.memberName}</div>
+									<div class="req-no">신고번호 N.${er.reportNo}</div>
+									<div class="req-id">${er.createDate}</div>
+									<div class="req-id" style="display: flex;">${er.memberName} &nbsp; <div style="color: rgb(0, 199, 174);">#${er.memberNo}</div></div>
 								</div>
 							</div>
-							<div>
-								제출한 답변
-								<input type="text" value="${er.adminComent}" readonly>
+							<div class="req-btn-area">
+								<button class="req-answer-btn">처리완료</button>
 							</div>
+							<span class="admin-reply2">답변</span>
+							<textarea class="answer" readonly="readonly">${er.adminComent}</textarea>
 						</div>
-					</div>
-				</c:forEach>
+					</c:forEach>
+				</div>
+
 				</div>
 			</div>	 
 		</div>		
@@ -332,8 +394,10 @@
 
 	function send() {
 			const reqAreas = document.querySelectorAll('.req-outer');
+			const reqArea2s = document.querySelectorAll('#req-outer');
 			reqAreas.forEach(reqArea => reqArea.style.display = "none");
-			
+			reqArea2s.forEach(reqArea2 => reqArea2.style.display = "none");
+
 			const reqAreas1 = document.querySelectorAll('.req-outer1');
 			reqAreas1.forEach(reqArea1 => reqArea1.style.display = "flex");
 
@@ -350,7 +414,7 @@
 
 		function reportDetail(res){
 			console.log(res)
-			const reportInfo = document.querySelector('.req-user-info');
+			const reportInfo = document.querySelector('.req-outer');
 			reportInfo.style.display = "none";
 
 			const reportNum = document.querySelector('.view'+res);
@@ -364,16 +428,6 @@
 			}
 			$("#form").submit();
 		}
-
-
-		function send2(){
-			const reportInfo = document.querySelector('.req-user-info');
-			reportInfo.style.display = "none";
-
-			const tee = document.querySelector('.tee');
-			tee.style.display = "flex";
-		}
-
 	</script>
 </body>
 </html>
