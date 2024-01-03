@@ -177,10 +177,6 @@
 
         if (price < 1000) {
             inputField.setCustomValidity('최소 1,000원 이상 입력해주세요.');
-        } else if (price > 10000) {
-            inputField.setCustomValidity('최대 10,000원까지 입력해주세요.');
-        } else {
-            inputField.setCustomValidity('');
         }
     }
     

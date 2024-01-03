@@ -1,3 +1,4 @@
+<%@page import="security.Key"%>
 <%@ page import="java.net.URLEncoder" %>
 <%@ page import="java.net.URL" %>
 <%@ page import="java.net.HttpURLConnection" %>
@@ -10,8 +11,8 @@
   </head>
   <body>
   <%
-    String clientId = "iU8vhFIDgKoTvZNQ5yiC";//애플리케이션 클라이언트 아이디값";
-    String clientSecret = "x8zD1OUHld";//애플리케이션 클라이언트 시크릿값";
+    String clientId = Key.NAVER_CLIENT_ID;//애플리케이션 클라이언트 아이디값";
+    String clientSecret = Key.NAVER_CLIENT_SECRET;//애플리케이션 클라이언트 시크릿값";
     String code = request.getParameter("code");
     String state = request.getParameter("state");
     String redirectURI = URLEncoder.encode("http://localhost:5555/finalProject/callback", "UTF-8");

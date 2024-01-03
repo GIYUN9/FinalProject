@@ -80,9 +80,10 @@
     .main{
         display: flex;    
         width: 1300px;  
-        height: 700px;
+        height: max-content;
         border: 1px;
         margin: 0 auto;
+        margin-bottom: 100px;
     }
 
     .content-item{
