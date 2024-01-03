@@ -217,7 +217,7 @@
 				class="myPageSideBar" href="notice.co">공지사항</a>
 		</div>
 		<div class="main-box">
-			<h3 style="margin: 10px 0 0 20px;">전체보기</h3>
+			<h3 style="margin: 10px 0 0 20px;">상세보기</h3>
 			<div class="pageBox"
 				style="display: flex; flex-direction: column; position: relative;">
 				<div class="title-area">
