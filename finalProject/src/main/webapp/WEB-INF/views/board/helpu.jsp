@@ -90,7 +90,7 @@
                             희망가격
                         </div>
                         <div>
-                            <input class="hu-price" type="number" id="price" name="price" placeholder="최소 1,000원" value="" oninput="money()">
+                            <input class="hu-price" type="number" id="price" name="price" placeholder="최소 1,000원" oninput="money()">
                         </div>
                     </div>
 
@@ -177,6 +177,8 @@
 
         if (price < 1000) {
             inputField.setCustomValidity('최소 1,000원 이상 입력해주세요.');
+        }else {
+            inputField.setCustomValidity('');
         }
     }
     

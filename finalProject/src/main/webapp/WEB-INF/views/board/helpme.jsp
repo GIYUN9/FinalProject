@@ -145,16 +145,14 @@
                 return false; // 기본 제출 동작 막기
             }
             
-            //금액제한 스크립트
+          //금액제한 스크립트
             function money() {
                 var inputField = document.getElementById('price');
                 var price = inputField.value;
 
                 if (price < 1000) {
                     inputField.setCustomValidity('최소 1,000원 이상 입력해주세요.');
-                } else if (price > 10000) {
-                    inputField.setCustomValidity('최대 10,000원까지 입력해주세요.');
-                } else {
+                }else {
                     inputField.setCustomValidity('');
                 }
             }
