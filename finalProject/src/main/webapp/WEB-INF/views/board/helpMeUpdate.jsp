@@ -87,7 +87,7 @@
                         희망가격
                     </div>
                     <div>
-                        <input class="hu-price" type="number" id="price" name="price" min="1000"  max="10000" placeholder="최소 1,000원" value="${b.price}">
+                        <input class="hu-price" type="number" id="price" name="price" min="1000" placeholder="최소 1,000원" value="${b.price}">
                     </div>
                 </div>
             <div style="display: none;">
