@@ -315,30 +315,6 @@
 							</div>
 						</form>
 					</c:forEach>
-				<!-- <div class="tee" style="display: none;"> -->
-					<!-- <c:forEach var="er" items="${endlist}">
-						<div style="display: flex; align-items: center; justify-content: center; width: 100%;">
-							<div class="req-outer1" style="display: none;">
-								<div class="req-align">
-									<div class="req-text">
-										<h6 class="req-title">${er.reportTitle}</h6>
-										<div class="req-desc">
-											${er.reportContent}
-										</div>
-									</div>
-									<div class="req-info">
-										<div class="req-no">신고번호 N.${er.reportNo}</div>
-										<div class="req-no">${er.createDate}</div>
-										<div class="req-id" style="display: flex;">${er.memberName} &nbsp; <div style="color: rgb(0, 199, 174);">#${er.memberNo}</div></div>
-									</div>
-								</div>
-								<div>
-									제출한 답변
-									<input type="text" value="${er.adminComent}" readonly>
-								</div>
-							</div>
-						</div>
-					</c:forEach> -->
 					<c:forEach var="er" items="${endlist}">
 						<div class="req-outer1" style="display: none;">
 							<div class="req-align">

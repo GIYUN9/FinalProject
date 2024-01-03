@@ -86,7 +86,7 @@
     
     <script>
         function prevAction(){
-            history.go(-1);
+        	location.href = 'chatRoom.ch';
         }
         //socket연결 요청
         const socket = new WebSocket("ws://localhost:5555/finalProject/chat");

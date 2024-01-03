@@ -63,13 +63,17 @@ public class ChatController {
 	public String chattingRoom(ChattingRoom cr, HttpSession session) {
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		cr.setSenderNo(loginUser.getMemberNo());
+
+		
 		ArrayList<ChattingRoom> crList = chatService.chattingRoomList(cr);
+		System.out.println("a" + cr.getLastMsg());
+		System.out.println("b" + cr.getLastChatTime());
 		System.out.println("crList : " + crList);
 		int memberNo = loginUser.getMemberNo();
 		session.setAttribute("memberNo", memberNo);
 		
-		ArrayList<Message> lastMsgFromSession = (ArrayList<Message>) session.getAttribute("lastMsg");
-		System.out.println("lastMsgFromSession : " + lastMsgFromSession);
+		ArrayList<Message> lastMsg = (ArrayList<Message>)session.getAttribute("lastMsg");
+		System.out.println("lm" + lastMsg);
 		
 		//for (ChattingRoom chatRoom : crList) {
 			//String lastMsg = chatRoom.getLastMsg();
@@ -78,7 +82,6 @@ public class ChatController {
 			//chatRoom.setLastChatTime(lastChatTime);
 			//session.setAttribute("lastMsg", lastMsg);
 			//session.setAttribute("lastChatTime", lastChatTime);
-			
 			
 			//System.out.println("lastMsg : " + lastMsg);
 //			session.setAttribute("memName", senderInfoList);

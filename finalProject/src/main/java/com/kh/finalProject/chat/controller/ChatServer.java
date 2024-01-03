@@ -94,12 +94,14 @@ public class ChatServer extends TextWebSocketHandler{
 		System.out.println(msgVo);
 		chatService.insertMsg(msgVo);
 		//웹소켓에서 직접 서비스를 호출해서 값을 넣어줌
-		chatService.lastMsg(msgVo);
 		
-		ArrayList<Message> lastMsg = chatService.lastMsg(msgVo);
-		System.out.println("lastMsg SERVER" + lastMsg);
-		session.getAttributes().put("lastMsg", lastMsg);
-
+		String str = new Gson().toJson(msgVo);
+		JsonObject jsonObject = JsonParser.parseString(str).getAsJsonObject();
+		String lastMsg = jsonObject.get("msgCo").getAsString();
+		int senderNo = loginUser.getMemberNo();
+		System.out.println("str : "+ lastMsg + " senderNo : "+ senderNo + " receiverNo : "+ Integer.parseInt(receiverNo));
+		chatService.chattingRoomInfo(lastMsg, senderNo, Integer.parseInt(receiverNo));
+		//트리거 나중에 전환
 		
 	}
 	
