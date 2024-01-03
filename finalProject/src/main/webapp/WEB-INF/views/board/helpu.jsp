@@ -90,7 +90,7 @@
                             희망가격
                         </div>
                         <div>
-                            <input class="hu-price" type="number" id="price" name="price" min="1000"  max="10000" placeholder="최소 1,000원" value="">
+                            <input class="hu-price" type="number" id="price" name="price" placeholder="최소 1,000원" oninput="money()">
                         </div>
                     </div>
 
@@ -170,19 +170,17 @@
             history.go(-1);
         }
     
-    var input = document.querySelector('input');
+    //금액제한 스크립트
+    function money() {
+        var inputField = document.getElementById('price');
+        var price = inputField.value;
 
-    input.addEventListener('input', function() {
-      var value = input.value;
-
-      if (value < 1000) {
-        input.setInvalid(true);
-      } else if (value > 10000) {
-        input.setInvalid(true);
-      } else {
-        input.setInvalid(false);
-      }
-    });
+        if (price < 1000) {
+            inputField.setCustomValidity('최소 1,000원 이상 입력해주세요.');
+        }else {
+            inputField.setCustomValidity('');
+        }
+    }
     
 </script>
 </body>
