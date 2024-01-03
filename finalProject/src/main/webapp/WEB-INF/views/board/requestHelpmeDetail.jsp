@@ -616,7 +616,9 @@
                 </div>
             </div>
             <div class = "content-detail">
-                ${b.boardContent }
+            <pre style="width: 100%; height: 100%;">
+${b.boardContent }
+            </pre>
             </div>
             <button id="content-btn">채팅하기</button>
             <form action="" method="post" id="form">
