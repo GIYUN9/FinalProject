@@ -606,6 +606,7 @@
          AND B.STATUS = 'Y'	
          AND A.FILE_LEVEL = 1
          AND A.STATUS = 'Y'
+         ORDER BY CREATEDATE DESC
 	</select>
 	
 	<!-- 도와주세요 총 갯수 조회 -->
