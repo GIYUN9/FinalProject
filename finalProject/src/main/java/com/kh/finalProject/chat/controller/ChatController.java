@@ -66,15 +66,10 @@ public class ChatController {
 
 		
 		ArrayList<ChattingRoom> crList = chatService.chattingRoomList(cr);
-		System.out.println("a" + cr.getLastMsg());
-		System.out.println("b" + cr.getLastChatTime());
 		System.out.println("crList : " + crList);
 		int memberNo = loginUser.getMemberNo();
 		session.setAttribute("memberNo", memberNo);
-		
-		ArrayList<Message> lastMsg = (ArrayList<Message>)session.getAttribute("lastMsg");
-		System.out.println("lm" + lastMsg);
-		
+				
 		//for (ChattingRoom chatRoom : crList) {
 			//String lastMsg = chatRoom.getLastMsg();
 			//Date lastChatTime = chatRoom.getLastChatTime();

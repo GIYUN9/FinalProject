@@ -51,7 +51,16 @@
                                 </div>
                                 <div class="chatRoom-lastChat-info">
                                     <div class="last-chatTime">
-										${cr.lastChatTime}
+                                        <!-- ${cr.lastChatTime} -->
+           					             <script>
+						                    var timestamp = new Date('${cr.lastChatTime}');
+						                    var formattedTime = new Intl.DateTimeFormat('ko-KR', {
+						                        hour: 'numeric',
+						                        minute: 'numeric',
+						                        hour12: true  // 12시간 형식 사용
+						                    }).format(timestamp);
+						                    document.write(formattedTime);
+						                </script>
                                     </div>
                                     <div class="last-chatCount">
 										${cr.chatCount}
@@ -238,7 +247,7 @@
 		        location.href = "chat.ch?memName=" + encmemName + "&memNo=" + memNo;
 		    }
 		}
-		
+
 
     </script>
 </body>
