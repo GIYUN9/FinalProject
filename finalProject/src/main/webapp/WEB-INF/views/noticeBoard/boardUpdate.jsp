@@ -64,18 +64,20 @@
         margin: 7px;
     }
     .b-title{
-        width: 350px;
+        width: 450px;
         height: 30px;
         padding-left: 5px;
-        padding-bottom: 2px;
+        padding-top: 3px;
+        padding-bottom: 3px;
         border: 1px solid rgba(96, 96, 96, 0.5);
         border-radius: 8px;
         margin-bottom: 15px;
         resize: none;
         overflow: hidden;
+        font-size: 12px;
     }
     .b-content{
-        width: 350px;
+        width: 450px;
         height: 225px;
         padding: 10px;
         padding-bottom: 130px;
@@ -84,6 +86,7 @@
         margin-bottom: 15px;
         resize: none;
         overflow: hidden;
+        font-size: 12px;
     }    
     .b-input-area{
         display: flex;

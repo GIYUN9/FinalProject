@@ -1,6 +1,6 @@
 package com.kh.finalProject.chat.model.vo;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import lombok.Data;
 
@@ -13,6 +13,6 @@ public class ChattingRoom {
     private String senderName;
     private int memberCount;
     private String lastMsg;
-    private Date lastChatTime;
+    private Timestamp lastChatTime;
     private int chatCount;
 }

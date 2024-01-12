@@ -95,7 +95,7 @@ NOCACHE;
 -- BOARD(게시판)테이블
 CREATE TABLE BOARD(
   BOARD_NO NUMBER PRIMARY KEY,
-  BOARD_TITLE VARCHAR2(60) NOT NULL,
+  BOARD_TITLE VARCHAR2(150) NOT NULL,
   BOARD_CONTENT VARCHAR2(3000) NOT NULL,
   PRICE NUMBER,
   BOARD_TYPE NUMBER CHECK(BOARD_TYPE IN(1, 2, 3, 4, 5)),
@@ -213,7 +213,7 @@ CREATE TABLE CHATROOM(
     SENDER_NO NUMBER,
     SENDER_NAME VARCHAR2(200) NOT NULL,
     MEM_COUNT NUMBER DEFAULT 1,
-    LAST_MSG VARCHAR2(200),
+    LAST_MSG VARCHAR2(4000),
     LAST_CHAT_TIME TIMESTAMP DEFAULT SYSTIMESTAMP,
     CHAT_COUNT NUMBER
 );
@@ -1583,6 +1583,7 @@ INSERT INTO CATEGORY VALUES(SEQ_CNO.NEXTVAL, 'IT');
 INSERT INTO CATEGORY VALUES(SEQ_CNO.NEXTVAL, '기타');
 
 --게시판(보드)
+
 INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '커뮤니티용 음악레슨합니다1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 50000, 3, '2020-01-02', 'Y', 2, 200, 0, 0);
 INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '얼마예요1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 4, '2020-01-03', 'Y', 2, 200, 0, 0);
 INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '함께해요1', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 5, '2020-01-04', 'Y', 2, 200, 0, 0);
@@ -1590,6 +1591,67 @@ INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '궁금해요2', '커뮤니티용 음악 정말 즐�
 INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '얼마예요2', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 4, '2020-01-06', 'Y', 2, 200, 0, 0);
 INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '함께2', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 5, '2020-01-07', 'Y', 2, 200, 0, 0);
 INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '커뮤니티용 페이징처리', '커뮤니티용 음악 정말 즐겁게 알려드려요', 40000, 3, '2020-01-08', 'Y', 2, 200, 0, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '초보자도 "쉽게" <br> 볼링 알려드립니다!', '구력 15년차입니다! 
+1. 친구분들과 내기에서 이기고 싶은 분 
+2. 공이 옆으로 빠지지 않고 굴리고 싶은 분 
+3. 동호회, 상주에서 입상 하고 싶은 분 
+4. 에버리지 올리고 싶은 분 
+5. 볼링 자세를 멋있게 혹은 예쁘게 치고 싶은 분 
+6. 볼링을 알고싶으신 남녀노소 모두 가르쳐드립니다', 15000, 1, '2023-12-10', 'Y', '2', 201, 0, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '홈페이지 디자인부터 제작까지 <br> 완벽하게 제작해 드립니다.', '항상 만족스러운 결과물을 드리기 위해 노력하고있습니다! 
+ 많은 경험과 기획부터 디자인, 개발, 퍼블리싱까지 완벽한 호흡으로
+ 최상의 홈페이지를 만들어 드리겠습니다.
+', 400000, 1, '2023-12-11', 'Y', '3', 215, 0, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '페이징처리용 테스트1', '페이징처리용
+테스트1 내용
+', 1000, 1, '2023-07-24', 'Y', '4', 200, 0, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '페이징처리용 테스트2', '페이징처리용
+테스트2 내용
+', 1000, 1, '2023-07-24', 'Y', '4', 200, 0, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '페이징처리용 테스트3', '페이징처리용
+테스트3 내용
+', 1000, 1, '2023-07-24', 'Y', '4', 200, 0, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '페이징처리용 테스트4', '페이징처리용
+테스트4 내용
+', 1000, 1, '2023-07-24', 'Y', '4', 200, 0, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '페이징처리용 테스트5', '페이징처리용
+테스트5 내용
+', 1000, 1, '2023-07-24', 'Y', '4', 200, 0, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '페이징처리용 테스트6', '페이징처리용
+테스트6 내용
+', 1000, 1, '2023-07-24', 'Y', '4', 200, 0, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '페이징처리용 테스트7', '페이징처리용
+테스트7 내용
+', 1000, 1, '2023-07-24', 'Y', '4', 200, 0, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '노래 레슨 받고싶어요.', '음치 박치 입니다.
+중간만하고싶어요 도와주세요.
+레슨비 협의!
+', 1000, 2, '2023-12-11', 'Y', '5', 200, 0, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '롤 듀오구합니다!', '지금 에메랄드4티어입니다.
+같이 다이아 갈 사람 구합니다!!
+', 1000, 2, '2023-12-11', 'Y', '5', 202, 0, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '페이징처리용 테스트1', '페이징처리용
+테스트1 내용
+', 1000, 2, '2023-07-24', 'Y', '5', 200, 0, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '페이징처리용 테스트2', '페이징처리용
+테스트2 내용
+', 1000, 2, '2023-07-24', 'Y', '5', 200, 0, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '페이징처리용 테스트3', '페이징처리용
+테스트3 내용
+', 1000, 2, '2023-07-24', 'Y', '5', 200, 0, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '페이징처리용 테스트4', '페이징처리용
+테스트4 내용
+', 1000, 2, '2023-07-24', 'Y', '5', 200, 0, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '페이징처리용 테스트5', '페이징처리용
+테스트5 내용
+', 1000, 2, '2023-07-24', 'Y', '5', 200, 0, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '페이징처리용 테스트6', '페이징처리용
+테스트6 내용
+', 1000, 2, '2023-07-24', 'Y', '5', 200, 0, 0);
+INSERT INTO BOARD VALUES(SEQ_BNO.NEXTVAL, '페이징처리용 테스트7', '페이징처리용
+테스트7 내용
+', 1000, 2, '2023-07-24', 'Y', '5', 200, 0, 0);
+
 -- ATTACHEMT 사진
 INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, '22', '././resources/borderImage/2023122317051415709.jpg"', '4' , 'Y' ,1000, 0);
 INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, '22', '././resources/borderImage/2023122317051415709.jpg"', '4' , 'Y' ,1001, 0);
@@ -1598,6 +1660,25 @@ INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, '22', '././resources/borderImage/
 INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, '22', '././resources/borderImage/2023122417073847273.jpg', '4' , 'Y' ,1004, 0);
 INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, '22', '././resources/borderImage/2023122417073847273.jpg', '4' , 'Y' ,1005, 0);
 INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, '22', '33', '4' , 'Y' ,1006, 0);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, 'Bowling.jpg', '././resources/borderImage/Bowling.jpg', null, 'Y', 1007, 1);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, 'It.jpg', '././resources/borderImage/It.jpg', null, 'Y', 1008, 1);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, 'test.png', '././resources/borderImage/test.png', null, 'Y', 1009, 1);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, 'test.png', '././resources/borderImage/test.png', null, 'Y', 1010, 1);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, 'test.png', '././resources/borderImage/test.png', null, 'Y', 1011, 1);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, 'test.png', '././resources/borderImage/test.png', null, 'Y', 1012, 1);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, 'test.png', '././resources/borderImage/test.png', null, 'Y', 1013, 1);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, 'test.png', '././resources/borderImage/test.png', null, 'Y', 1014, 1);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, 'test.png', '././resources/borderImage/test.png', null, 'Y', 1015, 1);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, 'mic.jpg', '././resources/borderImage/mic.jpg', null, 'Y', 1016, 1);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, 'tiers.png', '././resources/borderImage/tiers.png', null, 'Y', 1017, 1);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, 'test.png', '././resources/borderImage/test.png', null, 'Y', 1018, 1);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, 'test.png', '././resources/borderImage/test.png', null, 'Y', 1019, 1);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, 'test.png', '././resources/borderImage/test.png', null, 'Y', 1020, 1);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, 'test.png', '././resources/borderImage/test.png', null, 'Y', 1021, 1);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, 'test.png', '././resources/borderImage/test.png', null, 'Y', 1022, 1);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, 'test.png', '././resources/borderImage/test.png', null, 'Y', 1023, 1);
+INSERT INTO ATTACHMENT VALUES(SEQ_ANO.NEXTVAL, 'test.png', '././resources/borderImage/test.png', null, 'Y', 1024, 1);
+
 -- NOTICE
 INSERT INTO NOTICE VALUES(SEQ_NNO.NEXTVAL, '필독', '품앗이에 대하여', '품앗이 사이트는 전문가 및 준전문가와 수요자의 매칭을 해주는 사이트입니다.', '2020-01-01', 'Y');
 INSERT INTO NOTICE VALUES(SEQ_NNO.NEXTVAL, '필독', '품앗이 채용 사칭 스미싱 문자 주의', '다른 번호 외에 전화를 걸지 말아 주시고,
@@ -1653,14 +1734,14 @@ INSERT INTO CHATROOM VALUES(3, '김길동', 'Y', 2, '홍길동', 2, '1', SYSTIMESTAMP,
 
 
 --메시지 더미
-INSERT INTO CHATMSG VALUES(5555, '메시지TEST', SYSTIMESTAMP, 2, 1);
-INSERT INTO CHATMSG VALUES(5556, '메시지TEST2', SYSTIMESTAMP, 2, 1);
-INSERT INTO CHATMSG VALUES(5557, '메시지TEST3', SYSTIMESTAMP, 2, 1);
-INSERT INTO CHATMSG VALUES(5558, '메시지TEST4', SYSTIMESTAMP, 2, 1);
-INSERT INTO CHATMSG VALUES(5559, '메시지TEST5', SYSTIMESTAMP, 2, 1);
-INSERT INTO CHATMSG VALUES(5560, '메시지TEST6', SYSTIMESTAMP, 1, 2);
-INSERT INTO CHATMSG VALUES(5561, '메시지TEST7', SYSTIMESTAMP, 2, 1);
-INSERT INTO CHATMSG VALUES(5562, '메시지TEST8', SYSTIMESTAMP, 1, 2);
+--INSERT INTO CHATMSG VALUES(5555, '메시지TEST', SYSTIMESTAMP, 2, 1);
+--INSERT INTO CHATMSG VALUES(5556, '메시지TEST2', SYSTIMESTAMP, 2, 1);
+--INSERT INTO CHATMSG VALUES(5557, '메시지TEST3', SYSTIMESTAMP, 2, 1);
+--INSERT INTO CHATMSG VALUES(5558, '메시지TEST4', SYSTIMESTAMP, 2, 1);
+--INSERT INTO CHATMSG VALUES(5559, '메시지TEST5', SYSTIMESTAMP, 2, 1);
+--INSERT INTO CHATMSG VALUES(5560, '메시지TEST6', SYSTIMESTAMP, 1, 2);
+--INSERT INTO CHATMSG VALUES(5561, '메시지TEST7', SYSTIMESTAMP, 2, 1);
+--INSERT INTO CHATMSG VALUES(5562, '메시지TEST8', SYSTIMESTAMP, 1, 2);
 
 
 --채팅룸x멤버 복합키 더미

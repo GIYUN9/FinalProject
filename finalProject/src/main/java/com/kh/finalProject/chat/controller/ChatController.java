@@ -51,10 +51,7 @@ public class ChatController {
 		ArrayList<Message> msgList = chatService.msgList(msg);
 		session.setAttribute("msgList", msgList);
 		System.out.println("msgList" + msgList);
-		
-//		ArrayList<Message> lastMsg = chatService.lastMsg(msg);
-//		session.setAttribute("lastMsg", lastMsg);
-//		System.out.println("lastMsg" + lastMsg);
+
 		if (loginUser == null) {
 			return "redirect:/";
 		}  
@@ -66,24 +63,25 @@ public class ChatController {
 	public String chattingRoom(ChattingRoom cr, HttpSession session) {
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		cr.setSenderNo(loginUser.getMemberNo());
+
+		
 		ArrayList<ChattingRoom> crList = chatService.chattingRoomList(cr);
 		System.out.println("crList : " + crList);
 		int memberNo = loginUser.getMemberNo();
 		session.setAttribute("memberNo", memberNo);
-		
-		for (ChattingRoom chatRoom : crList) {
-			String lastMsg = chatRoom.getLastMsg();
-			Date lastChatTime = chatRoom.getLastChatTime();
-			chatRoom.setLastMsg(lastMsg);
-			chatRoom.setLastChatTime(lastChatTime);
-			session.setAttribute("lastMsg", lastMsg);
-			session.setAttribute("lastChatTime", lastChatTime);
+				
+		//for (ChattingRoom chatRoom : crList) {
+			//String lastMsg = chatRoom.getLastMsg();
+			//Date lastChatTime = chatRoom.getLastChatTime();
+			//chatRoom.setLastMsg(lastMsg);
+			//chatRoom.setLastChatTime(lastChatTime);
+			//session.setAttribute("lastMsg", lastMsg);
+			//session.setAttribute("lastChatTime", lastChatTime);
 			
-			
-			System.out.println("lastMsg : " + lastMsg);
+			//System.out.println("lastMsg : " + lastMsg);
 //			session.setAttribute("memName", senderInfoList);
-			cr.setLastMsg(lastMsg);
-		}
+			//cr.setLastMsg(lastMsg);
+		//}
 		System.out.println("dddd" + crList);
 		
 		session.setAttribute("crList", crList);

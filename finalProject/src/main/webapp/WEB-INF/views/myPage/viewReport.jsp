@@ -119,8 +119,6 @@
 		color: white;
 		cursor: pointer;
 		font-size: 13px;
-		position: absolute;
-		bottom: 66px;
 	}
 	.req-btn-area{
 		display: flex;
@@ -221,14 +219,21 @@
 		left: 66px;
 	}
 	.admin-reply2{
-			color: rgb(218, 76, 60);
-			display: flex;
-			align-items: center;
-			margin-left: 22px;
-			margin-top: 10px;
-			margin-bottom: -15px;
-			font-size: 14px;
-			font-weight: 600;
+		color: rgb(218, 76, 60);
+		display: flex;
+		align-items: center;
+		margin-left: 22px;
+		margin-top: 10px;
+		margin-bottom: -15px;
+		font-size: 14px;
+		font-weight: 600;
+	}
+	.report-outer{
+		width: 100%;
+		margin: 10px 0px 10px 8px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 </style>
 </head>
@@ -268,29 +273,32 @@
 					<div style="width: 100%; margin: 10px 0px 10px 8px;">
 						<h6 style="float: left; font-weight: bold;">신고 현황 (<span style="color: red;">0</span>건)</h6>
 					</div>
-					<c:forEach var="r" items="${list}">
-						<div class="req-outer">
-							<div class="req-align">
-								<div class="req-text">
-									<h6 class="req-title">${r.reportTitle}</h6>
-									<div class="req-desc">
-										${r.reportContent}
+					<div class="report-outer">
+						<c:forEach var="r" items="${list}">
+							<div class="req-outer">
+								<div class="req-align">
+									<div class="req-text">
+										<h6 class="req-title">${r.reportTitle}</h6>
+										<div class="req-desc">
+											${r.reportContent}
+										</div>
+									</div>
+									<div class="req-info">
+										<div class="req-no">신고번호 N.${r.reportNo}</div>
+										<div class="req-no">${r.createDate}</div>
+										<div class="req-id" style="display: flex;">${r.memberName} &nbsp; <div style="color: rgb(0, 199, 174);">#${r.memberNo}</div></div>
 									</div>
 								</div>
-								<div class="req-info">
-									<div class="req-no">신고번호 N.${r.reportNo}</div>
-									<div class="req-no">${r.createDate}</div>
-									<div class="req-id" style="display: flex;">${r.memberName} &nbsp; <div style="color: rgb(0, 199, 174);">#${r.memberNo}</div></div>
+								<div class="req-btn-area">
+									<button class="req-detail-btn" type="button" onclick="reportDetail(${r.reportNo})">상세보기</button>
 								</div>
 							</div>
-							<div class="req-btn-area">
-								<button class="req-detail-btn" type="button" onclick="reportDetail(${r.reportNo})">상세보기</button>
-							</div>
-						</div>
-					</c:forEach>	
+						</c:forEach>	
+					</div>
+
 							
 					<c:forEach var="r" items="${list}">
-						<form method="post" action="reportComment.rp">
+						<form method="post" action="reportComment.rp" style="width: 100%;">
 							<div class="view${r.reportNo}" id="req-outer" style="display: none;">
 								<div class="req-align">
 									<div class="req-text">
@@ -315,30 +323,6 @@
 							</div>
 						</form>
 					</c:forEach>
-				<!-- <div class="tee" style="display: none;"> -->
-					<!-- <c:forEach var="er" items="${endlist}">
-						<div style="display: flex; align-items: center; justify-content: center; width: 100%;">
-							<div class="req-outer1" style="display: none;">
-								<div class="req-align">
-									<div class="req-text">
-										<h6 class="req-title">${er.reportTitle}</h6>
-										<div class="req-desc">
-											${er.reportContent}
-										</div>
-									</div>
-									<div class="req-info">
-										<div class="req-no">신고번호 N.${er.reportNo}</div>
-										<div class="req-no">${er.createDate}</div>
-										<div class="req-id" style="display: flex;">${er.memberName} &nbsp; <div style="color: rgb(0, 199, 174);">#${er.memberNo}</div></div>
-									</div>
-								</div>
-								<div>
-									제출한 답변
-									<input type="text" value="${er.adminComent}" readonly>
-								</div>
-							</div>
-						</div>
-					</c:forEach> -->
 					<c:forEach var="er" items="${endlist}">
 						<div class="req-outer1" style="display: none;">
 							<div class="req-align">
@@ -414,7 +398,7 @@
 
 		function reportDetail(res){
 			console.log(res)
-			const reportInfo = document.querySelector('.req-outer');
+			const reportInfo = document.querySelector('.report-outer');
 			reportInfo.style.display = "none";
 
 			const reportNum = document.querySelector('.view'+res);

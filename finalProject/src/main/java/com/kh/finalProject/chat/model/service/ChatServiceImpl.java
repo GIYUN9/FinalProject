@@ -47,6 +47,12 @@ public class ChatServiceImpl implements ChatService{
 		ArrayList<Message> lastMsg = chatDao.lastMsg(sqlSession, msg);
 		return lastMsg;
 	}
+
+	@Override
+	public int chattingRoomInfo(String lastMsg, int senderNo, int receiverNo) {
+		int chattingRoomInfo = chatDao.chattingRoomInfo(sqlSession, lastMsg, senderNo, receiverNo);
+		return chattingRoomInfo;
+	}
 	
 	
 	

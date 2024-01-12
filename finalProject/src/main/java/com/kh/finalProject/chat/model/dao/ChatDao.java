@@ -39,6 +39,14 @@ public class ChatDao {
 		return (ArrayList)sqlSession.selectList("chatMapper.chattingRoomList", cr);
 	}
 	
+	public int chattingRoomInfo (SqlSessionTemplate sqlSession, String lastMsg, int senderNo, int receiverNo){
+	    Map<String, Object> paramMap = new HashMap<>();
+	    paramMap.put("lastMsg", lastMsg);
+	    paramMap.put("senderNo", senderNo);
+	    paramMap.put("receiverNo", receiverNo);
+		return sqlSession.update("chatMapper.chattingRoomInfo", paramMap);
+	}
+	
 	public ArrayList<ChattingRoom> senderInfo(SqlSessionTemplate sqlSession, int chatRoomNo, int memberNo) {
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("chatRoomNo", chatRoomNo);

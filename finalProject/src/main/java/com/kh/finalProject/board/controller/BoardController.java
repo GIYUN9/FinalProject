@@ -70,8 +70,6 @@ public class BoardController {
 			
 			//카테고리 불러오기
 			ArrayList<Category> cList = boardService.selectCategoryList();
-			
-
 			mv.addObject("pi",pi)
 				.addObject("list",list)
 				.addObject("lType", "helpList.bo")

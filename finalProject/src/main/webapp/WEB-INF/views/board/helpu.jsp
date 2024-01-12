@@ -37,12 +37,23 @@
                             카테고리
                         </div>
                         <select name="categoryNo" id="categoryNo">
-                            <option value="200">200</option>
-                            <option value="201">201</option>
-                            <option value="202">202</option>
-                            <option value="203">203</option>
-                            <option value="204">204</option>
-                            <option value="205">205</option>
+                            <option value="200">음악</option>
+                            <option value="201">운동</option>
+                            <option value="202">게임</option>
+                            <option value="203">미술</option>
+                            <option value="204">댄스</option>
+                            <option value="205">요리</option>
+                            <option value="206">교육</option>
+                            <option value="207">취미</option>
+                            <option value="208">뷰티</option>
+                            <option value="209">패션</option>
+                            <option value="210">건강</option>
+                            <option value="211">펫</option>
+                            <option value="212">부동산</option>
+                            <option value="213">자동차</option>
+                            <option value="214">금융</option>
+                            <option value="215">IT</option>
+                            <option value="216">기타</option>
                         </select>
                     </div>
                 

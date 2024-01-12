@@ -46,14 +46,21 @@
                                         </div>
                                     </div>
                                     <div class="last-chat">
-    									<c:if test="${not empty lastMsg and lastMsg.get(0).receiverNo eq cr.senderNo}">
-									        ${lastMsg.get(0).msgCo}
-									    </c:if>										
+									     ${cr.lastMsg}
                                     </div>
                                 </div>
                                 <div class="chatRoom-lastChat-info">
                                     <div class="last-chatTime">
-										${cr.lastChatTime}
+                                        <!-- ${cr.lastChatTime} -->
+           					             <script>
+						                    var timestamp = new Date('${cr.lastChatTime}');
+						                    var formattedTime = new Intl.DateTimeFormat('ko-KR', {
+						                        hour: 'numeric',
+						                        minute: 'numeric',
+						                        hour12: true  // 12시간 형식 사용
+						                    }).format(timestamp);
+						                    document.write(formattedTime);
+						                </script>
                                     </div>
                                     <div class="last-chatCount">
 										${cr.chatCount}
@@ -169,7 +176,7 @@
     
     	
         function prevAction(){
-            history.go(-1);
+            history.go(-3);
         }
 
         function personalChat() {
@@ -240,6 +247,8 @@
 		        location.href = "chat.ch?memName=" + encmemName + "&memNo=" + memNo;
 		    }
 		}
+
+
     </script>
 </body>
 </html>

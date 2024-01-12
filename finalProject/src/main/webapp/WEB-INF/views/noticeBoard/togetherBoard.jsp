@@ -237,7 +237,7 @@
 	                                                <span>${b.likeyCount }</span>
 	                                            </a>
 	                                            <a href="" class="a-click">
-					                				<img src="./resources/icon/speech-bubble.png" alt="말풍선아이콘" class="img">
+					                				<img src="./resources/icon/eye.png" alt="말풍선아이콘" class="img">
 	                                                <span>${b.viewCount }</span>
 	                                            </a>
 	                                            <span class="time-span">${b.createDate}</span>
