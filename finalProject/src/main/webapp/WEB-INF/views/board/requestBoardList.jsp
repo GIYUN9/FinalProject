@@ -72,10 +72,10 @@
    <div class = "back-ground">
         <div class="main">
             <div class = "category" style="display: inline-block;">
-                <div class = "category-item"><a href="#">광고 홍보</a></div>
+                <!-- <div class = "category-item"><a href="#">광고 홍보</a></div>
                 <div class = "category-item"><a href="#">드론 촬영</a></div>
                 <div class = "category-item"><a href="#">홍보 사진</a></div>
-                <div class = "category-item"><a href="#">사진 보정</a></div>     
+                <div class = "category-item"><a href="#">사진 보정</a></div>      -->
             </div>
             <div class = "content">
                 <div class = "content-head">
