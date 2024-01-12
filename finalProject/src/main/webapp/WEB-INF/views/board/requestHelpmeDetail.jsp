@@ -33,29 +33,11 @@
     .nav-item{
         font-size: 18px;
         height: 40px;
-        
         padding-left: 70px;
         text-align: center;
         font-weight: bold;
         color: white;
     }
-
-    /* .nav-item-content{
-        background-color: rgba(255, 255, 255, 0.22);
-    } */
-    
-
-    /* a::after{
-        display:block;
-        content: '';
-        border-bottom: solid 3px #ffffff;  
-        transform: scaleX(0);  
-        transition: transform 250ms ease-in-out;
-    }
-
-    .nav:hover::after{
-        transform: scaleX(1);
-    } */
 
     a:after {
         display:block;
@@ -64,7 +46,9 @@
         transform: scaleX(0);  
         transition: transform 250ms ease-in-out;
      }
-    a:hover:after { transform: scaleX(1); }
+    a:hover:after { 
+        transform: scaleX(1); 
+    }
 
     .nav-item > a{
         color: white;
@@ -91,29 +75,14 @@
         color: white;
         font-size: 14px;
     }
-
-    
     
     .main{
         display: flex;    
         width: 1300px;  
-        height: 700px;
+        height: max-content;
         border: 1px;
         margin: 0 auto;
-    }
-
-   
-    .content{
-        width: 1100px;
-        height: auto;
-        border: 1px;
-        margin: 0 auto;
-        text-align: center;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left: 10px;
-        
-
+        margin-bottom: 100px;
     }
 
     .content-item{
@@ -125,7 +94,6 @@
         margin-top: 20px;
         margin-right: 15px;
         background-color: rgba(83, 82, 82, 0.65)
-
     }
 
     .content-item:hover{
@@ -137,7 +105,6 @@
     	padding-top: 15px;
         width: 200px;
         text-align: center;
-        
     }
     
     .content-item-title{
@@ -155,15 +122,11 @@
         padding-right: 15px;
         color: white;
     }
-
-   
     
     .content-head{
         display: flex;
         justify-content: space-between;
     }
-
-   
 
     #head-count{
         text-align: right;
@@ -200,10 +163,8 @@
         color: white;
     }
     
-    
     a{
         color: white;
-        
     }
 
     option:hover {
@@ -231,33 +192,25 @@
     /* 
         디테일 뷰 스타일
     */
-
-    .photo{
-        margin-top: 10px;
-        width: 550px;
-        height: 650px;
-        background-color: white;
-        align-items: center;
-    }
-    .big-photo{
-        padding-left: 40px;
-        padding-top: 20px;
-        padding-bottom: 10px;
-        width: 510px;
-        align-items: center;
-        display: center;
-    }
-
-    /* body{
+    .main-photo{
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 100vh;
-    } */
+    }
 
-    /* .container{
-        height: 100px;
-    } */
+    .photo{
+        width: 550px;
+        height: max-content;
+        background-color: white;
+        align-items: center;
+        padding: 20px;
+        border-radius: 8px;
+    }
+    .big-photo{
+        width: 510px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(96, 96, 96, 0.4);
+    }
 
     .slider-wrapper .slide-button{
         position: absolute;
@@ -285,15 +238,12 @@
 
     .slider-wrapper .slide-button#prev-slide{
         left: 0px;
-        /* transform: translateY(-80px); */
         display: none;
         margin-bottom: 10px;
     }
 
     .slider-wrapper .slide-button#next-slide{
         left: 510px;
-        
-        /* transform: translateY(+80px); */
     }
     
     .slider-wrapper .image-list {
@@ -314,6 +264,7 @@
         width: 200px;
         height: 120px;
         object-fit: cover;
+        border: 1px solid rgba(96, 96, 96, 0.4);
     }
 
     .container .slider-scrollbar{
@@ -363,26 +314,20 @@
         content 내용 css
     */
     .content{
-        margin-top: 10px;
         width: 550px;
-        height: 650px;
+        height: max-content;
         background-color: white;
-        align-items: center;
-    }
-
-    .sub-content{
-        margin-top: 10px;
-        width: 500px;
-        height: 600px;
-        background-color: #fff;
         margin: 0 auto;
+        padding: 30px;
+        border-radius: 8px;
+        text-align: center;
+        position: relative;
     }
 
     .icon{
         width: 500px;
         height: 50px;
         background-color: #fff;
-        
         margin-top: 10px;
         align-items: center;
     }
@@ -445,37 +390,19 @@
     .logo{
         display: block;
     }
-    /* .content-title > .logo{
-        display: inline-block;
-    } */
-
-    /* .a{
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        align-items: end;
-        bottom: -85px;
-        left: -22px;
-    } */
+  
     .content-title{
             align-items: center;
-    	/* justify-content: center; */
-    	display: flex;
+    	 justify-content: center; 
+    
     }
-
     .content-detail{
-        width: 400px;
         height: 400px;
-        padding-top: 50px;
-        
     	justify-content: center;
     	display: flex;
+        padding: 30px;
+        text-align: left;
     }
-
-    .a{
-        padding-left: 90px;
-    }
-
     .share-icon{border: none;
         opacity: 0.5;}
     .heart-icon{border: none;
@@ -493,8 +420,9 @@
         font-weight: bold;
         border: none;
         width: 300px;
-        height: 50px;
-
+        height: 40px;
+        border-radius: 4px;
+        font-size: 16px;
     }
     #content-btn:hover{
         cursor: pointer;
@@ -547,13 +475,59 @@
 		width:50px;
 		height: 50px;
 	}
+	
+	.hu-cancle-btn{
+        margin-right: 10px;
+        font-size: 13px;
+    }
 
+	.hu-cancle-btn:hover{
+		cursor: pointer;
+        opacity: 0.5;
+	}
+	
+	.hu-submit-btn{
+		cursor: pointer;
+        opacity: 0.5;
+        margin-right: 10px;
+        font-size: 13px;
+	}
+
+    .hu-submit-btn:hover{
+        opacity: 0.3;
+    }
+
+    .count{
+        display: flex;
+        justify-content: end;
+        font-size: 14px;
+    }
+    .hmd-close-btn{
+        width: 13px;
+        height: 13px;
+        cursor: pointer;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+    }
+    .data{
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+    }
+    .data-mem{
+        text-align: right;
+    }
+    .hu-btn-area{
+        display: flex;
+        flex-direction: row;
+    }
 </style>
 <script src="${pageContext.request.contextPath}/resources/js/helpmeboder.js"></script>
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
-	<div class = "nav">
+    <div class = "nav">
         <div class = "nav-center-items">
             <div class = "nav-item">
                 <div class="nav-item-content" >
@@ -591,11 +565,11 @@
                     <a href="#" style = "color : white;">미술</a>
                 </div>
             </div>
-           
+            
             <div class = "nav-item"><a href="#">&#62;</a></div>
         </div>
-   </div>
- <div class = "main">
+    </div>
+    <div class="main">
     	<div class = "photo">
             <div class = "main-photo">
                 <img class = "big-photo" src ="${b.changeName}" alt="메인사진">
@@ -604,11 +578,9 @@
                 <div class = "slider-wrapper">
                     <button id ="next-slide" class="slide-button material-symbols-rounded">&#62;</button>
                     <div class = "image-list">
-
                         <c:forEach var="at" items="${atlist}">
                             <img class ="image-item" src="${at.changeName}" alt="일러스트">
                         </c:forEach>
-            
                     </div>
                     <button id ="prev-slide" class="slide-button material-symbols-rounded">&#60;</button>
                 </div>
@@ -620,80 +592,51 @@
             </div>    
         </div>
         <div class = "content">
-            <div class= "sub-content">
-                <div class = "icon">
-                    <div class = "share">
-                        <button class="share-icon"><img src = "././resources/image/share.jpg" alt=""></button>
-                    </div>
-                    <div class = "heart">
-                        <button class="heart-icon"><img src = "././resources/image/heart.jpg" alt="하트 이미지"></button>
-                        <div class="heart-text"><h4>1,063</h4></div>
-                    </div>
+            <img src="././resources/icon/close.png" class="hmd-close-btn" onclick="prevAction()" alt="">               
+            <div class = "content-title">
+                <div class = "content-title-text">
+                    <text><h2>${b.boardTitle }</h2></text> 
                 </div>
-                <div class = "content-title">
-                    <div class = "content-title-text">
-                       <text><h2>${b.boardTitle }</h2></text> 
+                <div class = "modal actice">
+                    <div class = "modal-content">
+                        <a href="#none" class = "btn-close">x</a>
                     </div>
-                   
-
-                    <div class = "modal actice">
-                        <div class = "modal-content">
-                            <a href="#none" class = "btn-close">x</a>
-                            <div class = "modal-body">
-
+                </div>     
+                <div class = "a">               
+                    <div class="logo">          
+                        <div class = "data">
+                            <div class="data-mem">
+                                작성자 :  &nbsp;${b.memberName }
                             </div>
-
-                        </div>
-                    </div>
-                    
-                    <div class = "a">
-                        <div class="report">
-                            <img src="././resources/image/경고.jpg" alt="" class="report-icon">
-                            <button class = "report-btn">신고하기</button>
-                        </div>
-                        <div class="logo">
-                            <div class="star">
-                                <img src="././resources/image/stars.jpg" alt="" class="star-icon">
-                                <div class = "star-text">5.0/5</div>
-                            </div>
-                            <div class = "data">
-                                <div class="data-mem"></div>
-                                <div class="count"></div>
+                            <div style="display: flex; flex-direction: row; justify-content: end;">
+                                <div class="hu-btn-area">
+                                    <a class="hu-submit-btn" onclick="postBtn(1)">수정</a>
+                                    <a class="hu-cancle-btn" style="color: rgb(231, 76, 60);" onclick="postBtn(2)">삭제</a>
+                                </div>
+                                <div class="count">
+                                    <img src="././resources/icon/eye.png" style="width: 20px; height: 20px; margin-right: 10px;" alt="">
+                                    ${b.viewCount }
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class = "content-detail">
-                   ${b.boardContent }
-                    
-                </div>
-                <button id = "content-btn">구매하기zz</button>
-                  <form action="" method="post" id="form">
-        	<input type="hidden" name="boardNo" value="${b.boardNo}">
-        	<input type="hidden" name="filePath" value="${b.changeName}">
-        </form>
-
-        <div class="hu-btn-area">
-            <a class="hu-cancle-btn" onclick="postBtn(2)">삭제</a>
-            <a class="hu-submit-btn" style="color: white;" onclick="postBtn(1)">수정</a>
-
             </div>
             <div class = "content-detail">
             <pre style="width: 100%; height: 100%;">
 ${b.boardContent }
             </pre>
             </div>
-            <button id="content-btn">채팅하기</button>
+            <button id = "content-btn">채팅하기</button>
             <form action="" method="post" id="form">
                 <input type="hidden" name="boardNo" value="${b.boardNo}">
                 <input type="hidden" name="filePath" value="${b.changeName}">
-            </form> 
-
+            </form>
         </div>
-</div>
-
+    </div>
 <%@ include file="../common/footer.jsp" %>
+
+
 
 </body>
 </html>

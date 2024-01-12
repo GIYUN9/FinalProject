@@ -33,7 +33,12 @@ public class BoardServiceImpl implements BoardService {
 	public ArrayList<Board> helpselectList(PageInfo pi) {
 		return boardDao.helpselectList(sqlSession, pi);
 	}
-
+	
+	//도와줄게요 카테고리별 조회
+	public ArrayList<Board> helpCategoryList(PageInfo pi) {
+		return boardDao.helpCategoryList(sqlSession, pi);
+	}
+	
 	//게시글 등록
 	@Override
 	//도와줄게요 게시판 등록
@@ -72,6 +77,13 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int seleteHelpListCount() {
 		return boardDao.seleteHelpListCount(sqlSession);
+	}
+	
+	//도와줄게요 카테고리별 리스트 count 조회
+	@Override
+	public int helpCategoryCount(int categoryNo) {
+		
+		return boardDao.helpCategoryCount(sqlSession, categoryNo);
 	}
 	
 	//도와줄게요 보드번호 가져오는 중간 쿼리

@@ -16,36 +16,38 @@
 <script src="././resources/js/helpboder.js"></script>
 
 
-
-
 </head>
 <body>
 <%@ include file = "../common/header.jsp"%>
    <div class="nav">
+        <div class="nav-item">
+            <div class="aaa">
+                <a href="helpList.bo" style="color: white;">전체보기</a>
+            </div>
+        </div>
+        <div class = "nav-item">
+            <a id = "leftButton" href="#">
+                <img class="arrow-img" src="./resources/icon/menu-left-arrow.png" alt="">
+            </a>
+        </div>
+
         <div class="nav-center-items">
-            <div class="nav-item">
-                <div class="aaa">
-                    <a href="#" style="color: white;">전체보기</a>
+        
+        <!-- 카테고리 버튼 슬라이드 기능(제이쿼리 사용) -->
+            <div class = "slide-container">
+                <div class="scroll-area">
+                    <c:forEach var="c" items="${cList}">
+                        <div class = "nav-item">
+                            <div class="aaa">
+                                <a href="#" style="color: white;" class="catelist" id="clickedElement" data-category-no="${c.categoryNo}"   onclick="categoryList(this)">${c.categoryName}</a>
+                            </div>
+                        </div>
+                    </c:forEach>
                 </div>
             </div>
-            <div class = "nav-item">
-                <a href="#">
-                    <img class="arrow-img" src="./resources/icon/menu-left-arrow.png" alt="">
-                </a>
-            </div>
-            <div class="scroll-area">
-	            <c:forEach var="c" items="${cList}">
-	            	<div class = "nav-item">
-		                <div class="aaa">
-		                    <a href="#" style="color: white;" class="catelist" id="clickedElement"  onclick="categoryList(this)">${c.categoryName}</a>
-		                </div>
-	            	</div>
-	            </c:forEach>
-            </div>
-            
             
             <div class = "nav-item">
-                <a href="#">
+                <a id = "rightButton" href="#">
                     <img class="arrow-img" src="./resources/icon/menu-right-arrow.png" alt="">
                 </a>
             </div>
@@ -54,10 +56,10 @@
    <div class = "back-ground">
         <div class="main">
             <div class = "category" style="display: inline-block;">
-                <div class = "category-item"><a href="#">광고 홍보</a></div>
+                <!-- <div class = "category-item"><a href="#">광고 홍보</a></div>
                 <div class = "category-item"><a href="#">드론 촬영</a></div>
                 <div class = "category-item"><a href="#">홍보 사진</a></div>
-                <div class = "category-item"><a href="#">사진 보정</a></div>     
+                <div class = "category-item"><a href="#">사진 보정</a></div>      -->
             </div>
             <div class = "content">
                 <div class = "content-head">
@@ -253,13 +255,39 @@
         </div>   
     </div>
    
-<%@ include file = "../common/footer.jsp"%>     
-   <!-- <script>
-    $(document).ready(function(){
-        $('#category-item').on('change', function(){
-            alert(this) // 여기에 원하는 액션값 입력
-        })
-    })
+<%@ include file = "../common/footer.jsp"%>  
+
+<!-- 스크롤 스크립트 -->
+<!-- <script>
+   document.addEventListener('DOMContentLoaded', function () {
+        const itemsPerPage = 5;
+        const scrollArea = document.querySelector('.scroll-area');
+        const navItems = document.querySelectorAll('.nav-item');
+        let currentIndex = 0;
+
+        // 좌측 버튼 클릭 시
+        document.getElementById('leftButton').addEventListener('click', function () {
+            if (currentIndex > 0) {
+                currentIndex -= itemsPerPage;
+                updateSlider();
+            }
+        });
+
+        // 우측 버튼 클릭 시
+        document.getElementById('rightButton').addEventListener('click', function () {
+            if (currentIndex < navItems.length - itemsPerPage) {
+                currentIndex += itemsPerPage;
+                updateSlider();
+            }
+        });
+
+        // 슬라이더 업데이트 함수
+        function updateSlider() {
+            const translateValue = -currentIndex * navItems[0].offsetWidth;
+            scrollArea.style.transform = 'translateX(' + translateValue + 'px)';
+            console.log('Slider updated. Current Index: ', currentIndex);
+        }
+    });
 </script> -->
  <!-- 
  <script>

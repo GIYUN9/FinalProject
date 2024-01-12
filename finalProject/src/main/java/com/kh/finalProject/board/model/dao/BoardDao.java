@@ -35,6 +35,14 @@ public class BoardDao {
 		return (ArrayList)sqlSession.selectList("boardMapper.helpselectList", null, rowBounds);
 	}
 	
+	public ArrayList<Board> helpCategoryList(SqlSessionTemplate sqlSession, PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		return (ArrayList)sqlSession.selectList("boardMapper.helpCategoryList", null, rowBounds);
+	}
+	
 	
 	public int helpinsertBoard(SqlSessionTemplate sqlSession, Board b) {
 		return sqlSession.insert("boardMapper.helpinsertBoard", b);
@@ -79,6 +87,11 @@ public class BoardDao {
 	
 	public int seleteHelpListCount(SqlSessionTemplate sqlSeesion) {
 		return sqlSeesion.selectOne("boardMapper.seleteHelpListCount");
+	}
+	
+	public int helpCategoryCount(SqlSessionTemplate sqlSession, int categoryNo) {
+	
+		return sqlSession.selectOne("boardMapper.helpCategoryCount", categoryNo);
 	}
 	
 	public int deleteNotice(SqlSessionTemplate sqlSeesion, Notice n) {

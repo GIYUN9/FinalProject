@@ -44,12 +44,18 @@ public interface BoardService {
 	
 	//도와줄게요 리스트조회
 	ArrayList<Board> helpselectList(PageInfo pi);
+	
+	//도와줄게요 카테고리별 리스트 조회
+	ArrayList<Board> helpCategoryList(PageInfo pi);
 		
 	//도와줄게요 게시글 상세조회
 	Board helpSelectBoard(int boardNo);
 	
 	//도와줄게요 게시판 리스트 count(*)조회
 	int seleteHelpListCount();
+	
+	//도와줄게요 카테고리별 리스트 count 조회
+	int helpCategoryCount(int categoryNo);
 
 	//얼마예요 궁금해요 등 게시글 상세조회
 	Board selectCommBoard(int boardNo);
@@ -120,6 +126,7 @@ public interface BoardService {
 	
 	//도와주세요 게시판 리스트 count(*)조회
 	int seleteHelpmeListCount();
+	
 	
 	//도와주세요 날짜순 리스트
 	ArrayList<Board> helpmeDateCheck(Board b, PageInfo pi);

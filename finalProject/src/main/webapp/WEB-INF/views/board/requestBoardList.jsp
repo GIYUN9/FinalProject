@@ -17,58 +17,40 @@
 </head>
 <body>
 <%@ include file = "../common/header.jsp"%>
-   <div class = "nav">
-        <div class = "nav-center-items">
-            <div class="nav-item">
-                <div class="aaa">
-                    <a href="#" style="color: white;">전체보기</a>
-                </div>
+    <div class="nav">
+        <div class="nav-item">
+            <div class="aaa">
+                <a href="#" style="color: white;">전체보기</a>
             </div>
-            <div class = "nav-item">
-                <a href="#">
-                    <img class="arrow-img" src="./resources/icon/menu-left-arrow.png" alt="">
-                </a>
+        </div>
+        <div class = "nav-item">
+            <a id = "leftButton" href="#">
+                <img class="arrow-img" src="./resources/icon/menu-left-arrow.png" alt="">
+            </a>
+        </div>
+
+        <div class="nav-center-items">
+        
+        <!-- 카테고리 버튼 슬라이드 기능(제이쿼리 사용) -->
+            <div class = "slide-container">
+                <div class="scroll-area">
+                    <c:forEach var="c" items="${cList}">
+                        <div class = "nav-item">
+                            <div class="aaa">
+                                <a href="#" style="color: white;" class="catelist" id="clickedElement"  onclick="categoryList(this)">${c.categoryName}</a>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
             </div>
             
-            
             <div class = "nav-item">
-                <div class="aaa">
-                    <a href="#"  style="color: white;">취미,레슨</a>
-                </div>
-            </div>
-            <div class = "nav-item">
-                <div class="aaa">
-                    <a href="#" style="color: white;">디자인</a>
-                </div>
-            </div>
-            <div class = "nav-item">
-                <div class="aaa">
-                    <a href="#" style="color: white;">마케팅</a>
-                </div>
-            </div>
-            <div class = "nav-item">
-                <div class="aaa">
-                    <a href="#" style="color: white;">운동</a>
-                </div>
-            </div>
-            <div class = "nav-item">
-                <div class="aaa">
-                    <a href="#" style="color: white;">게임</a>
-                </div>
-            </div>
-            <div class = "nav-item">
-                <div class="aaa">
-                    <a href="#" style="color: white;">미술</a>
-                </div>
-            </div>
-           
-            <div class = "nav-item">
-                <a href="#">
+                <a id = "rightButton" href="#">
                     <img class="arrow-img" src="./resources/icon/menu-right-arrow.png" alt="">
                 </a>
             </div>
         </div>
-   </div>
+    </div>
    <div class = "back-ground">
         <div class="main">
             <div class = "category" style="display: inline-block;">

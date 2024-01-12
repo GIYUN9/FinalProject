@@ -79,6 +79,22 @@ public class BoardController {
 			return mv;
 	}
 	
+	//카테고리 별 도와줄게요 이동 페이지
+	@RequestMapping(value="helpCategoryList.bo")
+	public ModelAndView helpCategoryList(@RequestParam(name = "categoryNo") int categoryNo, @RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv) {
+		
+		int listCount = boardService.helpCategoryCount(categoryNo);
+		
+		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
+		
+		ArrayList<Board> list = boardService.helpCategoryList(pi);
+		
+		//카테고리 불러오기
+		ArrayList<Category> cList = boardService.selectCategoryList();
+		System.out.println("여기까지여기까지!!!!!");
+		return mv;
+	}
+	
 	//도와줄게요 날짜순으로 보이게 하는 리스트
 	 @RequestMapping(value = "helpDateList", method = RequestMethod.GET)
 	 public ModelAndView helpDateList(@RequestParam(value="cpage", defaultValue="1") int currentPage, Board b, ModelAndView mv) {
@@ -511,20 +527,22 @@ public class BoardController {
 	}
 	
 	
-	//도와주세요 전체 조회
+	//도와주세요 리스트
 	@RequestMapping(value="helpmeList.bo")
 	public ModelAndView helpmeselectList(@RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv) {
 		int listCount = boardService.seleteHelpmeListCount();
-		
-		
+			
 		PageInfo pi =  Pagenation.getPageInfo(listCount, currentPage, 5, 8);
 		System.out.println(pi);
 		ArrayList<Board> list = boardService.helpmeselectList(pi);
 		System.out.println(list);
 		
+		ArrayList<Category> cList = boardService.selectCategoryList();
+		
 		mv.addObject("pi",pi)
 		  .addObject("list",list)
 		  .addObject("mType","helpmeList.bo")
+		  .addObject("cList", cList)
 		  .setViewName("board/requestBoardList");
 			
 		return mv;
@@ -893,6 +911,8 @@ public class BoardController {
 		}
 		return "redirect:/reportList.rp";
 	}
+	
+	
 	
 //	스크립트 기능 후 가진 정보 보내주는 기능 
 //	나중에 작성!
