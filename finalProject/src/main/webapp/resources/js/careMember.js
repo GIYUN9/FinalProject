@@ -184,7 +184,7 @@ function updateMemberTable(data) {
             '<td>' + member.memberNo + '</td>' +
             '<td>' + member.memberEmail + '</td>' +
             '<td>' + member.memberName + '</td>' +
-            '<td>' + (member.memberPro === 1 ? '일반회원' : '') + '</td>' +
+            '<td>' + (member.status === 'Y' ? '일반회원' : '탈퇴회원') + '</td>' +
             '<td>' + member.enrollDate + '</td>' +
             '</tr>';
         $('#memberTable tbody').append(newRow);

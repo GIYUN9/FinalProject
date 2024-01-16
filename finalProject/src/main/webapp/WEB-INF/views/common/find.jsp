@@ -115,8 +115,10 @@
 		.content{
 			font-size: 13px;
 			height: 35px;
-    		text-overflow: ellipsis;
+			text-overflow: ellipsis;
 			color: #737373;
+			white-space: nowrap;
+			overflow: hidden;
 		}
 		.shortcut-img{
 			width: 15px;
