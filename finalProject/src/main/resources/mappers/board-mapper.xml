@@ -96,7 +96,14 @@
  		 WHERE BOARD_TYPE = 1
  		AND STATUS = 'Y'
  	</select>
- 	
+ 	<!-- 도와줄게요 카테고리별 게시글 총 갯수 조회 -->
+ 	<select id="helpCategoryCount" resultType="_int">
+ 		SELECT COUNT(*)
+ 		  FROM BOARD
+ 		 WHERE BOARD_TYPE = 1
+ 		AND STATUS = 'Y'
+ 		AND CATEGORY_NO = #{categoryNo}	
+ 	</select>
  	<!-- 도와줄게요 게시글 전체 조회 -->
  	<select id="helpselectList" resultMap="boardResult">
  		SELECT  B.BOARD_NO,
@@ -108,9 +115,23 @@
         JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
  		 WHERE B.BOARD_TYPE = 1
          AND B.STATUS = 'Y'
-         AND A.FILE_LEVEL = 1
+         AND A.FILE_LEVEL =1
          AND A.STATUS = 'Y'
-         ORDER BY CREATEDATE DESC
+ 	</select>
+ 	<!-- 도와줄게요 카테고리별 조회 -->
+ 	<select id="helpCategoryList" resultMap="boardResult">
+ 		SELECT  B.BOARD_NO,
+ 			  	B.BOARD_TITLE,
+ 			   	B.PRICE,
+ 			   	A.FILE_PATH,
+               	A.CHANGE_NAME
+ 		FROM BOARD B
+        JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
+ 		 WHERE B.BOARD_TYPE = 1
+         AND B.STATUS = 'Y'
+         AND A.FILE_LEVEL =1
+         AND A.STATUS = 'Y'
+         AND B.CATEGORY_NO = #{categoryNo}
  	</select>
  	
  	<!-- 도와줄게요 게시글 상세조회 관련 쿼리문 -->
@@ -530,14 +551,18 @@
 		        PRICE,
 		        CREATEDATE,
 		        MEM_NAME,
-		        CATEGORY_NAME
+		        CATEGORY_NAME,
+		        LIKEY_COUNT,
+		        VIEW_COUNT
 		FROM (SELECT B.BOARD_NO,
 		        B.BOARD_TITLE,
 		        B.BOARD_CONTENT,
 		        B.PRICE,
 		        B.CREATEDATE,
 		        M.MEM_NAME,
-		        C.CATEGORY_NAME
+		        C.CATEGORY_NAME,
+		        B.LIKEY_COUNT,
+		        B.VIEW_COUNT
 		FROM BOARD B, MEMBER M, CATEGORY C
 		WHERE (B.MEM_NO=M.MEM_NO)
 		AND (B.CATEGORY_NO=C.CATEGORY_NO)
@@ -553,14 +578,18 @@
 		        PRICE,
 		        CREATEDATE,
 		        MEM_NAME,
-		        CATEGORY_NAME
+		        CATEGORY_NAME,
+		        LIKEY_COUNT,
+		        VIEW_COUNT
 		FROM (SELECT B.BOARD_NO,
 		        B.BOARD_TITLE,
 		        B.BOARD_CONTENT,
 		        B.PRICE,
 		        B.CREATEDATE,
 		        M.MEM_NAME,
-		        C.CATEGORY_NAME
+		        C.CATEGORY_NAME,
+		        B.LIKEY_COUNT,
+		        B.VIEW_COUNT
 		FROM BOARD B, MEMBER M, CATEGORY C
 		WHERE (B.MEM_NO=M.MEM_NO)
 		AND (B.CATEGORY_NO=C.CATEGORY_NO)
@@ -576,14 +605,18 @@
 		        PRICE,
 		        CREATEDATE,
 		        MEM_NAME,
-		        CATEGORY_NAME
+		        CATEGORY_NAME,
+		        LIKEY_COUNT,
+		        VIEW_COUNT
 		FROM (SELECT B.BOARD_NO,
 		        B.BOARD_TITLE,
 		        B.BOARD_CONTENT,
 		        B.PRICE,
 		        B.CREATEDATE,
 		        M.MEM_NAME,
-		        C.CATEGORY_NAME
+		        C.CATEGORY_NAME,
+		        B.LIKEY_COUNT,
+		        B.VIEW_COUNT
 		FROM BOARD B, MEMBER M, CATEGORY C
 		WHERE (B.MEM_NO=M.MEM_NO)
 		AND (B.CATEGORY_NO=C.CATEGORY_NO)
@@ -606,8 +639,24 @@
          AND B.STATUS = 'Y'	
          AND A.FILE_LEVEL = 1
          AND A.STATUS = 'Y'
-         ORDER BY CREATEDATE DESC
 	</select>
+	
+	<!-- 도와주세요 게시글 카테고리 별 조회 -->
+	<select id="helpmeCategoryList" resultMap="boardResult">
+		SELECT  B.BOARD_NO,
+ 			  	B.BOARD_TITLE,
+ 			   	B.PRICE,
+ 			   	A.FILE_PATH,
+               	A.CHANGE_NAME
+ 		FROM BOARD B
+        JOIN ATTACHMENT A ON (B.BOARD_NO = A.BOARD_NO)
+ 		 WHERE B.BOARD_TYPE = 2
+         AND B.STATUS = 'Y'	
+         AND A.FILE_LEVEL = 1
+         AND A.STATUS = 'Y'
+         AND B.CATEGORY_NO = #{categoryNo}
+	</select>
+	
 	
 	<!-- 도와주세요 총 갯수 조회 -->
 	<select id="seleteHelpmeListCount" resultType="_int">
@@ -616,6 +665,16 @@
 		WHERE BOARD_TYPE = 2
 		AND	STATUS = 'Y'
 	</select>
+	
+	<!-- 도와주세요 카테고리 총 개수 조회 -->
+	<select id="helpmeCategoryCount" resultType="_int">
+		SELECT COUNT(*)
+			FROM BOARD
+		WHERE BOARD_TYPE = 2
+		AND	STATUS = 'Y'
+		AND CATEGORY_NO = #{categoryNo}
+	</select>
+	
 	
 	<!-- 도와주세요 게시글 등록  -->
 	<insert id="helpmeInsertBoard">
