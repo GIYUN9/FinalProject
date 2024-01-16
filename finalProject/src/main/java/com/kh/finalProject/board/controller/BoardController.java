@@ -87,13 +87,24 @@ public class BoardController {
 		
 		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
 		
-		ArrayList<Board> list = boardService.helpCategoryList(pi);
+		ArrayList<Board> list = boardService.helpCategoryList(pi, categoryNo);
+		System.out.println("ddd list : " + list);
 		
-		//카테고리 불러오기
+		//위에 뜨는 카테고리 불러오기
 		ArrayList<Category> cList = boardService.selectCategoryList();
-		System.out.println("여기까지여기까지!!!!!");
+		System.out.println("여기까지여기까지!!!!! cList : " + cList);
+		
+		mv.addObject("pi", pi)
+			.addObject("list",list)
+			.addObject("lType", "helpCategoryList.bo")
+			.addObject("cList", cList)
+			.setViewName("board/helpCategoryList");;
+			
 		return mv;
 	}
+	
+	
+
 	
 	//도와줄게요 날짜순으로 보이게 하는 리스트
 	 @RequestMapping(value = "helpDateList", method = RequestMethod.GET)
@@ -547,6 +558,32 @@ public class BoardController {
 			
 		return mv;
 	}
+	
+	//도와주세요 카테고리 별 도와주세요이동 페이지
+	@RequestMapping(value="helpmeCategoryList.bo")
+	public ModelAndView helpmeCategoryList(@RequestParam(name = "categoryNo") int categoryNo, @RequestParam(value="cpage", defaultValue="1") int currentPage, ModelAndView mv) {
+		
+		int listCount = boardService.helpmeCategoryCount(categoryNo);
+		System.out.println("도와주세요 카테고리 별 개수 : " + listCount);
+		
+		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
+		
+		ArrayList<Board> list = boardService.helpmeCategoryList(pi, categoryNo);
+		System.out.println("도와주세요 list : " + list);
+		
+		//위에 뜨는 카테고리 불러오기
+		ArrayList<Category> cList = boardService.selectCategoryList();
+		System.out.println("도와주세요!!!!! cList : " + cList);
+		
+		mv.addObject("pi", pi)
+			.addObject("list",list)
+			.addObject("mType", "helpmeCategoryList.bo")
+			.addObject("cList", cList)
+			.setViewName("board/helpmeCategoryList");
+			
+		return mv;
+	}
+	
 	
 	//도와주세요 게시글 작성 페이지
 	@RequestMapping(value = "helpmeForm.bo")

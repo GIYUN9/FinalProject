@@ -24,7 +24,7 @@ function resetList() {
     location.href = "helpList.bo";
 }
 
-//카테고리 별 클릭했을 시 Controller로 이동! 
+//도와줄게요 카테고리 별 클릭했을 시 Controller로 이동! 
 
 function categoryList(element){
 	 const categoryNo = element.getAttribute('data-category-no');

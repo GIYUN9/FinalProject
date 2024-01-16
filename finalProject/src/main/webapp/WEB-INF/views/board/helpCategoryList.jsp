@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>도와줄게요 전체 게시판</title>
+<title>도와줄게요 카테고리별 게시판</title>
 
 
 <link rel="stylesheet" type="text/css" href="././resources/css/helpboder.css">
@@ -29,7 +29,6 @@
         top: 400px;
     }
 </style>
-
 </head>
 <body>
 <%@ include file = "../common/header.jsp"%>
@@ -95,7 +94,7 @@
 	                               <option class = "category-item-list" value="date" id="date" selected >날짜순</option>
 	                               <option class = "category-item-list" value="check" id="count">조회순</option>
                                 </c:if>
-                                <c:if test="${lType eq 'helpList.bo'}">
+                                <c:if test="${lType eq 'helpCategoryList.bo'}">
 	                               <option class = "category-item-list" value="date" id="date">날짜순</option>
 	                               <option class = "category-item-list" value="check" id="count">조회순</option>
                                 </c:if>

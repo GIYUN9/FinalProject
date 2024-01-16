@@ -35,12 +35,12 @@ public class BoardDao {
 		return (ArrayList)sqlSession.selectList("boardMapper.helpselectList", null, rowBounds);
 	}
 	
-	public ArrayList<Board> helpCategoryList(SqlSessionTemplate sqlSession, PageInfo pi) {
+	public ArrayList<Board> helpCategoryList(SqlSessionTemplate sqlSession, PageInfo pi, int categoryNo) {
 		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
 		int limit = pi.getBoardLimit();
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
-		return (ArrayList)sqlSession.selectList("boardMapper.helpCategoryList", null, rowBounds);
+		return (ArrayList)sqlSession.selectList("boardMapper.helpCategoryList", categoryNo, rowBounds);
 	}
 	
 	
@@ -175,9 +175,25 @@ public class BoardDao {
 		return (ArrayList)sqlSession.selectList("boardMapper.helpmeselectList", null, rowBounds);
 	}
 	
+	public ArrayList<Board> helpmeCategoryList(SqlSessionTemplate sqlSession, PageInfo pi, int categoryNo) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		return (ArrayList)sqlSession.selectList("boardMapper.helpmeCategoryList", categoryNo, rowBounds);
+	}
+	
+	
+	
 	public int seleteHelpmeListCount(SqlSessionTemplate sqlSeesion) {
 		return sqlSeesion.selectOne("boardMapper.seleteHelpmeListCount");
 	}
+	
+	public int helpmeCategoryCount(SqlSessionTemplate sqlSession, int categoryNo) {
+		
+		return sqlSession.selectOne("boardMapper.helpmeCategoryCount", categoryNo);
+	}
+	
 	
 	public int helpmeInsertBoard(SqlSessionTemplate sqlSession, Board b) {
 		return sqlSession.insert("boardMapper.helpmeInsertBoard", b);

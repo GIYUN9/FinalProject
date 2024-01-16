@@ -24,6 +24,18 @@ function resetList() {
     location.href = "helpmeList.bo";
 }
 
+
+//도와주세요 카테고리 별 클릭했을 시 Controller로 이동! 
+
+function categorymeList(element){
+	 const categoryNo = element.getAttribute('data-category-no');
+	 
+	 console.log(categoryNo);
+	 
+	 location.href = "helpmeCategoryList.bo?categoryNo=" + categoryNo;
+	
+}
+
 document.addEventListener('DOMContentLoaded', function () {
         const itemsPerPage = 5;
         const scrollArea = document.querySelector('.scroll-area');
