@@ -12,11 +12,14 @@
     display: flex;
     align-items: center;
     margin-top: 70px;
+    
 }
 
 .nav-center-items{
     display: flex;
-    margin: auto;
+    margin: 10px;
+    overflow: hidden;
+        
 }
 
 .nav-item{
@@ -35,6 +38,7 @@
 .scroll-area{
     display: flex;
     flex-direction: row;
+    width: 850px;
 }
 
 /* a::after{
@@ -466,6 +470,18 @@ body{
 		border: none; 
 		cursor: pointer;
     }
+    
+   /* 슬라이드 css*/
+   
+   .slider-container{
+   		width : 100%;
+   		overflow : hidden;
+   }
+   
+   .scroll-area{
+   		display : flex;
+   		transition: transform 0.5s ease-in-out;
+   }
     
   
     
