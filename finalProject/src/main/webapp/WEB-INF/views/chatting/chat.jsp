@@ -85,9 +85,11 @@
 	    </footer>
     
     <script>
+    	//뒤로 가기 키
         function prevAction(){
         	location.href = 'chatRoom.ch';
         }
+        
         //socket연결 요청
         const socket = new WebSocket("ws://localhost:5555/finalProject/chat");
 
@@ -158,8 +160,15 @@
         }
 	
         function sendMsg(){
+        	
+        	const msgCoValue = document.querySelector("input[name=msgCo]").value
+        	
+            if (!msgCoValue || msgCoValue.trim() === "") {
+                return;
+            }
+        	
         	const msgData = {
-        			message : document.querySelector("input[name=msgCo]").value,
+        			message : msgCoValue,
         			target : document.querySelector("input[name=target]").value
         	}
 

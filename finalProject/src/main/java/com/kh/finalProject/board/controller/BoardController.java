@@ -949,7 +949,11 @@ public class BoardController {
 		return "redirect:/reportList.rp";
 	}
 	
-	
+	//요청/결제 창으로 전환
+	@RequestMapping(value = "paymentPage.pay")
+	public String paymentPage() {
+		return "board/paymentPage";
+	}
 	
 //	스크립트 기능 후 가진 정보 보내주는 기능 
 //	나중에 작성!

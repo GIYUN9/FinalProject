@@ -373,9 +373,7 @@
 						</div>
 						<div style="width: 100%;">
 							<div style="float: left; margin-top: 20px; margin-bottom: 5px;">요청자 메세지</div>
-							<textarea class="modal-textarea" style="width: 100%; height: 150px; text-align: left; padding: 5px;" readonly="readonly">
-								${s.scheContent}
-							</textarea>
+							<pre class="modal-textarea" style="width: 100%; height: 150px; text-align: left; padding: 5px;" readonly="readonly">${s.scheContent}</pre>
 						</div>
 						<div style="display: flex; flex-direction: row; justify-content: flex-end; width: 100%;" >
 							<button type="button" class="schedule-btn" style="background-color: rgb(218, 76, 60); width: 110px;" onclick="refuse()">거절 하기</button>
