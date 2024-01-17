@@ -253,7 +253,7 @@
 		</div>
 		<div class="main-box">
 			<div class="centerTitle">
-				<h3 style="margin: 10px 0 0 20px;">문의 내역</h3>
+				<h3 style="margin: 10px 0 0 20px;">문의(신고) 내역</h3>
 				<c:if test="${loginUser != null && loginUser.memberName != '관리자'}">
 					<a class="ask-write-btn" style="color: white; margin-top: 20px; margin-right: 20px;"  onclick="reportEnrollFrom()">
 						<img class="write-icon" src="././resources/icon/pencil.png" alt="">
@@ -300,7 +300,7 @@
 								</div>
 							</div>
 							<div class="req-btn-area">
-								<button class="req-answer-btn" style="position: absolute; bottom: 66px;">답변 대기 중</button>
+								<button class="req-answer-btn" style="bottom: 66px;">답변 대기 중</button>
 							</div>
 						</div>
 					</c:forEach>
