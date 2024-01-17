@@ -115,8 +115,10 @@
 		.content{
 			font-size: 13px;
 			height: 35px;
-    		text-overflow: ellipsis;
+			text-overflow: ellipsis;
 			color: #737373;
+			white-space: nowrap;
+			overflow: hidden;
 		}
 		.shortcut-img{
 			width: 15px;
@@ -338,18 +340,18 @@
 											${q.boardTitle}
 											<img class="view-count-img" src="./resources/icon/eye.png" alt="">
 											<div class="view-count">
-												100
+												${q.viewCount}
 											</div>
 										</div>
 										<div class="content">
 											${q.boardContent}
 											<img class="like-img" src="./resources/icon/LIKE.png" alt="">
 											<div class="like-count">
-												12
+												${q.likeyCount}
 											</div>
 											<img class="comment-img" src="./resources/icon/speech-bubble.png" alt="">
 											<div class="comment-count">
-												8
+												X
 											</div>
 										</div>
 										<hr class="board-sep-line">
@@ -387,18 +389,18 @@
 											${p.boardTitle}
 											<img class="view-count-img" src="./resources/icon/eye.png" alt="">
 											<div class="view-count">
-												100
+												${p.viewCount}
 											</div>
 										</div>
 										<div class="content">
 											${p.boardContent}
 											<img class="like-img" src="./resources/icon/LIKE.png" alt="">
 											<div class="like-count">
-												12
+												${p.likeyCount}
 											</div>
 											<img class="comment-img" src="./resources/icon/speech-bubble.png" alt="">
 											<div class="comment-count">
-												8
+												X
 											</div>
 										</div>
 										<hr class="board-sep-line">
@@ -436,18 +438,18 @@
 											${to.boardTitle}
 											<img class="view-count-img" src="./resources/icon/eye.png" alt="">
 											<div class="view-count">
-												100
+												${to.viewCount}
 											</div>
 										</div>
 										<div class="content">
 											${to.boardContent}
 											<img class="like-img" src="./resources/icon/LIKE.png" alt="">
 											<div class="like-count">
-												12
+													${to.likeyCount}
 											</div>
 											<img class="comment-img" src="./resources/icon/speech-bubble.png" alt="">
 											<div class="comment-count">
-												8
+												X
 											</div>
 										</div>
 										<hr class="board-sep-line">

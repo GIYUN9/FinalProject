@@ -33,7 +33,6 @@
     .nav-item{
         font-size: 18px;
         height: 40px;
-        
         padding-left: 70px;
         text-align: center;
         font-weight: bold;
@@ -513,8 +512,11 @@
     }
     .data{
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: end;
+    }
+    .data-mem{
+        text-align: right;
     }
     .hu-btn-area{
         display: flex;
@@ -525,7 +527,7 @@
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
-	<div class = "nav">
+    <div class = "nav">
         <div class = "nav-center-items">
             <div class = "nav-item">
                 <div class="nav-item-content" >
@@ -563,12 +565,12 @@
                     <a href="#" style = "color : white;">미술</a>
                 </div>
             </div>
-           
+            
             <div class = "nav-item"><a href="#">&#62;</a></div>
         </div>
-   </div>
+    </div>
     <div class="main">
-        <div class = "photo">
+    	<div class = "photo">
             <div class = "main-photo">
                 <img class = "big-photo" src ="${b.changeName}" alt="메인사진">
             </div>
@@ -590,7 +592,7 @@
             </div>    
         </div>
         <div class = "content">
-            <img src="././resources/icon/close.png" class="hmd-close-btn" onclick="prevAction()" alt="">
+            <img src="././resources/icon/close.png" class="hmd-close-btn" onclick="prevAction()" alt="">               
             <div class = "content-title">
                 <div class = "content-title-text">
                     <text><h2>${b.boardTitle }</h2></text> 
@@ -603,13 +605,18 @@
                 <div class = "a">               
                     <div class="logo">          
                         <div class = "data">
-                            <div class="hu-btn-area">
-                                <a class="hu-submit-btn" onclick="postBtn(1)">수정</a>
-                                <a class="hu-cancle-btn" style="color: rgb(231, 76, 60);" onclick="postBtn(2)">삭제</a>
-                            </div> 
-                            <div class="count">
-                                <img src="././resources/icon/eye.png" style="width: 20px; height: 20px; margin-right: 10px;" alt="">
-                                 ${b.memberNo }
+                            <div class="data-mem">
+                                작성자 :  &nbsp;${b.memberName }
+                            </div>
+                            <div style="display: flex; flex-direction: row; justify-content: end;">
+                                <div class="hu-btn-area">
+                                    <a class="hu-submit-btn" onclick="postBtn(1)">수정</a>
+                                    <a class="hu-cancle-btn" style="color: rgb(231, 76, 60);" onclick="postBtn(2)">삭제</a>
+                                </div>
+                                <div class="count">
+                                    <img src="././resources/icon/eye.png" style="width: 20px; height: 20px; margin-right: 10px;" alt="">
+                                    ${b.viewCount }
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -620,19 +627,16 @@
 ${b.boardContent }
             </pre>
             </div>
-            <button id="content-btn">채팅하기</button>
+            <button id = "content-btn">채팅하기</button>
             <form action="" method="post" id="form">
                 <input type="hidden" name="boardNo" value="${b.boardNo}">
                 <input type="hidden" name="filePath" value="${b.changeName}">
-            </form> 
+            </form>
         </div>
     </div>
-
 <%@ include file="../common/footer.jsp" %>
-<script>
-        function prevAction(){
-            history.go(-1);
-        }
-</script>
+
+
+
 </body>
 </html>

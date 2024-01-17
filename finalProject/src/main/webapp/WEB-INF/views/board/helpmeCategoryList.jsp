@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>도와주세요 전체 게시판</title>
+<title>도와주세요 카테고리 별 게시판</title>
 
 <link rel="stylesheet" type="text/css" href="././resources/css/helpmeboder.css">
 
@@ -27,6 +27,7 @@
         top: 400px;
     }
 </style>
+
 </head>
 <body>
 <%@ include file = "../common/header.jsp"%>
@@ -66,8 +67,7 @@
     </div>
    <div class = "back-ground">
         <div class="main">
-
-            <!-- 광고를 넣어볼까? -->
+              <!-- 광고를 넣어볼까? -->
             <div class = "adv1" style="display: inline-block;">
                   <a href="https://comic.naver.com/webtoon/list?titleId=131385">
                     <img src="./resources/image/kubera.jpg" alt="kubera" width="150px" height="250px">
@@ -78,7 +78,6 @@
                   <img src="./resources/image/onestep.jpg" alt="onestep" width="150px" height="250px">
                 </a>
          	 </div>
-
             <div class = "content">
                 <div class = "content-head">
                    <div id = "head-count">총 ${fn:length(list)}개의 서비스</div>
@@ -93,7 +92,7 @@
 	                                <option class = "category-item-list" value="check" id="count">조회순</option>
                             	</c:if>
                             	
-                            	<c:if test="${mType eq 'helpmeList.bo'}">
+                            	<c:if test="${mType eq 'helpmeCategoryList.bo'}">
 	                            	<option class = "category-item-list" value="date" id="date">날짜순</option>
 	                                <option class = "category-item-list" value="check" id="count">조회순</option>
                             	</c:if>

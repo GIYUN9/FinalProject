@@ -14,7 +14,8 @@
 }
 .nav-center-items{
     display: flex;
-    margin: auto;
+    margin: 10px;
+    overflow: hidden;
 }
 .nav-item{
     font-size: 18px;
@@ -26,6 +27,12 @@
 }
 .content-item:hover{
     background-color: rgba(255, 255, 255, 0.22);
+}
+
+.scroll-area{
+    display: flex;
+    flex-direction: row;
+    width: 850px;
 }
 /* a::after{
     display:block;
@@ -485,3 +492,16 @@ page-item disable {
         right: 15px;
         cursor: pointer;
     }
+    
+       /* 슬라이드 css*/
+   
+   .slider-container{
+   		width : 100%;
+   		overflow : hidden;
+   }
+   
+   .scroll-area{
+   		display : flex;
+   		transition: transform 0.5s ease-in-out;
+   }
+    
