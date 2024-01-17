@@ -627,7 +627,8 @@
 ${b.boardContent }
             </pre>
             </div>
-            <button id = "content-btn">채팅하기</button>
+            <!-- <button id = "content-btn">채팅하기</button> -->
+            <button id="content-btn" onclick="payment()">요청하기(결제)</button>
             <form action="" method="post" id="form">
                 <input type="hidden" name="boardNo" value="${b.boardNo}">
                 <input type="hidden" name="filePath" value="${b.changeName}">
@@ -636,6 +637,11 @@ ${b.boardContent }
     </div>
 <%@ include file="../common/footer.jsp" %>
 
+<script>
+	function payment() {
+		location.href = "paymentPage.pay"
+	}
+</script>
 
 
 </body>
