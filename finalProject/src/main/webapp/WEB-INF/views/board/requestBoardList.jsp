@@ -14,15 +14,15 @@
 
 <script src="././resources/js/helpmeboder.js"></script>
 <style>
-    .adv1{
+      .adv1{
         position: fixed; 
-        left: 150px; /* 오른쪽 끝에서부터의 거리 */
+        left: 200px; /* 오른쪽 끝에서부터의 거리 */
         z-index: 99;
     }
 
     .adv2{
         position: fixed; 
-        left: 150px; /* 오른쪽 끝에서부터의 거리 */
+        left: 200px; /* 오른쪽 끝에서부터의 거리 */
         z-index: 99;
         top: 400px;
     }
@@ -81,12 +81,12 @@
 
             <div class = "content">
                 <div class = "content-head">
-                   <div id = "head-count">총 ${fn:length(list)}개의 서비스</div>
+                   <div id = "head-count">총 ${listCount}개의 서비스</div>
                    <div id = "head-category">
                         <form class="write-area">
                         	<a class="write-btn"  href="helpuForm.bo">글쓰기</a>
 
-                            <select name="listPick" id="category-item" onchange="handleSelectionChange()">
+                            <select name="listPick" id="category-item" onchange="handleSelectionChange1()">
                             
                             	<c:if test="${mType eq 'helpmeDateList'}">
 	                            	<option class = "category-item-list" value="date" id="date" selected>날짜순</option>
@@ -232,7 +232,7 @@
                                </c:when>
                                <c:otherwise>
                                    <li class="page-item">
-                                    <a class="page-link" id="page-htwo" href="helpmeList.bo?cpage=${pi.currentPage - 1}">
+                                    <a class="page-link" id="page-htwo" href="helpmeReferenceList?cpage=${pi.currentPage - 1}">
                                         이전
                                     </a>
                                 </li>
@@ -240,7 +240,7 @@
                         </c:choose>
                         <c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage }">
                                <li class="page-item">
-                                <a class="page-link" id="page-hthree" href="helpmeList.bo?cpage=${p}">
+                                <a class="page-link" id="page-hthree" href="helpmeReferenceList?cpage=${p}">
                                     ${p}
                                 </a>
                             </li>
@@ -257,7 +257,7 @@
                             
                             <c:otherwise>
                                    <li class="page-item">
-                                    <a class="page-link" id="page-htwo" href="helpmeList.bo?cpage=${pi.currentPage + 1}">
+                                    <a class="page-link" id="page-htwo" href="helpmeReferenceList?cpage=${pi.currentPage + 1}">
                                         다음
                                     </a>
                                 </li>

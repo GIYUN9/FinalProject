@@ -34,80 +34,95 @@
             $('.dropdown-toggle').dropdown();
         });
 
-        //회원가입 버튼 시 조건 확인
-        function join() {
-            const joinForm = document.joinForm; 
-            const memberEmail = joinForm.memberEmail;
+        function checkEmail(){
+            console.log("온키업");
+            let memberEmail = document.getElementById("memberEmail");
+            let checkResultSpan = document.getElementById("checkResult");
+            let exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 
-            //이메일 아무것도 입력 안 했을 경우
-            if(memberEmail.value == ""){
-                alert("아이디를 입력하세요");
-                memberEmail.focus();
-                return false;
-            }
-
-            // 이메일 조건확인
-            var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
             if(exptext.test(memberEmail.value) == false){
-                alert("Email식이 올바르지 않습니다.");
-                memberEmail.focus();
-                return false;
+                checkResultSpan.innerHTML="<font color = pink>이메일좀 똑바로 입력해라</font>";
             }
-        
-            const memberPwd = joinForm.memberPwd;
-            const memberPwd2 = joinForm.memberPwd2;
-
-             //비밀번호 입력 없을 경우
-            if(memberPwd.value == ""){
-                alert("비밀번호를 입력하세요");
-                memberPwd.focus();
-                return false;
-            }
-
-            //비밀번호 제약조건
-            if(memberPwd.value.length < 8){
-				alert("비밀번호 8자리 이상!");
-				memberPwd.focus();
-				return false;
-            }
-
-            //비밀번호 공백 있나 확인
-            if(memberPwd.value.search(" ") != -1){
-                alert("비밀번호는 공백을 포함할 수 없습니다.!");
-                memberPwd.focus();
-                return false;
-            }
-
-            //비밀번호 확인
-            if(memberPwd2.value == ""){
-                alert("비밀번호를 확인해주세요");
-                memberPwd2.focus();
-                return false;
-            }
-
-            //비밀번호 확인이 틀렸을 경우
-            if(memberPwd.value != memberPwd2.value){
-                alert("비밀번호를  다시 확인해주세요 일치하지 않습니다.");
-                memberPwd.focus();
-                return false;
-            }
-
-            //이름입력 안 했을 경우
-            const memberName = joinForm.memberName;
-            if(memberName.value == ""){
-                alert("이름을 입력하세요");
-                memberName.focus();
-                return false;
-            } 
-
-            const phone = joinForm.phone;
-            if(phone.value == ""){
-                alert("휴대폰 번호를 입력하세요");
-                phone.focus();
-                return false;
-            }
-            return true;        
         }
+
+        
+
+        //회원가입 버튼 시 조건 확인  
+        // function join() {
+
+        //     console.log("조인함수 호출");
+        //     const joinForm = document.joinForm; 
+        //     const memberEmail = joinForm.memberEmail;
+
+        //     //이메일 아무것도 입력 안 했을 경우
+        //     if(memberEmail.value == ""){
+        //         alert("아이디를 입력하세요");
+        //         memberEmail.focus();
+        //         return false;
+        //     }
+
+        //     // 이메일 조건확인
+            // var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+        //     if(exptext.test(memberEmail.value) == false){
+        //         alert("Email식이 올바르지 않습니다.");
+        //         memberEmail.focus();
+        //         return false;
+        //     }
+        
+        //     const memberPwd = joinForm.memberPwd;
+        //     const memberPwd2 = joinForm.memberPwd2;
+
+        //      //비밀번호 입력 없을 경우
+        //     if(memberPwd.value == ""){
+        //         alert("비밀번호를 입력하세요");
+        //         memberPwd.focus();
+        //         return false;
+        //     }
+
+        //     //비밀번호 제약조건
+        //     if(memberPwd.value.length < 8){
+		// 		alert("비밀번호 8자리 이상!");
+		// 		memberPwd.focus();
+		// 		return false;
+        //     }
+
+        //     //비밀번호 공백 있나 확인
+        //     if(memberPwd.value.search(" ") != -1){
+        //         alert("비밀번호는 공백을 포함할 수 없습니다.!");
+        //         memberPwd.focus();
+        //         return false;
+        //     }
+
+        //     //비밀번호 확인
+        //     if(memberPwd2.value == ""){
+        //         alert("비밀번호를 확인해주세요");
+        //         memberPwd2.focus();
+        //         return false;
+        //     }
+
+        //     //비밀번호 확인이 틀렸을 경우
+        //     if(memberPwd.value != memberPwd2.value){
+        //         alert("비밀번호를  다시 확인해주세요 일치하지 않습니다.");
+        //         memberPwd.focus();
+        //         return false;
+        //     }
+
+        //     //이름입력 안 했을 경우
+        //     const memberName = joinForm.memberName;
+        //     if(memberName.value == ""){
+        //         alert("이름을 입력하세요");
+        //         memberName.focus();
+        //         return false;
+        //     } 
+
+        //     const phone = joinForm.phone;
+        //     if(phone.value == ""){
+        //         alert("휴대폰 번호를 입력하세요");
+        //         phone.focus();
+        //         return false;
+        //     }
+        //     return true;        
+        // }
 
         //로그인 시 제약조건
         function loginCheck(){

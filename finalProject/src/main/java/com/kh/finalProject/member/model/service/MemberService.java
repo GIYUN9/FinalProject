@@ -15,6 +15,9 @@ public interface MemberService {
 	// 회원가입 서비스 (insert)
 	int insertMember(Member m);
 	
+	// 회원가입 할 때 이메일 중복체크
+	int emailYNCheck(String memberEmail);
+	
 	//아이디 중복체크
 	Member emailCheck(Member m);
 	

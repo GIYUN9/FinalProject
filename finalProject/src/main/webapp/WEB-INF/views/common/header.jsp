@@ -19,6 +19,21 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="/finalProject/resources/js/header.js"></script>
+<style>
+    #checkResult{
+        font-size: 13px;
+    }
+
+    #pwdCheck{
+        font-size: 13px;
+    }
+
+    #pwdCon{
+        font-size: 13px;
+    }
+
+
+</style>
 </head>
 <body>
 	<c:if test="${ not empty alertMsg }">
@@ -144,28 +159,35 @@
                                 이메일
                                 <span class="as-re">*</span>
                             </p>
-                            <p style="display: flex;">
-                                <input class="en-input3" id="memberEmail" name ="memberEmail" type="text" placeholder="example@poomasi.com" style="margin-right: 5px;">
-                                <button id="em-btn1" type="button" onclick="emailSendNo()">인증</button>
+                            <p style="display: flex; margin-bottom: 0px;" >
+                                <input class="en-input3" id="memberEmail" name ="memberEmail" type="text" onkeyup="checkEmail()" placeholder="example@poomasi.com" style="margin-right: 5px;">
+                                <button id="em-btn1" type="button" onclick="emailSendNo()">인증</button>  
                             </p>
+                            <span id="checkResult"></span>
+
                             <p class="number-btn">
                                 <input class="en-input2" id="checkNo" type="number" style="margin-right: 5px;" placeholder="인증번호 6자리를 3분이내 입력해주세요.">
                                 <button type="button" id="em-btn2" onclick="randomNumberCheck()">확인</button>
                             </p>
-                            <p>
+                            <p style="margin-top: 1rem;">
                                 비밀번호
                                 <span class="as-re">*</span>
                             </p>
-                            <p>
-                                <input class="en-input" id="memPwd1" name ="memberPwd" type="password" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요" readonly="readonly">
+                            <p style="display: flex; margin-bottom: 0px;" >
+                                <input class="en-input" id="memPwd1" name ="memberPwd" type="password" placeholder="영문 + 숫자 조합 8자리 이상 입력해주세요" readonly="readonly" onkeyup="passwordCheck()">
                             </p>
+                            <span id = "pwdCheck"></span>
+                            <br>
                             <p>
                                 비밀번호확인
                                 <span class="as-re">*</span>
                             </p>
-                            <p>
-                                <input class="en-input" id="memPwd2" name ="memberPwd2" type="password" placeholder="올바르게 입력해주세요" readonly="readonly">
+                            <p style="display: flex; margin-bottom: 0px;" >
+                                <input class="en-input" id="memPwd2" name ="memberPwd2" type="password" placeholder="올바르게 입력해주세요" readonly="readonly" onkeyup="pwdConfirm()">
+                                
                             </p>
+                            <span id = "pwdCon"></span>
+                            <br>
                             <p>
                                 관심사 선택
                                 <span class="as-re">*</span>
@@ -268,6 +290,70 @@
 		  var redirectUrl = '<%=request.getContextPath()%>/'; 
 		  window.location.href = redirectUrl;
 		}
+
+        function checkEmail(){
+            let memberEmail = document.getElementById("memberEmail");
+            let checkResultSpan = document.getElementById("checkResult");
+            let exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+
+            if(memberEmail.value ===""){
+                checkResultSpan.innerHTML="<font color = green>이메일을 입력해주세요</font>";
+                return;
+            }
+
+            if(exptext.test(memberEmail.value) == false){
+                checkResultSpan.innerHTML="<font color = red>이메일 형식이 옳지 않습니다.</font>";
+            }else{     
+                let xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        var jsonResponse = JSON.parse(xhr.responseText);
+                        if (jsonResponse.status === "ok") {
+                            checkResultSpan.innerHTML = "<font color='blue'>사용가능한 이메일입니다.</font>";
+                        } else {
+                            checkResultSpan.innerHTML = "<font color='red'>이미 가입된 이메일입니다.</font>";
+                        }
+                    }
+                };
+                xhr.open("get", "emailYNCheck.me?memberEmail="+memberEmail.value);
+                xhr.send();
+            }
+        }
+
+        function passwordCheck(){
+            let memberPwd = document.getElementById("memPwd1");
+            let pwdCheck = document.getElementById("pwdCheck");
+            let memberPwd2 = document.getElementById("memPwd2");
+
+            if(memberPwd.value === ""){
+                pwdCheck.innerHTML="<font color = green>비밀번호를 입력해주세요</font>";
+                return;
+            }
+
+            if(memberPwd.value.length < 8){
+                pwdCheck.innerHTML="<font color = red>비밀번호를 8자리 이상 입력해주세요</font>";
+				memberPwd.focus();
+				return;
+            }else{
+                pwdCheck.innerHTML="<font color = blue>사용가능한 비밀번호입니다.</font>";
+                memberPwd.focus();
+				return;
+            }
+        }
+
+        function pwdConfirm() {
+            let memberPwd = document.getElementById("memPwd1");
+            let pwdCon = document.getElementById("pwdCon");
+            let memberPwd2 = document.getElementById("memPwd2");
+
+            // 비밀번호 확인이 틀렸을 경우
+            if (memberPwd.value !== memberPwd2.value) {
+                pwdCon.innerHTML="<font color = red>비밀번호가 일치하지 않습니다.</font>";
+            } else {
+                pwdCon.innerHTML="<font color = blue>비밀번호가 일치합니다.</font>";
+            }
+        }
+
     </script>
 </body>
 </html>

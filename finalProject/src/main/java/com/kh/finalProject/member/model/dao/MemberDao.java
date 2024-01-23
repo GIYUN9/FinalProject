@@ -22,6 +22,10 @@ public class MemberDao {
 		return sqlSession.insert("memberMapper.insertMember", m);
 	}
 	
+	public int emailYNCheck(SqlSessionTemplate sqlSession, String memberEmail) {
+		return sqlSession.selectOne("memberMapper.emailYNCheck", memberEmail);
+	}
+	
 	public Member loginMember(SqlSessionTemplate sqlSession, Member m) {
 		return sqlSession.selectOne("memberMapper.loginMember", m);
 	}

@@ -16,6 +16,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
@@ -54,6 +56,25 @@ public class MemberController {
 	
 	@Autowired
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
+	
+	//이메일 중복확인 컨트롤러
+	@RequestMapping(value="/emailYNCheck.me")
+	@ResponseBody
+	public Map<String, String> emailYNCheck(HttpServletRequest request, HttpServletResponse response) {
+	    String memberEmail = request.getParameter("memberEmail");
+	
+	    int checkResult = memberService.emailYNCheck(memberEmail);
+	  
+	    
+	    Map<String, String> result = new HashMap<>();
+	    
+	    if (checkResult == 0) {
+	        result.put("status", "ok");
+	    } else {
+	        result.put("status", "fail");
+	    }
+	    return result;
+	}
 	
 	//멤버 마이페이지 불러오는 컨트롤러
 	@RequestMapping(value = "/userInfo.me")

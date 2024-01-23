@@ -23,21 +23,27 @@
         align-items: center;
         margin-top: 70px;
     }
+    
+    .nav{
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	}
 
     .nav-center-items{
-        display: flex;
-        margin: auto;
-       
-    }
+	    display: flex;
+	    margin: 10px;
+	    overflow: hidden;     
+	}
 
-    .nav-item{
-        font-size: 18px;
-        height: 40px;
-        padding-left: 70px;
-        text-align: center;
-        font-weight: bold;
-        color: white;
-    }
+   .nav-item{
+	    font-size: 18px;
+	    height: 40px; 
+	    padding-left: 70px;
+	    text-align: center;
+	    font-weight: bold;
+	    color: white;
+	}
 
     a:after {
         display:block;
@@ -55,19 +61,13 @@
     }
 
     .category{
-        width: 100px; 
-        text-align: center;  
-        height: 200px;
-    }
+	    width: 70px; 
+	    text-align: center;  
+	}
 
     .category-item {
-        width: 100px;
-        height: 40px;   
-        text-align: center;
-        padding-top: 10px;
-        margin-top: 10px;
-        border-radius: 10px;
-    }
+    margin-top: 20px;   
+}
 
     .category-item > a{
         margin-top: 150px;
@@ -78,11 +78,12 @@
     
     .main{
         display: flex;    
-        width: 1300px;  
+        width: 1200px;  
         height: max-content;
         border: 1px;
         margin: 0 auto;
         margin-bottom: 100px;
+        padding-left: 50px;
     }
 
     .content-item{
@@ -163,10 +164,20 @@
         color: white;
     }
     
-    a{
-        color: white;
-    }
-
+    .arrow-img{
+	    position: absolute;
+	    width: 20px;
+	    height: 20px;
+	    top: 98px;
+	}
+    
+    .aaa{
+	    width: 95px;
+	    padding: 9px;
+	    border-radius: 8px;
+	    color: white;
+	}
+    
     option:hover {
         background-color: rgb(0, 0, 0);
     }
@@ -517,58 +528,99 @@
     }
     .data-mem{
         text-align: right;
+        font-weight: bold;  
+        cursor: pointer;
+  		text-decoration: none;
     }
     .hu-btn-area{
         display: flex;
         flex-direction: row;
     }
+    
+       /* 슬라이드 css*/
+   
+   .slider-container{
+   		width : 100%;
+   		overflow : hidden;
+   }
+   
+   .scroll-area{
+	    display: flex;
+	    flex-direction: row;
+	    width: 850px;
+	    transition: transform 0.5s ease-in-out;
+	}
+
+    .modal-email-input{
+        width: 300px;
+        height: 40px;
+        border: 1px solid rgba(96, 96, 96, 0.5);
+        border-radius: 4px;
+        margin-bottom: 20px;
+    }
+
+    .modal-location-input{
+        width: 300px;
+        height: 40px;
+        border: 1px solid rgba(96, 96, 96, 0.5);
+        border-radius: 4px;
+        margin-bottom: 20px;
+    }
+
+    .modal-skill-input{
+        width: 300px;
+        height: 40px;
+        border: 1px solid rgba(96, 96, 96, 0.5);
+        border-radius: 4px;
+        margin-bottom: 20px;
+    }
+	.modal-introduce-input{
+		width: 300px;
+        height: 40px;
+        border: 1px solid rgba(96, 96, 96, 0.5);
+        border-radius: 4px;
+        margin-bottom: 20px;
+	}
+   
 </style>
 <script src="${pageContext.request.contextPath}/resources/js/helpboder.js"></script>
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
-    <div class = "nav">
-        <div class = "nav-center-items">
-            <div class = "nav-item">
-                <div class="nav-item-content" >
-                    <a href="#" style = "color : white;" >전체보기</a>
-                </div>
+     <div class="nav">
+        <div class="nav-item">
+            <div class="aaa">
+                <a href="helpList.bo" style="color: white;">전체보기</a>
             </div>
-            <div class = "nav-item"><a href="#">&#60;</a></div>
-            <div class = "nav-item">
-                <div class="nav-item-content">
-                    <a href="#" style = "color : white;">취미,레슨</a>
-                </div>
-            </div>
-            <div class = "nav-item">
-                <div class="nav-item-content">
-                    <a href="#" style = "color : white;">디자인</a>
-                </div>
-            </div>
-            <div class = "nav-item">
-                <div class="nav-item-content">
-                    <a href="#" style = "color : white;">마케팅</a>
-                </div>
-            </div>
-            <div class = "nav-item">
-                <div class="nav-item-content" style="background-color: rgba(255, 255, 255, 0.22);">
-                    <a href="#" style = "color : white;">운동</a>
-                </div>
-            </div>
-            <div class = "nav-item">
-                <div class="nav-item-content">
-                    <a href="#" style = "color : white;">게임</a>
-                </div>
-            </div>
-            <div class = "nav-item">
-                <div class="nav-item-content">
-                    <a href="#" style = "color : white;">미술</a>
+        </div>
+        <div class = "nav-item">
+            <a id = "leftButton" href="#">
+                <img class="arrow-img" src="./resources/icon/menu-left-arrow.png" alt="">
+            </a>
+        </div>
+
+        <div class="nav-center-items">
+        
+        <!-- 카테고리 버튼 슬라이드 기능(제이쿼리 사용) -->
+            <div class = "slide-container">
+                <div class="scroll-area">
+                    <c:forEach var="c" items="${cList}">
+                        <div class = "nav-item">
+                            <div class="aaa">
+                                <a href="#" style="color: white;" class="catelist" id="clickedElement" data-category-no="${c.categoryNo}"   onclick="categoryList(this)">${c.categoryName}</a>
+                            </div>
+                        </div>
+                    </c:forEach>
                 </div>
             </div>
             
-            <div class = "nav-item"><a href="#">&#62;</a></div>
+            <div class = "nav-item">
+                <a id = "rightButton" href="#">
+                    <img class="arrow-img" src="./resources/icon/menu-right-arrow.png" alt="">
+                </a>
+            </div>
         </div>
-    </div>
+   </div>
     <div class="main">
     	<div class = "photo">
             <div class = "main-photo">
@@ -605,7 +657,7 @@
                 <div class = "a">               
                     <div class="logo">          
                         <div class = "data">
-                            <div class="data-mem">
+                            <div class="data-mem" data-toggle="modal" data-target="#userModal">
                                 작성자 :  &nbsp;${b.memberName }
                             </div>
                             <div style="display: flex; flex-direction: row; justify-content: end;">
@@ -634,6 +686,50 @@ ${b.boardContent }
                 <input type="hidden" name="filePath" value="${b.changeName}">
             </form>
         </div>
+        <div class="modal" id="userModal" style="background: top;" >
+            <div class="modal-dialog">
+                 <div class="modal-content" style="height: 100%;  margin-top: 180px;">
+                    <div class="modal-body" >                 
+                      
+                        <div style="justify-content: center;
+                            display: flex;">
+                        <img class ="modal-user-img" src="${b.filePath}" alt="유저사진" style="height: 120px; width: 120px; border-radius: 30%;">
+                    </div>
+                    <br>
+                    
+                    <h2 class="modal-user-name" style="text-align: center; font-weight: bold; margin: 0 auto;">${b.memberName}</h2>
+                    <br>
+                    
+                    <div class="l-text" style="font-weight: bold;">
+                        Email
+                    </div>                      
+                    <input class="modal-email-input" name="memberEmail" type="text" style="width: 100%;" value="${b.memberEmail}" readonly>
+                    <br>
+                    
+                    <div class="l-text" style="font-weight: bold;">
+                        활동지역
+                    </div>                      
+                    <input class="modal-location-input" name="location" type="text" style="width: 100%;" value="${b.location}" readonly>
+                    <br>
+                    
+                    <div class="l-text" style="font-weight: bold;">
+                        전문가 정보
+                    </div>                      
+                    <input class="modal-skill-input" name="skillName" type="text" style="width: 100%;" value="${b.skillName}" readonly>
+                    <br>
+                    
+                    <div class="l-text" style="font-weight: bold;">
+                        전문가 소개
+                    </div>                      
+                    <input class="modal-introduce-input" name="intro" type="text" style="width: 100%;" value="${b.intro}" readonly>
+                    
+                    <hr>
+            
+               
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 <%@ include file="../common/footer.jsp" %>
 
@@ -641,6 +737,36 @@ ${b.boardContent }
 	function payment() {
 		location.href = "paymentPage.pay"
 	}
+	
+	  document.addEventListener('DOMContentLoaded', function () {
+	        const itemsPerPage = 5;
+	        const scrollArea = document.querySelector('.scroll-area');
+	        const navItems = document.querySelectorAll('.nav-item');
+	        let currentIndex = 0;
+
+	        // 좌측 버튼 클릭 시
+	        document.getElementById('leftButton').addEventListener('click', function () {
+	            if (currentIndex > 0) {
+	                currentIndex -= itemsPerPage;
+	                updateSlider();
+	            }
+	        });
+
+	        // 우측 버튼 클릭 시
+	        document.getElementById('rightButton').addEventListener('click', function () {
+	            if (currentIndex < navItems.length - itemsPerPage) {
+	                currentIndex += itemsPerPage;
+	                updateSlider();
+	            }
+	        });
+
+	        // 슬라이더 업데이트 함수
+	        function updateSlider() {
+	            const translateValue = -currentIndex * navItems[0].offsetWidth;
+	            scrollArea.style.transform = 'translateX(' + translateValue + 'px)';
+	            console.log('Slider updated. Current Index: ', currentIndex);
+	        }
+	    });
 </script>
 
 

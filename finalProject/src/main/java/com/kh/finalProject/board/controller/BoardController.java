@@ -74,6 +74,7 @@ public class BoardController {
 				.addObject("list",list)
 				.addObject("lType", "helpList.bo")
 				.addObject("cList", cList)
+				.addObject("listCount", listCount)
 				.setViewName("board/helpBoardList");
 				
 			return mv;
@@ -103,9 +104,7 @@ public class BoardController {
 		return mv;
 	}
 	
-	
 
-	
 	//도와줄게요 날짜순으로 보이게 하는 리스트
 	 @RequestMapping(value = "helpDateList", method = RequestMethod.GET)
 	 public ModelAndView helpDateList(@RequestParam(value="cpage", defaultValue="1") int currentPage, Board b, ModelAndView mv) {
@@ -115,15 +114,19 @@ public class BoardController {
 
 	        ArrayList<Board> dateList = boardService.helpDateCheck(b, pi);
 	        
+	        ArrayList<Category> cList = boardService.selectCategoryList();
+	        
 	        mv.addObject("list", dateList);
 	        mv.addObject("pi", pi);
 	        mv.addObject("lType", "helpDateList");
+	        mv.addObject("cList", cList);
+	        mv.addObject("listCount", listCount);
 	        mv.setViewName("board/helpBoardList");
 
 	        return mv;
 	    }
 	 
-	 //도와주세요 조회수 리스트 컨트롤러
+	 //도와줄게요 조회수 리스트 컨트롤러
 	 @RequestMapping(value = "helpReferenceList", method = RequestMethod.GET)
 	 public ModelAndView helpReferenceList(@RequestParam(value="cpage", defaultValue="1") int currentPage, Board b, ModelAndView mv) {
 		 int listCount = boardService.helpReferenceCount();
@@ -132,9 +135,13 @@ public class BoardController {
 
 	     ArrayList<Board> referenceList = boardService.helpReference(b, pi);
 	     
+	     ArrayList<Category> cList = boardService.selectCategoryList();
+	     
 	     mv.addObject("list", referenceList);
 	     mv.addObject("pi", pi);
 	     mv.addObject("lType", "helpReferenceList");
+	     mv.addObject("cList", cList);
+	     mv.addObject("listCount", listCount);
 	     mv.setViewName("board/helpBoardList");
 
 	     return mv;
@@ -184,10 +191,13 @@ public class BoardController {
 		if(increaseCount > 0) {
 			Board b = boardService.helpmeSelectBoard(boardNo);
 			ArrayList<Attachment> atlist = boardService.helpmeAttachmentList(boardNo);
-			System.out.println(b);
+			System.out.println("보드보드 : " + b);
 			System.out.println("atlist : " + atlist);
+			
+			ArrayList<Category> cList = boardService.selectCategoryList();
 			session.setAttribute("b", b);
 			session.setAttribute("atlist", atlist);
+			session.setAttribute("cList", cList);
 			
 			return "board/helpDetail";
 		} else {
@@ -554,6 +564,7 @@ public class BoardController {
 		  .addObject("list",list)
 		  .addObject("mType","helpmeList.bo")
 		  .addObject("cList", cList)
+		  .addObject("listCount", listCount)
 		  .setViewName("board/requestBoardList");
 			
 		return mv;
@@ -579,6 +590,7 @@ public class BoardController {
 			.addObject("list",list)
 			.addObject("mType", "helpmeCategoryList.bo")
 			.addObject("cList", cList)
+			.addObject("listCount", listCount)
 			.setViewName("board/helpmeCategoryList");
 			
 		return mv;
@@ -661,17 +673,9 @@ public class BoardController {
 	            	at.setFileLevel(2);
 	            }
 	             
-	            System.out.println("filePath : " + at.getFilePath());          
-	            System.out.println("originName : " +at.getOriginName()); 	       
-	            System.out.println("changeName : " + at.getChangeName());
-	            System.out.println("fileLevel : " + at.getFileLevel()); 
-	            System.out.println("at = " +at);
-	            
 	            list.add(at);
 	        }
 	    }
-	    
-	    System.out.println(list);
 	    Attachment at = new Attachment();
 	    for (Attachment attachment : list) {
 	    	
@@ -697,22 +701,7 @@ public class BoardController {
 		}
 	}  
 	
-	
-//		result1 = boardService.helpmeInsertBoard(b);
-//		b = boardService.helpmeselectOne(b);
-//		at.setBoardNo(b.getBoardNo());
-//		result2 = boardService.helpmeAttachment(at);
-//		
-//		if(result1 > 0 && result2 > 0) {
-//			session.setAttribute("alertMsg", "게시글 작성 성공");
-//			return "redirect:/helpmeList.bo";
-//		} else {
-//			model.addAttribute("errorMsg", "게시글 작성 실패");
-//			return "common/errorPage";
-//		}
-	
-	    
-	 
+
 	
 	//도와주세요 디테일 페이지 이동
 	@RequestMapping(value="helpmeDetail.bo")
@@ -725,10 +714,11 @@ public class BoardController {
 		if(increaseCount > 0) {
 			Board b = boardService.helpmeSelectBoard(boardNo);
 			ArrayList<Attachment> atlist = boardService.helpmeAttachmentList(boardNo);
-			System.out.println(b);
-			System.out.println("atlist : " + atlist);
+			
+			ArrayList<Category> cList = boardService.selectCategoryList();
 			session.setAttribute("b", b);
 			session.setAttribute("atlist", atlist);
+			session.setAttribute("cList", cList);
 			
 			return "board/requestHelpmeDetail";
 		} else {
@@ -812,64 +802,7 @@ public class BoardController {
 			return "common/errorPage";
 		}
 	    }
-         
-	    	
-	    	
-//	        if (!upfile.isEmpty()) {
-//      	
-//	        	Attachment at = new Attachment();
-//	            String changeName = saveFile(upfile, session, "resources/borderImage/");
-//	            if(at.getOriginName() != null) {
-//					new File(session.getServletContext().getRealPath(at.getChangeName())).delete();
-//				}
-//	      
-//	            at.setChangeName("././resources/borderImage/" + changeName);
-//	            at.setOriginName(upfile.getOriginalFilename());	   
-//	            at.setFilePath("././resources/borderImage/");
-//	            
-//	            at.setBoardNo(b.getBoardNo());
-//	                    
-//	            String fileName = upfile.getOriginalFilename();
-//	            if( upfile == upfiles[0]) {
-//	            	at.setFileLevel(1);
-//	            } else {
-//	            	at.setFileLevel(2);
-//	            }
-//	             
-//	            System.out.println("aaa filePath : " + at.getFilePath());          
-//	            System.out.println("aaa originName : " +at.getOriginName()); 	       
-//	            System.out.println("aaa changeName : " + at.getChangeName());
-//	            System.out.println("aaa fileLevel : " + at.getFileLevel()); 
-//	            System.out.println("aaa at = " +at);
-//	            
-//	            list.add(at);
-//	        }
-//	    }
-	    
-
-	  
-		
-//		if(!reupfile.getOriginalFilename().equals("")) {
-//			String changeName = saveFile(reupfile, session, "/resources/borderImage/");
-//			
-//			if(at.getOriginName() != null) {
-//				new File(session.getServletContext().getRealPath(at.getChangeName())).delete();
-//			}
-//			
-//			at.setOriginName(reupfile.getOriginalFilename());
-//			at.setChangeName("././resources/borderImage/" + changeName);
-//		}
-//		
-//		int result = boardService.helpmeUpdateBoard(b);
-//		
-//		if(result > 0) {
-//			session.setAttribute("alertMsg", "게시글 수정 성공");
-//			return "redirect:/helpmeDetail.bo?boardNo=" + b.getBoardNo();
-//		} else {
-//			model.addAttribute("errorMsg", "게시글 수정 실패");
-//			return "common/errorPage";
-//		}
-	
+          
 	
 	//도와주세요 게시글 삭제
 	@RequestMapping(value="helpmeDelete.bo")
@@ -897,12 +830,15 @@ public class BoardController {
 		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 5, 8);
 
 		ArrayList<Board> dateList = boardService.helpmeDateCheck(b, pi);
-	        
+	    
+		ArrayList<Category> cList = boardService.selectCategoryList();
+		
 		mv.addObject("list", dateList);
 		mv.addObject("pi", pi);
 		mv.addObject("mType", "helpmeDateList");
+		mv.addObject("cList", cList);
 		mv.setViewName("board/requestBoardList");
-		
+		mv.addObject("listCount", listCount);	
 		return mv;
 	}
 	
@@ -915,9 +851,13 @@ public class BoardController {
 
 	     ArrayList<Board> referenceList = boardService.helpmeReference(b, pi);
 	     
+	     ArrayList<Category> cList = boardService.selectCategoryList();
+	     
 	     mv.addObject("list", referenceList);
 	     mv.addObject("pi", pi);
 	     mv.addObject("mType", "helpmeReferenceList");
+	     mv.addObject("cList", cList);
+	     mv.addObject("listCount", listCount);
 	     mv.setViewName("board/requestBoardList");
 
 	     return mv;

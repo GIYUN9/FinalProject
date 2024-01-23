@@ -102,6 +102,13 @@
 			AND STATUS = 'Y'
 	</select>
 	
+	<!-- 회원가입시 이메일 중복확인 -->
+	<select id="emailYNCheck" resultType="_int">
+		SELECT COUNT(*)
+			FROM MEMBER
+		WHERE MEM_EMAIL = #{memberEmail}
+	</select>
+	
 	<!-- 이메일이랑 휴대폰 번호 체크 -->
 	<select id="emailPhoneCheck" resultMap="memberResult">
 		SELECT MEM_EMAIL,
