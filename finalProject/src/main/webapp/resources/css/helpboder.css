@@ -18,14 +18,12 @@
 .nav-center-items{
     display: flex;
     margin: 10px;
-    overflow: hidden;
-        
+    overflow: hidden;     
 }
 
 .nav-item{
     font-size: 18px;
-    height: 40px;
-    
+    height: 40px; 
     padding-left: 70px;
     text-align: center;
     font-weight: bold;

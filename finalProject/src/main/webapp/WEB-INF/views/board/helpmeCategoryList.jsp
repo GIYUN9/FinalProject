@@ -16,13 +16,13 @@
 <style>
     .adv1{
         position: fixed; 
-        left: 150px; /* 오른쪽 끝에서부터의 거리 */
+        left: 200px; /* 오른쪽 끝에서부터의 거리 */
         z-index: 99;
     }
 
     .adv2{
         position: fixed; 
-        left: 150px; /* 오른쪽 끝에서부터의 거리 */
+        left: 200px; /* 오른쪽 끝에서부터의 거리 */
         z-index: 99;
         top: 400px;
     }

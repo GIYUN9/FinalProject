@@ -1,12 +1,12 @@
 //requestBoardList.jsp 날짜순, 조회순 스크립트
 
-function handleSelectionChange() {
+function handleSelectionChange1() {
   const selectedValue = document.getElementById("category-item").value;
 
   if (selectedValue === "date") {
-    location.href = "helpDateList"; // 날짜순을 선택한 경우
+    location.href = "helpmeDateList"; // 날짜순을 선택한 경우
   } else if (selectedValue === "check") {
-    location.href = "helpReferenceList"; // 조회순을 선택한 경우
+    location.href = "helpmeReferenceList"; // 조회순을 선택한 경우
   }
 }
 

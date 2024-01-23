@@ -39,5 +39,8 @@ public class Board {
 		private String intro;
 		private int skillNo;
 		private String phone;
+		
+		private String skillName;
+		private String memberEmail;
 	
 	}

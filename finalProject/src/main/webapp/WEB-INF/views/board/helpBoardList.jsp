@@ -16,18 +16,20 @@
 <script src="././resources/js/helpboder.js"></script>
 
 <style>
-    .adv1{
+     .adv1{
         position: fixed; 
-        left: 150px; /* 오른쪽 끝에서부터의 거리 */
+        left: 200px; /* 오른쪽 끝에서부터의 거리 */
         z-index: 99;
     }
 
     .adv2{
         position: fixed; 
-        left: 150px; /* 오른쪽 끝에서부터의 거리 */
+        left: 200px; /* 오른쪽 끝에서부터의 거리 */
         z-index: 99;
         top: 400px;
     }
+    
+    
 </style>
 
 </head>
@@ -83,7 +85,7 @@
             <div class = "content">
                 <div class = "content-head">
                    <div class = "head-count">
-                        총 ${fn:length(list)}개의 서비스
+                        총 ${listCount}개의 서비스
                    </div>
                    <div id = "head-category">                     
                         <form class="write-area">
@@ -234,7 +236,7 @@
                              </c:when>
                              <c:otherwise>
                              	<li class="Page-item">
-                             	 <a class="page-link" id="page-two" href="helpList.bo?cpage=${pi.currentPage - 1}">
+                             	 <a class="page-link" id="page-two" href="helpReferenceList?cpage=${pi.currentPage - 1}">
                                         이전
                                  </a>
                                 </li>
@@ -242,7 +244,7 @@
                             </c:choose>
                              <c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage }">
                                <li class="page-item">
-                                <a class="page-link" id="page-three" href="helpList.bo?cpage=${p}">
+                                <a class="page-link" id="page-three" href="helpReferenceList?cpage=${p}">
                                     ${p}
                                 </a>
                             </li>
@@ -259,7 +261,7 @@
                             
                                  <c:otherwise>
                                 <li class="page-item">
-                                    <a class="page-link" id="page-two" href="helpList.bo?cpage=${pi.currentPage + 1}">
+                                    <a class="page-link" id="page-two" href="helpReferenceList?cpage=${pi.currentPage + 1}">
                                         다음
                                     </a>
                                 </li>

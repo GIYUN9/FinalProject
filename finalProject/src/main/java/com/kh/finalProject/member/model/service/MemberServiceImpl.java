@@ -25,6 +25,11 @@ public class MemberServiceImpl implements MemberService {
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
+	public int emailYNCheck(String memberEmail) {
+		return memberDao.emailYNCheck(sqlSession, memberEmail);
+	}
+	
+	@Override
 	public int insertMember(Member m) {
 		return memberDao.insertMember(sqlSession, m);
 	}
