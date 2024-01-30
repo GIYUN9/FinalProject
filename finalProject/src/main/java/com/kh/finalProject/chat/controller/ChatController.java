@@ -23,6 +23,7 @@ public class ChatController {
 	@Autowired
 	private ChatService chatService;
 	
+	//채팅 접속시 세션의 로그인 유저로부터 수신자, 발신자 정하기
 	@RequestMapping(value = "/insert.ch")
 	public String insertMsg(Message msg, HttpSession session, Model model) {
 		Member loginUser = (Member) session.getAttribute("loginUser");
