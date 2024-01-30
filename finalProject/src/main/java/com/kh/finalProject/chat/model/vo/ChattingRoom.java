@@ -15,4 +15,9 @@ public class ChattingRoom {
     private String lastMsg;
     private Timestamp lastChatTime;
     private int chatCount;
+    
+    //추가
+    private int chatRoomNo;
+    private int isGroup;
+    private int unreadCount;
 }

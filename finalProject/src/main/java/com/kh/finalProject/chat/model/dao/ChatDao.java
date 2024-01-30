@@ -7,8 +7,11 @@ import java.util.Map;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.finalProject.chat.model.vo.ChatMsgRead;
 import com.kh.finalProject.chat.model.vo.ChattingRoom;
+import com.kh.finalProject.chat.model.vo.GroupChat;
 import com.kh.finalProject.chat.model.vo.Message;
+import com.kh.finalProject.member.model.vo.Member;
 
 @Repository
 public class ChatDao {
@@ -53,4 +56,50 @@ public class ChatDao {
 		paramMap.put("memberNo", memberNo);
 		return (ArrayList)sqlSession.selectList("chatMapper.senderInfo", paramMap);
 	}	
+	
+	//읽지 않은 메시지 카운트
+	public int unreadMsg(SqlSessionTemplate sqlSession, GroupChat gc) {
+		return sqlSession.selectOne("chatMapper.unreadMsg", gc);
+	}
+	
+	//채팅방 생성
+	public int createChatRoom(SqlSessionTemplate sqlSession, int isGroup) {
+		return sqlSession.insert("chatMapper.createChatRoom", isGroup);
+	}
+	
+	//그룹 채팅 생성
+	public int createGroupChat(SqlSessionTemplate sqlSession, int memNo) {
+		return sqlSession.insert("chatMapper.createChatRoom", memNo);
+	}
+	
+	//중복방 체크
+	public ArrayList<GroupChat> checkDuplicatedChatRoom(SqlSessionTemplate sqlSession, int memNo) {
+		return (ArrayList)sqlSession.selectList("chatMapper.checkDuplicatedChatRoom", memNo);
+	}
+	
+	//그룹쳇 확인
+	public int selectIsGroup(SqlSessionTemplate sqlSession, int chatRoomNo) {
+		return sqlSession.selectOne("chatMapper.selectIsGroup", chatRoomNo);
+	}
+	
+	//그룹 쳇 멤버 리스트
+	public ArrayList<Member> chatMemberList(SqlSessionTemplate sqlSession, GroupChat gc) {
+		return (ArrayList)sqlSession.selectList("chatMapper.chatMemberList", gc);
+	}
+	
+	public int unReadCount(SqlSessionTemplate sqlSession, GroupChat gc){
+		return sqlSession.selectOne("chattingMapper.unReadCount", gc);
+	}
+	
+	public int insertReadedMsg(SqlSessionTemplate sqlSession, ChatMsgRead read){
+		return sqlSession.insert("chattingMapper.insertReadedMsg", read);
+	}
+	
+	public int updateIsRead(SqlSessionTemplate sqlSession, ChatMsgRead read){
+		return sqlSession.update("chattingMapper.updateIsRead", read);
+	}
+	
+	public int selectUnreadMsgCount(SqlSessionTemplate sqlSession, int memNo){
+		return sqlSession.selectOne("chattingMapper.selectUnreadMsgCount", memNo);
+	}
 }

@@ -10,4 +10,9 @@ public class Message {
 	private Timestamp createDate;
 	private int senderNo;
 	private int receiverNo;
+	
+	//추가
+	private int isGroup;
+	private int chatRoomNo;
+	private String senderName;
 }
