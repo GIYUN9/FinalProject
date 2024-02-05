@@ -2,7 +2,7 @@
 > o2o비즈니스 서비스 - 품앗이
 
 ## 프로젝트 개요
-<img src="" width="200" height="100"/>
+<img src="./finalProject/src/main/webapp/resources/image/logobg.png" width="200" height="150"/>
 - 개발 기간: 2023.11.20 ~ 2024.01.04
   
 - 본 프로젝트의 간단한 설명
